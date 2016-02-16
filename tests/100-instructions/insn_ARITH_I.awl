@@ -1,0 +1,287 @@
+	__STWRST
+	L		-32768
+	L		-1
+	+I
+	__ASSERT==	__ACCU 1,	32767
+	__ASSERT==	__STW A1,	1
+	__ASSERT==	__STW A0,	0
+	__ASSERT==	__STW OV,	1
+	__ASSERT==	__STW OS,	1
+
+
+	__STWRST
+	L		-32768
+	L		1
+	-I
+	__ASSERT==	__ACCU 1,	32767
+	__ASSERT==	__STW A1,	1
+	__ASSERT==	__STW A0,	0
+	__ASSERT==	__STW OV,	1
+	__ASSERT==	__STW OS,	1
+
+
+	__STWRST
+	L		-10000
+	L		4
+	*I
+	__ASSERT==	__ACCU 1,	L#-40000
+	__ASSERT==	__STW A1,	0
+	__ASSERT==	__STW A0,	1
+	__ASSERT==	__STW OV,	1
+	__ASSERT==	__STW OS,	1
+
+
+	__STWRST
+	L		-32767
+	L		-1
+	+I
+	__ASSERT==	__ACCU 1,	-32768
+	__ASSERT==	__STW A1,	0
+	__ASSERT==	__STW A0,	1
+	__ASSERT==	__STW OV,	0
+	__ASSERT==	__STW OS,	0
+
+
+	__STWRST
+	L		-32767
+	L		1
+	-I
+	__ASSERT==	__ACCU 1,	-32768
+	__ASSERT==	__STW A1,	0
+	__ASSERT==	__STW A0,	1
+	__ASSERT==	__STW OV,	0
+	__ASSERT==	__STW OS,	0
+
+
+	__STWRST
+	L		-10000
+	L		2
+	*I
+	__ASSERT==	__ACCU 1,	L#-20000
+	__ASSERT==	__STW A1,	0
+	__ASSERT==	__STW A0,	1
+	__ASSERT==	__STW OV,	0
+	__ASSERT==	__STW OS,	0
+
+
+	__STWRST
+	L		-10000
+	L		2
+	/I
+	__ASSERT==	__ACCU 1,	-5000
+	__ASSERT==	__STW A1,	0
+	__ASSERT==	__STW A0,	1
+	__ASSERT==	__STW OV,	0
+	__ASSERT==	__STW OS,	0
+
+
+	__STWRST
+	L		-32767
+	L		32767
+	+I
+	__ASSERT==	__ACCU 1,	0
+	__ASSERT==	__STW A1,	0
+	__ASSERT==	__STW A0,	0
+	__ASSERT==	__STW OV,	0
+	__ASSERT==	__STW OS,	0
+
+
+	__STWRST
+	L		-32767
+	L		-32767
+	-I
+	__ASSERT==	__ACCU 1,	0
+	__ASSERT==	__STW A1,	0
+	__ASSERT==	__STW A0,	0
+	__ASSERT==	__STW OV,	0
+	__ASSERT==	__STW OS,	0
+
+
+	__STWRST
+	L		-10000
+	L		0
+	*I
+	__ASSERT==	__ACCU 1,	0
+	__ASSERT==	__STW A1,	0
+	__ASSERT==	__STW A0,	0
+	__ASSERT==	__STW OV,	0
+	__ASSERT==	__STW OS,	0
+
+
+	__STWRST
+	L		32766
+	L		1
+	+I
+	__ASSERT==	__ACCU 1,	32767
+	__ASSERT==	__STW A1,	1
+	__ASSERT==	__STW A0,	0
+	__ASSERT==	__STW OV,	0
+	__ASSERT==	__STW OS,	0
+
+
+	__STWRST
+	L		32766
+	L		-1
+	-I
+	__ASSERT==	__ACCU 1,	32767
+	__ASSERT==	__STW A1,	1
+	__ASSERT==	__STW A0,	0
+	__ASSERT==	__STW OV,	0
+	__ASSERT==	__STW OS,	0
+
+
+	__STWRST
+	L		10000
+	L		2
+	*I
+	__ASSERT==	__ACCU 1,	20000
+	__ASSERT==	__STW A1,	1
+	__ASSERT==	__STW A0,	0
+	__ASSERT==	__STW OV,	0
+	__ASSERT==	__STW OS,	0
+
+
+	__STWRST
+	L		10000
+	L		2
+	/I
+	__ASSERT==	__ACCU 1,	5000
+	__ASSERT==	__STW A1,	1
+	__ASSERT==	__STW A0,	0
+	__ASSERT==	__STW OV,	0
+	__ASSERT==	__STW OS,	0
+
+
+	__STWRST
+	L		32767
+	L		1
+	+I
+	__ASSERT==	__ACCU 1,	-32768
+	__ASSERT==	__STW A1,	0
+	__ASSERT==	__STW A0,	1
+	__ASSERT==	__STW OV,	1
+	__ASSERT==	__STW OS,	1
+
+
+	__STWRST
+	L		32767
+	L		-1
+	-I
+	__ASSERT==	__ACCU 1,	-32768
+	__ASSERT==	__STW A1,	0
+	__ASSERT==	__STW A0,	1
+	__ASSERT==	__STW OV,	1
+	__ASSERT==	__STW OS,	1
+
+
+	__STWRST
+	L		10000
+	L		4
+	*I
+	__ASSERT==	__ACCU 1,	L#40000
+	__ASSERT==	__STW A1,	1
+	__ASSERT==	__STW A0,	0
+	__ASSERT==	__STW OV,	1
+	__ASSERT==	__STW OS,	1
+
+
+	__STWRST
+	L		L#32768
+	L		1
+	/I
+	__ASSERT==	__ACCU 1,	DW#16#00008000
+	__ASSERT==	__STW A1,	0
+	__ASSERT==	__STW A0,	1
+	__ASSERT==	__STW OV,	0
+	__ASSERT==	__STW OS,	0
+
+
+	__STWRST
+	L		18
+	L		4
+	/I
+	__ASSERT==	__ACCU 1,	DW#16#00020004
+	__ASSERT==	__STW A1,	1
+	__ASSERT==	__STW A0,	0
+	__ASSERT==	__STW OV,	0
+	__ASSERT==	__STW OS,	0
+
+
+	__STWRST
+	L		L#32768
+	L		L#32768
+	+I
+	__ASSERT==	__ACCU 1,	0
+	__ASSERT==	__STW A1,	0
+	__ASSERT==	__STW A0,	0
+	__ASSERT==	__STW OV,	1
+	__ASSERT==	__STW OS,	1
+
+
+	__STWRST
+	L		1
+	L		0
+	/I
+	__ASSERT==	__ACCU 1,	0
+	__ASSERT==	__STW A1,	1
+	__ASSERT==	__STW A0,	1
+	__ASSERT==	__STW OV,	1
+	__ASSERT==	__STW OS,	1
+
+
+	__STWRST
+	L		1000
+	L		500
+	/I
+	__ASSERT==	__ACCU 1,	2
+	__ASSERT==	__STW A0,	0
+	__ASSERT==	__STW A1,	1
+	__ASSERT==	__STW OV,	0
+	__ASSERT==	__STW OS,	0
+
+
+	__STWRST
+	L		1010
+	L		500
+	/I
+	__ASSERT==	__ACCU 1,	DW#16#000A0002
+	__ASSERT==	__STW A0,	0
+	__ASSERT==	__STW A1,	1
+	__ASSERT==	__STW OV,	0
+	__ASSERT==	__STW OS,	0
+
+
+	__STWRST
+	L		1010
+	L		-500
+	/I
+	__ASSERT==	__ACCU 1,	DW#16#000AFFFE
+	__ASSERT==	__STW A0,	1
+	__ASSERT==	__STW A1,	0
+	__ASSERT==	__STW OV,	0
+	__ASSERT==	__STW OS,	0
+
+
+	__STWRST
+	L		-1010
+	L		500
+	/I
+	__ASSERT==	__ACCU 1,	DW#16#FFF6FFFE
+	__ASSERT==	__STW A0,	1
+	__ASSERT==	__STW A1,	0
+	__ASSERT==	__STW OV,	0
+	__ASSERT==	__STW OS,	0
+
+
+	__STWRST
+	L		-1010
+	L		-500
+	/I
+	__ASSERT==	__ACCU 1,	DW#16#FFF60002
+	__ASSERT==	__STW A0,	0
+	__ASSERT==	__STW A1,	1
+	__ASSERT==	__STW OV,	0
+	__ASSERT==	__STW OS,	0
+
+
+	CALL SFC 46 // STOP CPU

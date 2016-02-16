@@ -1,0 +1,122 @@
+#!/usr/bin/env python3
+# -*- coding: utf-8 -*-
+#
+# AWL simulator - Server interface
+#
+# Copyright 2013-2014 Michael Buesch <m@bues.ch>
+#
+# This program is free software; you can redistribute it and/or modify
+# it under the terms of the GNU General Public License as published by
+# the Free Software Foundation; either version 2 of the License, or
+# (at your option) any later version.
+#
+# This program is distributed in the hope that it will be useful,
+# but WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+# GNU General Public License for more details.
+#
+# You should have received a copy of the GNU General Public License along
+# with this program; if not, write to the Free Software Foundation, Inc.,
+# 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
+#
+
+from __future__ import division, absolute_import, print_function, unicode_literals
+from awlsim.common.compat import *
+
+import sys
+import getopt
+
+from awlsim.common import *
+from awlsim.core import *
+from awlsim.coreserver import *
+
+
+def usage():
+	print("awlsim-server version %s" % VERSION_STRING)
+	print("")
+	print("Usage: awlsim-server [OPTIONS]")
+	print("")
+	print("Options:")
+	print(" -l|--listen HOST:PORT   Listen on the specified HOST:PORT")
+	print("                         Defaults to %s:%d" %\
+		  (AwlSimServer.DEFAULT_HOST, AwlSimServer.DEFAULT_PORT))
+	print(" -B|--background         Fork a background process")
+	print(" -L|--loglevel LVL       Set the log level:")
+	print("                         0: Log nothing")
+	print("                         1: Log errors")
+	print("                         2: Log errors and warnings")
+	print("                         3: Log errors, warnings and info messages (default)")
+	print("                         4: Verbose logging")
+	print("                         5: Extremely verbose logging")
+
+def main():
+	global opt_listen
+	global opt_background
+
+	opt_listen = (AwlSimServer.DEFAULT_HOST, AwlSimServer.DEFAULT_PORT)
+	opt_background = False
+	opt_loglevel = Logging.LOG_INFO
+
+	try:
+		(opts, args) = getopt.getopt(sys.argv[1:],
+			"hl:BL:",
+			[ "help", "listen=", "background", "loglevel=", ])
+	except getopt.GetoptError as e:
+		printError(str(e))
+		usage()
+		return 1
+	for (o, v) in opts:
+		if o in ("-h", "--help"):
+			usage()
+			return 0
+		if o in ("-l", "--listen"):
+			try:
+				idx = v.rfind(":")
+				if idx <= 0:
+					raise ValueError
+				opt_listen = (v[:idx], int(v[idx+1:]))
+			except ValueError:
+				printError("-l|--listen: Invalid host/port")
+				sys.exit(1)
+		if o in ("-B", "--background"):
+			opt_background = True
+		if o in ("-L", "--loglevel"):
+			try:
+				opt_loglevel = int(v)
+			except ValueError:
+				printError("-L|--loglevel: Invalid log level")
+				sys.exit(1)
+	if args:
+		usage()
+		return 1
+
+	exitCode = 0
+	try:
+		Logging.setLoglevel(opt_loglevel)
+		if opt_background:
+			interpreter = sys.executable
+			assert(interpreter)
+			serverProcess = AwlSimServer.start(listenHost = opt_listen[0],
+							   listenPort = opt_listen[1],
+							   forkInterpreter = interpreter,
+							   commandMask = 0)
+			printInfo("Started awlsim server process (PID: %d)" %\
+				  serverProcess.pid)
+		else:
+			import awlsim.cython_helper
+			if awlsim.cython_helper.shouldUseCython():
+				printInfo("*** Using accelerated CYTHON core "
+					  "(AWLSIMCYTHON environment variable is set)")
+
+			exitCode = AwlSimServer.start(listenHost = opt_listen[0],
+						      listenPort = opt_listen[1],
+						      forkInterpreter = None,
+						      commandMask = 0)
+	except AwlSimError as e:
+		printError(e.getReport())
+		return 1
+
+	return exitCode
+
+if __name__ == "__main__":
+	sys.exit(main())

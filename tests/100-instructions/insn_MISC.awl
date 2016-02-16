@@ -1,0 +1,201 @@
+ORGANIZATION_BLOCK OB 1
+BEGIN
+	// Test: NOPs
+	BLD		123
+	NOP		1
+	NOP		0
+
+
+	// Test: "A" load/store
+	L		DW#16#12345678
+	T		AB 0
+	T		AW 2
+	T		AD 4
+	L		AB 0
+	__ASSERT==	__ACCU 1,	DW#16#00000078
+	L		AW 2
+	__ASSERT==	__ACCU 1,	DW#16#00005678
+	L		AD 4
+	__ASSERT==	__ACCU 1,	DW#16#12345678
+
+
+	// Test: "E" load/store
+	L		DW#16#12345678
+	T		EB 0
+	T		EW 2
+	T		ED 4
+	L		EB 0
+	__ASSERT==	__ACCU 1,	DW#16#00000078
+	L		EW 2
+	__ASSERT==	__ACCU 1,	DW#16#00005678
+	L		ED 4
+	__ASSERT==	__ACCU 1,	DW#16#12345678
+
+
+	// Test: Direct peripheral read
+	// Note: This test only succeeds on dummy hardware.
+	L		DW#16#87654321
+	T		ED 10
+	L		PEB 10
+	__ASSERT==	__ACCU 1,	DW#16#00000087
+	L		PEW 10
+	__ASSERT==	__ACCU 1,	DW#16#00008765
+	L		PED 10
+	__ASSERT==	__ACCU 1,	DW#16#87654321
+
+
+	// Test; Direct peripheral write
+	// Note: This test only succeeds on dummy hardware.
+	L		0
+	T		AD 10
+	L		DW#16#87654321
+	T		PAB 10
+	L		AD 10
+	__ASSERT==	__ACCU 1,	DW#16#21000000
+	L		0
+	T		AD 10
+	L		DW#16#87654321
+	T		PAW 10
+	L		AD 10
+	__ASSERT==	__ACCU 1,	DW#16#43210000
+	L		0
+	T		AD 10
+	L		DW#16#87654321
+	T		PAD 10
+	L		AD 10
+	__ASSERT==	__ACCU 1,	DW#16#87654321
+
+
+	// Test: TAK
+	L		DW#16#01234567
+	L		DW#16#89ABCDEF
+	__ASSERT==	__ACCU 1,	DW#16#89ABCDEF
+	__ASSERT==	__ACCU 2,	DW#16#01234567
+	TAK
+	__ASSERT==	__ACCU 1,	DW#16#01234567
+	__ASSERT==	__ACCU 2,	DW#16#89ABCDEF
+
+
+	// Test: PUSH
+	L		DW#16#01234567
+	L		DW#16#89ABCDEF
+	__ASSERT==	__ACCU 1,	DW#16#89ABCDEF
+	__ASSERT==	__ACCU 2,	DW#16#01234567
+	PUSH
+	__ASSERT==	__ACCU 1,	DW#16#89ABCDEF
+	__ASSERT==	__ACCU 2,	DW#16#89ABCDEF
+
+
+	// Test: POP
+	L		DW#16#01234567
+	L		DW#16#89ABCDEF
+	__ASSERT==	__ACCU 1,	DW#16#89ABCDEF
+	__ASSERT==	__ACCU 2,	DW#16#01234567
+	POP
+	__ASSERT==	__ACCU 1,	DW#16#01234567
+	__ASSERT==	__ACCU 2,	DW#16#01234567
+
+
+	// Test: STW write
+	__STWRST
+	L		W#16#FFFF
+	T		STW
+	__ASSERT==	__STW 0,	1
+	__ASSERT==	__STW 1,	1
+	__ASSERT==	__STW 2,	1
+	__ASSERT==	__STW 3,	1
+	__ASSERT==	__STW 4,	1
+	__ASSERT==	__STW 5,	1
+	__ASSERT==	__STW 6,	1
+	__ASSERT==	__STW 7,	1
+	__ASSERT==	__STW 8,	1
+	L		0
+	T		STW
+	__ASSERT==	__STW 0,	0
+	__ASSERT==	__STW 1,	0
+	__ASSERT==	__STW 2,	0
+	__ASSERT==	__STW 3,	0
+	__ASSERT==	__STW 4,	0
+	__ASSERT==	__STW 5,	0
+	__ASSERT==	__STW 6,	0
+	__ASSERT==	__STW 7,	0
+	__ASSERT==	__STW 8,	0
+	L		W#16#AAAA
+	T		STW
+	__ASSERT==	__STW 0,	0
+	__ASSERT==	__STW 1,	1
+	__ASSERT==	__STW 2,	0
+	__ASSERT==	__STW 3,	1
+	__ASSERT==	__STW 4,	0
+	__ASSERT==	__STW 5,	1
+	__ASSERT==	__STW 6,	0
+	__ASSERT==	__STW 7,	1
+	__ASSERT==	__STW 8,	0
+	L		W#16#5555
+	T		STW
+	__ASSERT==	__STW 0,	1
+	__ASSERT==	__STW 1,	0
+	__ASSERT==	__STW 2,	1
+	__ASSERT==	__STW 3,	0
+	__ASSERT==	__STW 4,	1
+	__ASSERT==	__STW 5,	0
+	__ASSERT==	__STW 6,	1
+	__ASSERT==	__STW 7,	0
+	__ASSERT==	__STW 8,	1
+
+
+	// Test B#(...) immediate
+	L		B#(66, 99)
+	__ASSERT==	__ACCU 1,	DW#16#00004263
+	L		B#(66, 99, 88, 55)
+	__ASSERT==	__ACCU 1,	DW#16#42635837
+
+
+	CALL FB 1, DB 1 (
+		IN_CHAR		:= 'x',
+		OUT_CHAR	:= MB 0,
+	)
+	L		MB 0
+	__ASSERT==	__ACCU 1,	DW#16#00000044
+
+
+	CALL SFC 46 // STOP CPU
+END_ORGANIZATION_BLOCK
+
+
+FUNCTION_BLOCK FB 1 : VOID
+VAR_INPUT
+	IN_CHAR		: CHAR;
+END_VAR
+VAR_OUTPUT
+	OUT_CHAR	: CHAR;
+END_VAR
+BEGIN
+	// Check parameters
+	L		#IN_CHAR
+	__ASSERT==	__ACCU 1,	DW#16#00000078
+
+	// Test CHAR immediate
+	L		'ABCD'
+	__ASSERT==	__ACCU 1,	DW#16#41424344
+	L		'ABC'
+	__ASSERT==	__ACCU 1,	DW#16#00414243
+	L		'AB'
+	__ASSERT==	__ACCU 1,	DW#16#00004142
+	L		'A'
+	__ASSERT==	__ACCU 1,	DW#16#00000041
+	L		''
+	__ASSERT==	__ACCU 1,	DW#16#00000000
+
+	// Output parameter
+	L		'ABCD'
+	T		#OUT_CHAR
+END_FUNCTION_BLOCK
+
+
+DATA_BLOCK DB 1
+	FB 1
+BEGIN
+	IN_CHAR		:= ' ';
+	OUT_CHAR	:= ' ';
+END_DATA_BLOCK
