@@ -1,0 +1,136 @@
+dictionary [
+  flows [
+    local-tcp [ list "flows.local-tcp" port 10 ] # local packet tcp
+    local-udp [ list "flows.local-udp" port 20 ] # local packet udp
+    local-ftcp [ list "flows.local-ftcp" port 30 ] # local fluid tcp
+    local-fudp [ list "flows.local-fudp" port 40 ] # local fluid udp
+    local-rfudp [ list "flows.local-rfudp" port 40 ] # local fluid udp with reservations
+    remote-tcp [ list "flows.remote-tcp" port 10 ] # remote packet tcp
+    remote-udp [ list "flows.remote-udp" port 20 ] # remote packet udp
+    remote-ftcp [ list "flows.remote-ftcp" port 30 ] # remote fluid tcp
+    remote-fudp [ list "flows.remote-fudp" port 40 ] # remote fluid udp
+    remote-rfudp [ list "flows.remote-rfudp" port 40 ] # remote fluid udp with reservations
+  ]
+
+  all-server [
+    ProtocolSession [
+      name TCPserver use SSF.OS.TCP.test.tcpServer
+      port 10
+      _find .params.client_limit
+      _find .params.queue_limit
+      _find .params.tcpsess.request_size
+      _find .params.tcpsess.max_rate
+      _find .params.tcpsess.show_report
+      _find .params.tcpsess.debug
+    ]
+    ProtocolSession [
+      name UDPserver use SSF.OS.UDP.test.udpStreamServer
+      port 20
+      _find .params.client_limit
+      _find .params.queue_limit
+      _find .params.udpsess.request_size
+      _find .params.udpsess.datagram_size
+      _find .params.udpsess.send_interval
+      _find .params.udpsess.show_report
+      _find .params.udpsess.debug
+    ]
+    ProtocolSession [
+      name FluidTCPserver use SSF.OS.FluidTCP.test.ftcpServer
+      port 30
+      _find .params.client_limit
+      _find .params.queue_limit
+      _find .params.ftcpsess.request_size
+      _find .params.ftcpsess.max_rate
+      _find .params.ftcpsess.show_report
+      _find .params.ftcpsess.debug
+    ]
+    ProtocolSession [
+      name FluidUDPserver use SSF.OS.FluidUDP.test.fudpStreamServer
+      port 40
+      _find .params.client_limit
+      _find .params.queue_limit
+      _find .params.fudpsess.request_size
+      _find .params.fudpsess.datagram_size
+      _find .params.fudpsess.send_interval
+      _find .params.fudpsess.show_report
+      _find .params.fudpsess.debug
+    ]
+    ProtocolSession [name socket use SSF.OS.Socket.socketMaster]
+    ProtocolSession [name tcp use SSF.OS.TCP.tcpSessionMaster
+                     _find .params.tcpinit]
+    ProtocolSession [name ftcp use SSF.OS.FluidTCP.fluidtcpSessionMaster
+                     _find .params.ftcpinit]
+    ProtocolSession [name udp use SSF.OS.UDP.udpSessionMaster
+                     _find .params.udpinit]
+    ProtocolSession [name fudp use SSF.OS.FluidUDP.fluidudpSessionMaster
+                     _find .params.fudpinit]
+    ProtocolSession [name ip use SSF.OS.IP]
+  ]
+
+  client-tcp [
+    name TCPclient use SSF.OS.TCP.test.tcpClient
+    error_recovery true
+    #_extends .params.one-tcp
+    _extends .params.multi-tcp
+    _find .params.tcpsess.request_size
+    _find .params.tcpsess.show_report
+    _find .params.tcpsess.debug
+  ]
+
+  client-udp [
+    name UDPclient use SSF.OS.UDP.test.udpStreamClient
+    #_extends .params.one-udp
+    _extends .params.multi-udp
+    _find .params.udpsess.request_size
+    _find .params.udpsess.datagram_size
+    _find .params.udpsess.show_report
+    _find .params.udpsess.debug
+  ]   
+
+  client-ftcp [
+    name FluidTCPclient use SSF.OS.FluidTCP.test.ftcpClient
+    error_recovery true
+    #_extends .params.one-tcp
+    _extends .params.multi-tcp
+    _find .params.ftcpsess.request_size
+    _find .params.ftcpsess.show_report
+    _find .params.ftcpsess.debug
+  ]
+
+  client-fudp [
+    name FluidUDPclient use SSF.OS.FluidUDP.test.fudpStreamClient
+    #_extends .params.one-udp
+    _extends .params.multi-udp
+    _find .params.fudpsess.request_size
+    _find .params.fudpsess.datagram_size
+    _find .params.fudpsess.show_report
+    _find .params.fudpsess.debug
+  ]
+
+  client-rfudp [
+    name FluidUDPclient use SSF.OS.FluidUDP.test.fudpStreamClient
+    reserve_bandwidth true
+    _extends .params.reserv-udp
+    _find .params.fudpsess.request_size
+    _find .params.fudpsess.datagram_size
+    _find .params.fudpsess.show_report
+    _find .params.fudpsess.debug
+  ]
+
+  IR [
+    graph [
+      ProtocolSession [name ospf use SSF.OS.OSPF.sOSPF]
+      ProtocolSession [name ip use SSF.OS.IP]
+    ]
+  ]
+
+  ASBR [
+    graph [
+      ProtocolSession [ name bgp    use SSF.OS.BGP4.BGPSession ]
+      ProtocolSession [ name ospf   use SSF.OS.OSPF.sOSPF ]
+      ProtocolSession [ name socket use SSF.OS.Socket.socketMaster ]
+      ProtocolSession [ name tcp    use SSF.OS.TCP.tcpSessionMaster ]
+      ProtocolSession [ name ip     use SSF.OS.IP ]
+    ]
+  ]
+]

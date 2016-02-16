@@ -1,0 +1,5 @@
+<<<<<<< .working
+ERROR: recursive expansion at "listdml/test2.in":30(3)
+=======
+ERROR: recursive expansion at "test2.in":30(12)
+>>>>>>> .merge-right.r1484

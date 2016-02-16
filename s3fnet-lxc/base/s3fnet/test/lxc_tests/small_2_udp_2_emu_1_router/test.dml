@@ -1,0 +1,81 @@
+total_timeline 2	
+tick_per_second 6	
+run_time 10.0
+seed 1	
+log_dir 4_HOST_2_UDP_100	
+
+dilation [ TDF 1.0 ]
+
+Net
+[
+	traffic [
+		pattern [
+			client 1:1
+			servers [ port 1024 nhi 0:1(0) list "forTCP" ]
+		]
+	]
+
+	lxcConfig
+	[
+		settings [ lxcNHI 0:0 _extends .dilation cmd "~/s3fnet-lxc/csudp/server 25000"          ]
+		settings [ lxcNHI 1:0 _extends .dilation cmd "~/s3fnet-lxc/csudp/client 0:0 25000 300"  ]
+	]
+	
+	#====================================================================================================
+	Net 
+	[ 
+		id 0
+		alignment 0
+		
+		host 																	# Host 0:0
+		[ 
+			id 0
+			_extends .dict.emuHost
+		]																				
+		host 																	# Host 0:1
+		[
+			id 1
+			_extends .dict.TCPServer
+		]		
+		router																	# Router 0:2
+		[
+			id 2
+			_find .dict.routerGraph.graph
+			interface [id 0 _extends .dict.100Mb]
+			interface [id 1 _extends .dict.100Mb]
+			interface [id 2 _extends .dict.100Mb]								# 0:2(2) to other router
+		]		
+		link [ attach 0(0) attach 2(0) _extends .dict.link_delay_1ms ]
+		link [ attach 1(0) attach 2(1) _extends .dict.link_delay_1ms ]				
+	]
+	#====================================================================================================
+	Net 
+	[ 
+		id 1
+		alignment 1
+		
+		host 																	# Host 1:0
+		[ 
+			id 0
+			_extends .dict.emuHost
+		]																				
+		host 																	# Host 1:1
+		[
+			id 1
+			_extends .dict.TCPClient
+		]
+		
+		router																	# Router 1:2
+		[
+			id 2
+			_find .dict.routerGraph.graph
+			interface [id 0 _extends .dict.100Mb]
+			interface [id 1 _extends .dict.100Mb]
+			interface [id 2 _extends .dict.100Mb]								# 1:2(2) to other router
+		]		
+		link [ attach 0(0) attach 2(0) _extends .dict.link_delay_1ms ]
+		link [ attach 1(0) attach 2(1) _extends .dict.link_delay_1ms ]				
+	]
+	
+	link [ attach 0:2(2) attach 1:2(2) _extends .dict.link_delay_1ms ]			
+]

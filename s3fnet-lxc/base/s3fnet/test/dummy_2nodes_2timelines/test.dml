@@ -1,0 +1,38 @@
+total_timeline 2	# total timeline (i.e. logical process) in the model.
+tick_per_second 6	# tick is the simulation time unit. E.g., 6 means one second has 10^6 ticks (i.e. the time unit is microsecond). O means the time unit is second.
+run_time 100		# simulation run-time in second. Actually it is the run-time of one epoch, and the system run one epoch in default.
+seed 0			# seed for random number generator (a non-negative integer number). Simulation results are repeatable for the same seed.
+
+Net [
+	Net [ id 0 alignment 0
+		host [ id 0
+			graph [
+			ProtocolSession [ name dummy use "s3f.os.dummy" 
+			hello_interval 10 hello_peer_nhi 1:0(0) hello_message "hello from host 0:0"
+			]
+			ProtocolSession [ name ip use "s3f.os.ip" ]
+			]
+			interface [ id 0 _extends .dict.iface ]
+		]
+
+	]
+
+	Net [ id 1 alignment 1
+		host [ id 0
+			graph [
+			ProtocolSession [ name dummy use "s3f.os.dummy" 
+			hello_interval 10 hello_peer_nhi 0:0(0) hello_message "hello from host 1:0"
+			]
+			ProtocolSession [ name ip use "s3f.os.ip" ]
+			]
+			interface [ id 0 _extends .dict.iface ]
+		]
+
+	]
+
+	link [ attach 0:0(0) attach 1:0(0) prop_delay 1e-3 min_delay 0.2e-3 ] 
+	# min_delay is the minimum packet transfer delay, e.g., min packet size / bandwidth 
+        # prop_delay is the propagation delay
+]
+
+dict [ iface [  bitrate 1e6 latency 0 buffer 150000 ] ]

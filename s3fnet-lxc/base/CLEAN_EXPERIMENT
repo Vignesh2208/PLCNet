@@ -1,0 +1,27 @@
+#!/bin/bash
+
+echo "Calling timekeeper-stopExperiment()"
+../dilation-code/scripts/timekeeper-stopExperiment
+
+sleep 1
+
+echo "Removing TimeKeeper Module"
+rmmod TimeKeeper.ko
+
+sleep 1
+
+echo "Inserting TimeKeeper Module"
+insmod  ../dilation-code/TimeKeeper.ko
+
+sleep 1
+
+echo "Removing Socket Hook Module"
+rmmod SocketHook.ko
+sleep 1
+
+
+
+echo "Inserting Socket Hook Module"
+insmod ../base/tklxcmngr/socket_hooks/SocketHook.ko
+
+sleep 1

@@ -1,0 +1,120 @@
+|==================================================
+| LXC Manager Created
+| Simulation has 2 timelines
+|==================================================
+LXC proxy initialization: lxc0-0 successfull
+LXC proxy initialization: lxc1-0 successfull
+ ____________________________________________
+|
+| Printing out Info about Timeline 0 ...
+|_____
+      | Timeline 0 has Proxy LXC lxc0-0
+      |______________________________________
+ ____________________________________________
+|
+| Printing out Info about Timeline 1 ...
+|_____
+      | Timeline 1 has Proxy LXC lxc1-0
+      |______________________________________
+|==================================================
+| Creating and Launching LXCs                      
+|==================================================
+
+|==================================================
+| Dilating and Adding LXCs to Experiment           
+|==================================================
+
+GET LXC lxc0-0 TDF 5.000000 PID 10139 Finished
+GET LXC lxc1-0 TDF 5.000000 PID 10176 Finished
+|==================================================
+| Calling SynchronizeAndFreeze. Syncing up LXCs
+|==================================================
+
+| lxc0-0 Frozen at [ 1454651242 sec 653269 usec ]
+| lxc1-0 Frozen at [ 1454651242 sec 653269 usec ]
+
+|==================================================
+[TL 1 lxc1-0 ], DESIRED TIME 157157 | ACTUAL TIME 157313 | DIFFERENCE 156
+[TL 1 lxc1-0 ], DESIRED TIME 157157 | ACTUAL TIME 157313 | DIFFERENCE 156
+[TL 1 lxc1-0 ], DESIRED TIME 158158 | ACTUAL TIME 157995 | DIFFERENCE 163
+[TL 1 lxc1-0 ], DESIRED TIME 158158 | ACTUAL TIME 157995 | DIFFERENCE 163
+Ether Type: 0x0806
+Src IP string: 10.10.0.10
+Dest IP string: 10.10.0.9
+Arrival Time : 280018
+Ether Type: 0x0806
+Src IP string: 10.10.0.9
+Dest IP string: 10.10.0.10
+Arrival Time : 281251
+Ether Type: 0x0800
+Src IP string: 10.10.0.10
+Dest IP string: 10.10.0.9
+TCP source port : 8122
+TCP dest port : 62977
+TCP seq : 670361893
+TCP ack_seq : 0
+TCP syn : 1
+TCP window : 4210
+Using default method of timestamp estimation
+Arrival Time : 282475
+Ether Type: 0x0800
+Src IP string: 10.10.0.9
+Dest IP string: 10.10.0.10
+TCP source port : 62977
+TCP dest port : 8122
+TCP seq : 0
+TCP ack_seq : 687139109
+TCP syn : 0
+TCP window : 0
+Using default method of timestamp estimation
+Arrival Time : 283846
+Ether Type: 0x0806
+Src IP string: 10.10.0.9
+Dest IP string: 10.10.0.10
+Arrival Time : 1237655
+Ether Type: 0x0806
+Src IP string: 10.10.0.10
+Dest IP string: 10.10.0.9
+Arrival Time : 1238880
+Timeline 0 advanced its LXCs by 9.999991 seconds
+Timeline 1 advanced its LXCs by 9.999992 seconds
+|==================================================
+| Calling STOP EXPERIMENT
+|==================================================
+|============================================================|
+| Overall Stats
+|------------------------------------------------------------|
+| OUT | Total Pkts Sent to LXCs       : 6
+| OUT | Total Pkts error late to LXC  : 15
+| OUT | Avg Pkts error late to LXC    : 2.50000000
+|------------------------------------------------------------|
+| IN  | Total Pkts Injected to past   : 1
+| IN  | Total Error Injected to past  : 1
+| IN  | Average past error            : 1.00000000
+|============================================================|
+| TOTAL Advance ERROR        : 169644
+| TOTAL Times Advanced       : 38066
+| TOTAL Times Over           : 13763
+| TOTAL Times Under          : 20697
+| TOTAL Times Exact          : 3606
+| Average Advance ERROR      : 4.45657542
+|============================================================|
+| TOTAL Pkt Timestamp ERROR  : 23
+| TOTAL Pkts Injected        : 6
+| Average Packet Inaccuracy  : 3.83333333
+|============================================================|
+| MIN Advance Error          : 0
+| MAX Advance Error          : 163
+| Advance Error RMS          : 6.24709253
+| Advance Error Variance     : 19.16510059
+| Advance Error Std Dev      : 4.37779632
+|============================================================|
+
+|============================================================|
+| Timeline 0 advanced 18931 times ( Progress 18931 ) for a total of 51.283731 seconds
+| Timeline 1 advanced 19135 times ( Progress 19135 ) for a total of 51.291091 seconds
+|============================================================|
+| Cumulative emulation seconds 102.574822
+| Simulation run time is 53.4592 seconds
+| Total run time is 55.4931 seconds
+|============================================================|

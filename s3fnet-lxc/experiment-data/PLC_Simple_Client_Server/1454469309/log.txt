@@ -1,0 +1,94 @@
+|==================================================
+| LXC Manager Created
+| Simulation has 2 timelines
+|==================================================
+LXC proxy initialization: lxc0-0 successfull
+LXC proxy initialization: lxc1-0 successfull
+ ____________________________________________
+|
+| Printing out Info about Timeline 0 ...
+|_____
+      | Timeline 0 has Proxy LXC lxc0-0
+      |______________________________________
+ ____________________________________________
+|
+| Printing out Info about Timeline 1 ...
+|_____
+      | Timeline 1 has Proxy LXC lxc1-0
+      |______________________________________
+|==================================================
+| Creating and Launching LXCs                      
+|==================================================
+
+|==================================================
+| Dilating and Adding LXCs to Experiment           
+|==================================================
+
+GET LXC lxc0-0 TDF 5.000000 PID 3401 Finished
+GET LXC lxc1-0 TDF 5.000000 PID 3436 Finished
+|==================================================
+| Calling SynchronizeAndFreeze. Syncing up LXCs
+|==================================================
+
+| lxc0-0 Frozen at [ 1454469311 sec 974760 usec ]
+| lxc1-0 Frozen at [ 1454469311 sec 974760 usec ]
+
+|==================================================
+[TL 1 lxc1-0 ], DESIRED TIME 449449 | ACTUAL TIME 449943 | DIFFERENCE 494
+[TL 1 lxc1-0 ], DESIRED TIME 449449 | ACTUAL TIME 449943 | DIFFERENCE 494
+[TL 1 lxc1-0 ], DESIRED TIME 450450 | ACTUAL TIME 449960 | DIFFERENCE 490
+[TL 1 lxc1-0 ], DESIRED TIME 450450 | ACTUAL TIME 449960 | DIFFERENCE 490
+[TL 1 lxc1-0 ], DESIRED TIME 2663661 | ACTUAL TIME 2663850 | DIFFERENCE 189
+[TL 1 lxc1-0 ], DESIRED TIME 2663661 | ACTUAL TIME 2663850 | DIFFERENCE 189
+[TL 1 lxc1-0 ], DESIRED TIME 2664662 | ACTUAL TIME 2664465 | DIFFERENCE 197
+[TL 1 lxc1-0 ], DESIRED TIME 2664662 | ACTUAL TIME 2664465 | DIFFERENCE 197
+[TL 1 lxc1-0 ], DESIRED TIME 3266263 | ACTUAL TIME 3266579 | DIFFERENCE 316
+[TL 1 lxc1-0 ], DESIRED TIME 3266263 | ACTUAL TIME 3266579 | DIFFERENCE 316
+[TL 1 lxc1-0 ], DESIRED TIME 3267264 | ACTUAL TIME 3266950 | DIFFERENCE 314
+[TL 1 lxc1-0 ], DESIRED TIME 3267264 | ACTUAL TIME 3266950 | DIFFERENCE 314
+[TL 1 lxc1-0 ], DESIRED TIME 4512508 | ACTUAL TIME 4512671 | DIFFERENCE 163
+[TL 1 lxc1-0 ], DESIRED TIME 4512508 | ACTUAL TIME 4512671 | DIFFERENCE 163
+[TL 1 lxc1-0 ], DESIRED TIME 4513509 | ACTUAL TIME 4513341 | DIFFERENCE 168
+[TL 1 lxc1-0 ], DESIRED TIME 4513509 | ACTUAL TIME 4513341 | DIFFERENCE 168
+Timeline 0 advanced its LXCs by 9.999991 seconds
+Timeline 1 advanced its LXCs by 9.999990 seconds
+|==================================================
+| Calling STOP EXPERIMENT
+|==================================================
+|============================================================|
+| Overall Stats
+|------------------------------------------------------------|
+| OUT | Total Pkts Sent to LXCs       : 0
+| OUT | Total Pkts error late to LXC  : 0
+| OUT | Avg Pkts error late to LXC    : -nan
+|------------------------------------------------------------|
+| IN  | Total Pkts Injected to past   : 0
+| IN  | Total Error Injected to past  : 0
+| IN  | Average past error            : -nan
+|============================================================|
+| TOTAL Advance ERROR        : 197168
+| TOTAL Times Advanced       : 39135
+| TOTAL Times Over           : 14373
+| TOTAL Times Under          : 21445
+| TOTAL Times Exact          : 3317
+| Average Advance ERROR      : 5.03814999
+|============================================================|
+| TOTAL Pkt Timestamp ERROR  : 0
+| TOTAL Pkts Injected        : 0
+| Average Packet Inaccuracy  : -nan
+|============================================================|
+| MIN Advance Error          : 0
+| MAX Advance Error          : 494
+| Advance Error RMS          : 8.15468193
+| Advance Error Variance     : 41.11588200
+| Advance Error Std Dev      : 6.41216672
+|============================================================|
+
+|============================================================|
+| Timeline 0 advanced 19565 times ( Progress 19565 ) for a total of 51.395104 seconds
+| Timeline 1 advanced 19570 times ( Progress 19570 ) for a total of 51.439621 seconds
+|============================================================|
+| Cumulative emulation seconds 102.834725
+| Simulation run time is 53.7666 seconds
+| Total run time is 55.8069 seconds
+|============================================================|

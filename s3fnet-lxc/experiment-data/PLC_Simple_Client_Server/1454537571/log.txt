@@ -1,0 +1,158 @@
+|==================================================
+| LXC Manager Created
+| Simulation has 2 timelines
+|==================================================
+LXC proxy initialization: lxc0-0 successfull
+LXC proxy initialization: lxc1-0 successfull
+ ____________________________________________
+|
+| Printing out Info about Timeline 0 ...
+|_____
+      | Timeline 0 has Proxy LXC lxc0-0
+      |______________________________________
+ ____________________________________________
+|
+| Printing out Info about Timeline 1 ...
+|_____
+      | Timeline 1 has Proxy LXC lxc1-0
+      |______________________________________
+|==================================================
+| Creating and Launching LXCs                      
+|==================================================
+
+|==================================================
+| Dilating and Adding LXCs to Experiment           
+|==================================================
+
+GET LXC lxc0-0 TDF 5.000000 PID 4185 Finished
+GET LXC lxc1-0 TDF 5.000000 PID 4220 Finished
+|==================================================
+| Calling SynchronizeAndFreeze. Syncing up LXCs
+|==================================================
+
+| lxc0-0 Frozen at [ 1454537573 sec 282940 usec ]
+| lxc1-0 Frozen at [ 1454537573 sec 282940 usec ]
+
+|==================================================
+Ether Type: 0x0806
+Src IP string: 10.10.0.10
+Dest IP string: 10.10.0.9
+Arrival Time : 293166
+Ether Type: 0x0806
+Src IP string: 10.10.0.9
+Dest IP string: 10.10.0.10
+Arrival Time : 294393
+Ether Type: 0x0800
+Src IP string: 10.10.0.10
+Dest IP string: 10.10.0.9
+Using default method of timestamp estimation
+Arrival Time : 295622
+Ether Type: 0x0800
+Src IP string: 10.10.0.9
+Dest IP string: 10.10.0.10
+Using default method of timestamp estimation
+Arrival Time : 296995
+[TL 1 lxc1-0 ], DESIRED TIME 1034033 | ACTUAL TIME 1034745 | DIFFERENCE 712
+[TL 1 lxc1-0 ], DESIRED TIME 1034033 | ACTUAL TIME 1034745 | DIFFERENCE 712
+[TL 1 lxc1-0 ], DESIRED TIME 1035034 | ACTUAL TIME 1034745 | DIFFERENCE 289
+[TL 1 lxc1-0 ], DESIRED TIME 1035034 | ACTUAL TIME 1034745 | DIFFERENCE 289
+[TL 1 lxc1-0 ], DESIRED TIME 1035034 | ACTUAL TIME 1034745 | DIFFERENCE 289
+[TL 1 lxc1-0 ], DESIRED TIME 1035034 | ACTUAL TIME 1034745 | DIFFERENCE 289
+[TL 1 lxc1-0 ], DESIRED TIME 1035034 | ACTUAL TIME 1034904 | DIFFERENCE 130
+[TL 1 lxc1-0 ], DESIRED TIME 1035034 | ACTUAL TIME 1034904 | DIFFERENCE 130
+Ether Type: 0x0806
+Src IP string: 10.10.0.9
+Dest IP string: 10.10.0.10
+Arrival Time : 1228288
+Ether Type: 0x0806
+Src IP string: 10.10.0.10
+Dest IP string: 10.10.0.9
+Arrival Time : 1229519
+[TL 1 lxc1-0 ], DESIRED TIME 2517515 | ACTUAL TIME 2517636 | DIFFERENCE 121
+[TL 1 lxc1-0 ], DESIRED TIME 2517515 | ACTUAL TIME 2517636 | DIFFERENCE 121
+[TL 1 lxc1-0 ], DESIRED TIME 2518516 | ACTUAL TIME 2518399 | DIFFERENCE 117
+[TL 1 lxc1-0 ], DESIRED TIME 2518516 | ACTUAL TIME 2518399 | DIFFERENCE 117
+[TL 1 lxc1-0 ], DESIRED TIME 2719717 | ACTUAL TIME 2719994 | DIFFERENCE 277
+[TL 1 lxc1-0 ], DESIRED TIME 2719717 | ACTUAL TIME 2719994 | DIFFERENCE 277
+[TL 1 lxc1-0 ], DESIRED TIME 2720718 | ACTUAL TIME 2720461 | DIFFERENCE 257
+[TL 1 lxc1-0 ], DESIRED TIME 2720718 | ACTUAL TIME 2720461 | DIFFERENCE 257
+[TL 1 lxc1-0 ], DESIRED TIME 3442439 | ACTUAL TIME 3442999 | DIFFERENCE 560
+[TL 1 lxc1-0 ], DESIRED TIME 3442439 | ACTUAL TIME 3442999 | DIFFERENCE 560
+[TL 1 lxc1-0 ], DESIRED TIME 3443440 | ACTUAL TIME 3442999 | DIFFERENCE 441
+[TL 1 lxc1-0 ], DESIRED TIME 3443440 | ACTUAL TIME 3442999 | DIFFERENCE 441
+[TL 1 lxc1-0 ], DESIRED TIME 3443440 | ACTUAL TIME 3443315 | DIFFERENCE 125
+[TL 1 lxc1-0 ], DESIRED TIME 3443440 | ACTUAL TIME 3443315 | DIFFERENCE 125
+[TL 1 lxc1-0 ], DESIRED TIME 3455452 | ACTUAL TIME 3455906 | DIFFERENCE 454
+[TL 1 lxc1-0 ], DESIRED TIME 3455452 | ACTUAL TIME 3455906 | DIFFERENCE 454
+[TL 1 lxc1-0 ], DESIRED TIME 3456453 | ACTUAL TIME 3456005 | DIFFERENCE 448
+[TL 1 lxc1-0 ], DESIRED TIME 3456453 | ACTUAL TIME 3456005 | DIFFERENCE 448
+[TL 1 lxc1-0 ], DESIRED TIME 3569566 | ACTUAL TIME 3569698 | DIFFERENCE 132
+[TL 1 lxc1-0 ], DESIRED TIME 3569566 | ACTUAL TIME 3569698 | DIFFERENCE 132
+[TL 1 lxc1-0 ], DESIRED TIME 3570567 | ACTUAL TIME 3570413 | DIFFERENCE 154
+[TL 1 lxc1-0 ], DESIRED TIME 3570567 | ACTUAL TIME 3570413 | DIFFERENCE 154
+[TL 1 lxc1-0 ], DESIRED TIME 3800797 | ACTUAL TIME 3800988 | DIFFERENCE 191
+[TL 1 lxc1-0 ], DESIRED TIME 3800797 | ACTUAL TIME 3800988 | DIFFERENCE 191
+[TL 1 lxc1-0 ], DESIRED TIME 3801798 | ACTUAL TIME 3801592 | DIFFERENCE 206
+[TL 1 lxc1-0 ], DESIRED TIME 3801798 | ACTUAL TIME 3801592 | DIFFERENCE 206
+[TL 1 lxc1-0 ], DESIRED TIME 5502497 | ACTUAL TIME 5502732 | DIFFERENCE 235
+[TL 1 lxc1-0 ], DESIRED TIME 5502497 | ACTUAL TIME 5502732 | DIFFERENCE 235
+[TL 1 lxc1-0 ], DESIRED TIME 5503498 | ACTUAL TIME 5503245 | DIFFERENCE 253
+[TL 1 lxc1-0 ], DESIRED TIME 5503498 | ACTUAL TIME 5503245 | DIFFERENCE 253
+[TL 1 lxc1-0 ], DESIRED TIME 6488482 | ACTUAL TIME 6488792 | DIFFERENCE 310
+[TL 1 lxc1-0 ], DESIRED TIME 6488482 | ACTUAL TIME 6488792 | DIFFERENCE 310
+[TL 1 lxc1-0 ], DESIRED TIME 6489483 | ACTUAL TIME 6489178 | DIFFERENCE 305
+[TL 1 lxc1-0 ], DESIRED TIME 6489483 | ACTUAL TIME 6489178 | DIFFERENCE 305
+[TL 1 lxc1-0 ], DESIRED TIME 6919913 | ACTUAL TIME 6920057 | DIFFERENCE 144
+[TL 1 lxc1-0 ], DESIRED TIME 6919913 | ACTUAL TIME 6920057 | DIFFERENCE 144
+[TL 1 lxc1-0 ], DESIRED TIME 6920914 | ACTUAL TIME 6920773 | DIFFERENCE 141
+[TL 1 lxc1-0 ], DESIRED TIME 6920914 | ACTUAL TIME 6920773 | DIFFERENCE 141
+[TL 1 lxc1-0 ], DESIRED TIME 9054045 | ACTUAL TIME 9054317 | DIFFERENCE 272
+[TL 1 lxc1-0 ], DESIRED TIME 9054045 | ACTUAL TIME 9054317 | DIFFERENCE 272
+[TL 1 lxc1-0 ], DESIRED TIME 9055046 | ACTUAL TIME 9054773 | DIFFERENCE 273
+[TL 1 lxc1-0 ], DESIRED TIME 9055046 | ACTUAL TIME 9054773 | DIFFERENCE 273
+[TL 1 lxc1-0 ], DESIRED TIME 9826817 | ACTUAL TIME 9827231 | DIFFERENCE 414
+[TL 1 lxc1-0 ], DESIRED TIME 9826817 | ACTUAL TIME 9827231 | DIFFERENCE 414
+[TL 1 lxc1-0 ], DESIRED TIME 9827818 | ACTUAL TIME 9827394 | DIFFERENCE 424
+[TL 1 lxc1-0 ], DESIRED TIME 9827818 | ACTUAL TIME 9827394 | DIFFERENCE 424
+Timeline 0 advanced its LXCs by 9.999992 seconds
+Timeline 1 advanced its LXCs by 9.999990 seconds
+|==================================================
+| Calling STOP EXPERIMENT
+|==================================================
+|============================================================|
+| Overall Stats
+|------------------------------------------------------------|
+| OUT | Total Pkts Sent to LXCs       : 6
+| OUT | Total Pkts error late to LXC  : 20
+| OUT | Avg Pkts error late to LXC    : 3.33333333
+|------------------------------------------------------------|
+| IN  | Total Pkts Injected to past   : 0
+| IN  | Total Error Injected to past  : 0
+| IN  | Average past error            : -nan
+|============================================================|
+| TOTAL Advance ERROR        : 193851
+| TOTAL Times Advanced       : 38300
+| TOTAL Times Over           : 14311
+| TOTAL Times Under          : 20665
+| TOTAL Times Exact          : 3324
+| Average Advance ERROR      : 5.06138381
+|============================================================|
+| TOTAL Pkt Timestamp ERROR  : 27
+| TOTAL Pkts Injected        : 6
+| Average Packet Inaccuracy  : 4.50000000
+|============================================================|
+| MIN Advance Error          : 0
+| MAX Advance Error          : 712
+| Advance Error RMS          : 10.75908627
+| Advance Error Variance     : 90.14033124
+| Advance Error Std Dev      : 9.49422621
+|============================================================|
+
+|============================================================|
+| Timeline 0 advanced 19441 times ( Progress 19441 ) for a total of 51.360642 seconds
+| Timeline 1 advanced 18859 times ( Progress 18859 ) for a total of 51.467094 seconds
+|============================================================|
+| Cumulative emulation seconds 102.827736
+| Simulation run time is 53.7161 seconds
+| Total run time is 55.7552 seconds
+|============================================================|

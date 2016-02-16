@@ -1,0 +1,122 @@
+# .=======================================================================================================.
+# |                                          DICTIONARY                                                   |
+# '======================================================================================================='
+
+dict 
+[ 
+	############
+	# DILATION #
+	############
+	
+	dilation [ TDF 45.0 ]
+	
+	###############
+	# LINK DELAYS #
+	###############
+		
+	link_delay_10ms   [ min_delay 1e-6 prop_delay 0.01 ]
+	link_delay_1ms    [ min_delay 1e-6 prop_delay 0.001 ]
+	link_delay_1000us [ min_delay 1e-6 prop_delay 0.001 ]
+	link_delay_100us  [ min_delay 1e-6 prop_delay 0.0001 ]
+	link_delay_10us   [ min_delay 1e-6 prop_delay 0.00001 ]
+	link_delay_50us   [ min_delay 1e-6 prop_delay 0.00005 ]
+		
+	##############
+	# Host Types #
+	##############
+	
+	emuHost
+	[
+		isEmulated 1
+		interface [ id 0 _extends .dict.1Mb ]
+		_find .dict.emuHostGraph.graph
+	]	
+		
+	TCPServer
+	[
+		interface [ id 0 _extends .dict.100Mb ]
+		_find .dict.tcpServerGraph.graph
+	]
+	
+	TCPClient
+	[
+		interface [ id 0 _extends .dict.10Mb ]
+		_find .dict.tcpClientGraph.graph
+	]
+	
+	###################
+	# Interface Types #
+	###################
+	
+	1Mb
+	[
+		bitrate 1e6		  	# 1 million bits per second
+		latency 0        	# 0 latency
+		buffer 150000
+	]	
+	
+	10Mb
+	[
+		bitrate 10000000 	# 10 million bits per second
+		latency 0        	# 0 latency
+		buffer 150000
+	]
+	
+	100Mb
+	[
+		bitrate 100000000 	# 100 million bits per second
+		latency 0        	# 0 latency
+		buffer 150000
+	]
+	
+	1Gb
+	[
+		bitrate 1000000000 	# 1 billion bits per second
+		latency 0        	# 0 latency
+		buffer 150000
+	]
+	
+	###################
+	# Protocol Graphs #
+	###################
+		
+	emuHostGraph
+	[
+		graph 
+		[
+			ProtocolSession [ name lxcemu use "s3f.os.lxcemu"  ]
+			ProtocolSession [ name ip use "s3f.os.ip" ]
+		]
+	]
+	
+	tcpClientGraph
+	[
+		graph
+		[
+			ProtocolSession [ name app use "S3F.OS.TCP.test.TCPClient" _extends .params.tcp_client_setup ]
+			ProtocolSession [ name socket use "S3F.OS.Socket.SocketMaster" ]
+			ProtocolSession [ name tcp use "S3F.OS.TCP.tcpSessionMaster" cwnddump "cwnd" _find .params.tcpinit ]
+			ProtocolSession [ name ip use "S3F.OS.IP" ]
+		]	
+	]
+	
+	tcpServerGraph
+	[
+		graph
+		[
+			ProtocolSession [ name app use "S3F.OS.TCP.test.TCPServer" _extends .params.tcp_server_setup ]
+			ProtocolSession [ name socket use "S3F.OS.Socket.SocketMaster" ]
+			ProtocolSession [ name tcp use "S3F.OS.TCP.tcpSessionMaster" _find .params.tcpinit ]
+			ProtocolSession [ name ip use "S3F.OS.IP" ]		
+		]
+	
+	]
+	
+	routerGraph
+	[
+		graph
+		[
+			ProtocolSession [ name ip use "S3F.OS.IP" ]	
+		]	
+	]
+]

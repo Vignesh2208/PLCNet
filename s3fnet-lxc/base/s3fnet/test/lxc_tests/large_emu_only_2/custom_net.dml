@@ -1,0 +1,24 @@
+custom_net 
+[
+	emuNet_2
+	[
+		net
+		[
+			router
+			[
+				id 0
+				_find .dict.routerGraph.graph
+				interface [ id 0   _extends .dict.1Gb ]
+				interface [ id 1   _extends .dict.1Gb ]
+				interface [ id 2   _extends .dict.1Gb ]
+			]
+			host
+			[
+				idrange [from 1 to 2 ]
+				_extends .dict.emuHost
+			]
+			link [ attach 0(1)  attach 1(0)  _extends .dict.link_delay_50us  ]
+ 			link [ attach 0(2)  attach 2(0)  _extends .dict.link_delay_50us  ]
+ 		]
+	]
+]

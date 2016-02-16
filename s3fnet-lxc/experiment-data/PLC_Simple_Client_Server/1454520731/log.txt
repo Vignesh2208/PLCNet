@@ -1,0 +1,128 @@
+|==================================================
+| LXC Manager Created
+| Simulation has 2 timelines
+|==================================================
+LXC proxy initialization: lxc0-0 successfull
+LXC proxy initialization: lxc1-0 successfull
+ ____________________________________________
+|
+| Printing out Info about Timeline 0 ...
+|_____
+      | Timeline 0 has Proxy LXC lxc0-0
+      |______________________________________
+ ____________________________________________
+|
+| Printing out Info about Timeline 1 ...
+|_____
+      | Timeline 1 has Proxy LXC lxc1-0
+      |______________________________________
+|==================================================
+| Creating and Launching LXCs                      
+|==================================================
+
+|==================================================
+| Dilating and Adding LXCs to Experiment           
+|==================================================
+
+GET LXC lxc0-0 TDF 5.000000 PID 3676 Finished
+GET LXC lxc1-0 TDF 5.000000 PID 3711 Finished
+|==================================================
+| Calling SynchronizeAndFreeze. Syncing up LXCs
+|==================================================
+
+| lxc0-0 Frozen at [ 1454520733 sec 197601 usec ]
+| lxc1-0 Frozen at [ 1454520733 sec 197601 usec ]
+
+|==================================================
+[TL 1 lxc1-0 ], DESIRED TIME 960960 | ACTUAL TIME 961555 | DIFFERENCE 595
+[TL 1 lxc1-0 ], DESIRED TIME 960960 | ACTUAL TIME 961555 | DIFFERENCE 595
+[TL 1 lxc1-0 ], DESIRED TIME 961961 | ACTUAL TIME 961555 | DIFFERENCE 406
+[TL 1 lxc1-0 ], DESIRED TIME 961961 | ACTUAL TIME 961555 | DIFFERENCE 406
+[TL 1 lxc1-0 ], DESIRED TIME 961961 | ACTUAL TIME 961780 | DIFFERENCE 181
+[TL 1 lxc1-0 ], DESIRED TIME 961961 | ACTUAL TIME 961780 | DIFFERENCE 181
+[TL 1 lxc1-0 ], DESIRED TIME 1913912 | ACTUAL TIME 1914695 | DIFFERENCE 783
+[TL 1 lxc1-0 ], DESIRED TIME 1913912 | ACTUAL TIME 1914695 | DIFFERENCE 783
+[TL 1 lxc1-0 ], DESIRED TIME 1914913 | ACTUAL TIME 1914695 | DIFFERENCE 218
+[TL 1 lxc1-0 ], DESIRED TIME 1914913 | ACTUAL TIME 1914695 | DIFFERENCE 218
+[TL 1 lxc1-0 ], DESIRED TIME 1914913 | ACTUAL TIME 1914695 | DIFFERENCE 218
+[TL 1 lxc1-0 ], DESIRED TIME 1914913 | ACTUAL TIME 1914695 | DIFFERENCE 218
+[TL 1 lxc1-0 ], DESIRED TIME 1914913 | ACTUAL TIME 1914695 | DIFFERENCE 218
+[TL 1 lxc1-0 ], DESIRED TIME 1914913 | ACTUAL TIME 1914695 | DIFFERENCE 218
+[TL 1 lxc1-0 ], DESIRED TIME 1914913 | ACTUAL TIME 1914775 | DIFFERENCE 138
+[TL 1 lxc1-0 ], DESIRED TIME 1914913 | ACTUAL TIME 1914775 | DIFFERENCE 138
+[TL 1 lxc1-0 ], DESIRED TIME 5566561 | ACTUAL TIME 5567275 | DIFFERENCE 714
+[TL 1 lxc1-0 ], DESIRED TIME 5566561 | ACTUAL TIME 5567275 | DIFFERENCE 714
+[TL 1 lxc1-0 ], DESIRED TIME 5567562 | ACTUAL TIME 5567275 | DIFFERENCE 287
+[TL 1 lxc1-0 ], DESIRED TIME 5567562 | ACTUAL TIME 5567275 | DIFFERENCE 287
+[TL 1 lxc1-0 ], DESIRED TIME 5567562 | ACTUAL TIME 5567275 | DIFFERENCE 287
+[TL 1 lxc1-0 ], DESIRED TIME 5567562 | ACTUAL TIME 5567275 | DIFFERENCE 287
+[TL 1 lxc1-0 ], DESIRED TIME 5567562 | ACTUAL TIME 5567427 | DIFFERENCE 135
+[TL 1 lxc1-0 ], DESIRED TIME 5567562 | ACTUAL TIME 5567427 | DIFFERENCE 135
+[TL 1 lxc1-0 ], DESIRED TIME 6606600 | ACTUAL TIME 6606892 | DIFFERENCE 292
+[TL 1 lxc1-0 ], DESIRED TIME 6606600 | ACTUAL TIME 6606892 | DIFFERENCE 292
+[TL 1 lxc1-0 ], DESIRED TIME 6607601 | ACTUAL TIME 6607317 | DIFFERENCE 284
+[TL 1 lxc1-0 ], DESIRED TIME 6607601 | ACTUAL TIME 6607317 | DIFFERENCE 284
+[TL 1 lxc1-0 ], DESIRED TIME 7524517 | ACTUAL TIME 7525066 | DIFFERENCE 549
+[TL 1 lxc1-0 ], DESIRED TIME 7524517 | ACTUAL TIME 7525066 | DIFFERENCE 549
+[TL 1 lxc1-0 ], DESIRED TIME 7525518 | ACTUAL TIME 7525066 | DIFFERENCE 452
+[TL 1 lxc1-0 ], DESIRED TIME 7525518 | ACTUAL TIME 7525066 | DIFFERENCE 452
+[TL 1 lxc1-0 ], DESIRED TIME 8378370 | ACTUAL TIME 8379119 | DIFFERENCE 749
+[TL 1 lxc1-0 ], DESIRED TIME 8378370 | ACTUAL TIME 8379119 | DIFFERENCE 749
+[TL 1 lxc1-0 ], DESIRED TIME 8379371 | ACTUAL TIME 8379119 | DIFFERENCE 252
+[TL 1 lxc1-0 ], DESIRED TIME 8379371 | ACTUAL TIME 8379119 | DIFFERENCE 252
+[TL 1 lxc1-0 ], DESIRED TIME 8379371 | ACTUAL TIME 8379119 | DIFFERENCE 252
+[TL 1 lxc1-0 ], DESIRED TIME 8379371 | ACTUAL TIME 8379119 | DIFFERENCE 252
+[TL 1 lxc1-0 ], DESIRED TIME 8379371 | ACTUAL TIME 8379125 | DIFFERENCE 246
+[TL 1 lxc1-0 ], DESIRED TIME 8379371 | ACTUAL TIME 8379125 | DIFFERENCE 246
+[TL 1 lxc1-0 ], DESIRED TIME 8615607 | ACTUAL TIME 8616212 | DIFFERENCE 605
+[TL 1 lxc1-0 ], DESIRED TIME 8615607 | ACTUAL TIME 8616212 | DIFFERENCE 605
+[TL 1 lxc1-0 ], DESIRED TIME 8616608 | ACTUAL TIME 8616212 | DIFFERENCE 396
+[TL 1 lxc1-0 ], DESIRED TIME 8616608 | ACTUAL TIME 8616212 | DIFFERENCE 396
+[TL 1 lxc1-0 ], DESIRED TIME 8616608 | ACTUAL TIME 8616405 | DIFFERENCE 203
+[TL 1 lxc1-0 ], DESIRED TIME 8616608 | ACTUAL TIME 8616405 | DIFFERENCE 203
+[TL 1 lxc1-0 ], DESIRED TIME 9902893 | ACTUAL TIME 9903051 | DIFFERENCE 158
+[TL 1 lxc1-0 ], DESIRED TIME 9902893 | ACTUAL TIME 9903051 | DIFFERENCE 158
+[TL 1 lxc1-0 ], DESIRED TIME 9903894 | ACTUAL TIME 9903740 | DIFFERENCE 154
+[TL 1 lxc1-0 ], DESIRED TIME 9903894 | ACTUAL TIME 9903740 | DIFFERENCE 154
+Timeline 0 advanced its LXCs by 9.999991 seconds
+Timeline 1 advanced its LXCs by 9.999989 seconds
+|==================================================
+| Calling STOP EXPERIMENT
+|==================================================
+|============================================================|
+| Overall Stats
+|------------------------------------------------------------|
+| OUT | Total Pkts Sent to LXCs       : 0
+| OUT | Total Pkts error late to LXC  : 0
+| OUT | Avg Pkts error late to LXC    : -nan
+|------------------------------------------------------------|
+| IN  | Total Pkts Injected to past   : 0
+| IN  | Total Error Injected to past  : 0
+| IN  | Average past error            : -nan
+|============================================================|
+| TOTAL Advance ERROR        : 185541
+| TOTAL Times Advanced       : 37564
+| TOTAL Times Over           : 14118
+| TOTAL Times Under          : 19954
+| TOTAL Times Exact          : 3492
+| Average Advance ERROR      : 4.93933021
+|============================================================|
+| TOTAL Pkt Timestamp ERROR  : 0
+| TOTAL Pkts Injected        : 0
+| Average Packet Inaccuracy  : -nan
+|============================================================|
+| MIN Advance Error          : 0
+| MAX Advance Error          : 783
+| Advance Error RMS          : 12.21275760
+| Advance Error Variance     : 124.75446527
+| Advance Error Std Dev      : 11.16935384
+|============================================================|
+
+|============================================================|
+| Timeline 0 advanced 18968 times ( Progress 18968 ) for a total of 51.316041 seconds
+| Timeline 1 advanced 18596 times ( Progress 18596 ) for a total of 51.405034 seconds
+|============================================================|
+| Cumulative emulation seconds 102.721075
+| Simulation run time is 53.5682 seconds
+| Total run time is 55.6122 seconds
+|============================================================|

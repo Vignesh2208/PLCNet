@@ -1,0 +1,11 @@
+nnodes = 21520
+nlinks = 3640
+cidrsize = 262144
+link bandwidth distribution:
+  1000000000 (bps) : 1920
+  10000000000 (bps) : 1080
+  20000000000 (bps) : 640
+link delay distribution:
+  0.00100 (sec) : 2120
+  0.00500 (sec) : 1480
+  0.20000 (sec) : 40

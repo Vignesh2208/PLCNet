@@ -1,0 +1,428 @@
+#
+# This file is included by the Makefile. It defines a list of header
+# files, source files, and object files.
+#
+
+#The default configure parameters, if not being passed in through make command-line
+ENABLE_S3FNET_DEBUG = no
+
+SRCDIR = src
+
+
+#
+# src/s3fnet
+#
+
+MAIN_HDRFILES = \
+	$(SRCDIR)/s3fnet.h
+MAIN_SRCFILES = \
+	$(SRCDIR)/s3fnet.cc
+MAIN_NONXFORM = $(filter %.cc,$(MAIN_SRCFILES))
+MAIN_XFORM = $(filter %.cxx,$(MAIN_SRCFILES))
+MAIN_OBJECTS = $(MAIN_XFORM:.cxx=.xform.o) $(MAIN_NONXFORM:.cc=.o)
+
+# dml configurations
+DML_INCLUDES = -I$(DMLDIR) 
+DML_CFLAGS = $(DML_DEBUG_CFLAGS) $(DML_LOCINFO_CFLAGS)
+DML_LDFLAGS = -L$(DMLDIR)
+#DML_LDADD = -ldml
+DML_LDADD = ../dml/libdml.a
+DMLDIR = ../dml
+DML_DEBUG_CFLAGS = -DPRIME_DML_DEBUG=0
+DML_LOCINFO_CFLAGS = -DPRIME_DML_LOCINFO=1
+
+#
+# dmlprep: dmlenv and dmlpart utilities that are used for transforming 
+# dml files.
+#
+
+DMLENV_HDRFILES = $(EXTRA_HDRFILES)
+DMLENV_SRCFILES = $(SRCDIR)/dmlprep/dmlenv.cc
+DMLENV_OBJECTS = $(DMLENV_SRCFILES:.cc=.env.o) $(EXTRA_OBJECTS)
+#DMLENV_CFLAGS = -g -O2 $(DML_CFLAGS)
+DMLENV_CFLAGS = -g -O3 $(DML_CFLAGS)
+#DMLENV_CFLAGS = -O3 $(DML_CFLAGS)
+#DMLENV_CFLAGS = -g -O0 $(DML_CFLAGS)
+DMLENV_INCLUDES = $(DML_INCLUDES)
+#DMLENV_LDFLAGS = $(DML_LDFLAGS)
+DMLENV_LDADD = ${DML_LDADD}
+
+DMLPART_HDRFILES = $(EXTRA_HDRFILES)
+DMLPART_SRCFILES = $(SRCDIR)/dmlprep/dmlpart.cc
+DMLPART_OBJECTS = $(DMLPART_SRCFILES:.cc=.part.o)  $(EXTRA_OBJECTS)
+#DMLPART_CFLAGS = -g -O2 $(DML_CFLAGS) $(METIS_CFLAGS)
+DMLPART_CFLAGS = -g -O3 $(DML_CFLAGS) $(METIS_CFLAGS)
+#DMLPART_CFLAGS = -O3 $(DML_CFLAGS) $(METIS_CFLAGS)
+#DMLPART_CFLAGS = -g -O0 $(DML_CFLAGS) $(METIS_CFLAGS)
+DMLPART_INCLUDES = $(DML_INCLUDES) -I../metis
+#DMLPART_LDFLAGS =  $(DML_LDFLAGS) -L../metis
+DMLPART_LDADD = $(DML_LDADD) ../metis/libmetis.a
+
+#
+# extra: miscellaneous utilities
+#
+
+EXTRA_HDRFILES = $(SRCDIR)/extra/getopt.h
+EXTRA_SRCFILES = \
+	$(SRCDIR)/extra/getopt.c \
+	$(SRCDIR)/extra/getopt1.c
+EXTRA_OBJECTS =  $(EXTRA_SRCFILES:.c=.o)
+
+#
+# util: basic data structures, data types, and utility functions.
+#
+
+UTIL_HDRFILES = \
+	$(SRCDIR)/util/errhandle.h \
+	$(SRCDIR)/util/shstl.h \
+	$(SRCDIR)/util/trie.h \
+	$(SRCDIR)/util/tries/trie0.h \
+	$(SRCDIR)/util/tries/trie1.h \
+	$(SRCDIR)/util/tries/trie2.h \
+	$(SRCDIR)/util/tries/trie3.h \
+	$(SRCDIR)/util/tries/trie4.h \
+	$(SRCDIR)/util/tries/triedata_array0.h \
+	$(SRCDIR)/util/tries/triedata_array1.h \
+	$(SRCDIR)/util/tries/triedata_array2.h
+UTIL_SRCFILES = \
+	$(SRCDIR)/util/errhandle.cc \
+	$(SRCDIR)/util/tries/trie0.cc \
+	$(SRCDIR)/util/tries/trie1.cc \
+	$(SRCDIR)/util/tries/trie2.cc \
+	$(SRCDIR)/util/tries/trie3.cc \
+	$(SRCDIR)/util/tries/trie4.cc \
+	$(SRCDIR)/util/tries/triedata_array0.cc \
+	$(SRCDIR)/util/tries/triedata_array1.cc \
+	$(SRCDIR)/util/tries/triedata_array2.cc
+UTIL_NONXFORM = $(filter %.cc,$(UTIL_SRCFILES))
+UTIL_XFORM = $(filter %.cxx,$(UTIL_SRCFILES))
+UTIL_OBJECTS = $(UTIL_XFORM:.cxx=.xform.o) $(UTIL_NONXFORM:.cc=.o)
+
+#
+# env: environment information for global name resolution and timeline
+# management.
+#
+
+ENV_HDRFILES = \
+	$(SRCDIR)/env/namesvc.h \
+	#$(SRCDIR)/env/timelinesvc.h
+	#$(SRCDIR)/env/alignsvc.h \
+	#$(SRCDIR)/env/milieu.h \
+	#$(SRCDIR)/env/aligndev.h
+ENV_SRCFILES = \
+	$(SRCDIR)/env/namesvc.cc \
+	#$(SRCDIR)/evn/timelinesvc.cc
+	#$(SRCDIR)/env/alignsvc.cc \
+	#$(SRCDIR)/env/milieu.cc \
+	#$(SRCDIR)/env/aligndev.cc
+ENV_NONXFORM = $(filter %.cc,$(ENV_SRCFILES))
+ENV_XFORM = $(filter %.cxx,$(ENV_SRCFILES))
+ENV_OBJECTS = $(ENV_XFORM:.cxx=.xform.o) $(ENV_NONXFORM:.cc=.o)
+
+#
+# net: network entities (hosts, routers, links, interfaces, etc.).
+#
+
+NET_HDRFILES	= \
+	$(SRCDIR)/net/host.h \
+	$(SRCDIR)/net/ip_prefix.h \
+	$(SRCDIR)/net/cidr.h \
+	$(SRCDIR)/net/nhi.h \
+	$(SRCDIR)/net/dmlobj.h \
+	$(SRCDIR)/net/net.h \
+	$(SRCDIR)/net/link.h \
+	$(SRCDIR)/net/network_interface.h \
+	$(SRCDIR)/net/mac48_address.h \
+	$(SRCDIR)/net/nic_queue.h \
+	$(SRCDIR)/net/droptail_queue.h \
+	$(SRCDIR)/net/red_queue.h \
+	$(SRCDIR)/net/forwardingtable.h \
+	$(SRCDIR)/net/traffic.h \
+	$(SRCDIR)/net/route_caches/route_cache0.h \
+	$(SRCDIR)/net/route_caches/route_cache1.h \
+	$(SRCDIR)/net/route_caches/route_cache2.h
+NET_SRCFILES	= \
+	$(SRCDIR)/net/host.cc \
+	$(SRCDIR)/net/ip_prefix.cc \
+	$(SRCDIR)/net/cidr.cc \
+	$(SRCDIR)/net/nhi.cc \
+	$(SRCDIR)/net/dmlobj.cc \
+	$(SRCDIR)/net/net.cc \
+	$(SRCDIR)/net/link.cc \
+	$(SRCDIR)/net/network_interface.cc \
+	$(SRCDIR)/net/mac48_address.cc \
+	$(SRCDIR)/net/nic_queue.cc \
+	$(SRCDIR)/net/droptail_queue.cc \
+	$(SRCDIR)/net/red_queue.cc \
+	$(SRCDIR)/net/forwardingtable.cc \
+	$(SRCDIR)/net/traffic.cc \
+	$(SRCDIR)/net/route_caches/route_cache0.cc \
+	$(SRCDIR)/net/route_caches/route_cache1.cc \
+	$(SRCDIR)/net/route_caches/route_cache2.cc
+NET_NONXFORM = $(filter %.cc,$(NET_SRCFILES))
+NET_XFORM = $(filter %.cxx,$(NET_SRCFILES))
+NET_OBJECTS = $(NET_XFORM:.cxx=.xform.o) $(NET_NONXFORM:.cc=.o)
+
+#
+# os: protocol stack structure (protocol graphs, protocol sessions,
+# and protocol messages).
+#
+
+OS_HDRFILES	= \
+	$(SRCDIR)/os/base/protocol_graph.h \
+	$(SRCDIR)/os/base/protocol_session.h \
+	$(SRCDIR)/os/base/nic_protocol_session.h \
+	$(SRCDIR)/os/base/lowest_protocol_session.h \
+	$(SRCDIR)/os/base/protocols.h \
+	$(SRCDIR)/os/base/protocol_message.h \
+	$(SRCDIR)/os/base/data_message.h
+OS_SRCFILES	= \
+	$(SRCDIR)/os/base/protocol_graph.cc \
+	$(SRCDIR)/os/base/protocol_session.cc \
+	$(SRCDIR)/os/base/nic_protocol_session.cc \
+	$(SRCDIR)/os/base/lowest_protocol_session.cc \
+	$(SRCDIR)/os/base/protocols.cc \
+	$(SRCDIR)/os/base/protocol_message.cc \
+	$(SRCDIR)/os/base/data_message.cc
+OS_NONXFORM = $(filter %.cc,$(OS_SRCFILES))
+OS_XFORM = $(filter %.cxx,$(OS_SRCFILES))
+OS_OBJECTS = $(OS_XFORM:.cxx=.xform.o) $(OS_NONXFORM:.cc=.o)
+
+#
+# os/simple_mac: a simple MAC protocol
+#
+
+SIMPLEMAC_HDRFILES	= \
+	$(SRCDIR)/os/simple_mac/simple_mac.h \
+	$(SRCDIR)/os/simple_mac/simple_mac_message.h
+SIMPLEMAC_SRCFILES	= \
+	$(SRCDIR)/os/simple_mac/simple_mac.cc \
+	$(SRCDIR)/os/simple_mac/simple_mac_message.cc
+SIMPLEMAC_NONXFORM = $(filter %.cc,$(SIMPLEMAC_SRCFILES))
+SIMPLEMAC_XFORM = $(filter %.cxx,$(SIMPLEMAC_SRCFILES))
+SIMPLEMAC_OBJECTS = $(SIMPLEMAC_XFORM:.cxx=.xform.o) $(SIMPLEMAC_NONXFORM:.cc=.o)
+
+#
+# os/simple_phy: a simple PHY protocol
+#
+
+SIMPLEPHY_HDRFILES	= \
+	$(SRCDIR)/os/simple_phy/simple_phy.h
+SIMPLEPHY_SRCFILES	= \
+	$(SRCDIR)/os/simple_phy/simple_phy.cc
+SIMPLEPHY_NONXFORM = $(filter %.cc,$(SIMPLEPHY_SRCFILES))
+SIMPLEPHY_XFORM = $(filter %.cxx,$(SIMPLEPHY_SRCFILES))
+SIMPLEPHY_OBJECTS = $(SIMPLEPHY_XFORM:.cxx=.xform.o) $(SIMPLEPHY_NONXFORM:.cc=.o)
+
+#
+# os/ipv4: internet protocol version 4.
+#
+
+IPV4_HDRFILES	= \
+	$(SRCDIR)/os/ipv4/ip_interface.h \
+	$(SRCDIR)/os/ipv4/ip_session.h \
+	$(SRCDIR)/os/ipv4/ip_message.h
+IPV4_SRCFILES	= \
+	$(SRCDIR)/os/ipv4/ip_session.cc \
+	$(SRCDIR)/os/ipv4/ip_message.cc
+IPV4_NONXFORM = $(filter %.cc,$(IPV4_SRCFILES))
+IPV4_XFORM = $(filter %.cxx,$(IPV4_SRCFILES))
+IPV4_OBJECTS = $(IPV4_XFORM:.cxx=.xform.o) $(IPV4_NONXFORM:.cc=.o)
+
+#
+# os/socket: socket interface between application and transport-layer 
+# protocols, including tcp and udp.
+#
+
+SOCKET_HDRFILES = \
+	$(SRCDIR)/os/socket/socket_session.h \
+	$(SRCDIR)/os/socket/socket_master.h \
+	$(SRCDIR)/os/socket/nb_socket_master.h
+	#$(SRCDIR)/os/socket/blocking_socket_master.h
+
+SOCKET_SRCFILES = \
+	$(SRCDIR)/os/socket/socket_master.cc \
+	$(SRCDIR)/os/socket/nb_socket_master.cc
+	#$(SRCDIR)/os/socket/blocking_socket_master.cxx
+SOCKET_NONXFORM = $(filter %.cc,$(SOCKET_SRCFILES))
+SOCKET_XFORM = $(filter %.cxx,$(SOCKET_SRCFILES))
+SOCKET_OBJECTS = $(SOCKET_XFORM:.cxx=.xform.o) $(SOCKET_NONXFORM:.cc=.o)
+
+#
+# os/udp: user datagram protocol.
+#
+
+UDP_HDRFILES = \
+	$(SRCDIR)/os/udp/udp_message.h \
+	$(SRCDIR)/os/udp/udp_master.h \
+	$(SRCDIR)/os/udp/udp_session.h \
+	$(SRCDIR)/os/udp/app/udp_client.h \
+	$(SRCDIR)/os/udp/app/udp_server.h
+	#$(SRCDIR)/os/udp/app/blocking_udp_client.h \
+	#$(SRCDIR)/os/udp/app/blocking_udp_server.h \
+	#$(SRCDIR)/os/udp/app/blocking_udp_streamclient.h \
+	#$(SRCDIR)/os/udp/app/blocking_udp_streamserver.h
+
+UDP_SRCFILES = \
+	$(SRCDIR)/os/udp/udp_message.cc \
+	$(SRCDIR)/os/udp/udp_master.cc \
+	$(SRCDIR)/os/udp/udp_session.cc \
+	$(SRCDIR)/os/udp/app/udp_client.cc \
+	$(SRCDIR)/os/udp/app/udp_server.cc
+	#$(SRCDIR)/os/udp/app/blocking_udp_client.cxx \
+	#$(SRCDIR)/os/udp/app/blocking_udp_server.cxx \
+	#$(SRCDIR)/os/udp/app/blocking_udp_streamclient.cxx \
+	#$(SRCDIR)/os/udp/app/blocking_udp_streamserver.cxx
+UDP_NONXFORM = $(filter %.cc,$(UDP_SRCFILES))
+UDP_XFORM = $(filter %.cxx,$(UDP_SRCFILES))
+UDP_OBJECTS = $(UDP_XFORM:.cxx=.xform.o) $(UDP_NONXFORM:.cc=.o)
+
+#
+# os/tcp: transmission control protocol
+#
+
+TCP_HDRFILES = \
+	$(SRCDIR)/os/tcp/tcp_message.h \
+	$(SRCDIR)/os/tcp/tcp_init.h \
+	$(SRCDIR)/os/tcp/tcp_master.h \
+	$(SRCDIR)/os/tcp/tcp_blocks.h \
+	$(SRCDIR)/os/tcp/tcp_seqwnd.h \
+	$(SRCDIR)/os/tcp/tcp_sndwnd.h \
+	$(SRCDIR)/os/tcp/tcp_rcvwnd.h \
+	$(SRCDIR)/os/tcp/tcp_session.h \
+	$(SRCDIR)/os/tcp/app/tcp_client.h \
+	$(SRCDIR)/os/tcp/app/tcp_server.h \
+	$(SRCDIR)/os/tcp/app/nb_tcp_server.h \
+	$(SRCDIR)/os/tcp/app/nb_tcp_client.h \
+	$(SRCDIR)/os/tcp/app/blocking_tcp_client.h \
+	#$(SRCDIR)/os/tcp/app/blocking_tcp_client.h \
+	#$(SRCDIR)/os/tcp/app/blocking_tcp_multiclient.h \
+	#$(SRCDIR)/os/tcp/app/blocking_tcp_server.h \
+	
+TCP_SRCFILES = \
+	$(SRCDIR)/os/tcp/tcp_message.cc \
+	$(SRCDIR)/os/tcp/tcp_master.cc \
+	$(SRCDIR)/os/tcp/tcp_blocks.cc \
+	$(SRCDIR)/os/tcp/tcp_sndwnd.cc \
+	$(SRCDIR)/os/tcp/tcp_rcvwnd.cc \
+	$(SRCDIR)/os/tcp/tcp_session.cc \
+	$(SRCDIR)/os/tcp/tcp_state.cc \
+	$(SRCDIR)/os/tcp/tcp_sender.cc \
+	$(SRCDIR)/os/tcp/tcp_receiver.cc \
+	$(SRCDIR)/os/tcp/tcp_timer.cc \
+	$(SRCDIR)/os/tcp/tcp_sack.cc \
+	$(SRCDIR)/os/tcp/app/tcp_client.cc \
+	$(SRCDIR)/os/tcp/app/tcp_server.cc \
+	$(SRCDIR)/os/tcp/app/nb_tcp_server.cc \
+	$(SRCDIR)/os/tcp/app/nb_tcp_client.cc \
+	$(SRCDIR)/os/tcp/app/blocking_tcp_client.cc \
+	#$(SRCDIR)/os/tcp/app/blocking_tcp_client.cxx \
+	#$(SRCDIR)/os/tcp/app/blocking_tcp_multiclient.cxx \
+	#$(SRCDIR)/os/tcp/app/blocking_tcp_server.cxx \
+	
+TCP_NONXFORM = $(filter %.cc,$(TCP_SRCFILES))
+TCP_XFORM = $(filter %.cxx,$(TCP_SRCFILES))
+TCP_OBJECTS = $(TCP_XFORM:.cxx=.xform.o) $(TCP_NONXFORM:.cc=.o)
+
+#
+# os/dummy: dummy protocol
+# 
+
+DUMMY_HDRFILES = \
+	$(SRCDIR)/os/dummy/dummy_session.h \
+	$(SRCDIR)/os/dummy/dummy_message.h
+DUMMY_SRCFILES = \
+	$(SRCDIR)/os/dummy/dummy_session.cc \
+	$(SRCDIR)/os/dummy/dummy_message.cc
+DUMMY_NONXFORM = $(filter %.cc,$(DUMMY_SRCFILES))
+DUMMY_XFORM = $(filter %.cxx,$(DUMMY_SRCFILES))
+DUMMY_OBJECTS = $(DUMMY_XFORM:.cxx=.xform.o) $(DUMMY_NONXFORM:.cc=.o)
+
+#
+# all header files, source files, and object files.
+#
+
+S3FNET_HDRFILES = \
+	$(EXTRA_HDRFILES) \
+	$(UTIL_HDRFILES) \
+	$(ENV_HDRFILES) \
+	$(NET_HDRFILES) \
+	$(OS_HDRFILES) \
+	$(MAIN_HDRFILES) \
+	$(IPV4_HDRFILES) \
+	$(SIMPLEMAC_HDRFILES) \
+	$(SIMPLEPHY_HDRFILES) \
+	$(DUMMY_HDRFILES) \
+	$(SOCKET_HDRFILES) \
+	$(TCP_HDRFILES) \
+	$(UDP_HDRFILES)
+
+S3FNET_SRCFILES = \
+	$(EXTRA_SRCFILES) \
+	$(UTIL_SRCFILES) \
+	$(ENV_SRCFILES) \
+	$(NET_SRCFILES) \
+	$(OS_SRCFILES) \
+	$(MAIN_SRCFILES) \
+	$(IPV4_SRCFILES) \
+	$(SIMPLEMAC_SRCFILES) \
+	$(SIMPLEPHY_SRCFILES) \
+	$(DUMMY_SRCFILES) \
+	$(SOCKET_SRCFILES) \
+	$(TCP_SRCFILES) \
+	$(UDP_SRCFILES)
+
+S3FNET_OBJECTS = \
+	$(EXTRA_OBJECTS) \
+	$(UTIL_OBJECTS) \
+	$(ENV_OBJECTS) \
+	$(NET_OBJECTS) \
+	$(OS_OBJECTS) \
+	$(MAIN_OBJECTS) \
+	$(IPV4_OBJECTS) \
+	$(SIMPLEMAC_OBJECTS) \
+	$(SIMPLEPHY_OBJECTS) \
+	$(DUMMY_OBJECTS) \
+	$(SOCKET_OBJECTS) \
+	$(TCP_OBJECTS) \
+	$(UDP_OBJECTS)	
+# Set the compiler switch for debugging and optimization and activate
+# the appropriate debugging switch for different modules.
+
+S3FNET_CXXOPT = -g -O3 -Wno-write-strings
+ifeq ($(ENABLE_S3FNET_DEBUG), yes)
+S3FNET_DBGCFG = \
+	-DIP_DEBUG \
+	-DDUMMY_DEBUG \
+	-DIFACE_DEBUG \
+	-DSMAC_DEBUG \
+	-DSPHY_DEBUG \
+	-DMAC80211_DEBUG \
+	-DPHY80211_DEBUG \
+	-DTCP_DEBUG \
+	-DSOCK_DEBUG \
+	-DUDP_DEBUG \
+	-DTRIE_DEBUG \
+	-DNAMESVC_DEBUG \
+	-DNET_DEBUG \
+	-DLINK_DEBUG \
+	-DHOST_DEBUG \
+	-DFWT_DEBUG \
+	-DTRAFFIC_DEBUG \
+	-DIPADDR_DEBUG \
+	-DMAIN_DEBUG
+else
+S3FNET_DBGCFG =
+endif
+
+# Directories for finding the header files
+S3FNET_INCLUDES = $(S3F_INCLUDES) -Isrc -I../ -I../dml -I../metis
+
+# Definitions necessary for compilation and linking.
+S3FNET_CFLAGS = $(S3F_CFLAGS) $(S3FNET_CXXOPT) $(S3FNET_DBGCFG)
+
+# The linker flags.
+S3FNET_LDFLAGS = -L../api -L../aux -L../rng -L../dml -L../metis
+
+# More libraries that need to be included.
+S3FNET_LDADD   = ../api/s3f.a ../rng/rng.a ../aux/aux.a ../dml/libdml.a ../metis/libmetis.a -lpthread

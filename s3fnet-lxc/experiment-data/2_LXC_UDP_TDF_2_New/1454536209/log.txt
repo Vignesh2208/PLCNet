@@ -1,0 +1,1295 @@
+|==================================================
+| LXC Manager Created
+| Simulation has 2 timelines
+|==================================================
+LXC proxy initialization: lxc0-0 successfull
+LXC proxy initialization: lxc1-0 successfull
+ ____________________________________________
+|
+| Printing out Info about Timeline 0 ...
+|_____
+      | Timeline 0 has Proxy LXC lxc0-0
+      |______________________________________
+ ____________________________________________
+|
+| Printing out Info about Timeline 1 ...
+|_____
+      | Timeline 1 has Proxy LXC lxc1-0
+      |______________________________________
+|==================================================
+| Creating and Launching LXCs                      
+|==================================================
+
+|==================================================
+| Dilating and Adding LXCs to Experiment           
+|==================================================
+
+GET LXC lxc0-0 TDF 5.000000 PID 15627 Finished
+GET LXC lxc1-0 TDF 5.000000 PID 15663 Finished
+|==================================================
+| Calling SynchronizeAndFreeze. Syncing up LXCs
+|==================================================
+
+| lxc0-0 Frozen at [ 1454536211 sec 641665 usec ]
+| lxc1-0 Frozen at [ 1454536211 sec 641665 usec ]
+
+|==================================================
+Ether Type: 0x0806
+Src IP string: 10.10.0.10
+Dest IP string: 10.10.0.9
+Arrival Time : 309
+Ether Type: 0x0806
+Src IP string: 10.10.0.9
+Dest IP string: 10.10.0.10
+Arrival Time : 1540
+Ether Type: 0x0800
+Src IP string: 10.10.0.10
+Dest IP string: 10.10.0.9
+Secs : 1454536211
+uSecs : 641967
+Arrival Time is less. Compensated. 
+Arrival Time : 2765
+Ether Type: 0x0800
+Src IP string: 10.10.0.9
+Dest IP string: 10.10.0.10
+Secs : 1454536211
+uSecs : 645726
+Arrival Time : 4061
+Ether Type: 0x0800
+Src IP string: 10.10.0.10
+Dest IP string: 10.10.0.9
+Secs : 1454536211
+uSecs : 649753
+Arrival Time : 8088
+Ether Type: 0x0800
+Src IP string: 10.10.0.9
+Dest IP string: 10.10.0.10
+Secs : 1454536211
+uSecs : 653823
+Arrival Time : 12158
+Ether Type: 0x0800
+Src IP string: 10.10.0.10
+Dest IP string: 10.10.0.9
+Secs : 1454536211
+uSecs : 657888
+Arrival Time : 16223
+Ether Type: 0x0800
+Src IP string: 10.10.0.9
+Dest IP string: 10.10.0.10
+Secs : 1454536211
+uSecs : 661932
+Arrival Time : 20267
+Ether Type: 0x0800
+Src IP string: 10.10.0.10
+Dest IP string: 10.10.0.9
+Secs : 1454536211
+uSecs : 665993
+Arrival Time : 24328
+Ether Type: 0x0800
+Src IP string: 10.10.0.9
+Dest IP string: 10.10.0.10
+Secs : 1454536211
+uSecs : 670036
+Arrival Time : 28371
+Ether Type: 0x0800
+Src IP string: 10.10.0.10
+Dest IP string: 10.10.0.9
+Secs : 1454536211
+uSecs : 674136
+Arrival Time : 32471
+Ether Type: 0x0800
+Src IP string: 10.10.0.9
+Dest IP string: 10.10.0.10
+Secs : 1454536211
+uSecs : 678146
+Arrival Time : 36481
+Ether Type: 0x0800
+Src IP string: 10.10.0.10
+Dest IP string: 10.10.0.9
+Secs : 1454536211
+uSecs : 682193
+Arrival Time : 40528
+Ether Type: 0x0800
+Src IP string: 10.10.0.9
+Dest IP string: 10.10.0.10
+Secs : 1454536211
+uSecs : 686233
+Arrival Time : 44568
+Ether Type: 0x0800
+Src IP string: 10.10.0.10
+Dest IP string: 10.10.0.9
+Secs : 1454536211
+uSecs : 690256
+Arrival Time : 48591
+Ether Type: 0x0800
+Src IP string: 10.10.0.9
+Dest IP string: 10.10.0.10
+Secs : 1454536211
+uSecs : 694292
+Arrival Time : 52627
+Ether Type: 0x0800
+Src IP string: 10.10.0.10
+Dest IP string: 10.10.0.9
+Secs : 1454536211
+uSecs : 698333
+Arrival Time : 56668
+Ether Type: 0x0800
+Src IP string: 10.10.0.9
+Dest IP string: 10.10.0.10
+Secs : 1454536211
+uSecs : 702406
+Arrival Time : 60741
+Ether Type: 0x0800
+Src IP string: 10.10.0.10
+Dest IP string: 10.10.0.9
+Secs : 1454536211
+uSecs : 706439
+Arrival Time : 64774
+Ether Type: 0x0800
+Src IP string: 10.10.0.9
+Dest IP string: 10.10.0.10
+Secs : 1454536211
+uSecs : 710504
+Arrival Time : 68839
+Ether Type: 0x0800
+Src IP string: 10.10.0.10
+Dest IP string: 10.10.0.9
+Secs : 1454536211
+uSecs : 714565
+Arrival Time : 72900
+Ether Type: 0x0800
+Src IP string: 10.10.0.9
+Dest IP string: 10.10.0.10
+Secs : 1454536211
+uSecs : 718593
+Arrival Time : 76928
+Ether Type: 0x0800
+Src IP string: 10.10.0.10
+Dest IP string: 10.10.0.9
+Secs : 1454536211
+uSecs : 722687
+Arrival Time : 81022
+Ether Type: 0x0800
+Src IP string: 10.10.0.9
+Dest IP string: 10.10.0.10
+Secs : 1454536211
+uSecs : 726719
+Arrival Time : 85054
+Ether Type: 0x0800
+Src IP string: 10.10.0.10
+Dest IP string: 10.10.0.9
+Secs : 1454536211
+uSecs : 730760
+Arrival Time : 89095
+Ether Type: 0x0800
+Src IP string: 10.10.0.9
+Dest IP string: 10.10.0.10
+Secs : 1454536211
+uSecs : 734817
+Arrival Time : 93152
+Ether Type: 0x0800
+Src IP string: 10.10.0.10
+Dest IP string: 10.10.0.9
+Secs : 1454536211
+uSecs : 738849
+Arrival Time : 97184
+Ether Type: 0x0800
+Src IP string: 10.10.0.9
+Dest IP string: 10.10.0.10
+Secs : 1454536211
+uSecs : 742934
+Arrival Time : 101269
+Ether Type: 0x0800
+Src IP string: 10.10.0.10
+Dest IP string: 10.10.0.9
+Secs : 1454536211
+uSecs : 746987
+Arrival Time : 105322
+Ether Type: 0x0800
+Src IP string: 10.10.0.9
+Dest IP string: 10.10.0.10
+Secs : 1454536211
+uSecs : 751061
+Arrival Time : 109396
+Ether Type: 0x0800
+Src IP string: 10.10.0.10
+Dest IP string: 10.10.0.9
+Secs : 1454536211
+uSecs : 755126
+Arrival Time : 113461
+Ether Type: 0x0800
+Src IP string: 10.10.0.9
+Dest IP string: 10.10.0.10
+Secs : 1454536211
+uSecs : 759198
+Arrival Time : 117533
+Ether Type: 0x0800
+Src IP string: 10.10.0.10
+Dest IP string: 10.10.0.9
+Secs : 1454536211
+uSecs : 763262
+Arrival Time : 121597
+Ether Type: 0x0800
+Src IP string: 10.10.0.9
+Dest IP string: 10.10.0.10
+Secs : 1454536211
+uSecs : 767304
+Arrival Time : 125639
+Ether Type: 0x0800
+Src IP string: 10.10.0.10
+Dest IP string: 10.10.0.9
+Secs : 1454536211
+uSecs : 771408
+Arrival Time : 129743
+Ether Type: 0x0800
+Src IP string: 10.10.0.9
+Dest IP string: 10.10.0.10
+Secs : 1454536211
+uSecs : 775464
+Arrival Time : 133799
+Ether Type: 0x0800
+Src IP string: 10.10.0.10
+Dest IP string: 10.10.0.9
+Secs : 1454536211
+uSecs : 779550
+Arrival Time : 137885
+Ether Type: 0x0800
+Src IP string: 10.10.0.9
+Dest IP string: 10.10.0.10
+Secs : 1454536211
+uSecs : 783588
+Arrival Time : 141923
+Ether Type: 0x0800
+Src IP string: 10.10.0.10
+Dest IP string: 10.10.0.9
+Secs : 1454536211
+uSecs : 787667
+Arrival Time : 146002
+Ether Type: 0x0800
+Src IP string: 10.10.0.9
+Dest IP string: 10.10.0.10
+Secs : 1454536211
+uSecs : 791711
+Arrival Time : 150046
+Ether Type: 0x0800
+Src IP string: 10.10.0.10
+Dest IP string: 10.10.0.9
+Secs : 1454536211
+uSecs : 795768
+Arrival Time : 154103
+Ether Type: 0x0800
+Src IP string: 10.10.0.9
+Dest IP string: 10.10.0.10
+Secs : 1454536211
+uSecs : 799808
+Arrival Time : 158143
+Ether Type: 0x0800
+Src IP string: 10.10.0.10
+Dest IP string: 10.10.0.9
+Secs : 1454536211
+uSecs : 803851
+Arrival Time : 162186
+Ether Type: 0x0800
+Src IP string: 10.10.0.9
+Dest IP string: 10.10.0.10
+Secs : 1454536211
+uSecs : 807896
+Arrival Time : 166231
+Ether Type: 0x0800
+Src IP string: 10.10.0.10
+Dest IP string: 10.10.0.9
+Secs : 1454536211
+uSecs : 811932
+Arrival Time : 170267
+Ether Type: 0x0800
+Src IP string: 10.10.0.9
+Dest IP string: 10.10.0.10
+Secs : 1454536211
+uSecs : 816020
+Arrival Time : 174355
+Ether Type: 0x0800
+Src IP string: 10.10.0.10
+Dest IP string: 10.10.0.9
+Secs : 1454536211
+uSecs : 820070
+Arrival Time : 178405
+Ether Type: 0x0800
+Src IP string: 10.10.0.9
+Dest IP string: 10.10.0.10
+Secs : 1454536211
+uSecs : 824123
+Arrival Time : 182458
+Ether Type: 0x0800
+Src IP string: 10.10.0.10
+Dest IP string: 10.10.0.9
+Secs : 1454536211
+uSecs : 828186
+Arrival Time : 186521
+Ether Type: 0x0800
+Src IP string: 10.10.0.9
+Dest IP string: 10.10.0.10
+Secs : 1454536211
+uSecs : 832217
+Arrival Time : 190552
+Ether Type: 0x0800
+Src IP string: 10.10.0.10
+Dest IP string: 10.10.0.9
+Secs : 1454536211
+uSecs : 836283
+Arrival Time : 194618
+Ether Type: 0x0800
+Src IP string: 10.10.0.9
+Dest IP string: 10.10.0.10
+Secs : 1454536211
+uSecs : 840338
+Arrival Time : 198673
+Ether Type: 0x0800
+Src IP string: 10.10.0.10
+Dest IP string: 10.10.0.9
+Secs : 1454536211
+uSecs : 844438
+Arrival Time : 202773
+Ether Type: 0x0800
+Src IP string: 10.10.0.9
+Dest IP string: 10.10.0.10
+Secs : 1454536211
+uSecs : 848446
+Arrival Time : 206781
+Ether Type: 0x0800
+Src IP string: 10.10.0.10
+Dest IP string: 10.10.0.9
+Secs : 1454536211
+uSecs : 852543
+Arrival Time : 210878
+Ether Type: 0x0800
+Src IP string: 10.10.0.9
+Dest IP string: 10.10.0.10
+Secs : 1454536211
+uSecs : 856561
+Arrival Time : 214896
+Ether Type: 0x0800
+Src IP string: 10.10.0.10
+Dest IP string: 10.10.0.9
+Secs : 1454536211
+uSecs : 860679
+Arrival Time : 219014
+Ether Type: 0x0800
+Src IP string: 10.10.0.9
+Dest IP string: 10.10.0.10
+Secs : 1454536211
+uSecs : 864671
+Arrival Time : 223006
+Ether Type: 0x0800
+Src IP string: 10.10.0.10
+Dest IP string: 10.10.0.9
+Secs : 1454536211
+uSecs : 868769
+Arrival Time : 227104
+Ether Type: 0x0800
+Src IP string: 10.10.0.9
+Dest IP string: 10.10.0.10
+Secs : 1454536211
+uSecs : 872790
+Arrival Time : 231125
+Ether Type: 0x0800
+Src IP string: 10.10.0.10
+Dest IP string: 10.10.0.9
+Secs : 1454536211
+uSecs : 876874
+Arrival Time : 235209
+Ether Type: 0x0800
+Src IP string: 10.10.0.9
+Dest IP string: 10.10.0.10
+Secs : 1454536211
+uSecs : 880912
+Arrival Time : 239247
+Ether Type: 0x0800
+Src IP string: 10.10.0.10
+Dest IP string: 10.10.0.9
+Secs : 1454536211
+uSecs : 884952
+Arrival Time : 243287
+Ether Type: 0x0800
+Src IP string: 10.10.0.9
+Dest IP string: 10.10.0.10
+Secs : 1454536211
+uSecs : 889003
+Arrival Time : 247338
+Ether Type: 0x0800
+Src IP string: 10.10.0.10
+Dest IP string: 10.10.0.9
+Secs : 1454536211
+uSecs : 893063
+Arrival Time : 251398
+Ether Type: 0x0800
+Src IP string: 10.10.0.9
+Dest IP string: 10.10.0.10
+Secs : 1454536211
+uSecs : 897111
+Arrival Time : 255446
+Ether Type: 0x0800
+Src IP string: 10.10.0.10
+Dest IP string: 10.10.0.9
+Secs : 1454536211
+uSecs : 901171
+Arrival Time : 259506
+Ether Type: 0x0800
+Src IP string: 10.10.0.9
+Dest IP string: 10.10.0.10
+Secs : 1454536211
+uSecs : 905190
+Arrival Time : 263525
+Ether Type: 0x0800
+Src IP string: 10.10.0.10
+Dest IP string: 10.10.0.9
+Secs : 1454536211
+uSecs : 909268
+Arrival Time : 267603
+Ether Type: 0x0800
+Src IP string: 10.10.0.9
+Dest IP string: 10.10.0.10
+Secs : 1454536211
+uSecs : 913306
+Arrival Time : 271641
+Ether Type: 0x0800
+Src IP string: 10.10.0.10
+Dest IP string: 10.10.0.9
+Secs : 1454536211
+uSecs : 917364
+Arrival Time : 275699
+Ether Type: 0x0800
+Src IP string: 10.10.0.9
+Dest IP string: 10.10.0.10
+Secs : 1454536211
+uSecs : 921398
+Arrival Time : 279733
+Ether Type: 0x0800
+Src IP string: 10.10.0.10
+Dest IP string: 10.10.0.9
+Secs : 1454536211
+uSecs : 925445
+Arrival Time : 283780
+Ether Type: 0x0800
+Src IP string: 10.10.0.9
+Dest IP string: 10.10.0.10
+Secs : 1454536211
+uSecs : 929525
+Arrival Time : 287860
+Ether Type: 0x0800
+Src IP string: 10.10.0.10
+Dest IP string: 10.10.0.9
+Secs : 1454536211
+uSecs : 933582
+Arrival Time : 291917
+Ether Type: 0x0800
+Src IP string: 10.10.0.9
+Dest IP string: 10.10.0.10
+Secs : 1454536211
+uSecs : 937647
+Arrival Time : 295982
+Ether Type: 0x0800
+Src IP string: 10.10.0.10
+Dest IP string: 10.10.0.9
+Secs : 1454536211
+uSecs : 941693
+Arrival Time : 300028
+Ether Type: 0x0800
+Src IP string: 10.10.0.9
+Dest IP string: 10.10.0.10
+Secs : 1454536211
+uSecs : 945749
+Arrival Time : 304084
+Ether Type: 0x0800
+Src IP string: 10.10.0.10
+Dest IP string: 10.10.0.9
+Secs : 1454536211
+uSecs : 949814
+Arrival Time : 308149
+Ether Type: 0x0800
+Src IP string: 10.10.0.9
+Dest IP string: 10.10.0.10
+Secs : 1454536211
+uSecs : 953898
+Arrival Time : 312233
+Ether Type: 0x0800
+Src IP string: 10.10.0.10
+Dest IP string: 10.10.0.9
+Secs : 1454536211
+uSecs : 957928
+Arrival Time : 316263
+Ether Type: 0x0800
+Src IP string: 10.10.0.9
+Dest IP string: 10.10.0.10
+Secs : 1454536211
+uSecs : 961995
+Arrival Time : 320330
+Ether Type: 0x0800
+Src IP string: 10.10.0.10
+Dest IP string: 10.10.0.9
+Secs : 1454536211
+uSecs : 966015
+Arrival Time : 324350
+Ether Type: 0x0800
+Src IP string: 10.10.0.9
+Dest IP string: 10.10.0.10
+Secs : 1454536211
+uSecs : 970074
+Arrival Time : 328409
+Ether Type: 0x0800
+Src IP string: 10.10.0.10
+Dest IP string: 10.10.0.9
+Secs : 1454536211
+uSecs : 974122
+Arrival Time : 332457
+Ether Type: 0x0800
+Src IP string: 10.10.0.9
+Dest IP string: 10.10.0.10
+Secs : 1454536211
+uSecs : 978147
+Arrival Time : 336482
+Ether Type: 0x0800
+Src IP string: 10.10.0.10
+Dest IP string: 10.10.0.9
+Secs : 1454536211
+uSecs : 982220
+Arrival Time : 340555
+Ether Type: 0x0800
+Src IP string: 10.10.0.9
+Dest IP string: 10.10.0.10
+Secs : 1454536211
+uSecs : 986263
+Arrival Time : 344598
+Ether Type: 0x0800
+Src IP string: 10.10.0.10
+Dest IP string: 10.10.0.9
+Secs : 1454536211
+uSecs : 990339
+Arrival Time : 348674
+Ether Type: 0x0800
+Src IP string: 10.10.0.9
+Dest IP string: 10.10.0.10
+Secs : 1454536211
+uSecs : 994383
+Arrival Time : 352718
+Ether Type: 0x0800
+Src IP string: 10.10.0.10
+Dest IP string: 10.10.0.9
+Secs : 1454536211
+uSecs : 998458
+Arrival Time : 356793
+Ether Type: 0x0800
+Src IP string: 10.10.0.9
+Dest IP string: 10.10.0.10
+Secs : 1454536212
+uSecs : 2542
+Arrival Time : 360877
+Ether Type: 0x0800
+Src IP string: 10.10.0.10
+Dest IP string: 10.10.0.9
+Secs : 1454536212
+uSecs : 6616
+Arrival Time : 364951
+Ether Type: 0x0800
+Src IP string: 10.10.0.9
+Dest IP string: 10.10.0.10
+Secs : 1454536212
+uSecs : 10701
+Arrival Time : 369036
+Ether Type: 0x0800
+Src IP string: 10.10.0.10
+Dest IP string: 10.10.0.9
+Secs : 1454536212
+uSecs : 14773
+Arrival Time : 373108
+Ether Type: 0x0800
+Src IP string: 10.10.0.9
+Dest IP string: 10.10.0.10
+Secs : 1454536212
+uSecs : 18856
+Arrival Time : 377191
+Ether Type: 0x0800
+Src IP string: 10.10.0.10
+Dest IP string: 10.10.0.9
+Secs : 1454536212
+uSecs : 22930
+Arrival Time : 381265
+Ether Type: 0x0800
+Src IP string: 10.10.0.9
+Dest IP string: 10.10.0.10
+Secs : 1454536212
+uSecs : 26976
+Arrival Time : 385311
+Ether Type: 0x0800
+Src IP string: 10.10.0.10
+Dest IP string: 10.10.0.9
+Secs : 1454536212
+uSecs : 31046
+Arrival Time : 389381
+Ether Type: 0x0800
+Src IP string: 10.10.0.9
+Dest IP string: 10.10.0.10
+Secs : 1454536212
+uSecs : 35089
+Arrival Time : 393424
+Ether Type: 0x0800
+Src IP string: 10.10.0.10
+Dest IP string: 10.10.0.9
+Secs : 1454536212
+uSecs : 39119
+Arrival Time : 397454
+Ether Type: 0x0800
+Src IP string: 10.10.0.9
+Dest IP string: 10.10.0.10
+Secs : 1454536212
+uSecs : 43203
+Arrival Time : 401538
+Ether Type: 0x0800
+Src IP string: 10.10.0.10
+Dest IP string: 10.10.0.9
+Secs : 1454536212
+uSecs : 47241
+Arrival Time : 405576
+Ether Type: 0x0800
+Src IP string: 10.10.0.9
+Dest IP string: 10.10.0.10
+Secs : 1454536212
+uSecs : 51321
+Arrival Time : 409656
+Ether Type: 0x0800
+Src IP string: 10.10.0.10
+Dest IP string: 10.10.0.9
+Secs : 1454536212
+uSecs : 55363
+Arrival Time : 413698
+Ether Type: 0x0800
+Src IP string: 10.10.0.9
+Dest IP string: 10.10.0.10
+Secs : 1454536212
+uSecs : 59441
+Arrival Time : 417776
+Ether Type: 0x0800
+Src IP string: 10.10.0.10
+Dest IP string: 10.10.0.9
+Secs : 1454536212
+uSecs : 63451
+Arrival Time : 421786
+Ether Type: 0x0800
+Src IP string: 10.10.0.9
+Dest IP string: 10.10.0.10
+Secs : 1454536212
+uSecs : 67553
+Arrival Time : 425888
+Ether Type: 0x0800
+Src IP string: 10.10.0.10
+Dest IP string: 10.10.0.9
+Secs : 1454536212
+uSecs : 71593
+Arrival Time : 429928
+Ether Type: 0x0800
+Src IP string: 10.10.0.9
+Dest IP string: 10.10.0.10
+Secs : 1454536212
+uSecs : 75684
+Arrival Time : 434019
+Ether Type: 0x0800
+Src IP string: 10.10.0.10
+Dest IP string: 10.10.0.9
+Secs : 1454536212
+uSecs : 79702
+Arrival Time : 438037
+Ether Type: 0x0800
+Src IP string: 10.10.0.9
+Dest IP string: 10.10.0.10
+Secs : 1454536212
+uSecs : 83791
+Arrival Time : 442126
+Ether Type: 0x0800
+Src IP string: 10.10.0.10
+Dest IP string: 10.10.0.9
+Secs : 1454536212
+uSecs : 87790
+Arrival Time : 446125
+Ether Type: 0x0800
+Src IP string: 10.10.0.9
+Dest IP string: 10.10.0.10
+Secs : 1454536212
+uSecs : 91892
+Arrival Time : 450227
+Ether Type: 0x0800
+Src IP string: 10.10.0.10
+Dest IP string: 10.10.0.9
+Secs : 1454536212
+uSecs : 95921
+Arrival Time : 454256
+Ether Type: 0x0800
+Src IP string: 10.10.0.9
+Dest IP string: 10.10.0.10
+Secs : 1454536212
+uSecs : 100011
+Arrival Time : 458346
+Ether Type: 0x0800
+Src IP string: 10.10.0.10
+Dest IP string: 10.10.0.9
+Secs : 1454536212
+uSecs : 104045
+Arrival Time : 462380
+Ether Type: 0x0800
+Src IP string: 10.10.0.9
+Dest IP string: 10.10.0.10
+Secs : 1454536212
+uSecs : 108099
+Arrival Time : 466434
+Ether Type: 0x0800
+Src IP string: 10.10.0.10
+Dest IP string: 10.10.0.9
+Secs : 1454536212
+uSecs : 112146
+Arrival Time : 470481
+Ether Type: 0x0800
+Src IP string: 10.10.0.9
+Dest IP string: 10.10.0.10
+Secs : 1454536212
+uSecs : 116152
+Arrival Time : 474487
+Ether Type: 0x0800
+Src IP string: 10.10.0.10
+Dest IP string: 10.10.0.9
+Secs : 1454536212
+uSecs : 120239
+Arrival Time : 478574
+Ether Type: 0x0800
+Src IP string: 10.10.0.9
+Dest IP string: 10.10.0.10
+Secs : 1454536212
+uSecs : 124271
+Arrival Time : 482606
+Ether Type: 0x0800
+Src IP string: 10.10.0.10
+Dest IP string: 10.10.0.9
+Secs : 1454536212
+uSecs : 128365
+Arrival Time : 486700
+Ether Type: 0x0800
+Src IP string: 10.10.0.9
+Dest IP string: 10.10.0.10
+Secs : 1454536212
+uSecs : 132400
+Arrival Time : 490735
+Ether Type: 0x0800
+Src IP string: 10.10.0.10
+Dest IP string: 10.10.0.9
+Secs : 1454536212
+uSecs : 136477
+Arrival Time : 494812
+Ether Type: 0x0800
+Src IP string: 10.10.0.9
+Dest IP string: 10.10.0.10
+Secs : 1454536212
+uSecs : 140509
+Arrival Time : 498844
+Ether Type: 0x0800
+Src IP string: 10.10.0.10
+Dest IP string: 10.10.0.9
+Secs : 1454536212
+uSecs : 144569
+Arrival Time : 502904
+Ether Type: 0x0800
+Src IP string: 10.10.0.9
+Dest IP string: 10.10.0.10
+Secs : 1454536212
+uSecs : 148646
+Arrival Time : 506981
+Ether Type: 0x0800
+Src IP string: 10.10.0.10
+Dest IP string: 10.10.0.9
+Secs : 1454536212
+uSecs : 152711
+Arrival Time : 511046
+Ether Type: 0x0800
+Src IP string: 10.10.0.9
+Dest IP string: 10.10.0.10
+Secs : 1454536212
+uSecs : 156763
+Arrival Time : 515098
+Ether Type: 0x0800
+Src IP string: 10.10.0.10
+Dest IP string: 10.10.0.9
+Secs : 1454536212
+uSecs : 160829
+Arrival Time : 519164
+Ether Type: 0x0800
+Src IP string: 10.10.0.9
+Dest IP string: 10.10.0.10
+Secs : 1454536212
+uSecs : 164887
+Arrival Time : 523222
+Ether Type: 0x0800
+Src IP string: 10.10.0.10
+Dest IP string: 10.10.0.9
+Secs : 1454536212
+uSecs : 168967
+Arrival Time : 527302
+Ether Type: 0x0800
+Src IP string: 10.10.0.9
+Dest IP string: 10.10.0.10
+Secs : 1454536212
+uSecs : 173012
+Arrival Time : 531347
+Ether Type: 0x0800
+Src IP string: 10.10.0.10
+Dest IP string: 10.10.0.9
+Secs : 1454536212
+uSecs : 177068
+Arrival Time : 535403
+Ether Type: 0x0800
+Src IP string: 10.10.0.9
+Dest IP string: 10.10.0.10
+Secs : 1454536212
+uSecs : 181131
+Arrival Time : 539466
+Ether Type: 0x0800
+Src IP string: 10.10.0.10
+Dest IP string: 10.10.0.9
+Secs : 1454536212
+uSecs : 185185
+Arrival Time : 543520
+Ether Type: 0x0800
+Src IP string: 10.10.0.9
+Dest IP string: 10.10.0.10
+Secs : 1454536212
+uSecs : 189266
+Arrival Time : 547601
+Ether Type: 0x0800
+Src IP string: 10.10.0.10
+Dest IP string: 10.10.0.9
+Secs : 1454536212
+uSecs : 193237
+Arrival Time : 551572
+Ether Type: 0x0800
+Src IP string: 10.10.0.9
+Dest IP string: 10.10.0.10
+Secs : 1454536212
+uSecs : 197331
+Arrival Time : 555666
+Ether Type: 0x0800
+Src IP string: 10.10.0.10
+Dest IP string: 10.10.0.9
+Secs : 1454536212
+uSecs : 201297
+Arrival Time : 559632
+Ether Type: 0x0800
+Src IP string: 10.10.0.9
+Dest IP string: 10.10.0.10
+Secs : 1454536212
+uSecs : 205446
+Arrival Time : 563781
+Ether Type: 0x0800
+Src IP string: 10.10.0.10
+Dest IP string: 10.10.0.9
+Secs : 1454536212
+uSecs : 209399
+Arrival Time : 567734
+Ether Type: 0x0800
+Src IP string: 10.10.0.9
+Dest IP string: 10.10.0.10
+Secs : 1454536212
+uSecs : 213556
+Arrival Time : 571891
+Ether Type: 0x0800
+Src IP string: 10.10.0.10
+Dest IP string: 10.10.0.9
+Secs : 1454536212
+uSecs : 217534
+Arrival Time : 575869
+Ether Type: 0x0800
+Src IP string: 10.10.0.9
+Dest IP string: 10.10.0.10
+Secs : 1454536212
+uSecs : 221674
+Arrival Time : 580009
+Ether Type: 0x0800
+Src IP string: 10.10.0.10
+Dest IP string: 10.10.0.9
+Secs : 1454536212
+uSecs : 225647
+Arrival Time : 583982
+Ether Type: 0x0800
+Src IP string: 10.10.0.9
+Dest IP string: 10.10.0.10
+Secs : 1454536212
+uSecs : 229808
+Arrival Time : 588143
+Ether Type: 0x0800
+Src IP string: 10.10.0.10
+Dest IP string: 10.10.0.9
+Secs : 1454536212
+uSecs : 233785
+Arrival Time : 592120
+Ether Type: 0x0800
+Src IP string: 10.10.0.9
+Dest IP string: 10.10.0.10
+Secs : 1454536212
+uSecs : 237937
+Arrival Time : 596272
+Ether Type: 0x0800
+Src IP string: 10.10.0.10
+Dest IP string: 10.10.0.9
+Secs : 1454536212
+uSecs : 241917
+Arrival Time : 600252
+Ether Type: 0x0800
+Src IP string: 10.10.0.9
+Dest IP string: 10.10.0.10
+Secs : 1454536212
+uSecs : 246098
+Arrival Time : 604433
+Ether Type: 0x0800
+Src IP string: 10.10.0.10
+Dest IP string: 10.10.0.9
+Secs : 1454536212
+uSecs : 250057
+Arrival Time : 608392
+Ether Type: 0x0800
+Src IP string: 10.10.0.9
+Dest IP string: 10.10.0.10
+Secs : 1454536212
+uSecs : 254214
+Arrival Time : 612549
+Ether Type: 0x0800
+Src IP string: 10.10.0.10
+Dest IP string: 10.10.0.9
+Secs : 1454536212
+uSecs : 258190
+Arrival Time : 616525
+Ether Type: 0x0800
+Src IP string: 10.10.0.9
+Dest IP string: 10.10.0.10
+Secs : 1454536212
+uSecs : 262332
+Arrival Time : 620667
+Ether Type: 0x0800
+Src IP string: 10.10.0.10
+Dest IP string: 10.10.0.9
+Secs : 1454536212
+uSecs : 266302
+Arrival Time : 624637
+Ether Type: 0x0800
+Src IP string: 10.10.0.9
+Dest IP string: 10.10.0.10
+Secs : 1454536212
+uSecs : 270429
+Arrival Time : 628764
+Ether Type: 0x0800
+Src IP string: 10.10.0.10
+Dest IP string: 10.10.0.9
+Secs : 1454536212
+uSecs : 274421
+Arrival Time : 632756
+Ether Type: 0x0800
+Src IP string: 10.10.0.9
+Dest IP string: 10.10.0.10
+Secs : 1454536212
+uSecs : 278560
+Arrival Time : 636895
+Ether Type: 0x0800
+Src IP string: 10.10.0.10
+Dest IP string: 10.10.0.9
+Secs : 1454536212
+uSecs : 282558
+Arrival Time : 640893
+Ether Type: 0x0800
+Src IP string: 10.10.0.9
+Dest IP string: 10.10.0.10
+Secs : 1454536212
+uSecs : 286693
+Arrival Time : 645028
+Ether Type: 0x0800
+Src IP string: 10.10.0.10
+Dest IP string: 10.10.0.9
+Secs : 1454536212
+uSecs : 290690
+Arrival Time : 649025
+Ether Type: 0x0800
+Src IP string: 10.10.0.9
+Dest IP string: 10.10.0.10
+Secs : 1454536212
+uSecs : 294819
+Arrival Time : 653154
+Ether Type: 0x0800
+Src IP string: 10.10.0.10
+Dest IP string: 10.10.0.9
+Secs : 1454536212
+uSecs : 298837
+Arrival Time : 657172
+Ether Type: 0x0800
+Src IP string: 10.10.0.9
+Dest IP string: 10.10.0.10
+Secs : 1454536212
+uSecs : 302929
+Arrival Time : 661264
+Ether Type: 0x0800
+Src IP string: 10.10.0.10
+Dest IP string: 10.10.0.9
+Secs : 1454536212
+uSecs : 306958
+Arrival Time : 665293
+Ether Type: 0x0800
+Src IP string: 10.10.0.9
+Dest IP string: 10.10.0.10
+Secs : 1454536212
+uSecs : 311024
+Arrival Time : 669359
+Ether Type: 0x0800
+Src IP string: 10.10.0.10
+Dest IP string: 10.10.0.9
+Secs : 1454536212
+uSecs : 315090
+Arrival Time : 673425
+Ether Type: 0x0800
+Src IP string: 10.10.0.9
+Dest IP string: 10.10.0.10
+Secs : 1454536212
+uSecs : 319179
+Arrival Time : 677514
+Ether Type: 0x0800
+Src IP string: 10.10.0.10
+Dest IP string: 10.10.0.9
+Secs : 1454536212
+uSecs : 323219
+Arrival Time : 681554
+Ether Type: 0x0800
+Src IP string: 10.10.0.9
+Dest IP string: 10.10.0.10
+Secs : 1454536212
+uSecs : 327277
+Arrival Time : 685612
+Ether Type: 0x0800
+Src IP string: 10.10.0.10
+Dest IP string: 10.10.0.9
+Secs : 1454536212
+uSecs : 331337
+Arrival Time : 689672
+Ether Type: 0x0800
+Src IP string: 10.10.0.9
+Dest IP string: 10.10.0.10
+Secs : 1454536212
+uSecs : 335391
+Arrival Time : 693726
+Ether Type: 0x0800
+Src IP string: 10.10.0.10
+Dest IP string: 10.10.0.9
+Secs : 1454536212
+uSecs : 339449
+Arrival Time : 697784
+Ether Type: 0x0800
+Src IP string: 10.10.0.9
+Dest IP string: 10.10.0.10
+Secs : 1454536212
+uSecs : 343480
+Arrival Time : 701815
+Ether Type: 0x0800
+Src IP string: 10.10.0.10
+Dest IP string: 10.10.0.9
+Secs : 1454536212
+uSecs : 347562
+Arrival Time : 705897
+Ether Type: 0x0800
+Src IP string: 10.10.0.9
+Dest IP string: 10.10.0.10
+Secs : 1454536212
+uSecs : 351589
+Arrival Time : 709924
+Ether Type: 0x0800
+Src IP string: 10.10.0.10
+Dest IP string: 10.10.0.9
+Secs : 1454536212
+uSecs : 355682
+Arrival Time : 714017
+Ether Type: 0x0800
+Src IP string: 10.10.0.9
+Dest IP string: 10.10.0.10
+Secs : 1454536212
+uSecs : 359714
+Arrival Time : 718049
+Ether Type: 0x0800
+Src IP string: 10.10.0.10
+Dest IP string: 10.10.0.9
+Secs : 1454536212
+uSecs : 363824
+Arrival Time : 722159
+Ether Type: 0x0800
+Src IP string: 10.10.0.9
+Dest IP string: 10.10.0.10
+Secs : 1454536212
+uSecs : 367894
+Arrival Time : 726229
+Ether Type: 0x0800
+Src IP string: 10.10.0.10
+Dest IP string: 10.10.0.9
+Secs : 1454536212
+uSecs : 371937
+Arrival Time : 730272
+Ether Type: 0x0800
+Src IP string: 10.10.0.9
+Dest IP string: 10.10.0.10
+Secs : 1454536212
+uSecs : 376019
+Arrival Time : 734354
+Ether Type: 0x0800
+Src IP string: 10.10.0.10
+Dest IP string: 10.10.0.9
+Secs : 1454536212
+uSecs : 380072
+Arrival Time : 738407
+Ether Type: 0x0800
+Src IP string: 10.10.0.9
+Dest IP string: 10.10.0.10
+Secs : 1454536212
+uSecs : 384149
+Arrival Time : 742484
+Ether Type: 0x0800
+Src IP string: 10.10.0.10
+Dest IP string: 10.10.0.9
+Secs : 1454536212
+uSecs : 388202
+Arrival Time : 746537
+Ether Type: 0x0800
+Src IP string: 10.10.0.9
+Dest IP string: 10.10.0.10
+Secs : 1454536212
+uSecs : 392273
+Arrival Time : 750608
+Ether Type: 0x0800
+Src IP string: 10.10.0.10
+Dest IP string: 10.10.0.9
+Secs : 1454536212
+uSecs : 396342
+Arrival Time : 754677
+Ether Type: 0x0800
+Src IP string: 10.10.0.9
+Dest IP string: 10.10.0.10
+Secs : 1454536212
+uSecs : 400392
+Arrival Time : 758727
+Ether Type: 0x0800
+Src IP string: 10.10.0.10
+Dest IP string: 10.10.0.9
+Secs : 1454536212
+uSecs : 404450
+Arrival Time : 762785
+Ether Type: 0x0800
+Src IP string: 10.10.0.9
+Dest IP string: 10.10.0.10
+Secs : 1454536212
+uSecs : 408474
+Arrival Time : 766809
+Ether Type: 0x0800
+Src IP string: 10.10.0.10
+Dest IP string: 10.10.0.9
+Secs : 1454536212
+uSecs : 412561
+Arrival Time : 770896
+Ether Type: 0x0800
+Src IP string: 10.10.0.9
+Dest IP string: 10.10.0.10
+Secs : 1454536212
+uSecs : 416582
+Arrival Time : 774917
+Ether Type: 0x0800
+Src IP string: 10.10.0.10
+Dest IP string: 10.10.0.9
+Secs : 1454536212
+uSecs : 420692
+Arrival Time : 779027
+Ether Type: 0x0800
+Src IP string: 10.10.0.9
+Dest IP string: 10.10.0.10
+Secs : 1454536212
+uSecs : 424700
+Arrival Time : 783035
+Ether Type: 0x0800
+Src IP string: 10.10.0.10
+Dest IP string: 10.10.0.9
+Secs : 1454536212
+uSecs : 428824
+Arrival Time : 787159
+Ether Type: 0x0800
+Src IP string: 10.10.0.9
+Dest IP string: 10.10.0.10
+Secs : 1454536212
+uSecs : 432825
+Arrival Time : 791160
+Ether Type: 0x0800
+Src IP string: 10.10.0.10
+Dest IP string: 10.10.0.9
+Secs : 1454536212
+uSecs : 436946
+Arrival Time : 795281
+Ether Type: 0x0800
+Src IP string: 10.10.0.9
+Dest IP string: 10.10.0.10
+Secs : 1454536212
+uSecs : 440987
+Arrival Time : 799322
+Ether Type: 0x0800
+Src IP string: 10.10.0.10
+Dest IP string: 10.10.0.9
+Secs : 1454536212
+uSecs : 445077
+Arrival Time : 803412
+Ether Type: 0x0800
+Src IP string: 10.10.0.9
+Dest IP string: 10.10.0.10
+Secs : 1454536212
+uSecs : 449121
+Arrival Time : 807456
+Ether Type: 0x0806
+Src IP string: 10.10.0.9
+Dest IP string: 10.10.0.10
+Arrival Time : 931337
+Ether Type: 0x0806
+Src IP string: 10.10.0.10
+Dest IP string: 10.10.0.9
+Arrival Time : 932562
+Timeline 0 advanced its LXCs by 0.999998 seconds
+Timeline 1 advanced its LXCs by 0.999998 seconds
+|==================================================
+| Calling STOP EXPERIMENT
+|==================================================
+|============================================================|
+| Overall Stats
+|------------------------------------------------------------|
+| OUT | Total Pkts Sent to LXCs       : 204
+| OUT | Total Pkts error late to LXC  : 753
+| OUT | Avg Pkts error late to LXC    : 3.69117647
+|------------------------------------------------------------|
+| IN  | Total Pkts Injected to past   : 0
+| IN  | Total Error Injected to past  : 0
+| IN  | Average past error            : -nan
+|============================================================|
+| TOTAL Advance ERROR        : 20420
+| TOTAL Times Advanced       : 4137
+| TOTAL Times Over           : 1567
+| TOTAL Times Under          : 2212
+| TOTAL Times Exact          : 358
+| Average Advance ERROR      : 4.93594392
+|============================================================|
+| TOTAL Pkt Timestamp ERROR  : 1636
+| TOTAL Pkts Injected        : 204
+| Average Packet Inaccuracy  : 8.01960784
+|============================================================|
+| MIN Advance Error          : 0
+| MAX Advance Error          : 28
+| Advance Error RMS          : 6.67372119
+| Advance Error Variance     : 20.17501212
+| Advance Error Std Dev      : 4.49166029
+|============================================================|
+
+|============================================================|
+| Timeline 0 advanced 2076 times ( Progress 2076 ) for a total of 5.147063 seconds
+| Timeline 1 advanced 2061 times ( Progress 2061 ) for a total of 5.148881 seconds
+|============================================================|
+| Cumulative emulation seconds 10.295944
+| Simulation run time is 5.4002 seconds
+| Total run time is 7.43462 seconds
+|============================================================|

@@ -1,0 +1,86 @@
+total_timeline 5
+tick_per_second 6
+run_time 0.1
+seed 1
+log_dir Sample_Out
+
+Net
+[
+	lxcConfig
+	[
+		 settings [ lxcNHI 0:1 TDF 300 cmd "ls" ] 
+		 settings [ lxcNHI 1:1 TDF 300 cmd "ping 0:1 -c 2" ] 
+		 settings [ lxcNHI 0:2 TDF 300 cmd "ls" ] 
+		 settings [ lxcNHI 1:2 TDF 300 cmd "ping 0:2 -c 2" ] 
+		 settings [ lxcNHI 0:3 TDF 300 cmd "ls" ] 
+		 settings [ lxcNHI 1:3 TDF 300 cmd "ping 0:3 -c 2" ] 
+		 settings [ lxcNHI 0:4 TDF 300 cmd "ls" ] 
+		 settings [ lxcNHI 1:4 TDF 300 cmd "ping 0:4 -c 2" ] 
+		 settings [ lxcNHI 2:1 TDF 300 cmd "ls" ] 
+		 settings [ lxcNHI 3:1 TDF 300 cmd "ping 2:1 -c 2" ] 
+		 settings [ lxcNHI 2:2 TDF 300 cmd "ls" ] 
+		 settings [ lxcNHI 3:2 TDF 300 cmd "ping 2:2 -c 2" ] 
+		 settings [ lxcNHI 2:3 TDF 300 cmd "ls" ] 
+		 settings [ lxcNHI 3:3 TDF 300 cmd "ping 2:3 -c 2" ] 
+		 settings [ lxcNHI 2:4 TDF 300 cmd "ls" ] 
+		 settings [ lxcNHI 3:4 TDF 300 cmd "ping 2:4 -c 2" ] 
+	]
+	Net [id 0 alignment 0 _extends .custom_net.emuNet_4.Net]
+	Net [id 1 alignment 1 _extends .custom_net.emuNet_4.Net]
+	Net [id 2 alignment 2 _extends .custom_net.emuNet_4.Net]
+	Net [id 3 alignment 3 _extends .custom_net.emuNet_4.Net]
+
+	Net
+	[
+		id 60 alignment 4
+		router
+		[
+			id 40
+			_find .dict.routerGraph.graph
+			interface [ id 0 _extends .dict.1Gb ]
+			interface [ id 1 _extends .dict.1Gb ]
+			interface [ id 2 _extends .dict.1Gb ]
+			interface [ id 3 _extends .dict.1Gb ]
+		]
+		router
+		[
+			id 41
+			_find .dict.routerGraph.graph
+			interface [ id 0 _extends .dict.1Gb ]
+			interface [ id 1 _extends .dict.1Gb ]
+			interface [ id 2 _extends .dict.1Gb ]
+			interface [ id 3 _extends .dict.1Gb ]
+		]
+		router
+		[
+			id 42
+			_find .dict.routerGraph.graph
+			interface [ id 0 _extends .dict.1Gb ]
+			interface [ id 1 _extends .dict.1Gb ]
+			interface [ id 2 _extends .dict.1Gb ]
+			interface [ id 3 _extends .dict.1Gb ]
+		]
+		router
+		[
+			id 43
+			_find .dict.routerGraph.graph
+			interface [ id 0 _extends .dict.1Gb ]
+			interface [ id 1 _extends .dict.1Gb ]
+			interface [ id 2 _extends .dict.1Gb ]
+			interface [ id 3 _extends .dict.1Gb ]
+		]
+	]
+	link [ attach 60:40(0) attach 60:41(1)  _extends .dict.link_delay_50us  ]
+	link [ attach 60:41(0) attach 60:42(1)  _extends .dict.link_delay_50us  ]
+	link [ attach 60:42(0) attach 60:43(1)  _extends .dict.link_delay_50us  ]
+	link [ attach 60:43(0) attach 60:40(1)  _extends .dict.link_delay_50us  ]
+
+	link [ attach 0:5(0) attach 60:40(2)  _extends .dict.link_delay_50us  ]
+	link [ attach 0:6(0) attach 60:40(3)  min_delay 1e-6 prop_delay 0.001  ]
+	link [ attach 1:5(0) attach 60:41(2)  _extends .dict.link_delay_50us  ]
+	link [ attach 1:6(0) attach 60:41(3)  min_delay 1e-6 prop_delay 0.001  ]
+	link [ attach 2:5(0) attach 60:42(2)  _extends .dict.link_delay_50us  ]
+	link [ attach 2:6(0) attach 60:42(3)  min_delay 1e-6 prop_delay 0.001  ]
+	link [ attach 3:5(0) attach 60:43(2)  _extends .dict.link_delay_50us  ]
+	link [ attach 3:6(0) attach 60:43(3)  min_delay 1e-6 prop_delay 0.001  ]
+]

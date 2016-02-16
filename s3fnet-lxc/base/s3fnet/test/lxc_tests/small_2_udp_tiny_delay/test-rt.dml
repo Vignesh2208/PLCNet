@@ -1,0 +1,8 @@
+#routable destination: 0:0
+#routable destination: 1:0
+forwarding_table [ node_nhi 0:0
+  nhi_route [ dest default interface 0 ]
+]
+forwarding_table [ node_nhi 1:0
+  nhi_route [ dest default interface 0 ]
+]

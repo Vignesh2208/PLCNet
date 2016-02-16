@@ -1,0 +1,5 @@
+lxc.utsname = lxc2-4
+lxc.network.type = veth
+lxc.network.flags = up
+lxc.network.link = br-2-4
+lxc.network.ipv4 = 10.10.0.46/8
