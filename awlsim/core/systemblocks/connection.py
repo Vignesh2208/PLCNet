@@ -330,14 +330,16 @@ class Connection(object) :
 	
 	def run_client(self) :
 		self.read_finish_status = 1
-		#TCP_REMOTE_IP  = self.connection_params.rem_staddr
-		TCP_REMOTE_IP = "10.100.0.1"
+		TCP_REMOTE_IP  = self.connection_params.rem_staddr
+		#TCP_REMOTE_IP = "10.100.0.1"
 		TCP_REMOTE_PORT = self.connection_params.rem_tsap_id
 		BUFFER_SIZE = 4096
 		self.BUSY = True
 		client_socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 		#client_socket = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
 		#client_socket.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1)
+
+		
 		
 		try:
 			client_socket.settimeout(self.conn_time)
@@ -574,7 +576,7 @@ class Connection(object) :
 				self.status_lock.release()
 
 				nsleep(5000000)
-
+				
 				threading.Thread(target=self.run_client).start()
 				try :
 					o = self.thread_resp_queue.get(block=True,timeout=0.1)
