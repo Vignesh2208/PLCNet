@@ -117,6 +117,8 @@ class Host : public Entity, public DmlObject, public ProtocolGraph {
   /** return the pointer of the top net */
   Net* getTopNet() {return inNet()->getTopNet();}
 
+  LXC_Proxy * getLXCproxy() { return proxy ; }
+
   LXC_Proxy* proxy;
   bool isEmulated;
   void initLxcProxy(s3f::dml::Configuration* cfg);
@@ -128,6 +130,7 @@ class Host : public Entity, public DmlObject, public ProtocolGraph {
    * of the host id.
    */
   Random::RNG* rng;
+ 
 
   /**
    * The seed of this host.

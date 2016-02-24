@@ -39,6 +39,8 @@ NetworkInterface::NetworkInterface(Host* parent, long nicid) :
   /* init mac48_addr */
   mac48_addr = Mac48Address::Allocate();
 
+  dst_nic = NULL;
+
   // wait until the config phase to settle the nhi and ip address, as
   // well as the mac and phy layer protocol sessions..
 }

@@ -32,6 +32,7 @@ Host::Host(Timeline* tl, Net* parent, long hostid) : Entity(tl), DmlObject(paren
 	  disp_now_buf[i] = '0';
   }
   disp_now_buf[31]='\0';
+  
 }
 
 Host::~Host() 

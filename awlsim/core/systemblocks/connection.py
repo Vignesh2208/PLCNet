@@ -574,8 +574,9 @@ class Connection(object) :
 				self.STATUS_FUNC = "MODBUSPN"
 				self.IDENT_CODE = "NONE"	
 				self.status_lock.release()
-
-				nsleep(5000000)
+				
+				#nsleep(5000000)			
+				time.sleep(3)
 				
 				threading.Thread(target=self.run_client).start()
 				try :

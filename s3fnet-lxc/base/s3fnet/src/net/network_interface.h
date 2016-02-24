@@ -108,6 +108,10 @@ class NetworkInterface : public DmlObject, public ProtocolGraph {
   /** The associated S3F InChannel. */
   InChannel* ic;
 
+  NetworkInterface * dst_nic;
+
+  NetworkInterface * get_dst_nic() { return dst_nic };
+
  protected:
   /** The IP address allocated to this interface. */
   IPADDR ip_addr;

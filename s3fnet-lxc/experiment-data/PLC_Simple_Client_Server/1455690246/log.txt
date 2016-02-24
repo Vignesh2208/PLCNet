@@ -1,0 +1,237 @@
+|==================================================
+| LXC Manager Created
+| Simulation has 2 timelines
+|==================================================
+LXC proxy initialization: lxc0-0 successfull
+LXC proxy initialization: lxc1-0 successfull
+ ____________________________________________
+|
+| Printing out Info about Timeline 0 ...
+|_____
+      | Timeline 0 has Proxy LXC lxc0-0
+      |______________________________________
+ ____________________________________________
+|
+| Printing out Info about Timeline 1 ...
+|_____
+      | Timeline 1 has Proxy LXC lxc1-0
+      |______________________________________
+|==================================================
+| Creating and Launching LXCs                      
+|==================================================
+
+|==================================================
+| Dilating and Adding LXCs to Experiment           
+|==================================================
+
+GET LXC lxc0-0 TDF 5.000000 PID 4119 Finished
+GET LXC lxc1-0 TDF 5.000000 PID 4155 Finished
+|==================================================
+| Calling SynchronizeAndFreeze. Syncing up LXCs
+|==================================================
+
+| lxc0-0 Frozen at [ 1455690248 sec 411867 usec ]
+| lxc1-0 Frozen at [ 1455690248 sec 411867 usec ]
+
+|==================================================
+Arrival Time : 985435
+Arrival Time : 986661
+Ether Type: 0x0800
+Src IP string: 10.10.0.10
+Dest IP string: 10.10.0.9
+TCP source port : 11705
+TCP dest port : 62977
+TCP seq : -1920670244
+TCP ack_seq : 0
+TCP syn : 1
+TCP ack : 0
+TCP rst : 0
+TCP urg : 0
+TCP fin : 0
+TCP window : 4210
+############################Using default method of timestamp estimation
+Arrival Time : 987894
+Ether Type: 0x0800
+Src IP string: 10.10.0.9
+Dest IP string: 10.10.0.10
+TCP source port : 62977
+TCP dest port : 11705
+TCP seq : -686530680
+TCP ack_seq : -1903893028
+TCP syn : 1
+TCP ack : 1
+TCP rst : 0
+TCP urg : 0
+TCP fin : 0
+TCP window : 8305
+############################Using default method of timestamp estimation
+Arrival Time : 989264
+Ether Type: 0x0800
+Src IP string: 10.10.0.10
+Dest IP string: 10.10.0.9
+TCP source port : 11705
+TCP dest port : 62977
+TCP seq : -1903893028
+TCP ack_seq : -669753464
+TCP syn : 0
+TCP ack : 1
+TCP rst : 0
+TCP urg : 0
+TCP fin : 0
+TCP window : 58624
+############################Using default method of timestamp estimation
+Arrival Time : 990641
+Ether Type: 0x0800
+Src IP string: 10.10.0.10
+Dest IP string: 10.10.0.9
+TCP source port : 11705
+TCP dest port : 62977
+TCP seq : -1903893028
+TCP ack_seq : -669753464
+TCP syn : 0
+TCP ack : 1
+TCP rst : 0
+TCP urg : 0
+TCP fin : 0
+TCP window : 58624
+############################Secs : 1455690249
+uSecs : 562407
+Arrival Time : 1150540
+Ether Type: 0x0800
+Src IP string: 10.10.0.9
+Dest IP string: 10.10.0.10
+TCP source port : 62977
+TCP dest port : 11705
+TCP seq : -669753464
+TCP ack_seq : -1786452516
+TCP syn : 0
+TCP ack : 1
+TCP rst : 0
+TCP urg : 0
+TCP fin : 0
+TCP window : 58112
+############################Secs : 1455690249
+uSecs : 576822
+Arrival Time : 1164955
+Ether Type: 0x0800
+Src IP string: 10.10.0.9
+Dest IP string: 10.10.0.10
+TCP source port : 62977
+TCP dest port : 11705
+TCP seq : -669753464
+TCP ack_seq : -1786452516
+TCP syn : 0
+TCP ack : 1
+TCP rst : 0
+TCP urg : 0
+TCP fin : 0
+TCP window : 58112
+############################Secs : 1455690249
+uSecs : 576822
+Arrival Time : 1164955
+Ether Type: 0x0800
+Src IP string: 10.10.0.9
+Dest IP string: 10.10.0.10
+TCP source port : 62977
+TCP dest port : 11705
+TCP seq : -569090168
+TCP ack_seq : -1786452516
+TCP syn : 0
+TCP ack : 1
+TCP rst : 0
+TCP urg : 0
+TCP fin : 1
+TCP window : 58112
+############################Secs : 1455690249
+uSecs : 576822
+Arrival Time : 1164955
+Ether Type: 0x0800
+Src IP string: 10.10.0.10
+Dest IP string: 10.10.0.9
+TCP source port : 11705
+TCP dest port : 62977
+TCP seq : -1786452516
+TCP ack_seq : -569090168
+TCP syn : 0
+TCP ack : 1
+TCP rst : 0
+TCP urg : 0
+TCP fin : 0
+TCP window : 58624
+############################Secs : 1455690249
+uSecs : 562407
+Arrival Time : 1150540
+Ether Type: 0x0800
+Src IP string: 10.10.0.10
+Dest IP string: 10.10.0.9
+TCP source port : 11705
+TCP dest port : 62977
+TCP seq : -1786452516
+TCP ack_seq : -552312952
+TCP syn : 0
+TCP ack : 1
+TCP rst : 0
+TCP urg : 0
+TCP fin : 1
+TCP window : 58624
+############################Secs : 1455690249
+uSecs : 562407
+Arrival Time : 1150540
+Ether Type: 0x0800
+Src IP string: 10.10.0.9
+Dest IP string: 10.10.0.10
+TCP source port : 62977
+TCP dest port : 11705
+TCP seq : -552312952
+TCP ack_seq : -1769675300
+TCP syn : 0
+TCP ack : 1
+TCP rst : 0
+TCP urg : 0
+TCP fin : 0
+TCP window : 58112
+############################Secs : 1455690249
+uSecs : 576822
+Arrival Time : 1164955
+Timeline 0 advanced its LXCs by 9.999989 seconds
+Timeline 1 advanced its LXCs by 9.999989 seconds
+|==================================================
+| Calling STOP EXPERIMENT
+|==================================================
+|============================================================|
+| Overall Stats
+|------------------------------------------------------------|
+| OUT | Total Pkts Sent to LXCs       : 12
+| OUT | Total Pkts error late to LXC  : 31
+| OUT | Avg Pkts error late to LXC    : 2.58333333
+|------------------------------------------------------------|
+| IN  | Total Pkts Injected to past   : 3
+| IN  | Total Error Injected to past  : 40219
+| IN  | Average past error            : 13406.33333333
+|============================================================|
+| TOTAL Advance ERROR        : 136216
+| TOTAL Times Advanced       : 35945
+| TOTAL Times Over           : 13079
+| TOTAL Times Under          : 18828
+| TOTAL Times Exact          : 4038
+| Average Advance ERROR      : 3.78956739
+|============================================================|
+| TOTAL Pkt Timestamp ERROR  : 38
+| TOTAL Pkts Injected        : 12
+| Average Packet Inaccuracy  : 3.16666667
+|============================================================|
+| MIN Advance Error          : 0
+| MAX Advance Error          : 34
+| Advance Error RMS          : 5.31210362
+| Advance Error Variance     : 13.85762381
+| Advance Error Std Dev      : 3.72258295
+|============================================================|
+
+|============================================================|
+| Timeline 0 advanced 17988 times ( Progress 17988 ) for a total of 51.138219 seconds
+| Timeline 1 advanced 17957 times ( Progress 17957 ) for a total of 51.131945 seconds
+|============================================================|
+| Cumulative emulation seconds 102.270164
+| Simulation run time is 53.05 seconds
+| Total run time is 55.0941 seconds
+|============================================================|

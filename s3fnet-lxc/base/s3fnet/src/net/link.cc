@@ -119,6 +119,9 @@ int Link::connect(Net* pNet)
   iface2->is_oc_connected = true;
   iface2->is_ic_connected = true;
 
+  iface1->dst_nic = iface2;
+  iface2->dst_nic = iface1;
+
   return 0;
 }
 
