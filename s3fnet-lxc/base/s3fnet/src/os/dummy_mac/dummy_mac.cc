@@ -11,6 +11,7 @@
 #include "net/mac48_address.h"
 #include "os/base/protocols.h"
 #include "os/ipv4/ip_interface.h"
+#include "os/serial/serial_message.h"
 #include "net/forwardingtable.h"
 #include "os/ipv4/ip_message.h"
 #include "os/dummy_mac/dummy_mac_message.h"

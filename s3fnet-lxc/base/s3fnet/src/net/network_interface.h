@@ -110,7 +110,7 @@ class NetworkInterface : public DmlObject, public ProtocolGraph {
 
   NetworkInterface * dst_nic;
 
-  NetworkInterface * get_dst_nic() { return dst_nic };
+  NetworkInterface * get_dst_nic() { return dst_nic; }
 
  protected:
   /** The IP address allocated to this interface. */

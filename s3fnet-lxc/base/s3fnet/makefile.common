@@ -352,6 +352,38 @@ LXCEMU_NONXFORM = $(filter %.cc,$(LXCEMU_SRCFILES))
 LXCEMU_XFORM = $(filter %.cxx,$(LXCEMU_SRCFILES))
 LXCEMU_OBJECTS = $(LXCEMU_XFORM:.cxx=.xform.o) $(LXCEMU_NONXFORM:.cc=.o)
 
+
+#
+# os/dummy_mac : dummy mac layer for serial connections
+#
+
+DUMMYMAC_HDRFILES = \
+       $(SRCDIR)/os/dummy_mac/dummy_mac.h \
+       $(SRCDIR)/os/dummy_mac/dummy_mac_message.h
+DUMMYMAC_SRCFILES = \
+       $(SRCDIR)/os/dummy_mac/dummy_mac.cc \
+       $(SRCDIR)/os/dummy_mac/dummy_mac_message.cc
+DUMMYMAC_NONXFORM = $(filter %.cc,$(DUMMYMAC_SRCFILES))
+DUMMYMAC_XFORM = $(filter %.cxx,$(DUMMYMAC_SRCFILES))
+DUMMYMAC_OBJECTS = $(DUMMYMAC_XFORM:.cxx=.xform.o) $(DUMMYMAC_NONXFORM:.cc=.o)
+
+#
+# os/serial : serial network layer
+#
+
+SERIAL_HDRFILES = \
+       $(SRCDIR)/os/serial/serial_session.h \
+       $(SRCDIR)/os/dummy_mac/serial_message.h
+SERIAL_SRCFILES = \
+       $(SRCDIR)/os/serial/serial_session.cc \
+       $(SRCDIR)/os/serial/serial_message.cc
+SERIAL_NONXFORM = $(filter %.cc,$(SERIAL_SRCFILES))
+SERIAL_XFORM = $(filter %.cxx,$(SERIAL_SRCFILES))
+SERIAL_OBJECTS = $(SERIAL_XFORM:.cxx=.xform.o) $(SERIAL_NONXFORM:.cc=.o)
+
+
+
+
 #
 # all header files, source files, and object files.
 #
@@ -370,8 +402,10 @@ S3FNET_HDRFILES = \
 	$(LXCEMU_HDRFILES) \
 	$(SOCKET_HDRFILES) \
 	$(TCP_HDRFILES) \
-	$(UDP_HDRFILES)
-
+	$(UDP_HDRFILES) \
+	$(SERIAL_HDRFILES) \
+	$(DUMMYMAC_HDRFILES) 
+	
 S3FNET_SRCFILES = \
 	$(EXTRA_SRCFILES) \
 	$(UTIL_SRCFILES) \
@@ -386,7 +420,10 @@ S3FNET_SRCFILES = \
 	$(LXCEMU_SRCFILES) \
 	$(SOCKET_SRCFILES) \
 	$(TCP_SRCFILES) \
-	$(UDP_SRCFILES)
+	$(UDP_SRCFILES) \
+	$(SERIAL_SRCFILES) \
+	$(DUMMYMAC_SRCFILES)
+	
 
 S3FNET_OBJECTS = \
 	$(EXTRA_OBJECTS) \
@@ -402,7 +439,11 @@ S3FNET_OBJECTS = \
 	$(LXCEMU_OBJECTS) \
 	$(SOCKET_OBJECTS) \
 	$(TCP_OBJECTS) \
-	$(UDP_OBJECTS)	
+	$(UDP_OBJECTS) \
+	$(SERIAL_OBJECTS) \
+	$(DUMMYMAC_OBJECTS)
+	
+
 # Set the compiler switch for debugging and optimization and activate
 # the appropriate debugging switch for different modules.
 

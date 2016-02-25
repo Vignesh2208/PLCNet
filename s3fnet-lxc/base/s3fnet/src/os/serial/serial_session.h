@@ -4,12 +4,20 @@
 #include "os/base/protocol_session.h"
 #include "s3fnet.h"
 #include "util/shstl.h"
+#include "util/errhandle.h"
+#include "net/host.h"
+#include "os/base/protocols.h"
+#include "net/network_interface.h"
+#include "os/serial/serial_message.h"
+#include <iostream>
 
 namespace s3f {
 namespace s3fnet {
 
 #define SERIAL_PROTOCOL_CLASSNAME "S3F.OS.SERIAL"
 #define SERIAL_DEVICE_CONTROL_FILE_NAME "/dev/s3fserial0"
+
+typedef unsigned char uint8_t;
 
 struct ioctl_conn_param{
 
@@ -36,7 +44,7 @@ class SerialSession: public ProtocolSession {
 		SerialSession(ProtocolGraph* graph);
 		void flush_buffer(char * buf, int size);
 		void injectEvent(ltime_t incoming_time, int conn_id);
-		void reset_ioctl_conn(struct ioctl_conn_params * ioctl_conn);
+		void reset_ioctl_conn(struct ioctl_conn_param * ioctl_conn);
 		int get_rxbuf_space(int conn_id);
 		void callback(Activation ac);
 		void callback_body(SerialMessage * msg, NetworkInterface * outgoing_nic);
@@ -54,8 +62,8 @@ class SerialSession: public ProtocolSession {
 class SerialSessionCallbackActivation : public ProtocolCallbackActivation
 {
   public:
-	SerialSessionCallbackActivation(ProtocolSession* sess, int command, char * data, int length);
-	virtual ~LXCEventSessionCallbackActivation(){}
+	SerialSessionCallbackActivation(ProtocolSession* sess, int command, int conn_id,  char * data, int length);
+	virtual ~SerialSessionCallbackActivation(){}
 
 	int command;
 	int conn_id;
@@ -66,3 +74,5 @@ class SerialSessionCallbackActivation : public ProtocolCallbackActivation
 
 };
 };
+
+#endif

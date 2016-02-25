@@ -11,7 +11,7 @@
 namespace s3f {
 namespace s3fnet {
 
-DummyMacMessage::DummyMacMessage() : 
+DummyMacMessage::DummyMacMessage()
 {}
 
 

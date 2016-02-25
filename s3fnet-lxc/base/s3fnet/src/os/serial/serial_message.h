@@ -3,6 +3,7 @@
 
 #include "os/base/protocol_message.h"
 #include "s3fnet.h"
+#include "util/errhandle.h"
 
 namespace s3f {
 namespace s3fnet {
@@ -36,7 +37,7 @@ class SerialMessage: public ProtocolMessage {
    */
   virtual int packingSize()
   {
-    return KERN_BUF_SIZE + ProtocolMessage::packingSize();
+    return (KERN_BUF_SIZE + 2*sizeof(int) + sizeof(char*) + ProtocolMessage::packingSize());
   }
   
   /**
@@ -45,7 +46,7 @@ class SerialMessage: public ProtocolMessage {
    * buffer with this size in simulation.
    */
 
-  virtual int realByteCount() { return 0; }
+  virtual int realByteCount() { return length; }
 
   char src_lxcName[KERN_BUF_SIZE];
 
@@ -55,7 +56,7 @@ class SerialMessage: public ProtocolMessage {
 
   char * data;
 
- protected:
+ //protected:
   /** The destructor is protected from accidental invocation. */
   virtual ~SerialMessage();
 };

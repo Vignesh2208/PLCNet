@@ -1,5 +1,5 @@
 
-#ifdef __INCLUDES_H
+#ifndef __INCLUDES_H
 
 #include <linux/module.h>
 #include <linux/moduleparam.h>
@@ -15,8 +15,11 @@
 #include <linux/seq_file.h>
 #include <linux/cdev.h>
 #include <linux/poll.h>
+#include <linux/spinlock.h>
+#include <linux/spinlock_types.h>
+#include <linux/sched.h>
 
-#include <asm/system.h>		/* cli(), *_flags */
+//#include <asm/system.h>		/* cli(), *_flags */
 #include <asm/uaccess.h>	/* copy_*_user */
 
 #include "hashmap.h"

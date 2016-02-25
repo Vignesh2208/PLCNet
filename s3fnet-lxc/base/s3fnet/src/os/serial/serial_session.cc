@@ -1,10 +1,4 @@
 #include "os/serial/serial_session.h"
-#include "util/errhandle.h"
-#include "net/host.h"
-#include "os/base/protocols.h"
-#include "net/network_interface.h"
-#include "os/serial/serial_message.h"
-#include <iostream>
 
 #ifdef SERIAL_DEBUG
 #define SERIAL_DUMP(x) printf("IP: "); x
@@ -54,17 +48,17 @@ void SerialSession::init()
 
   	
   	
-  	assert(inHost()->proxy != NULL)  	
+  	assert(inHost()->proxy != NULL) ; 	
   	dev_fd = open(SERIAL_DEVICE_CONTROL_FILE_NAME,0);
 
-  	assert(dev_fd >= 0)
+  	assert(dev_fd >= 0);
   	rts_mask = 0;
   	pending_conn_mask = 0;
   	int i = 0;
   	for(i = 0; i < NR_SERIAL_DEVS; i++){
   		conn_to_lxc_map[i] = NULL;
   		conn_to_nic_map[i] = NULL;
-  		conn_to_lxc_map[i] = new unsigned char[KERN_BUF_SIZE];
+  		conn_to_lxc_map[i] = new char[KERN_BUF_SIZE];
 
   		if(!conn_to_lxc_map[i])
   			error_quit("ERROR : SerialSession::init() - malloc error");
@@ -120,7 +114,7 @@ int SerialSession::pop(Activation msg, ProtocolSession* lo_sess, void* extinfo, 
 
 
 	for(i = 0; i < NR_SERIAL_DEVS; i++){
-		if(strcmp(conn_to_lxc_map[i],recv_msg->srclxcName) == 0){
+		if(strcmp(conn_to_lxc_map[i],recv_msg->src_lxcName) == 0){
 			conn_id = i;
 			break;
 		}
@@ -129,7 +123,7 @@ int SerialSession::pop(Activation msg, ProtocolSession* lo_sess, void* extinfo, 
 	if(conn_id == -1){
 		reset_ioctl_conn(&ioctl_conn);	
 		strncpy(ioctl_conn.owner_lxc_name,proxy->lxcName,KERN_BUF_SIZE);
-		strncpy(ioctl_conn.dst_lxc_name,recv_msg->srclxcName,KERN_BUF_SIZE);
+		strncpy(ioctl_conn.dst_lxc_name,recv_msg->src_lxcName,KERN_BUF_SIZE);
 		if(ioctl(dev_fd,S3FSERIAL_GETCONNID,&ioctl_conn) < 0){
 			SERIAL_DUMP(printf("ERROR SerialSession::pop ioctl GETCONNID"));
 			delete recv_msg->data;
@@ -138,7 +132,7 @@ int SerialSession::pop(Activation msg, ProtocolSession* lo_sess, void* extinfo, 
 		}
 		assert(ioctl_conn.conn_id >=0 && ioctl_conn.conn_id < NR_SERIAL_DEVS);
 		conn_id = ioctl_conn.conn_id;
-		strncpy(conn_to_lxc_map[conn_id], recv_msg->srclxcName,KERN_BUF_SIZE);
+		strncpy(conn_to_lxc_map[conn_id], recv_msg->src_lxcName,KERN_BUF_SIZE);
 	}
 
 
@@ -146,7 +140,7 @@ int SerialSession::pop(Activation msg, ProtocolSession* lo_sess, void* extinfo, 
 		for(i = 0; i < NR_SERIAL_DEVS; i++){
 			nic = owner_host->getNetworkInterface(i);
 			if(nic != NULL){
-				if(strcmp(nic->get_dst_nic()->getHost()->proxy->lxcName,recv_msg->srclxcName) == 0){
+				if(strcmp(nic->get_dst_nic()->getHost()->proxy->lxcName,recv_msg->src_lxcName) == 0){
 					conn_to_nic_map[conn_id] = nic;
 					break;
 				}
@@ -163,7 +157,7 @@ int SerialSession::pop(Activation msg, ProtocolSession* lo_sess, void* extinfo, 
 			// send CTS
 			command = CTS;
 			length = 4;
-			data = new unsigned char[4];
+			data =  new char[4];
 			strcpy(data,"CTS");
 		}
 	}
@@ -174,7 +168,7 @@ int SerialSession::pop(Activation msg, ProtocolSession* lo_sess, void* extinfo, 
 			// send DNS
 			command = DNS;
 			length = 4;
-			data = new unsigned char[4];
+			data = new char[4];
 			strcpy(data,"DNS");
 		}
 
@@ -195,7 +189,7 @@ int SerialSession::pop(Activation msg, ProtocolSession* lo_sess, void* extinfo, 
 		// copy whatever can be copied to the rx buf
 		reset_ioctl_conn(&ioctl_conn);	
 		strncpy(ioctl_conn.owner_lxc_name,proxy->lxcName,KERN_BUF_SIZE);
-		strncpy(ioctl_conn.dst_lxc_name,recv_msg->srclxcName,KERN_BUF_SIZE);
+		strncpy(ioctl_conn.dst_lxc_name,recv_msg->src_lxcName,KERN_BUF_SIZE);
 		ioctl_conn.conn_id = conn_id;
 		if(recv_msg->length < space_avail)
 			space_avail = recv_msg->length;
@@ -245,7 +239,8 @@ void SerialSession::callback(Activation ac){
 	assert(length > 0);
 	assert(conn_to_nic_map[conn_id] != NULL);
 	NetworkInterface * out_nic = conn_to_nic_map[conn_id];
-	SerialMessage * msg = new SerialMessage(inHost()->proxy->lxcName);
+	SerialMessage * msg = new SerialMessage();
+	strcpy(msg->src_lxcName,inHost()->proxy->lxcName);
 	assert(msg != NULL);
 
 	msg->data = data;
@@ -284,7 +279,7 @@ void SerialSession::injectEvent(ltime_t incoming_time, int conn_id){
 	strncpy(ioctl_conn.owner_lxc_name,inHost()->proxy->lxcName,KERN_BUF_SIZE);
 	ioctl_conn.conn_id = conn_id;
 
-	if(ioctl(dev_fd,S3FSERIAL_GETCONNLXC), &ioctl_conn) < 0){
+	if(ioctl(dev_fd,S3FSERIAL_GETCONNLXC, &ioctl_conn) < 0){
 		SERIAL_DUMP(printf("ERROR SerialSession::injectEvent ioctl GETCONNLXC"));
 		return;
 	}
@@ -328,7 +323,7 @@ void SerialSession::injectEvent(ltime_t incoming_time, int conn_id){
 			error_quit("ERROR : SerialSession::injectEvent error ioctl rtx");
 
 		assert(ioctl_conn.num_bytes_to_read > 0);
-		data = new unsigned char[ioctl_conn.num_bytes_to_read];
+		data = new char[ioctl_conn.num_bytes_to_read];
 		memcpy(data,ioctl_conn.bytes_to_read,ioctl_conn.num_bytes_to_read);
 		length = ioctl_conn.num_bytes_to_read;
 		
@@ -336,7 +331,7 @@ void SerialSession::injectEvent(ltime_t incoming_time, int conn_id){
 	else{
 		// have to send rts
 		command = RTS;
-		data = new unsigned char[4];
+		data = new char[4];
 		strcpy(data,"RTS");
 		length = 4;
 	}
@@ -383,7 +378,7 @@ void SerialSession::flush_buffer(char * buf, int size){
 		buf[i] = '\0';
 }
 
-void SerialSession::reset_ioctl_conn(struct ioctl_conn_params * ioctl_conn){
+void SerialSession::reset_ioctl_conn(struct ioctl_conn_param * ioctl_conn){
 	flush_buffer(ioctl_conn->owner_lxc_name,KERN_BUF_SIZE);
 	flush_buffer(ioctl_conn->dst_lxc_name,KERN_BUF_SIZE);
   	flush_buffer(ioctl_conn->bytes_to_write,RX_BUF_SIZE);
@@ -409,8 +404,8 @@ int SerialSession::get_rxbuf_space(int conn_id){
 	return RX_BUF_SIZE - num_recv_bytes;
 }
 
-SerialEventSessionCallbackActivation::SerialSessionCallbackActivation
-(ProtocolSession* sess, int _command, int _conn_id, char *_data, int length) :
+SerialSessionCallbackActivation::SerialSessionCallbackActivation
+(ProtocolSession* sess, int _command, int _conn_id, char *_data, int _length) :
 	ProtocolCallbackActivation(sess),
 	command(_command),
 	conn_id(_conn_id),

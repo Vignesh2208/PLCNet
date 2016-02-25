@@ -6,20 +6,18 @@
  */
 
 #include "os/serial/serial_message.h"
-#include "util/errhandle.h"
+
 
 
 namespace s3f {
 namespace s3fnet {
 
-SerialMessage::SerialMessage(char * lxcName)
+SerialMessage::SerialMessage()
 {
 	int i = 0;
 	for(i = 0; i < KERN_BUF_SIZE; i++){
 		src_lxcName[i] = '\0';
 	}
-	if(lxcName != NULL)
-		strcpy(src_lxcName,lxcName);
 	data = NULL;
 	command = 0;
 	length = 0;
@@ -29,7 +27,7 @@ SerialMessage::SerialMessage(char * lxcName)
 SerialMessage::SerialMessage(const SerialMessage& iph) :
   ProtocolMessage(iph)
 {
-	strcpy(src_lxcName, iph.lxcName);
+	strcpy(src_lxcName, iph.src_lxcName);
 	data = iph.data;
 	command = iph.command;
 	length = iph.length;

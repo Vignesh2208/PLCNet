@@ -95,6 +95,8 @@ class Net;
 #define LXCEMU_PROTOCOL_NAME  "lxcemu"
 
 #define SERIAL_PROTOCOL_NAME  "serial"
+
+
 #define NR_SERIAL_DEVS        3
 #define NR_DEVS 1
 #define KERN_BUF_SIZE 100
@@ -188,6 +190,13 @@ enum S3FNetProtocolType {
 
   /** A dummy protocol. */
   S3FNET_PROTOCOL_TYPE_DUMMY = 254,
+
+
+  /** DUMMY MAC LAYER FOR SERIAL CONNECTIONS **/
+  S3FNET_PROTOCOL_TYPE_DUMMY_MAC = 255,
+
+  S3FNET_PROTOCOL_TYPE_SERIAL = 256,
+
 };
 
 /**
