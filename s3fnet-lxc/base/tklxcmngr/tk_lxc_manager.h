@@ -20,6 +20,7 @@
 
 
 
+
 #define PACKET_PARSE_SUCCESS        0
 #define PACKET_PARSE_UNKNOWN_PACKET 1
 #define PACKET_PARSE_IGNORE_PACKET  2
@@ -30,7 +31,20 @@ class LXC_Proxy;
 
 #define START_LXCS 100
 #define STOP_LXCS  200
+#define KERN_BUF_SIZE 100
+#define TX_BUF_SIZE 100
+#define RX_BUF_SIZE 2*(TX_BUF_SIZE)
 
+struct ioctl_conn_param{
+
+  int conn_id;            
+  char owner_lxc_name[KERN_BUF_SIZE]; 
+  char dst_lxc_name[KERN_BUF_SIZE];
+  int num_bytes_to_write;      // number of bytes to write to rxbuf
+  char bytes_to_write[RX_BUF_SIZE];// buffer from which data is copied to lxc's rx_buf
+  int num_bytes_to_read;       // number of bytes to read from txbuf
+  char bytes_to_read[TX_BUF_SIZE]; // buffer to which data from txbuf is copied.
+};
 
 class LxcManager
 {

@@ -13,6 +13,7 @@
 #include "net/link.h"
 #include "net/network_interface.h"
 #include "os/lxcemu/lxcemu_session.h"
+#include "os/serial/serial_session.h"
 #include <sys/types.h>
 #include <regex.h>
 #include <stdio.h>
@@ -784,6 +785,13 @@ void Net::injectEmuEvent(Host* destinationHost, EmuPacket* pkt, unsigned int des
 
 	LxcemuSession* sess = (LxcemuSession*)destinationHost->sessionForName(LXCEMU_PROTOCOL_NAME);
 	sess->injectEvent(pkt, 1, destIP);
+}
+
+void Net::injectSerialEvent(Host * destinationHost, ltime_t incoming_time, int conn_id){
+
+  SerialSession* sess = (SerialSession*)destinationHost->sessionForName(SERIAL_PROTOCOL_NAME);
+  sess->injectEvent(incoming_time,conn_id);
+
 }
 
 }; // namespace s3fnet

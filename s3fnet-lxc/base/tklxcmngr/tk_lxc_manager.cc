@@ -145,6 +145,7 @@ void* LxcManager::manageIncomingPackets()
 
 	struct pollfd ufds[listOfProxies.size()];
 	char* packetBuffer = (char*)malloc(sizeof(char) * PACKET_SIZE);
+	int j = 0;
 
 	// Do not begin polling LXCs until the entire model has bee completely initialized
 	while (isSimulatorRunning == false){}
@@ -152,16 +153,57 @@ void* LxcManager::manageIncomingPackets()
 	while(1)
 	{
 		if (isSimulatorRunning == false) break;
+
+		int fd = open("/dev/s3fserial0",0);
+
 		for (unsigned int i = 0; i < listOfProxies.size(); i++)
 		{
 			LXC_Proxy* proxy = listOfProxies[i];
+			s3f::s3fnet::Host* owner_host = (s3f::s3fnet::Host*)proxy->ptrToHost;
 			ufds[i].fd = proxy->fd;
 			ufds[i].events  = POLLIN;
 			ufds[i].revents = 0;
-		}
 
+
+			
+			struct ioctl_conn_param ioctl_conn;
+			int mask = 0;
+			ltime_t temp_arrival_time = proxy->getElapsedTime();
+
+			if(fd >= 0){
+
+				for(j = 0; j < 100; j++){
+					ioctl_conn.owner_lxc_name[j] = '\0';
+					ioctl_conn.dst_lxc_name[j] = '\0';
+				}
+				strcpy(ioctl_conn.owner_lxc_name,proxy->lxcName);
+				mask = ioctl(fd,S3FSERIAL_GETACTIVECONNS,&ioctl_conn);	
+				if(mask > 0){
+					j = 0;
+					while( j < 8){
+						if( mask & (1 << j)){
+							printf("Connection %d active on lxc : %s",j,proxy->lxcName);
+							owner_host->inNet()->getTopNet()->injectSerialEvent(owner_host,temp_arrival_time,j);
+						}
+						j = j + 1;
+					}
+				}
+
+			}
+			else{
+				debugPrint("Could not open s3fserial");
+			}
+
+
+
+		}
+		
 		int ret = poll(ufds, listOfProxies.size(), 3500);
-		if (ret == 0) continue; // no file descriptor has data ready to read
+		
+		if (ret == 0){
+			continue; // no file descriptor has data ready to read
+
+		} 
 
 		// Get Poll Timestamp
 		struct timeval selectTimestamp;

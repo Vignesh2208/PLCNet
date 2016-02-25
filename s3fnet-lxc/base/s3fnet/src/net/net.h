@@ -82,6 +82,7 @@ class Net: public DmlObject {
   void init();
 
   void injectEmuEvent(Host* destinationHost, EmuPacket* pkt, unsigned int destIP);
+  void injectSerialEvent(Host* destinationHost, ltime_t incoming_time, int conn_id);
   void configLxcCommands(s3f::dml::Configuration* cfg);
 
   /** Displays the contents of this net.*/

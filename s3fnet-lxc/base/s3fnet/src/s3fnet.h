@@ -116,6 +116,18 @@ class Net;
 #define S3FSERIAL_GETCONNSTATUS _IOR(S3FSERIAL_IOC_MAGIC, 6, int)
 #define S3FSERIAL_GETACTIVECONNS _IOR(S3FSERIAL_IOC_MAGIC,7,int)
 
+ 
+struct ioctl_conn_param{
+
+  int conn_id;            
+  char owner_lxc_name[KERN_BUF_SIZE]; 
+  char dst_lxc_name[KERN_BUF_SIZE];
+  int num_bytes_to_write;      // number of bytes to write to rxbuf
+  char bytes_to_write[RX_BUF_SIZE];// buffer from which data is copied to lxc's rx_buf
+  int num_bytes_to_read;       // number of bytes to read from txbuf
+  char bytes_to_read[TX_BUF_SIZE]; // buffer to which data from txbuf is copied.
+};
+
 /**
  * \enum S3FNetProtocolType
  *
