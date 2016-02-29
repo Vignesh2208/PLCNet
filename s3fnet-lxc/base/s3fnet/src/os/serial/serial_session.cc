@@ -1,9 +1,10 @@
 #include "os/serial/serial_session.h"
+#include <fcntl.h>
 
 #ifdef SERIAL_DEBUG
-#define SERIAL_DUMP(x) printf("IP: "); x
+#define SERIAL_DUMP(x) printf("SERIAL: "); x
 #else
-#define SERIAL_DUMP(x)
+#define SERIAL_DUMP(x) x
 #endif
 
 namespace s3f {
@@ -21,6 +22,7 @@ void SerialSession::config(s3f::dml::Configuration* cfg)
 {
  // IMPORTANT, MUST BE CALLED FIRST!
  ProtocolSession::config(cfg);
+ SERIAL_DUMP(printf("Serial Session Config done\n"));
 
 }
 
@@ -40,7 +42,7 @@ SerialSession::~SerialSession(){
 
 void SerialSession::init()
 { 
-    SERIAL_DUMP(printf("[host=\"%s\"] init().\n", inHost()->nhi.toString()));
+    SERIAL_DUMP(printf("SerialSession::init [host=\"%s\"] init().\n", inHost()->nhi.toString()));
     ProtocolSession::init();
 
     if(strcasecmp(name, NET_PROTOCOL_NAME) && strcasecmp(name, SERIAL_PROTOCOL_NAME))
@@ -48,8 +50,9 @@ void SerialSession::init()
 
   	
   	
-  	assert(inHost()->proxy != NULL) ; 	
-  	dev_fd = open(SERIAL_DEVICE_CONTROL_FILE_NAME,0);
+  	assert(inHost()->proxy != NULL) ; 
+  	sess_proxy = inHost()->proxy;	
+  	dev_fd = open(SERIAL_DEVICE_CONTROL_FILE_NAME,O_RDWR);
 
   	assert(dev_fd >= 0);
   	rts_mask = 0;
@@ -73,7 +76,26 @@ void SerialSession::init()
 
 int SerialSession::control(int ctrltyp, void* ctrlmsg, ProtocolSession* sess)
 {  
-         return ProtocolSession::control(ctrltyp, ctrlmsg, sess);
+
+	switch(ctrltyp) {
+		case IP_CTRL_VERIFY_TARGET_IP_ADDRESS : 
+		case IP_CTRL_VERIFY_LOCAL_IP_ADDRESS : 
+		case IP_CTRL_GET_FORWARDING_TABLE	: 
+		case IP_CTRL_LOAD_FORWARDING_TABLE	: 
+		case IP_CTRL_INSERT_ROUTE			:	 
+		case IP_CTRL_DELETE_ROUTE			: 
+		case IP_CTRL_INSERT_DMLROUTE		: 
+		case IP_CTRL_ADD_INTERCEPT_SESSION	:
+		case IP_CTRL_PUSH_REQUEST			: 
+		case IP_CTRL_ADD_FIB_LISTENER		: 
+		case IP_CTRL_FIB_ADDROUTE			: 
+		case IP_CTRL_FIB_DELROUTE			:	SERIAL_DUMP(printf("Return from control\n"));
+
+												return 0;
+		
+  		default : return ProtocolSession::control(ctrltyp, ctrlmsg, sess);
+
+  }
 }
 
 
@@ -88,7 +110,7 @@ int SerialSession::push(Activation msg, ProtocolSession* hi_sess, void* extinfo,
 
 int SerialSession::pop(Activation msg, ProtocolSession* lo_sess, void* extinfo, size_t extinfo_size){
 
-	SERIAL_DUMP(printf("A message is popped up to the Serial session from the Mac layer.\n"));
+	
 	struct ioctl_conn_param ioctl_conn;
 	int i = 0, conn_id = -1;
 	int space_avail = 0;
@@ -106,12 +128,15 @@ int SerialSession::pop(Activation msg, ProtocolSession* lo_sess, void* extinfo, 
 	}
 
 	LXC_Proxy* proxy = inHost()->proxy;
+
 	assert(proxy != NULL);
+
 	
 	ltime_t timelineTime = inHost()->alignment()->now();
 	ltime_t proxyVT = proxy->getElapsedTime();
 	SerialMessage * recv_msg = (SerialMessage*)msg;
 
+	SERIAL_DUMP(printf("Received message at lxc = %s, data = %s\n",proxy->lxcName,recv_msg->data));
 
 	for(i = 0; i < NR_SERIAL_DEVS; i++){
 		if(strcmp(conn_to_lxc_map[i],recv_msg->src_lxcName) == 0){
@@ -132,6 +157,7 @@ int SerialSession::pop(Activation msg, ProtocolSession* lo_sess, void* extinfo, 
 		}
 		assert(ioctl_conn.conn_id >=0 && ioctl_conn.conn_id < NR_SERIAL_DEVS);
 		conn_id = ioctl_conn.conn_id;
+		SERIAL_DUMP(printf("Resolved conn_id of received message = %d\n",conn_id));
 		strncpy(conn_to_lxc_map[conn_id], recv_msg->src_lxcName,KERN_BUF_SIZE);
 	}
 
@@ -140,17 +166,22 @@ int SerialSession::pop(Activation msg, ProtocolSession* lo_sess, void* extinfo, 
 		for(i = 0; i < NR_SERIAL_DEVS; i++){
 			nic = owner_host->getNetworkInterface(i);
 			if(nic != NULL){
-				if(strcmp(nic->get_dst_nic()->getHost()->proxy->lxcName,recv_msg->src_lxcName) == 0){
-					conn_to_nic_map[conn_id] = nic;
-					break;
+				if(nic->get_dst_nic() != NULL){
+					if(strcmp(nic->get_dst_nic()->getHost()->proxy->lxcName,recv_msg->src_lxcName) == 0){
+						conn_to_nic_map[conn_id] = nic;
+						break;
+					}
 				}
 			}
 		}
 		assert(conn_to_nic_map[conn_id] != NULL);
+		SERIAL_DUMP(printf("Resolved outgoing nic for received message\n"));
 	}
 
 	assert(recv_msg->length > 0);
 	space_avail = get_rxbuf_space(conn_id);
+
+	SERIAL_DUMP(printf("Space available in rx buf = %d\n",space_avail));
 
 	if(recv_msg->command == RTS){
 		if(space_avail >= TX_BUF_SIZE){
@@ -196,6 +227,8 @@ int SerialSession::pop(Activation msg, ProtocolSession* lo_sess, void* extinfo, 
 
 		ioctl_conn.num_bytes_to_write = space_avail;
 		memcpy(ioctl_conn.bytes_to_write,recv_msg->data,space_avail);
+		SERIAL_DUMP(printf("Writing msg data = %s, to RX buffer\n",ioctl_conn.bytes_to_write));
+
 		ioctl(dev_fd,S3FSERIAL_IOWRX,&ioctl_conn); // write to rx buf. application would later read it when it wakes up.
 	}
 
@@ -222,27 +255,36 @@ int SerialSession::pop(Activation msg, ProtocolSession* lo_sess, void* extinfo, 
 	proxy->totalPacketError += labs(difference);
 	proxy->packetsSentOut++;
 
+
+	SERIAL_DUMP(printf("Handled msg recv at lxc = %s\n",proxy->lxcName));
+
 	return 0;
 
 
 }
 
 void SerialSession::callback(Activation ac){
+
+	SERIAL_DUMP(printf("Inside SerialSession Send Callback\n"));
 	SerialSession* sess = (SerialSession*)((SerialSessionCallbackActivation*)ac)->session;
 	int command = ((SerialSessionCallbackActivation*)ac)->command;
 	int conn_id = ((SerialSessionCallbackActivation*)ac)->conn_id;
 	char * data = ((SerialSessionCallbackActivation*)ac)->data;
 	int length =  ((SerialSessionCallbackActivation*)ac)->length;
-
+	SERIAL_DUMP(printf("Inside SerialSession Send Callback. Extracted params\n"));
 
 	assert(conn_id >= 0 && conn_id < NR_SERIAL_DEVS);
 	assert(length > 0);
-	assert(conn_to_nic_map[conn_id] != NULL);
-	NetworkInterface * out_nic = conn_to_nic_map[conn_id];
+	assert(sess != NULL);
+
+	assert(sess->conn_to_nic_map[conn_id] != NULL);	
+	NetworkInterface * out_nic = sess->conn_to_nic_map[conn_id];
 	SerialMessage * msg = new SerialMessage();
-	strcpy(msg->src_lxcName,inHost()->proxy->lxcName);
 	assert(msg != NULL);
 
+	SERIAL_DUMP(printf("copying proxy lxcname\n"));
+	strcpy(msg->src_lxcName,sess->sess_proxy->lxcName);	
+	SERIAL_DUMP(printf("Calling callback body\n"));
 	msg->data = data;
 	msg->command = command;
 	msg->length = length;
@@ -251,13 +293,15 @@ void SerialSession::callback(Activation ac){
 		// connection is no longer pending
 		pending_conn_mask &= ~(1 << conn_id);
 	}
-
+	
 	sess->callback_body(msg,out_nic);
 }
 
 void SerialSession::callback_body(SerialMessage * msg, NetworkInterface * outgoing_nic){
 
 	ProtocolSession* outgoing_mac = outgoing_nic->getHighestProtocolSession();
+	assert(outgoing_mac != NULL);
+	SERIAL_DUMP(printf("Pushing down to Dummy Mac Layer\n"));
     outgoing_mac->pushdown(msg, this, NULL, 0);
 }
 
@@ -273,10 +317,13 @@ void SerialSession::injectEvent(ltime_t incoming_time, int conn_id){
 	int length = 0;
 	struct ioctl_conn_param ioctl_conn;
 	char * dst_lxc_name = NULL;
-
-	reset_ioctl_conn(&ioctl_conn);
 	assert(inHost()->proxy != NULL);
-	strncpy(ioctl_conn.owner_lxc_name,inHost()->proxy->lxcName,KERN_BUF_SIZE);
+
+	SERIAL_DUMP(printf("Injecting new Serial Event\n"));
+	reset_ioctl_conn(&ioctl_conn);
+	SERIAL_DUMP(printf("ioctl_conn param reset\n"));
+	
+	strcpy(ioctl_conn.owner_lxc_name,inHost()->proxy->lxcName);
 	ioctl_conn.conn_id = conn_id;
 
 	if(ioctl(dev_fd,S3FSERIAL_GETCONNLXC, &ioctl_conn) < 0){
@@ -284,20 +331,24 @@ void SerialSession::injectEvent(ltime_t incoming_time, int conn_id){
 		return;
 	}
 
+	SERIAL_DUMP(printf("finished ioctl call\n"));
+
 	dst_lxc_name = ioctl_conn.dst_lxc_name;
 
 	if(conn_id < NR_SERIAL_DEVS && conn_id >= 0 && dst_lxc_name != NULL){
 		if(strcmp(conn_to_lxc_map[conn_id],"NA") == 0)
 			strcpy(conn_to_lxc_map[conn_id], dst_lxc_name);
 
-
+		SERIAL_DUMP(printf("updating conn_to_nic_map\n"));
 		if(conn_to_nic_map[conn_id] == NULL){
 			for(i = 0; i < NR_SERIAL_DEVS; i++){
 				nic = owner_host->getNetworkInterface(i);
 				if(nic != NULL){
-					if(strcmp(nic->get_dst_nic()->getHost()->proxy->lxcName,dst_lxc_name) == 0){
-						conn_to_nic_map[conn_id] = nic;
-						break;
+					if(nic->get_dst_nic() != NULL){					
+						if(strcmp(nic->get_dst_nic()->getHost()->proxy->lxcName,dst_lxc_name) == 0){
+							conn_to_nic_map[conn_id] = nic;
+							break;
+						}
 					}
 				}
 
@@ -307,6 +358,8 @@ void SerialSession::injectEvent(ltime_t incoming_time, int conn_id){
 
 		assert(conn_to_nic_map[conn_id] != NULL);
 		pending_conn_mask |= (1 << conn_id);
+
+		SERIAL_DUMP(printf("finished updating all maps\n"));
 	}
 	else
 		error_quit("ERROR : SerialSession::injectEvent invalid connection_id");
@@ -315,6 +368,8 @@ void SerialSession::injectEvent(ltime_t incoming_time, int conn_id){
 	assert(inHost()->proxy != NULL);
 	strncpy(ioctl_conn.owner_lxc_name,inHost()->proxy->lxcName,KERN_BUF_SIZE);
 
+	SERIAL_DUMP(printf("checking if rts needs to be sent\n"));
+	fflush(stdout);
 	if(rts_mask & (1 << conn_id)){
 		// got cts
 		command = DATA;
@@ -335,6 +390,8 @@ void SerialSession::injectEvent(ltime_t incoming_time, int conn_id){
 		strcpy(data,"RTS");
 		length = 4;
 	}
+
+	SERIAL_DUMP(printf("creating new serial session callback\n"));
 
 	SerialSessionCallbackActivation* oac = new SerialSessionCallbackActivation(this, command,conn_id,data, length);
 	Activation ac (oac);
@@ -366,6 +423,8 @@ void SerialSession::injectEvent(ltime_t incoming_time, int conn_id){
 
 	// We get a packet from an LXC, send it immediately through the simulation
 	// by "Scheduling" it onto the list of events to process.
+
+	SERIAL_DUMP(printf("scheduling new serial session callback\n"));
 
 	HandleCode h = owner_host->waitFor( callback_proc, ac, wait_time, owner_host->tie_breaking_seed);
 

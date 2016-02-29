@@ -789,7 +789,10 @@ void Net::injectEmuEvent(Host* destinationHost, EmuPacket* pkt, unsigned int des
 
 void Net::injectSerialEvent(Host * destinationHost, ltime_t incoming_time, int conn_id){
 
-  SerialSession* sess = (SerialSession*)destinationHost->sessionForName(SERIAL_PROTOCOL_NAME);
+  SerialSession* sess = (SerialSession*)destinationHost->sessionForName(NET_PROTOCOL_NAME);
+  assert(sess != NULL);
+  fprintf(stdout,"Injecting serial event\n");
+  fflush(stdout);
   sess->injectEvent(incoming_time,conn_id);
 
 }

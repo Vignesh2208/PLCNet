@@ -30,6 +30,7 @@ class SerialSession: public ProtocolSession {
 		char * conn_to_lxc_map[NR_SERIAL_DEVS];
 		NetworkInterface * conn_to_nic_map[NR_SERIAL_DEVS];
 		Process* callback_proc;
+		LXC_Proxy* sess_proxy;
 
 		SerialSession(ProtocolGraph* graph);
 		void flush_buffer(char * buf, int size);

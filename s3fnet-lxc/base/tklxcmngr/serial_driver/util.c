@@ -32,7 +32,7 @@ char * extract_filename(char *str)
 
 int get_fd(struct file * filp){
 	int fd = -1;
-	struct files_struct * fs;
+	/*struct files_struct * fs;
 	int max_fds = 0, i = 0;
 	rcu_read_lock();
 	fs = current->files;
@@ -43,7 +43,8 @@ int get_fd(struct file * filp){
 			break;
 		}
 	}
-	rcu_read_unlock();
+	rcu_read_unlock();*/
+	
 	return fd;
 
 }
@@ -72,24 +73,19 @@ void get_lxc_name(struct task_struct * process, char * lxcName){
 	cgrp = task_cgroup(process,1);
 	if(cgrp != NULL){
 		retval = cgroup_path(cgrp, buf, KERN_BUF_SIZE);
-		
-		if (retval < 0){
-			strcpy(lxcName,"NA");
-			return;
-		}
-		else{
-			if(strcmp(buf,"/") == 0)
-					;
+		//printk(KERN_INFO "s3fserial : cgroup path ret buf = %s\n",buf);
+		if(strcmp(buf,"/") == 0)
+			;
 		else{
 				name = extract_filename(buf);
 				strcpy(lxcName,name);
 				return;	
 
 			}
-		}
+		
 	}
 	else{
-		//printk(KERN_INFO "Socket Hook : Task cgroup is NULL\n");
+		printk(KERN_INFO "s3fserial : Task cgroup is NULL\n");
 	}
 
 	strcpy(lxcName,"NA");

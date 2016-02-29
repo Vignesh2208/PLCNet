@@ -13,7 +13,8 @@ rebuild: lxcman
 	
 fullbuild: lxcman
 	cd tklxcmngr/socket_hooks/; make clean; make;
-	./build.sh -n $(NUM_CORES)
+	cd tklxcmngr/serial_driver/; make clean; make;
+	./build.sh -d -n $(NUM_CORES)
 
 debuginc: lxcman
 	./build.sh -i -f -d -n $(NUM_CORES)
@@ -31,6 +32,11 @@ examplerun:
 	$(CLEAN_EXPERIMENT)	
 	cd s3fnet/test/lxc_tests/small_2_udp/; make clean; make; make test
 	chmod -R 777 ../experiment-data
+
+exampleserialrun:
+	$(CLEAN_EXPERIMENT)	
+	cd s3fnet/test/lxc_tests/small_2_serial/; make clean; make; make test
+	chmod -R 777 ../experiment-data	
 
 run:
 	$(CLEAN_EXPERIMENT)	

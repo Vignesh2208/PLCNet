@@ -31,6 +31,22 @@ dict
 		interface [ id 0 _extends .dict.1Mb ]
 		_find .dict.emuHostGraph.graph
 	]	
+
+	emuSerialHost
+	[
+		isEmulated 1
+		interface [ id 0 _extends .dict.1Mb
+					ProtocolSession [name mac use "s3f.os.dummymac" ]			
+					
+				  ]
+		interface [ id 1 _extends .dict.1Mb 
+					ProtocolSession [name mac use "s3f.os.dummymac" ]			
+				  ]
+		interface [ id 2 _extends .dict.1Mb 
+					ProtocolSession [name mac use "s3f.os.dummymac" ]			
+				  ]
+		_find .dict.emuHostSerialGraph.graph
+	]
 		
 	TCPServer
 	[
@@ -86,6 +102,14 @@ dict
 		[
 			ProtocolSession [ name lxcemu use "s3f.os.lxcemu"  ]
 			ProtocolSession [ name ip use "s3f.os.ip" ]
+		]
+	]
+
+	emuHostSerialGraph
+	[
+		graph
+		[
+			ProtocolSession [name net use "s3f.os.serial" ]
 		]
 	]
 	

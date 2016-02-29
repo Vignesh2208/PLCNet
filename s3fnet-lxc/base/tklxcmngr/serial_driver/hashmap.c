@@ -75,6 +75,7 @@ int int_hash(int * val){
 
 int hmap_elem_comparer(hashmap_elem * elem1, hashmap_elem * elem2){
 
+	//printk(KERN_INFO "s3fserial: elem1->key = %s, elem2->key = %s\n",elem1->key,elem2->key);
 	return elem1->equals(elem1->key, elem2->key);
 
 }
@@ -133,6 +134,8 @@ void hmap_put(hashmap * h, void * key, void * value){
 	hashmap_elem * temp;
 	
 	index = (abs(h->hash(key)) % h->size);
+
+	//printk(KERN_INFO "s3fserial: hmap_put index = %d\n",index);
 	
 	llist * list;	
 	list = h->head[index];
@@ -144,6 +147,7 @@ void hmap_put(hashmap * h, void * key, void * value){
 	new_elem->equals = h->key_comparer;
 	head = list->head;
 	while(head != NULL){
+
 		if(list->equals(head->item,new_elem) == 0){
 			temp = (hashmap_elem *) head->item;
 			temp->value = value;
@@ -152,7 +156,7 @@ void hmap_put(hashmap * h, void * key, void * value){
 		}
 		head = head->next;
 	}
-
+	//printk(KERN_INFO "s3fserial: hmap_put append. key = %s",key);
 	llist_append(list,new_elem);
 	
 
@@ -166,6 +170,8 @@ void* hmap_get(hashmap * h, void * key){
 	hashmap_elem * new_elem;	
 	hashmap_elem * temp;
 	index = (abs(h->hash(key)) % h->size);
+
+	
 	
 	llist * list;	
 	list = h->head[index];
@@ -177,7 +183,10 @@ void* hmap_get(hashmap * h, void * key){
 	new_elem->equals = h->key_comparer;
 
 	while(head != NULL){
+
 		if(list->equals(head->item,new_elem) == 0){
+		//printk(KERN_INFO "s3fserial : hmap_get index = %d, key = %s\n",index,((hashmap_elem *)head->item)->key);
+		
 			kfree(new_elem);
 			temp = (hashmap_elem *) head->item;
 			return temp->value;

@@ -62,11 +62,15 @@ void NetworkInterface::config(s3f::dml::Configuration* cfg)
   S3FNET_STRING nhi_str = nhi.toStlString();
 
   Net* owner_net = getHost()->inNet();
+  Host* owner_host = getHost();
   ip_addr = owner_net->getNameService()->nhi2ip(nhi_str);
-  owner_net->register_interface(this, ip_addr);
-  IFACE_DUMP(cout << "NIC = " << nhi_str.c_str()
+
+  //if(owner_host->getNetworkLayerProtocol()->getProtocolNumber() != S3FNET_PROTOCOL_TYPE_SERIAL){
+    owner_net->register_interface(this, ip_addr);
+    IFACE_DUMP(cout << "NIC = " << nhi_str.c_str()
 		  << ", IP = " << IPPrefix::ip2txt(ip_addr)
   	  	  << ", MAC = " << mac48_addr << endl;);
+  //}
 
   // configure the protocol sessions (this will skip the mac/phy
   // session config unless they are specified explicitly in dml)

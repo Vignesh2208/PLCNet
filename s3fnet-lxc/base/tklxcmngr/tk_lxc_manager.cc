@@ -160,6 +160,8 @@ void* LxcManager::manageIncomingPackets()
 		{
 			LXC_Proxy* proxy = listOfProxies[i];
 			s3f::s3fnet::Host* owner_host = (s3f::s3fnet::Host*)proxy->ptrToHost;
+
+			assert(owner_host != NULL);
 			ufds[i].fd = proxy->fd;
 			ufds[i].events  = POLLIN;
 			ufds[i].revents = 0;
@@ -170,6 +172,7 @@ void* LxcManager::manageIncomingPackets()
 			int mask = 0;
 			ltime_t temp_arrival_time = proxy->getElapsedTime();
 
+			
 			if(fd >= 0){
 
 				for(j = 0; j < 100; j++){
@@ -182,7 +185,7 @@ void* LxcManager::manageIncomingPackets()
 					j = 0;
 					while( j < 8){
 						if( mask & (1 << j)){
-							printf("Connection %d active on lxc : %s",j,proxy->lxcName);
+							printf("Connection %d active on lxc : %s\n",j,proxy->lxcName);
 							owner_host->inNet()->getTopNet()->injectSerialEvent(owner_host,temp_arrival_time,j);
 						}
 						j = j + 1;
@@ -193,7 +196,7 @@ void* LxcManager::manageIncomingPackets()
 			else{
 				debugPrint("Could not open s3fserial");
 			}
-
+			
 
 
 		}

@@ -21,6 +21,7 @@ struct dev_struct {
 
 	hashmap lxcs;	
 	uint32_t id;		// device id
+	llist lxc_list;
 	spinlock_t dev_lock;
 	struct semaphore sem;     /* mutual exclusion semaphore     */
 	struct cdev cdev;	  /* Char device structure		*/

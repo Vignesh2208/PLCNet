@@ -28,8 +28,10 @@ int llist_append(llist *l, void * item){
 	llist_elem * new_elem;
 	
 	new_elem = (llist_elem *) kmalloc(sizeof(llist_elem), GFP_KERNEL);
-	if(new_elem == NULL)
+	if(new_elem == NULL){
+		//printk(KERN_INFO "s3fserial: List append failure\n");
 		return OUT_OF_MEMORY_ERROR;
+	}
 
 	new_elem->item = item;	
 	l->size ++;
@@ -40,6 +42,7 @@ int llist_append(llist *l, void * item){
 		l->tail = new_elem;
 		l->head->next = NULL;
 		l->head->prev = NULL;
+		//printk(KERN_INFO "s3fserial: List append success\n");
 		return SUCCESS;
 	}
 	

@@ -8,8 +8,9 @@
 #include <netdb.h>
 #include <sys/ioctl.h>
 #include <sys/time.h> 
-
-
+#include <fcntl.h>
+#include <sys/poll.h>
+#include <time.h>
 
 
 #define NR_SERIAL_DEVS        3
@@ -40,6 +41,16 @@ struct ioctl_conn_param{
 	char bytes_to_read[TX_BUF_SIZE]; // buffer to which data from txbuf is copied.
 };
 
+void gettimeofdayoriginal(struct timeval *tv, struct timezone *tz) {
+#ifdef __x86_64
+	syscall(314, tv, tz);
+	return;
+#endif
+	syscall(351, tv, tz);
+	return;
+}
+
+
 void flush_buffer(char * buf, int size){
 	int i = 0;
 	for(i = 0; i < size; i++)
@@ -56,13 +67,32 @@ void reset_ioctl_conn(struct ioctl_conn_param * ioctl_conn){
   	ioctl_conn->num_bytes_to_read = 0;
 }
 
+void print_time(){
+
+	struct timeval later;
+	struct timeval later1;
+	struct tm localtm;
+	struct tm origtm;
+
+	gettimeofday(&later, NULL);
+	gettimeofdayoriginal(&later1, NULL);
+	localtime_r(&(later.tv_sec), &localtm);
+	localtime_r(&(later1.tv_sec),&origtm);
+	//printf("%d %d virtual time: %ld:%ld physical time: %ld:%ld localtime: %d:%02d:%02d %ld\n",x,getpid(),later.tv_sec-now.tv_sec,later.tv_usec-now.tv_usec,later1.tv_sec-now1.tv_sec,later1.tv_usec-now1.tv_usec,localtm.tm_hour, localtm.tm_min, localtm.tm_sec, later.tv_usec);
+
+	printf("curr : localtime: %d:%02d:%02d %ld, orig_time : %d:%02d:%02d %ld\n", localtm.tm_hour, localtm.tm_min, localtm.tm_sec, later.tv_usec, origtm.tm_hour, origtm.tm_min, origtm.tm_sec, later1.tv_usec);
+	fflush(stdout);
+}
+
 
 void main(){
 
 	int fd;
 	struct ioctl_conn_param ioctl_conn;
 
-	fd = open("/dev/s3fserial0",0);
+	//return;
+
+	fd = open("/dev/s3fserial0",O_RDWR);
 	reset_ioctl_conn(&ioctl_conn);
 
 	strcpy(ioctl_conn.owner_lxc_name,"lxc1-0");
@@ -72,24 +102,48 @@ void main(){
 	if(ioctl(fd,S3FSERIAL_SETCONNLXC,&ioctl_conn) < 0){
 		fprintf(stdout,"Server : Ioctl SETCONNLXC error\n");
 		fflush(stdout);
+		close(fd);
 		return;
 	}
 
 
 	int ret = 0;
-	int len = 5;
+	int len = 250;
 	int n_received = 0;
-	char msg[10];
+	char msg[251];
 
-	flush_buffer(msg,10);
+	struct pollfd ufds;
+	ufds.fd = fd;
+	ufds.events  = POLLIN;
+	ufds.revents = 0;
+
+	//usleep(3000000);
+
+	flush_buffer(msg,len + 1);
 
 	fprintf(stdout,"Server : Waiting for Data\n");
+	print_time();
 	fflush(stdout);
 
 	while(n_received < len){
-		ret = read(fd,msg + n_received,5 - n_received);
+		int r = poll(&ufds, 1, 5000);
+		if(r < 0){
+			fprintf(stdout,"Error with poll\n");
+			fflush(stdout);
+			return;
+		}
+		if(r == 0){
+			fprintf(stdout,"Poll timeout error at server\n");
+			print_time();
+			fflush(stdout);
+			return;
+		}
+
+		ret = read(fd,msg + n_received,len - n_received);
 		if(ret < 0){
-			printf("Server : ERROR with read\n");
+			fprintf(stdout,"Server : ERROR with read\n");
+			fflush(stdout);
+			close(fd);
 			return;
 		}
 		else if(ret == 0)
@@ -98,8 +152,11 @@ void main(){
 		n_received = n_received + ret;
 	}
 
-	fprintf(stdout,"Server : Data Received :%s\n",msg);
+
+	fprintf(stdout,"Server : Data Received : len = %d, %s\n",n_received, msg);
+	print_time();
 	fflush(stdout);
+	close(fd);
 
 
 

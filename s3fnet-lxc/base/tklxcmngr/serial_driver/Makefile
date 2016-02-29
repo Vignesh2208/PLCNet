@@ -8,8 +8,8 @@ RM:=rm
 
 all: clean modules
 
-obj-m:= s3fserial.o
-SocketHook-objs := s3fserial.o hashmap.o linkedlist.o util.o
+obj-m:= S3fserial.o
+S3fserial-objs := s3fserial.o hashmap.o linkedlist.o util.o
 
 modules:
 	$(MAKE) -C $(KERNEL_SRC) M=$(SUBDIR) modules 

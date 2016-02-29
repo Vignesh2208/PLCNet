@@ -52,7 +52,7 @@ void DummyMac::init()
 int DummyMac::push(Activation msg, ProtocolSession* hi_sess, void* extinfo, size_t extinfo_size)
 {
 
-  DMAC_DUMP(printf("Dummy mac push"));
+  DMAC_DUMP(printf("Dummy mac push\n"));
   
   
   DummyMacMessage* dummy_mac_header = new DummyMacMessage();
@@ -61,13 +61,15 @@ int DummyMac::push(Activation msg, ProtocolSession* hi_sess, void* extinfo, size
 
   if(!child_prot)
     error_quit("ERROR: DummyMac::push(), child protocol session has not been set.\n");
+  
+  DMAC_DUMP(printf("Dummy mac pushed to simple phy\n"));
 
   return child_prot->pushdown(dummy_mac_hdr, this);
 }
 
 int DummyMac::pop(Activation msg, ProtocolSession* lo_sess, void* extinfo, size_t extinfo_size)
 {  
-  DMAC_DUMP(printf("Dummy mac pop"));
+  DMAC_DUMP(printf("Dummy mac pop\n"));
   
   DummyMacMessage* mac_hdr = (DummyMacMessage*)msg;
 

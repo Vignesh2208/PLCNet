@@ -8,6 +8,8 @@
 #include <netdb.h>
 #include <sys/time.h> 
 #include <sys/ioctl.h>
+#include <fcntl.h>
+
 
 
 #define NR_SERIAL_DEVS        3
@@ -58,9 +60,12 @@ void reset_ioctl_conn(struct ioctl_conn_param * ioctl_conn){
 void main(){
 
 	int fd;
+	int i = 0;
 	struct ioctl_conn_param ioctl_conn;
 
-	fd = open("/dev/s3fserial0",0);
+	//return;
+
+	fd = open("/dev/s3fserial0",O_RDWR);
 	reset_ioctl_conn(&ioctl_conn);
 	strcpy(ioctl_conn.owner_lxc_name,"lxc0-0");
 	ioctl_conn.conn_id = 0;
@@ -68,23 +73,30 @@ void main(){
 	if(ioctl(fd,S3FSERIAL_SETCONNLXC,&ioctl_conn) < 0){
 		fprintf(stdout,"Client : Ioctl SETCONNLXC error\n");
 		fflush(stdout);
+		close(fd);
 		return;
 	}
 
 
 	int ret = 0;
-	int len = 5;
+	int len = 250;
 	int n_copied = 0;
-	char * msg = "Hello";
+	char msg[251];
+
+	flush_buffer(msg,len + 1);
+
+	for(i = 0; i < 250; i++)
+		msg[i] = 'H';
 
 	fprintf(stdout,"Client : Sending Data\n");
 	fflush(stdout);
 
 	while(n_copied < len){
-		ret = write(fd,msg + n_copied,5 - n_copied);
+		ret = write(fd,msg + n_copied,len - n_copied);
 		if(ret < 0){
 			fprintf(stdout,"Client : ERROR with write\n");
 			fflush(stdout);
+			close(fd);
 			return;
 		}
 		else if(ret == 0)
@@ -95,7 +107,7 @@ void main(){
 
 	fprintf(stdout,"Client : Data sent\n");
 	fflush(stdout);
-
+	close(fd);
 
 
 

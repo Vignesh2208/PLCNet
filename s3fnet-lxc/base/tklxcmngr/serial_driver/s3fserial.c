@@ -23,11 +23,18 @@ struct file_operations dev_fops = {
 	.release =  s3fserial_release,
 };
 
-struct lxc * get_lxc_entry(char * lxc_name, int conn_id){
+struct lxc_entry * get_lxc_entry(char * lxc_name, int conn_id){
 	struct dev_struct * dev;
-	struct lxc_entry * lxc;
+	struct lxc_entry * lxc = NULL;
 	dev = &devices[conn_id];	
-	lxc = hmap_get(&dev->lxcs,lxc_name);
+	spin_lock(&dev->dev_lock);
+	lxc = hmap_get(&devices[conn_id].lxcs,lxc_name);
+	spin_unlock(&dev->dev_lock);
+	
+	/*if(lxc != NULL){
+		printk(KERN_INFO "s3fserial : Successfull get_lxc_entry : lxc_name : %s. conn_id = %d\n",lxc_name,conn_id);
+		//printk(KERN_INFO "s3fserial : Unsuccessfull get_lxc_entry : lxc_name : %s. conn_id = %d\n",lxc_name,conn_id);
+	}*/
 	return lxc;
 
 }
@@ -55,7 +62,7 @@ int write_lxc_rxbuf(struct lxc_entry * lxc, int conn_id, int num_bytes_to_write,
 		num_copied++;
 	}
 
-	conn->recv_start = mod(rx_start + num_bytes_to_write, RX_BUF_SIZE);
+	//conn->recv_start = mod(rx_start + num_bytes_to_write, RX_BUF_SIZE);
 	conn->num_received_bytes += num_bytes_to_write;
 	spin_unlock(&conn->conn_lock);
 	return 0;
@@ -75,6 +82,7 @@ int read_lxc_txbuf(struct lxc_entry * lxc, int conn_id, char * dst_buf){
 
 	spin_lock(&conn->conn_lock);
 	num_tx_bytes = conn->num_bytes_to_transmit;
+	printk(KERN_INFO "s3fserial:read_lxc_buf : num tx bytes = %d\n",num_tx_bytes);
 	while(num_copied < num_tx_bytes){
 		dst_buf[num_copied] = conn->tx_buf[num_copied];
 		num_copied++;
@@ -122,7 +130,7 @@ long s3fserial_ioctl(struct file *filp, unsigned int cmd, unsigned long arg)
 		case S3FSERIAL_IOWRX :
 								ioctl_conn = (struct ioctl_conn_param *)arg;
 								if(copy_from_user(&tmp_ioctl_conn,ioctl_conn,sizeof(struct ioctl_conn_param))){
-									printk(KERN_INFO "s3fserial : ERROR ioctl IOWRX copy from user\n");
+									printk(KERN_INFO "s3fserial::ioctl():IOWRX : ERROR ioctl IOWRX copy from user\n");
 									return -EFAULT;
 								}
 
@@ -132,7 +140,7 @@ long s3fserial_ioctl(struct file *filp, unsigned int cmd, unsigned long arg)
 									lxc = NULL;
 
 								if(!lxc){
-									printk(KERN_INFO "s3fserial : ERROR ioctl IOWRX lxc not found\n");
+									printk(KERN_INFO "s3fserial::ioctl():IOWRX : ERROR ioctl IOWRX lxc not found\n");
 									return -EFAULT;
 								}
 								return write_lxc_rxbuf(lxc,tmp_ioctl_conn.conn_id,tmp_ioctl_conn.num_bytes_to_write,tmp_ioctl_conn.bytes_to_write);
@@ -140,7 +148,7 @@ long s3fserial_ioctl(struct file *filp, unsigned int cmd, unsigned long arg)
 
 		case S3FSERIAL_IORTX :  ioctl_conn = (struct ioctl_conn_param *)arg;
 								if(copy_from_user(&tmp_ioctl_conn,ioctl_conn,sizeof(struct ioctl_conn_param))){
-									printk(KERN_INFO "s3fserial : ERROR ioctl IORTX copy from user\n");
+									printk(KERN_INFO "s3fserial::ioctl():IORTX : ERROR ioctl IORTX copy from user\n");
 									return -EFAULT;
 								}
 
@@ -150,7 +158,7 @@ long s3fserial_ioctl(struct file *filp, unsigned int cmd, unsigned long arg)
 									lxc = NULL;
 
 								if(!lxc){
-									printk(KERN_INFO "s3fserial : ERROR ioctl IORTX lxc not found\n");
+									printk(KERN_INFO "s3fserial::ioctl():IORTX : ERROR ioctl IORTX lxc not found\n");
 									return -EFAULT;
 								}
 
@@ -164,22 +172,24 @@ long s3fserial_ioctl(struct file *filp, unsigned int cmd, unsigned long arg)
 		case S3FSERIAL_SETCONNLXC : ioctl_conn = (struct ioctl_conn_param *)arg;
 									if(copy_from_user(&tmp_ioctl_conn,ioctl_conn,sizeof(struct ioctl_conn_param)))
 									{
-										printk(KERN_INFO "s3fserial : ERROR ioctl SETCONNLXC copy from user\n");
+										printk(KERN_INFO "s3fserial::ioctl():SETCONNLXC : ERROR ioctl SETCONNLXC copy from user\n");
 										return -EFAULT;		
 									}	
-									if(tmp_ioctl_conn.conn_id >= 0 && tmp_ioctl_conn.conn_id < NR_DEVS)
+									if(tmp_ioctl_conn.conn_id >= 0 && tmp_ioctl_conn.conn_id < NR_DEVS){
+										printk(KERN_INFO "s3fserial::ioctl():SETCONNLXC : owner lxc name : %s. Conn_id = %d\n",tmp_ioctl_conn.owner_lxc_name,tmp_ioctl_conn.conn_id);
 										lxc = get_lxc_entry(tmp_ioctl_conn.owner_lxc_name,tmp_ioctl_conn.conn_id);
+									}
 									else
 										lxc = NULL;
 
 									if(!lxc){
-										printk(KERN_INFO "s3fserial : ERROR ioctl SETCONNLXC lxc not found\n");
+										printk(KERN_INFO "s3fserial::ioctl():SETCONNLXC : ERROR ioctl SETCONNLXC lxc not found\n");
 										return -EFAULT;
 									}
 
 									conn = lxc->connection;
 									if(!conn){
-										printk(KERN_INFO "s3fserial : ERROR ioctl SETCONNLXC lxc-conn not found\n");
+										printk(KERN_INFO "s3fserial::ioctl():SETCONNLXC : ERROR ioctl SETCONNLXC lxc-conn not found\n");
 										return -EFAULT;
 									}
 									spin_lock(&conn->conn_lock);
@@ -192,7 +202,7 @@ long s3fserial_ioctl(struct file *filp, unsigned int cmd, unsigned long arg)
 		case S3FSERIAL_GETCONNLXC : ioctl_conn = (struct ioctl_conn_param *)arg;
 									if(copy_from_user(&tmp_ioctl_conn,ioctl_conn,sizeof(struct ioctl_conn_param)))
 									{
-										printk(KERN_INFO "s3fserial : ERROR ioctl GETCONNLXC copy from user\n");
+										printk(KERN_INFO "s3fserial::ioctl():GETCONNLXC : ERROR ioctl GETCONNLXC copy from user\n");
 										return -EFAULT;		
 									}	
 									if(tmp_ioctl_conn.conn_id >= 0 && tmp_ioctl_conn.conn_id < NR_DEVS)
@@ -201,13 +211,13 @@ long s3fserial_ioctl(struct file *filp, unsigned int cmd, unsigned long arg)
 										lxc = NULL;
 
 									if(!lxc){
-										printk(KERN_INFO "s3fserial : ERROR ioctl GETCONNLXC lxc not found\n");
+										printk(KERN_INFO "s3fserial::ioctl():GETCONNLXC : ERROR ioctl GETCONNLXC lxc not found\n");
 										return -EFAULT;
 									}
 
 									conn = lxc->connection;
 									if(!conn){ // dst_lxc_name not set
-										printk(KERN_INFO "s3fserial : ERROR ioctl GETCONNLXC lxc-conn params not set\n");
+										printk(KERN_INFO "s3fserial::ioctl():GETCONNLXC : ERROR ioctl GETCONNLXC lxc-conn params not set\n");
 										return -EFAULT;
 									}
 
@@ -222,7 +232,7 @@ long s3fserial_ioctl(struct file *filp, unsigned int cmd, unsigned long arg)
 									spin_unlock(&conn->conn_lock);
 
 									if(copy_to_user(ioctl_conn->dst_lxc_name, tmp_ioctl_conn.dst_lxc_name, KERN_BUF_SIZE)){
-										printk(KERN_INFO "s3fserial : ERROR ioctl GETCONNLXC copy to user\n");
+										printk(KERN_INFO "s3fserial::ioctl():GETCONNLXC : ERROR ioctl GETCONNLXC copy to user\n");
 										return -EFAULT;
 									}
 									return 0;
@@ -231,7 +241,7 @@ long s3fserial_ioctl(struct file *filp, unsigned int cmd, unsigned long arg)
 		case S3FSERIAL_GETCONNID :  ioctl_conn = (struct ioctl_conn_param *)arg;
 									if(copy_from_user(&tmp_ioctl_conn,ioctl_conn,sizeof(struct ioctl_conn_param)))
 									{
-										printk(KERN_INFO "s3fserial : ERROR ioctl GETCONNID copy from user\n");
+										printk(KERN_INFO "s3fserial::ioctl():GETCONNID : ERROR ioctl GETCONNID copy from user\n");
 										return -EFAULT;		
 									}
 
@@ -254,7 +264,7 @@ long s3fserial_ioctl(struct file *filp, unsigned int cmd, unsigned long arg)
 		case S3FSERIAL_GETCONNSTATUS : 	ioctl_conn = (struct ioctl_conn_param *)arg;
 										if(copy_from_user(&tmp_ioctl_conn,ioctl_conn,sizeof(struct ioctl_conn_param)))
 										{
-											printk(KERN_INFO "s3fserial : ERROR ioctl GETCONNID copy from user\n");
+											printk(KERN_INFO "s3fserial::ioctl():GETCONNSTATUS : ERROR ioctl GETCONNID copy from user\n");
 											return -EFAULT;		
 										}
 
@@ -268,9 +278,11 @@ long s3fserial_ioctl(struct file *filp, unsigned int cmd, unsigned long arg)
 													ioctl_conn->num_bytes_to_read = conn->num_received_bytes;
 													ioctl_conn->num_bytes_to_write = conn->num_bytes_to_transmit;
 													if(copy_to_user(ioctl_conn->dst_lxc_name, conn->dst_lxc_name, KERN_BUF_SIZE)){
-														printk(KERN_INFO "s3fserial : ERROR ioctl GETCONNSTATUS copy to user\n");
+														spin_unlock(&conn->conn_lock);
+														printk(KERN_INFO "s3fserial::ioctl():GETCONNSTATUS : ERROR ioctl GETCONNSTATUS copy to user\n");
 														return -EFAULT;
 													}
+													spin_unlock(&conn->conn_lock);
 													return 0;
 												}
 												spin_unlock(&conn->conn_lock);
@@ -284,24 +296,30 @@ long s3fserial_ioctl(struct file *filp, unsigned int cmd, unsigned long arg)
 		case S3FSERIAL_GETACTIVECONNS : ioctl_conn = (struct ioctl_conn_param *)arg;
 										if(copy_from_user(&tmp_ioctl_conn,ioctl_conn,sizeof(struct ioctl_conn_param)))
 										{
-											printk(KERN_INFO "s3fserial : ERROR ioctl GETCONNID copy from user\n");
+											printk(KERN_INFO "s3fserial::ioctl():GETACTIVECONNS : ERROR ioctl GETCONNID copy from user\n");
 											return -EFAULT;		
 										}
 
 										for(i = 0; i < NR_DEVS; i++){
 											lxc = get_lxc_entry(tmp_ioctl_conn.owner_lxc_name,i);
 											if(lxc != NULL){
+												spin_lock(&devices[i].dev_lock);
 												conn = lxc->connection;
+												spin_unlock(&devices[i].dev_lock);
 												if(conn != NULL){
 													spin_lock(&conn->conn_lock);
+													printk(KERN_INFO "s3fserial::ioctl():GETACTIVECONNS :  lxc = %s, ntx bytes = %d\n",tmp_ioctl_conn.owner_lxc_name,conn->num_bytes_to_transmit);
 													if(conn->num_bytes_to_transmit)
 														mask |= (1 << i);
 													spin_unlock(&conn->conn_lock);
 
 												}
 											}
+											else{
+												printk(KERN_INFO "s3fserial::ioctl():GETACTIVECONNS :  Could not find = %s. conn_id = %d\n",tmp_ioctl_conn.owner_lxc_name,i);
+											}
 										}
-
+										//printk(KERN_INFO "s3fserial::ioctl():GETACTIVECONNS :  lxc = %s, mask = %d\n",tmp_ioctl_conn.owner_lxc_name,mask);
 										return mask;																		
 
 		default				 :	return -ENOTTY;
@@ -328,8 +346,9 @@ int s3fserial_open(struct inode *inode, struct file *filp){
 	get_lxc_name(current,lxc_name);
 
 	if(strcmp(lxc_name,"NA") == 0){
-		printk(KERN_INFO "s3fserial : Open failed\n"); // do not allow opens if the process is not inside
+		//printk(KERN_INFO "s3fserial : Open failed\n"); // do not allow opens if the process is not inside
 													   // an lxc
+		filp->private_data = NULL;
 		return 0;
 	}
 	spin_lock(&dev->dev_lock);
@@ -357,12 +376,20 @@ int s3fserial_open(struct inode *inode, struct file *filp){
 		flush_buffer(lxc->connection->dst_lxc_name,KERN_BUF_SIZE);
 
 		spin_lock(&dev->dev_lock);
-		hmap_put(&dev->lxcs,lxc_name,lxc);
-
+		hmap_put(&devices[dev->id].lxcs,lxc->lxcName,lxc);
+		llist_append(&devices[dev->id].lxc_list,lxc->lxcName);
+		printk(KERN_INFO "s3fserial::open() : Added new lxc entry for %s. Device id = %d\n",lxc->lxcName,dev->id);
+		lxc->dev = dev;
+		filp->private_data = lxc;
 		spin_unlock(&dev->dev_lock);
+
+		return 0;
+		
 	}
+	spin_lock(&dev->dev_lock);
 	lxc->dev = dev;
 	filp->private_data = lxc;
+	spin_unlock(&dev->dev_lock);
 
 	return 0;
 
@@ -377,6 +404,7 @@ ssize_t s3fserial_read(struct file *filp, char __user *buf, size_t count, loff_t
 	char temp_rx_buff[RX_BUF_SIZE];
 	uint32_t rx_start = 0;
 	int fd = -1;
+	int i = 0;
 	
 	if(!lxc)
 		return 0; // ERROR
@@ -388,7 +416,7 @@ ssize_t s3fserial_read(struct file *filp, char __user *buf, size_t count, loff_t
 	fd = dev->id;
 
 	if(fd == -1){
-		printk(KERN_INFO "s3fserial : Incorrect read fd error\n");
+		printk(KERN_INFO "s3fserial::read() : Incorrect read fd error\n");
 		return 0; //
 	}
 
@@ -397,7 +425,7 @@ ssize_t s3fserial_read(struct file *filp, char __user *buf, size_t count, loff_t
 	spin_unlock(&dev->dev_lock);
 
 	if(!conn){
-		printk(KERN_INFO "s3fserial : connection does not exist. lxc : %s, conn_id %d\n",lxc->lxcName,fd);
+		printk(KERN_INFO "s3fserial::read() : connection does not exist. lxc : %s, conn_id %d\n",lxc->lxcName,fd);
 		return 0; // ERROR
 	}
 
@@ -407,21 +435,30 @@ ssize_t s3fserial_read(struct file *filp, char __user *buf, size_t count, loff_t
 	
 	if(num_rx_bytes <= 0){
 		spin_unlock(&conn->conn_lock);
-		printk(KERN_INFO "s3fserial : Num of bytes to read must be greater than 0. lxc : %s, conn_id %d\n",lxc->lxcName,fd);
+		printk(KERN_INFO "s3fserial::read() : Num of bytes to read must be greater than 0. lxc : %s, conn_id %d\n",lxc->lxcName,fd);
 		return 0;
 	}
 
+	printk(KERN_INFO "s3fserial::read() : Number of bytes to read : %d, rx_start = %d\n",num_rx_bytes,rx_start);
 
-	copy_bytes(conn->rx_buf, temp_rx_buff, RX_BUF_SIZE, rx_start, num_rx_bytes);
+	for(i = 0 ; i < num_rx_bytes; i++){
+		temp_rx_buff[i] = conn->rx_buf[mod(rx_start + i, RX_BUF_SIZE)];
+	}
+
+	//copy_bytes(conn->rx_buf, temp_rx_buff, RX_BUF_SIZE, rx_start, num_rx_bytes);
 	
 
 	if(copy_to_user(buf,temp_rx_buff,num_rx_bytes)){
 		spin_unlock(&conn->conn_lock);
-		printk(KERN_INFO "s3fserial : ERROR copy to user. lxc : %s, conn_id %d\n",lxc->lxcName,fd);
+		printk(KERN_INFO "s3fserial::read() : ERROR copy to user. lxc : %s, conn_id %d\n",lxc->lxcName,fd);
 		return -EFAULT;
 	}
 	conn->num_received_bytes -= num_rx_bytes;
-	conn->recv_start = mod(conn->recv_start + num_rx_bytes, RX_BUF_SIZE);
+	if(conn->num_received_bytes == 0)
+		conn->recv_start = 0;
+	else
+		conn->recv_start = mod(conn->recv_start + num_rx_bytes, RX_BUF_SIZE);
+
 	spin_unlock(&conn->conn_lock);
 
 	return num_rx_bytes;
@@ -438,6 +475,7 @@ ssize_t s3fserial_write(struct file *filp, const char __user *buf, size_t count,
 	uint32_t tx_start = 0;
 	uint32_t max_available_space = 0;
 	int fd = -1;
+	int i = 0;
 
 	if(!lxc)
 		return 0; // ERROR
@@ -449,16 +487,18 @@ ssize_t s3fserial_write(struct file *filp, const char __user *buf, size_t count,
 	fd = dev->id;
 
 	if(fd == -1){
-		printk(KERN_INFO "s3fserial : Incorrect write fd error\n");
+		printk(KERN_INFO "s3fserial::write() : Incorrect write fd error\n");
 		return 0; //
 	}
+
+
 
 	spin_lock(&dev->dev_lock);
 	conn = lxc->connection;
 	spin_unlock(&dev->dev_lock);
 
 	if(!conn){
-		printk(KERN_INFO "s3fserial : connection does not exist. lxc : %s, conn_id %d\n",lxc->lxcName,fd);
+		printk(KERN_INFO "s3fserial::write() : connection does not exist. lxc : %s, conn_id %d\n",lxc->lxcName,fd);
 		return 0; // ERROR
 	}
 
@@ -469,18 +509,23 @@ ssize_t s3fserial_write(struct file *filp, const char __user *buf, size_t count,
 	num_tx_bytes = ((max_available_space < count ? max_available_space : count));
 	if(num_tx_bytes <= 0){
 		spin_unlock(&conn->conn_lock);
-		printk(KERN_INFO "s3fserial : Num of bytes to write must be greater than 0. lxc : %s, conn_id %d\n",lxc->lxcName,fd);
+		printk(KERN_INFO "s3fserial::write() : Num of bytes to write must be greater than 0. lxc : %s, conn_id %d\n",lxc->lxcName,fd);
 		return 0;
 	}
 
 	if(copy_from_user(temp_tx_buff,buf,num_tx_bytes)){
 		spin_unlock(&conn->conn_lock);
-		printk(KERN_INFO "s3fserial : ERROR copy from user. lxc : %s, conn_id %d\n",lxc->lxcName,fd);
+		printk(KERN_INFO "s3fserial::write() : ERROR copy from user. lxc : %s, conn_id %d\n",lxc->lxcName,fd);
 		return 0;
 	}
 
-	copy_bytes(temp_tx_buff,conn->tx_buf + tx_start, num_tx_bytes,0,num_tx_bytes);
+	//copy_bytes(temp_tx_buff,conn->tx_buf + tx_start, num_tx_bytes,0,num_tx_bytes);
+	for(i = 0; i < num_tx_bytes; i++){
+		conn->tx_buf[mod(tx_start + i, TX_BUF_SIZE)] = temp_tx_buff[i];
+	}
+
 	conn->num_bytes_to_transmit += num_tx_bytes;
+	printk(KERN_INFO "s3fserial::write() : Write successfull for lxc : %s. Num bytes to transmit : %d\n",lxc->lxcName,conn->num_bytes_to_transmit);
 	spin_unlock(&conn->conn_lock);
 
 	return num_tx_bytes;
@@ -510,13 +555,14 @@ uint32_t s3fserial_poll(struct file *filp, poll_table *wait){
 	spin_unlock(&dev->dev_lock);
 
 	if(!conn){
-		printk(KERN_INFO "s3fserial : POLL: connection does not exist. lxc : %s, conn_id %d\n",lxc->lxcName,fd);
+		printk(KERN_INFO "s3fserial::poll() : connection does not exist. lxc : %s, conn_id %d\n",lxc->lxcName,fd);
 		return 0; // ERROR
 	}
 
 	spin_lock(&conn->conn_lock);
 	int tx_space = TX_BUF_SIZE - conn->num_bytes_to_transmit;
 	int n_rx_bytes = conn->num_received_bytes;
+	printk(KERN_INFO "s3fserial::poll() : lxc : %s, conn_id %d\n",lxc->lxcName,fd);
 	if(tx_space > 0)
 		mask |= POLLOUT | POLLWRNORM;   /* writable */
 	if(n_rx_bytes > 0)
@@ -529,29 +575,6 @@ uint32_t s3fserial_poll(struct file *filp, poll_table *wait){
 
 
 int s3fserial_release(struct inode *inode, struct file *filp){
-	struct lxc_entry * lxc = (struct lxc_entry *)filp->private_data;	
-	struct lxc_connection * conn = NULL;
-	struct dev_struct * dev = NULL;
-		
-	if(!lxc)
-		return 0; // ERROR
-	
-	dev = lxc->dev;
-	if(!dev)
-		return 0;
-
-	spin_lock(&dev->dev_lock);
-	hmap_remove(&dev->lxcs,lxc->lxcName);
-	spin_unlock(&dev->dev_lock);
-
-	if(!lxc->connection){
-		kfree(lxc);
-		return 0;
-	}
-
-	kfree(lxc->connection);
-	kfree(lxc);
-
 	return 0;
 }
 
@@ -575,7 +598,7 @@ int init_s3fserial(void){
 	}
 
 	if (result < 0) {
-		printk(KERN_WARNING "s3fserial: can't get major %d\n", dev_major);
+		printk(KERN_WARNING "s3fserial::init() : can't get major %d\n", dev_major);
 		return result;
 	}
 
@@ -592,6 +615,7 @@ int init_s3fserial(void){
 		spin_lock_init(&devices[i].dev_lock);
 		devices[i].id = i;
 		hmap_init( &devices[i].lxcs,"string",0);
+		llist_init(&devices[i].lxc_list);
 		//init_MUTEX(&devices[i].sem);
 		int err, devno = MKDEV(dev_major, dev_minor + i);
     
@@ -601,7 +625,7 @@ int init_s3fserial(void){
 		err = cdev_add(&devices[i].cdev, devno, 1);
 		/* Fail gracefully if need be */
 		if (err)
-			printk(KERN_NOTICE "s3fserial : Error %d adding device%d", err, i);
+			printk(KERN_NOTICE "s3fserial::init() : Error %d adding device%d", err, i);
 
 	}
 
@@ -617,12 +641,36 @@ int cleanup_s3fserial(void){
 
 	int i;
 	dev_t devno = MKDEV(dev_major, dev_minor);
-
+	char * next_lxcName = NULL;
+	struct lxc_entry * lxc = NULL;	
+	struct lxc_connection * conn = NULL;
+	struct dev_struct * dev = NULL;
+	
 	/* Get rid of our char dev entries */
 	if (devices) {
 		for (i = 0; i < NR_DEVS; i++) {
 			cdev_del(&devices[i].cdev);
+
+			while(llist_size(&devices[i].lxc_list) > 0){
+				next_lxcName = llist_pop(&devices[i].lxc_list);
+				if(next_lxcName != NULL){
+					printk(KERN_INFO "s3fserial::cleanup() at lxc = %s\n",next_lxcName);
+					lxc = hmap_get(&devices[i].lxcs,next_lxcName);					
+					if(lxc != NULL){
+						hmap_remove(&devices[i].lxcs,lxc->lxcName);
+						if(!lxc->connection){
+							kfree(lxc);	
+						}
+						else{
+							kfree(lxc->connection);
+							kfree(lxc);	
+						}
+					}				
+				}
+
+			}			
 			hmap_destroy(&devices[i].lxcs);
+			llist_destroy(&devices[i].lxc_list);
 		}
 
 		kfree(devices);

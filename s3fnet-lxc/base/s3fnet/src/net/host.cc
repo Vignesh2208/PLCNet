@@ -193,19 +193,24 @@ void Host::init()
 {
   HOST_DUMP(printf("[nhi=\"%s\"] init().\n", nhi.toString()));
 
+  //assert(ifaces);
+
   if(ifaces.empty())
     error_retn("WARNING: Host nhi=\"%s\" has no active interface.\n", nhi.toString());
 
   rng = new Random::RNG();
 
+  HOST_DUMP(printf("[calling ProtocolGraph init() nhi=\"%s\"] init().\n", nhi.toString()));
   ProtocolGraph::init();
 
+  HOST_DUMP(printf("[creating new listen Process nhi=\"%s\"] init().\n", nhi.toString()));
   listen_proc = new Process( (Entity *)this, (void (s3f::Entity::*)(s3f::Activation))&Host::listen);
 
   //init all network interfaces, and binding the "listen" process to the InChannels
   S3FNET_HOST_IFACE_MAP::iterator iter;
   for(iter = ifaces.begin(); iter != ifaces.end(); iter++)
   {
+    HOST_DUMP(printf("[calling interface init() nhi=\"%s\"] init().\n", nhi.toString()));
     (*iter).second->init();
     (*iter).second->ic->bind(listen_proc);
   }
