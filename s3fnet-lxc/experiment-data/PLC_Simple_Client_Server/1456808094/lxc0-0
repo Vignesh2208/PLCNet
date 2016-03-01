@@ -16,13 +16,12 @@ Resolved hostname =  10.10.0.10
 ['lxc.network.ipv4 ', ' 10.10.0.9/8']
 Dest IP :  10.10.0.9
 Resolved hostname =  10.10.0.9
-Start time =  1456808259.539031
+Start time =  1456808097.19453
 Listening on port 502
-Established Connection from ('10.10.0.10', 48752)
-Recv data =  bytearray(b'\x00\x10\x03\x00\x02\x00\x01\x16')
-Sent response to client =  bytearray(b'\x00\x10\x03\x02\x124[')
-Start select time =  1456808262.605908
-End select time =  1456808265.610489
-[OK: 0:06.35]
+End time =  1456808102.228608
+Socket TIMEOUT Done !!!!!!!!!!!!!!!!
+Start select time =  1456808102.271582
+End select time =  1456808105.274575
+[OK: 0:08.38]
 
 All tests succeeded (full run)

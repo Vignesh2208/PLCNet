@@ -9,12 +9,10 @@ Running test 'sfb102_client.awl' with 'python3' ... ['lxc.utsname ', ' lxc0-0']
 ['lxc.network.ipv4 ', ' 10.10.0.9/8']
 Dest IP :  10.10.0.9
 Resolved hostname =  10.10.0.9
-FunctionCode =  3
-Sent msg =  bytearray(b'\x00\x10\x03\x00\x02\x00\x01\x16')
-Response from server :  bytearray(b'\x00\x10\x03\x02\x124[')
-Function Code =  3
-Start select time =  1456808262.639163
-End select time =  1456808265.642418
-[OK: 0:06.38]
+10.10.0.9 502
+timed out
+Start select time =  1456808102.95619
+End select time =  1456808105.956197
+[OK: 0:09.04]
 
 All tests succeeded (full run)

@@ -262,7 +262,6 @@ class SFB102(SFB):
 
 			print("~~~~~~~~~~~~~~~~~~~~Inputs~~~~~~~~~~~~~~~~~~~")
 			print("CONNECTION ID     = ",connection_id)
-			#print("REG_KEY           = ",REG_KEY)
 			print("CONN_TIME         = ",CONN_TIME)
 			print("RECV_TIME         = ",RECV_TIME)
 			print("DICONNECT         = ",DISCONNECT)
@@ -289,12 +288,7 @@ class SFB102(SFB):
 				TI = self.fetchInterfaceFieldByName("TI")
 				WRITE_READ = self.fetchInterfaceFieldByName("WRITE_READ")
 
-				#print("Input UNIT : ",UNIT)
-				#print("Input DATA_TYPE : ",DATA_TYPE)
-				#print("Input START_ADDRESS : ",START_ADDRESS)
-				#print("Input LENGTH : ",LENGTH)
-				#print("Input Transaction ID : ", TI)
-				#print("Input WRITE_READ : ",WRITE_READ)
+				
 				connection.set_all_in_params_client(ENQ_ENR,DISCONNECT,RECV_TIME,CONN_TIME,UNIT,DATA_TYPE,WRITE_READ,TI,LENGTH,START_ADDRESS)
 				STATUS = connection.call_modbus_client()
 				#STATUS = DONE

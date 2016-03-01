@@ -79,6 +79,7 @@ class Connection(object) :
 		self.connection_params = Connection_Params(cpu)
 		self.connection_params.set_connection_params(connection_id,remote_port,local_port,self.hostname_to_ip(remote_host_name),is_server,single_write_enabled)
 		self.cpu = cpu
+		self.remote_host_id = int(remote_host_name)
 		
 		self.data_area_dbs = {}
 		self.thread_cmd_queue = Queue()
@@ -331,7 +332,7 @@ class Connection(object) :
 	def run_client(self) :
 		self.read_finish_status = 1
 		TCP_REMOTE_IP  = self.connection_params.rem_staddr
-		#TCP_REMOTE_IP = "10.100.0.1"
+		#TCP_REMOTE_IP = "127.0.0.1"
 		TCP_REMOTE_PORT = self.connection_params.rem_tsap_id
 		BUFFER_SIZE = 4096
 		self.BUSY = True
@@ -378,7 +379,7 @@ class Connection(object) :
 
 			client_socket.settimeout(self.recv_time)
 			self.thread_resp_queue.put(1)
-			msg_to_send,exception = self.mod_client.construct_request_message(data_type,write_read,length,single_write,start_address,TI)
+			msg_to_send,exception = self.mod_client.construct_request_message(data_type,write_read,length,single_write,start_address,TI,self.remote_host_id)
 
 			if msg_to_send == None :
 				self.status_lock.acquire()

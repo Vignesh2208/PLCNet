@@ -90,7 +90,7 @@ class ModBusMaster(object) :
 		if type == 4 :
 			self.connection.data_area_dbs[data_area].structInstance.setFieldDataByName("Input_Register_" + str(word), regvalue)
 
-	def construct_request_message(self,dataType,write_read,length,single_write,startAddress,transaction_id) :
+	def construct_request_message(self,dataType,write_read,length,single_write,startAddress,transaction_id,slave_add) :
 
 		if dataType > 4 or dataType < 0 :
 			#raise AwlSimError("Invalid dataType Error Code 0xA011 : ", dataType)
@@ -101,7 +101,8 @@ class ModBusMaster(object) :
 			print("Length cannot be less than zero. Error Code : 0xA005")
 			return None,ERROR_INVALID_LENGTH
 
-		slaveAddress = transaction_id
+		slaveAddress = slave_add
+		t_id = transaction_id
 
 		if write_read == 0 : 	# reading function
 			functionCode = dataType
@@ -134,7 +135,7 @@ class ModBusMaster(object) :
 				#raise AwlSimError("Writing length exceeds the limit. Error Code : 0xA005")
 				print("Writing length exceeds the limit. Error Code : 0xA005")
 				return None,ERROR_INVALID_LENGTH
-		request_msg_constructer = ModBusRequestMessage(connection=self.connection,slaveAddress=slaveAddress,functionCode=functionCode)
+		request_msg_constructer = ModBusRequestMessage(connection=self.connection,slaveAddress=slaveAddress,functionCode=functionCode,t_id=t_id)
 		msg_params = {}
 		if functionCode in [1,2,3,4] :
 			msg_params["startingAddress"] = startAddress
@@ -149,6 +150,7 @@ class ModBusMaster(object) :
 		self.sentlength = length
 		self.sentfunctionCode = functionCode
 		self.sentTI = transaction_id
+		self.sentslaveAddr = slaveAddress
 
 		print("FunctionCode = ",functionCode)
 		
@@ -162,24 +164,25 @@ class ModBusMaster(object) :
 		
 		if len(msg) <= 1 :
 			return ERROR_UNKNOWN_EXCEPTION 	# unknown exception error Code
-		functionCode = int(msg[1])
+		functionCode = int(msg[2])
 		print("Function Code = ",functionCode)
-		ti = msg[0]
+		ti = msg[1]
+		recv_slave_add = msg[0]
 		if ti == self.sentTI and functionCode != self.sentfunctionCode :
 			return ERROR_INVALID_FUNCTION_CODE
 
-		if ti  != self.sentTI :
+		if ti  != self.sentTI or recv_slave_add != self.sentslaveAddr :
 			return ERROR_INVALID_TI
 
 		if functionCode == 0x81:
-			if msg[2] == ILLEGAL_DATA_ADDRESS :
+			if msg[3] == ILLEGAL_DATA_ADDRESS :
 				return ERROR_INVALID_COMBINATION
 
-			if msg[2] == ILLEGAL_DATA_VALUE or msg[2] == SLAVE_DEVICE_FAILURE:
+			if msg[3] == ILLEGAL_DATA_VALUE or msg[2] == SLAVE_DEVICE_FAILURE:
 				return ERROR_UNKNOWN_EXCEPTION
 
 			else :
-				return msg[2]				
+				return msg[3]				
 		if functionCode == 5 or functionCode == 6 :			
 			if self.sent_msg != msg :
 				print("Sent message not echoed back for functionCode 5 /6 ")
@@ -190,7 +193,7 @@ class ModBusMaster(object) :
 
 		# if functionCode in [1,2,3,4] - write the data read from slave into a local DB
 		if functionCode in [1,2] :
-			byteCount = int(msg[2])
+			byteCount = int(msg[3])
 			presetAddress = self.sentstartAddress
 			numberPreset = self.sentlength
 
@@ -201,7 +204,7 @@ class ModBusMaster(object) :
 			bitOffset = 0
 			currcoilAddress = presetAddress
 			while currcoilAddress < presetAddress + numberPreset :
-				curr_coil_status  = 1 if (msg[3 + byteOffset] & (1 << bitOffset)) != 0 else 0
+				curr_coil_status  = 1 if (msg[4 + byteOffset] & (1 << bitOffset)) != 0 else 0
 				self.write_bit_status(currcoilAddress,curr_coil_status,functionCode)
 				if self.ERROR_CODE != NO_ERROR :					
 					return  ERROR_INVALID_COMBINATION
@@ -213,7 +216,7 @@ class ModBusMaster(object) :
 				currcoilAddress = currcoilAddress + 1
 
 		if functionCode in [3,4] :
-			byteCount = int(msg[2])
+			byteCount = int(msg[3])
 			presetAddress = self.sentstartAddress
 			numberPreset = self.sentlength
 
@@ -223,7 +226,7 @@ class ModBusMaster(object) :
 			byteOffset = 0
 			currregAddress = presetAddress
 			while currregAddress < presetAddress + numberPreset :
-				curr_reg_status  = (msg[3 + byteOffset] << 8) | msg[3 + byteOffset + 1]
+				curr_reg_status  = (msg[4 + byteOffset] << 8) | msg[4 + byteOffset + 1]
 				self.write_reg_status(currregAddress,curr_reg_status,functionCode)
 				if self.ERROR_CODE != NO_ERROR :
 					return ERROR_INVALID_COMBINATION					

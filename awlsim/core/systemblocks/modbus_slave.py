@@ -87,7 +87,7 @@ class ModBusSlave(object) :
 	def process_request_message(self,msg) :
 		request_msg_params = {}
 		request_msg_params["unit"] = -1
-		request_msg_params["ti"] = msg[0]
+		request_msg_params["ti"] = msg[1]
 		request_msg_params["data_type"] = -1
 		request_msg_params["write_read"] = -1
 		request_msg_params["start_address"] =  -1
@@ -97,13 +97,14 @@ class ModBusSlave(object) :
 		try :
 			# msg is expected to be a byte array
 			slaveAddress = msg[0]
-			functionCode = msg[1]
+			functionCode = msg[1 + 1]
+			ti = msg[1]
 			if functionCode not in [1,2,3,4,5,6,15,16] :
-				error_msg_construct = ModBusErrorMessage(slaveAddress,ILLEGAL_FUNCTION)
+				error_msg_construct = ModBusErrorMessage(slaveAddress,ti,ILLEGAL_FUNCTION)
 				request_msg_params["ERROR"] = ILLEGAL_FUNCTION
 				return error_msg_construct.get_error_message(),request_msg_params
 
-			response_msg_construct = ModBusResponseMessage(connection=self.connection,slaveAddress=slaveAddress,functionCode=functionCode)
+			response_msg_construct = ModBusResponseMessage(connection=self.connection,slaveAddress=slaveAddress,functionCode=functionCode,t_id = ti)
 			response_msg_params = {}
 			
 			if functionCode == 1 or functionCode == 5 or functionCode == 15 :
@@ -115,10 +116,10 @@ class ModBusSlave(object) :
 			
 
 			if functionCode in [1,2,3,4] :
-				startingAddressHi = msg[2]
-				startingAddressLo = msg[3]
-				numberOfPointsHi = msg[4]
-				numberOfPointsLo = msg[5]
+				startingAddressHi = msg[2+1]
+				startingAddressLo = msg[3+1]
+				numberOfPointsHi = msg[4+1]
+				numberOfPointsLo = msg[5+1]
 
 				startingAddress = (startingAddressHi << 8) | startingAddressLo				
 				numberOfPoints = (numberOfPointsHi << 8) | numberOfPointsLo
@@ -132,16 +133,16 @@ class ModBusSlave(object) :
 				if numberOfPoints > max_dataType_reading_length[functionCode] :
 					print("Reading length exceeds the limit. Error Code : 0xA005")
 					request_msg_params["ERROR"] = ERROR_INVALID_LENGTH
-					error_msg_construct = ModBusErrorMessage(slaveAddress,ERROR_INVALID_LENGTH)
+					error_msg_construct = ModBusErrorMessage(slaveAddress,ti,ERROR_INVALID_LENGTH)
 					return error_msg_construct.get_error_message(),request_msg_params
 				
 				return response_msg_construct.construct_response_message(response_msg_params),request_msg_params
 
 			if functionCode == 5 :
-				presetAddressHi = msg[2]
-				presetAddressLo = msg[3]
-				presetDataHi = msg[4]
-				presetDataLo = msg[5]
+				presetAddressHi = msg[2+1]
+				presetAddressLo = msg[3+1]
+				presetDataHi = msg[4+1]
+				presetDataLo = msg[5+1]
 
 				presetAddress = (presetAddressHi << 8) | presetAddressLo
 
@@ -153,7 +154,7 @@ class ModBusSlave(object) :
 				coil_preset_value = 1 if presetDataHi == 0xFF else 0
 				self.write_bit_status(presetAddress,coil_preset_value)
 				if self.ERROR_CODE != NO_ERROR :
-					error_msg_construct = ModBusErrorMessage(slaveAddress,self.ERROR_CODE)
+					error_msg_construct = ModBusErrorMessage(slaveAddress,ti,self.ERROR_CODE)
 					request_msg_params["ERROR"] = ERROR_INVALID_COMBINATION
 					return error_msg_construct.get_error_message()
 
@@ -162,10 +163,10 @@ class ModBusSlave(object) :
 
 							
 			if functionCode == 6 :
-				presetAddressHi = msg[2]
-				presetAddressLo = msg[3]
-				presetDataHi = msg[4]
-				presetDataLo = msg[5]
+				presetAddressHi = msg[2+1]
+				presetAddressLo = msg[3+1]
+				presetDataHi = msg[4+1]
+				presetDataLo = msg[5+1]
 
 				presetAddress = (presetAddressHi << 8) | presetAddressLo
 				presetData = (presetDataHi << 8 ) | presetDataLo
@@ -176,7 +177,7 @@ class ModBusSlave(object) :
 
 				self.write_reg_status(presetAddress,presetData)
 				if self.ERROR_CODE != NO_ERROR :
-					error_msg_construct = ModBusErrorMessage(slaveAddress,self.ERROR_CODE)
+					error_msg_construct = ModBusErrorMessage(slaveAddress,ti,self.ERROR_CODE)
 					request_msg_params["ERROR"] = ERROR_INVALID_COMBINATION
 					return error_msg_construct.get_error_message(),request_msg_params
 
@@ -184,10 +185,10 @@ class ModBusSlave(object) :
 				return response_msg_construct.construct_response_message(response_msg_params),request_msg_params
 
 			if functionCode == 15 :
-				presetAddressHi = msg[2]
-				presetAddressLo = msg[3]
-				numberPresetHi = msg[4]
-				numberPresetLo = msg[5]
+				presetAddressHi = msg[2+1]
+				presetAddressLo = msg[3+1]
+				numberPresetHi = msg[4+1]
+				numberPresetLo = msg[5+1]
 
 				presetAddress = (presetAddressHi << 8) | presetAddressLo
 				numberPreset = (numberPresetHi << 8 ) | numberPresetLo
@@ -199,18 +200,18 @@ class ModBusSlave(object) :
 				if numberPreset > max_dataType_writing_length[1] :
 					print("Writing length exceeds the limit. Error Code : 0xA005")
 					request_msg_params["ERROR"] = ERROR_INVALID_LENGTH
-					error_msg_construct = ModBusErrorMessage(slaveAddress,ERROR_INVALID_LENGTH)
+					error_msg_construct = ModBusErrorMessage(slaveAddress,ti,ERROR_INVALID_LENGTH)
 					return error_msg_construct.get_error_message(),request_msg_params
 
-				byteCount = msg[6]
+				byteCount = msg[6+1]
 				byteOffset = 0
 				bitOffset = 0
 				currcoilAddress = presetAddress
 				while currcoilAddress < presetAddress + numberPreset :
-					curr_coil_status  = 1 if (msg[7 + byteOffset] & (1 << bitOffset)) != 0 else 0
+					curr_coil_status  = 1 if (msg[7 + 1 + byteOffset] & (1 << bitOffset)) != 0 else 0
 					self.write_bit_status(currcoilAddress,curr_coil_status)
 					if self.ERROR_CODE != NO_ERROR :
-						error_msg_construct = ModBusErrorMessage(slaveAddress,self.ERROR_CODE)
+						error_msg_construct = ModBusErrorMessage(slaveAddress,ti,self.ERROR_CODE)
 						request_msg_params["ERROR"] = ERROR_INVALID_COMBINATION
 						return error_msg_construct.get_error_message(),request_msg_params
 					
@@ -225,10 +226,10 @@ class ModBusSlave(object) :
 				
 
 			if functionCode == 16 : 
-				presetAddressHi = msg[2]
-				presetAddressLo = msg[3]
-				numberPresetHi = msg[4]
-				numberPresetLo = msg[5]
+				presetAddressHi = msg[2+1]
+				presetAddressLo = msg[3+1]
+				numberPresetHi = msg[4+1]
+				numberPresetLo = msg[5+1]
 
 				presetAddress = (presetAddressHi << 8) | presetAddressLo
 				numberPreset = (numberPresetHi << 8 ) | numberPresetLo
@@ -240,17 +241,17 @@ class ModBusSlave(object) :
 				if numberPreset > max_dataType_writing_length[3] :
 					print("Writing length exceeds the limit. Error Code : 0xA005")
 					request_msg_params["ERROR"] = ERROR_INVALID_LENGTH
-					error_msg_construct = ModBusErrorMessage(slaveAddress,ERROR_INVALID_LENGTH)
+					error_msg_construct = ModBusErrorMessage(slaveAddress,ti,ERROR_INVALID_LENGTH)
 					return error_msg_construct.get_error_message(),request_msg_params
 
-				byteCount = msg[6]
+				byteCount = msg[6+1]
 				byteOffset = 0
 				currregAddress = presetAddress
 				while currregAddress < presetAddress + numberPreset :
-					curr_reg_status  = (msg[7 + byteOffset] << 8) | msg[7 + byteOffset + 1]
+					curr_reg_status  = (msg[7 +1 + byteOffset] << 8) | msg[7 + 1 + byteOffset + 1]
 					self.write_reg_status(currregAddress,curr_reg_status)
 					if self.ERROR_CODE != NO_ERROR :
-						error_msg_construct = ModBusErrorMessage(slaveAddress,self.ERROR_CODE)
+						error_msg_construct = ModBusErrorMessage(slaveAddress,ti,self.ERROR_CODE)
 						request_msg_params["ERROR"] = ERROR_INVALID_COMBINATION
 						return error_msg_construct.get_error_message(),request_msg_params
 					
@@ -265,7 +266,7 @@ class ModBusSlave(object) :
 
 		except IndexError:
 			print("WARNING ! MSG in improper format")
-			error_msg_construct = ModBusErrorMessage(msg[0],ERROR_UNKNOWN_EXCEPTION)
+			error_msg_construct = ModBusErrorMessage(msg[0],ti,ERROR_UNKNOWN_EXCEPTION)
 			request_msg_params["ERROR"] = ERROR_UNKNOWN_EXCEPTION
 			return error_msg_construct.get_error_message(),request_msg_params
 

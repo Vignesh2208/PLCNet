@@ -28,9 +28,10 @@ ILLEGAL_DATA_VALUE = 3
 class ModBusRequestMessage(object) :
 
 
-	def __init__(self,connection,functionCode,slaveAddress) :
+	def __init__(self,connection,functionCode,slaveAddress,t_id) :
 		self.slaveAddress = slaveAddress
 		self.functionCode = functionCode
+		self.transaction_id = t_id
 		self.startingAddressHi = 0
 		self.startingAddressLo = 0
 		self.numberOfPointsHi = 0
@@ -100,7 +101,7 @@ class ModBusRequestMessage(object) :
 
 	def load_msg_params(self,params) :
 		
-		msgSum = self.slaveAddress + self.functionCode
+		msgSum = self.slaveAddress + self.functionCode + self.transaction_id
 
 		if self.functionCode in [1,2,3,4] :	# Read Coils, Inputs, Holding Register or Input Register
 			self.startingAddressHi = params["startingAddress"] >> 8
@@ -212,6 +213,7 @@ class ModBusRequestMessage(object) :
 		self.load_msg_params(params)
 		self.msg = bytearray()
 		self.msg.append(self.slaveAddress)
+		self.msg.append(self.transaction_id)
 		self.msg.append(self.functionCode)
 		if self.functionCode in [1,2,3,4] :
 			self.msg.append(self.startingAddressHi)
@@ -250,9 +252,10 @@ class ModBusResponseMessage(object) :
 
 
 
-	def __init__(self,connection,functionCode,slaveAddress) :
+	def __init__(self,connection,functionCode,slaveAddress,t_id) :
 		self.slaveAddress = slaveAddress
 		self.functionCode = functionCode
+		self.transaction_id = t_id
 		self.byteCount = 0	
 		self.msgCRC = 0
 		self.connection = connection
@@ -313,7 +316,7 @@ class ModBusResponseMessage(object) :
 
 	def load_msg_params(self,params) :
 		
-		msgSum = self.slaveAddress + self.functionCode
+		msgSum = self.slaveAddress + self.functionCode + self.transaction_id
 
 		if self.functionCode not in [1,2,3,4,5,6,15,16] :
 			self.ERROR_CODE = ILLEGAL_FUNCTION
@@ -430,6 +433,7 @@ class ModBusResponseMessage(object) :
 		self.load_msg_params(params)
 		self.msg = bytearray()
 		self.msg.append(self.slaveAddress)
+		self.msg.append(self.transaction_id)
 
 
 		if self.ERROR_CODE != NO_ERROR :
@@ -469,16 +473,18 @@ class ModBusResponseMessage(object) :
 
 class ModBusErrorMessage(object) :
 
-	def __init__(self,slaveAddress,error_code) :
+	def __init__(self,slaveAddress,t_id,error_code) :
 		self.error_code = error_code
 		self.slaveAddress = slaveAddress
+		self.transaction_id = t_id
 
 	def get_error_message(self) :
 		msg = bytearray()
 		msg.append(self.slaveAddress)
+		msg.append(self.transaction_id)
 		msg.append(0x81)
 		msg.append(self.error_code)
-		CRC = self.slaveAddress + 0x81 + self.error_code
+		CRC = self.slaveAddress + 0x81 + self.error_code + self.transaction_id
 		msg.append(CRC)
 		return msg
 
