@@ -8,7 +8,7 @@ int dev_major = 0 ;
 dev_major = DEV_MAJOR;
 #endif
 int dev_minor =   0;
-int nr_devs = NR_DEVS;	/* number of bare scull devices */
+int nr_devs = NR_SERIAL_DEVS;	/* number of bare scull devices */
 struct dev_struct * devices = NULL;
 
 
@@ -134,7 +134,7 @@ long s3fserial_ioctl(struct file *filp, unsigned int cmd, unsigned long arg)
 									return -EFAULT;
 								}
 
-								if(tmp_ioctl_conn.conn_id >= 0 && tmp_ioctl_conn.conn_id < NR_DEVS)
+								if(tmp_ioctl_conn.conn_id >= 0 && tmp_ioctl_conn.conn_id < NR_SERIAL_DEVS)
 									lxc = get_lxc_entry(tmp_ioctl_conn.owner_lxc_name,tmp_ioctl_conn.conn_id);
 								else
 									lxc = NULL;
@@ -152,7 +152,7 @@ long s3fserial_ioctl(struct file *filp, unsigned int cmd, unsigned long arg)
 									return -EFAULT;
 								}
 
-								if(tmp_ioctl_conn.conn_id >= 0 && tmp_ioctl_conn.conn_id < NR_DEVS)
+								if(tmp_ioctl_conn.conn_id >= 0 && tmp_ioctl_conn.conn_id < NR_SERIAL_DEVS)
 									lxc = get_lxc_entry(tmp_ioctl_conn.owner_lxc_name,tmp_ioctl_conn.conn_id);				
 								else
 									lxc = NULL;
@@ -175,7 +175,7 @@ long s3fserial_ioctl(struct file *filp, unsigned int cmd, unsigned long arg)
 										printk(KERN_INFO "s3fserial::ioctl():SETCONNLXC : ERROR ioctl SETCONNLXC copy from user\n");
 										return -EFAULT;		
 									}	
-									if(tmp_ioctl_conn.conn_id >= 0 && tmp_ioctl_conn.conn_id < NR_DEVS){
+									if(tmp_ioctl_conn.conn_id >= 0 && tmp_ioctl_conn.conn_id < NR_SERIAL_DEVS){
 										printk(KERN_INFO "s3fserial::ioctl():SETCONNLXC : owner lxc name : %s. Conn_id = %d\n",tmp_ioctl_conn.owner_lxc_name,tmp_ioctl_conn.conn_id);
 										lxc = get_lxc_entry(tmp_ioctl_conn.owner_lxc_name,tmp_ioctl_conn.conn_id);
 									}
@@ -205,7 +205,7 @@ long s3fserial_ioctl(struct file *filp, unsigned int cmd, unsigned long arg)
 										printk(KERN_INFO "s3fserial::ioctl():GETCONNLXC : ERROR ioctl GETCONNLXC copy from user\n");
 										return -EFAULT;		
 									}	
-									if(tmp_ioctl_conn.conn_id >= 0 && tmp_ioctl_conn.conn_id < NR_DEVS)
+									if(tmp_ioctl_conn.conn_id >= 0 && tmp_ioctl_conn.conn_id < NR_SERIAL_DEVS)
 										lxc = get_lxc_entry(tmp_ioctl_conn.owner_lxc_name,tmp_ioctl_conn.conn_id);
 									else
 										lxc = NULL;
@@ -245,7 +245,7 @@ long s3fserial_ioctl(struct file *filp, unsigned int cmd, unsigned long arg)
 										return -EFAULT;		
 									}
 
-									for(i = 0; i < NR_DEVS; i++){
+									for(i = 0; i < NR_SERIAL_DEVS; i++){
 										lxc = get_lxc_entry(tmp_ioctl_conn.owner_lxc_name,i);
 										if(lxc != NULL){
 											conn = lxc->connection;
@@ -300,7 +300,7 @@ long s3fserial_ioctl(struct file *filp, unsigned int cmd, unsigned long arg)
 											return -EFAULT;		
 										}
 
-										for(i = 0; i < NR_DEVS; i++){
+										for(i = 0; i < NR_SERIAL_DEVS; i++){
 											lxc = get_lxc_entry(tmp_ioctl_conn.owner_lxc_name,i);
 											if(lxc != NULL){
 												spin_lock(&devices[i].dev_lock);
@@ -648,7 +648,7 @@ int cleanup_s3fserial(void){
 	
 	/* Get rid of our char dev entries */
 	if (devices) {
-		for (i = 0; i < NR_DEVS; i++) {
+		for (i = 0; i < NR_SERIAL_DEVS; i++) {
 			cdev_del(&devices[i].cdev);
 
 			while(llist_size(&devices[i].lxc_list) > 0){
@@ -677,7 +677,7 @@ int cleanup_s3fserial(void){
 	}
 
 	/* cleanup_module is never called if registering failed */
-	unregister_chrdev_region(devno, NR_DEVS);
+	unregister_chrdev_region(devno, NR_SERIAL_DEVS);
 
 	return 0;
 

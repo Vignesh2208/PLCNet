@@ -2,6 +2,12 @@ import os
 import sys
 
 
+NR_SERIAL_DEVS  = 5
+KERN_BUF_SIZE = 100
+TX_BUF_SIZE = 100
+RX_BUF_SIZE = 2*TX_BUF_SIZE
+
+
 script_path = os.path.dirname(os.path.realpath(__file__))
 script_path_list = script_path.split('/')
 
@@ -37,6 +43,10 @@ definitions = """
 
 """ 
 
+definitions = definitions + "#define NR_SERIAL_DEVS " + str(NR_SERIAL_DEVS) + "\n"
+definitions = definitions + "#define KERN_BUF_SIZE " + str(KERN_BUF_SIZE) + "\n"
+definitions = definitions + "#define TX_BUF_SIZE " + str(TX_BUF_SIZE) + "\n"
+definitions = definitions + "#define RX_BUF_SIZE " + str(RX_BUF_SIZE) + "\n"
 definitions = definitions + "#define PATH_TO_S3FNETLXC  " + "\"" + s3f_directory + "\"\n"
 definitions = definitions + "#define PATH_TO_READER_DATA " + "\"" + s3f_directory + "/data" + "\"\n"
 definitions = definitions + """

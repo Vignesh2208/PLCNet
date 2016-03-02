@@ -28,9 +28,10 @@
 START_OF_EXPERIMENT_CONFIGURATION
 
 Experiment_Name		=	PLC_Simple_Client_Server
-Run_Time		=	10
+Run_Time			=	10
 Dilation_Factor		=	5
 Number_Of_Nodes		=	2
+ModBus_Network_Type	=	SERIAL
 
 END_OF_EXPERIMENT_CONFIGURATION
 

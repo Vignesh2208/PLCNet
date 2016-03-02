@@ -5,6 +5,27 @@ seed 1
 log_dir PLC_Simple_Client_Server
 
 dilation [ TDF 5 ]
+emuSerialHost
+[
+	isEmulated 1
+	interface [ 0 _extends .dict.1Mb
+			ProtocolSession [name mac use "s3f.os.dummymac" ]
+	]
+	interface [ 1 _extends .dict.1Mb
+			ProtocolSession [name mac use "s3f.os.dummymac" ]
+	]
+	interface [ 2 _extends .dict.1Mb
+			ProtocolSession [name mac use "s3f.os.dummymac" ]
+	]
+	interface [ 3 _extends .dict.1Mb
+			ProtocolSession [name mac use "s3f.os.dummymac" ]
+	]
+	interface [ 4 _extends .dict.1Mb
+			ProtocolSession [name mac use "s3f.os.dummymac" ]
+	]
+	_find .dict.emuHostSerialGraph.graph
+]
+
 Net
 [
 	lxcConfig
@@ -19,7 +40,7 @@ Net
 		host
 		[
 			id 0
-			_extends .dict.emuHost
+			_extends .emuSerialHost
 		]
 	]
 	Net
@@ -29,9 +50,9 @@ Net
 		host
 		[
 			id 0
-			_extends .dict.emuHost
+			_extends .emuSerialHost
 		]
 	]
 
-	link [ attach 0:0(0) attach 1:0(0) _extends .dict.link_delay_1ms ]
+	link [ attach 0:0(0) attach 1:0(0) min_delay 1e-6 prop_delay 0.001 ]
 ]

@@ -97,11 +97,13 @@ class Net;
 #define SERIAL_PROTOCOL_NAME  "serial"
 
 
-#define NR_SERIAL_DEVS        3
-#define NR_DEVS 1
+/*#define NR_SERIAL_DEVS        3
 #define KERN_BUF_SIZE 100
 #define TX_BUF_SIZE 100
 #define RX_BUF_SIZE 2*(TX_BUF_SIZE)
+*/
+
+
 /*
  * Serial Ioctl definitions
  */

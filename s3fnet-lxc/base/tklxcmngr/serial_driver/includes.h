@@ -24,11 +24,13 @@
 #include <asm/uaccess.h>	/* copy_*_user */
 
 #include "hashmap.h"
+#include "../../s3fnet-definitions.h"
 
-#define NR_DEVS 1
+/*#define NR_DEVS 1
 #define KERN_BUF_SIZE 100
 #define TX_BUF_SIZE 100
 #define RX_BUF_SIZE 2*(TX_BUF_SIZE)
+*/
 
 typedef unsigned int uint32_t;
 

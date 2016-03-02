@@ -34,7 +34,7 @@ lxcman:
 
 examplerun:
 	$(CLEAN_EXPERIMENT)
-	python conf/config_parser.py	
+	python awlsim/config_parser.py	
 	rm experiment-data
 	ln -s s3fnet-lxc/experiment-data experiment-data
 	cd conf/PLC_Config/; make clean; make; make test
