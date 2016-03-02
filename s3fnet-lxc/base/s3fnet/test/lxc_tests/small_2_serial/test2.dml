@@ -1,0 +1,81 @@
+total_timeline 3	
+tick_per_second 6	
+run_time 10
+seed 1	
+log_dir 2_LXC_UDP_TDF_2_New	
+
+dilation [ TDF 5.0 ]
+
+Net
+[
+	lxcConfig
+	[
+		settings [ lxcNHI 0:0 _extends .dilation cmd "/home/vignesh/Desktop/PLCs/awlsim-0.42/s3fnet-lxc/csudp/serial_client"   ]
+		settings [ lxcNHI 1:0 _extends .dilation cmd "/home/vignesh/Desktop/PLCs/awlsim-0.42/s3fnet-lxc/csudp/serial_server1"   ]
+		settings [ lxcNHI 2:0 _extends .dilation cmd "/home/vignesh/Desktop/PLCs/awlsim-0.42/s3fnet-lxc/csudp/serial_server2"   ]
+	]	
+	
+	Net 
+	[ 
+		id 0
+		alignment 0
+		host 																	# Host 0:0
+		[ 
+			id 0
+			_extends .dict.emuSerialHost
+		]
+	]
+
+	Net 
+	[ 
+		id 1
+		alignment 1
+		host 																	# Host 1:0
+		[ 
+			id 0
+			_extends .dict.emuSerialHost
+		]
+	]		
+		
+	Net
+	[
+		id 2
+		alignment 2		
+		host 																	# Host 2:0
+		[ 
+			id 0
+			_extends .dict.emuSerialHost
+		]
+
+		router
+		[
+			id 1
+			_find .dict.routerGraph.graph		
+			interface [ id 0   _extends .dict.1Gb ]
+			interface [ id 1   _extends .dict.1Gb ]
+			interface [ id 2   _extends .dict.1Gb ]
+			interface [ id 3   _extends .dict.1Gb ]
+			interface [ id 4   _extends .dict.1Gb ]
+			interface [ id 5   _extends .dict.1Gb ]
+			interface [ id 6   _extends .dict.1Gb ]
+			interface [ id 7   _extends .dict.1Gb ]
+			interface [ id 8   _extends .dict.1Gb ]
+			interface [ id 9   _extends .dict.1Gb ]
+			interface [ id 10   _extends .dict.1Gb ]	
+		]
+	]
+	
+	link [ attach 0:0(0) attach 1:0(0) _extends .dict.link_delay_1ms ]
+	link [ attach 0:0(1) attach 2:0(0) _extends .dict.link_delay_1ms ]
+	link [ attach 0:0(2) attach 2:1(0) _extends .dict.link_delay_1ms ]
+	link [ attach 0:0(3) attach 2:1(1) _extends .dict.link_delay_1ms ]
+	link [ attach 0:0(4) attach 2:1(2) _extends .dict.link_delay_1ms ]
+	link [ attach 1:0(1) attach 2:1(3) _extends .dict.link_delay_1ms ]
+	link [ attach 1:0(2) attach 2:1(4) _extends .dict.link_delay_1ms ]
+	link [ attach 1:0(3) attach 2:1(5) _extends .dict.link_delay_1ms ]
+	link [ attach 1:0(4) attach 2:1(6) _extends .dict.link_delay_1ms ]
+	link [ attach 2:0(1) attach 2:1(7) _extends .dict.link_delay_1ms ]
+	link [ attach 2:0(2) attach 2:1(8) _extends .dict.link_delay_1ms ]
+	link [ attach 2:0(3) attach 2:1(9) _extends .dict.link_delay_1ms ]
+	link [ attach 2:0(4) attach 2:1(10) _extends .dict.link_delay_1ms ]
+]

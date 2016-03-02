@@ -1,31 +1,10 @@
-total_timeline 2
+total_timeline 3
 tick_per_second 6
 run_time 10.0
 seed 1
 log_dir PLC_Simple_Client_Server
 
 dilation [ TDF 5 ]
-emuSerialHost
-[
-	isEmulated 1
-	interface [ 0 _extends .dict.1Mb
-			ProtocolSession [name mac use "s3f.os.dummymac" ]
-	]
-	interface [ 1 _extends .dict.1Mb
-			ProtocolSession [name mac use "s3f.os.dummymac" ]
-	]
-	interface [ 2 _extends .dict.1Mb
-			ProtocolSession [name mac use "s3f.os.dummymac" ]
-	]
-	interface [ 3 _extends .dict.1Mb
-			ProtocolSession [name mac use "s3f.os.dummymac" ]
-	]
-	interface [ 4 _extends .dict.1Mb
-			ProtocolSession [name mac use "s3f.os.dummymac" ]
-	]
-	_find .dict.emuHostSerialGraph.graph
-]
-
 Net
 [
 	lxcConfig
@@ -40,7 +19,7 @@ Net
 		host
 		[
 			id 0
-			_extends .emuSerialHost
+			_extends .dict.emuHost
 		]
 	]
 	Net
@@ -50,9 +29,31 @@ Net
 		host
 		[
 			id 0
-			_extends .emuSerialHost
+			_extends .dict.emuHost
 		]
 	]
 
-	link [ attach 0:0(0) attach 1:0(0) min_delay 1e-6 prop_delay 0.001 ]
+	Net
+	[
+		id 2
+		alignment 2
+		router
+		[
+			id 	1
+			_find .dict.routerGraph.graph
+			interface [ id 0	_extends  .dict.1Gb ]
+			interface [ id 1	_extends  .dict.1Gb ]
+		]
+		router
+		[
+			id 	2
+			_find .dict.routerGraph.graph
+			interface [ id 0	_extends  .dict.1Gb ]
+			interface [ id 1	_extends  .dict.1Gb ]
+		]
+	]
+
+	link [ attach 0:0(0) attach 2:1(0) min_delay 1e-6 prop_delay 0.001 ]
+	link [ attach 1:0(0) attach 2:2(0) min_delay 1e-6 prop_delay 0.002 ]
+	link [ attach 2:1(1) attach 2:2(1) min_delay 1e-6 prop_delay 0.003 ]
 ]

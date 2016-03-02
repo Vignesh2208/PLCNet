@@ -80,7 +80,7 @@ int DummyMac::pop(Activation msg, ProtocolSession* lo_sess, void* extinfo, size_
   }
 
   //send to upper layer, currently it is the serial layer
-  ProtocolMessage* payload = mac_hdr->dropPayload();
+  SerialMessage* payload = (SerialMessage *)mac_hdr->dropPayload();
   assert(payload);
   Activation serial_msg(payload);
   mac_hdr->erase(); //delete MAC header

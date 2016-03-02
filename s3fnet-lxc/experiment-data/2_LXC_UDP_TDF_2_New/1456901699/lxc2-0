@@ -1,0 +1,6 @@
+Starting Debug for lxc2-0
+Running Command /home/vignesh/Desktop/PLCs/awlsim-0.42/s3fnet-lxc/csudp/serial_server2
+Server : Waiting for Data
+curr : localtime: 0:55:02 434992, orig_time : 0:55:02 437937
+Server : Data Received : len = 150, LLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLL
+curr : localtime: 0:55:02 543507, orig_time : 0:55:03 18417

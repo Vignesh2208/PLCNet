@@ -7,6 +7,8 @@
 #define SERIAL_DUMP(x) x
 #endif
 
+#define NR_DEVS 1
+
 namespace s3f {
 namespace s3fnet {
 
@@ -27,17 +29,21 @@ void SerialSession::config(s3f::dml::Configuration* cfg)
 }
 
 SerialSession::~SerialSession(){
+	SERIAL_DUMP(printf("Deleting Serial Session\n"));
 	int i = 0;
-	for(i = 0 ; i < NR_SERIAL_DEVS; i++){
+
+	/*for(i = 0 ; i < NR_DEVS; i++){
 		if(conn_to_lxc_map[i])
 			delete conn_to_lxc_map[i];
 	}
 
 	if(callback_proc)
 		delete callback_proc;
+	*/
 
 	if(dev_fd >= 0)
 		close(dev_fd);
+	SERIAL_DUMP(printf("Serial Session deleted\n"));
 }
 
 void SerialSession::init()
@@ -58,7 +64,7 @@ void SerialSession::init()
   	rts_mask = 0;
   	pending_conn_mask = 0;
   	int i = 0;
-  	for(i = 0; i < NR_SERIAL_DEVS; i++){
+  	for(i = 0; i < NR_DEVS; i++){
   		conn_to_lxc_map[i] = NULL;
   		conn_to_nic_map[i] = NULL;
   		conn_to_lxc_map[i] = new char[KERN_BUF_SIZE];
@@ -114,10 +120,11 @@ int SerialSession::pop(Activation msg, ProtocolSession* lo_sess, void* extinfo, 
 	struct ioctl_conn_param ioctl_conn;
 	int i = 0, conn_id = -1;
 	int space_avail = 0;
-	int command = 0;
+	int command = -1;
 	int length = 0;
 	char * data;
-	
+
+		
 	//check if it is a LxcemuMessage
 	Host * owner_host = inHost();
 	NetworkInterface * nic;
@@ -138,7 +145,7 @@ int SerialSession::pop(Activation msg, ProtocolSession* lo_sess, void* extinfo, 
 
 	SERIAL_DUMP(printf("Received message at lxc = %s, data = %s\n",proxy->lxcName,recv_msg->data));
 
-	for(i = 0; i < NR_SERIAL_DEVS; i++){
+	for(i = 0; i < NR_DEVS; i++){
 		if(strcmp(conn_to_lxc_map[i],recv_msg->src_lxcName) == 0){
 			conn_id = i;
 			break;
@@ -155,7 +162,7 @@ int SerialSession::pop(Activation msg, ProtocolSession* lo_sess, void* extinfo, 
 			delete recv_msg;
 			return 0;
 		}
-		assert(ioctl_conn.conn_id >=0 && ioctl_conn.conn_id < NR_SERIAL_DEVS);
+		assert(ioctl_conn.conn_id >=0 && ioctl_conn.conn_id < NR_DEVS);
 		conn_id = ioctl_conn.conn_id;
 		SERIAL_DUMP(printf("Resolved conn_id of received message = %d\n",conn_id));
 		strncpy(conn_to_lxc_map[conn_id], recv_msg->src_lxcName,KERN_BUF_SIZE);
@@ -163,7 +170,7 @@ int SerialSession::pop(Activation msg, ProtocolSession* lo_sess, void* extinfo, 
 
 
 	if(conn_to_nic_map[conn_id] == NULL){
-		for(i = 0; i < NR_SERIAL_DEVS; i++){
+		for(i = 0; i < NR_DEVS; i++){
 			nic = owner_host->getNetworkInterface(i);
 			if(nic != NULL){
 				if(nic->get_dst_nic() != NULL){
@@ -177,6 +184,8 @@ int SerialSession::pop(Activation msg, ProtocolSession* lo_sess, void* extinfo, 
 		assert(conn_to_nic_map[conn_id] != NULL);
 		SERIAL_DUMP(printf("Resolved outgoing nic for received message\n"));
 	}
+
+	
 
 	assert(recv_msg->length > 0);
 	space_avail = get_rxbuf_space(conn_id);
@@ -230,17 +239,41 @@ int SerialSession::pop(Activation msg, ProtocolSession* lo_sess, void* extinfo, 
 		SERIAL_DUMP(printf("Writing msg data = %s, to RX buffer\n",ioctl_conn.bytes_to_write));
 
 		ioctl(dev_fd,S3FSERIAL_IOWRX,&ioctl_conn); // write to rx buf. application would later read it when it wakes up.
+		
 	}
 
 	end:
 	delete recv_msg->data;
 	delete recv_msg;
 
-	if(command){
+	//return 0;
+
+	if(command > 0){
 		// need to send out a CTS or DNS immediately
 		SerialSessionCallbackActivation* oac = new SerialSessionCallbackActivation(this, command,conn_id,data, length);
 		Activation ac (oac);
-		HandleCode h = owner_host->waitFor( callback_proc, ac, 0, owner_host->tie_breaking_seed);
+		HandleCode h = owner_host->waitFor( callback_proc, ac, 1000, owner_host->tie_breaking_seed);
+		
+
+		/*NetworkInterface * out_nic = conn_to_nic_map[conn_id];
+		SerialMessage * msg = new SerialMessage();
+		assert(msg != NULL);
+
+		SERIAL_DUMP(printf("copying proxy lxcname\n"));
+		strcpy(msg->src_lxcName,proxy->lxcName);	
+		SERIAL_DUMP(printf("Calling callback body\n"));
+		msg->data = data;
+		msg->command = command;
+		msg->length = length;
+
+		ProtocolSession* outgoing_mac = out_nic->getHighestProtocolSession();
+		assert(outgoing_mac != NULL);
+		Activation dmsg_ac(msg);
+		SERIAL_DUMP(printf("Pushing down to Dummy Mac Layer\n"));
+    	outgoing_mac->pushdown(dmsg_ac, this, NULL, 0);*/
+
+	
+
 	}
 
 
@@ -273,7 +306,7 @@ void SerialSession::callback(Activation ac){
 	int length =  ((SerialSessionCallbackActivation*)ac)->length;
 	SERIAL_DUMP(printf("Inside SerialSession Send Callback. Extracted params\n"));
 
-	assert(conn_id >= 0 && conn_id < NR_SERIAL_DEVS);
+	assert(conn_id >= 0 && conn_id < NR_DEVS);
 	assert(length > 0);
 	assert(sess != NULL);
 
@@ -301,8 +334,9 @@ void SerialSession::callback_body(SerialMessage * msg, NetworkInterface * outgoi
 
 	ProtocolSession* outgoing_mac = outgoing_nic->getHighestProtocolSession();
 	assert(outgoing_mac != NULL);
+	Activation dmsg_ac(msg);
 	SERIAL_DUMP(printf("Pushing down to Dummy Mac Layer\n"));
-    outgoing_mac->pushdown(msg, this, NULL, 0);
+    outgoing_mac->pushdown(dmsg_ac, this, NULL, 0);
 }
 
 
@@ -335,13 +369,13 @@ void SerialSession::injectEvent(ltime_t incoming_time, int conn_id){
 
 	dst_lxc_name = ioctl_conn.dst_lxc_name;
 
-	if(conn_id < NR_SERIAL_DEVS && conn_id >= 0 && dst_lxc_name != NULL){
+	if(conn_id < NR_DEVS && conn_id >= 0 && dst_lxc_name != NULL){
 		if(strcmp(conn_to_lxc_map[conn_id],"NA") == 0)
 			strcpy(conn_to_lxc_map[conn_id], dst_lxc_name);
 
 		SERIAL_DUMP(printf("updating conn_to_nic_map\n"));
 		if(conn_to_nic_map[conn_id] == NULL){
-			for(i = 0; i < NR_SERIAL_DEVS; i++){
+			for(i = 0; i < NR_DEVS; i++){
 				nic = owner_host->getNetworkInterface(i);
 				if(nic != NULL){
 					if(nic->get_dst_nic() != NULL){					

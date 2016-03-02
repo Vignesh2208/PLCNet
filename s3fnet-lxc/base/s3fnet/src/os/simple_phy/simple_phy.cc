@@ -34,7 +34,7 @@ SimplePhy::SimplePhy(ProtocolGraph* graph) :
 SimplePhy::~SimplePhy() 
 {
   SPHY_DUMP(printf("[nic=\"%s\"] delete simple_phy session.\n", ((NetworkInterface*)inGraph())->nhi.toString()));
-  if(buffer) delete buffer;
+  //if(buffer) delete buffer;
 }
 
 void SimplePhy::config(s3f::dml::Configuration* cfg)

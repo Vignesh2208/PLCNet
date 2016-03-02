@@ -47,8 +47,10 @@ Host::~Host()
 
   if (proxy != NULL)
   {
-	  delete proxy;
+  	  delete proxy;
+  	  HOST_DUMP(printf("deleted proxy for host\n"));
   }
+  
 }
 
 void Host::config(s3f::dml::Configuration* cfg)

@@ -36,8 +36,8 @@ conf_directory = root_directory + "/conf"
 tests_directory = root_directory + "/tests"
 test_file = tests_directory + "/run.sh"
 
-conf_file = conf_directory + "/Config.txt"
-topology_file = conf_directory + "/Topology.txt"
+conf_file = conf_directory + "/exp_config"
+topology_file = conf_directory + "/topology_config"
 
 lines = [line.rstrip('\n') for line in open(conf_file)]
 

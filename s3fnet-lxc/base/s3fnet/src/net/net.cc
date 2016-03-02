@@ -58,6 +58,7 @@ Net::~Net()
   for(S3FNET_INT2PTR_MAP::iterator iter = hosts.begin(); iter != hosts.end(); iter++) {
     assert(iter->second);
     delete (Host*)(iter->second);
+    NET_DUMP(printf("delete host done: nhi=\"%s\".\n", nhi.toString()));
   }
 
   for(unsigned i=0; i<links.size(); i++)
@@ -65,6 +66,8 @@ Net::~Net()
     assert(links[i]);
     delete (Link*)(links[i]);
   }
+
+  NET_DUMP(printf("delete net done: nhi=\"%s\".\n", nhi.toString()));
 
 }
 

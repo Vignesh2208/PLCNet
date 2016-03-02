@@ -28,7 +28,9 @@ Nhi::Nhi(Nhi& rhs)
   (*this) = rhs;
 }
 
-Nhi::~Nhi() { ids.clear(); }
+Nhi::~Nhi() { 
+  ids.clear(); 
+}
 
 Nhi& Nhi::operator = (Nhi& rhs)
 {

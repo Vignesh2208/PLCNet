@@ -1,0 +1,6 @@
+Starting Debug for lxc2-0
+Running Command /home/vignesh/Desktop/PLCs/awlsim-0.42/s3fnet-lxc/csudp/serial_server2
+Server : Waiting for Data
+curr : localtime: 11:49:23 599139, orig_time : 11:49:23 600274
+Poll timeout error at server
+curr : localtime: 11:49:28 601945, orig_time : 11:49:50 315810

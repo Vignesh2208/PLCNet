@@ -60,6 +60,7 @@ void reset_ioctl_conn(struct ioctl_conn_param * ioctl_conn){
 void main(){
 
 	int fd;
+	int fd2;
 	int i = 0;
 	struct ioctl_conn_param ioctl_conn;
 
@@ -78,36 +79,81 @@ void main(){
 	}
 
 
-	int ret = 0;
-	int len = 250;
-	int n_copied = 0;
-	char msg[251];
+	/*fd2 = open("/dev/s3fserial1",O_RDWR);
+	reset_ioctl_conn(&ioctl_conn);
+	strcpy(ioctl_conn.owner_lxc_name,"lxc0-0");
+	ioctl_conn.conn_id = 1;
+	strcpy(ioctl_conn.dst_lxc_name,"lxc2-0");
+	if(ioctl(fd2,S3FSERIAL_SETCONNLXC,&ioctl_conn) < 0){
+		fprintf(stdout,"Client : Ioctl SETCONNLXC error\n");
+		fflush(stdout);
+		close(fd2);
+		return;
+	}*/
 
-	flush_buffer(msg,len + 1);
 
-	for(i = 0; i < 250; i++)
-		msg[i] = 'H';
+	int ret_1 = 0, ret_2 = 0;
+	int len_1 = 250, len_2 = 150;
+	int n_copied_1 = 0, n_copied_2 = 0;
+	char msg_1[251];
+	char msg_2[151];
+
+	flush_buffer(msg_1,len_1 + 1);
+	flush_buffer(msg_2,len_2 + 1);
+
+	for(i = 0; i < 250; i++){
+		msg_1[i] = 'H';
+		if(i < 150)
+			msg_2[i] = 'L';
+
+	}
 
 	fprintf(stdout,"Client : Sending Data\n");
 	fflush(stdout);
 
-	while(n_copied < len){
-		ret = write(fd,msg + n_copied,len - n_copied);
-		if(ret < 0){
-			fprintf(stdout,"Client : ERROR with write\n");
-			fflush(stdout);
-			close(fd);
-			return;
-		}
-		else if(ret == 0)
-			usleep(100000);
+	while(1){
+		if(n_copied_1 < len_1){
+			ret_1 = write(fd,msg_1 + n_copied_1,len_1 - n_copied_1);
+			if(ret_1 < 0){
+				fprintf(stdout,"Client : ERROR with write\n");
+				fflush(stdout);
+				close(fd);
+				return;
+			}
+			else if(ret_1 == 0)
+				usleep(100000);
 
-		n_copied = n_copied + ret;
+			n_copied_1 = n_copied_1 + ret_1;
+		}
+
+
+		if(n_copied_2 < len_2){
+			/*ret_2 = write(fd2,msg_2 + n_copied_2,len_2 - n_copied_2);
+			if(ret_2 < 0){
+				fprintf(stdout,"Client : ERROR with write 2\n");
+				fflush(stdout);
+				close(fd2);
+				return;
+			}
+			else if(ret_2 == 0)
+				usleep(100000);
+
+			n_copied_2 = n_copied_2 + ret_2;*/
+			n_copied_2 = len_2;
+		}
+
+		if(n_copied_1 == len_1 && n_copied_2 == len_2)
+			break;
+		else
+			continue;
+
+
 	}
 
 	fprintf(stdout,"Client : Data sent\n");
 	fflush(stdout);
 	close(fd);
+	close(fd2);
 
 
 
