@@ -42,6 +42,7 @@ SerialSession::~SerialSession(){
 		close(dev_fd);
 	
 	
+	
 	SERIAL_DUMP(printf("Deleted Serial Session\n"));
 }
 
