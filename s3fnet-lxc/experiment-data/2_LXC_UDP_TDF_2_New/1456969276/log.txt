@@ -1,5 +1,0 @@
-|==================================================
-| LXC Manager Created
-| Simulation has 3 timelines
-|==================================================
-LXC proxy initialization: lxc0-0 successfull
