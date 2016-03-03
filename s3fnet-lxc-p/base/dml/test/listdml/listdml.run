@@ -1,9 +1,0 @@
-#! /bin/sh
-
-: ${LISTDML=./listdml}
-${LISTDML} test1.in
-
-: ${LISTDML=./listdml}
-${LISTDML} test2.in
-
-exit $?

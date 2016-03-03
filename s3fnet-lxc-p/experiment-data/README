@@ -1,1 +1,0 @@
-Data from experiments will be copied s3fnet-lxc/data after each succesfull simulation. Output directory can be specified from within the DML files. See s3fnet.cc to see how output director is parsed from DML file
