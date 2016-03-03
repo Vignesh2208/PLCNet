@@ -140,7 +140,7 @@ void get_lxc_name(struct task_struct * process, char * lxcName){
 
 	struct cgroup * cgrp;
 
-	char buf[KERN_BUF_SIZE];
+	char buf[KERNEL_BUF_SIZE];
 	struct cgroupfs_root *root;
 	int retval = 0;
 	char * name;
@@ -149,7 +149,7 @@ void get_lxc_name(struct task_struct * process, char * lxcName){
 	
 	cgrp = task_cgroup(process,1);
 	if(cgrp != NULL){
-		retval = cgroup_path(cgrp, buf, KERN_BUF_SIZE);
+		retval = cgroup_path(cgrp, buf, KERNEL_BUF_SIZE);
 		
 		if (retval < 0){
 			strcpy(lxcName,"NA");
@@ -239,7 +239,7 @@ int write_new_timestamp(char * lxcName, long hash, struct timeval tv){
 		printk(KERN_INFO "Socket Hook: LXC does not exist\n");
 		return -1;
 	}
-	flush_buffer(lxc->lxcBuff,KERN_BUF_SIZE);
+	flush_buffer(lxc->lxcBuff,KERNEL_BUF_SIZE);
 	sprintf(lxc->lxcBuff,"%d\n%d\n%d\n",tv.tv_sec,tv.tv_usec,hash);
 
 	
@@ -267,7 +267,7 @@ struct task_struct * get_init_task_struct(struct task_struct * current_process){
 int handle_new_message(struct task_struct * current_process,char * msg,int size, struct timeval tv){
 
 	struct task_struct * init_task;
-	char lxcName[200];
+	char lxcName[KERNEL_BUF_SIZE];
 	long hash;
 	hash = (long) packet_hash(msg,size);
 	get_lxc_name(current_process,lxcName);

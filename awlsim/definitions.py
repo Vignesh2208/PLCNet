@@ -2,7 +2,7 @@ import os
 import sys
 
 
-NR_SERIAL_DEVS  = 5
+NR_SERIAL_DEVS  = 3
 KERN_BUF_SIZE = 100
 TX_BUF_SIZE = 100
 RX_BUF_SIZE = 2*TX_BUF_SIZE

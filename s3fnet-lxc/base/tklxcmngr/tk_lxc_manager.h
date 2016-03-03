@@ -17,6 +17,7 @@
 #include "lxc_proxy.h"
 #include "socket_hooks/hook_defs.h"
 #include <poll.h>
+#include "../s3fnet-definitions.h"
 
 
 
@@ -31,9 +32,7 @@ class LXC_Proxy;
 
 #define START_LXCS 100
 #define STOP_LXCS  200
-#define KERN_BUF_SIZE 100
-#define TX_BUF_SIZE 100
-#define RX_BUF_SIZE 2*(TX_BUF_SIZE)
+
 
 struct ioctl_conn_param{
 

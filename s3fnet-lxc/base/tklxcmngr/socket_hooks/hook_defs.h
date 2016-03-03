@@ -8,7 +8,7 @@
 #define LOAD_COMMAND 'L'
 #define TRUE 1
 #define FALSE 0
-#define KERN_BUF_SIZE 200
+#define KERNEL_BUF_SIZE 200
 #define HOOK_FILE "send_hook_command"
 #define HOOK_DIR "send_hook"
 #define LXC_DIR "lxc_dir"

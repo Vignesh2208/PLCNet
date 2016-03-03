@@ -22,14 +22,8 @@
 
 //#include <asm/system.h>		/* cli(), *_flags */
 #include <asm/uaccess.h>	/* copy_*_user */
-
+#include "../../s3fnet-definitions.h"
 #include "hashmap.h"
-
-
-#define NR_SERIAL_DEVS 3
-#define KERN_BUF_SIZE 100
-#define TX_BUF_SIZE 100
-#define RX_BUF_SIZE 2*(TX_BUF_SIZE)
 
 typedef unsigned int uint32_t;
 

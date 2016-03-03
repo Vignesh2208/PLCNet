@@ -27,7 +27,7 @@ unsigned long **sys_call_table; //address of the sys_call_table, so we can hijac
 int TOTAL_CPUS; //number of CPUs in the system
 
 unsigned long original_cr0; //The register to hijack sys_call_table
-char lxcBuff[KERN_BUF_SIZE];
+char lxcBuff[KERNEL_BUF_SIZE];
 char curr_lxcName[100] = "None";
 
 
@@ -63,15 +63,15 @@ This handles how a process from userland communicates with the kernel module. Th
 ***/
 ssize_t status_write(struct file *file, const char __user *buffer, size_t count, loff_t *data)
 {
-	char write_buffer[KERN_BUF_SIZE];
+	char write_buffer[KERNEL_BUF_SIZE];
 	unsigned long buffer_size;
 	char * lxcname_end;
 	int no_of_bytes = 0;
 	printk(KERN_INFO "Socket Hook: Received a write\n");
 
- 	if(count > KERN_BUF_SIZE)
+ 	if(count > KERNEL_BUF_SIZE)
 	{
-    		buffer_size = KERN_BUF_SIZE;
+    		buffer_size = KERNEL_BUF_SIZE;
   	}
 	else
 	{

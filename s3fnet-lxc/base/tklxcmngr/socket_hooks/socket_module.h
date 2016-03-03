@@ -51,11 +51,11 @@ static const struct file_operations proc_file_fops = {
 
 struct lxc_entry
 {
-        int PID;
+    int PID;
 	char lxcName[100];
-	char lxcBuff[KERN_BUF_SIZE];
-        struct dilation_task_struct *next; // the next dilation_task_struct in the per cpu chain
-        struct dilation_task_struct *prev; // the prev dilation_task_struct in the per cpu chain
+	char lxcBuff[KERNEL_BUF_SIZE];
+    struct dilation_task_struct *next; // the next dilation_task_struct in the per cpu chain
+    struct dilation_task_struct *prev; // the prev dilation_task_struct in the per cpu chain
 	struct proc_dir_entry *lxc_file;
         
         
