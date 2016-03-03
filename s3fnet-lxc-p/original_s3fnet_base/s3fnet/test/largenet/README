@@ -1,0 +1,29 @@
+This test case is designed for a VERY large number of hosts (> 8000 on a machine with sufficient memory). rtcompress.py is essential for obtaining usable DML for such test cases. After running rtcompress.dml, s3fnet loading time and initial memory usage can decrease SIGNIFICANTLY. After normal generation with dmlenv (usually via make), DML compression is achieved as follows:
+
+python rtcompress.py [<test-env.dml>] [<test-rt.dml>]
+
+<test-env.dml> is an optional argument corresponding to the dml environment file (usually created as 'test-env.dml').
+<test-rt.dml> is an optional argument corresponding to the dml routes file (usually created as 'test-rt.dml').
+<test-rt.dml> REQUIRES <test-env.dml> to be provided first
+If one or both are not provided, the usual default names ('test-env.dml' and 'test-rt.dml') are assumed.
+
+Output will always be to test-rt2.dml.
+
+FLAGS:
+At the top of rtcompress.py are several useful flags that change the output.
+
+'REV_OUTPUT = True' causes CIDR addresses to be outputted in order of decreasing mask length (ie /31,...,/2)
+This is required for Tries 0,1,4
+IMPORTANT: Trie1 is the default Trie implementation. If this has been left unchanged, 'REV_OUTPUT' MUST be True for proper function of s3fnet. See s3fnet_tries.pdf for more information on Trie implementations.
+
+'REV_OUTPUT = False' causes output to be reversed to increasing mask length (/2,...,/31)
+This is required for Trie 2.
+NOTE: Trie 3 works with any ordering, including unordered, but there is a performance penalty
+
+'DOUBLE_OUTPUT = True' causes BOTH ordered outputs to be created. This flag can save CONSIDERABLE computational time if both sets of ordered output are required (ie for testing Tries 1 & 3). The output designated via 'REV_OUTPUT' will be test-rt2.dml as usual. The second file will be test-rt2.dml.rev.
+
+'DEBUG = True' causes some simple progress information to be displayed while compression takes place. It is particularly useful for judging how long processing will take. Setting this to False will result in almost no textual output from the script.
+
+'DEBUG_V = True' causes detailed (per-destination) progress information to be displayed. This is generally a large amount of text. Generally DEBUG_V should remain off.
+
+While DEBUG and DEBUG_V are techincally not mutually exclusive, DEBUG_V should generally never be set to True when DEBUG is not.

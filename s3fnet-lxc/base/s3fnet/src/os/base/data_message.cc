@@ -57,6 +57,7 @@ ProtocolMessage* DataMessage::clone()
 
 DataMessage::~DataMessage()
 {
+  printf("Deleting Data Message\n");
   if(payload)
   {
     if(real_length > 0) delete[] (byte*)payload;

@@ -1,0 +1,142 @@
+params [
+  frequency 100000000000000
+
+  randomstream [
+    generator "MersenneTwister"
+    stream "baseline2003"
+    reproducibility_level "timeline"
+  ]
+
+#  one-tcp [
+#    file_size 10000000
+#    start_time 100.0
+#    start_window 10.0
+#  ]
+
+#  one-udp [
+#    file_size 10000000
+#    start_time 300.0
+#    start_window 10.0
+#  ]
+
+  multi-tcp [
+    file_size 10000000
+    start_time 0.0
+    start_window 1.0
+  ]
+
+  multi-udp [
+    file_size 100000
+    start_time 0.0
+    start_window 1.0
+    off_time 0.1
+  ]
+
+  reserv-udp [
+    file_size 10000000
+    start_time 0.0
+    start_window 1.0
+  ]
+
+  client_limit 1000000
+  queue_limit 20
+
+  tcpsess [
+    request_size 4
+    max_rate 100000
+    show_report false
+    debug false
+  ]
+
+  ftcpsess [
+    request_size 4
+    max_rate 100000
+    show_report false
+    debug false
+  ]
+
+  udpsess [
+    request_size  4
+    datagram_size 1000
+    send_interval 0.01
+    show_report false
+    debug false
+  ]
+
+  fudpsess [
+    request_size  4
+    datagram_size 1000
+    send_interval 0.01
+    show_report false
+    debug false
+  ]
+
+  lan [
+    interface [
+      bitrate 1000000000    # all LAN interfaces; 100Mbps
+      #buffer  65536        # burst buffer size = 64kB
+    ]
+    delay 0.001             # lan delay
+  ]
+
+  r2r [
+    interface [
+      bitrate 10000000000    # router-to-router interface; 1Gbps
+      #buffer  131072       # burst buffer size = 128kB
+    ]
+    delay 0.005             # router-to-router delay
+  ]
+
+  as2as [ 
+    interface [
+      bitrate 20000000000    # AS-to-AS interface; 2Gbps
+      #buffer  524288       # burst buffer size = 512kB
+    ]
+    delay 0.2               # AS-to-AS delay
+  ]
+
+  tcpinit[
+    ISS 0                 # initial sequence number
+    MSS 1000              # maximum segment size
+    RcvWndSize  512       # receive buffer size
+    SendWndSize 512       # maximum send window size
+    SendBufferSize 1024   # send buffer size
+    MaxRexmitTimes 12     # maximum retransmission times before drop 
+    TCP_SLOW_INTERVAL 0.5 # granularity of TCP slow timer
+    TCP_FAST_INTERVAL 0.2 # granularity of TCP fast(delay-ack) timer
+    MSL 60.0              # maximum segment lifetime
+    MaxIdleTime 600.0     # maximum idle time for drop a connection
+    delayed_ack false     # delayed ack option
+    fast_recovery true    # implement fast recovery algorithm 
+    show_report false     # print a summary connection report
+    debug false           # debug information
+  ]
+
+  udpinit [
+    max_datagram_size 10000 # max UDP datagram size (payload bytes)
+    debug false             # print verbose UDP diagnostics
+  ]
+
+  ftcpinit [
+    ISS 0                 # initial sequence number
+    MSS 1000              # maximum segment size
+    RcvWndSize 512        # receive buffer size
+    show_report false     # print a summary connection report
+    debug false           # debug information
+  ]
+
+  fudpinit [
+    max_datagram_size 10000 # max UDP datagram size (payload bytes)
+    debug false             # print verbose UDP diagnostics
+  ]
+
+  ospfoptions [
+    show_ifaces      false # show ospf interface data structure
+    show_AS_area     false # show AS and area number
+    show_rtr_type    false # show router types
+    show_hello_pkts  false # show hello packets and link connection
+    show_lsas        false # show lsa packets
+    show_lsdb        false # show link state databases
+    show_rtg_tbl     false # show routing tables
+  ]
+]

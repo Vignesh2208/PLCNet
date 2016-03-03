@@ -1,0 +1,38 @@
+total_timeline 2	
+tick_per_second 6	
+run_time 10
+seed 1	
+log_dir "MULTI_RUN_3/TDF_20"		
+
+dilation [ TDF 1.0 ]
+
+Net
+[
+	lxcConfig
+	[
+		settings [ lxcNHI 0:0 _extends .dilation cmd "~/s3fnet-lxc/csudp/server 25000"           ]
+		settings [ lxcNHI 1:0 _extends .dilation cmd "~/s3fnet-lxc/csudp/client 0:0 25000 3000"  ]
+	]	
+	
+	Net 
+	[ 
+		id 0
+		alignment 0
+		host 																	# Host 0:0
+		[ 
+			id 0
+			_extends .dict.emuHost
+		]
+	]
+	Net 
+	[ 
+		id 1
+		alignment 1
+		host 																	# Host 1:0
+		[ 
+			id 0
+			_extends .dict.emuHost
+		]
+	]
+	link [ attach 0:0(0) attach 1:0(0) _extends .dict.link_delay_100us ]		
+]

@@ -97,16 +97,13 @@ ProtocolGraph::ProtocolGraph() :
 ProtocolGraph::~ProtocolGraph() 
 {
   // reclaim everything
-  printf("Deleting Protocol Graph\n");
   if(description) delete description;
   for(int i=protocol_list.size()-1; i>=0; i--)
   {
     ProtocolSession* ps = protocol_list[i];
-    if(ps)
-      delete ps;
+    delete ps;
   }
-
-  printf("Deleted Protocol Graph\n");
+  printf("Deleted protocol graph\n");
 }
 
 ProtocolSession* ProtocolGraph::config_session(s3f::dml::Configuration* cfg)

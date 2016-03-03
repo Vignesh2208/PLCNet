@@ -147,6 +147,7 @@ ProtocolSession::~ProtocolSession()
   */
   if(name) delete[] name;
   if(use) delete[] use;
+  printf("Deleted Protocol Session\n");
 }
 
 }; // namespace s3fnet

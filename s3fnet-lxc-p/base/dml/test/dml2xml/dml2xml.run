@@ -1,0 +1,9 @@
+#! /bin/sh
+
+: ${DML2XML=./dml2xml}
+${DML2XML} test1.in 1> /dev/null
+
+: ${DML2XML=./dml2xml}
+${DML2XML} test2-*.in 1> /dev/null
+
+exit $?

@@ -22,7 +22,9 @@ ProtocolMessage::ProtocolMessage(const ProtocolMessage& pmsg)
 	  next = 0;
 }
 
-ProtocolMessage::~ProtocolMessage(){}
+ProtocolMessage::~ProtocolMessage(){
+  printf("Deleting Protocol Message\n");
+}
 
 void ProtocolMessage::carryPayload(ProtocolMessage* load)
 {

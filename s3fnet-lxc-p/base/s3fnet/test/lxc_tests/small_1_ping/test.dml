@@ -1,0 +1,38 @@
+total_timeline 2	
+tick_per_second 6	
+run_time 10
+seed 1	
+log_dir 2_LXC_PING_15		
+
+dilation [ TDF 2.0 ]
+
+Net
+[
+	lxcConfig
+	[
+		settings [ lxcNHI 0:0 _extends .dilation cmd "ping 10.10.0.10 -c 50" ]
+		settings [ lxcNHI 1:0 _extends .dilation cmd " "                     ]
+	]	
+	
+	Net 
+	[ 
+		id 0
+		alignment 0
+		host 																	# Host 0:0
+		[ 
+			id 0
+			_extends .dict.emuHost
+		]
+	]
+	Net 
+	[ 
+		id 1
+		alignment 1
+		host 																	# Host 1:0
+		[ 
+			id 0
+			_extends .dict.emuHost
+		]
+	]
+	link [ attach 0:0(0) attach 1:0(0) _extends .dict.link_delay_1ms ]		
+]

@@ -64,7 +64,7 @@ void main(){
 	int i = 0;
 	struct ioctl_conn_param ioctl_conn;
 
-	//return;
+	
 
 	fd = open("/dev/s3fserial0",O_RDWR);
 	reset_ioctl_conn(&ioctl_conn);
@@ -79,7 +79,7 @@ void main(){
 	}
 
 
-	/*fd2 = open("/dev/s3fserial1",O_RDWR);
+	fd2 = open("/dev/s3fserial1",O_RDWR);
 	reset_ioctl_conn(&ioctl_conn);
 	strcpy(ioctl_conn.owner_lxc_name,"lxc0-0");
 	ioctl_conn.conn_id = 1;
@@ -89,7 +89,7 @@ void main(){
 		fflush(stdout);
 		close(fd2);
 		return;
-	}*/
+	}
 
 
 	int ret_1 = 0, ret_2 = 0;
@@ -128,7 +128,7 @@ void main(){
 
 
 		if(n_copied_2 < len_2){
-			/*ret_2 = write(fd2,msg_2 + n_copied_2,len_2 - n_copied_2);
+			ret_2 = write(fd2,msg_2 + n_copied_2,len_2 - n_copied_2);
 			if(ret_2 < 0){
 				fprintf(stdout,"Client : ERROR with write 2\n");
 				fflush(stdout);
@@ -138,8 +138,8 @@ void main(){
 			else if(ret_2 == 0)
 				usleep(100000);
 
-			n_copied_2 = n_copied_2 + ret_2;*/
-			n_copied_2 = len_2;
+			n_copied_2 = n_copied_2 + ret_2;
+			
 		}
 
 		if(n_copied_1 == len_1 && n_copied_2 == len_2)

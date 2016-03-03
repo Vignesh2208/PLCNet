@@ -1,0 +1,33 @@
+total_timeline 4
+tick_per_second 6
+run_time 0.1
+seed 1
+log_dir large_2000
+
+dilation [ TDF 30.0 ]
+
+Net
+[
+	Net [id 0 alignment 0 _extends .custom_net.emuNet_2.Net]
+	Net [id 1 alignment 1 _extends .custom_net.emuNet_2.Net]
+	Net [id 2 alignment 2 _extends .custom_net.emuNet_2.Net]
+	Net [id 3 alignment 3 _extends .custom_net.emuNet_2.Net]
+
+	Net
+	[
+		id 20 alignment 0
+		router
+		[
+			id 0
+			_find .dict.routerGraph.graph
+			interface [ id 0   _extends .dict.1Gb ]
+			interface [ id 1   _extends .dict.1Gb ]
+			interface [ id 2   _extends .dict.1Gb ]
+			interface [ id 3   _extends .dict.1Gb ]
+		]
+	]
+	link [ attach 20:0(0) attach 0:0(0)  _extends .dict.link_delay_1ms  ]
+	link [ attach 20:0(1) attach 1:0(0)  _extends .dict.link_delay_1ms  ]
+	link [ attach 20:0(2) attach 2:0(0)  _extends .dict.link_delay_1ms  ]
+	link [ attach 20:0(3) attach 3:0(0)  _extends .dict.link_delay_1ms  ]
+]

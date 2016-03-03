@@ -17,7 +17,7 @@ DmlObject::DmlObject(DmlObject* parent, long myid) :
   // the subclass should take care of it during configuration
 }
 
-DmlObject::~DmlObject() {}
+DmlObject::~DmlObject() {printf("Freeing Dml Obj\n");}
 
 void DmlObject::display(int indent)
 {

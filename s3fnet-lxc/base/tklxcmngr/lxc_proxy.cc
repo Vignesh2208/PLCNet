@@ -312,7 +312,7 @@ void LXC_Proxy::exec_LXC_command(LxcCommand type)
 			break;
 
 		case LXC_STOP:
-			cmd = "lxc-kill -n "  + lxc;
+			cmd = "lxc-stop -n "  + lxc;
 			break;
 
 		case LXC_DESTROY:

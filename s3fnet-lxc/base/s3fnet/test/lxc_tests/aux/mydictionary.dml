@@ -36,16 +36,12 @@ dict
 	[
 		isEmulated 1
 		interface [ id 0 _extends .dict.1Mb
-					ProtocolSession [name mac use "s3f.os.dummymac" ]								
+					ProtocolSession [name mac use "s3f.os.dummymac" ]			
+					
 				  ]
-		
 		interface [ id 1 _extends .dict.1Mb 
 					ProtocolSession [name mac use "s3f.os.dummymac" ]			
 				  ]
-		interface [ id 2 _extends .dict.1Mb 
-					ProtocolSession [name mac use "s3f.os.dummymac" ]			
-				  ]
-
 		_find .dict.emuHostSerialGraph.graph
 	]
 		

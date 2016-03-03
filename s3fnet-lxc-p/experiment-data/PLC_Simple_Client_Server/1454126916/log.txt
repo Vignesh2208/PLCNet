@@ -1,0 +1,160 @@
+|==================================================
+| LXC Manager Created
+| Simulation has 2 timelines
+|==================================================
+LXC proxy initialization: lxc0-0 successfull
+LXC proxy initialization: lxc1-0 successfull
+ ____________________________________________
+|
+| Printing out Info about Timeline 0 ...
+|_____
+      | Timeline 0 has Proxy LXC lxc0-0
+      |______________________________________
+ ____________________________________________
+|
+| Printing out Info about Timeline 1 ...
+|_____
+      | Timeline 1 has Proxy LXC lxc1-0
+      |______________________________________
+|==================================================
+| Creating and Launching LXCs                      
+|==================================================
+
+|==================================================
+| Dilating and Adding LXCs to Experiment           
+|==================================================
+
+GET LXC lxc0-0 TDF 5.000000 PID 4938 Finished
+GET LXC lxc1-0 TDF 5.000000 PID 4977 Finished
+|==================================================
+| Calling SynchronizeAndFreeze. Syncing up LXCs
+|==================================================
+
+| lxc0-0 Frozen at [ 1454126918 sec 274658 usec ]
+| lxc1-0 Frozen at [ 1454126918 sec 274658 usec ]
+
+|==================================================
+[TL 0 lxc0-0 ], DESIRED TIME 762762 | ACTUAL TIME 762941 | DIFFERENCE 179
+[TL 0 lxc0-0 ], DESIRED TIME 762762 | ACTUAL TIME 762941 | DIFFERENCE 179
+[TL 0 lxc0-0 ], DESIRED TIME 763763 | ACTUAL TIME 763584 | DIFFERENCE 179
+[TL 0 lxc0-0 ], DESIRED TIME 763763 | ACTUAL TIME 763584 | DIFFERENCE 179
+[TL 0 lxc0-0 ], DESIRED TIME 839839 | ACTUAL TIME 840337 | DIFFERENCE 498
+[TL 0 lxc0-0 ], DESIRED TIME 839839 | ACTUAL TIME 840337 | DIFFERENCE 498
+[TL 0 lxc0-0 ], DESIRED TIME 840840 | ACTUAL TIME 840337 | DIFFERENCE 503
+[TL 0 lxc0-0 ], DESIRED TIME 840840 | ACTUAL TIME 840337 | DIFFERENCE 503
+[TL 0 lxc0-0 ], DESIRED TIME 937937 | ACTUAL TIME 938882 | DIFFERENCE 945
+[TL 0 lxc0-0 ], DESIRED TIME 937937 | ACTUAL TIME 938882 | DIFFERENCE 945
+[TL 1 lxc1-0 ], DESIRED TIME 1387386 | ACTUAL TIME 1387810 | DIFFERENCE 424
+[TL 1 lxc1-0 ], DESIRED TIME 1387386 | ACTUAL TIME 1387810 | DIFFERENCE 424
+[TL 1 lxc1-0 ], DESIRED TIME 1388387 | ACTUAL TIME 1387963 | DIFFERENCE 424
+[TL 1 lxc1-0 ], DESIRED TIME 1388387 | ACTUAL TIME 1387963 | DIFFERENCE 424
+[TL 0 lxc0-0 ], DESIRED TIME 1785784 | ACTUAL TIME 1786506 | DIFFERENCE 722
+[TL 0 lxc0-0 ], DESIRED TIME 1785784 | ACTUAL TIME 1786506 | DIFFERENCE 722
+[TL 0 lxc0-0 ], DESIRED TIME 1786785 | ACTUAL TIME 1786506 | DIFFERENCE 279
+[TL 0 lxc0-0 ], DESIRED TIME 1786785 | ACTUAL TIME 1786506 | DIFFERENCE 279
+[TL 0 lxc0-0 ], DESIRED TIME 1786785 | ACTUAL TIME 1786506 | DIFFERENCE 279
+[TL 0 lxc0-0 ], DESIRED TIME 1786785 | ACTUAL TIME 1786506 | DIFFERENCE 279
+[TL 0 lxc0-0 ], DESIRED TIME 1786785 | ACTUAL TIME 1786614 | DIFFERENCE 171
+[TL 0 lxc0-0 ], DESIRED TIME 1786785 | ACTUAL TIME 1786614 | DIFFERENCE 171
+[TL 0 lxc0-0 ], DESIRED TIME 2029027 | ACTUAL TIME 2029553 | DIFFERENCE 526
+[TL 0 lxc0-0 ], DESIRED TIME 2029027 | ACTUAL TIME 2029553 | DIFFERENCE 526
+[TL 0 lxc0-0 ], DESIRED TIME 2030028 | ACTUAL TIME 2029553 | DIFFERENCE 475
+[TL 0 lxc0-0 ], DESIRED TIME 2030028 | ACTUAL TIME 2029553 | DIFFERENCE 475
+[TL 1 lxc1-0 ], DESIRED TIME 2140138 | ACTUAL TIME 2140353 | DIFFERENCE 215
+[TL 1 lxc1-0 ], DESIRED TIME 2140138 | ACTUAL TIME 2140353 | DIFFERENCE 215
+[TL 1 lxc1-0 ], DESIRED TIME 2141139 | ACTUAL TIME 2140922 | DIFFERENCE 217
+[TL 1 lxc1-0 ], DESIRED TIME 2141139 | ACTUAL TIME 2140922 | DIFFERENCE 217
+[TL 0 lxc0-0 ], DESIRED TIME 2151149 | ACTUAL TIME 2151607 | DIFFERENCE 458
+[TL 0 lxc0-0 ], DESIRED TIME 2151149 | ACTUAL TIME 2151607 | DIFFERENCE 458
+[TL 0 lxc0-0 ], DESIRED TIME 2152150 | ACTUAL TIME 2151695 | DIFFERENCE 455
+[TL 0 lxc0-0 ], DESIRED TIME 2152150 | ACTUAL TIME 2151695 | DIFFERENCE 455
+[TL 1 lxc1-0 ], DESIRED TIME 2155153 | ACTUAL TIME 2155304 | DIFFERENCE 151
+[TL 1 lxc1-0 ], DESIRED TIME 2155153 | ACTUAL TIME 2155304 | DIFFERENCE 151
+[TL 1 lxc1-0 ], DESIRED TIME 2156154 | ACTUAL TIME 2156003 | DIFFERENCE 151
+[TL 1 lxc1-0 ], DESIRED TIME 2156154 | ACTUAL TIME 2156003 | DIFFERENCE 151
+[TL 0 lxc0-0 ], DESIRED TIME 2238236 | ACTUAL TIME 2238777 | DIFFERENCE 541
+[TL 0 lxc0-0 ], DESIRED TIME 2238236 | ACTUAL TIME 2238777 | DIFFERENCE 541
+[TL 0 lxc0-0 ], DESIRED TIME 2239237 | ACTUAL TIME 2238777 | DIFFERENCE 460
+[TL 0 lxc0-0 ], DESIRED TIME 2239237 | ACTUAL TIME 2238777 | DIFFERENCE 460
+[TL 0 lxc0-0 ], DESIRED TIME 2727725 | ACTUAL TIME 2728276 | DIFFERENCE 551
+[TL 0 lxc0-0 ], DESIRED TIME 2727725 | ACTUAL TIME 2728276 | DIFFERENCE 551
+[TL 0 lxc0-0 ], DESIRED TIME 2728726 | ACTUAL TIME 2728276 | DIFFERENCE 450
+[TL 0 lxc0-0 ], DESIRED TIME 2728726 | ACTUAL TIME 2728276 | DIFFERENCE 450
+[TL 0 lxc0-0 ], DESIRED TIME 2728726 | ACTUAL TIME 2728623 | DIFFERENCE 103
+[TL 0 lxc0-0 ], DESIRED TIME 2728726 | ACTUAL TIME 2728623 | DIFFERENCE 103
+[TL 1 lxc1-0 ], DESIRED TIME 2967965 | ACTUAL TIME 2968710 | DIFFERENCE 745
+[TL 1 lxc1-0 ], DESIRED TIME 2967965 | ACTUAL TIME 2968710 | DIFFERENCE 745
+[TL 1 lxc1-0 ], DESIRED TIME 2968966 | ACTUAL TIME 2968710 | DIFFERENCE 256
+[TL 1 lxc1-0 ], DESIRED TIME 2968966 | ACTUAL TIME 2968710 | DIFFERENCE 256
+[TL 1 lxc1-0 ], DESIRED TIME 2968966 | ACTUAL TIME 2968710 | DIFFERENCE 256
+[TL 1 lxc1-0 ], DESIRED TIME 2968966 | ACTUAL TIME 2968710 | DIFFERENCE 256
+[TL 1 lxc1-0 ], DESIRED TIME 2968966 | ACTUAL TIME 2968729 | DIFFERENCE 237
+[TL 1 lxc1-0 ], DESIRED TIME 2968966 | ACTUAL TIME 2968729 | DIFFERENCE 237
+[TL 1 lxc1-0 ], DESIRED TIME 3196193 | ACTUAL TIME 3197119 | DIFFERENCE 926
+[TL 1 lxc1-0 ], DESIRED TIME 3196193 | ACTUAL TIME 3197119 | DIFFERENCE 926
+[TL 0 lxc0-0 ], DESIRED TIME 3850847 | ACTUAL TIME 3851285 | DIFFERENCE 438
+[TL 0 lxc0-0 ], DESIRED TIME 3850847 | ACTUAL TIME 3851285 | DIFFERENCE 438
+[TL 0 lxc0-0 ], DESIRED TIME 3851848 | ACTUAL TIME 3851413 | DIFFERENCE 435
+[TL 0 lxc0-0 ], DESIRED TIME 3851848 | ACTUAL TIME 3851413 | DIFFERENCE 435
+[TL 1 lxc1-0 ], DESIRED TIME 4291287 | ACTUAL TIME 4291466 | DIFFERENCE 179
+[TL 1 lxc1-0 ], DESIRED TIME 4291287 | ACTUAL TIME 4291466 | DIFFERENCE 179
+[TL 1 lxc1-0 ], DESIRED TIME 4292288 | ACTUAL TIME 4292109 | DIFFERENCE 179
+[TL 0 lxc0-0 ], DESIRED TIME 4292288 | ACTUAL TIME 4293226 | DIFFERENCE 938
+[TL 1 lxc1-0 ], DESIRED TIME 4292288 | ACTUAL TIME 4292109 | DIFFERENCE 179
+[TL 0 lxc0-0 ], DESIRED TIME 4292288 | ACTUAL TIME 4293226 | DIFFERENCE 938
+[TL 1 lxc1-0 ], DESIRED TIME 4630626 | ACTUAL TIME 4631292 | DIFFERENCE 666
+[TL 1 lxc1-0 ], DESIRED TIME 4630626 | ACTUAL TIME 4631292 | DIFFERENCE 666
+[TL 1 lxc1-0 ], DESIRED TIME 4631627 | ACTUAL TIME 4631292 | DIFFERENCE 335
+[TL 1 lxc1-0 ], DESIRED TIME 4631627 | ACTUAL TIME 4631292 | DIFFERENCE 335
+[TL 1 lxc1-0 ], DESIRED TIME 4631627 | ACTUAL TIME 4631292 | DIFFERENCE 335
+[TL 1 lxc1-0 ], DESIRED TIME 4631627 | ACTUAL TIME 4631292 | DIFFERENCE 335
+[TL 1 lxc1-0 ], DESIRED TIME 5039034 | ACTUAL TIME 5039480 | DIFFERENCE 446
+[TL 1 lxc1-0 ], DESIRED TIME 5039034 | ACTUAL TIME 5039480 | DIFFERENCE 446
+[TL 1 lxc1-0 ], DESIRED TIME 5040035 | ACTUAL TIME 5039591 | DIFFERENCE 444
+[TL 1 lxc1-0 ], DESIRED TIME 5040035 | ACTUAL TIME 5039591 | DIFFERENCE 444
+[TL 1 lxc1-0 ], DESIRED TIME 5228223 | ACTUAL TIME 5228549 | DIFFERENCE 326
+[TL 1 lxc1-0 ], DESIRED TIME 5228223 | ACTUAL TIME 5228549 | DIFFERENCE 326
+[TL 1 lxc1-0 ], DESIRED TIME 5229224 | ACTUAL TIME 5228902 | DIFFERENCE 322
+[TL 1 lxc1-0 ], DESIRED TIME 5229224 | ACTUAL TIME 5228902 | DIFFERENCE 322
+Timeline 0 advanced its LXCs by 9.999991 seconds
+Timeline 1 advanced its LXCs by 9.999989 seconds
+|==================================================
+| Calling STOP EXPERIMENT
+|==================================================
+|============================================================|
+| Overall Stats
+|------------------------------------------------------------|
+| OUT | Total Pkts Sent to LXCs       : 0
+| OUT | Total Pkts error late to LXC  : 0
+| OUT | Avg Pkts error late to LXC    : -nan
+|------------------------------------------------------------|
+| IN  | Total Pkts Injected to past   : 0
+| IN  | Total Error Injected to past  : 0
+| IN  | Average past error            : -nan
+|============================================================|
+| TOTAL Advance ERROR        : 154507
+| TOTAL Times Advanced       : 34401
+| TOTAL Times Over           : 12625
+| TOTAL Times Under          : 17293
+| TOTAL Times Exact          : 4483
+| Average Advance ERROR      : 4.49135200
+|============================================================|
+| TOTAL Pkt Timestamp ERROR  : 0
+| TOTAL Pkts Injected        : 0
+| Average Packet Inaccuracy  : -nan
+|============================================================|
+| MIN Advance Error          : 0
+| MAX Advance Error          : 945
+| Advance Error RMS          : 17.13549065
+| Advance Error Variance     : 273.45279722
+| Advance Error Std Dev      : 16.53640823
+|============================================================|
+
+|============================================================|
+| Timeline 0 advanced 17231 times ( Progress 17231 ) for a total of 53.870831 seconds
+| Timeline 1 advanced 17170 times ( Progress 17170 ) for a total of 54.290519 seconds
+|============================================================|
+| Cumulative emulation seconds 108.161350
+| Simulation run time is 57.5337 seconds
+| Total run time is 59.5696 seconds
+|============================================================|

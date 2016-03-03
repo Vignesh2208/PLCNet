@@ -1,0 +1,131 @@
+|==================================================
+| LXC Manager Created
+| Simulation has 2 timelines
+|==================================================
+LXC proxy initialization: lxc0-0 successfull
+LXC proxy initialization: lxc1-0 successfull
+ ____________________________________________
+|
+| Printing out Info about Timeline 0 ...
+|_____
+      | Timeline 0 has Proxy LXC lxc0-0
+      |______________________________________
+ ____________________________________________
+|
+| Printing out Info about Timeline 1 ...
+|_____
+      | Timeline 1 has Proxy LXC lxc1-0
+      |______________________________________
+|==================================================
+| Creating and Launching LXCs                      
+|==================================================
+
+|==================================================
+| Dilating and Adding LXCs to Experiment           
+|==================================================
+
+GET LXC lxc0-0 TDF 5.000000 PID 12244 Finished
+GET LXC lxc1-0 TDF 5.000000 PID 12279 Finished
+|==================================================
+| Calling SynchronizeAndFreeze. Syncing up LXCs
+|==================================================
+
+| lxc0-0 Frozen at [ 1454534425 sec 569004 usec ]
+| lxc1-0 Frozen at [ 1454534425 sec 569004 usec ]
+
+|==================================================
+Ether Type: 0x0806
+Src IP string: 10.10.0.10
+Dest IP string: 10.10.0.9
+Arrival Time : 257347
+Ether Type: 0x0806
+Src IP string: 10.10.0.9
+Dest IP string: 10.10.0.10
+Arrival Time : 258572
+Ether Type: 0x0800
+Src IP string: 10.10.0.10
+Dest IP string: 10.10.0.9
+Using default method of timestamp estimation
+Arrival Time : 259799
+Ether Type: 0x0800
+Src IP string: 10.10.0.9
+Dest IP string: 10.10.0.10
+Secs : 0
+Arrival Time is less. Compensated. 
+Arrival Time : 261174
+[TL 1 lxc1-0 ], DESIRED TIME 351351 | ACTUAL TIME 351507 | DIFFERENCE 156
+[TL 1 lxc1-0 ], DESIRED TIME 351351 | ACTUAL TIME 351507 | DIFFERENCE 156
+[TL 1 lxc1-0 ], DESIRED TIME 352352 | ACTUAL TIME 352199 | DIFFERENCE 153
+[TL 1 lxc1-0 ], DESIRED TIME 352352 | ACTUAL TIME 352199 | DIFFERENCE 153
+[TL 1 lxc1-0 ], DESIRED TIME 1190189 | ACTUAL TIME 1190797 | DIFFERENCE 608
+[TL 1 lxc1-0 ], DESIRED TIME 1190189 | ACTUAL TIME 1190797 | DIFFERENCE 608
+[TL 1 lxc1-0 ], DESIRED TIME 1191190 | ACTUAL TIME 1190797 | DIFFERENCE 393
+[TL 1 lxc1-0 ], DESIRED TIME 1191190 | ACTUAL TIME 1190797 | DIFFERENCE 393
+[TL 1 lxc1-0 ], DESIRED TIME 1191190 | ACTUAL TIME 1190979 | DIFFERENCE 211
+[TL 1 lxc1-0 ], DESIRED TIME 1191190 | ACTUAL TIME 1190979 | DIFFERENCE 211
+Ether Type: 0x0806
+Src IP string: 10.10.0.9
+Dest IP string: 10.10.0.10
+Arrival Time : 1193712
+Ether Type: 0x0806
+Src IP string: 10.10.0.10
+Dest IP string: 10.10.0.9
+Arrival Time : 1194938
+[TL 1 lxc1-0 ], DESIRED TIME 2890888 | ACTUAL TIME 2891040 | DIFFERENCE 152
+[TL 1 lxc1-0 ], DESIRED TIME 2890888 | ACTUAL TIME 2891040 | DIFFERENCE 152
+[TL 1 lxc1-0 ], DESIRED TIME 2891889 | ACTUAL TIME 2891717 | DIFFERENCE 172
+[TL 1 lxc1-0 ], DESIRED TIME 2891889 | ACTUAL TIME 2891717 | DIFFERENCE 172
+[TL 1 lxc1-0 ], DESIRED TIME 3615612 | ACTUAL TIME 3615978 | DIFFERENCE 366
+[TL 1 lxc1-0 ], DESIRED TIME 3615612 | ACTUAL TIME 3615978 | DIFFERENCE 366
+[TL 1 lxc1-0 ], DESIRED TIME 3616613 | ACTUAL TIME 3616251 | DIFFERENCE 362
+[TL 1 lxc1-0 ], DESIRED TIME 3616613 | ACTUAL TIME 3616251 | DIFFERENCE 362
+[TL 1 lxc1-0 ], DESIRED TIME 4799795 | ACTUAL TIME 4800311 | DIFFERENCE 516
+[TL 1 lxc1-0 ], DESIRED TIME 4799795 | ACTUAL TIME 4800311 | DIFFERENCE 516
+[TL 1 lxc1-0 ], DESIRED TIME 4800796 | ACTUAL TIME 4800311 | DIFFERENCE 485
+[TL 1 lxc1-0 ], DESIRED TIME 4800796 | ACTUAL TIME 4800311 | DIFFERENCE 485
+[TL 1 lxc1-0 ], DESIRED TIME 5797792 | ACTUAL TIME 5798077 | DIFFERENCE 285
+[TL 1 lxc1-0 ], DESIRED TIME 5797792 | ACTUAL TIME 5798077 | DIFFERENCE 285
+[TL 1 lxc1-0 ], DESIRED TIME 5798793 | ACTUAL TIME 5798500 | DIFFERENCE 293
+[TL 1 lxc1-0 ], DESIRED TIME 5798793 | ACTUAL TIME 5798500 | DIFFERENCE 293
+Timeline 0 advanced its LXCs by 9.999991 seconds
+Timeline 1 advanced its LXCs by 9.999991 seconds
+|==================================================
+| Calling STOP EXPERIMENT
+|==================================================
+|============================================================|
+| Overall Stats
+|------------------------------------------------------------|
+| OUT | Total Pkts Sent to LXCs       : 6
+| OUT | Total Pkts error late to LXC  : 10
+| OUT | Avg Pkts error late to LXC    : 1.66666667
+|------------------------------------------------------------|
+| IN  | Total Pkts Injected to past   : 0
+| IN  | Total Error Injected to past  : 0
+| IN  | Average past error            : -nan
+|============================================================|
+| TOTAL Advance ERROR        : 182629
+| TOTAL Times Advanced       : 37613
+| TOTAL Times Over           : 14168
+| TOTAL Times Under          : 20057
+| TOTAL Times Exact          : 3388
+| Average Advance ERROR      : 4.85547550
+|============================================================|
+| TOTAL Pkt Timestamp ERROR  : 34
+| TOTAL Pkts Injected        : 6
+| Average Packet Inaccuracy  : 5.66666667
+|============================================================|
+| MIN Advance Error          : 0
+| MAX Advance Error          : 608
+| Advance Error RMS          : 9.22373643
+| Advance Error Variance     : 61.50167136
+| Advance Error Std Dev      : 7.84230013
+|============================================================|
+
+|============================================================|
+| Timeline 0 advanced 18910 times ( Progress 18910 ) for a total of 51.288036 seconds
+| Timeline 1 advanced 18703 times ( Progress 18703 ) for a total of 51.479390 seconds
+|============================================================|
+| Cumulative emulation seconds 102.767426
+| Simulation run time is 53.6143 seconds
+| Total run time is 55.6482 seconds
+|============================================================|

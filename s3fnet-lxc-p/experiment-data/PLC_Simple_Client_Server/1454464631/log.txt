@@ -1,0 +1,73 @@
+|==================================================
+| LXC Manager Created
+| Simulation has 2 timelines
+|==================================================
+LXC proxy initialization: lxc0-0 successfull
+LXC proxy initialization: lxc1-0 successfull
+ ____________________________________________
+|
+| Printing out Info about Timeline 0 ...
+|_____
+      | Timeline 0 has Proxy LXC lxc0-0
+      |______________________________________
+ ____________________________________________
+|
+| Printing out Info about Timeline 1 ...
+|_____
+      | Timeline 1 has Proxy LXC lxc1-0
+      |______________________________________
+|==================================================
+| Creating and Launching LXCs                      
+|==================================================
+
+|==================================================
+| Dilating and Adding LXCs to Experiment           
+|==================================================
+
+GET LXC lxc0-0 TDF 5.000000 PID 4056 Finished
+GET LXC lxc1-0 TDF 5.000000 PID 4096 Finished
+|==================================================
+| Calling SynchronizeAndFreeze. Syncing up LXCs
+|==================================================
+
+| lxc0-0 Frozen at [ 1454464633 sec 467389 usec ]
+| lxc1-0 Frozen at [ 1454464633 sec 467389 usec ]
+
+|==================================================
+[TL 1 lxc1-0 ], DESIRED TIME 1141140 | ACTUAL TIME 1141595 | DIFFERENCE 455
+[TL 1 lxc1-0 ], DESIRED TIME 1141140 | ACTUAL TIME 1141595 | DIFFERENCE 455
+[TL 1 lxc1-0 ], DESIRED TIME 1142141 | ACTUAL TIME 1141677 | DIFFERENCE 464
+[TL 1 lxc1-0 ], DESIRED TIME 1142141 | ACTUAL TIME 1141677 | DIFFERENCE 464
+[TL 1 lxc1-0 ], DESIRED TIME 1859858 | ACTUAL TIME 1860229 | DIFFERENCE 371
+[TL 1 lxc1-0 ], DESIRED TIME 1859858 | ACTUAL TIME 1860229 | DIFFERENCE 371
+[TL 1 lxc1-0 ], DESIRED TIME 1860859 | ACTUAL TIME 1860492 | DIFFERENCE 367
+[TL 1 lxc1-0 ], DESIRED TIME 1860859 | ACTUAL TIME 1860492 | DIFFERENCE 367
+[TL 1 lxc1-0 ], DESIRED TIME 2436434 | ACTUAL TIME 2436563 | DIFFERENCE 129
+[TL 1 lxc1-0 ], DESIRED TIME 2436434 | ACTUAL TIME 2436563 | DIFFERENCE 129
+[TL 1 lxc1-0 ], DESIRED TIME 2437435 | ACTUAL TIME 2437310 | DIFFERENCE 125
+[TL 1 lxc1-0 ], DESIRED TIME 2437435 | ACTUAL TIME 2437310 | DIFFERENCE 125
+[TL 1 lxc1-0 ], DESIRED TIME 4663659 | ACTUAL TIME 4663831 | DIFFERENCE 172
+[TL 1 lxc1-0 ], DESIRED TIME 4663659 | ACTUAL TIME 4663831 | DIFFERENCE 172
+[TL 1 lxc1-0 ], DESIRED TIME 4664660 | ACTUAL TIME 4664483 | DIFFERENCE 177
+[TL 1 lxc1-0 ], DESIRED TIME 4664660 | ACTUAL TIME 4664483 | DIFFERENCE 177
+[TL 1 lxc1-0 ], DESIRED TIME 5224219 | ACTUAL TIME 5224431 | DIFFERENCE 212
+[TL 1 lxc1-0 ], DESIRED TIME 5224219 | ACTUAL TIME 5224431 | DIFFERENCE 212
+[TL 1 lxc1-0 ], DESIRED TIME 5225220 | ACTUAL TIME 5225011 | DIFFERENCE 209
+[TL 1 lxc1-0 ], DESIRED TIME 5225220 | ACTUAL TIME 5225011 | DIFFERENCE 209
+[TL 1 lxc1-0 ], DESIRED TIME 6218212 | ACTUAL TIME 6218451 | DIFFERENCE 239
+[TL 1 lxc1-0 ], DESIRED TIME 6218212 | ACTUAL TIME 6218451 | DIFFERENCE 239
+[TL 1 lxc1-0 ], DESIRED TIME 6219213 | ACTUAL TIME 6218976 | DIFFERENCE 237
+[TL 1 lxc1-0 ], DESIRED TIME 6219213 | ACTUAL TIME 6218976 | DIFFERENCE 237
+[TL 1 lxc1-0 ], DESIRED TIME 6801795 | ACTUAL TIME 6801913 | DIFFERENCE 118
+[TL 1 lxc1-0 ], DESIRED TIME 6801795 | ACTUAL TIME 6801913 | DIFFERENCE 118
+[TL 1 lxc1-0 ], DESIRED TIME 6802796 | ACTUAL TIME 6802657 | DIFFERENCE 139
+[TL 1 lxc1-0 ], DESIRED TIME 6802796 | ACTUAL TIME 6802657 | DIFFERENCE 139
+[TL 1 lxc1-0 ], DESIRED TIME 6907901 | ACTUAL TIME 6908696 | DIFFERENCE 795
+[TL 1 lxc1-0 ], DESIRED TIME 6907901 | ACTUAL TIME 6908696 | DIFFERENCE 795
+[TL 1 lxc1-0 ], DESIRED TIME 6908902 | ACTUAL TIME 6908696 | DIFFERENCE 206
+[TL 1 lxc1-0 ], DESIRED TIME 6908902 | ACTUAL TIME 6908696 | DIFFERENCE 206
+[TL 1 lxc1-0 ], DESIRED TIME 6908902 | ACTUAL TIME 6908696 | DIFFERENCE 206
+[TL 1 lxc1-0 ], DESIRED TIME 6908902 | ACTUAL TIME 6908696 | DIFFERENCE 206
+[TL 1 lxc1-0 ], DESIRED TIME 6908902 | ACTUAL TIME 6908696 | DIFFERENCE 206
+[TL 1 lxc1-0 ], DESIRED TIME 6908902 | ACTUAL TIME 6908696 | DIFFERENCE 206
+[TL 1 lxc1-0 ], DESIRED TIME 6908902 | 

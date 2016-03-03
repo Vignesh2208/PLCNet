@@ -1,0 +1,49 @@
+a_number	"1234"
+a_string	"a quoted string, this is"
+a_string	"duplicate attribute name is allowed"
+string_2	"you can add special characters: \"quotes\", line-feed:\nI'm now in a new line"
+string_3	"unquoted-string-must-not-have-space"
+string_4	"but-you-can-use-special-letters!@;.*^%$-but-not-brackets"
+string_5	"123-even-started-with-numbers"
+second-level [
+  attr1	"934"
+  attr2	"some gibberish: adkf[\tj;dkjf"
+]
+empty [
+]
+topmost-1 [
+  string_2	"you can add special characters: \"quotes\", line-feed:\nI'm now in a new line"
+  string_3	"unquoted-string-must-not-have-space"
+  string_4	"but-you-can-use-special-letters!@;.*^%$-but-not-brackets"
+  string_5	"123-even-started-with-numbers"
+  second-level [
+    attr1	"934"
+    attr2	"some gibberish: adkf[\tj;dkjf"
+  ]
+  empty [
+  ]
+]
+topmost-2 [
+  -attrname-started-with-dash	"what+ever+the+value+is"
+  a_number	"5678"
+  second-level [
+    attr1	"12345"
+    attr2	"5768"
+  ]
+]
+topmost-3 [
+  string_2	"you can add special characters: \"quotes\", line-feed:\nI'm now in a new line"
+  string_3	"unquoted-string-must-not-have-space"
+  string_4	"but-you-can-use-special-letters!@;.*^%$-but-not-brackets"
+  string_5	"123-even-started-with-numbers"
+  second-level [
+    attr1	"934"
+    attr2	"some gibberish: adkf[\tj;dkjf"
+  ]
+  empty [
+  ]
+  attr1	"934"
+  attr2	"some gibberish: adkf[\tj;dkjf"
+  attr1	"934"
+  a_number	"5678"
+]
