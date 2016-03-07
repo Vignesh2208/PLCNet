@@ -65,17 +65,18 @@ def parse_modbus_serial_topology(conf_directory,curr_conf_file,test_file,topolog
 		f.write("seed 1\n")
 		f.write("log_dir " + exp_name + "\n\n")
 		f.write("dilation [ TDF " + str(exp_tdf) + " ]\n")
-		f.write("emuSerialHost\n")
-		f.write("[\n")
-		f.write("	isEmulated 1\n")
-		i = 0
-		while i < NR_SERIAL_DEVS :
-			f.write("	interface [ " + str(i) + " _extends .dict.1Mb\n")
-			f.write("			ProtocolSession [name mac use \"s3f.os.dummymac\" ]\n")
-			f.write("	]\n")
-			i = i + 1
-		f.write("	_find .dict.emuHostSerialGraph.graph\n")
-		f.write("]\n\n")
+		
+		#f.write("emuSerialHost\n")
+		#f.write("[\n")
+		#f.write("	isEmulated 1\n")
+		#i = 0
+		#while i < NR_SERIAL_DEVS :
+		#	f.write("	interface [ " + str(i) + " _extends .dict.1Mb\n")
+		#	f.write("			ProtocolSession [name mac use \"s3f.os.dummymac\" ]\n")
+		#	f.write("	]\n")
+		#	i = i + 1
+		#f.write("	_find .dict.emuHostSerialGraph.graph\n")
+		#f.write("]\n\n")
 		
 
 
@@ -94,7 +95,14 @@ def parse_modbus_serial_topology(conf_directory,curr_conf_file,test_file,topolog
 			f.write("		host\n")
 			f.write("		[\n")
 			f.write("			id 0\n")
-			f.write("			_extends .emuSerialHost\n")
+			f.write("			isEmulated 1\n")
+			i = 0
+			while i < Lxcs[node]["n_intf"] :
+				f.write("			interface [ " + str(i) + " _extends .dict.1Mb\n")
+				f.write("				ProtocolSession [name mac use \"s3f.os.dummymac\" ]\n")
+				f.write("			]\n")
+				i = i + 1
+			f.write("			_find .dict.emuHostSerialGraph.graph\n")
 			f.write("		]\n")			
 			f.write("	]\n")
 

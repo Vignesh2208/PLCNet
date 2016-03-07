@@ -8,6 +8,8 @@ import select
 from multiprocessing import Queue as Queue
 import time
 
+import set_connection
+
 
 
 import threading
@@ -63,6 +65,10 @@ ILLEGAL_DATA_ADDRESS = 2
 ILLEGAL_DATA_VALUE = 3
 SLAVE_DEVICE_FAILURE = 4
 
+START_END_FLAG = 0x7E
+ESCAPE_FLAG = 0x7D
+
+
 modbus_area_data_types = {
 		0 : "Unused",
 		1 : "Coils",
@@ -80,6 +86,7 @@ class Connection(object) :
 		self.connection_params.set_connection_params(connection_id,remote_port,local_port,self.hostname_to_ip(remote_host_name),is_server,single_write_enabled)
 		self.cpu = cpu
 		self.remote_host_id = int(remote_host_name)
+		self.local_host_id = self.cpu.local_id
 		
 		self.data_area_dbs = {}
 		self.thread_cmd_queue = Queue()
@@ -166,6 +173,9 @@ class Connection(object) :
 
 		self.next_stage = 1
 		self.initialised = False
+
+		set_connection.set_connection(self.local_host_id,self.remote_host_id,connection_id)
+
 		
 	def hostname_to_ip(self,hostname) :
 
@@ -191,6 +201,41 @@ class Connection(object) :
 		return resolved_hostname
 
 
+	def frame_outgoing_message(self,msg) :
+
+		new_msg = bytearray()
+		new_msg.append(START_END_FLAG)
+		i = 0
+
+		while i < len(msg) :
+			if msg[i] == START_END_FLAG :
+				new_msg.append(ESCAPE_FLAG)
+				new_msg.append(msg[i]^ 0x20)
+			elif msg[i] == ESCAPE_FLAG :
+				new_msg.append(ESCAPE_FLAG)
+				new_msg.append(msg[i]^ 0x20)
+			else :
+				new_msg.append(msg[i])
+			i = i + 1
+		new_msg.append(START_END_FLAG)
+		return new_msg
+
+	def process_incoming_frame(self,msg) :
+
+		new_msg = bytearray()
+		i = 0
+		while i < len(msg) :
+			if msg[i] == START_END_FLAG :
+				i = i + 1
+			elif msg[i] == ESCAPE_FLAG :
+				new_msg.append(msg[i+1]^0x20)
+				i = i + 2
+			else :
+				new_msg.append(msg[i])
+				i = i + 1
+
+		return new_msg
+
 
 
 	def set_connection_param_fields(self,db) :
@@ -204,7 +249,7 @@ class Connection(object) :
 		self.conn_time = conn_time
 		
 
-	def run_server(self) :
+	def run_server_ip(self) :
 		self.read_finish_status = 1
 		TCP_LOCAL_PORT = self.connection_params.local_tsap_id
 		BUFFER_SIZE = 4096
@@ -221,13 +266,8 @@ class Connection(object) :
 		server_socket.listen(1)
 
 		print("Start time = ", time.time())
-		print("Listening on port " + str(TCP_LOCAL_PORT))
-
-
-		
-		
-
-		#print("Select succeeded");	
+		print("Listening on port " + str(TCP_LOCAL_PORT))	
+				
 		
 		try:
 			client_socket, address = server_socket.accept()
@@ -273,8 +313,7 @@ class Connection(object) :
 				break
 
 			recv_data = bytearray(data)
-			print("Recv data = ",recv_data)
-			
+			print("Recv data = ",recv_data)			
 			response,request_msg_params = self.mod_server.process_request_message(recv_data)
 			
 
@@ -328,8 +367,9 @@ class Connection(object) :
 		self.CONN_ESTABLISHED = False
 		self.status_lock.release()
 
+
 	
-	def run_client(self) :
+	def run_client_ip(self) :
 		self.read_finish_status = 1
 		TCP_REMOTE_IP  = self.connection_params.rem_staddr
 		#TCP_REMOTE_IP = "127.0.0.1"
@@ -456,7 +496,286 @@ class Connection(object) :
 		self.BUSY = False
 		self.CONN_ESTABLISHED = False
 		self.status_lock.release()
+
+	def run_server_serial(self) :
+		self.read_finish_status = 1
+		self.BUSY = True
+		server_fd = open("/dev/s3fserial" + self.connection_params.id ,'w')
+
+		READ_ONLY = select.POLLIN 
+		WRITE_ONLY = select.POLLOUT		
+		
+		print("Start time = ", time.time())
+
+		recv_msg = bytearray()
+		while True :
+			poller = select.poll()
+			poller.register(server_fd, READ_ONLY)
+			events = poller.poll(self.recv_time*1000)
+			if len(events) == 0 :
+				print("End time = ", time.time())
+				print("Serial Recv TIMEOUT Done !!!!!!!!!!!!!!!!")
+				self.status_lock.acquire()
+				self.read_finish_status = 0
+				self.STATUS = RECV_TIMEOUT_ERROR
+				self.ERROR = True
+				self.STATUS_MODBUS = 0x0
+				self.STATUS_CONN = ERROR_MONITORING_TIME_ELAPSED
+				self.BUSY = False
+				self.CONN_ESTABLISHED = False
+				self.thread_resp_queue.put(1)
+				self.status_lock.release()
+				return
+
+			if self.CONN_ESTABLISHED == False :
+				self.CONN_ESTABLISHED = True
+				self.thread_resp_queue.put(1)
+				self.thread_cmd_queue.get()
+
+
+			for fd,flag in events :
+				if flag & select.POLLIN :
+					# data to read
+
+					data = server_fd.read(100)
+					recv_msg.extend(data)
+					if data[len(data) - 1] == START_END_FLAG :
+						# got full data
+						resume_poll = False
+					else :
+						resume_poll = True
+
+					break
+
+			if resume_poll == True :
+				continue
 			
+			print("Recv msg = ",recv_msg)
+			recv_data = self.process_incoming_frame(recv_msg)
+			print("Recv data = ",recv_data)
+			
+			response,request_msg_params = self.mod_server.process_request_message(recv_data)
+			
+
+			if request_msg_params["ERROR"] == NO_ERROR :
+				self.ERROR = False
+			else :
+				# set STATUS_MODBUS Based on returned error value
+				self.status_lock.acquire()
+				self.read_finish_status = 0
+				self.STATUS = DONE
+				self.ERROR = True
+				self.STATUS_MODBUS = request_msg_params["ERROR"]
+				self.STATUS_CONN = 0x0
+				self.thread_resp_queue.put(1)
+				break
+
+
+			# write all inout params
+			self.param_init_lock.acquire()
+			self.unit = request_msg_params["unit"]
+			self.TI = request_msg_params["ti"]
+			self.data_type = request_msg_params["data_type"]
+			self.write_read = request_msg_params["write_read"]
+			self.start_address = request_msg_params["start_address"]
+			self.length = request_msg_params["length"]
+			self.param_init_lock.release()
+
+			n_wrote = 0
+			while n_wrote < len(response) :
+				poller = select.poll()
+				poller.register(server_fd, WRITE_ONLY)
+				events = poller.poll(self.conn_time*1000)
+				if len(events) == 0 :
+					print("End time = ", time.time())
+					print("Serial Send TIMEOUT Done !!!!!!!!!!!!!!!!")
+					self.status_lock.acquire()
+					self.read_finish_status = 0
+					self.STATUS = CONN_TIMEOUT_ERROR
+					self.ERROR = True
+					self.STATUS_MODBUS = 0x0
+					self.STATUS_CONN = ERROR_MONITORING_TIME_ELAPSED
+					self.BUSY = False
+					self.CONN_ESTABLISHED = False
+					self.thread_resp_queue.put(1)
+					self.status_lock.release()
+					return
+
+				n_wrote = n_wrote + server_fd.write(response[n_wrote:])			
+
+
+			print("Sent response to client = ",response)
+			
+			if self.disconnect == True :
+				self.status_lock.acquire()
+				self.read_finish_status = 0
+				self.STATUS = DONE
+				self.ERROR = False
+				self.thread_resp_queue.put(1)
+				break
+			else :
+				self.status_lock.acquire()
+				self.read_finish_status = 0
+				self.STATUS = DONE
+				self.ERROR = False
+				recv_msg = bytearray()
+				self.status_lock.release()
+				self.thread_resp_queue.put(1)
+				self.thread_cmd_queue.get()
+		self.BUSY = False
+		self.CONN_ESTABLISHED = False
+		self.status_lock.release()
+
+			
+	def run_client_serial(self) :
+		self.read_finish_status = 1
+		self.BUSY = True
+		client_fd = open("/dev/s3fserial" + self.connection_params.id ,'w')
+
+		READ_ONLY = select.POLLIN 
+		WRITE_ONLY = select.POLLOUT		
+		
+		print("Start time = ", time.time())
+
+				
+		while True :
+			# read all input and inout params
+			self.param_init_lock.acquire()
+			recv_time = self.recv_time
+			data_type = self.data_type
+			write_read = self.write_read
+			length = self.length
+			single_write = self.connection_params.single_write
+			start_address = self.start_address
+			TI = self.TI
+			self.param_init_lock.release()
+
+			self.thread_resp_queue.put(1)
+			msg_to_send,exception = self.mod_client.construct_request_message(data_type,write_read,length,single_write,start_address,TI,self.remote_host_id)
+
+			if msg_to_send == None :
+				self.status_lock.acquire()
+				self.read_finish_status = 0
+				self.STATUS = DONE
+				self.ERROR = True 
+				self.STATUS_MODBUS = exception
+				self.STATUS_CONN = 0x0
+				self.thread_resp_queue.put(1)
+				break
+			
+			
+			print("data to send = ",msg_to_send)
+			send_msg = self.frame_outgoing_message(msg_to_send)
+			print("msg to send = ", send_msg)
+			n_wrote = 0
+			while n_wrote < len(send_msg) :
+				poller = select.poll()
+				poller.register(client_fd, WRITE_ONLY)
+				events = poller.poll(self.conn_time*1000)
+				if len(events) == 0 :
+					print("End time = ", time.time())
+					print("Serial Write TIMEOUT Done !!!!!!!!!!!!!!!!")
+					self.status_lock.acquire()
+					self.read_finish_status = 0
+					self.STATUS = CONN_TIMEOUT_ERROR
+					self.ERROR = True
+					self.STATUS_MODBUS = 0x0
+					self.STATUS_CONN = ERROR_MONITORING_TIME_ELAPSED
+					self.BUSY = False
+					self.CONN_ESTABLISHED = False
+					self.thread_resp_queue.put(1)
+					self.status_lock.release()
+					return
+
+				if self.CONN_ESTABLISHED == False :
+					self.CONN_ESTABLISHED = True
+					self.thread_resp_queue.put(1)
+					self.thread_cmd_queue.get()
+
+				n_wrote = n_wrote + client_fd.write(send_msg[n_wrote:])
+			
+				
+			self.thread_resp_queue.put(1)
+			self.thread_cmd_queue.get()
+
+			# receive response from server
+			recv_msg = bytearray()
+			while True :
+				poller = select.poll()
+				poller.register(client_fd, READ_ONLY)
+				events = poller.poll(self.recv_time*1000)
+				if len(events) == 0 :
+					print("End time = ", time.time())
+					print("Serial Read TIMEOUT Done !!!!!!!!!!!!!!!!")
+					self.status_lock.acquire()
+					self.read_finish_status = 0
+					self.STATUS = RECV_TIMEOUT_ERROR
+					self.ERROR = True
+					self.STATUS_MODBUS = 0x0
+					self.STATUS_CONN = ERROR_MONITORING_TIME_ELAPSED
+					self.BUSY = False
+					self.CONN_ESTABLISHED = False
+					self.thread_resp_queue.put(1)
+					self.status_lock.release()
+					return
+
+				for fd,flag in events :
+					if flag & select.POLLIN :
+					# data to read
+						data = client_fd.read(100)
+						recv_msg.extend(data)
+						if data[len(data) - 1] == START_END_FLAG :
+							resume_poll = False
+						else :
+							resume_poll = True
+
+						break
+
+				if resume_poll == True :
+					continue
+			
+			print("Recv msg = ",recv_msg)
+			recv_data = self.process_incoming_frame(recv_msg)
+			print("Response from server = ",recv_data)			
+			ERROR_CODE = self.mod_client.process_response_message(recv_data)
+
+
+			if ERROR_CODE == NO_ERROR :
+				self.ERROR = False
+			else :
+				# set STATUS_MODBUS Based on returned error value
+				self.status_lock.acquire()
+				self.read_finish_status = 0
+				self.STATUS = DONE
+				self.ERROR = True						
+				self.STATUS_MODBUS = ERROR_CODE
+				self.STATUS_CONN = 0x0
+				self.thread_resp_queue.put(1)
+				break
+
+			if self.disconnect == True :
+				self.status_lock.acquire()
+				self.read_finish_status = 0
+				self.STATUS = DONE
+				self.ERROR = False
+				self.thread_resp_queue.put(1)
+				
+				break
+			else :
+				self.status_lock.acquire()
+				self.read_finish_status = 0
+				self.STATUS = DONE
+				self.ERROR = False
+				self.status_lock.release()
+				self.thread_resp_queue.put(1)
+				self.thread_cmd_queue.get()
+				
+	
+		self.BUSY = False
+		self.CONN_ESTABLISHED = False
+		self.status_lock.release()
+
+
 
 	def set_all_in_params_client(self,enq_enr,disconnect,recv_time,conn_time,unit,data_type,write_read,TI,length,start_address) :
 		self.param_init_lock.acquire()
@@ -521,11 +840,12 @@ class Connection(object) :
 			self.PREV_ENQ_ENR = self.ENQ_ENR
 
 		elif self.STATUS != RUNNING : 	# completed 
-			if self.read_finish_status == 0 :
+			if self.read_finish_status == 0 :	# for this call return the status params undisturbed
+												# start new thread or resume the existing thread in the nxt call
 				self.read_finish_status = 1
 				self.status_lock.release()
 
-			elif self.STATUS == DONE and self.CONN_ESTABLISHED == True :
+			elif self.STATUS == DONE and self.CONN_ESTABLISHED == True : # if disconnect is false
 				if self.ENQ_ENR == 1 :
 					self.STATUS = RUNNING
 					self.thread_cmd_queue.put(1) # resume connection
