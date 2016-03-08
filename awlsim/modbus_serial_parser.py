@@ -85,7 +85,7 @@ def parse_modbus_serial_topology(conf_directory,curr_conf_file,test_file,topolog
 		f.write("	lxcConfig\n")
 		f.write("	[\n")
 		for node in xrange(1,exp_n_nodes+1)  :
-			f.write("		settings [ lxcNHI " + str(node-1) + ":0 _extends .dilation cmd " + "\"" + test_file + " --node " + str(node-1) + Node[node]["script"] + "\"" + " ]\n")
+			f.write("		settings [ lxcNHI " + str(node-1) + ":0 _extends .dilation cmd " + "\"" + test_file + " -e 1" + " --node " + str(node-1) + Node[node]["script"] + "\"" + " ]\n")
 		f.write("	]\n")
 	 	for node in nodes :
 			f.write("	Net\n")
@@ -98,7 +98,7 @@ def parse_modbus_serial_topology(conf_directory,curr_conf_file,test_file,topolog
 			f.write("			isEmulated 1\n")
 			i = 0
 			while i < Lxcs[node]["n_intf"] :
-				f.write("			interface [ " + str(i) + " _extends .dict.1Mb\n")
+				f.write("			interface [ id " + str(i) + " _extends .dict.1Mb\n")
 				f.write("				ProtocolSession [name mac use \"s3f.os.dummymac\" ]\n")
 				f.write("			]\n")
 				i = i + 1

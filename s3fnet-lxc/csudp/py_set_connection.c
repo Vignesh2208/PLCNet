@@ -106,12 +106,27 @@ static PyMethodDef connection_methods[] = {
    { "set_connection", set_connection_func, METH_VARARGS, NULL },
 };
 
+static struct PyModuleDef set_connection_definition = { 
+    PyModuleDef_HEAD_INIT,
+    "set_connection",
+    "A Python module that sets serial connection between 2 lxcs",
+    -1, 
+    connection_methods
+};
 
 
 
 
-void initset_connection(void)
+/*void initset_connection(void)
 {
     Py_InitModule3("set_connection", connection_methods,
                    "Extension module example!");
+}*/
+
+
+PyMODINIT_FUNC PyInit_set_connection(void)
+{
+    Py_Initialize();
+
+    return PyModule_Create(&set_connection_definition);
 }

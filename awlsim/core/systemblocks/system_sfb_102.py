@@ -12,6 +12,8 @@ from awlsim.core.util import *
 from awlsim.core.datablocks import *
 
 
+DEBUG = 0
+
 name = (0, "MODBUS_PN", "Modbus Implementation")
 
 valid_parameters = [
@@ -260,13 +262,14 @@ class SFB102(SFB):
 					break
 				REG_KEY = REG_KEY + e.decode('ascii')
 
-			print("~~~~~~~~~~~~~~~~~~~~Inputs~~~~~~~~~~~~~~~~~~~")
-			print("CONNECTION ID     = ",connection_id)
-			print("CONN_TIME         = ",CONN_TIME)
-			print("RECV_TIME         = ",RECV_TIME)
-			print("DICONNECT         = ",DISCONNECT)
-			print("ENQ_ENR           = ",ENQ_ENR)
-			print("\n~~~~~~~~~~~~~~~~~~~Outputs~~~~~~~~~~~~~~~~~~~")
+			if DEBUG == 1 :
+				print("~~~~~~~~~~~~~~~~~~~~Inputs~~~~~~~~~~~~~~~~~~~")
+				print("CONNECTION ID     = ",connection_id)
+				print("CONN_TIME         = ",CONN_TIME)
+				print("RECV_TIME         = ",RECV_TIME)
+				print("DICONNECT         = ",DISCONNECT)
+				print("ENQ_ENR           = ",ENQ_ENR)
+				print("\n~~~~~~~~~~~~~~~~~~~Outputs~~~~~~~~~~~~~~~~~~~")
 
 			connection = self.connection_objects[connection_id]
 			if connection.is_server == True :
@@ -298,11 +301,13 @@ class SFB102(SFB):
 
 			if STATUS != RUNNING :
 				self.storeInterfaceFieldByName("DONE_NDR", True)
-				print("DONE_NDR         = ", True)
+				if DEBUG == 1 :
+					print("DONE_NDR         = ", True)
 				DONE_NDR = True
 			else :
 				self.storeInterfaceFieldByName("DONE_NDR",False)
-				print("DONE_NDR         = ", False)
+				if DEBUG == 1 :
+					print("DONE_NDR         = ", False)
 				DONE_NDR = False
 
 			self.storeInterfaceFieldByName("CONN_ESTABLISHED", CONN_ESTABLISHED)
@@ -323,22 +328,23 @@ class SFB102(SFB):
 			self.storeInterfaceFieldByName("IDENT_CODE",value)
 			self.storeInterfaceFieldByName("BUSY", BUSY)
 
-			print("LICENSED         = ",True)
-			print("CONN_ESTABLISHED = ", CONN_ESTABLISHED)
-			print("BUSY             = ",BUSY)
-			print("ERROR            = ",ERROR)
-			print("STATUS_MODBUS    =  %x"%STATUS_MODBUS)
-			print("STATUS_CONN      =  %x"%STATUS_CONN)
+			if DEBUG == 1 :
 
-			if connection.is_server == True and  DONE_NDR == True:
+				print("LICENSED         = ",True)
+				print("CONN_ESTABLISHED = ", CONN_ESTABLISHED)
+				print("BUSY             = ",BUSY)
+				print("ERROR            = ",ERROR)
+				print("STATUS_MODBUS    =  %x"%STATUS_MODBUS)
+				print("STATUS_CONN      =  %x"%STATUS_CONN)
 
-				print("UNIT             = ",UNIT)
-				print("TI               = ",TI)
-				print("START_ADDRESS    = ",START_ADDRESS)
-				print("LENGTH           = ",LENGTH)
-				print("WRITE_READ       = ",WRITE_READ)
-	
-			print("#############################################")
+				if connection.is_server == True and  DONE_NDR == True:
+					print("UNIT             = ",UNIT)
+					print("TI               = ",TI)
+					print("START_ADDRESS    = ",START_ADDRESS)
+					print("LENGTH           = ",LENGTH)
+					print("WRITE_READ       = ",WRITE_READ)
+		
+				print("#############################################")
 			sys.stdout.flush()
 
 		

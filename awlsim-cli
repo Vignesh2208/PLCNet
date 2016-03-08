@@ -84,6 +84,7 @@ def usage():
 	print(" -m|--mnemonics auto   Force mnemonics type: en, de, auto")
 	print(" -P|--profile 0        Set profiling level (Default: 0)")
 	print(" -N|--node-id	      Set Node ID for this CPU")
+	print(" -e|--network	      Set network interface type for node : 0(IP)/1(SERIAL)")
 	print(" -L|--loglevel LVL     Set the log level:")
 	print("                       0: Log nothing")
 	print("                       1: Log errors")
@@ -180,7 +181,7 @@ def assignCpuSpecs(cpuSpecs, projectCpuSpecs):
 	if opt_clockMem is not None:
 		cpuSpecs.setClockMemByte(opt_clockMem)
 
-def run(inputFile,node_id):
+def run(inputFile,node_id,conn_type):
 	s = None
 	try:
 		import awlsim.cython_helper
@@ -223,7 +224,7 @@ def run(inputFile,node_id):
 		for name, parameters in opt_hwmods:
 			loadMod(name, parameters)
 
-		s.getCPU().set_cpu_id(node_id)
+		s.getCPU().set_cpu_id(node_id,conn_type)
 		cpu = s.getCPU()
 		assignCpuSpecs(cpu.getSpecs(), project.getCpuSpecs())
 		cpu.enableObTempPresets(project.getObTempPresetsEn() or opt_obtemp)
@@ -428,10 +429,11 @@ def main():
 	opt_interpreter = None
 
 	node_id = 1
+	conn_type = 0
 
 	try:
 		(opts, args) = getopt.getopt(sys.argv[1:],
-			"hC:M:24qDxt:T:m:H:I:P:L:c:bi:N:",
+			"hC:M:24qDxt:T:m:H:I:P:L:c:bi:N:e:",
 			[ "help", "cycle-time=", "max-runtime=", "twoaccu", "fouraccu",
 			  "quiet", "no-cpu-dump", "extended-insns",
 			  "obtemp=", "clock-mem=", "mnemonics=",
@@ -439,7 +441,7 @@ def main():
 			  "loglevel=",
 			  "connect=", "spawn-backend", "interpreter=",
 			  "list-sfc", "list-sfc-verbose",
-			  "list-sfb", "list-sfb-verbose","node-id=" ])
+			  "list-sfb", "list-sfb-verbose","node-id=","network=" ])
 	except getopt.GetoptError as e:
 		printError(str(e))
 		usage()
@@ -536,6 +538,9 @@ def main():
 		if o in ("-N","--node-id"):
 			node_id = int(v)
 
+		if o in ("-e","--network"):
+			conn_type = int(v)
+
 		if o in ("--list-sfc", "--list-sfc-verbose"):
 			print("The supported system functions (SFCs) are:")
 			printSysblockInfo(SFC_table, "SFC", opt_extInsns,
@@ -581,7 +586,7 @@ def main():
 
 	if opt_spawnBackend or opt_connect:
 		return runWithServerBackend(inputFile)
-	return run(inputFile,node_id)
+	return run(inputFile,node_id,conn_type)
 
 if __name__ == "__main__":
 	sys.exit(main())

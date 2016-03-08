@@ -1,0 +1,8 @@
+Starting Debug for lxc1-0
+Running Command sudo python /home/vignesh/Desktop/PLCs/awlsim-0.42/s3fnet-lxc/csudp/serial_server.py
+sudo: unable to resolve host lxc1-0
+src lxc name = lxc1-0, dst lxc name = lxc0-0, conn_id = 0
+Traceback (most recent call last):
+  File "/home/vignesh/Desktop/PLCs/awlsim-0.42/s3fnet-lxc/csudp/serial_server.py", line 47, in <module>
+    server_fd = os.open("/dev/s3fserial0",'w')
+TypeError: an integer is required

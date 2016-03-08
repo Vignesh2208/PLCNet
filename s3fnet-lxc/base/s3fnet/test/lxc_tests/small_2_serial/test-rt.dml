@@ -1,21 +1,8 @@
 #routable destination: 0:0
 #routable destination: 1:0
-#routable destination: 2:0
 forwarding_table [ node_nhi 0:0
-  nhi_route [ dest :1:0(0) interface 0 next_hop :1:0(0) ]
-  nhi_route [ dest :1:0(1) interface 0 next_hop :1:0(0) ]
-  nhi_route [ dest :2:0(0) interface 1 next_hop :2:0(0) ]
-  nhi_route [ dest :2:0(1) interface 1 next_hop :2:0(0) ]
+  nhi_route [ dest default interface 0 next_hop :1:0(0) ]
 ]
 forwarding_table [ node_nhi 1:0
-  nhi_route [ dest :0:0(0) interface 0 next_hop :0:0(0) ]
-  nhi_route [ dest :0:0(1) interface 0 next_hop :0:0(0) ]
-  nhi_route [ dest :2:0(0) interface 1 next_hop :2:0(1) ]
-  nhi_route [ dest :2:0(1) interface 1 next_hop :2:0(1) ]
-]
-forwarding_table [ node_nhi 2:0
-  nhi_route [ dest :0:0(0) interface 0 next_hop :0:0(1) ]
-  nhi_route [ dest :0:0(1) interface 0 next_hop :0:0(1) ]
-  nhi_route [ dest :1:0(0) interface 1 next_hop :1:0(1) ]
-  nhi_route [ dest :1:0(1) interface 1 next_hop :1:0(1) ]
+  nhi_route [ dest default interface 0 next_hop :0:0(0) ]
 ]

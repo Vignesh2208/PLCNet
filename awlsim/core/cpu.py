@@ -496,9 +496,11 @@ class S7CPU(object): #+cdef
 		self.local_id = 1
 		self.enableExtendedInsns(False)
 		self.enableObTempPresets(False)
+		self.network_interface_type = 0 #IP
 
-	def set_cpu_id(self,id) :
+	def set_cpu_id(self,id,conn_type) :
 		self.local_id = id
+		self.network_interface_type = conn_type # 0- IP, 1 - RS-232
 	
 	def enableObTempPresets(self, en=True):
 		self.__obTempPresetsEnabled = bool(en)

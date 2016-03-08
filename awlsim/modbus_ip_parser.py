@@ -119,7 +119,7 @@ def parse_modbus_ip_topology(conf_directory,curr_conf_file,test_file,topology_fi
 		f.write("	lxcConfig\n")
 		f.write("	[\n")
 		for node in xrange(1,exp_n_nodes+1)  :
-			f.write("		settings [ lxcNHI " + str(node-1) + ":0 _extends .dilation cmd " + "\"" + test_file + " --node " + str(node-1) + Node[node]["script"] + "\"" + " ]\n")
+			f.write("		settings [ lxcNHI " + str(node-1) + ":0 _extends .dilation cmd " + "\"" + test_file + " -e 0" + " --node " + str(node-1) + Node[node]["script"] + "\"" + " ]\n")
 		f.write("	]\n")
 	 	for node in xrange(1,exp_n_nodes + 1)  :
 			f.write("	Net\n")

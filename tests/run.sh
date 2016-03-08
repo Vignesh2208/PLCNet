@@ -104,7 +104,7 @@ run_awl_test()
 
 	local ok=1
 	command time -o "$test_time_file" -f '%E' \
-	"$interpreter" "$rootdir/awlsim-cli" --loglevel 2  --extended-insns -N $opt_node_id \
+	"$interpreter" "$rootdir/awlsim-cli" --loglevel 2  --extended-insns -N $opt_node_id -e $opt_conn_type \
 		--hardware debug:inputAddressBase=7:outputAddressBase=8:dummyParam=True \
 		--cycle-time 60 \
 		"$@" \
@@ -323,6 +323,7 @@ show_help()
 	echo " -s|--softfail                 Do not abort on single test failures"
 	echo " -q|--quick                    Only run python2 and python3 tests"
 	echo " -d|--node ID		     Set node-id for the cpu. used only when source file is an awl file"
+	echo " -e|--network			 Set network Interface type for node : 0(IP - default) or 1(RS-232)"
 }
 
 trap cleanup_and_exit INT TERM
@@ -333,6 +334,7 @@ opt_interpreter=
 opt_softfail=0
 opt_quick=0
 opt_node_id=1
+opt_conn_type=0
 opt_renice=
 
 while [ $# -ge 1 ]; do
@@ -362,6 +364,10 @@ while [ $# -ge 1 ]; do
 	-d|--node)
 		shift
 		opt_node_id="$1"
+		;;
+	-e|--network)
+		shift
+		opt_conn_type="$1"
 		;;
 	*)
 		echo "Unknown option: $1"

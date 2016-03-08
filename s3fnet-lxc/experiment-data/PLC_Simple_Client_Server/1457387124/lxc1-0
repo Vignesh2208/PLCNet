@@ -1,0 +1,3 @@
+Starting Debug for lxc1-0
+Running Command /home/vignesh/Desktop/PLCs/awlsim-0.42/tests/run.sh-e 1 --node 1 /home/vignesh/Desktop/PLCs/awlsim-0.42/tests/modbus/simple_client_server/sfb102_client.awl
+sh: 1: /home/vignesh/Desktop/PLCs/awlsim-0.42/tests/run.sh-e: not found

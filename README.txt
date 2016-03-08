@@ -21,3 +21,6 @@ Awlsim is free of charge, too.
 
 The official website of awlsim is:
 http://bues.ch/h/awlsim
+
+
+* install python3-dev

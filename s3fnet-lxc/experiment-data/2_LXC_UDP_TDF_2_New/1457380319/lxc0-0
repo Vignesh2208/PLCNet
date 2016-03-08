@@ -1,0 +1,10 @@
+Starting Debug for lxc0-0
+Running Command sudo python /home/vignesh/Desktop/PLCs/awlsim-0.42/s3fnet-lxc/csudp/serial_client.py
+sudo: unable to resolve host lxc0-0
+src lxc name = lxc0-0, dst lxc name = lxc1-0, conn_id = 0
+Start time =  1457380321.53
+msg to send =  ~HHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHH~
+Traceback (most recent call last):
+  File "/home/vignesh/Desktop/PLCs/awlsim-0.42/s3fnet-lxc/csudp/serial_client.py", line 69, in <module>
+    n_wrote = n_wrote + client_fd.write(send_msg[n_wrote:])
+TypeError: unsupported operand type(s) for +: 'int' and 'NoneType'

@@ -7,6 +7,7 @@ import select
 #from queue import *
 from multiprocessing import Queue as Queue
 import time
+import os
 
 import set_connection
 
@@ -174,7 +175,7 @@ class Connection(object) :
 		self.next_stage = 1
 		self.initialised = False
 
-		set_connection.set_connection(self.local_host_id,self.remote_host_id,connection_id)
+		
 
 		
 	def hostname_to_ip(self,hostname) :
@@ -500,12 +501,14 @@ class Connection(object) :
 	def run_server_serial(self) :
 		self.read_finish_status = 1
 		self.BUSY = True
-		server_fd = open("/dev/s3fserial" + self.connection_params.id ,'w')
+		
+		server_fd = os.open("/dev/s3fserial" + str(self.connection_params.id) ,os.O_RDWR)
 
 		READ_ONLY = select.POLLIN 
 		WRITE_ONLY = select.POLLOUT		
 		
 		print("Start time = ", time.time())
+		set_connection.set_connection(self.local_host_id,self.remote_host_id,self.connection_params.id)
 
 		recv_msg = bytearray()
 		while True :
@@ -533,19 +536,17 @@ class Connection(object) :
 				self.thread_cmd_queue.get()
 
 
-			for fd,flag in events :
-				if flag & select.POLLIN :
-					# data to read
+			
 
-					data = server_fd.read(100)
-					recv_msg.extend(data)
-					if data[len(data) - 1] == START_END_FLAG :
-						# got full data
-						resume_poll = False
-					else :
-						resume_poll = True
-
-					break
+			data = os.read(server_fd,100)
+			recv_msg.extend(data)
+			data = bytearray(data)
+			if data[len(data) - 1] == START_END_FLAG :
+					# got full data
+				resume_poll = False
+			else :
+				resume_poll = True
+			
 
 			if resume_poll == True :
 				continue
@@ -581,6 +582,8 @@ class Connection(object) :
 			self.length = request_msg_params["length"]
 			self.param_init_lock.release()
 
+			response = self.frame_outgoing_message(response)
+
 			n_wrote = 0
 			while n_wrote < len(response) :
 				poller = select.poll()
@@ -601,7 +604,7 @@ class Connection(object) :
 					self.status_lock.release()
 					return
 
-				n_wrote = n_wrote + server_fd.write(response[n_wrote:])			
+				n_wrote = n_wrote + os.write(server_fd,response[n_wrote:])			
 
 
 			print("Sent response to client = ",response)
@@ -630,12 +633,14 @@ class Connection(object) :
 	def run_client_serial(self) :
 		self.read_finish_status = 1
 		self.BUSY = True
-		client_fd = open("/dev/s3fserial" + self.connection_params.id ,'w')
+		
+		client_fd = os.open("/dev/s3fserial" + str(self.connection_params.id) ,os.O_RDWR)
 
 		READ_ONLY = select.POLLIN 
 		WRITE_ONLY = select.POLLOUT		
 		
 		print("Start time = ", time.time())
+		set_connection.set_connection(self.local_host_id,self.remote_host_id,self.connection_params.id)
 
 				
 		while True :
@@ -692,7 +697,7 @@ class Connection(object) :
 					self.thread_resp_queue.put(1)
 					self.thread_cmd_queue.get()
 
-				n_wrote = n_wrote + client_fd.write(send_msg[n_wrote:])
+				n_wrote = n_wrote + os.write(client_fd,send_msg[n_wrote:])
 			
 				
 			self.thread_resp_queue.put(1)
@@ -704,6 +709,7 @@ class Connection(object) :
 				poller = select.poll()
 				poller.register(client_fd, READ_ONLY)
 				events = poller.poll(self.recv_time*1000)
+				#events = poller.poll()
 				if len(events) == 0 :
 					print("End time = ", time.time())
 					print("Serial Read TIMEOUT Done !!!!!!!!!!!!!!!!")
@@ -719,20 +725,20 @@ class Connection(object) :
 					self.status_lock.release()
 					return
 
-				for fd,flag in events :
-					if flag & select.POLLIN :
-					# data to read
-						data = client_fd.read(100)
-						recv_msg.extend(data)
-						if data[len(data) - 1] == START_END_FLAG :
-							resume_poll = False
-						else :
-							resume_poll = True
+				
+				data = os.read(client_fd,100)
 
-						break
+				recv_msg.extend(data)
+				data = bytearray(data)
+				if data[len(data) - 1] == START_END_FLAG :
+					resume_poll = False
+				else :
+					resume_poll = True
 
 				if resume_poll == True :
 					continue
+				else :
+					break
 			
 			print("Recv msg = ",recv_msg)
 			recv_data = self.process_incoming_frame(recv_msg)
@@ -830,8 +836,12 @@ class Connection(object) :
 				self.IDENT_CODE = "NONE"
 				self.status_lock.release()
 
-							
-				threading.Thread(target=self.run_server).start()
+				if self.cpu.network_interface_type == 0 : #IP							
+					threading.Thread(target=self.run_server_ip).start()
+				else :
+					
+					threading.Thread(target=self.run_server_serial).start()
+
 				try :
 					o = self.thread_resp_queue.get(block=True,timeout=0.1)
 					self.thread_cmd_queue.put(1)
@@ -861,7 +871,12 @@ class Connection(object) :
 					self.STATUS_FUNC = "MODBUSPN"
 					self.IDENT_CODE = "NONE"	
 					self.status_lock.release()
-					threading.Thread(target=self.run_server).start()
+					if self.cpu.network_interface_type == 0 : #IP							
+						threading.Thread(target=self.run_server_ip).start()
+					else:
+						
+						threading.Thread(target=self.run_server_serial).start()
+
 					try :
 						o = self.thread_resp_queue.get(block=True,timeout=0.1)
 						self.thread_cmd_queue.put(1)
@@ -898,8 +913,12 @@ class Connection(object) :
 				
 				#nsleep(5000000)			
 				time.sleep(3)
-				
-				threading.Thread(target=self.run_client).start()
+				if self.cpu.network_interface_type == 0 : #IP
+					threading.Thread(target=self.run_client_ip).start()
+				else:
+					
+					threading.Thread(target=self.run_client_serial).start()
+
 				try :
 					o = self.thread_resp_queue.get(block=True,timeout=0.1)
 					self.thread_cmd_queue.put(1)
@@ -927,7 +946,12 @@ class Connection(object) :
 					self.STATUS_FUNC = "MODBUSPN"
 					self.IDENT_CODE = "NONE"	
 					self.status_lock.release()
-					threading.Thread(target=self.run_client).start()
+					if self.cpu.network_interface_type == 0 :
+						threading.Thread(target=self.run_client_ip).start()
+					else:
+						
+						threading.Thread(target=self.run_client_serial).start()
+						
 					try :
 						o = self.thread_resp_queue.get(block=True,timeout=0.1)
 						self.thread_cmd_queue.put(1)

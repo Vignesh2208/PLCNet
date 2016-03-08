@@ -1,29 +1,12 @@
-#	General Configuration. Do not remove the markers: START_OF_GENERAL_CONFIGURATION and END_OF_GENERAL_CONFIGURATION
-#	Description:
-#	-----------
 #
-#	NODE_ID			(Type: Int)	ID of emulated node. 
-#	CONNECTION_ID 		(Type: Int)	Connection ID which defines a specific connection. A node can have many connections simultaneously
-#	REMOTE_PORT 		(Type: Int)	Port to connect to on the remote host. Valid for only for a connection 	where the node behaves as a client
-#	LOCAL_PORT	  	(Type: Int)	Port to bind to on the host and listen for connections. Valid for only a connection where the node behaves as a server
-#	REMOTE_PARTNER_ID 	(Type: Int)	NODE_ID of partner to connect to. Valid only for a connection where the node behaves as a client
-#	IS_SERVER		(Type: Boolean)	Indicates if the node should behave as a server for the given connection ID
-#	 
-#	Awl Script configuration. Do not remove the markers: START_OF_AWL_SCRIPT_CONFIGURATION and END_OF_AWL_SCRIPT_CONFIGURATION
-#	Description:
-#	------------
+# See README file for description of fields
+# Fields with * marked are required. Others are optional
+# Do not remove any of the following markers: 
+#		-START_OF_GENERAL_CONFIGURATION, END_OF_GENERAL_CONFIGURATION
+#   	-START_OF_EXPERIMENT_CONFIGURATION, END_OF_EXPERIMENT_CONFIGURATION
+#		-START_OF_AWL_SCRIPT_CONFIGURATION, END_OF_AWL_SCRIPT_CONFIGURATION
+#		-START_OF_DATA_AREA_CONFIGURATION, END_OF_DATA_AREA_CONFIGURATION
 #
-#	NODE_ID			(Type: Int)	ID of Emulated Node. Must be between 1 and Number_Of_Nodes.
-#	AWL_SCRIPT_PATH		(Type: String)	Path of Awl script to run on the emulated node
-#
-#	Data_Area configuration. Do not remove the markers: START_OF_DATA_AREA_CONFIGURATION and END_OF_DATA_AREA_CONFIGURATION
-#	Description:
-#	------------
-#
-#	NODE_ID			(Type: Int)	ID of Emulated Node
-#	DATA_AREA_i		(Type: Tuple)	(Data Type:Data Block number:Start Address:End Address).
-#						eg : (1:2:5:100) => Data_Type = 1 (Coil), Storage DataBlock Number = 2, Start Coil Address = 5, End Coil Address = 6
-
 
 START_OF_EXPERIMENT_CONFIGURATION
 
@@ -31,31 +14,35 @@ Experiment_Name		=	PLC_Simple_Client_Server
 Run_Time			=	10
 Dilation_Factor		=	5
 Number_Of_Nodes		=	2
-ModBus_Network_Type	=	SERIAL
+ModBus_Network_Type	=	IP
 
 END_OF_EXPERIMENT_CONFIGURATION
 
 
+
 START_OF_GENERAL_CONFIGURATION
-#	NODE_ID,	CONNECTION_ID,	REMOTE_PORT,	LOCAL_PORT,	REMOTE_PARTNER_ID,	IS_SERVER,	
-	1,			1,				502,			502,		2,					True		
-	2,			2,				502,			502,		1,					False
+#| NODE_ID*	| CONNECTION_ID* |  REMOTE_PORT* |	LOCAL_PORT*	|	REMOTE_PARTNER_ID*	|	IS_SERVER*	|
+	1,			1,				502,			502,				2,					True		
+	2,			2,				502,			502,				1,					False
 
 END_OF_GENERAL_CONFIGURATION
 
 
+
+
 START_OF_AWL_SCRIPT_CONFIGURATION
-#	NODE_ID,	AWL_SCRIPT_PATH
-	1,		/home/vignesh/Desktop/PLCs/awlsim-0.42/tests/modbus/simple_client_server/sfb102_server.awl
-	2,		/home/vignesh/Desktop/PLCs/awlsim-0.42/tests/modbus/simple_client_server/sfb102_client.awl
+#| NODE_ID*	|  AWL_SCRIPT_PATH*	|
+	1,			/home/vignesh/Desktop/PLCs/awlsim-0.42/tests/modbus/simple_client_server/sfb102_server.awl
+	2,			/home/vignesh/Desktop/PLCs/awlsim-0.42/tests/modbus/simple_client_server/sfb102_client.awl
 
 END_OF_AWL_SCRIPT_CONFIGURATION
 
 
+
+
 START_OF_DATA_AREA_CONFIGURATION
-#	Fields with * marked are required. Others are optional
-#	NODE_ID*,	CONNECTION_ID*	DATA_AREA_1*,	DATA_AREA_2,	DATA_AREA_3,	DATA_AREA_4,	DATA_AREA_5,	DATA_AREA_6,	DATA_AREA_7,	DATA_AREA_8
-	1,		1,		(1:2:1:100),	(3:4:1:100)													     
-	2,		2,		(1:3:1:100),	(3:5:1:100)
+#| NODE_ID* | CONNECTION_ID* | DATA_AREA_1(DA1)* |    DA2 	 | DA3 | DA4 | DA5 | DA6 | DA7 | DA8 |
+	1,				1,		    (1:2:1:100),	  (3:4:1:100)	    
+	2,				2,		    (1:3:1:100),	  (3:5:1:100)
 
 END_OF_DATA_AREA_CONFIGURATION
