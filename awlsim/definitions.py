@@ -1,13 +1,18 @@
 import os
 import sys
+import stat
 
 
-NR_SERIAL_DEVS  = 3
-KERN_BUF_SIZE = 100
-TX_BUF_SIZE = 100
-RX_BUF_SIZE = 2*TX_BUF_SIZE
+## Config parameters. Set accordingly. run Make after modifications ##
+
+NR_SERIAL_DEVS  = 3													# number of serial devices per PLC
+KERN_BUF_SIZE = 100													# maximum size of lxcName
+TX_BUF_SIZE = 100													# Tx Buffer size per serial device
+RX_BUF_SIZE = 2*TX_BUF_SIZE		
+TIMEKEEPER_DIR = "/home/vignesh/Desktop/Timekeeper/dilation-code"	# directory containing Timekeeper code
 
 
+## Config script. Do not modify ##
 script_path = os.path.dirname(os.path.realpath(__file__))
 script_path_list = script_path.split('/')
 
@@ -69,3 +74,12 @@ definitions = definitions + """
 
 with open(s3f_base_directory + "/s3fnet-definitions.h","w") as  f:
 	f.write(definitions)
+
+with open(root_directory + "/create_sym_links.sh","w") as f:
+	f.write("#!/bin/sh\n")
+	f.write("ln -sf s3fnet-lxc/experiment-data experiment-data\n")
+	f.write("ln -sf " + s3f_base_directory + "/s3fnet/src/os/cApp/cApp_inject_attack.cc conf/inject_attack.cc\n")
+	f.write("ln -sf " + s3f_base_directory + "/s3fnet/src/os/cApp/cApp_session.h conf/inject_attack.h\n")
+	f.write("ln -sf " + TIMEKEEPER_DIR + " " + s3f_directory + "/dilation-code\n")
+
+os.chmod(root_directory + "/create_sym_links.sh",stat.S_IRWXU)

@@ -148,6 +148,18 @@ void Host::config(s3f::dml::Configuration* cfg)
   }
   delete ss;
 
+
+  char* compromised = (char*) cfg->findSingle("isCompromised");
+
+  if (!compromised)
+  {
+		isCompromised = false; // host isnt to be emulated
+  }
+  else
+  {
+		isCompromised = true;
+  }
+
   initLxcProxy(cfg);
 }
 

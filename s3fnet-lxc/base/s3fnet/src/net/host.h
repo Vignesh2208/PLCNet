@@ -121,6 +121,7 @@ class Host : public Entity, public DmlObject, public ProtocolGraph {
 
   LXC_Proxy* proxy;
   bool isEmulated;
+  bool isCompromised;
   void initLxcProxy(s3f::dml::Configuration* cfg);
 
  protected:
