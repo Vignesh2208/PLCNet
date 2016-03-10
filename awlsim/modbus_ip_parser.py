@@ -41,7 +41,14 @@ def parse_modbus_ip_topology(conf_directory,curr_conf_file,test_file,topology_fi
 			if lxc != None :
 
 				lxc_id = int(lxc)
-				router_id = int(router[1:])
+
+				if router.endswith("C") :
+					router_id = int(router[1:-1])
+					isCompromised = 1
+				else :
+					router_id = int(router[1:])
+					isCompromised = 0
+
 
 				if lxc_id in Lxcs.keys() :
 					ERROR("Each node can have only one link attached to a router")
@@ -57,14 +64,21 @@ def parse_modbus_ip_topology(conf_directory,curr_conf_file,test_file,topology_fi
 					Routers[router_id]["routers"] = []
 					Routers[router_id]["n_intf"] = 0
 					Routers[router_id]["nxt_intf"] = 0
+					Routers[router_id]["compromised"] = isCompromised
 
 				Routers[router_id]["lxcs"].append(lxc_id)
 				Routers[router_id]["n_intf"] = Routers[router_id]["n_intf"] + 1
 
 
 			elif router_1 != None and router_2 != None :
-				router_1_id = int(router_1[1:])
-				router_2_id = int(router_2[1:])
+
+				if router_1.endswith("C") :
+					router_1_id = int(router_1[1:-1])
+					isCompromised = 1
+				else :
+					router_1_id = int(router_1[1:])
+					isCompromised = 0
+				
 
 				if not router_1_id in Routers.keys() :
 					Routers[router_1_id] = {}
@@ -72,6 +86,15 @@ def parse_modbus_ip_topology(conf_directory,curr_conf_file,test_file,topology_fi
 					Routers[router_1_id]["routers"] = []
 					Routers[router_1_id]["n_intf"] = 0
 					Routers[router_1_id]["nxt_intf"] = 0
+					Routers[router_1_id]["compromised"] = isCompromised
+
+				#router_2_id = int(router_2[1:])
+				if router_2.endswith("C") :
+					router_2_id = int(router_2[1:-1])
+					isCompromised = 1
+				else :
+					router_2_id = int(router_2[1:])
+					isCompromised = 0
 
 				if not router_2_id in Routers.keys() :
 					Routers[router_2_id] = {}
@@ -79,6 +102,7 @@ def parse_modbus_ip_topology(conf_directory,curr_conf_file,test_file,topology_fi
 					Routers[router_2_id]["routers"] = []
 					Routers[router_2_id]["n_intf"] = 0
 					Routers[router_2_id]["nxt_intf"] = 0
+					Routers[router_2_id]["compromised"] = isCompromised
 
 				if router_1_id == router_2_id :
 					ERROR("Link cannot be established between the same router")
@@ -149,7 +173,11 @@ def parse_modbus_ip_topology(conf_directory,curr_conf_file,test_file,topology_fi
 	 		f.write("		router\n")
 	 		f.write("		[\n")
 	 		f.write("			id 	" + str(router) + "\n")
-	 		f.write("			_find .dict.routerGraph.graph\n")
+	 		if Routers[router]["compromised"] == 1 :
+	 			f.write("			isCompromised 1\n")
+	 			f.write("			_find	.dict.compromisedrouterGraph.graph\n")
+	 		else :
+	 			f.write("			_find .dict.routerGraph.graph\n")
 	 		i = 0
 	 		while i < n_intf :
 	 			f.write("			interface [ id " + str(i) + "	_extends  .dict.1Gb ]\n")

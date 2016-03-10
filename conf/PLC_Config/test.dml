@@ -40,7 +40,8 @@ Net
 		router
 		[
 			id 	1
-			_find .dict.routerGraph.graph
+			isCompromised 1
+			_find	.dict.compromisedrouterGraph.graph
 			interface [ id 0	_extends  .dict.1Gb ]
 			interface [ id 1	_extends  .dict.1Gb ]
 		]

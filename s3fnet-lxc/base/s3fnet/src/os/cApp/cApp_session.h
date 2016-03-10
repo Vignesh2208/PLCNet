@@ -12,6 +12,11 @@
 #include "util/shstl.h"
 #include "net/ip_prefix.h"
 #include <netinet/in.h>
+#include <netinet/ip_icmp.h>
+#include <netinet/udp.h>
+#include <netinet/ip.h>
+#include <netinet/tcp.h>
+#include <arpa/inet.h>
 
 namespace s3f {
 namespace s3fnet {
@@ -81,6 +86,7 @@ class cAppSession : public ProtocolSession {
   void callback(Activation ac);
   void callback_body(EmuPacket* packet, IPADDR srcIP, IPADDR destIP);
   void sendPacket(EmuPacket* packet, IPADDR srcIP, IPADDR destIP);
+  int analyzePacket(char* pkt_ptr, int len, u_short * ethT, unsigned int* srcIP, unsigned int* dstIP);
   void inject_attack(EmuPacket * pkt, unsigned int srcIP, unsigned int destIP);
   void inject_attack_init(void);
   ProtocolCallbackActivation* dcac;

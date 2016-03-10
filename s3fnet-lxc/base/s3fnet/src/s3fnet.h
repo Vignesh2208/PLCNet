@@ -96,6 +96,8 @@ class Net;
 
 #define SERIAL_PROTOCOL_NAME  "serial"
 
+#define CAPP_PROTOCOL_NAME  "cApp"
+
 
 /*
 #define NR_SERIAL_DEVS        3
@@ -211,6 +213,8 @@ enum S3FNetProtocolType {
   S3FNET_PROTOCOL_TYPE_DUMMY_MAC = 255,
 
   S3FNET_PROTOCOL_TYPE_SERIAL = 256,
+
+  S3FNET_PROTOCOL_TYPE_CAPP = 250,
 
 };
 

@@ -13,8 +13,8 @@ FunctionCode =  3
 Sent msg =  bytearray(b'\x00\x10\x03\x00\x02\x00\x01\x16')
 Response from server :  bytearray(b'\x00\x10\x03\x02\x124[')
 Function Code =  3
-Start select time =  1457392379.074965
-End select time =  1457392382.074971
-[OK: 0:06.50]
+Start select time =  1457645472.848374
+End select time =  1457645475.848996
+[OK: 0:06.40]
 
 All tests succeeded (full run)

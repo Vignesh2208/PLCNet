@@ -1,0 +1,96 @@
+|==================================================
+| LXC Manager Created
+| Simulation has 3 timelines
+|==================================================
+LXC proxy initialization: lxc0-0 successfull
+LXC proxy initialization: lxc1-0 successfull
+ ____________________________________________
+|
+| Printing out Info about Timeline 0 ...
+|_____
+      | Timeline 0 has Proxy LXC lxc0-0
+      |______________________________________
+ ____________________________________________
+|
+| Printing out Info about Timeline 1 ...
+|_____
+      | Timeline 1 has Proxy LXC lxc1-0
+      |______________________________________
+ ____________________________________________
+|
+| Printing out Info about Timeline 2 ...
+|_____
+      | Timeline 2 has has no LXC proxies
+      |______________________________________
+|==================================================
+| Creating and Launching LXCs                      
+|==================================================
+
+|==================================================
+| Dilating and Adding LXCs to Experiment           
+|==================================================
+
+GET LXC lxc0-0 TDF 5.000000 PID 6713 Finished
+GET LXC lxc1-0 TDF 5.000000 PID 6749 Finished
+|==================================================
+| Calling SynchronizeAndFreeze. Syncing up LXCs
+|==================================================
+
+| lxc0-0 Frozen at [ 1457633147 sec 854694 usec ]
+| lxc1-0 Frozen at [ 1457633147 sec 854694 usec ]
+
+|==================================================
+[TL 1 lxc1-0 ], DESIRED TIME 1538769 | ACTUAL TIME 1539187 | DIFFERENCE 418
+[TL 1 lxc1-0 ], DESIRED TIME 1538769 | ACTUAL TIME 1539187 | DIFFERENCE 418
+[TL 1 lxc1-0 ], DESIRED TIME 1540770 | ACTUAL TIME 1540347 | DIFFERENCE 423
+[TL 1 lxc1-0 ], DESIRED TIME 1540770 | ACTUAL TIME 1540347 | DIFFERENCE 423
+Arrival Time : 3296646
+Arrival Time : 3490973
+Arrival Time : 3685026
+Arrival Time : 3881152
+Arrival Time : 4076352
+Arrival Time : 4271677
+Timeline 0 advanced its LXCs by 9.998997 seconds
+Timeline 1 advanced its LXCs by 9.999003 seconds
+Timeline 2 advanced its LXCs by 0.000000 seconds
+|==================================================
+| Calling STOP EXPERIMENT
+|==================================================
+|============================================================|
+| Overall Stats
+|------------------------------------------------------------|
+| OUT | Total Pkts Sent to LXCs       : 0
+| OUT | Total Pkts error late to LXC  : 0
+| OUT | Avg Pkts error late to LXC    : -nan
+|------------------------------------------------------------|
+| IN  | Total Pkts Injected to past   : 0
+| IN  | Total Error Injected to past  : 0
+| IN  | Average past error            : -nan
+|============================================================|
+| TOTAL Advance ERROR        : 90085
+| TOTAL Times Advanced       : 20561
+| TOTAL Times Over           : 6542
+| TOTAL Times Under          : 11901
+| TOTAL Times Exact          : 2118
+| Average Advance ERROR      : 4.38135305
+|============================================================|
+| TOTAL Pkt Timestamp ERROR  : 41
+| TOTAL Pkts Injected        : 6
+| Average Packet Inaccuracy  : 6.83333333
+|============================================================|
+| MIN Advance Error          : 0
+| MAX Advance Error          : 423
+| Advance Error RMS          : 7.65342560
+| Advance Error Variance     : 39.37866888
+| Advance Error Std Dev      : 6.27524254
+|============================================================|
+
+|============================================================|
+| Timeline 0 advanced 10181 times ( Progress 10181 ) for a total of 50.590526 seconds
+| Timeline 1 advanced 10380 times ( Progress 10380 ) for a total of 50.583830 seconds
+| Timeline 2 advanced 0 times ( Progress 0 ) for a total of 0.000000 seconds
+|============================================================|
+| Cumulative emulation seconds 101.174356
+| Simulation run time is 51.4081 seconds
+| Total run time is 53.4419 seconds
+|============================================================|

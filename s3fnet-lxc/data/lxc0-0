@@ -16,13 +16,13 @@ Resolved hostname =  10.10.0.17
 ['lxc.network.ipv4 ', ' 10.10.0.13/8']
 Dest IP :  10.10.0.13
 Resolved hostname =  10.10.0.13
-Start time =  1457392375.875094
+Start time =  1457645469.695478
 Listening on port 502
-Established Connection from ('10.10.0.17', 40168)
+Established Connection from ('10.10.0.17', 40303)
 Recv data =  bytearray(b'\x00\x10\x03\x00\x02\x00\x01\x16')
 Sent response to client =  bytearray(b'\x00\x10\x03\x02\x124[')
-Start select time =  1457392379.035861
-End select time =  1457392382.035868
-[OK: 0:06.46]
+Start select time =  1457645472.826612
+End select time =  1457645475.827087
+[OK: 0:06.38]
 
 All tests succeeded (full run)

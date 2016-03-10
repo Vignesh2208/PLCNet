@@ -140,4 +140,15 @@ dict
 			ProtocolSession [ name ip use "S3F.OS.IP" ]	
 		]	
 	]
+
+	compromisedrouterGraph
+	[
+		graph
+		[
+			ProtocolSession [name cApp use "S3F.OS.CAPP"]
+			ProtocolSession [name ip use "S3F.OS.IP"]
+		]
+
+
+	]
 ]

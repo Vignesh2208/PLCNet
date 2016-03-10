@@ -382,6 +382,22 @@ SERIAL_XFORM = $(filter %.cxx,$(SERIAL_SRCFILES))
 SERIAL_OBJECTS = $(SERIAL_XFORM:.cxx=.xform.o) $(SERIAL_NONXFORM:.cc=.o)
 
 
+#
+# os/capp : compromised application layer
+#
+
+CAPP_HDRFILES = \
+       $(SRCDIR)/os/cApp/cApp_session.h \
+       $(SRCDIR)/os/cApp/cApp_message.h
+CAPP_SRCFILES = \
+       $(SRCDIR)/os/cApp/cApp_session.cc \
+       $(SRCDIR)/os/cApp/cApp_message.cc \
+       $(SRCDIR)/os/cApp/cApp_inject_attack.cc
+CAPP_NONXFORM = $(filter %.cc,$(CAPP_SRCFILES))
+CAPP_XFORM = $(filter %.cxx,$(CAPP_SRCFILES))
+CAPP_OBJECTS = $(CAPP_XFORM:.cxx=.xform.o) $(CAPP_NONXFORM:.cc=.o)
+
+
 
 
 #
@@ -404,7 +420,8 @@ S3FNET_HDRFILES = \
 	$(TCP_HDRFILES) \
 	$(UDP_HDRFILES) \
 	$(SERIAL_HDRFILES) \
-	$(DUMMYMAC_HDRFILES) 
+	$(DUMMYMAC_HDRFILES) \
+	$(CAPP_HDRFILES)
 	
 S3FNET_SRCFILES = \
 	$(EXTRA_SRCFILES) \
@@ -422,7 +439,8 @@ S3FNET_SRCFILES = \
 	$(TCP_SRCFILES) \
 	$(UDP_SRCFILES) \
 	$(SERIAL_SRCFILES) \
-	$(DUMMYMAC_SRCFILES)
+	$(DUMMYMAC_SRCFILES)\
+	$(CAPP_SRCFILES)
 	
 
 S3FNET_OBJECTS = \
@@ -441,7 +459,8 @@ S3FNET_OBJECTS = \
 	$(TCP_OBJECTS) \
 	$(UDP_OBJECTS) \
 	$(SERIAL_OBJECTS) \
-	$(DUMMYMAC_OBJECTS)
+	$(DUMMYMAC_OBJECTS) \
+	$(CAPP_OBJECTS)
 	
 
 # Set the compiler switch for debugging and optimization and activate
@@ -470,7 +489,9 @@ S3FNET_DBGCFG = \
 	-DIPADDR_DEBUG \
 	-DMAIN_DEBUG \
 	-DDMAC_DEBUG \
-	-DSERIAL_DEBUG
+	-DSERIAL_DEBUG \
+	-DLXCEMU_DEBUG \
+	-DCAPP_DEBUG
 else
 S3FNET_DBGCFG =
 endif

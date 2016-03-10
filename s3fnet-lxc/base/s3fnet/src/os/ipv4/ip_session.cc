@@ -392,7 +392,37 @@ int IPSession::pop(Activation msg, ProtocolSession* lo_sess, void* extinfo, size
 	  			  IPPrefix::ip2txt(((IPMessage*)msg)->dst_ip, buf2)));
 
   // perform checksum -- add later
-  return handle_pop_pkt(msg, lo_sess, extinfo, extinfo_size);
+  Host * owner_host = inHost();
+  assert(owner_host != NULL);
+  IPMessage* ip_message = (IPMessage*)msg;
+  
+  if(owner_host->isRouter() && owner_host->isCompromised ){
+    IP_DUMP(printf("[compromised host=\"%s\"] %s: sniffing local packet for protocol %u.\n",
+                 inHost()->nhi.toString(), getNowWithThousandSeparator(), ip_message->protocol_no));
+    
+    // send the packet upward
+    ProtocolSession* prot = get_parent_by_protocol(S3FNET_PROTOCOL_TYPE_CAPP);  
+    if(prot)
+    {
+        IPOptionToAbove ipupopt;
+        ipupopt.src_ip = ip_message->src_ip;
+        ipupopt.dst_ip = ip_message->dst_ip;
+        ipupopt.ttl = ip_message->time_to_live;
+
+        ProtocolMessage* pmsg = ip_message->dropPayload();
+        assert(pmsg);
+        Activation upper_msg (pmsg);
+        ip_message->erase(); //detele ip header
+
+        prot->popup(upper_msg, this, (void*)&ipupopt, sizeof(IPOptionToAbove));
+        return IPPOPRET_UP_DONE;
+    }
+    else{
+      return handle_pop_pkt(msg, lo_sess, extinfo, extinfo_size);  
+    }
+  }
+  else
+    return handle_pop_pkt(msg, lo_sess, extinfo, extinfo_size);
 }
 
 bool IPSession::verify_local_ip_address(IPADDR ipaddr)

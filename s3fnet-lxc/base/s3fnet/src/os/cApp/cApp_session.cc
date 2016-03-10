@@ -1,5 +1,7 @@
 #include "os/cApp/cApp_session.h"
 #include "os/cApp/cApp_message.h"
+#include "os/lxcemu/lxcemu_message.h"
+#include "os/lxcemu/lxcemu_session.h"
 #include "os/ipv4/ip_session.h"
 #include "util/errhandle.h" // defines error_quit() method
 #include "net/host.h" // defines Host class
@@ -74,15 +76,15 @@ void cAppSession::callback(Activation ac)
 
 void cAppSession::callback_body(EmuPacket* packet, IPADDR srcIP, IPADDR destIP)
 {
-  cAppMessage* dmsg = new cAppMessage();
+  LxcemuMessage* dmsg = new LxcemuMessage();
   dmsg->ppkt = packet;
 
   Activation dmsg_ac(dmsg);
 
   IPPushOption ipopt;
   ipopt.dst_ip = destIP;
-  ipopt.src_ip = IPADDR_INADDR_ANY;
-  ipopt.prot_id = S3FNET_PROTOCOL_TYPE_CAPP;
+  ipopt.src_ip = srcIP;
+  ipopt.prot_id = S3FNET_PROTOCOL_TYPE_LXCEMU;
   ipopt.ttl = DEFAULT_IP_TIMETOLIVE;
   ip_session->pushdown(dmsg_ac, this, (void*) &ipopt, sizeof(IPPushOption));
 
@@ -196,17 +198,18 @@ int cAppSession::pop(Activation msg, ProtocolSession* lo_sess, void* extinfo,
 
   cAppMessage* dmsg = (cAppMessage*) msg;
   IPOptionToAbove* ipopt = (IPOptionToAbove*) extinfo;
-  dmsg->ppkt->outgoingTime = timelineTime;
   EmuPacket* pkt = dmsg->ppkt;
   ProtocolMessage* message = (ProtocolMessage*) msg;
-  if (message->type() != S3FNET_PROTOCOL_TYPE_CAPP) {
+  /*if (message->type() != S3FNET_PROTOCOL_TYPE_CAPP) {
     error_quit(
         "ERROR: the message popup to cApp session is not S3FNET_PROTOCOL_TYPE_CAPP.\n");
-  }
+  }*/
 
-  if(analyze_packet(pkt->data,pkt->len,&ethType,&srcIP,&dstIP) != PARSE_IGNORE_PACKET){
-    inject_attack(pkt,srcIP,dstIP);
-  }
+  //if(analyzePacket((char *)pkt->data,pkt->len,&ethType,&srcIP,&dstIP) != PACKET_PARSE_IGNORE_PACKET){
+  //  inject_attack(pkt,srcIP,dstIP);
+  //}
+
+	inject_attack(pkt,ipopt->src_ip,ipopt->dst_ip);
 
   
   return 0;

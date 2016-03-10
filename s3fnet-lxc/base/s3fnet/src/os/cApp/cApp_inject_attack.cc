@@ -42,8 +42,10 @@ namespace s3fnet {
  * dstIP 	 = IP of destination PLC/IDS
  * call sendPacket(pkt,srcIP,dstIP) after appropriate modification to forward the packet
  */
-void cAppSession::inject_attack(EmuPacket * pkt, unsigned int srcIP, unsigned int destIP){
+void cAppSession::inject_attack(EmuPacket * pkt, unsigned int srcIP, unsigned int dstIP){
 
+	printf("CAPP: Injecting new attack\n");
+	sendPacket(pkt,srcIP,dstIP);
 
 }
 
