@@ -224,6 +224,29 @@ def run(inputFile,node_id,conn_type):
 		for name, parameters in opt_hwmods:
 			loadMod(name, parameters)
 
+
+		conf_directory = awlsim.definitions.conf_directory
+		conf_file = conf_directory + "/PLC_Config/hosts"
+		IDS_IP = None
+		if os.path.isfile(conf_file):
+			lines = [line.rstrip('\n') for line in open(conf_file)]			
+			
+			for line in lines :
+				line = ' '.join(line.split())
+				line = line.split(':')
+				if len(line) > 1 :
+					print(line)
+					parameter = line[0]
+					value= line[1]
+					if "IDS" in parameter :
+						IDS_IP = value
+						print("Resolved  IDS IP = ",IDS_IP)
+						break
+
+		conf_file = conf_directory + "/logs/node_" + str(node_id) + "_log"
+		with open(conf_file,"w") as f:
+			pass
+
 		s.getCPU().set_cpu_id(node_id,conn_type)
 		cpu = s.getCPU()
 		assignCpuSpecs(cpu.getSpecs(), project.getCpuSpecs())
@@ -257,8 +280,21 @@ def run(inputFile,node_id,conn_type):
 				s.runCycle()
 				if len(cpu.inputs) > 0 :
 					curr_inputs = cpu.inputs[0:len(cpu.inputs)]
+					if conn_type == 1 : # serial
+						log_file = conf_directory + "/logs/node_" + str(node_id) + "_log"
+						#with open(log_file,"a") as f :
+						#	f.write(str(time.time()) + "," + "INPUTS," + str(curr_inputs) + "\n")
+					else :
+						pass 			# send to IDS here
+
 				if len(cpu.outputs) > 0 :
 					curr_outputs = cpu.outputs[0:len(cpu.outputs)]
+					if conn_type == 1 : # serial
+						log_file = conf_directory + "/logs/node_" + str(node_id) + "_log"
+						#with open(log_file,"a") as f :
+						#	f.write(str(time.time()) + "," + "OUTPUTS," + str(curr_outputs) + "\n")
+					else :
+						pass 			# send to IDS here
 		finally:
 			if not opt_noCpuDump and opt_loglevel >= Logging.LOG_INFO:
 				clearConsole()

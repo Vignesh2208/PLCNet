@@ -121,6 +121,7 @@ class Connection(object) :
 		self.IDENT_CODE = "NONE"
 		self.CONN_ESTABLISHED = False
 		self.BUSY = False
+		self.IDS_IP = None
 
 		if is_server == True :
 			self.mod_server = ModBusSlave(self)
@@ -175,7 +176,10 @@ class Connection(object) :
 		self.next_stage = 1
 		self.initialised = False
 
-		
+	def LOG(self,direction,msg):
+		log_file = conf_directory + "/logs/node_" + str(self.cpu.local_id) + "_log"
+		#with open(log_file,"a") as f:
+		#	f.write(str(time.time()) + "," + direction + "," + msg + "\n")
 
 		
 	def hostname_to_ip(self,hostname) :
@@ -552,6 +556,7 @@ class Connection(object) :
 				continue
 			
 			print("Recv msg = ",recv_msg)
+			self.LOG("RECV",str(recv_msg))
 			recv_data = self.process_incoming_frame(recv_msg)
 			print("Recv data = ",recv_data)
 			
@@ -606,7 +611,7 @@ class Connection(object) :
 
 				n_wrote = n_wrote + os.write(server_fd,response[n_wrote:])			
 
-
+			self.LOG("SEND",str(response))
 			print("Sent response to client = ",response)
 			
 			if self.disconnect == True :
@@ -672,6 +677,7 @@ class Connection(object) :
 			print("data to send = ",msg_to_send)
 			send_msg = self.frame_outgoing_message(msg_to_send)
 			print("msg to send = ", send_msg)
+			self.LOG("SEND",str(send_msg))
 			n_wrote = 0
 			while n_wrote < len(send_msg) :
 				poller = select.poll()
@@ -741,6 +747,7 @@ class Connection(object) :
 					break
 			
 			print("Recv msg = ",recv_msg)
+			self.LOG("RECV",str(recv_msg))
 			recv_data = self.process_incoming_frame(recv_msg)
 			print("Response from server = ",recv_data)			
 			ERROR_CODE = self.mod_client.process_response_message(recv_data)
@@ -912,8 +919,9 @@ class Connection(object) :
 				self.status_lock.release()
 				
 				#nsleep(5000000)			
-				time.sleep(3)
+				
 				if self.cpu.network_interface_type == 0 : #IP
+					time.sleep(3)
 					threading.Thread(target=self.run_client_ip).start()
 				else:
 					

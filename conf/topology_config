@@ -1,4 +1,2 @@
 #(Node1/Router,Node2/Router)	Delay (ms)	
-(0-R1C),							2
-(1-R2),								2
-(R1C-R2),							3
+(0-1),							2

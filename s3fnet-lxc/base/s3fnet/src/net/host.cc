@@ -149,6 +149,8 @@ void Host::config(s3f::dml::Configuration* cfg)
   delete ss;
 
 
+  
+  isCompromised = false;
   char* compromised = (char*) cfg->findSingle("isCompromised");
 
   if (!compromised)
