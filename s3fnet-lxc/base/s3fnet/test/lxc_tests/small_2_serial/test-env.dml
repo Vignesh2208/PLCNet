@@ -8,15 +8,11 @@ environment_info [
   alignment [
     name 0
     interface [ nhi 0:0(0) ip 10.10.0.9 delay 0 link_prefix_len 30 peer 0:0(0)  peer_align 1 ]
-    interface [ nhi 0:0(1) ip 10.10.0.13 delay 0 link_prefix_len 30 peer 0:0(1)  peer_align 1 ]
     remote_sender [ nhi 1:0(0) ip 10.10.0.10 xpos 0.0000 ypos 0.0000 zpos 0.0000 peer 0:0(0) ]
-    remote_sender [ nhi 1:0(1) ip 10.10.0.14 xpos 0.0000 ypos 0.0000 zpos 0.0000 peer 0:0(1) ]
   ]
   alignment [
     name 1
     interface [ nhi 1:0(0) ip 10.10.0.10 delay 0 link_prefix_len 30 peer 1:0(0)  peer_align 0 ]
-    interface [ nhi 1:0(1) ip 10.10.0.14 delay 0 link_prefix_len 30 peer 1:0(1)  peer_align 0 ]
     remote_sender [ nhi 0:0(0) ip 10.10.0.9 xpos 0.0000 ypos 0.0000 zpos 0.0000 peer 1:0(0) ]
-    remote_sender [ nhi 0:0(1) ip 10.10.0.13 xpos 0.0000 ypos 0.0000 zpos 0.0000 peer 1:0(1) ]
   ]
 ]

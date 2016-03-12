@@ -157,7 +157,7 @@ int SerialSession::pop(Activation msg, ProtocolSession* lo_sess, void* extinfo, 
 		strncpy(ioctl_conn.dst_lxc_name,recv_msg->src_lxcName,KERN_BUF_SIZE);
 		if(ioctl(dev_fd,S3FSERIAL_GETCONNID,&ioctl_conn) < 0){
 			SERIAL_DUMP(printf("ERROR SerialSession::pop ioctl GETCONNID"));
-			//free(recv_msg->data);
+			free(recv_msg->data);
 			
 			return 0;
 		}
@@ -242,7 +242,7 @@ int SerialSession::pop(Activation msg, ProtocolSession* lo_sess, void* extinfo, 
 
 	end:
 	
-	//free(recv_msg->data);
+	free(recv_msg->data);
 	
 	if(command){
 		// need to send out a CTS or DNS immediately

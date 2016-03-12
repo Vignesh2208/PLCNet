@@ -178,8 +178,9 @@ class Connection(object) :
 
 	def LOG(self,direction,msg):
 		log_file = conf_directory + "/logs/node_" + str(self.cpu.local_id) + "_log"
-		#with open(log_file,"a") as f:
-		#	f.write(str(time.time()) + "," + direction + "," + msg + "\n")
+		with open(log_file,"a") as f:
+			f.write(str(time.time()) + "," + direction + "," + msg + "\n")
+		return
 
 		
 	def hostname_to_ip(self,hostname) :
@@ -203,6 +204,30 @@ class Connection(object) :
 
 
 		print("Resolved hostname = ",resolved_hostname)
+		i = 0
+		while(1) :
+			if os.path.isfile(conf_directory + "/PLC_Config/" + str(i)) :
+				conf_file = conf_directory + "/" + str(i)
+				lines = [line.rstrip('\n') for line in open(conf_file)]			
+				for line in lines :
+					line = ' '.join(line.split())
+					line = line.split('=')
+					if len(line) > 1 :
+						#print(line)
+						parameter = line[0]
+						value= line[1]
+						if "lxc.network.ipv4" in parameter :
+							value = value.replace(' ',"")
+							value = value.split("/")
+							resolved_IDS_IP = value[0]
+							break				
+			else :
+				break
+			i = i + 1
+
+		self.IDS_IP = resolved_IDS_IP
+		printf("IP of IDS : ",self.IDS_IP)
+
 		return resolved_hostname
 
 

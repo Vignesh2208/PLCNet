@@ -1,7 +1,9 @@
-from definitions import *
+import definitions
+from definitions import conf_directory
+
 import os
 
-conf_directory = definitions.conf_directory + "/PLC_Config"
+conf_directory = conf_directory + "/PLC_Config"
 hosts_file  = conf_directory + "/hosts"
 
 with open(hosts_file,"w") as f:
@@ -16,7 +18,7 @@ while(1) :
 			line = ' '.join(line.split())
 			line = line.split('=')
 			if len(line) > 1 :
-				print(line)
+				#print(line)
 				parameter = line[0]
 				value= line[1]
 				if "lxc.network.ipv4" in parameter :
@@ -31,5 +33,7 @@ while(1) :
 		with open(hosts_file,"a") as f :
 			f.write(str(i) + ":" + resolved_hostname + "\n")
 	else :
-		f.write("IDS:" + resolved_hostname + "\n")
+		with open(hosts_file,"a") as f :
+			f.write("IDS:" + resolved_hostname + "\n")
 		break
+	i = i + 1

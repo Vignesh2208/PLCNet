@@ -77,9 +77,9 @@ with open(s3f_base_directory + "/s3fnet-definitions.h","w") as  f:
 
 with open(root_directory + "/create_sym_links.sh","w") as f:
 	f.write("#!/bin/sh\n")
+	
 	f.write("ln -sf s3fnet-lxc/experiment-data experiment-data\n")
 	f.write("ln -sf " + s3f_base_directory + "/s3fnet/src/os/cApp/cApp_inject_attack.cc conf/inject_attack.cc\n")
 	f.write("ln -sf " + s3f_base_directory + "/s3fnet/src/os/cApp/cApp_session.h conf/inject_attack.h\n")
 	f.write("ln -sf " + TIMEKEEPER_DIR + " " + s3f_directory + "/dilation-code\n")
-
 os.chmod(root_directory + "/create_sym_links.sh",stat.S_IRWXU)

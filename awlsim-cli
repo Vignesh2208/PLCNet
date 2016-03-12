@@ -230,7 +230,7 @@ def run(inputFile,node_id,conn_type):
 		IDS_IP = None
 		if os.path.isfile(conf_file):
 			lines = [line.rstrip('\n') for line in open(conf_file)]			
-			
+		
 			for line in lines :
 				line = ' '.join(line.split())
 				line = line.split(':')

@@ -31,14 +31,14 @@ lxcman:
 	cd s3fnet-lxc/base/tklxcmngr; make clean; make;
 
 
+clean_exp:
+	$(CLEAN_EXPERIMENT)
 
 
 examplerun:
 	$(CLEAN_EXPERIMENT)
-	python awlsim/config_parser.py	
-	rm experiment-data
-	ln -s s3fnet-lxc/experiment-data experiment-data
-	cd conf/PLC_Config/; make clean; make; make test
+	python awlsim/config_parser.py
+	cd conf/PLC_Config/; make clean; make; sudo make test
 	chmod -R 777 s3fnet-lxc/experiment-data
 	
 

@@ -1,0 +1,21 @@
+Starting Debug for lxc0-0
+Running Command /home/vignesh/Desktop/PLCs/awlsim-0.42/tests/run.sh -e 1 --node 0 /home/vignesh/Desktop/PLCs/awlsim-0.42/tests/modbus/simple_client_server/sfb102_server.awl
+6 (process ID) old priority 0, new priority 10
+=== Running tests with 'python3'
+Running test 'sfb102_server.awl' with 'python3' ... src lxc name = lxc0-0, dst lxc name = lxc1-0, conn_id = 1
+['lxc.utsname ', ' lxc1-0']
+['lxc.network.type ', ' veth']
+['lxc.network.flags ', ' up']
+['lxc.network.link ', ' br-1-0']
+['lxc.network.ipv4 ', ' 10.10.0.10/8']
+Dest IP :  10.10.0.10
+Resolved hostname =  10.10.0.10
+Start time =  1457737164.624409
+Recv msg =  bytearray(b'~\x00\x10\x03\x00\x02\x00\x01\x16~')
+Recv data =  bytearray(b'\x00\x10\x03\x00\x02\x00\x01\x16')
+Sent response to client =  bytearray(b'~\x00\x10\x03\x02\x124[~')
+Start select time =  1457737164.747853
+End select time =  1457737167.747857
+[OK: 0:03.48]
+
+All tests succeeded (full run)
