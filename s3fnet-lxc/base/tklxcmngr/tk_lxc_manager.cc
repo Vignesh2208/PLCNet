@@ -271,6 +271,7 @@ void LxcManager::handleIncomingPacket(char* buffer, vector<LXC_Proxy*>* proxiesT
 			std::pair<int, unsigned int> res = analyzePacket(buffer, nread, &ethT);
 			unsigned int destIP = res.second;
 			int packet_status   = res.first;
+			arrivalTime = temp_arrival_time;
 
 			if (packet_status == PACKET_PARSE_IGNORE_PACKET || packet_status ==  PACKET_PARSE_UNKNOWN_PACKET)
 			{
@@ -279,15 +280,16 @@ void LxcManager::handleIncomingPacket(char* buffer, vector<LXC_Proxy*>* proxiesT
 			else if(packet_status == PARSE_PACKET_SUCCESS_ARP){
 
 				arrivalTime = temp_arrival_time;
-   			        proxy->last_arrival_time = arrivalTime;
+   			    proxy->last_arrival_time = arrivalTime;
 
 			}
 			else{
 
 				
+				
 				load_lxc_latest_info(proxy->lxcName); // Sends a command to Socket Hook.
 				FILE * fptr;
-			        char * line = NULL;
+			    char * line = NULL;
 				size_t len = 0;
 				int line_no = 1;
 				long secElapsed;
@@ -295,38 +297,43 @@ void LxcManager::handleIncomingPacket(char* buffer, vector<LXC_Proxy*>* proxiesT
 				long elapsedMicroSec;
 				ssize_t read;
 				char content_read[KERN_BUF_SIZE];
+				int k = 0;
+				for(k =0; k < KERN_BUF_SIZE; k++)
+					content_read[k] = '\0';
 
-			        fptr = fopen(lxc_file_path.c_str(), "r");
+			    fptr = fopen(lxc_file_path.c_str(), "r");
 				
 				if(fptr == NULL){
 				   //debugPrint("fptr is null, lxc_file_path = %s\n",lxc_file_path.c_str());
-			           arrivalTime = temp_arrival_time; 
+			       arrivalTime = temp_arrival_time; 
 				   proxy->last_arrival_time = arrivalTime;
 				}
 				else{
 				        
 					fread(content_read,sizeof(char),KERN_BUF_SIZE,fptr);
 					if(strcmp(content_read,"NULL") == 0){
-					        debugPrint("Using default method of timestamp estimation\n");
+					    debugPrint("Using default method of timestamp estimation\n");
 						arrivalTime = temp_arrival_time; 
-		  			        proxy->last_arrival_time = arrivalTime;
+		  			    proxy->last_arrival_time = arrivalTime;
 					}
 					else{
 						line = content_read;
+						debugPrint("Content Read : \n %s\n",content_read);
+						
 	   					while(line)
 						{
 						      char * nextLine = strchr(line, '\n');
 						      if (nextLine) *nextLine = '\0';  // temporarily terminate the current line
 						      
 						      if(line_no == 1){
-							 debugPrint("Secs : %d\n",atol(line));
-							 secElapsed = atol(line) - proxy->simulationStartSec;
+							 	debugPrint("Secs : %lu\n",atol(line));
+							 	secElapsed = atol(line) - proxy->simulationStartSec;
 						      }
 						      
    						      if(line_no == 2){
-							debugPrint("uSecs : %d\n",atol(line));
-							microSecElapsed = atol(line) - proxy->simulationStartMicroSec;
-							break;
+								debugPrint("uSecs : %lu\n",atol(line));
+								microSecElapsed = atol(line) - proxy->simulationStartMicroSec;
+								break;
 						      }
 						      line_no ++;
 						      
@@ -334,7 +341,13 @@ void LxcManager::handleIncomingPacket(char* buffer, vector<LXC_Proxy*>* proxiesT
 						      line = nextLine ? (nextLine+1) : NULL;
 						}
 						elapsedMicroSec = secElapsed * 1000000 + microSecElapsed;
-						arrivalTime = elapsedMicroSec;
+						
+						debugPrint("Elapsed Microsecs = %lu\n",elapsedMicroSec);
+						if(line_no == 2)
+							arrivalTime = elapsedMicroSec;
+						else
+							arrivalTime = temp_arrival_time;
+						
 						if(arrivalTime < proxy->last_arrival_time){
 							debugPrint("Arrival Time is less. Compensated. \n");
 							proxy->last_arrival_time = temp_arrival_time;
@@ -342,6 +355,8 @@ void LxcManager::handleIncomingPacket(char* buffer, vector<LXC_Proxy*>* proxiesT
 						}
 						else
 							proxy->last_arrival_time = arrivalTime;
+
+						
 						
 						
 					}
@@ -349,10 +364,11 @@ void LxcManager::handleIncomingPacket(char* buffer, vector<LXC_Proxy*>* proxiesT
 				        fclose(fptr);
 				        
 				}
+				
 			}
 			
 			// For dubugging
-			debugPrint("Arrival Time : %d\n",arrivalTime);
+			debugPrint("Arrival Time : %lu\n",arrivalTime);
 						
 	
 			
@@ -923,7 +939,7 @@ std::pair<int, unsigned int> LxcManager::analyzePacket(char* pkt_ptr, int len, u
 		debugPrint("TCP urg : %d\n", tk_tcp_header->urg);
 		debugPrint("TCP fin : %d\n", tk_tcp_header->fin);
 		debugPrint("TCP window : %d\n", tk_tcp_header->window);
-		debugPrint("############################");
+		debugPrint("############################\n");
 
 
 	}
@@ -1040,6 +1056,9 @@ void LxcManager::debugPrint(char* format, ...)
 	va_start(temp, format);
 	vfprintf(stdout, format, temp);
 	va_end(temp);
+
+	fflush(stdout);
+
 }
 
 void LxcManager::debugPrintFileOnly(char* format, ...)

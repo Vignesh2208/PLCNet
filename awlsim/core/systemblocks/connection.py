@@ -84,6 +84,7 @@ class Connection(object) :
 	
 	def __init__(self,cpu,connection_id,remote_port,local_port,remote_host_name,is_server,single_write_enabled,data_areas):
 		self.connection_params = Connection_Params(cpu)
+		self.IDS_IP = None
 		self.connection_params.set_connection_params(connection_id,remote_port,local_port,self.hostname_to_ip(remote_host_name),is_server,single_write_enabled)
 		self.cpu = cpu
 		self.remote_host_id = int(remote_host_name)
@@ -121,7 +122,7 @@ class Connection(object) :
 		self.IDENT_CODE = "NONE"
 		self.CONN_ESTABLISHED = False
 		self.BUSY = False
-		self.IDS_IP = None
+		
 
 		if is_server == True :
 			self.mod_server = ModBusSlave(self)
@@ -192,7 +193,7 @@ class Connection(object) :
 			line = ' '.join(line.split())
 			line = line.split('=')
 			if len(line) > 1 :
-				print(line)
+				#print(line)
 				parameter = line[0]
 				value= line[1]
 				if "lxc.network.ipv4" in parameter :
@@ -207,7 +208,7 @@ class Connection(object) :
 		i = 0
 		while(1) :
 			if os.path.isfile(conf_directory + "/PLC_Config/" + str(i)) :
-				conf_file = conf_directory + "/" + str(i)
+				conf_file = conf_directory + "/PLC_Config/" + str(i)
 				lines = [line.rstrip('\n') for line in open(conf_file)]			
 				for line in lines :
 					line = ' '.join(line.split())
@@ -226,7 +227,7 @@ class Connection(object) :
 			i = i + 1
 
 		self.IDS_IP = resolved_IDS_IP
-		printf("IP of IDS : ",self.IDS_IP)
+		print("IP of IDS : ",self.IDS_IP, " len = ", len(self.IDS_IP), " orig_len = ", len("10.10.0.25"))
 
 		return resolved_hostname
 
@@ -287,7 +288,14 @@ class Connection(object) :
 		server_socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 		#server_socket = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
 		#server_socket.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1)
-
+		try:
+			ids_socket = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
+			ids_socket.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1)
+		except socket.error as sockerror:
+			print("ERRor creating socket")
+			print(sockerror)
+		ids_host = str(self.IDS_IP);
+		ids_port = 8888; 
 
 		server_socket.settimeout(self.conn_time)
 		local_id = str(self.cpu.local_id)
@@ -343,7 +351,14 @@ class Connection(object) :
 				break
 
 			recv_data = bytearray(data)
-			print("Recv data = ",recv_data)			
+			print("Recv data = ",recv_data)	
+		
+        	#Set the whole string
+			msg = str(self.cpu.local_id) + "," + str(time.time()) + ",RECV," + str(recv_data)
+			try :			
+				ids_socket.sendto(msg.encode('utf-8'), (ids_host, ids_port))
+			except socket.error as sockerror :
+				print(sockerror)
 			response,request_msg_params = self.mod_server.process_request_message(recv_data)
 			
 
@@ -376,6 +391,14 @@ class Connection(object) :
 			
 			client_socket.send(response)
 			print("Sent response to client = ",response)
+			msg = str(self.cpu.local_id) + "," + str(time.time())  + ",SEND," + str(response)
+			try :
+			
+				ids_socket.sendto(msg.encode('utf-8'), (ids_host, ids_port))
+			except socket.error as sockerror :
+				print(sockerror)
+
+
 			
 			if self.disconnect == True :
 				self.status_lock.acquire()
@@ -402,15 +425,21 @@ class Connection(object) :
 	def run_client_ip(self) :
 		self.read_finish_status = 1
 		TCP_REMOTE_IP  = self.connection_params.rem_staddr
-		#TCP_REMOTE_IP = "127.0.0.1"
 		TCP_REMOTE_PORT = self.connection_params.rem_tsap_id
 		BUFFER_SIZE = 4096
 		self.BUSY = True
 		client_socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-		#client_socket = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
-		#client_socket.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1)
+		try:
+			ids_socket = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
+			ids_socket.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1)
+		except socket.error as sockerror:
+			print("Error creating socket")
+			print(sockerror)
+		ids_host = str(self.IDS_IP);
+		ids_port = 8888; 
 
-		
+
+		print("Start time = ", time.time())
 		
 		try:
 			client_socket.settimeout(self.conn_time)
@@ -475,6 +504,13 @@ class Connection(object) :
 				self.thread_resp_queue.put(1)
 				break
 
+			msg = str(self.cpu.local_id) + "," + str(time.time()) + ",SEND," + str(msg_to_send)
+			try :			
+				ids_socket.sendto(msg.encode('utf-8'), (ids_host, ids_port))
+			except socket.error as sockerror :
+				print(sockerror)
+
+
 			self.thread_resp_queue.put(1)
 			self.thread_cmd_queue.get()
 			
@@ -491,6 +527,15 @@ class Connection(object) :
 				break
 			recv_data = bytearray(data)
 			print("Response from server : ",recv_data)
+			
+
+			msg = str(self.cpu.local_id) + "," + str(time.time()) + ",RECV," + str(recv_data)
+			try :			
+				ids_socket.sendto(msg.encode('utf-8'), (ids_host, ids_port))
+			except socket.error as sockerror :
+				print(sockerror)
+
+
 			ERROR_CODE = self.mod_client.process_response_message(recv_data)
 			if ERROR_CODE == NO_ERROR :
 				self.ERROR = False
@@ -946,7 +991,9 @@ class Connection(object) :
 				#nsleep(5000000)			
 				
 				if self.cpu.network_interface_type == 0 : #IP
-					time.sleep(3)
+					#time.sleep(1)
+					#nsleep(3000000)
+					time.sleep(2)
 					threading.Thread(target=self.run_client_ip).start()
 				else:
 					

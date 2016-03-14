@@ -196,8 +196,8 @@ void LxcemuSession::injectEvent(EmuPacket* packet, IPADDR srcIP, IPADDR destIP)
 		proxy->packetsInjectedAtCorrectTime++;
 	}
 
-	//printf("Injecting Event! Timeline %u Time %ld | Incoming Time %ld\n", inHost()->alignment()->s3fid(),
-	//		timelineTime, packetIncomingTime );
+	LXCEMU_DUMP(printf("Injecting Event! Timeline %u Time %ld | Incoming Time %ld\n", inHost()->alignment()->s3fid(),
+			timelineTime, packetIncomingTime ));
 
 	if (wait_time < 0)
 	{

@@ -244,7 +244,20 @@ ssize_t status_read(struct file *pfil, char __user *pBuf, size_t len, loff_t *p_
 			return -EFAULT;
 		}		
 		return 4;
-	}		
+	}
+
+	spin_lock(&lxc->lxc_entry_lock);
+	if(lxc->is_buf_initialised == 0){
+		spin_unlock(&lxc->lxc_entry_lock);
+		if (copy_to_user(pBuf, NULL_msg, 4) ) {
+			
+			return -EFAULT;
+		}		
+		return 4;
+	}
+	spin_unlock(&lxc->lxc_entry_lock);
+
+
 	while(lxc->lxcBuff[i] != NULL)
 		i++;
 

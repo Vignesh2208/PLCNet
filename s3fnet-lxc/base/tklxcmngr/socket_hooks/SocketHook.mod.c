@@ -19,6 +19,7 @@ __used
 __attribute__((section("__versions"))) = {
 	{ 0xe2c2f020, __VMLINUX_SYMBOL_STR(module_layout) },
 	{ 0x9f37a200, __VMLINUX_SYMBOL_STR(kmalloc_caches) },
+	{ 0x68e2f221, __VMLINUX_SYMBOL_STR(_raw_spin_unlock) },
 	{ 0xfeebd0f3, __VMLINUX_SYMBOL_STR(remove_proc_entry) },
 	{ 0x5b19634d, __VMLINUX_SYMBOL_STR(div_s64_rem) },
 	{ 0x91715312, __VMLINUX_SYMBOL_STR(sprintf) },
@@ -33,6 +34,7 @@ __attribute__((section("__versions"))) = {
 	{ 0xf0fdf6cb, __VMLINUX_SYMBOL_STR(__stack_chk_fail) },
 	{ 0x824efe08, __VMLINUX_SYMBOL_STR(pv_cpu_ops) },
 	{ 0x9939e5d0, __VMLINUX_SYMBOL_STR(kmem_cache_alloc_trace) },
+	{ 0x67f7403e, __VMLINUX_SYMBOL_STR(_raw_spin_lock) },
 	{ 0x38d64aac, __VMLINUX_SYMBOL_STR(proc_create_data) },
 	{ 0x4f68e5c9, __VMLINUX_SYMBOL_STR(do_gettimeofday) },
 	{ 0x37a0cba, __VMLINUX_SYMBOL_STR(kfree) },
@@ -49,4 +51,4 @@ __attribute__((section(".modinfo"))) =
 "depends=";
 
 
-MODULE_INFO(srcversion, "E7AAE2BB4DDE8827486FBFC");
+MODULE_INFO(srcversion, "87EB65D962D6991FEDF993A");

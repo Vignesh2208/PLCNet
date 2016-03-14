@@ -240,7 +240,7 @@ def run(inputFile,node_id,conn_type):
 					value= line[1]
 					if "IDS" in parameter :
 						IDS_IP = value
-						print("Resolved  IDS IP = ",IDS_IP)
+						#print("Resolved  IDS IP = ",IDS_IP)
 						break
 
 		conf_file = conf_directory + "/logs/node_" + str(node_id) + "_log"

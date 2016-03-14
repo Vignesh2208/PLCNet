@@ -14,7 +14,7 @@ rebuild: lxcman
 fullbuild: lxcman
 	cd tklxcmngr/socket_hooks/; make clean; make;
 	cd tklxcmngr/serial_driver/; make clean; make;
-	./build.sh -d -n $(NUM_CORES)
+	./build.sh -n $(NUM_CORES)
 
 debuginc: lxcman
 	./build.sh -i -f -d -n $(NUM_CORES)

@@ -126,8 +126,8 @@ def parse_modbus_ip_topology(conf_directory,curr_conf_file,test_file,topology_fi
 	routers = Routers.keys()
 	router_net_id = n_nodes
 
-	if n_nodes != exp_n_nodes :
-		ERROR("Number of nodes defined in Experiment config does not match the number of nodes defined in Topology config")
+	#if n_nodes != exp_n_nodes + 1:
+	#	ERROR("IDS not defined in Topology config")
 
 
 
@@ -142,10 +142,14 @@ def parse_modbus_ip_topology(conf_directory,curr_conf_file,test_file,topology_fi
 		f.write("[\n")
 		f.write("	lxcConfig\n")
 		f.write("	[\n")
-		for node in xrange(1,exp_n_nodes+1)  :
-			f.write("		settings [ lxcNHI " + str(node-1) + ":0 _extends .dilation cmd " + "\"" + test_file + " -e 0" + " --node " + str(node-1) + Node[node]["script"] + "\"" + " ]\n")
+		for node in xrange(1,n_nodes+1)  :
+			if node == n_nodes :
+				f.write("		settings [lxcNHI " + str(node-1) + ":0 _extends .dilation cmd " +  "\"python " + conf_directory + "/PLC_Config/udp_reader.py" + "\"]\n")
+			else :
+				f.write("		settings [ lxcNHI " + str(node-1) + ":0 _extends .dilation cmd " + "\"" + test_file + " -e 0" + " --node " + str(node-1) + Node[node]["script"] + "\"" + " ]\n")
 		f.write("	]\n")
-	 	for node in xrange(1,exp_n_nodes + 1)  :
+	 	for node in xrange(1,n_nodes + 1)  :
+
 			f.write("	Net\n")
 			f.write("	[\n")
 			f.write("		id " + str(node-1) + "\n")

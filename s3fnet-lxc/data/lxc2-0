@@ -1,6 +1,8 @@
 Starting Debug for lxc2-0
-Running Command /home/vignesh/Desktop/PLCs/awlsim-0.42/s3fnet-lxc/csudp/serial_server2
-Server : Waiting for Data
-curr : localtime: 11:27:03 881749, orig_time : 11:27:03 882872
-Server : Data Received : len = 150, LLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLL
-curr : localtime: 11:27:03 990662, orig_time : 11:27:04 460381
+Running Command python /home/vignesh/Desktop/PLCs/awlsim-0.42/conf/PLC_Config/udp_reader.py
+Socket created
+Socket bind complete
+Received Message :  1,1457986231.609243,SEND,bytearray(b'\x00\x10\x03\x00\x02\x00\x01\x16')
+Received Message :  0,1457986231.620347,RECV,bytearray(b'\x00\x10\x03\x00\x02\x00\x01\x16')
+Received Message :  0,1457986231.620389,SEND,bytearray(b'\x00\x10\x03\x02\x124[')
+Received Message :  1,1457986231.645491,RECV,bytearray(b'\x00\x10\x03\x02\x124[')

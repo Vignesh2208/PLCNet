@@ -1,4 +1,4 @@
-total_timeline 2
+total_timeline 4
 tick_per_second 6
 run_time 10.0
 seed 1
@@ -9,8 +9,9 @@ Net
 [
 	lxcConfig
 	[
-		settings [ lxcNHI 0:0 _extends .dilation cmd "/home/vignesh/Desktop/PLCs/awlsim-0.42/tests/run.sh -e 1 --node 0 /home/vignesh/Desktop/PLCs/awlsim-0.42/tests/modbus/simple_client_server/sfb102_server.awl" ]
-		settings [ lxcNHI 1:0 _extends .dilation cmd "/home/vignesh/Desktop/PLCs/awlsim-0.42/tests/run.sh -e 1 --node 1 /home/vignesh/Desktop/PLCs/awlsim-0.42/tests/modbus/simple_client_server/sfb102_client.awl" ]
+		settings [ lxcNHI 0:0 _extends .dilation cmd "/home/vignesh/Desktop/PLCs/awlsim-0.42/tests/run.sh -e 0 --node 0 /home/vignesh/Desktop/PLCs/awlsim-0.42/tests/modbus/simple_client_server/sfb102_server.awl" ]
+		settings [ lxcNHI 1:0 _extends .dilation cmd "/home/vignesh/Desktop/PLCs/awlsim-0.42/tests/run.sh -e 0 --node 1 /home/vignesh/Desktop/PLCs/awlsim-0.42/tests/modbus/simple_client_server/sfb102_client.awl" ]
+		settings [lxcNHI 2:0 _extends .dilation cmd "python /home/vignesh/Desktop/PLCs/awlsim-0.42/conf/PLC_Config/udp_reader.py"]
 	]
 	Net
 	[
@@ -19,11 +20,7 @@ Net
 		host
 		[
 			id 0
-			isEmulated 1
-			interface [ id 0 _extends .dict.1Mb
-				ProtocolSession [name mac use "s3f.os.dummymac" ]
-			]
-			_find .dict.emuHostSerialGraph.graph
+			_extends .dict.emuHost
 		]
 	]
 	Net
@@ -33,13 +30,51 @@ Net
 		host
 		[
 			id 0
-			isEmulated 1
-			interface [ id 0 _extends .dict.1Mb
-				ProtocolSession [name mac use "s3f.os.dummymac" ]
-			]
-			_find .dict.emuHostSerialGraph.graph
+			_extends .dict.emuHost
+		]
+	]
+	Net
+	[
+		id 2
+		alignment 2
+		host
+		[
+			id 0
+			_extends .dict.emuHost
 		]
 	]
 
-	link [ attach 0:0(0) attach 1:0(0) min_delay 1e-6 prop_delay 0.002 ]
+	Net
+	[
+		id 3
+		alignment 3
+		router
+		[
+			id 	1
+			_find .dict.routerGraph.graph
+			interface [ id 0	_extends  .dict.1Gb ]
+			interface [ id 1	_extends  .dict.1Gb ]
+			interface [ id 2	_extends  .dict.1Gb ]
+		]
+		router
+		[
+			id 	2
+			_find .dict.routerGraph.graph
+			interface [ id 0	_extends  .dict.1Gb ]
+			interface [ id 1	_extends  .dict.1Gb ]
+		]
+		router
+		[
+			id 	3
+			_find .dict.routerGraph.graph
+			interface [ id 0	_extends  .dict.1Gb ]
+			interface [ id 1	_extends  .dict.1Gb ]
+		]
+	]
+
+	link [ attach 0:0(0) attach 3:1(0) min_delay 1e-6 prop_delay 0.002 ]
+	link [ attach 1:0(0) attach 3:2(0) min_delay 1e-6 prop_delay 0.003 ]
+	link [ attach 2:0(0) attach 3:3(0) min_delay 1e-6 prop_delay 0.004 ]
+	link [ attach 3:1(1) attach 3:2(1) min_delay 1e-6 prop_delay 0.002 ]
+	link [ attach 3:1(2) attach 3:3(1) min_delay 1e-6 prop_delay 0.003 ]
 ]

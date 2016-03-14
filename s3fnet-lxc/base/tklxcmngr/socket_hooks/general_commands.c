@@ -60,12 +60,15 @@ void create_new_lxc_entry(char * buffer){
 	//no_of_bytes -= 1;
 	if(proc_num == 0){
 		lxc_list_head = (struct lxc_entry *)kmalloc(sizeof(struct lxc_entry),GFP_KERNEL);
+		lxc_list_head->is_buf_initialised = 0;
+		spin_lock_init(&lxc_list_head->lxc_entry_lock);
 		lxc_list_head->next = NULL;
 		lxc_list_head->prev = NULL;
 		lxc_list_head->PID = PID;
 		lxc_list_tail = lxc_list_head;
 		flush_buffer(lxc_list_head->lxcName,100);
 		memcpy(lxc_list_head->lxcName,lxcName,no_of_bytes);
+
 		//replace_special_chars(lxc_list_head->lxcName);
 		printk(KERN_INFO "Socket Hook : New lxc entry name %s, PID = %d, No of bytes = %d \n", lxc_list_head->lxcName,PID,no_of_bytes);
 		
@@ -79,9 +82,12 @@ void create_new_lxc_entry(char * buffer){
 		memcpy(new_lxc->lxcName,lxcName,no_of_bytes);
 		//replace_special_chars(new_lxc->lxcName);
 		printk(KERN_INFO "Socket Hook : New lxc entry name %s, PID = %d, No of bytes = %d\n", new_lxc->lxcName,PID,no_of_bytes);
+		new_lxc->is_buf_initialised = 0;
+		spin_lock_init(&new_lxc->lxc_entry_lock);
 		lxc_list_tail->next = new_lxc;
 		new_lxc->prev = lxc_list_tail;
 		new_lxc->next = NULL;
+		
 		lxc_list_tail = new_lxc;
 		proc_num += 1;
 		
@@ -240,7 +246,11 @@ int write_new_timestamp(char * lxcName, long hash, struct timeval tv){
 		return -1;
 	}
 	flush_buffer(lxc->lxcBuff,KERNEL_BUF_SIZE);
-	sprintf(lxc->lxcBuff,"%d\n%d\n%d\n",tv.tv_sec,tv.tv_usec,hash);
+	printk(KERN_INFO "Socket Hook : Writing new timestamp for lxc %s, secs : %lu, usec : %lu\n",lxcName,tv.tv_sec,tv.tv_usec);
+	spin_lock(&lxc->lxc_entry_lock);
+	sprintf(lxc->lxcBuff,"%lu\n%lu\n%lu\n",tv.tv_sec,tv.tv_usec,1234);
+	lxc->is_buf_initialised = 1;
+	spin_unlock(&lxc->lxc_entry_lock);
 
 	
 	return 1;
