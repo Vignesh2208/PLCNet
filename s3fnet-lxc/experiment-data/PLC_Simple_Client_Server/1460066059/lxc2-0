@@ -1,4 +1,0 @@
-Starting Debug for lxc2-0
-Running Command python /home/vignesh/Desktop/PLCs/awlsim-0.42/Projects/Simple_PLC_Client_Server_multiple/conf/PLC_Config/udp_reader.py
-Socket created
-Socket bind complete

@@ -1,8 +1,0 @@
-Starting Debug for lxc2-0
-Running Command python /home/vignesh/Desktop/PLCs/awlsim-0.42/Projects/Simple_PLC_Client_Server/conf/PLC_Config/udp_reader.py
-Socket created
-Socket bind complete
-Received Message :  1,1459361964.525483,SEND,bytearray(b'\x00\x10\x03\x00\x02\x00\x01\x16')
-Received Message :  1,1459361964.549339,RECV,bytearray(b'\x00\x10\x03\x02\x124[')
-Received Message :  0,1459361964.538532,RECV,bytearray(b'\x00\x10\x03\x00\x02\x00\x01\x16')
-Received Message :  0,1459361964.538547,SEND,bytearray(b'\x00\x10\x03\x02\x124[')
