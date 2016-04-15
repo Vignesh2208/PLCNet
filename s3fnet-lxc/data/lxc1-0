@@ -1,20 +1,39 @@
 Starting Debug for lxc1-0
-Running Command /home/vignesh/Desktop/PLCs/awlsim-0.42/tests/run.sh -e 0 --node 1 /home/vignesh/Desktop/PLCs/awlsim-0.42/tests/modbus/simple_client_server/sfb102_client.awl
+Running Command /home/vignesh/Desktop/PLCs/awlsim-0.42/tests/run.sh -e 0 --node 1 /home/vignesh/Desktop/PLCs/awlsim-0.42/tests/modbus/bottle_plant_node/bottle_plant_node.awl
 6 (process ID) old priority 0, new priority 10
-=== Running tests with 'python3'
-Running test 'sfb102_client.awl' with 'python3' ... ['0', '10.10.0.9']
-['1', '10.10.0.10']
-['IDS', '10.10.0.10']
-Dest IP :  10.10.0.17
-Resolved hostname =  10.10.0.17
-IP of IDS :  10.10.0.25  len =  10  orig_len =  10
-Start time =  1457986231.461149
-FunctionCode =  3
-Sent msg =  bytearray(b'\x00\x10\x03\x00\x02\x00\x01\x16')
-Response from server :  bytearray(b'\x00\x10\x03\x02\x124[')
-Function Code =  3
-Start select time =  1457986231.647147
-End select time =  1457986234.64925
-[OK: 0:05.30]
-
-All tests succeeded (full run)
+=== Running tests with 'python2'
+Running test 'bottle_plant_node.awl' with 'python2' ... [u'0', u'10.10.0.9']
+[u'1', u'10.10.0.10']
+[u'IDS', u'10.10.0.10']
+('Dest IP : ', '10.10.0.1')
+('Resolved hostname = ', '10.10.0.1')
+('IP of IDS : ', '10.10.0.33')
+('Dest IP : ', '10.10.0.1')
+('Resolved hostname = ', '10.10.0.1')
+('IP of IDS : ', '10.10.0.33')
+('Dest IP : ', '10.10.0.45')
+('Resolved hostname = ', '10.10.0.45')
+('IP of IDS : ', '10.10.0.33')
+Started server process
+('Start time = ', 1460689066.745374)
+('IP:PORT = ', '10.10.0.1', 502)
+Resumed connection
+('Start time = ', 1460689066.769387)
+('IP:PORT = ', '10.10.0.45', 502)
+Resumed connection
+('Sent msg = ', bytearray(b'\x03\x10\x03\x00\x02\x00\x02\x1a\xad\x95\x8b'))
+('Response from server = ', '03 10 03 04 00 00 00 00 1a f3 57 f2')
+Response processed
+Resumed connection
+('Sent msg = ', bytearray(b'\x04\x10\x03\x00\x02\x00\x02\x1b\xb2\x135'))
+('Response from server = ', '04 10 03 04 00 00 00 00 1b 5b 7b 00')
+Response processed
+Resumed connection
+('Sent msg = ', bytearray(b'\x03\x10\x03\x00\x02\x00\x02\x1a\xe9\x0f\xbc'))
+('Response from server = ', '03 10 03 04 00 00 00 00 1a 0a af fe')
+Response processed
+Resumed connection
+('Sent msg = ', bytearray(b'\x04\x10\x03\x00\x02\x00\x02\x1b2\xae@'))
+('Response from server = ', '04 10 03 04 00 00 00 00 1b 9b 71 7c')
+Response processed
+Resumed connection

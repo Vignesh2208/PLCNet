@@ -1,0 +1,21 @@
+Starting Debug for lxc0-0
+Running Command /home/vignesh/Desktop/PLCs/awlsim-0.42/tests/run.sh -e 0 --node 0 /home/vignesh/Desktop/PLCs/awlsim-0.42/tests/modbus/simple_client_server/sfb102_server.awl
+6 (process ID) old priority 0, new priority 10
+=== Running tests with 'python3'
+Running test 'sfb102_server.awl' with 'python3' ... ['0', '10.10.0.9']
+['1', '10.10.0.10']
+['IDS', '10.10.0.10']
+Dest IP :  10.10.0.21
+Resolved hostname =  10.10.0.21
+IP of IDS :  10.10.0.25  len =  10  orig_len =  10
+Dest IP :  10.10.0.17
+Resolved hostname =  10.10.0.17
+IP of IDS :  10.10.0.25  len =  10  orig_len =  10
+Start time =  1459375301.949151
+Listening on port 502
+Established Connection from ('10.10.0.21', 48894)
+Recv data =  bytearray(b'\x00\x10\x03\x00\x02\x00\x01\x16')
+Sent response to client =  bytearray(b'\x00\x10\x03\x02\x124[')
+[OK: 0:02.11]
+
+All tests succeeded (full run)

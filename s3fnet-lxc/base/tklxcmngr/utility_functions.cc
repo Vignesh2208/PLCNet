@@ -14,6 +14,7 @@ int send_to_timekeeper(char * cmd) {
     FILE *fp;
     fp = fopen(FILENAME, "a");
     if (fp == NULL) {
+        perror("Open file to TimeKeeper failed");
         //printf("Error communicating with TimeKeeper\n");
         return -1;
     }
@@ -26,7 +27,8 @@ int send_to_socket_hook_monitor(char * cmd) {
     FILE *fp;
     fp = fopen(SOCKETHOOK_FILENAME, "a");
     if (fp == NULL) {
-        printf("Error communicating with Socket hook\n");
+        perror("Open file to Socket Hook failed");
+        //printf("Error communicating with Socket hook\n");
         return -1;
     }
     fprintf(fp, "%s", cmd); //add comma to act as last character
@@ -56,10 +58,10 @@ void add_lxc_to_socket_monitor(int pid, char * lxcName){
 
 
 }
-void load_lxc_latest_info(char * lxcName){
+int load_lxc_latest_info(char * lxcName){
 	char command[200];
 	sprintf(command,"%c %s,",LOAD_COMMAND,lxcName);
-	send_to_socket_hook_monitor(command);
+	return send_to_socket_hook_monitor(command);
 
 }
 /*

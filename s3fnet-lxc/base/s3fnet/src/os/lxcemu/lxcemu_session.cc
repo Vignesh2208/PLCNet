@@ -157,6 +157,9 @@ int LxcemuSession::pop(Activation msg, ProtocolSession* lo_sess, void* extinfo,
 	proxy->totalPacketError += labs(difference);
 	proxy->packetsSentOut++;
 
+	difference = (proxyVT - dmsg->ppkt->incomingTime);
+	printf("LXCEMUSESSION:  (%s) Receive. Length = %d, Transmit time : %lu\n",proxy->lxcName, dmsg->ppkt->len, difference);
+
 	delete pkt;
 	dmsg->erase_all();
 

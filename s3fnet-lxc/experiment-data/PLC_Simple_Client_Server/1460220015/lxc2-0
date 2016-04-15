@@ -1,0 +1,40 @@
+Starting Debug for lxc2-0
+Running Command python /home/vignesh/Desktop/PLCs/awlsim-0.42/Projects/Simple_PLC_Client_Server_multiple/conf/PLC_Config/udp_reader.py
+Socket created
+Socket bind complete
+Received Message :  1,1460220019.251214,SEND,bytearray(b'\x00\x10\x03\x00\x02\x00\x01\x16') time :  1460220019.26
+Received Message :  0,1460220019.267275,RECV,bytearray(b'\x00\x10\x03\x00\x02\x00\x01\x16') time :  1460220019.31
+Received Message :  0,1460220019.299322,SEND,bytearray(b'\x00\x10\x03\x02\x124[') time :  1460220019.31
+Received Message :  1,1460220019.306311,RECV,bytearray(b'\x00\x10\x03\x02\x124[') time :  1460220019.32
+Received Message :  1,1460220019.334354,SEND,bytearray(b'\x00\x10\x03\x00\x02\x00\x01\x16') time :  1460220019.35
+Received Message :  0,1460220019.345266,RECV,bytearray(b'\x00\x10\x03\x00\x02\x00\x01\x16') time :  1460220019.36
+Received Message :  0,1460220019.372405,SEND,bytearray(b'\x00\x10\x03\x02\x124[') time :  1460220019.38
+Received Message :  1,1460220019.37939,RECV,bytearray(b'\x00\x10\x03\x02\x124[') time :  1460220019.39
+Received Message :  1,1460220019.406434,SEND,bytearray(b'\x00\x10\x03\x00\x02\x00\x01\x16') time :  1460220019.42
+Received Message :  0,1460220019.418149,RECV,bytearray(b'\x00\x10\x03\x00\x02\x00\x01\x16') time :  1460220019.44
+Received Message :  0,1460220019.445453,SEND,bytearray(b'\x00\x10\x03\x02\x124[') time :  1460220019.46
+Received Message :  1,1460220019.452455,RECV,bytearray(b'\x00\x10\x03\x02\x124[') time :  1460220019.46
+Received Message :  1,1460220019.479486,SEND,bytearray(b'\x00\x10\x03\x00\x02\x00\x01\x16') time :  1460220019.49
+Received Message :  0,1460220019.490501,RECV,bytearray(b'\x00\x10\x03\x00\x02\x00\x01\x16') time :  1460220019.51
+Received Message :  0,1460220019.518348,SEND,bytearray(b'\x00\x10\x03\x02\x124[') time :  1460220019.53
+Received Message :  1,1460220019.525531,RECV,bytearray(b'\x00\x10\x03\x02\x124[') time :  1460220019.54
+Received Message :  1,1460220019.572386,SEND,bytearray(b'\x00\x10\x03\x00\x02\x00\x01\x16') time :  1460220019.59
+Received Message :  0,1460220019.581588,RECV,bytearray(b'\x00\x10\x03\x00\x02\x00\x01\x16') time :  1460220019.6
+Received Message :  0,1460220019.609346,SEND,bytearray(b'\x00\x10\x03\x02\x124[') time :  1460220019.62
+Received Message :  1,1460220019.61563,RECV,bytearray(b'\x00\x10\x03\x02\x124[') time :  1460220019.63
+Received Message :  1,1460220019.652672,SEND,bytearray(b'\x00\x10\x03\x00\x02\x00\x01\x16') time :  1460220019.67
+Received Message :  0,1460220019.663668,RECV,bytearray(b'\x00\x10\x03\x00\x02\x00\x01\x16') time :  1460220019.68
+Received Message :  0,1460220019.690706,SEND,bytearray(b'\x00\x10\x03\x02\x124[') time :  1460220019.7
+Received Message :  1,1460220019.69771,RECV,bytearray(b'\x00\x10\x03\x02\x124[') time :  1460220019.71
+Received Message :  1,1460220019.725759,SEND,bytearray(b'\x00\x10\x03\x00\x02\x00\x01\x16') time :  1460220019.74
+Received Message :  0,1460220019.736737,RECV,bytearray(b'\x00\x10\x03\x00\x02\x00\x01\x16') time :  1460220019.75
+Received Message :  0,1460220019.76377,SEND,bytearray(b'\x00\x10\x03\x02\x124[') time :  1460220019.77
+Received Message :  1,1460220019.7707691,RECV,bytearray(b'\x00\x10\x03\x02\x124[') time :  1460220019.78
+Received Message :  1,1460220019.799932,SEND,bytearray(b'\x00\x10\x03\x00\x02\x00\x01\x16') time :  1460220019.81
+Received Message :  0,1460220019.809712,RECV,bytearray(b'\x00\x10\x03\x00\x02\x00\x01\x16') time :  1460220019.83
+Received Message :  0,1460220019.836847,SEND,bytearray(b'\x00\x10\x03\x02\x124[') time :  1460220019.85
+Received Message :  1,1460220019.843855,RECV,bytearray(b'\x00\x10\x03\x02\x124[') time :  1460220019.86
+Received Message :  1,1460220019.870892,SEND,bytearray(b'\x00\x10\x03\x00\x02\x00\x01\x16') time :  1460220019.88
+Received Message :  0,1460220019.88189,RECV,bytearray(b'\x00\x10\x03\x00\x02\x00\x01\x16') time :  1460220019.9
+Received Message :  0,1460220019.90979,SEND,bytearray(b'\x00\x10\x03\x02\x124[') time :  1460220019.92
+Received Message :  1,1460220019.915923,RECV,bytearray(b'\x00\x10\x03\x02\x124[') time :  1460220019.93

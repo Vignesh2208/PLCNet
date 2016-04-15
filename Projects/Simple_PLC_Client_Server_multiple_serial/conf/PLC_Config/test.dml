@@ -1,0 +1,45 @@
+total_timeline 2
+tick_per_second 6
+run_time 10.0
+seed 1
+log_dir PLC_Simple_Client_Server
+
+dilation [ TDF 30 ]
+Net
+[
+	lxcConfig
+	[
+		settings [ lxcNHI 0:0 _extends .dilation cmd "/home/vignesh/Desktop/PLCs/awlsim-0.42/tests/run.sh -e 1 --node 0 /home/vignesh/Desktop/PLCs/awlsim-0.42/tests/modbus/simple_client_server_multiple/sfb102_server.awl" ]
+		settings [ lxcNHI 1:0 _extends .dilation cmd "/home/vignesh/Desktop/PLCs/awlsim-0.42/tests/run.sh -e 1 --node 1 /home/vignesh/Desktop/PLCs/awlsim-0.42/tests/modbus/simple_client_server_multiple/sfb102_client.awl" ]
+	]
+	Net
+	[
+		id 0
+		alignment 0
+		host
+		[
+			id 0
+			isEmulated 1
+			interface [ id 0 _extends .dict.1Mb
+				ProtocolSession [name mac use "s3f.os.dummymac" ]
+			]
+			_find .dict.emuHostSerialGraph.graph
+		]
+	]
+	Net
+	[
+		id 1
+		alignment 1
+		host
+		[
+			id 0
+			isEmulated 1
+			interface [ id 0 _extends .dict.1Mb
+				ProtocolSession [name mac use "s3f.os.dummymac" ]
+			]
+			_find .dict.emuHostSerialGraph.graph
+		]
+	]
+
+	link [ attach 0:0(0) attach 1:0(0) min_delay 1e-6 prop_delay 0.003 ]
+]

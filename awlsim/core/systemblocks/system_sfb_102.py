@@ -11,6 +11,18 @@ from awlsim.core.systemblocks.systemblocks import *
 from awlsim.core.util import *
 from awlsim.core.datablocks import *
 
+from multiprocessing import Process, Condition, Lock  
+from multiprocessing.managers import BaseManager  
+from multiprocessing import Manager
+import time, os  
+from test import *
+
+class numManager(BaseManager):  
+	pass 
+
+ 
+
+	
 
 DEBUG = 0
 
@@ -126,6 +138,7 @@ class SFB102(SFB):
 		SFB.__init__(self,cpu)
 		self.connections = {}
 		self.connection_objects = {}
+		
 
 		self.local_id = self.cpu.local_id
 		conf_file = conf_directory + "/PLC_Config/Config_Node_" + str(self.local_id) + ".txt"
@@ -182,6 +195,8 @@ class SFB102(SFB):
 						#if n_resolved_required_parameters == len(required_parameters) and n_resolved_optional_parameters >= 1 :
 						#	resolved_connection = False														
 		
+		
+
 		for connection_id in self.connections.keys() :
 			remote_port = self.connections[connection_id]["Remote_Port"]
 			local_port = self.connections[connection_id]["Local_Port"]
@@ -196,12 +211,26 @@ class SFB102(SFB):
 					data_areas.append(self.connections[connection_id][parameter])
 
 			self.connection_objects[connection_id] = Connection(cpu,connection_id,remote_port,local_port,remote_host_name,is_server,single_write_enabled,data_areas)
-		
+			
 		
 		
 		
 	def resolve_hostname_to_ip(self,hostname) :
 		return socket.gethostbyname(hostname)
+
+
+	def __repr__(self):
+		name = ""
+		for connection_id in self.connection_objects.keys():
+			name = name + str(connection_id) + ":"
+		return name
+
+	def close(self):
+		print("Deleting SFB102 ...")
+		for connection_id in self.connection_objects.keys():
+			conn_obj = self.connection_objects[connection_id]
+			conn_obj.close()
+
 
 	def run(self):
 
@@ -275,7 +304,8 @@ class SFB102(SFB):
 			if connection.is_server == True :
 
 				connection.set_all_in_params_server(ENQ_ENR,DISCONNECT,RECV_TIME,CONN_TIME)
-				STATUS = connection.call_modbus_server()
+				#STATUS = connection.call_modbus_server()
+				STATUS = connection.call_modbus_server_process()
 				UNIT,TI,DATA_TYPE,WRITE_READ,LENGTH,START_ADDRESS,ERROR,BUSY,CONN_ESTABLISHED,STATUS_MODBUS,STATUS_CONN,STATUS_FUNC,IDENT_CODE = connection.get_all_out_params_server()
 				self.storeInterfaceFieldByName("UNIT", UNIT)
 				self.storeInterfaceFieldByName("DATA_TYPE", TI)
@@ -293,17 +323,24 @@ class SFB102(SFB):
 
 				
 				connection.set_all_in_params_client(ENQ_ENR,DISCONNECT,RECV_TIME,CONN_TIME,UNIT,DATA_TYPE,WRITE_READ,TI,LENGTH,START_ADDRESS)
-				STATUS = connection.call_modbus_client()
+				#STATUS = connection.call_modbus_client()
+				STATUS = connection.call_modbus_client_process()
 				#STATUS = DONE
 				ERROR,BUSY,CONN_ESTABLISHED,STATUS_MODBUS,STATUS_CONN,STATUS_FUNC,IDENT_CODE = connection.get_all_out_params_client()
 				
 
 
 			if STATUS != RUNNING :
-				self.storeInterfaceFieldByName("DONE_NDR", True)
-				if DEBUG == 1 :
-					print("DONE_NDR         = ", True)
-				DONE_NDR = True
+				if connection.read_finish_status == 1: 
+					self.storeInterfaceFieldByName("DONE_NDR", True)
+					if DEBUG == 1 :
+						print("DONE_NDR         = ", True)
+					DONE_NDR = True
+				else :
+					self.storeInterfaceFieldByName("DONE_NDR",False)
+					if DEBUG == 1 :
+						print("DONE_NDR         = ", False)
+					DONE_NDR = False
 			else :
 				self.storeInterfaceFieldByName("DONE_NDR",False)
 				if DEBUG == 1 :

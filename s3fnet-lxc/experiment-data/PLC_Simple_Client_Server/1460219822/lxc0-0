@@ -1,0 +1,40 @@
+Starting Debug for lxc0-0
+Running Command /home/vignesh/Desktop/PLCs/awlsim-0.42/tests/run.sh -e 0 --node 0 /home/vignesh/Desktop/PLCs/awlsim-0.42/tests/modbus/simple_client_server_multiple/sfb102_server.awl
+6 (process ID) old priority 0, new priority 10
+=== Running tests with 'python3'
+Running test 'sfb102_server.awl' with 'python3' ... ['0', '10.10.0.9']
+['1', '10.10.0.10']
+['IDS', '10.10.0.10']
+Dest IP :  10.10.0.21
+Resolved hostname =  10.10.0.21
+IP of IDS :  10.10.0.25  len =  10  orig_len =  10
+Start time =  1460219825.568087
+Listening on port 502
+Established Connection from ('10.10.0.21', 48344)
+Data read =  b'\x00\x10\x03\x00\x02\x00\x01\x16'
+Recv new msg =  0,1460219825.820461,RECV,bytearray(b'\x00\x10\x03\x00\x02\x00\x01\x16')
+Sent response to client =  bytearray(b'\x00\x10\x03\x02\x124[')
+Data read =  b'\x00\x10\x03\x00\x02\x00\x01\x16'
+Recv new msg =  0,1460219825.95461,RECV,bytearray(b'\x00\x10\x03\x00\x02\x00\x01\x16')
+Sent response to client =  bytearray(b'\x00\x10\x03\x02\x124[')
+Data read =  b'\x00\x10\x03\x00\x02\x00\x01\x16'
+Recv new msg =  0,1460219826.103926,RECV,bytearray(b'\x00\x10\x03\x00\x02\x00\x01\x16')
+Sent response to client =  bytearray(b'\x00\x10\x03\x02\x124[')
+Data read =  b'\x00\x10\x03\x00\x02\x00\x01\x16'
+Recv new msg =  0,1460219826.238124,RECV,bytearray(b'\x00\x10\x03\x00\x02\x00\x01\x16')
+Sent response to client =  bytearray(b'\x00\x10\x03\x02\x124[')
+Data read =  b'\x00\x10\x03\x00\x02\x00\x01\x16'
+Recv new msg =  0,1460219826.400054,RECV,bytearray(b'\x00\x10\x03\x00\x02\x00\x01\x16')
+Sent response to client =  bytearray(b'\x00\x10\x03\x02\x124[')
+Data read =  b'\x00\x10\x03\x00\x02\x00\x01\x16'
+Recv new msg =  0,1460219826.535184,RECV,bytearray(b'\x00\x10\x03\x00\x02\x00\x01\x16')
+Sent response to client =  bytearray(b'\x00\x10\x03\x02\x124[')
+Data read =  b'\x00\x10\x03\x00\x02\x00\x01\x16'
+Recv new msg =  0,1460219826.67132,RECV,bytearray(b'\x00\x10\x03\x00\x02\x00\x01\x16')
+Sent response to client =  bytearray(b'\x00\x10\x03\x02\x124[')
+Data read =  b'\x00\x10\x03\x00\x02\x00\x01\x16'
+Recv new msg =  0,1460219826.784629,RECV,bytearray(b'\x00\x10\x03\x00\x02\x00\x01\x16')
+Sent response to client =  bytearray(b'\x00\x10\x03\x02\x124[')
+Data read =  b'\x00\x10\x03\x00\x02\x00\x01\x16'
+Recv new msg =  0,1460219826.925767,RECV,bytearray(b'\x00\x10\x03\x00\x02\x00\x01\x16')
+Sent response to client =  bytearray(b'\x00\x10\x03\x02\x124[')

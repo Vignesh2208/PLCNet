@@ -4,14 +4,14 @@ run_time 10
 seed 1	
 log_dir 2_LXC_UDP_TDF_2_New	
 
-dilation [ TDF 5.0 ]
+dilation [ TDF 10.0 ]
 
 Net
 [
 	lxcConfig
 	[
-		settings [ lxcNHI 0:0 _extends .dilation cmd "/home/vignesh/Desktop/PLCs/awlsim-0.42/s3fnet-lxc/csudp/tcpserver 230"      ]
-		settings [ lxcNHI 1:0 _extends .dilation cmd "/home/vignesh/Desktop/PLCs/awlsim-0.42/s3fnet-lxc/csudp/tcpclient 0:0 230"  ]
+		settings [ lxcNHI 0:0 _extends .dilation cmd "python /home/vignesh/Desktop/PLCs/awlsim-0.42/s3fnet-lxc/csudp/tcpserver.py"      ]
+		settings [ lxcNHI 1:0 _extends .dilation cmd "python /home/vignesh/Desktop/PLCs/awlsim-0.42/s3fnet-lxc/csudp/tcpclient.py 0:0"  ]
 	]	
 	
 	Net 

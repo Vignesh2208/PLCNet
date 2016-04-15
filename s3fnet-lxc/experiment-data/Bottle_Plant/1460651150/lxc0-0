@@ -1,0 +1,77 @@
+Starting Debug for lxc0-0
+Running Command /home/vignesh/Desktop/PLCs/awlsim-0.42/tests/run.sh -e 0 --node 0 /home/vignesh/Desktop/PLCs/awlsim-0.42/tests/modbus/bottle_plant_node/bottle_plant_node.awl
+6 (process ID) old priority 0, new priority 10
+=== Running tests with 'python2'
+Running test 'bottle_plant_node.awl' with 'python2' ... [u'0', u'10.10.0.9']
+[u'1', u'10.10.0.10']
+[u'IDS', u'10.10.0.10']
+('Dest IP : ', '10.10.0.25')
+('Resolved hostname = ', '10.10.0.25')
+('IP of IDS : ', '10.10.0.33')
+('Dest IP : ', '10.10.0.25')
+('Resolved hostname = ', '10.10.0.25')
+('IP of IDS : ', '10.10.0.33')
+('Dest IP : ', '10.10.0.29')
+('Resolved hostname = ', '10.10.0.29')
+('IP of IDS : ', '10.10.0.33')
+New input generated
+('Routed new job. Node_id = ', 1, ' to ', 3)
+('Start time = ', 1460651154.285215)
+('IP:PORT = ', '10.10.0.25', 502)
+Resumed connection
+('Start time = ', 1460651154.293455)
+('IP:PORT = ', '10.10.0.29', 502)
+Resumed connection
+('Sent msg = ', bytearray(b'\x02\x10\x03\x00\x02\x00\x02\x19\x15\x97Y'))
+('Response from server = ', '')
+Response processed
+New input generated
+('Routed new job. Node_id = ', 1, ' to ', 3)
+('Start time = ', 1460651154.38659)
+('IP:PORT = ', '10.10.0.29', 502)
+('10.10.0.29', 502)
+[Errno 111] Connection refused
+New input generated
+('Sent msg = ', bytearray(b'\x01\x10\x03\x00\x02\x00\x02\x187_['))
+('Response from server = ', '01 10 03 04 00 00 00 00 18 9f c0 d3')
+Response processed
+Resumed connection
+('Routed new job. Node_id = ', 1, ' to ', 3)
+('Start time = ', 1460651154.496352)
+('IP:PORT = ', '10.10.0.29', 502)
+('10.10.0.29', 502)
+[Errno 111] Connection refused
+New input generated
+('Sent msg = ', bytearray(b'\x01\x10\x03\x00\x02\x00\x02\x18\xe9\xf0J'))
+('Response from server = ', '01 10 03 04 00 00 00 00 18 3d 36 08')
+Response processed
+Resumed connection
+('Routed new job. Node_id = ', 1, ' to ', 3)
+('Start time = ', 1460651154.601455)
+('IP:PORT = ', '10.10.0.29', 502)
+('10.10.0.29', 502)
+[Errno 111] Connection refused
+New input generated
+('Sent msg = ', bytearray(b'\x01\x10\x03\x00\x02\x00\x02\x18{h\x03'))
+('Response from server = ', '01 10 03 04 00 00 00 00 18 12 20 5a')
+Response processed
+Resumed connection
+('Routed new job. Node_id = ', 1, ' to ', 3)
+deleting sfb 102 object
+Deleting SFB102 ...
+Terminating server ...
+Terminating client ...
+Terminating client ...
+('Start time = ', 1460651154.709867)
+('IP:PORT = ', '10.10.0.29', 502)
+('10.10.0.29', 502)
+[Errno 111] Connection refused
+('Sent msg = ', bytearray(b'\x01\x10\x03\x00\x02\x00\x02\x18:P\xa4'))
+('Response from server = ', '01 10 03 04 00 00 00 00 18 30 50 a0')
+('Start time = ', 1460651154.172356)
+Listening on port 502
+('End time = ', 1460651159.174361)
+Socket TIMEOUT Done !!!!!!!!!!!!!!!!
+[OK: 0:05.18]
+
+All tests succeeded (full run)

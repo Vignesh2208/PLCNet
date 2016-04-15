@@ -152,7 +152,7 @@ class ModBusMaster(object) :
 		self.sentTI = transaction_id
 		self.sentslaveAddr = slaveAddress
 
-		print("FunctionCode = ",functionCode)
+		#print("FunctionCode = ",functionCode)
 		
 
 		request_msg = request_msg_constructer.construct_request_message(msg_params)
@@ -165,7 +165,7 @@ class ModBusMaster(object) :
 		if len(msg) <= 1 :
 			return ERROR_UNKNOWN_EXCEPTION 	# unknown exception error Code
 		functionCode = int(msg[2])
-		print("Function Code = ",functionCode)
+		#print("Function Code = ",functionCode)
 		ti = msg[1]
 		recv_slave_add = msg[0]
 		if ti == self.sentTI and functionCode != self.sentfunctionCode :

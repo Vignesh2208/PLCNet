@@ -130,7 +130,7 @@ long s3fserial_ioctl(struct file *filp, unsigned int cmd, unsigned long arg)
 		case S3FSERIAL_IOWRX :
 								ioctl_conn = (struct ioctl_conn_param *)arg;
 								if(copy_from_user(&tmp_ioctl_conn,ioctl_conn,sizeof(struct ioctl_conn_param))){
-									printk(KERN_INFO "s3fserial::ioctl():IOWRX : ERROR ioctl IOWRX copy from user\n");
+									//printk(KERN_INFO "s3fserial::ioctl():IOWRX : ERROR ioctl IOWRX copy from user\n");
 									return -EFAULT;
 								}
 
@@ -140,7 +140,7 @@ long s3fserial_ioctl(struct file *filp, unsigned int cmd, unsigned long arg)
 									lxc = NULL;
 
 								if(!lxc){
-									printk(KERN_INFO "s3fserial::ioctl():IOWRX : ERROR ioctl IOWRX lxc not found\n");
+									//printk(KERN_INFO "s3fserial::ioctl():IOWRX : ERROR ioctl IOWRX lxc not found\n");
 									return -EFAULT;
 								}
 								return write_lxc_rxbuf(lxc,tmp_ioctl_conn.conn_id,tmp_ioctl_conn.num_bytes_to_write,tmp_ioctl_conn.bytes_to_write);
@@ -148,7 +148,7 @@ long s3fserial_ioctl(struct file *filp, unsigned int cmd, unsigned long arg)
 
 		case S3FSERIAL_IORTX :  ioctl_conn = (struct ioctl_conn_param *)arg;
 								if(copy_from_user(&tmp_ioctl_conn,ioctl_conn,sizeof(struct ioctl_conn_param))){
-									printk(KERN_INFO "s3fserial::ioctl():IORTX : ERROR ioctl IORTX copy from user\n");
+									//printk(KERN_INFO "s3fserial::ioctl():IORTX : ERROR ioctl IORTX copy from user\n");
 									return -EFAULT;
 								}
 
@@ -158,7 +158,7 @@ long s3fserial_ioctl(struct file *filp, unsigned int cmd, unsigned long arg)
 									lxc = NULL;
 
 								if(!lxc){
-									printk(KERN_INFO "s3fserial::ioctl():IORTX : ERROR ioctl IORTX lxc not found\n");
+									//printk(KERN_INFO "s3fserial::ioctl():IORTX : ERROR ioctl IORTX lxc not found\n");
 									return -EFAULT;
 								}
 
@@ -172,24 +172,24 @@ long s3fserial_ioctl(struct file *filp, unsigned int cmd, unsigned long arg)
 		case S3FSERIAL_SETCONNLXC : ioctl_conn = (struct ioctl_conn_param *)arg;
 									if(copy_from_user(&tmp_ioctl_conn,ioctl_conn,sizeof(struct ioctl_conn_param)))
 									{
-										printk(KERN_INFO "s3fserial::ioctl():SETCONNLXC : ERROR ioctl SETCONNLXC copy from user\n");
+										//printk(KERN_INFO "s3fserial::ioctl():SETCONNLXC : ERROR ioctl SETCONNLXC copy from user\n");
 										return -EFAULT;		
 									}	
 									if(tmp_ioctl_conn.conn_id >= 0 && tmp_ioctl_conn.conn_id < NR_SERIAL_DEVS){
-										printk(KERN_INFO "s3fserial::ioctl():SETCONNLXC : owner lxc name : %s. Conn_id = %d\n",tmp_ioctl_conn.owner_lxc_name,tmp_ioctl_conn.conn_id);
+										//printk(KERN_INFO "s3fserial::ioctl():SETCONNLXC : owner lxc name : %s. Conn_id = %d\n",tmp_ioctl_conn.owner_lxc_name,tmp_ioctl_conn.conn_id);
 										lxc = get_lxc_entry(tmp_ioctl_conn.owner_lxc_name,tmp_ioctl_conn.conn_id);
 									}
 									else
 										lxc = NULL;
 
 									if(!lxc){
-										printk(KERN_INFO "s3fserial::ioctl():SETCONNLXC : ERROR ioctl SETCONNLXC lxc not found\n");
+										//printk(KERN_INFO "s3fserial::ioctl():SETCONNLXC : ERROR ioctl SETCONNLXC lxc not found\n");
 										return -EFAULT;
 									}
 
 									conn = lxc->connection;
 									if(!conn){
-										printk(KERN_INFO "s3fserial::ioctl():SETCONNLXC : ERROR ioctl SETCONNLXC lxc-conn not found\n");
+										//printk(KERN_INFO "s3fserial::ioctl():SETCONNLXC : ERROR ioctl SETCONNLXC lxc-conn not found\n");
 										return -EFAULT;
 									}
 									spin_lock(&conn->conn_lock);
@@ -202,7 +202,7 @@ long s3fserial_ioctl(struct file *filp, unsigned int cmd, unsigned long arg)
 		case S3FSERIAL_GETCONNLXC : ioctl_conn = (struct ioctl_conn_param *)arg;
 									if(copy_from_user(&tmp_ioctl_conn,ioctl_conn,sizeof(struct ioctl_conn_param)))
 									{
-										printk(KERN_INFO "s3fserial::ioctl():GETCONNLXC : ERROR ioctl GETCONNLXC copy from user\n");
+										//printk(KERN_INFO "s3fserial::ioctl():GETCONNLXC : ERROR ioctl GETCONNLXC copy from user\n");
 										return -EFAULT;		
 									}	
 									if(tmp_ioctl_conn.conn_id >= 0 && tmp_ioctl_conn.conn_id < NR_SERIAL_DEVS)
@@ -211,13 +211,13 @@ long s3fserial_ioctl(struct file *filp, unsigned int cmd, unsigned long arg)
 										lxc = NULL;
 
 									if(!lxc){
-										printk(KERN_INFO "s3fserial::ioctl():GETCONNLXC : ERROR ioctl GETCONNLXC lxc not found\n");
+										//printk(KERN_INFO "s3fserial::ioctl():GETCONNLXC : ERROR ioctl GETCONNLXC lxc not found\n");
 										return -EFAULT;
 									}
 
 									conn = lxc->connection;
 									if(!conn){ // dst_lxc_name not set
-										printk(KERN_INFO "s3fserial::ioctl():GETCONNLXC : ERROR ioctl GETCONNLXC lxc-conn params not set\n");
+										//printk(KERN_INFO "s3fserial::ioctl():GETCONNLXC : ERROR ioctl GETCONNLXC lxc-conn params not set\n");
 										return -EFAULT;
 									}
 
@@ -232,7 +232,7 @@ long s3fserial_ioctl(struct file *filp, unsigned int cmd, unsigned long arg)
 									spin_unlock(&conn->conn_lock);
 
 									if(copy_to_user(ioctl_conn->dst_lxc_name, tmp_ioctl_conn.dst_lxc_name, KERN_BUF_SIZE)){
-										printk(KERN_INFO "s3fserial::ioctl():GETCONNLXC : ERROR ioctl GETCONNLXC copy to user\n");
+										//printk(KERN_INFO "s3fserial::ioctl():GETCONNLXC : ERROR ioctl GETCONNLXC copy to user\n");
 										return -EFAULT;
 									}
 									return 0;
@@ -241,7 +241,7 @@ long s3fserial_ioctl(struct file *filp, unsigned int cmd, unsigned long arg)
 		case S3FSERIAL_GETCONNID :  ioctl_conn = (struct ioctl_conn_param *)arg;
 									if(copy_from_user(&tmp_ioctl_conn,ioctl_conn,sizeof(struct ioctl_conn_param)))
 									{
-										printk(KERN_INFO "s3fserial::ioctl():GETCONNID : ERROR ioctl GETCONNID copy from user\n");
+										//printk(KERN_INFO "s3fserial::ioctl():GETCONNID : ERROR ioctl GETCONNID copy from user\n");
 										return -EFAULT;		
 									}
 
@@ -264,7 +264,7 @@ long s3fserial_ioctl(struct file *filp, unsigned int cmd, unsigned long arg)
 		case S3FSERIAL_GETCONNSTATUS : 	ioctl_conn = (struct ioctl_conn_param *)arg;
 										if(copy_from_user(&tmp_ioctl_conn,ioctl_conn,sizeof(struct ioctl_conn_param)))
 										{
-											printk(KERN_INFO "s3fserial::ioctl():GETCONNSTATUS : ERROR ioctl GETCONNID copy from user\n");
+											//printk(KERN_INFO "s3fserial::ioctl():GETCONNSTATUS : ERROR ioctl GETCONNID copy from user\n");
 											return -EFAULT;		
 										}
 
@@ -279,7 +279,7 @@ long s3fserial_ioctl(struct file *filp, unsigned int cmd, unsigned long arg)
 													ioctl_conn->num_bytes_to_write = conn->num_bytes_to_transmit;
 													if(copy_to_user(ioctl_conn->dst_lxc_name, conn->dst_lxc_name, KERN_BUF_SIZE)){
 														spin_unlock(&conn->conn_lock);
-														printk(KERN_INFO "s3fserial::ioctl():GETCONNSTATUS : ERROR ioctl GETCONNSTATUS copy to user\n");
+														//printk(KERN_INFO "s3fserial::ioctl():GETCONNSTATUS : ERROR ioctl GETCONNSTATUS copy to user\n");
 														return -EFAULT;
 													}
 													spin_unlock(&conn->conn_lock);
@@ -296,7 +296,7 @@ long s3fserial_ioctl(struct file *filp, unsigned int cmd, unsigned long arg)
 		case S3FSERIAL_GETACTIVECONNS : ioctl_conn = (struct ioctl_conn_param *)arg;
 										if(copy_from_user(&tmp_ioctl_conn,ioctl_conn,sizeof(struct ioctl_conn_param)))
 										{
-											printk(KERN_INFO "s3fserial::ioctl():GETACTIVECONNS : ERROR ioctl GETCONNID copy from user\n");
+											//printk(KERN_INFO "s3fserial::ioctl():GETACTIVECONNS : ERROR ioctl GETCONNID copy from user\n");
 											return -EFAULT;		
 										}
 
@@ -308,7 +308,7 @@ long s3fserial_ioctl(struct file *filp, unsigned int cmd, unsigned long arg)
 												spin_unlock(&devices[i].dev_lock);
 												if(conn != NULL){
 													spin_lock(&conn->conn_lock);
-													printk(KERN_INFO "s3fserial::ioctl():GETACTIVECONNS :  lxc = %s, ntx bytes = %d\n",tmp_ioctl_conn.owner_lxc_name,conn->num_bytes_to_transmit);
+													//printk(KERN_INFO "s3fserial::ioctl():GETACTIVECONNS :  lxc = %s, ntx bytes = %d\n",tmp_ioctl_conn.owner_lxc_name,conn->num_bytes_to_transmit);
 													if(conn->num_bytes_to_transmit)
 														mask |= (1 << i);
 													spin_unlock(&conn->conn_lock);
@@ -316,7 +316,7 @@ long s3fserial_ioctl(struct file *filp, unsigned int cmd, unsigned long arg)
 												}
 											}
 											else{
-												printk(KERN_INFO "s3fserial::ioctl():GETACTIVECONNS :  Could not find = %s. conn_id = %d\n",tmp_ioctl_conn.owner_lxc_name,i);
+												//printk(KERN_INFO "s3fserial::ioctl():GETACTIVECONNS :  Could not find = %s. conn_id = %d\n",tmp_ioctl_conn.owner_lxc_name,i);
 											}
 										}
 										//printk(KERN_INFO "s3fserial::ioctl():GETACTIVECONNS :  lxc = %s, mask = %d\n",tmp_ioctl_conn.owner_lxc_name,mask);

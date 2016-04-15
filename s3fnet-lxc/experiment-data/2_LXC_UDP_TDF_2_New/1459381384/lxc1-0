@@ -1,0 +1,83 @@
+Starting Debug for lxc1-0
+Running Command /home/vignesh/Desktop/PLCs/awlsim-0.42/s3fnet-lxc/csudp/client 10.10.0.9 25000 20
+Server IP address : 10.10.0.9
+Send Time : 
+curr : localtime: 18:43:06 62995, orig_time : 18:43:06 64704
+7842
+Echo from server: Ping SEQ 0000
+Send Time : 
+curr : localtime: 18:43:06 70837, orig_time : 18:43:06 107615
+8117
+Echo from server: Ping SEQ 0001
+Send Time : 
+curr : localtime: 18:43:06 78953, orig_time : 18:43:06 151971
+8093
+Echo from server: Ping SEQ 0002
+Send Time : 
+curr : localtime: 18:43:06 87048, orig_time : 18:43:06 195289
+8130
+Echo from server: Ping SEQ 0003
+Send Time : 
+curr : localtime: 18:43:06 95181, orig_time : 18:43:06 240150
+8114
+Echo from server: Ping SEQ 0004
+Send Time : 
+curr : localtime: 18:43:06 103296, orig_time : 18:43:06 283751
+8101
+Echo from server: Ping SEQ 0005
+Send Time : 
+curr : localtime: 18:43:06 111396, orig_time : 18:43:06 327891
+8127
+Echo from server: Ping SEQ 0006
+Send Time : 
+curr : localtime: 18:43:06 119524, orig_time : 18:43:06 371802
+8103
+Echo from server: Ping SEQ 0007
+Send Time : 
+curr : localtime: 18:43:06 127631, orig_time : 18:43:06 415210
+8096
+Echo from server: Ping SEQ 0008
+Send Time : 
+curr : localtime: 18:43:06 135727, orig_time : 18:43:06 458417
+8089
+Echo from server: Ping SEQ 0009
+Send Time : 
+curr : localtime: 18:43:06 143817, orig_time : 18:43:06 502903
+8120
+Echo from server: Ping SEQ 0010
+Send Time : 
+curr : localtime: 18:43:06 151939, orig_time : 18:43:06 547260
+8122
+Echo from server: Ping SEQ 0011
+Send Time : 
+curr : localtime: 18:43:06 160062, orig_time : 18:43:06 591377
+8133
+Echo from server: Ping SEQ 0012
+Send Time : 
+curr : localtime: 18:43:06 168195, orig_time : 18:43:06 636486
+8107
+Echo from server: Ping SEQ 0013
+Send Time : 
+curr : localtime: 18:43:06 176303, orig_time : 18:43:06 680161
+8139
+Echo from server: Ping SEQ 0014
+Send Time : 
+curr : localtime: 18:43:06 184443, orig_time : 18:43:06 724088
+8083
+Echo from server: Ping SEQ 0015
+Send Time : 
+curr : localtime: 18:43:06 192528, orig_time : 18:43:06 767914
+8066
+Echo from server: Ping SEQ 0016
+Send Time : 
+curr : localtime: 18:43:06 200595, orig_time : 18:43:06 810702
+8102
+Echo from server: Ping SEQ 0017
+Send Time : 
+curr : localtime: 18:43:06 208699, orig_time : 18:43:06 853922
+8098
+Echo from server: Ping SEQ 0018
+Send Time : 
+curr : localtime: 18:43:06 216799, orig_time : 18:43:06 897486
+8101
+Echo from server: Ping SEQ 0019

@@ -34,7 +34,7 @@ from awlsim.common import *
 from awlsim.core import *
 from awlsim.coreclient import *
 from awlsim.definitions import *
-from conf.scripts.Input_Generator import *
+#from scripts.Input_Generator import *
 
 import ctypes
 libc = ctypes.CDLL('libc.so.6')
@@ -226,6 +226,11 @@ def run(inputFile,node_id,conn_type):
 
 
 		conf_directory = awlsim.definitions.conf_directory
+		conf_ls = conf_directory.split('/')
+		Project_name = conf_ls[len(conf_ls)-2]
+
+		InputGen = __import__("Projects." + str(Project_name) + ".conf.scripts.Input_Generator", globals(), locals(), ['generate_inputs'], -1)
+
 		conf_file = conf_directory + "/PLC_Config/hosts"
 		IDS_IP = None
 		if os.path.isfile(conf_file):
@@ -268,16 +273,32 @@ def run(inputFile,node_id,conn_type):
 		cpu_cycle_number = 1
 		curr_outputs = None
 		curr_inputs = None
+		cycle_start_time = 0
+		cycle_end_time = 0
+		elapsed_time = 0
+		total_elapsed_time = 0
+		total_elapsed_sq_time = 0
+		sample_mean = 0.0
+		sample_variance = 0.0
+		n_cycles = 0
+		Node_data = {}
+		Node_data["conf_directory"] = conf_directory
+
 		try:
 			if not opt_noCpuDump:
 				clearConsole()
 			while 1:
-				inputs = generate_inputs(node_id,cpu_cycle_number,curr_outputs,curr_inputs)
+				inputs = InputGen.generate_inputs(Node_data,node_id,cpu_cycle_number,curr_outputs,curr_inputs)
 				if len(inputs) > 0 and len(inputs) <= len(cpu.inputs) :
 					inputs = bytearray(inputs)
 					cpu.inputs[0:len(cpu.inputs)] = inputs
 
+				n_cycles = n_cycles + 1
+				cycle_start_time = time.time()
 				s.runCycle()
+				cycle_end_time = time.time()
+
+
 				if len(cpu.inputs) > 0 :
 					curr_inputs = cpu.inputs[0:len(cpu.inputs)]
 					if conn_type == 1 : # serial
@@ -295,6 +316,21 @@ def run(inputFile,node_id,conn_type):
 						#	f.write(str(time.time()) + "," + "OUTPUTS," + str(curr_outputs) + "\n")
 					else :
 						pass 			# send to IDS here
+
+
+				elapsed_time = cycle_end_time - cycle_start_time
+				total_elapsed_time = total_elapsed_time + elapsed_time
+				total_elapsed_sq_time = total_elapsed_sq_time + (elapsed_time*elapsed_time)
+				cpu_cycle_number = cpu_cycle_number + 1
+
+				if n_cycles > 1 and n_cycles % 100 == 0:
+					sample_mean = float(total_elapsed_time)/n_cycles
+					sample_variance = (float(total_elapsed_sq_time)/(n_cycles - 1)) - (float(n_cycles)/(n_cycles-1))*(sample_mean*sample_mean)
+					log_file = conf_directory + "/logs/node_" + str(node_id) + "_cycle_statistics_log"
+					with open(log_file,"w") as f :
+						f.write("Mean cycle time  : " + str(sample_mean) + "\n")
+						f.write("Sample variance  : " + str(sample_variance) + "\n")
+
 		finally:
 			if not opt_noCpuDump and opt_loglevel >= Logging.LOG_INFO:
 				clearConsole()
@@ -309,6 +345,9 @@ def run(inputFile,node_id,conn_type):
 				     MaintenanceRequest.TYPE_STOP,
 				     MaintenanceRequest.TYPE_RTTIMEOUT):
 			writeStdout("Shutting down, as requested (%s)...\n" % str(e))
+			if 102 in cpu.sfbs.keys():
+				print("deleting sfb 102 object")
+				cpu.sfbs[102].close()
 		else:
 			writeStdout("Received unknown maintenance request "
 				    "(%d: %s)...\n" % (e.requestType, str(e)))
@@ -322,10 +361,18 @@ def run(inputFile,node_id,conn_type):
 				writeStdout(ps)
 				writeStdout("\n")
 
-	print("Start select time = ", time.time())
-	#select.select([], [], [], 3.0)
-	time.sleep(3)
-	print("End select time = ", time.time())
+	if n_cycles > 1 :
+		sample_mean = float(total_elapsed_time)/n_cycles
+		sample_variance = (float(total_elapsed_sq_time)/(n_cycles - 1)) - (float(n_cycles)/(n_cycles-1))*(sample_mean*sample_mean)
+		log_file = conf_directory + "/logs/node_" + str(node_id) + "_cycle_statistics_log"
+		with open(log_file,"w") as f :
+			f.write("Mean cycle time  : " + str(sample_mean) + "\n")
+			f.write("Sample variance  : " + str(sample_variance) + "\n")
+
+
+	#print("Start select time = ", time.time())
+	#time.sleep(3)
+	#print("End select time = ", time.time())
 
 	return 0
 
@@ -447,6 +494,8 @@ def main():
 	global opt_connect
 	global opt_spawnBackend
 	global opt_interpreter
+
+	#os.nice(-20)
 
 	opt_cycletime = 5.0
 	opt_maxRuntime = -1.0

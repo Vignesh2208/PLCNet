@@ -228,10 +228,12 @@ do_tests()
 {
 	if [ $opt_quick -eq 0 ]; then
 		#local all_interp="python2 python3 pypy pypy3 jython ipy cython2 cython3"
-		local all_interp="python3"
+		#local all_interp="python3"
+		local all_interp="python2"
 	else
 		#local all_interp="python2 python3"
-		local all_interp="python3"
+		#local all_interp="python3"
+		local all_interp="python2"
 	fi
 
 	for interpreter in "$opt_interpreter" $all_interp; do

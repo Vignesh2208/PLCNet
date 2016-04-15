@@ -11,8 +11,42 @@
 #include <netinet/in.h>
 #include <netdb.h>
 #include <sys/time.h> 
+#include <netdb.h>
+#include <sys/ioctl.h>
+#include <sys/time.h> 
+#include <fcntl.h>
+#include <sys/poll.h>
+#include <time.h>
 
 #define BUFSIZE 1024
+
+void gettimeofdayoriginal(struct timeval *tv, struct timezone *tz) {
+#ifdef __x86_64
+  syscall(314, tv, tz);
+  return;
+#endif
+  syscall(351, tv, tz);
+  return;
+}
+
+void print_time(){
+
+  struct timeval later;
+  struct timeval later1;
+  struct tm localtm;
+  struct tm origtm;
+
+  gettimeofday(&later, NULL);
+  gettimeofdayoriginal(&later1, NULL);
+  localtime_r(&(later.tv_sec), &localtm);
+  localtime_r(&(later1.tv_sec),&origtm);
+  //printf("%d %d virtual time: %ld:%ld physical time: %ld:%ld localtime: %d:%02d:%02d %ld\n",x,getpid(),later.tv_sec-now.tv_sec,later.tv_usec-now.tv_usec,later1.tv_sec-now1.tv_sec,later1.tv_usec-now1.tv_usec,localtm.tm_hour, localtm.tm_min, localtm.tm_sec, later.tv_usec);
+
+  printf("curr : localtime: %d:%02d:%02d %ld, orig_time : %d:%02d:%02d %ld\n", localtm.tm_hour, localtm.tm_min, localtm.tm_sec, later.tv_usec, origtm.tm_hour, origtm.tm_min, origtm.tm_sec, later1.tv_usec);
+  fflush(stdout);
+}
+
+
 
 /* 
  * error - wrapper for perror
@@ -87,7 +121,8 @@ int main(int argc, char **argv) {
 
 		serverlen = sizeof(serveraddr);
 		n = sendto(sockfd, buf, strlen(buf), 0, &serveraddr, serverlen);
-		
+		printf("Send Time : \n");
+		print_time();
 		//For debugging SocketHook		
 		gettimeofday(&JAS_Timestamp,NULL);
 		fprintf(fp,"Send secs = %d, Send usecs = %d, JAS secs = %d, JAS usecs = %d\n",sendTimeStamp.tv_sec,sendTimeStamp.tv_usec, JAS_Timestamp.tv_sec, JAS_Timestamp.tv_usec);

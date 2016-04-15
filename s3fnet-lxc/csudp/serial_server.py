@@ -50,7 +50,7 @@ READ_ONLY = select.POLLIN
 WRITE_ONLY = select.POLLOUT	
 
 
-print "Start time = ", time.time()
+print ("Start time = ", time.time())
 
 recv_msg = bytearray()
 while True :
@@ -58,8 +58,8 @@ while True :
 	poller.register(server_fd, READ_ONLY)
 	events = poller.poll(5000)
 	if len(events) == 0 :
-		print "End time = ", time.time()
-		print "Serial Recv TIMEOUT Done !!!!!!!!!!!!!!!!"
+		print ("End time = ", time.time())
+		print ("Serial Recv TIMEOUT Done !!!!!!!!!!!!!!!!")
 		sys.exit(0)
 
 	resume_poll = True
@@ -76,9 +76,9 @@ while True :
 	if resume_poll == True :
 		continue
 			
-	print "Recv msg = ",recv_msg
+	print ("Recv msg = ",recv_msg)
 	recv_data = process_incoming_frame(recv_msg)
-	print "Recv data = ",recv_data
+	print ("Recv data = ",recv_data)
 	break
 
 		

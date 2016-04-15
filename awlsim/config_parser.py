@@ -32,7 +32,7 @@ for entry in script_path_list :
 			root_directory = root_directory + entry + "/"
 
 
-conf_directory = root_directory + "/conf"
+conf_directory = root_directory + "/Projects/Bottle_Plant/conf"
 tests_directory = root_directory + "/tests"
 test_file = tests_directory + "/run.sh"
 

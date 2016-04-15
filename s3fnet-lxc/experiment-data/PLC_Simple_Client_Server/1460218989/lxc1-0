@@ -1,0 +1,66 @@
+Starting Debug for lxc1-0
+Running Command /home/vignesh/Desktop/PLCs/awlsim-0.42/tests/run.sh -e 0 --node 1 /home/vignesh/Desktop/PLCs/awlsim-0.42/tests/modbus/simple_client_server_multiple/sfb102_client.awl
+6 (process ID) old priority 0, new priority 10
+=== Running tests with 'python3'
+Running test 'sfb102_client.awl' with 'python3' ... ['0', '10.10.0.9']
+['1', '10.10.0.10']
+['IDS', '10.10.0.10']
+Dest IP :  10.10.0.17
+Resolved hostname =  10.10.0.17
+IP of IDS :  10.10.0.25  len =  10  orig_len =  10
+FunctionCode =  3
+Start time =  1460218992.651864
+IP:PORT =  127.0.0.1 502
+127.0.0.1 502
+[Errno 111] Connection refused
+FunctionCode =  3
+Start time =  1460218992.75152
+IP:PORT =  127.0.0.1 502
+127.0.0.1 502
+[Errno 111] Connection refused
+FunctionCode =  3
+Start time =  1460218992.860034
+IP:PORT =  127.0.0.1 502
+127.0.0.1 502
+[Errno 111] Connection refused
+FunctionCode =  3
+Start time =  1460218992.943093
+IP:PORT =  127.0.0.1 502
+127.0.0.1 502
+[Errno 111] Connection refused
+FunctionCode =  3
+Start time =  1460218993.047573
+IP:PORT =  127.0.0.1 502
+127.0.0.1 502
+[Errno 111] Connection refused
+FunctionCode =  3
+Start time =  1460218993.161333
+IP:PORT =  127.0.0.1 502
+127.0.0.1 502
+[Errno 111] Connection refused
+FunctionCode =  3
+Start time =  1460218993.23064
+IP:PORT =  127.0.0.1 502
+127.0.0.1 502
+[Errno 111] Connection refused
+FunctionCode =  3
+Start time =  1460218993.344519
+IP:PORT =  127.0.0.1 502
+127.0.0.1 502
+[Errno 111] Connection refused
+FunctionCode =  3
+Start time =  1460218993.490653
+IP:PORT =  127.0.0.1 502
+127.0.0.1 502
+[Errno 111] Connection refused
+FunctionCode =  3
+Start time =  1460218993.594763
+IP:PORT =  127.0.0.1 502
+127.0.0.1 502
+[Errno 111] Connection refused
+deleting sfb 102 object
+Deleting SFB102 ...
+Terminating client ...
+[OK: 0:01.35]
+
+All tests succeeded (full run)

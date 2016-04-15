@@ -1,0 +1,15 @@
+Starting Debug for lxc1-0
+Running Command sudo nice -n -20 su -c /home/vignesh/Desktop/PLCs/awlsim-0.42/tests/run.sh -e 1 --node 1 /home/vignesh/Desktop/PLCs/awlsim-0.42/tests/modbus/simple_client_server/sfb102_client.awl
+sudo: unable to resolve host lxc1-0
+su: invalid option -- 'e'
+Usage: su [options] [LOGIN]
+
+Options:
+  -c, --command COMMAND         pass COMMAND to the invoked shell
+  -h, --help                    display this help message and exit
+  -, -l, --login                make the shell a login shell
+  -m, -p,
+  --preserve-environment        do not reset environment variables, and
+                                keep the same shell
+  -s, --shell SHELL             use SHELL instead of the default in passwd
+

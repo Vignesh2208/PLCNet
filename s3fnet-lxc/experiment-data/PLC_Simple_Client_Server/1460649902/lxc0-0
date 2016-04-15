@@ -1,0 +1,39 @@
+Starting Debug for lxc0-0
+Running Command /home/vignesh/Desktop/PLCs/awlsim-0.42/tests/run.sh -e 0 --node 0 /home/vignesh/Desktop/PLCs/awlsim-0.42/tests/modbus/simple_client_server_multiple/sfb102_server.awl
+6 (process ID) old priority 0, new priority 10
+=== Running tests with 'python2'
+Running test 'sfb102_server.awl' with 'python2' ... [u'0', u'10.10.0.9']
+[u'1', u'10.10.0.10']
+[u'IDS', u'10.10.0.10']
+('Dest IP : ', '10.10.0.21')
+('Resolved hostname = ', '10.10.0.21')
+('IP of IDS : ', '10.10.0.25', ' len = ', 10, ' orig_len = ', 10)
+deleting sfb 102 object
+Deleting SFB102 ...
+Terminating server ...
+('Start time = ', 1460649905.477777)
+Listening on port 502
+Established Connection from ('10.10.0.21', 53230)
+('Recv new msg = ', '00 10 03 00 02 00 01 16 05 19 fe', ' at Node id = ', 1)
+('Sent response to client = ', bytearray(b'\x00\x10\x03\x02\x124[:\xb4\x9c'))
+('Recv new msg = ', '00 10 03 00 02 00 01 16 c9 2f 8c', ' at Node id = ', 1)
+('Sent response to client = ', bytearray(b'\x00\x10\x03\x02\x124[\xeaj\xe8'))
+('Recv new msg = ', '00 10 03 00 02 00 01 16 1d e7 d0', ' at Node id = ', 1)
+('Sent response to client = ', bytearray(b'\x00\x10\x03\x02\x124[\x9c"H'))
+('Recv new msg = ', '00 10 03 00 02 00 01 16 04 67 62', ' at Node id = ', 1)
+('Sent response to client = ', bytearray(b'\x00\x10\x03\x02\x124[\xd4d4'))
+('Recv new msg = ', '00 10 03 00 02 00 01 16 8f 01 04', ' at Node id = ', 1)
+('Sent response to client = ', bytearray(b'\x00\x10\x03\x02\x124[V\xefk'))
+('Recv new msg = ', '00 10 03 00 02 00 01 16 25 43 71', ' at Node id = ', 1)
+('Sent response to client = ', bytearray(b'\x00\x10\x03\x02\x124[\xff\xfd\x8e'))
+('Recv new msg = ', '00 10 03 00 02 00 01 16 09 58 bd', ' at Node id = ', 1)
+('Sent response to client = ', bytearray(b'\x00\x10\x03\x02\x124[E\x1f/'))
+('Recv new msg = ', '00 10 03 00 02 00 01 16 bf a9 db', ' at Node id = ', 1)
+('Sent response to client = ', bytearray(b'\x00\x10\x03\x02\x124[\x1c4\xdc'))
+('Recv new msg = ', '00 10 03 00 02 00 01 16 13 21 f6', ' at Node id = ', 1)
+('Sent response to client = ', bytearray(b'\x00\x10\x03\x02\x124[0(\xbd'))
+('Recv new msg = ', '00 10 03 00 02 00 01 16 07 43 77', ' at Node id = ', 1)
+('Sent response to client = ', bytearray(b'\x00\x10\x03\x02\x124[\xab\t\xa6'))
+[OK: 0:00.94]
+
+All tests succeeded (full run)

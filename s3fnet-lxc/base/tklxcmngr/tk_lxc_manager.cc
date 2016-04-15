@@ -191,10 +191,12 @@ void* LxcManager::manageIncomingPackets()
 						j = j + 1;
 					}
 				}
+				close(fd);
 
 			}
 			else{
-				debugPrint("Could not open s3fserial");
+				//debugPrint("Could not open s3fserial");
+				close(fd);
 			}
 			
 
@@ -268,6 +270,8 @@ void LxcManager::handleIncomingPacket(char* buffer, vector<LXC_Proxy*>* proxiesT
 			u_short ethT = 0;
 			temp_arrival_time = proxy->getElapsedTime();
 
+			
+
 			std::pair<int, unsigned int> res = analyzePacket(buffer, nread, &ethT);
 			unsigned int destIP = res.second;
 			int packet_status   = res.first;
@@ -275,6 +279,7 @@ void LxcManager::handleIncomingPacket(char* buffer, vector<LXC_Proxy*>* proxiesT
 
 			if (packet_status == PACKET_PARSE_IGNORE_PACKET || packet_status ==  PACKET_PARSE_UNKNOWN_PACKET)
 			{
+				//debugPrint("Ignored\n");
 				continue;
 			}
 			else if(packet_status == PARSE_PACKET_SUCCESS_ARP){
@@ -287,7 +292,13 @@ void LxcManager::handleIncomingPacket(char* buffer, vector<LXC_Proxy*>* proxiesT
 
 				
 				
-				load_lxc_latest_info(proxy->lxcName); // Sends a command to Socket Hook.
+				if(load_lxc_latest_info(proxy->lxcName) == -1){ // Sends a command to Socket Hook.
+					// some error
+					arrivalTime = temp_arrival_time; 
+				   	proxy->last_arrival_time = arrivalTime;
+
+				}
+				else{
 				FILE * fptr;
 			    char * line = NULL;
 				size_t len = 0;
@@ -302,6 +313,8 @@ void LxcManager::handleIncomingPacket(char* buffer, vector<LXC_Proxy*>* proxiesT
 					content_read[k] = '\0';
 
 			    fptr = fopen(lxc_file_path.c_str(), "r");
+
+			    
 				
 				if(fptr == NULL){
 				   //debugPrint("fptr is null, lxc_file_path = %s\n",lxc_file_path.c_str());
@@ -318,7 +331,7 @@ void LxcManager::handleIncomingPacket(char* buffer, vector<LXC_Proxy*>* proxiesT
 					}
 					else{
 						line = content_read;
-						debugPrint("Content Read : \n %s\n",content_read);
+						//debugPrint("Content Read : \n %s\n",content_read);
 						
 	   					while(line)
 						{
@@ -364,11 +377,17 @@ void LxcManager::handleIncomingPacket(char* buffer, vector<LXC_Proxy*>* proxiesT
 				        fclose(fptr);
 				        
 				}
+
+				}
+
+				debugPrint("Arrival Time : %lu\n",arrivalTime);
+				debugPrint("######################################\n");
 				
 			}
 			
-			// For dubugging
-			debugPrint("Arrival Time : %lu\n",arrivalTime);
+			
+			
+			
 						
 	
 			
@@ -662,13 +681,18 @@ bool LxcManager::advanceLXCsOnTimeline(unsigned int timelineID, ltime_t timeToAd
 {
 	// Keep track of how many LXCs need to be advanced
 	int numAdvancing = 0;
+	int ret = 0;
 
 	vector<LXC_Proxy*> proxiesBeingAdvanced;
 	vector<LXC_Proxy*>* proxiesOnTimeline = listOfProxiesByTimeline[timelineID];
 
+	printf("Progress call made successfully. timeline = %d\n",timelineID);
+
 	// this timeline does not have any proxies - don't advance it
-	if (proxiesOnTimeline->size() == 0)
+	if (proxiesOnTimeline->size() == 0){
+		printf("No proxies on timeline = %d\n",timelineID);
 		return false;
+	}
 
 	for (unsigned int i = 0; i < proxiesOnTimeline->size(); i++)
 	{
@@ -712,15 +736,18 @@ bool LxcManager::advanceLXCsOnTimeline(unsigned int timelineID, ltime_t timeToAd
 	assert(numAdvancing == (int)proxiesBeingAdvanced.size());
 	assert(numAdvancing <= (int)proxiesOnTimeline->size());
 
-	if (numAdvancing == 0) return false;
+	if (numAdvancing == 0){
+	 printf("No proxies advancing on timeline = %d\n",timelineID);	
+	 return false;
+	}
 
 
-	//debugPrint("Progress call made successfully\n");
+	
 	unsigned long startTime = getWallClockTime();
-	progress((int)timelineID, PROGRESS_FLAG);		// 0 Don't FORCE | 1 FORCE
+	ret = progress((int)timelineID, PROGRESS_FLAG);		// 0 Don't FORCE | 1 FORCE
 	unsigned long finishTime = getWallClockTime();
 	
-	//debugPrint("Progress call returned successfully\n");
+	
 
 	vectorOfHowManyTimesTimelineCalledProgress[timelineID]++;
 	vectorOfTotalTimesSpentAdvancing[timelineID] += (finishTime - startTime);
@@ -737,15 +764,15 @@ bool LxcManager::advanceLXCsOnTimeline(unsigned int timelineID, ltime_t timeToAd
 
 		if (advanceDifference > 100)
 		{
-			debugPrint("[TL %u %s ], DESIRED TIME %ld | ACTUAL TIME %ld | DIFFERENCE %ld\n",
-					  (timelineID), (proxyOnTimeline->lxcName), (desired_vt), (lxc_actual_vt), (advanceDifference));
+			//debugPrint("[TL %u %s ], DESIRED TIME %ld | ACTUAL TIME %ld | DIFFERENCE %ld\n",
+			//		  (timelineID), (proxyOnTimeline->lxcName), (desired_vt), (lxc_actual_vt), (advanceDifference));
 			debugPrint("[TL %u %s ], DESIRED TIME %ld | ACTUAL TIME %ld | DIFFERENCE %ld\n",
 					  (timelineID), (proxyOnTimeline->lxcName), (desired_vt), proxyOnTimeline->getElapsedTime(), (advanceDifference));
 		}
 
 		#ifdef ADVANCE_DEBUG
-			debugPrint("[TL %u %s ], DESIRED TIME %ld | ACTUAL TIME %ld | DIFFERENCE %ld\n",
-					 (timelineID), (proxyOnTimeline->lxcName), (desired_vt), (lxc_actual_vt), (advanceDifference));
+			//debugPrint("[TL %u %s ], DESIRED TIME %ld | ACTUAL TIME %ld | DIFFERENCE %ld\n",
+			//		 (timelineID), (proxyOnTimeline->lxcName), (desired_vt), (lxc_actual_vt), (advanceDifference));
 		#endif
 
 		pthread_mutex_lock(&statistic_mutex);
@@ -772,6 +799,13 @@ bool LxcManager::advanceLXCsOnTimeline(unsigned int timelineID, ltime_t timeToAd
 	pthread_mutex_lock(&statistic_mutex);
 	timesAdvanced += numAdvancing;
 	pthread_mutex_unlock(&statistic_mutex);
+
+	if(ret == -1){
+		debugPrint("Progress call returned with error. timeline = %d\n", timelineID);
+		//return false;
+	}
+	else
+		debugPrint("Progress call returned successfully. timeline = %d\n", timelineID);
 
 	reset(timelineID);
 	return true;
@@ -835,6 +869,7 @@ std::pair<int, unsigned int> LxcManager::analyzePacket(char* pkt_ptr, int len, u
 	struct udphdr* tk_udp_header;
 	struct tcphdr* tk_tcp_header;
 	int is_tcp = 0;
+	int is_udp = 0;
 
 	u_short udp_src_port;
 	(*ethT) = ether_type;
@@ -860,6 +895,7 @@ std::pair<int, unsigned int> LxcManager::analyzePacket(char* pkt_ptr, int len, u
 				udp_src_port = ntohs(tk_udp_header->source);
 				sum = (unsigned short)tk_udp_header->check;
 				unsigned short udpLen = htons(tk_udp_header->len);
+				is_udp = 1;
 				
 				// For dubugging
 				//debugPrint("UDP Checksum = %d, UDP Len = %d\n",sum,udpLen);
@@ -923,6 +959,8 @@ std::pair<int, unsigned int> LxcManager::analyzePacket(char* pkt_ptr, int len, u
 
 
 	if(is_tcp){
+		debugPrint("######################################\n");
+		debugPrint("~~~~~~~~~~~~~~~~~~TCP~~~~~~~~~~~~~~~~~~\n");
 		debugPrint("Ether Type: 0x%.4x\n", ether_type);
 		debugPrint("Src IP string: %s\n",result_2);
 		debugPrint("Dest IP string: %s\n", result);
@@ -939,8 +977,19 @@ std::pair<int, unsigned int> LxcManager::analyzePacket(char* pkt_ptr, int len, u
 		debugPrint("TCP urg : %d\n", tk_tcp_header->urg);
 		debugPrint("TCP fin : %d\n", tk_tcp_header->fin);
 		debugPrint("TCP window : %d\n", tk_tcp_header->window);
-		debugPrint("############################\n");
+		debugPrint("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n");
+	
 
+
+	}
+
+	if(is_udp){
+		debugPrint("######################################\n");
+		debugPrint("~~~~~~~~~~~~~~~~~~UDP~~~~~~~~~~~~~~~~~~\n");
+		debugPrint("Ether Type: 0x%.4x\n", ether_type);
+		debugPrint("Src IP string: %s\n",result_2);
+		debugPrint("Dest IP string: %s\n", result);
+		debugPrint("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n");
 
 	}
 	//debugPrint("Hash = %d, pkt_len = %d\n",hash,len);

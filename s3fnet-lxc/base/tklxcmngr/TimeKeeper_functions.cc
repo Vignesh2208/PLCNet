@@ -168,11 +168,15 @@ int progress(int timeline, int force) {
     //fd_set readfds;
     //struct timeval tv;
     //int n, rv;
-    int rv;
+    int rv = 1;
 
     sock_fd = socket(PF_NETLINK, SOCK_RAW, NETLINK_USER);
-    if (sock_fd < 0)
+    if (sock_fd < 0){
+    	perror("socket() failed");
+    	close(sock_fd);
+    	//printf("Error opening RAW socket\n");
         return -1;
+    }
 
     memset(&src_addr, 0, sizeof(src_addr));
     src_addr.nl_family = AF_NETLINK;
@@ -183,8 +187,12 @@ int progress(int timeline, int force) {
 
     char command[100];
     sprintf(command, "%c,%d,%d,%d", PROGRESS, timeline, gettid(), force);
-    if (send_to_timekeeper(command) == -1)
-	return -1;
+    if (send_to_timekeeper(command) == -1){
+    	printf("Error sending command to TimeKeeper\n");
+    	close(sock_fd);
+    	return -1;	
+    }
+	
 
 	//printf("FD ---- %d\n", sock_fd);
     //FD_ZERO(&readfds);
@@ -196,19 +204,24 @@ int progress(int timeline, int force) {
 	// tv.tv_sec = 1000; //set for 5 seconds currently, should probably change this
     //tv.tv_usec = 0;
 	// I dont think a timeout should be necessary anymore.
+	printf("Progress waiting for msg for timeline : %d for user_proc : %d\n", timeline, syscall(SYS_gettid));
+	
 	rv = poll(ufds,1,1000000);
+	//recvmsg(sock_fd, &msg, 0);
+
 	// rv = select(n, &readfds, NULL, NULL, &tv);
 
     if (rv == -1) {
-	perror("select error");
+		perror("select error");
     }
-  else if (rv == 0) {
-	printf("Timeout occurred, fix timeline..\n");
-	sprintf(command, "%c,%d", FIX_TIMELINE, timeline);
-	send_to_timekeeper(command);
-	sleep(1);
+  	else if (rv == 0) {
+		printf("Timeout occurred, fix timeline..\n");
+		sprintf(command, "%c,%d", FIX_TIMELINE, timeline);
+		send_to_timekeeper(command);
+		sleep(1);
     }
     else {
+    	//printf("Progress received msg for timeline : %d for user_proc : %d\n", timeline, syscall(SYS_gettid));
         recvmsg(sock_fd, &msg, 0);
     }
     close(sock_fd);

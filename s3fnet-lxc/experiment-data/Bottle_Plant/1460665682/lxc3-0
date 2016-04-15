@@ -1,0 +1,21 @@
+Starting Debug for lxc3-0
+Running Command /home/vignesh/Desktop/PLCs/awlsim-0.42/tests/run.sh -e 0 --node 3 /home/vignesh/Desktop/PLCs/awlsim-0.42/tests/modbus/bottle_plant_node/bottle_plant_node.awl
+6 (process ID) old priority 0, new priority 10
+=== Running tests with 'python2'
+Running test 'bottle_plant_node.awl' with 'python2' ... [u'0', u'10.10.0.9']
+[u'1', u'10.10.0.10']
+[u'IDS', u'10.10.0.10']
+('Dest IP : ', '10.10.0.33')
+('Resolved hostname = ', '10.10.0.33')
+('IP of IDS : ', '10.10.0.33')
+('Dest IP : ', '10.10.0.33')
+('Resolved hostname = ', '10.10.0.33')
+('IP of IDS : ', '10.10.0.33')
+('Resolved hostname = ', '127.0.0.1')
+('IP of IDS : ', '10.10.0.33')
+Started server process
+('Start time = ', 1460665687.459547)
+Listening on port 502
+('End time = ', 1460665692.46312)
+Socket TIMEOUT Done !!!!!!!!!!!!!!!!
+Re-Started server process

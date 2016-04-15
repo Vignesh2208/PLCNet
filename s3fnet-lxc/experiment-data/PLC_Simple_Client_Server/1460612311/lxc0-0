@@ -1,0 +1,172 @@
+Starting Debug for lxc0-0
+Running Command /home/vignesh/Desktop/PLCs/awlsim-0.42/tests/run.sh -e 0 --node 0 /home/vignesh/Desktop/PLCs/awlsim-0.42/tests/modbus/simple_client_server_multiple/sfb102_server.awl
+6 (process ID) old priority 0, new priority 10
+=== Running tests with 'python2'
+Running test 'sfb102_server.awl' with 'python2' ... [u'0', u'10.10.0.9']
+[u'1', u'10.10.0.10']
+[u'IDS', u'10.10.0.10']
+('Dest IP : ', '10.10.0.21')
+('Resolved hostname = ', '10.10.0.21')
+('IP of IDS : ', '10.10.0.25', ' len = ', 10, ' orig_len = ', 10)
+New input generated
+New input generated
+New input generated
+New input generated
+New input generated
+('Start time = ', 1460612313.720969)
+Listening on port 502
+Established Connection from ('10.10.0.21', 50764)
+('Recv new msg = ', '00 10 03 00 02 00 01 16 ff e5 9e', ' at Node id = ', 1)
+('Sent response to client = ', bytearray(b'\x00\x10\x03\x02\x124[>\x03E'))
+('Recv new msg = ', '00 10 03 00 02 00 01 16 35 63 f8', ' at Node id = ', 1)
+('Sent response to client = ', bytearray(b'\x00\x10\x03\x02\x124[c8\x03'))
+('Recv new msg = ', '00 10 03 00 02 00 01 16 04 f1 7e', ' at Node id = ', 1)
+('Sent response to client = ', bytearray(b'\x00\x10\x03\x02\x124[e\x82\xec'))
+('Recv new msg = ', '00 10 03 00 02 00 01 16 dd 52 80', ' at Node id = ', 1)
+('Sent response to client = ', bytearray(b'\x00\x10\x03\x02\x124[\x1ew\xf6'))
+('Recv new msg = ', '00 10 03 00 02 00 01 16 78 99 d3', ' at Node id = ', 1)
+('Sent response to client = ', bytearray(b'\x00\x10\x03\x02\x124[O\xf2\xfc'))
+('Recv new msg = ', '00 10 03 00 02 00 01 16 21 7c 6b', ' at Node id = ', 1)
+('Sent response to client = ', bytearray(b'\x00\x10\x03\x02\x124[P\xc2\xbb'))
+('Recv new msg = ', '00 10 03 00 02 00 01 16 03 8f 19', ' at Node id = ', 1)
+('Sent response to client = ', bytearray(b'\x00\x10\x03\x02\x124[:\xf4\x8a'))
+('Recv new msg = ', '00 10 03 00 02 00 01 16 54 7f ef', ' at Node id = ', 1)
+('Sent response to client = ', bytearray(b'\x00\x10\x03\x02\x124[\xc0\xe5\xa5'))
+('Recv new msg = ', '00 10 03 00 02 00 01 16 07 c3 b8', ' at Node id = ', 1)
+('Sent response to client = ', bytearray(b'\x00\x10\x03\x02\x124[\x0b1\x1b'))
+New input generated
+New input generated
+New input generated
+New input generated
+New input generated
+New input generated
+New input generated
+New input generated
+New input generated
+New input generated
+New input generated
+New input generated
+New input generated
+New input generated
+New input generated
+New input generated
+New input generated
+New input generated
+New input generated
+New input generated
+New input generated
+New input generated
+New input generated
+New input generated
+New input generated
+New input generated
+New input generated
+New input generated
+New input generated
+New input generated
+New input generated
+New input generated
+New input generated
+New input generated
+New input generated
+New input generated
+New input generated
+New input generated
+New input generated
+New input generated
+New input generated
+New input generated
+New input generated
+New input generated
+New input generated
+New input generated
+New input generated
+New input generated
+New input generated
+New input generated
+New input generated
+New input generated
+New input generated
+New input generated
+New input generated
+New input generated
+New input generated
+New input generated
+New input generated
+New input generated
+New input generated
+New input generated
+New input generated
+New input generated
+New input generated
+New input generated
+New input generated
+New input generated
+New input generated
+New input generated
+New input generated
+New input generated
+New input generated
+New input generated
+New input generated
+New input generated
+New input generated
+New input generated
+New input generated
+New input generated
+New input generated
+New input generated
+New input generated
+New input generated
+New input generated
+New input generated
+New input generated
+New input generated
+New input generated
+New input generated
+New input generated
+New input generated
+New input generated
+New input generated
+New input generated
+New input generated
+New input generated
+New input generated
+New input generated
+New input generated
+New input generated
+New input generated
+New input generated
+New input generated
+New input generated
+New input generated
+New input generated
+New input generated
+New input generated
+New input generated
+New input generated
+New input generated
+New input generated
+New input generated
+New input generated
+New input generated
+New input generated
+New input generated
+New input generated
+New input generated
+New input generated
+New input generated
+New input generated
+New input generated
+New input generated
+New input generated
+New input generated
+New input generated
+New input generated
+New input generated
+New input generated
+New input generated
+New input generated
+New input generated
+New input generated
+New input generated

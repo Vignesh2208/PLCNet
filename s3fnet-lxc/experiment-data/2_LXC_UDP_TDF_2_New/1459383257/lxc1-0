@@ -1,0 +1,63 @@
+Starting Debug for lxc1-0
+Running Command python /home/vignesh/Desktop/PLCs/awlsim-0.42/s3fnet-lxc/csudp/tcpclient.py 10.10.0.9
+connecting to 10.10.0.9 port 10000
+sending "This is the message.  It will be repeated."
+Send time :  2016-03-30 19:14:19.444365
+received "This is the message.  It will be repeated."
+sending "This is the message.  It will be repeated."
+Send time :  2016-03-30 19:14:19.452429
+received "This is the message.  It will be repeated."
+sending "This is the message.  It will be repeated."
+Send time :  2016-03-30 19:14:19.460485
+received "This is the message.  It will be repeated."
+sending "This is the message.  It will be repeated."
+Send time :  2016-03-30 19:14:19.468549
+received "This is the message.  It will be repeated."
+sending "This is the message.  It will be repeated."
+Send time :  2016-03-30 19:14:19.476623
+received "This is the message.  It will be repeated."
+sending "This is the message.  It will be repeated."
+Send time :  2016-03-30 19:14:19.484694
+received "This is the message.  It will be repeated."
+sending "This is the message.  It will be repeated."
+Send time :  2016-03-30 19:14:19.492752
+received "This is the message.  It will be repeated."
+sending "This is the message.  It will be repeated."
+Send time :  2016-03-30 19:14:19.500825
+received "This is the message.  It will be repeated."
+sending "This is the message.  It will be repeated."
+Send time :  2016-03-30 19:14:19.508900
+received "This is the message.  It will be repeated."
+sending "This is the message.  It will be repeated."
+Send time :  2016-03-30 19:14:19.516995
+received "This is the message.  It will be repeated."
+sending "This is the message.  It will be repeated."
+Send time :  2016-03-30 19:14:19.525060
+received "This is the message.  It will be repeated."
+sending "This is the message.  It will be repeated."
+Send time :  2016-03-30 19:14:19.533130
+received "This is the message.  It will be repeated."
+sending "This is the message.  It will be repeated."
+Send time :  2016-03-30 19:14:19.541197
+received "This is the message.  It will be repeated."
+sending "This is the message.  It will be repeated."
+Send time :  2016-03-30 19:14:19.549273
+received "This is the message.  It will be repeated."
+sending "This is the message.  It will be repeated."
+Send time :  2016-03-30 19:14:19.557337
+received "This is the message.  It will be repeated."
+sending "This is the message.  It will be repeated."
+Send time :  2016-03-30 19:14:19.565394
+received "This is the message.  It will be repeated."
+sending "This is the message.  It will be repeated."
+Send time :  2016-03-30 19:14:19.573446
+received "This is the message.  It will be repeated."
+sending "This is the message.  It will be repeated."
+Send time :  2016-03-30 19:14:19.581515
+received "This is the message.  It will be repeated."
+sending "This is the message.  It will be repeated."
+Send time :  2016-03-30 19:14:19.589582
+received "This is the message.  It will be repeated."
+sending "This is the message.  It will be repeated."
+Send time :  2016-03-30 19:14:19.597656
+received "This is the message.  It will be repeated."

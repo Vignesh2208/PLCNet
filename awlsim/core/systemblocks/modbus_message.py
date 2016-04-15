@@ -207,6 +207,7 @@ class ModBusRequestMessage(object) :
 			msgSum = msgSum + self.byteCount + sum(self.presetDataHi) + sum(self.presetDataLo)
 
 		self.msgCRC = msgSum & 0xFFFF
+		self.msgCRC = self.msgCRC%256
 
 	def construct_request_message(self,params) :
 		
@@ -426,7 +427,7 @@ class ModBusResponseMessage(object) :
 			self.numberPresetLo = params["numberPreset"] & 0x00FF
 			msgSum = msgSum + self.numberPresetLo
 
-		self.msgCRC = msgSum
+		self.msgCRC = msgSum % 256
 
 	def construct_response_message(self,params) :
 
@@ -439,7 +440,7 @@ class ModBusResponseMessage(object) :
 		if self.ERROR_CODE != NO_ERROR :
 			self.msg.append(0x81)
 			self.msg.append(self.ERROR_CODE)
-			self.msgCRC = self.slaveAddress + 0x81 + self.ERROR_CODE
+			self.msgCRC = (self.slaveAddress + 0x81 + self.ERROR_CODE) % 256
 			self.msg.append(self.msgCRC)
 			return self.msg
 
@@ -484,7 +485,7 @@ class ModBusErrorMessage(object) :
 		msg.append(self.transaction_id)
 		msg.append(0x81)
 		msg.append(self.error_code)
-		CRC = self.slaveAddress + 0x81 + self.error_code + self.transaction_id
+		CRC = (self.slaveAddress + 0x81 + self.error_code + self.transaction_id) % 256
 		msg.append(CRC)
 		return msg
 

@@ -35,10 +35,5 @@ clean_exp:
 	$(CLEAN_EXPERIMENT)
 
 
-examplerun:
-	$(CLEAN_EXPERIMENT)
-	python awlsim/config_parser.py
-	cd conf/PLC_Config/; make clean; make; sudo make test
-	chmod -R 777 s3fnet-lxc/experiment-data
 	
 

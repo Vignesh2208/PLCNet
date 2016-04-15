@@ -1,3 +1,8 @@
 lxc0-0
 lxc1-0
 lxc2-0
+lxc3-0
+lxc4-0
+lxc5-0
+lxc6-0
+lxc7-0

@@ -1,8 +1,31 @@
 Starting Debug for lxc2-0
-Running Command python /home/vignesh/Desktop/PLCs/awlsim-0.42/conf/PLC_Config/udp_reader.py
-Socket created
-Socket bind complete
-Received Message :  1,1457986231.609243,SEND,bytearray(b'\x00\x10\x03\x00\x02\x00\x01\x16')
-Received Message :  0,1457986231.620347,RECV,bytearray(b'\x00\x10\x03\x00\x02\x00\x01\x16')
-Received Message :  0,1457986231.620389,SEND,bytearray(b'\x00\x10\x03\x02\x124[')
-Received Message :  1,1457986231.645491,RECV,bytearray(b'\x00\x10\x03\x02\x124[')
+Running Command /home/vignesh/Desktop/PLCs/awlsim-0.42/tests/run.sh -e 0 --node 2 /home/vignesh/Desktop/PLCs/awlsim-0.42/tests/modbus/bottle_plant_node/bottle_plant_node.awl
+6 (process ID) old priority 0, new priority 10
+=== Running tests with 'python2'
+Running test 'bottle_plant_node.awl' with 'python2' ... [u'0', u'10.10.0.9']
+[u'1', u'10.10.0.10']
+[u'IDS', u'10.10.0.10']
+('Dest IP : ', '10.10.0.41')
+('Resolved hostname = ', '10.10.0.41')
+('IP of IDS : ', '10.10.0.33')
+('Dest IP : ', '10.10.0.41')
+('Resolved hostname = ', '10.10.0.41')
+('IP of IDS : ', '10.10.0.33')
+('Dest IP : ', '10.10.0.37')
+('Resolved hostname = ', '10.10.0.37')
+('IP of IDS : ', '10.10.0.33')
+Started server process
+('Start time = ', 1460689066.720042)
+('IP:PORT = ', '10.10.0.41', 502)
+Resumed connection
+('Start time = ', 1460689066.728255)
+('IP:PORT = ', '10.10.0.37', 502)
+Resumed connection
+('Sent msg = ', bytearray(b'\x05\x10\x03\x00\x02\x00\x02\x1c\xfc}\x86'))
+('Response from server = ', '05 10 03 04 00 00 00 00 1c cb 01 86')
+Response processed
+Resumed connection
+('Sent msg = ', bytearray(b'\x06\x10\x03\x00\x02\x00\x02\x1dP\xc7\xaf'))
+('Response from server = ', '06 10 03 04 00 00 00 00 1d bb c4 fa')
+Response processed
+Resumed connection

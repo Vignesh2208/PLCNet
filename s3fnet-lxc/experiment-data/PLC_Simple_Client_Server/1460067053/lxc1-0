@@ -1,0 +1,92 @@
+Starting Debug for lxc1-0
+Running Command /home/vignesh/Desktop/PLCs/awlsim-0.42/tests/run.sh -e 0 --node 1 /home/vignesh/Desktop/PLCs/awlsim-0.42/tests/modbus/simple_client_server_multiple/sfb102_client.awl
+6 (process ID) old priority 0, new priority 10
+=== Running tests with 'python3'
+Running test 'sfb102_client.awl' with 'python3' ... ['0', '10.10.0.9']
+['1', '10.10.0.10']
+['IDS', '10.10.0.10']
+Dest IP :  10.10.0.17
+Resolved hostname =  10.10.0.17
+IP of IDS :  10.10.0.25  len =  10  orig_len =  10
+Start time =  1460067058.449263
+Resumed connection
+FunctionCode =  3
+Sent msg =  bytearray(b'\x00\x10\x03\x00\x02\x00\x01\x16')
+Waiting for cmd queue get
+Resumed from cmd queue get
+Response from server :  bytearray(b'\x00\x10\x03\x02\x124[')
+Function Code =  3
+Resuming connection
+Resumed connection
+FunctionCode =  3
+Sent msg =  bytearray(b'\x00\x10\x03\x00\x02\x00\x01\x16')
+Waiting for cmd queue get
+Resumed from cmd queue get
+Response from server :  bytearray(b'\x00\x10\x03\x02\x124[')
+Function Code =  3
+Resuming connection
+Resumed connection
+FunctionCode =  3
+Sent msg =  bytearray(b'\x00\x10\x03\x00\x02\x00\x01\x16')
+Waiting for cmd queue get
+Resumed from cmd queue get
+Response from server :  bytearray(b'\x00\x10\x03\x02\x124[')
+Function Code =  3
+Resuming connection
+Resumed connection
+FunctionCode =  3
+Sent msg =  bytearray(b'\x00\x10\x03\x00\x02\x00\x01\x16')
+Waiting for cmd queue get
+Resumed from cmd queue get
+Response from server :  bytearray(b'\x00\x10\x03\x02\x124[')
+Function Code =  3
+Resuming connection
+Resumed connection
+FunctionCode =  3
+Sent msg =  bytearray(b'\x00\x10\x03\x00\x02\x00\x01\x16')
+Waiting for cmd queue get
+Resumed from cmd queue get
+Response from server :  bytearray(b'\x00\x10\x03\x02\x124[')
+Function Code =  3
+Resuming connection
+Resumed connection
+FunctionCode =  3
+Sent msg =  bytearray(b'\x00\x10\x03\x00\x02\x00\x01\x16')
+Waiting for cmd queue get
+Resumed from cmd queue get
+Response from server :  bytearray(b'\x00\x10\x03\x02\x124[')
+Function Code =  3
+Resuming connection
+Resumed connection
+FunctionCode =  3
+Sent msg =  bytearray(b'\x00\x10\x03\x00\x02\x00\x01\x16')
+Waiting for cmd queue get
+Resumed from cmd queue get
+Response from server :  bytearray(b'\x00\x10\x03\x02\x124[')
+Function Code =  3
+Resuming connection
+Resumed connection
+FunctionCode =  3
+Sent msg =  bytearray(b'\x00\x10\x03\x00\x02\x00\x01\x16')
+Waiting for cmd queue get
+Resumed from cmd queue get
+Response from server :  bytearray(b'\x00\x10\x03\x02\x124[')
+Function Code =  3
+Resuming connection
+Resumed connection
+FunctionCode =  3
+Sent msg =  bytearray(b'\x00\x10\x03\x00\x02\x00\x01\x16')
+Waiting for cmd queue get
+Resumed from cmd queue get
+Response from server :  bytearray(b'\x00\x10\x03\x02\x124[')
+Function Code =  3
+Resuming connection
+Resumed connection
+FunctionCode =  3
+Sent msg =  bytearray(b'\x00\x10\x03\x00\x02\x00\x01\x16')
+Waiting for cmd queue get
+Resumed from cmd queue get
+Response from server :  bytearray(b'\x00\x10\x03\x02\x124[')
+Function Code =  3
+Start select time =  1460067059.509427
+End select time =  1460067062.509432

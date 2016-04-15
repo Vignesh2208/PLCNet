@@ -12,8 +12,41 @@
 #include <sys/socket.h>
 #include <netinet/in.h>
 #include <arpa/inet.h>
+#include <netdb.h>
+#include <sys/ioctl.h>
+#include <sys/time.h> 
+#include <fcntl.h>
+#include <sys/poll.h>
+#include <time.h>
 
 #define BUFSIZE 1024
+
+void gettimeofdayoriginal(struct timeval *tv, struct timezone *tz) {
+#ifdef __x86_64
+  syscall(314, tv, tz);
+  return;
+#endif
+  syscall(351, tv, tz);
+  return;
+}
+
+void print_time(){
+
+  struct timeval later;
+  struct timeval later1;
+  struct tm localtm;
+  struct tm origtm;
+
+  gettimeofday(&later, NULL);
+  gettimeofdayoriginal(&later1, NULL);
+  localtime_r(&(later.tv_sec), &localtm);
+  localtime_r(&(later1.tv_sec),&origtm);
+  //printf("%d %d virtual time: %ld:%ld physical time: %ld:%ld localtime: %d:%02d:%02d %ld\n",x,getpid(),later.tv_sec-now.tv_sec,later.tv_usec-now.tv_usec,later1.tv_sec-now1.tv_sec,later1.tv_usec-now1.tv_usec,localtm.tm_hour, localtm.tm_min, localtm.tm_sec, later.tv_usec);
+
+  printf("curr : localtime: %d:%02d:%02d %ld, orig_time : %d:%02d:%02d %ld\n", localtm.tm_hour, localtm.tm_min, localtm.tm_sec, later.tv_usec, origtm.tm_hour, origtm.tm_min, origtm.tm_sec, later1.tv_usec);
+  fflush(stdout);
+}
+
 
 /*
  * error - wrapper for perror
@@ -96,22 +129,25 @@ int main(int argc, char **argv) {
 		 (struct sockaddr *) &clientaddr, &clientlen);
     if (n < 0)
       error("ERROR in recvfrom");
-	numReceived++;
+	   numReceived++;
 	
 
     /* 
      * gethostbyaddr: determine who sent the datagram
      */
-    //hostp = gethostbyaddr((const char *)&clientaddr.sin_addr.s_addr, 
-	//		  sizeof(clientaddr.sin_addr.s_addr), AF_INET);
-    //if (hostp == NULL)
-    //  error("ERROR on gethostbyaddr");
+      //hostp = gethostbyaddr((const char *)&clientaddr.sin_addr.s_addr, 
+	    //		  sizeof(clientaddr.sin_addr.s_addr), AF_INET);
+      //if (hostp == NULL)
+      //  error("ERROR on gethostbyaddr");
     hostaddrp = inet_ntoa(clientaddr.sin_addr);
     if (hostaddrp == NULL)
       error("ERROR on inet_ntoa\n");
-    //printf("server received datagram from %s (%s)\n", 
-	//   hostp->h_name, hostaddrp);
+     //printf("server received datagram from %s (%s)\n", 
+	   //hostp->h_name, hostaddrp);
+
     printf("server received %d/%d bytes: %s\n", strlen(buf), n, buf);
+    printf("Recv Time : \n");
+    print_time();
      
     /* 
      * sendto: echo the input back to the client 

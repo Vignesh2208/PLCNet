@@ -1,0 +1,557 @@
+# .=======================================================================================================.
+# |                                            NETWORKS                                                   |
+# '======================================================================================================='
+
+networks
+[
+	network0
+	[
+		net
+		[
+			router
+			[
+				id 0
+				_find .dict.routerGraph.graph
+				interface [id 0 _extends .dict.100Mb]
+				interface [id 1 _extends .dict.100Mb]
+				# interface [id 2 _extends .dict.100Mb]
+				interface [id 3 _extends .dict.100Mb]	# NOT ATTACHED	0:0(3)
+			]
+	
+			router
+			[
+				id 1
+				_find .dict.routerGraph.graph
+				interface [id 0 _extends .dict.100Mb]
+				interface [id 1 _extends .dict.100Mb]
+				interface [id 2 _extends .dict.100Mb] # NOT ATTACHED	0:1(2)
+			]
+	
+			router
+			[
+				id 2
+				_find .dict.routerGraph.graph
+				interface [id 0 _extends .dict.100Mb]
+				interface [id 1 _extends .dict.100Mb]
+				interface [id 2 _extends .dict.100Mb]	# NOT ATTACHED	0:2(2)
+			]
+					
+			link [ attach 0(0) attach 2(0) _extends .dict.link_delay_1ms ] 
+			link [ attach 0(1) attach 1(1) _extends .dict.link_delay_1ms ] 
+			link [ attach 1(0) attach 2(1) _extends .dict.link_delay_1ms ] 
+		]
+	]	
+	# ====================================================================================================
+	network1
+	[
+		net
+		[
+			router
+			[
+				id 0
+				_find .dict.routerGraph.graph
+				interface [id 0 _extends .dict.100Mb]
+				interface [id 1 _extends .dict.100Mb]
+				interface [id 2 _extends .dict.100Mb]	
+				interface [id 3 _extends .dict.100Mb]	# NOT ATTACHED 0(3)
+			]
+			router
+			[
+				id 1
+				_find .dict.routerGraph.graph
+				interface [id 0 _extends .dict.100Mb]
+				interface [id 1 _extends .dict.100Mb]
+				interface [id 2 _extends .dict.100Mb]	
+			]
+			host 
+			[
+				id 2
+				_extends .dict.TCPServer
+			]
+			host 
+			[
+				id 3
+				_extends .dict.TCPServer
+			]
+			host 
+			[
+				id 4
+				_extends .dict.TCPServer
+			]
+			host 
+			[
+				id 5
+				_extends .dict.TCPServer
+			]
+			
+			link [ attach 0(2) attach 1(0) _extends .dict.link_delay_1ms ]	
+			link [ attach 0(0) attach 2(0) _extends .dict.link_delay_1ms ]		
+			link [ attach 0(1) attach 3(0) _extends .dict.link_delay_1ms ]	
+			link [ attach 1(1) attach 4(0) _extends .dict.link_delay_1ms ]	
+			link [ attach 1(2) attach 5(0) _extends .dict.link_delay_1ms ]	
+		]					
+	]
+	# ====================================================================================================
+	network2
+	[
+		net
+		[
+			router
+			[
+				id 0
+				_find .dict.routerGraph.graph
+				interface [id 0 _extends .dict.100Mb] # NOT ATTACHED	2:0(0)
+				interface [id 1 _extends .dict.100Mb]
+				interface [id 2 _extends .dict.100Mb]	
+			]
+			router
+			[
+				id 1
+				_find .dict.routerGraph.graph
+				interface [id 0 _extends .dict.100Mb] # NOT ATTACHED	2:1(0)
+				interface [id 1 _extends .dict.100Mb]
+				interface [id 2 _extends .dict.100Mb]	
+			]
+			router
+			[
+				id 2
+				_find .dict.routerGraph.graph
+				interface [id 0 _extends .dict.100Mb]
+				interface [id 1 _extends .dict.100Mb]
+				interface [id 2 _extends .dict.100Mb]	
+				interface [id 3 _extends .dict.100Mb]	
+			]
+			router
+			[
+				id 3
+				_find .dict.routerGraph.graph
+				interface [id 0 _extends .dict.100Mb]
+				interface [id 1 _extends .dict.100Mb]
+				interface [id 2 _extends .dict.100Mb]	
+				interface [id 3 _extends .dict.100Mb]	
+			]
+			router
+			[
+				id 4
+				_find .dict.routerGraph.graph
+				interface [id 0 _extends .dict.100Mb]
+				interface [id 1 _extends .dict.100Mb]
+			]
+			router
+			[
+				id 5
+				_find .dict.routerGraph.graph
+				interface [id 0 _extends .dict.100Mb]
+				interface [id 1 _extends .dict.100Mb]
+				interface [id 2 _extends .dict.100Mb]	
+			]
+			router
+			[
+				id 6
+				_find .dict.routerGraph.graph
+				interface [id 0 _extends .dict.100Mb]
+				interface [id 1 _extends .dict.100Mb]
+			]
+			host 
+			[
+				id 7
+				_extends .dict.TCPClient
+			]
+			host 
+			[
+				id 8
+				_extends .dict.TCPClient
+			]
+			host 
+			[
+				id 9
+				_extends .dict.TCPClient
+			]
+			host 
+			[
+				id 10
+				_extends .dict.TCPClient
+			]
+			host 
+			[
+				id 11
+				_extends .dict.emuHost
+			]
+						
+			link [ attach 0(1) attach 1(1) _extends .dict.link_delay_1ms ]	
+			
+			link [ attach 2(0) attach 0(2) _extends .dict.link_delay_1ms ]	
+			link [ attach 1(2) attach 3(0) _extends .dict.link_delay_1ms ]	
+			
+			link [ attach 7(0) attach 2(2) _extends .dict.link_delay_1ms ]	
+			link [ attach 2(1) attach 3(1) _extends .dict.link_delay_1ms ]	
+			link [ attach 3(2) attach 9(0) _extends .dict.link_delay_1ms ]	
+			
+			link [ attach 2(3) attach 4(0) _extends .dict.link_delay_1ms ]	
+			link [ attach 3(3) attach 5(0) _extends .dict.link_delay_1ms ]	
+			
+			link [ attach 8(0) attach 4(1)  _extends .dict.link_delay_1ms ]			
+			link [ attach 5(1) attach 10(0) _extends .dict.link_delay_1ms ]	
+				
+			link [ attach 5(2) attach 6(0)   _extends .dict.link_delay_1ms ]	
+			link [ attach 6(1) attach 11(0)  _extends .dict.link_delay_1ms ]	
+		]	
+	]
+	# ====================================================================================================
+	network3
+	[
+		net
+		[
+			router
+			[
+				id 0
+				_find .dict.routerGraph.graph
+				interface [id 0 _extends .dict.100Mb] # Not attached 0(0)
+				interface [id 1 _extends .dict.100Mb]				
+			]
+			
+			router
+			[
+				id 1
+				_find .dict.routerGraph.graph
+				interface [id 0 _extends .dict.100Mb] # Not attached 1(0)
+				interface [id 1 _extends .dict.100Mb]	
+				# interface [id 2 _extends .dict.100Mb]					
+			]
+			#host 
+			#[
+			#	id 2
+			#	_extends .dict.dilation
+			#	isEmulated 1
+			#	# cmd ping_10.10.0.78_-i_6
+			#	_extends .dict.emuHost
+			#]
+			
+			 link [ attach 0(1) attach 1(1) _extends .dict.link_delay_1ms ]			
+			#link [ attach 2(0) attach 1(2) _extends .dict.link_delay_1ms ]		
+		]
+		
+	]	
+	# ====================================================================================================
+	networkBackBone
+	[
+		net
+		[
+			router
+			[
+				id 0
+				_find .dict.routerGraph.graph
+				interface [id 0 _extends .dict.100Mb] # Not attached 0(0)
+				interface [id 1 _extends .dict.100Mb]
+				interface [id 2 _extends .dict.100Mb] # Not attached 0(1)
+				interface [id 3 _extends .dict.100Mb] # Not attached 0(2)	
+			]			
+			router
+			[
+				id 1
+				_find .dict.routerGraph.graph
+				interface [id 0 _extends .dict.100Mb] # Not attached 1(0)
+				interface [id 1 _extends .dict.100Mb]
+				interface [id 2 _extends .dict.100Mb] # Not attached 1(2)
+				interface [id 3 _extends .dict.100Mb] # Not attached 1(3)	
+				interface [id 4 _extends .dict.100Mb] # TO CLIQUE    1(4)
+			]
+			link [ attach 0(1) attach 1(1) _extends .dict.link_delay_1ms ]					
+		]		
+
+	]	
+	# ====================================================================================================
+	# ====================================================================================================
+	# ============================================== CAMPUS ==============================================
+	# ====================================================================================================
+	# ====================================================================================================
+	CAMPUS_BASIC
+	[
+		Net 
+		[
+			Net [id 0 alignment 0 _extends .networks.network0.Net]
+			Net [id 1 alignment 1 _extends .networks.network1.Net]
+			Net [id 2 alignment 2 _extends .networks.network2.Net]
+			Net [id 3 alignment 3 _extends .networks.network3.Net]
+			Net [id 4 alignment 4 _extends .networks.networkBackBone.Net]
+			
+				# ---------------------------
+				# Network 0 With Backbone
+				# ---------------------------
+			link [ attach 0:0(3) attach 4:0(0) _extends .dict.link_delay_1ms ] 
+			link [ attach 0:1(2) attach 4:1(0) _extends .dict.link_delay_1ms ] 
+			
+				# ---------------------------
+				# Network 0 with Network 1
+				# ---------------------------
+			link [ attach 0:2(2) attach 1:0(3) _extends .dict.link_delay_1ms ] 
+			
+				# ---------------------------
+				# Backbone with Network 2
+				# ---------------------------
+			link [ attach 4:0(2) attach 2:0(0) _extends .dict.link_delay_1ms ] 
+			link [ attach 4:0(3) attach 2:1(0) _extends .dict.link_delay_1ms ] 
+			
+				# ---------------------------
+				# Backbone with Network 3
+				# ---------------------------
+			link [ attach 4:1(2) attach 3:0(0) _extends .dict.link_delay_1ms ] 	
+			link [ attach 4:1(3) attach 3:1(0) _extends .dict.link_delay_1ms ] 	
+		] 
+	]
+	# ====================================================================================================
+	CAMPUS_0
+	[
+		Net 
+		[
+			Net [id 0 alignment 0 _extends .networks.network0.Net]
+			Net [id 1 alignment 0 _extends .networks.network1.Net]
+			Net [id 2 alignment 0 _extends .networks.network2.Net]
+			Net [id 3 alignment 0 _extends .networks.network3.Net]
+			Net [id 4 alignment 0 _extends .networks.networkBackBone.Net]
+			link [ attach 0:0(3) attach 4:0(0) _extends .dict.link_delay_1ms ] 
+			link [ attach 0:1(2) attach 4:1(0) _extends .dict.link_delay_1ms ] 
+			link [ attach 0:2(2) attach 1:0(3) _extends .dict.link_delay_1ms ] 
+			link [ attach 4:0(2) attach 2:0(0) _extends .dict.link_delay_1ms ] 
+			link [ attach 4:0(3) attach 2:1(0) _extends .dict.link_delay_1ms ] 
+			link [ attach 4:1(2) attach 3:0(0) _extends .dict.link_delay_1ms ] 	
+			link [ attach 4:1(3) attach 3:1(0) _extends .dict.link_delay_1ms ] 	
+		] 
+	]
+	# ====================================================================================================
+	CAMPUS_1
+	[
+		Net 
+		[
+			Net [id 0 alignment 1 _extends .networks.network0.Net]
+			Net [id 1 alignment 1 _extends .networks.network1.Net]
+			Net [id 2 alignment 1 _extends .networks.network2.Net]
+			Net [id 3 alignment 1 _extends .networks.network3.Net]
+			Net [id 4 alignment 1 _extends .networks.networkBackBone.Net]
+			link [ attach 0:0(3) attach 4:0(0) _extends .dict.link_delay_1ms ] 
+			link [ attach 0:1(2) attach 4:1(0) _extends .dict.link_delay_1ms ] 
+			link [ attach 0:2(2) attach 1:0(3) _extends .dict.link_delay_1ms ] 
+			link [ attach 4:0(2) attach 2:0(0) _extends .dict.link_delay_1ms ] 
+			link [ attach 4:0(3) attach 2:1(0) _extends .dict.link_delay_1ms ] 
+			link [ attach 4:1(2) attach 3:0(0) _extends .dict.link_delay_1ms ] 	
+			link [ attach 4:1(3) attach 3:1(0) _extends .dict.link_delay_1ms ] 	
+		] 
+	]
+	# ====================================================================================================
+	CAMPUS_2
+	[
+		Net 
+		[
+			Net [id 0 alignment 2 _extends .networks.network0.Net]
+			Net [id 1 alignment 2 _extends .networks.network1.Net]
+			Net [id 2 alignment 2 _extends .networks.network2.Net]
+			Net [id 3 alignment 2 _extends .networks.network3.Net]
+			Net [id 4 alignment 2 _extends .networks.networkBackBone.Net]
+			link [ attach 0:0(3) attach 4:0(0) _extends .dict.link_delay_1ms ] 
+			link [ attach 0:1(2) attach 4:1(0) _extends .dict.link_delay_1ms ] 
+			link [ attach 0:2(2) attach 1:0(3) _extends .dict.link_delay_1ms ] 
+			link [ attach 4:0(2) attach 2:0(0) _extends .dict.link_delay_1ms ] 
+			link [ attach 4:0(3) attach 2:1(0) _extends .dict.link_delay_1ms ] 
+			link [ attach 4:1(2) attach 3:0(0) _extends .dict.link_delay_1ms ] 	
+			link [ attach 4:1(3) attach 3:1(0) _extends .dict.link_delay_1ms ] 	
+		] 
+	]
+	# ====================================================================================================
+	CLIQUE
+	[
+		Net 
+		[
+			router
+			[
+				id 0
+				_find .dict.routerGraph.graph
+				interface [id 0 _extends .dict.1Gb] 
+				interface [id 1 _extends .dict.1Gb]
+				interface [id 2 _extends .dict.1Gb] 
+				interface [id 3 _extends .dict.1Gb]		
+				interface [id 4 _extends .dict.1Gb]	
+			]
+			router
+			[
+				id 1
+				_find .dict.routerGraph.graph
+				interface [id 0 _extends .dict.1Gb] 
+				interface [id 1 _extends .dict.1Gb]
+				interface [id 2 _extends .dict.1Gb] 
+				interface [id 3 _extends .dict.1Gb]		
+				interface [id 4 _extends .dict.1Gb]	
+			]	
+			router
+			[
+				id 2
+				_find .dict.routerGraph.graph
+				interface [id 0 _extends .dict.1Gb] 
+				interface [id 1 _extends .dict.1Gb]
+				interface [id 2 _extends .dict.1Gb] 
+				interface [id 3 _extends .dict.1Gb]		
+				interface [id 4 _extends .dict.1Gb]	
+			]	
+			router
+			[
+				id 3
+				_find .dict.routerGraph.graph
+				interface [id 1 _extends .dict.1Gb]
+				interface [id 2 _extends .dict.1Gb] 
+				interface [id 3 _extends .dict.1Gb]		
+				interface [id 4 _extends .dict.1Gb]	
+			]	
+			router
+			[
+				id 4
+				_find .dict.routerGraph.graph
+				interface [id 1 _extends .dict.1Gb]
+				interface [id 2 _extends .dict.1Gb] 
+				interface [id 3 _extends .dict.1Gb]		
+				interface [id 4 _extends .dict.1Gb]	
+			]
+			
+			link [ attach 4(1) attach 0(1) _extends .dict.link_delay_1ms ] #1
+			link [ attach 0(4) attach 2(3) _extends .dict.link_delay_1ms ] #2 
+			link [ attach 0(2) attach 1(2) _extends .dict.link_delay_1ms ] #3 
+			link [ attach 3(4) attach 0(3) _extends .dict.link_delay_1ms ] #4
+			link [ attach 2(2) attach 1(1) _extends .dict.link_delay_1ms ] #5
+			link [ attach 4(4) attach 2(4) _extends .dict.link_delay_1ms ] #6
+			link [ attach 3(2) attach 2(1) _extends .dict.link_delay_1ms ] #7        
+			link [ attach 3(3) attach 1(4) _extends .dict.link_delay_1ms ] #8   
+			link [ attach 4(2) attach 3(1) _extends .dict.link_delay_1ms ] #9
+			link [ attach 4(3) attach 1(3) _extends .dict.link_delay_1ms ] #10    					
+		] 	
+	]
+	# ====================================================================================================
+	emuNet
+	[
+		net
+		[
+			router
+			[
+				id 0
+				_find .dict.routerGraph.graph
+				interface [id 0 _extends .dict.1Gb] 
+				interface [id 1 _extends .dict.1Gb]
+				interface [id 2 _extends .dict.1Gb] 
+				interface [id 3 _extends .dict.1Gb]		
+				interface [id 4 _extends .dict.1Gb]
+				interface [id 5 _extends .dict.1Gb]
+				interface [id 6 _extends .dict.1Gb] 
+				interface [id 7 _extends .dict.1Gb]		
+				interface [id 8 _extends .dict.1Gb]
+				interface [id 9 _extends .dict.1Gb]
+				interface [id 10 _extends .dict.1Gb]						
+			]
+			
+			host
+			[
+				idrange [from 1 to 10]
+				_extends .dict.emuHost		
+			]
+			
+			link [ attach 0(1)  attach 1(0) _extends .dict.link_delay_50us  ]
+			link [ attach 0(2)  attach 2(0) _extends .dict.link_delay_50us  ]
+			link [ attach 0(3)  attach 3(0) _extends .dict.link_delay_50us  ]
+			link [ attach 0(4)  attach 4(0) _extends .dict.link_delay_50us  ]
+			link [ attach 0(5)  attach 5(0) _extends .dict.link_delay_50us  ]
+			link [ attach 0(6)  attach 6(0) _extends .dict.link_delay_50us  ]
+			link [ attach 0(7)  attach 7(0) _extends .dict.link_delay_50us  ]	
+			link [ attach 0(8)  attach 8(0) _extends .dict.link_delay_50us  ]
+			link [ attach 0(9)  attach 9(0) _extends .dict.link_delay_50us  ]
+			link [ attach 0(10) attach 10(0) _extends .dict.link_delay_50us  ]			
+		]	
+	]
+	
+	# ====================================================================================================
+	emuNet_25
+	[
+		net
+		[
+			router
+			[
+				id 0
+				_find .dict.routerGraph.graph
+				interface [id 0  _extends .dict.1Gb] 
+				interface [id 1  _extends .dict.1Gb]
+				interface [id 2  _extends .dict.1Gb] 
+				interface [id 3  _extends .dict.1Gb]		
+				interface [id 4  _extends .dict.1Gb]
+				interface [id 5  _extends .dict.1Gb]
+				interface [id 6  _extends .dict.1Gb] 
+				interface [id 7  _extends .dict.1Gb]		
+				interface [id 8  _extends .dict.1Gb]
+				interface [id 9  _extends .dict.1Gb]
+				interface [id 10 _extends .dict.1Gb]
+				interface [id 11 _extends .dict.1Gb]
+				interface [id 12 _extends .dict.1Gb]
+				interface [id 13 _extends .dict.1Gb]
+				interface [id 14 _extends .dict.1Gb]
+				interface [id 15 _extends .dict.1Gb]
+				interface [id 16 _extends .dict.1Gb]
+				interface [id 17 _extends .dict.1Gb]
+				interface [id 18 _extends .dict.1Gb]
+				interface [id 19 _extends .dict.1Gb]
+				interface [id 20 _extends .dict.1Gb]
+				interface [id 21 _extends .dict.1Gb]
+				interface [id 22 _extends .dict.1Gb]
+				interface [id 23 _extends .dict.1Gb]
+				interface [id 24 _extends .dict.1Gb]
+				interface [id 25 _extends .dict.1Gb]						
+			]
+			
+			host
+			[
+				idrange [from 1 to 25]
+				_extends .dict.emuHost		
+			]
+			
+			link [ attach 0(1)  attach 1(0)  _extends .dict.link_delay_50us  ]
+			link [ attach 0(2)  attach 2(0)  _extends .dict.link_delay_50us  ]
+			link [ attach 0(3)  attach 3(0)  _extends .dict.link_delay_50us  ]
+			link [ attach 0(4)  attach 4(0)  _extends .dict.link_delay_50us  ]
+			link [ attach 0(5)  attach 5(0)  _extends .dict.link_delay_50us  ]
+			link [ attach 0(6)  attach 6(0)  _extends .dict.link_delay_50us  ]
+			link [ attach 0(7)  attach 7(0)  _extends .dict.link_delay_50us  ]	
+			link [ attach 0(8)  attach 8(0)  _extends .dict.link_delay_50us  ]
+			link [ attach 0(9)  attach 9(0)  _extends .dict.link_delay_50us  ]
+			link [ attach 0(10) attach 10(0) _extends .dict.link_delay_50us  ]
+			link [ attach 0(11) attach 11(0) _extends .dict.link_delay_50us  ]	
+			link [ attach 0(12) attach 12(0) _extends .dict.link_delay_50us  ]	
+			link [ attach 0(13) attach 13(0) _extends .dict.link_delay_50us  ]	
+			link [ attach 0(14) attach 14(0) _extends .dict.link_delay_50us  ]	
+			link [ attach 0(15) attach 15(0) _extends .dict.link_delay_50us  ]	
+			link [ attach 0(16) attach 16(0) _extends .dict.link_delay_50us  ]	
+			link [ attach 0(17) attach 17(0) _extends .dict.link_delay_50us  ]	
+			link [ attach 0(18) attach 18(0) _extends .dict.link_delay_50us  ]	
+			link [ attach 0(19) attach 19(0) _extends .dict.link_delay_50us  ]	
+			link [ attach 0(20) attach 20(0) _extends .dict.link_delay_50us  ]	
+			link [ attach 0(21) attach 21(0) _extends .dict.link_delay_50us  ]	
+			link [ attach 0(22) attach 22(0) _extends .dict.link_delay_50us  ]	
+			link [ attach 0(23) attach 23(0) _extends .dict.link_delay_50us  ]	
+			link [ attach 0(24) attach 24(0) _extends .dict.link_delay_50us  ]	
+			link [ attach 0(25) attach 25(0) _extends .dict.link_delay_50us  ]	
+		]	
+	]
+	emuNet_2
+	[
+		net
+		[
+			router
+			[
+				id 0
+				_find .dict.routerGraph.graph
+				interface [ id 0   _extends .dict.1Gb ]
+				interface [ id 1   _extends .dict.1Gb ]
+				interface [ id 2   _extends .dict.1Gb ]
+			]
+			host
+			[
+				idrange [from 1 to 2 ]
+				_extends .dict.emuHost
+			]
+			link [ attach 0(1)  attach 1(0)  _extends .dict.link_delay_50us  ] 
+			link [ attach 0(2)  attach 2(0)  _extends .dict.link_delay_50us  ] 
+		]	
+	]
+]

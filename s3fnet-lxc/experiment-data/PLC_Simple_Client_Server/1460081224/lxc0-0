@@ -1,0 +1,66 @@
+Starting Debug for lxc0-0
+Running Command /home/vignesh/Desktop/PLCs/awlsim-0.42/tests/run.sh -e 1 --node 0 /home/vignesh/Desktop/PLCs/awlsim-0.42/tests/modbus/simple_client_server_multiple/sfb102_server.awl
+6 (process ID) old priority 0, new priority 10
+=== Running tests with 'python3'
+Running test 'sfb102_server.awl' with 'python3' ... src lxc name = lxc0-0, dst lxc name = lxc1-0, conn_id = 1
+['0', '10.10.0.9']
+['1', '10.10.0.10']
+['IDS', '10.10.0.10']
+Dest IP :  10.10.0.10
+Resolved hostname =  10.10.0.10
+IP of IDS :  10.10.0.25  len =  10  orig_len =  10
+Start time =  1460081226.457483
+poll start time : 1460081226.457494
+Recv msg =  bytearray(b'~\x00\x10\x03\x00\x02\x00\x01\x16~')
+Recv data =  bytearray(b'\x00\x10\x03\x00\x02\x00\x01\x16')
+Sent response to client =  bytearray(b'~\x00\x10\x03\x02\x124[~')
+poll start time : 1460081226.625799
+Recv msg =  bytearray(b'~\x00\x10\x03\x00\x02\x00\x01\x16~')
+Recv data =  bytearray(b'\x00\x10\x03\x00\x02\x00\x01\x16')
+Sent response to client =  bytearray(b'~\x00\x10\x03\x02\x124[~')
+poll start time : 1460081226.859019
+Recv msg =  bytearray(b'~\x00\x10\x03\x00\x02\x00\x01\x16~')
+Recv data =  bytearray(b'\x00\x10\x03\x00\x02\x00\x01\x16')
+Sent response to client =  bytearray(b'~\x00\x10\x03\x02\x124[~')
+poll start time : 1460081226.994683
+Recv msg =  bytearray(b'~\x00\x10\x03\x00\x02\x00\x01\x16~')
+Recv data =  bytearray(b'\x00\x10\x03\x00\x02\x00\x01\x16')
+Sent response to client =  bytearray(b'~\x00\x10\x03\x02\x124[~')
+poll start time : 1460081227.132849
+Recv msg =  bytearray(b'~\x00\x10\x03\x00\x02\x00\x01\x16~')
+Recv data =  bytearray(b'\x00\x10\x03\x00\x02\x00\x01\x16')
+Sent response to client =  bytearray(b'~\x00\x10\x03\x02\x124[~')
+poll start time : 1460081227.501028
+Recv msg =  bytearray(b'~\x00\x10\x03\x00\x02\x00\x01\x16~')
+Recv data =  bytearray(b'\x00\x10\x03\x00\x02\x00\x01\x16')
+Sent response to client =  bytearray(b'~\x00\x10\x03\x02\x124[~')
+poll start time : 1460081227.731062
+Recv msg =  bytearray(b'~\x00\x10\x03\x00\x02\x00\x01\x16~')
+Recv data =  bytearray(b'\x00\x10\x03\x00\x02\x00\x01\x16')
+Sent response to client =  bytearray(b'~\x00\x10\x03\x02\x124[~')
+poll start time : 1460081227.909093
+Recv msg =  bytearray(b'~\x00\x10\x03\x00\x02\x00\x01\x16~')
+Recv data =  bytearray(b'\x00\x10\x03\x00\x02\x00\x01\x16')
+Sent response to client =  bytearray(b'~\x00\x10\x03\x02\x124[~')
+poll start time : 1460081228.842825
+Recv msg =  bytearray(b'~\x00\x10\x03\x00\x02\x00\x01\x16~')
+Recv data =  bytearray(b'\x00\x10\x03\x00\x02\x00\x01\x16')
+Sent response to client =  bytearray(b'~\x00\x10\x03\x02\x124[~')
+poll start time : 1460081229.205227
+Recv msg =  bytearray(b'~\x00\x10\x03\x00\x02\x00\x01\x16~')
+Recv data =  bytearray(b'\x00\x10\x03\x00\x02\x00\x01\x16')
+Sent response to client =  bytearray(b'~\x00\x10\x03\x02\x124[~')
+poll start time : 1460081229.539415
+End time =  1460081234.543903
+Serial Recv TIMEOUT Done !!!!!!!!!!!!!!!!
+src lxc name = lxc0-0, dst lxc name = lxc1-0, conn_id = 1
+Start time =  1460081234.5661
+poll start time : 1460081234.566108
+End time =  1460081239.595838
+Serial Recv TIMEOUT Done !!!!!!!!!!!!!!!!
+src lxc name = lxc0-0, dst lxc name = lxc1-0, conn_id = 1
+Start time =  1460081239.620354
+poll start time : 1460081239.620354
+End time =  1460081241.137117
+Serial Recv TIMEOUT Done !!!!!!!!!!!!!!!!
+src lxc name = lxc0-0, dst lxc name = lxc1-0, conn_id = 1

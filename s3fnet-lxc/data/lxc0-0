@@ -1,23 +1,31 @@
 Starting Debug for lxc0-0
-Running Command /home/vignesh/Desktop/PLCs/awlsim-0.42/tests/run.sh -e 0 --node 0 /home/vignesh/Desktop/PLCs/awlsim-0.42/tests/modbus/simple_client_server/sfb102_server.awl
+Running Command /home/vignesh/Desktop/PLCs/awlsim-0.42/tests/run.sh -e 0 --node 0 /home/vignesh/Desktop/PLCs/awlsim-0.42/tests/modbus/bottle_plant_node/bottle_plant_node.awl
 6 (process ID) old priority 0, new priority 10
-=== Running tests with 'python3'
-Running test 'sfb102_server.awl' with 'python3' ... ['0', '10.10.0.9']
-['1', '10.10.0.10']
-['IDS', '10.10.0.10']
-Dest IP :  10.10.0.21
-Resolved hostname =  10.10.0.21
-IP of IDS :  10.10.0.25  len =  10  orig_len =  10
-Dest IP :  10.10.0.17
-Resolved hostname =  10.10.0.17
-IP of IDS :  10.10.0.25  len =  10  orig_len =  10
-Start time =  1457986229.534005
-Listening on port 502
-Established Connection from ('10.10.0.21', 53362)
-Recv data =  bytearray(b'\x00\x10\x03\x00\x02\x00\x01\x16')
-Sent response to client =  bytearray(b'\x00\x10\x03\x02\x124[')
-Start select time =  1457986231.621512
-End select time =  1457986234.62152
-[OK: 0:05.27]
-
-All tests succeeded (full run)
+=== Running tests with 'python2'
+Running test 'bottle_plant_node.awl' with 'python2' ... [u'0', u'10.10.0.9']
+[u'1', u'10.10.0.10']
+[u'IDS', u'10.10.0.10']
+('Dest IP : ', '10.10.0.57')
+('Resolved hostname = ', '10.10.0.57')
+('IP of IDS : ', '10.10.0.33')
+('Dest IP : ', '10.10.0.57')
+('Resolved hostname = ', '10.10.0.57')
+('IP of IDS : ', '10.10.0.33')
+('Dest IP : ', '10.10.0.53')
+('Resolved hostname = ', '10.10.0.53')
+('IP of IDS : ', '10.10.0.33')
+Started server process
+('Start time = ', 1460689066.75949)
+('IP:PORT = ', '10.10.0.57', 502)
+Resumed connection
+('Start time = ', 1460689066.77557)
+('IP:PORT = ', '10.10.0.53', 502)
+Resumed connection
+('Sent msg = ', bytearray(b'\x01\x10\x03\x00\x02\x00\x02\x18I\xb2\xf7'))
+('Response from server = ', '01 10 03 04 00 00 00 00 18 90 ba 89')
+Response processed
+Resumed connection
+('Sent msg = ', bytearray(b'\x02\x10\x03\x00\x02\x00\x02\x19<0\xfe'))
+('Response from server = ', '02 10 03 04 00 00 00 00 19 39 e0 10')
+Response processed
+Resumed connection

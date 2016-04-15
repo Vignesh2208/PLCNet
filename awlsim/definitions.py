@@ -27,7 +27,7 @@ for entry in script_path_list :
 			root_directory = root_directory + entry + "/"
 
 
-conf_directory = root_directory + "/conf"
+conf_directory = root_directory + "/Projects/Bottle_Plant/conf"
 tests_directory = root_directory + "/tests"
 s3f_directory = root_directory + "/s3fnet-lxc"
 s3f_base_directory  = s3f_directory + "/base"
@@ -79,7 +79,8 @@ with open(root_directory + "/create_sym_links.sh","w") as f:
 	f.write("#!/bin/sh\n")
 	
 	f.write("ln -sf s3fnet-lxc/experiment-data experiment-data\n")
-	f.write("ln -sf " + s3f_base_directory + "/s3fnet/src/os/cApp/cApp_inject_attack.cc conf/inject_attack.cc\n")
-	f.write("ln -sf " + s3f_base_directory + "/s3fnet/src/os/cApp/cApp_session.h conf/inject_attack.h\n")
 	f.write("ln -sf " + TIMEKEEPER_DIR + " " + s3f_directory + "/dilation-code\n")
+	f.write("ln -sf " + s3f_base_directory + "/s3fnet/src/os/cApp/cApp_inject_attack.cc " + conf_directory + "/inject_attack.cc\n")
+	f.write("ln -sf " + s3f_base_directory + "/s3fnet/src/os/cApp/cApp_session.h " + conf_directory + "/inject_attack.h\n")
+
 os.chmod(root_directory + "/create_sym_links.sh",stat.S_IRWXU)

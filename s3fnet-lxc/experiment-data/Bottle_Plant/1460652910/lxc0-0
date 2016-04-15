@@ -1,0 +1,143 @@
+Starting Debug for lxc0-0
+Running Command /home/vignesh/Desktop/PLCs/awlsim-0.42/tests/run.sh -e 0 --node 0 /home/vignesh/Desktop/PLCs/awlsim-0.42/tests/modbus/bottle_plant_node/bottle_plant_node.awl
+6 (process ID) old priority 0, new priority 10
+=== Running tests with 'python2'
+Running test 'bottle_plant_node.awl' with 'python2' ... [u'0', u'10.10.0.9']
+[u'1', u'10.10.0.10']
+[u'IDS', u'10.10.0.10']
+('Dest IP : ', '10.10.0.25')
+('Resolved hostname = ', '10.10.0.25')
+('IP of IDS : ', '10.10.0.33')
+('Dest IP : ', '10.10.0.25')
+('Resolved hostname = ', '10.10.0.25')
+('IP of IDS : ', '10.10.0.33')
+('Dest IP : ', '10.10.0.29')
+('Resolved hostname = ', '10.10.0.29')
+('IP of IDS : ', '10.10.0.33')
+Started server process
+('Start time = ', 1460652913.658447)
+('IP:PORT = ', '10.10.0.25', 502)
+Resumed connection
+('Start time = ', 1460652913.666445)
+('IP:PORT = ', '10.10.0.29', 502)
+Resumed connection
+('Sent msg = ', bytearray(b'\x01\x10\x03\x00\x02\x00\x02\x18qF\xbf'))
+('Response from server = ', '01 10 03 04 00 00 00 00 18 09 fc 4d')
+Response processed
+Resumed connection
+('Sent msg = ', bytearray(b'\x02\x10\x03\x00\x02\x00\x02\x19,\x13\xce'))
+('Response from server = ', '02 10 03 04 00 00 00 00 19 d3 1f 15')
+Response processed
+Resumed connection
+('Sent msg = ', bytearray(b'\x01\x10\x03\x00\x02\x00\x02\x18\xae\x18\x14'))
+('Response from server = ', '01 10 03 04 00 00 00 00 18 e8 07 ff')
+Response processed
+Resumed connection
+('Sent msg = ', bytearray(b'\x02\x10\x03\x00\x02\x00\x02\x19\xbfg"'))
+('Response from server = ', '02 10 03 04 00 00 00 00 19 dd bb 18')
+Response processed
+Resumed connection
+('Sent msg = ', bytearray(b'\x01\x10\x03\x00\x02\x00\x02\x18\xff\x1e\xd0'))
+('Response from server = ', '01 10 03 04 00 00 00 00 18 c1 78 c2')
+Response processed
+Resumed connection
+('Sent msg = ', bytearray(b'\x02\x10\x03\x00\x02\x00\x02\x19bl`'))
+('Response from server = ', '02 10 03 04 00 00 00 00 19 5b af 7a')
+Response processed
+Resumed connection
+('Sent msg = ', bytearray(b'\x02\x10\x03\x00\x02\x00\x02\x196s\xdd'))
+('Response from server = ', '02 10 03 04 00 00 00 00 19 48 22 19')
+Response processed
+Resumed connection
+('Sent msg = ', bytearray(b'\x01\x10\x03\x00\x02\x00\x02\x18\xef\xf5\xd8'))
+('Response from server = ', '01 10 03 04 00 00 00 00 18 cc 81 df')
+Response processed
+Resumed connection
+('Sent msg = ', bytearray(b'\x01\x10\x03\x00\x02\x00\x02\x18p2\x95'))
+('Response from server = ', '01 10 03 04 00 00 00 00 18 08 39 a5')
+Response processed
+Resumed connection
+('Sent msg = ', bytearray(b'\x02\x10\x03\x00\x02\x00\x02\x19$\xe0\xce'))
+('Response from server = ', '02 10 03 04 00 00 00 00 19 b5 66 38')
+Response processed
+Resumed connection
+('Sent msg = ', bytearray(b'\x01\x10\x03\x00\x02\x00\x02\x18\xd5QT'))
+('Response from server = ', '01 10 03 04 00 00 00 00 18 39 16 af')
+Response processed
+Resumed connection
+('Sent msg = ', bytearray(b'\x02\x10\x03\x00\x02\x00\x02\x19?c\x99'))
+('Response from server = ', '02 10 03 04 00 00 00 00 19 76 23 7d')
+Response processed
+Resumed connection
+('Sent msg = ', bytearray(b'\x01\x10\x03\x00\x02\x00\x02\x188\xfd\x01'))
+('Response from server = ', '01 10 03 04 00 00 00 00 18 ad 3a 3d')
+Response processed
+Resumed connection
+('Sent msg = ', bytearray(b'\x02\x10\x03\x00\x02\x00\x02\x19\x10\xe3\xbd'))
+('Response from server = ', '02 10 03 04 00 00 00 00 19 c0 86 67')
+Response processed
+Resumed connection
+('Sent msg = ', bytearray(b'\x01\x10\x03\x00\x02\x00\x02\x18\xe5_\xa9'))
+('Response from server = ', '01 10 03 04 00 00 00 00 18 61 41 67')
+Response processed
+Resumed connection
+('Sent msg = ', bytearray(b'\x02\x10\x03\x00\x02\x00\x02\x19G\xc5\xcc'))
+('Response from server = ', '02 10 03 04 00 00 00 00 19 28 b8 91')
+Response processed
+Resumed connection
+New input generated
+('Routed new job. Node_id = ', 1, ' to ', 3)
+('Sent msg = ', bytearray(b'\x01\x10\x03\x00\x02\x00\x02\x18\x97e\x99'))
+('Response from server = ', '01 10 03 04 00 00 00 00 18 2a 1c ec')
+Response processed
+Resumed connection
+New input generated
+('Routed new job. Node_id = ', 1, ' to ', 3)
+('Sent msg = ', bytearray(b'\x01\x10\x03\x00\x02\x00\x02\x18J[!'))
+('Response from server = ', '01 10 03 04 00 00 00 00 18 b4 83 cc')
+Response processed
+Resumed connection
+('Sent msg = ', bytearray(b'\x02\x10\x03\x00\x02\x00\x02\x19\xfe/\xa8'))
+('Response from server = ', '02 10 03 04 00 00 00 00 19 31 83 02')
+Response processed
+Resumed connection
+New input generated
+('Routed new job. Node_id = ', 1, ' to ', 3)
+('Sent msg = ', bytearray(b'\x01\x10\x03\x00\x02\x00\x02\x18b\xd7\xb0'))
+('Response from server = ', '01 10 03 04 00 00 00 00 18 17 5a 88')
+Response processed
+Resumed connection
+('Sent msg = ', bytearray(b'\x02\x10\x03\x00\x02\x00\x02\x19\xfc~\xba'))
+('Response from server = ', '02 10 03 04 00 02 00 02 1d 7d c6 79')
+Response processed
+Resumed connection
+New input generated
+('Routed new job. Node_id = ', 1, ' to ', 2)
+('Sent msg = ', bytearray(b'\x01\x10\x03\x00\x02\x00\x02\x18\x9e\xc9\xd7'))
+('Response from server = ', '01 10 03 04 00 00 00 00 18 61 58 9e')
+Response processed
+Resumed connection
+('Sent msg = ', bytearray(b'\x02\x10\x03\x00\x02\x00\x02\x19\x9c\x00\x96'))
+('Response from server = ', '02 10 03 04 00 03 00 03 1f ce f0 74')
+Response processed
+Resumed connection
+New input generated
+('Routed new job. Node_id = ', 1, ' to ', 2)
+deleting sfb 102 object
+Deleting SFB102 ...
+Terminating server ...
+Terminating client ...
+Terminating client ...
+('Sent msg = ', bytearray(b'\x01\x10\x03\x00\x02\x00\x02\x181 \x03'))
+('Response from server = ', '01 10 03 04 00 01 00 01 1a 94 b4 fd')
+Response processed
+('Sent msg = ', bytearray(b'\x02\x10\x03\x00\x02\x00\x02\x19\x02I{'))
+('Response from server = ', '02 10 03 04 00 03 00 03 1f 7a 48 60')
+Response processed
+('Start time = ', 1460652913.546637)
+Listening on port 502
+('End time = ', 1460652918.550625)
+Socket TIMEOUT Done !!!!!!!!!!!!!!!!
+[OK: 0:05.23]
+
+All tests succeeded (full run)
