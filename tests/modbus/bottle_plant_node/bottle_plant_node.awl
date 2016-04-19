@@ -180,10 +180,11 @@ BEGIN
 
 
 	CLR
-	L DB10.NROUTED
-	L DB10.Max_Times
-	==I
-	JC _6 //SPB 	_6
+	// All of this stuff commented out
+	//L DB10.NROUTED
+	//L DB10.Max_Times
+	//==I
+	//JC _6 //SPB 	_6 // ** Modified here should be JC _6
 
 
 	// Connection 1 - as server to parent in binary tree. should always run

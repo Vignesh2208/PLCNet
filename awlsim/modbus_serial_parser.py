@@ -1,6 +1,6 @@
 from definitions import NR_SERIAL_DEVS
 
-def parse_modbus_serial_topology(conf_directory,curr_conf_file,test_file,topology_file,exp_run_time,exp_name,exp_tdf,exp_n_nodes,Node):
+def parse_modbus_serial_topology(conf_directory,curr_conf_file,test_file,topology_file,exp_run_time,exp_name,exp_tdf,exp_n_nodes,Node,N_CPUS):
 
 	Lxcs = {}
 	lines = [line.rstrip('\n') for line in open(topology_file)]
@@ -59,7 +59,8 @@ def parse_modbus_serial_topology(conf_directory,curr_conf_file,test_file,topolog
 
 		
 	with open(curr_conf_file,"w") as f :
-		f.write("total_timeline " + str(n_nodes) + "\n")
+		#f.write("total_timeline " + str(n_nodes) + "\n")
+		f.write("total_timeline " + str(N_CPUS) + "\n")
 		f.write("tick_per_second 6\n")
 		f.write("run_time " + str(exp_run_time) + "\n")
 		f.write("seed 1\n")
@@ -91,7 +92,8 @@ def parse_modbus_serial_topology(conf_directory,curr_conf_file,test_file,topolog
 			f.write("	Net\n")
 			f.write("	[\n")
 			f.write("		id " + str(node) + "\n")
-			f.write("		alignment " + str(node) + "\n")
+			#f.write("		alignment " + str(node) + "\n")
+			f.write("		alignment " + str(node % (N_CPUS)) + "\n")
 			f.write("		host\n")
 			f.write("		[\n")
 			f.write("			id 0\n")

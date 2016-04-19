@@ -3,6 +3,9 @@
 #include <unistd.h>
 #include <sys/syscall.h>
 #include "utility_functions.h"
+#include <fcntl.h>    /* For O_RDWR */
+ 
+#include <cstring>
 
 const char *FILENAME = "/proc/dilation/status"; //where TimeKeeper LKM is reading commands
 const char *SOCKETHOOK_FILENAME = "/proc/send_hook/send_hook_command";
@@ -12,15 +15,34 @@ Sends a specific command to the TimeKeeper Kernel Module. To communicate with th
 */
 int send_to_timekeeper(char * cmd) {
     FILE *fp;
-    fp = fopen(FILENAME, "a");
-    if (fp == NULL) {
+    //fp = fopen(FILENAME, "a");
+    int fd = open(FILENAME,O_WRONLY);
+    char new_cmd[200];
+    int i = 0;
+    int ret = 0;
+
+    for(i = 0; i <  200; i++)
+        new_cmd[i] = '\0';
+
+    
+    if (fd < 0) {
         perror("Open file to TimeKeeper failed");
         //printf("Error communicating with TimeKeeper\n");
         return -1;
     }
-    fprintf(fp, "%s,", cmd); //add comma to act as last character
-    fclose(fp);
-    return 0;
+    sprintf(new_cmd,"%s,",cmd);
+    //ret = fwrite(new_cmd,1,sizeof(new_cmd),fp);
+    ret = write(fd,new_cmd,strlen(new_cmd));
+
+    if(ret < 0){
+        ret = -10;
+        //perror("Write to timekeeper file failed\n");
+    }
+    //fprintf(fp, "%s,", cmd); //add comma to act as last character
+    //fclose(fp);
+    close(fd);
+    
+    return ret;
 }
 
 int send_to_socket_hook_monitor(char * cmd) {

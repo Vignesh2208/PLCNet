@@ -1,6 +1,6 @@
 total_timeline 9
 tick_per_second 6
-run_time 10.0
+run_time 6.0
 seed 1
 log_dir Bottle_Plant
 

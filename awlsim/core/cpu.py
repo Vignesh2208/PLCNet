@@ -971,9 +971,10 @@ class S7CPU(object): #+cdef
 
 	# -- checks if cycle time has exceedd the limit
 	def __runTimeCheck(self):
-		if self.now - self.cycleStartTime > self.cycleTimeLimit:
-			raise AwlSimError("Cycle time exceed %.3f seconds" %\
-					  self.cycleTimeLimit)
+		pass
+		#if self.now - self.cycleStartTime > self.cycleTimeLimit:
+		#	raise AwlSimError("Cycle time exceed %.3f seconds" %\
+		#			  self.cycleTimeLimit)
 
 	def getCurrentIP(self):
 		try:

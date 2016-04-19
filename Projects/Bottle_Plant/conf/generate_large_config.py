@@ -1,14 +1,29 @@
-Experiment_Name		=	"Bottle_Plant"
-Run_Time			=	10
-Dilation_Factor		=	5
-Number_Of_Nodes		=	7
-ModBus_Network_Type	=	"IP"
-Node_to_router_delay   = 1	# in ms
-Router_to_router_delay = 2	# in ms
-AwlScript_Directory = "/home/vignesh/Desktop/PLCs/awlsim-0.42/tests/modbus/bottle_plant_node"
-Exp_config_file = "exp_config"
-Topology_config_file = "topology_config"
+Experiment_Name			=	"Bottle_Plant"
+Run_Time				=	6
+Dilation_Factor			=	5
+Number_Of_Nodes			=	7
+ModBus_Network_Type		=	"IP"
+Node_to_router_delay   	= 	1	# in ms
+Router_to_router_delay 	= 	2	# in ms
+Input_0_period 			= 	0.1 # in seconds
+Input_1_period 			= 	0.1
+Input_2_period 			= 	0.5
+conveyor_delay 			= 	0.05
+Max_Jobs 				= 	5
+AwlScript_Directory 	= 	"/home/vignesh/Desktop/PLCs/awlsim-0.42/tests/modbus/bottle_plant_node"
 
+
+
+
+import math
+import re
+
+Exp_config_file 		= "exp_config"
+Topology_config_file 	= "topology_config"
+N_levels = int(math.log(Number_Of_Nodes + 1,2))
+N_levels = N_levels - 1
+if N_levels <= 0 :
+	N_levels = 1
 
 
 with open(Exp_config_file,'w') as f :
@@ -74,3 +89,28 @@ with open(Topology_config_file,'w') as f:
 		node = node + 1
 
 	f.write("(" + "R1" + "-R" + str(Number_Of_Nodes + 1) + "),		" + str(Router_to_router_delay) + "\n")
+
+with open ("Input_Generator.py.template", "r") as myfile:
+     s=myfile.read()
+
+find = "@Input_0_period@"
+replace = str(Input_0_period)
+s = re.sub(find,replace, s)  
+find = "@Input_1_period@"
+replace = str(Input_1_period)
+s = re.sub(find,replace, s)  
+find = "@Input_2_period@"
+replace = str(Input_2_period)
+s = re.sub(find,replace, s)  
+find = "@conveyor_delay@"
+replace = str(conveyor_delay)
+s = re.sub(find,replace, s)  
+find = "@Max_Jobs@"
+replace = str(Max_Jobs)
+s = re.sub(find,replace, s)  
+find = "@N_levels@"
+replace = str(N_levels)
+s = re.sub(find,replace, s)  
+
+with open("scripts/Input_Generator.py","w") as f:
+	f.write(s)

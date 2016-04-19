@@ -4,7 +4,7 @@ import stat
 
 
 ## Config parameters. Set accordingly. run Make after modifications ##
-
+N_CPUS = 4
 NR_SERIAL_DEVS  = 3													# number of serial devices per PLC
 KERN_BUF_SIZE = 100													# maximum size of lxcName
 TX_BUF_SIZE = 100													# Tx Buffer size per serial device

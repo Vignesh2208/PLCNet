@@ -5,10 +5,11 @@ import math
 import shared_sem
 from shared_sem import *
 
-Input_0_period = 0.1 # 100ms
+Input_0_period = 0.1 # in seconds
 Input_1_period = 0.1
 Input_2_period = 0.5
 conveyor_delay = 0.05
+Max_Inputs = 5
 N_levels = 2
 
 def append_to_file(filename,data):
@@ -31,9 +32,10 @@ def generate_inputs(Node_data,node_id,cpu_cycle_number,curr_outputs=None,curr_in
 
 	node_id = node_id + 1
 
-	if cpu_cycle_number == 1:
+	if cpu_cycle_number <= 1:
 		s_time = time.time()
 		Node_data["start_time"] = s_time
+		Node_data["n_inputs"] = 0
 		Node_data["last_input0_time"] = s_time + 1.0
 		Node_data["last_input1_time"] = s_time
 		Node_data["last_input2_time"] = s_time
@@ -63,8 +65,9 @@ def generate_inputs(Node_data,node_id,cpu_cycle_number,curr_outputs=None,curr_in
 	#print("Cycle no = ", cpu_cycle_number)
 
 	curr_time = time.time()
-	if node_id == 1 and curr_time - Node_data["last_input0_time"] > Input_0_period:
+	if node_id == 1 and curr_time - Node_data["last_input0_time"] > Input_0_period and Node_data["n_inputs"] < Max_Inputs :
 		Node_data["last_input0_time"] = curr_time
+		Node_data["n_inputs"] = Node_data["n_inputs"] + 1
 		print("New input generated")
 		in0 = 1
 

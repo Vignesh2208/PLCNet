@@ -1,0 +1,79 @@
+Starting Debug for lxc25-0
+Running Command /home/vignesh/Desktop/PLCs/awlsim-0.42/tests/run.sh -e 0 --node 25 /home/vignesh/Desktop/PLCs/awlsim-0.42/tests/modbus/bottle_plant_node/bottle_plant_node.awl
+6 (process ID) old priority 0, new priority 10
+=== Running tests with 'python2'
+Running test 'bottle_plant_node.awl' with 'python2' ... [u'0', u'10.10.0.9']
+[u'1', u'10.10.0.10']
+[u'IDS', u'10.10.0.10']
+('Resolved hostname = ', '127.0.0.1')
+('IP of IDS : ', '10.10.0.33')
+('Resolved hostname = ', '127.0.0.1')
+('IP of IDS : ', '10.10.0.33')
+('Resolved hostname = ', '127.0.0.1')
+('IP of IDS : ', '10.10.0.33')
+Started server process at : 1461034118.6
+('Start time = ', 1461034118.597984)
+Listening on port 502
+Established Connection from ('10.10.1.45', 49136)
+('Recv new msg = ', '19 10 03 00 02 00 02 30 c5 e1 ed', ' at Node id = ', 26)
+('Sent response to client = ', bytearray(b'\x19\x10\x03\x04\x00\x00\x00\x000?\xa5F'))
+('Recv new msg = ', '19 10 03 00 02 00 02 30 26 72 3a', ' at Node id = ', 26)
+('Sent response to client = ', bytearray(b'\x19\x10\x03\x04\x00\x00\x00\x000\xb0\xb7\xec'))
+('Recv new msg = ', '19 10 03 00 02 00 02 30 62 bd 57', ' at Node id = ', 26)
+('Sent response to client = ', bytearray(b'\x19\x10\x03\x04\x00\x00\x00\x000\xdd\x86t'))
+('Recv new msg = ', '19 10 03 00 02 00 02 30 06 c1 21', ' at Node id = ', 26)
+('Sent response to client = ', bytearray(b'\x19\x10\x03\x04\x00\x00\x00\x000\x9bx~'))
+('Recv new msg = ', '19 10 03 00 02 00 02 30 ce 1a c5', ' at Node id = ', 26)
+('Sent response to client = ', bytearray(b'\x19\x10\x03\x04\x00\x00\x00\x000WP/'))
+('Recv new msg = ', '19 10 03 00 02 00 02 30 ec 0f 82', ' at Node id = ', 26)
+('Sent response to client = ', bytearray(b'\x19\x10\x03\x04\x00\x00\x00\x000\xcb\xa7/'))
+('Recv new msg = ', '19 10 03 00 02 00 02 30 56 ca db', ' at Node id = ', 26)
+('Sent response to client = ', bytearray(b'\x19\x10\x03\x04\x00\x00\x00\x000\xb2\xd7a'))
+('Recv new msg = ', '19 10 03 00 02 00 02 30 f7 80 79', ' at Node id = ', 26)
+('Sent response to client = ', bytearray(b'\x19\x10\x03\x04\x00\x00\x00\x000\xcb\xac\x9e'))
+('Recv new msg = ', '19 10 03 00 02 00 02 30 33 05 bf', ' at Node id = ', 26)
+('Sent response to client = ', bytearray(b'\x19\x10\x03\x04\x00\x00\x00\x000\r\xefk'))
+('Recv new msg = ', '19 10 03 00 02 00 02 30 bf d3 3c', ' at Node id = ', 26)
+('Sent response to client = ', bytearray(b'\x19\x10\x03\x04\x00\x00\x00\x000N\x0f\x0e'))
+('Recv new msg = ', '19 10 03 00 02 00 02 30 ab b6 db', ' at Node id = ', 26)
+('Sent response to client = ', bytearray(b'\x19\x10\x03\x04\x00\x00\x00\x000{\x07\xfb'))
+('Recv new msg = ', '19 10 03 00 02 00 02 30 25 1c b4', ' at Node id = ', 26)
+('Sent response to client = ', bytearray(b'\x19\x10\x03\x04\x00\x00\x00\x000V\x8ad'))
+('Recv new msg = ', '19 10 03 00 02 00 02 30 b4 9d 5b', ' at Node id = ', 26)
+('Sent response to client = ', bytearray(b'\x19\x10\x03\x04\x00\x00\x00\x000\x0f\x0c~'))
+('Recv new msg = ', '19 10 03 00 02 00 02 30 b0 94 c7', ' at Node id = ', 26)
+('Sent response to client = ', bytearray(b'\x19\x10\x03\x04\x00\x00\x00\x000S\x01\x10'))
+('Recv new msg = ', '19 10 03 00 02 00 02 30 93 66 31', ' at Node id = ', 26)
+('Sent response to client = ', bytearray(b'\x19\x10\x03\x04\x00\x00\x00\x000\xf8\xb5G'))
+('Recv new msg = ', '19 10 03 00 02 00 02 30 29 d7 53', ' at Node id = ', 26)
+('Sent response to client = ', bytearray(b'\x19\x10\x03\x04\x00\x00\x00\x000!\n\xb9'))
+('Recv new msg = ', '19 10 03 00 02 00 02 30 62 c7 a4', ' at Node id = ', 26)
+('Sent response to client = ', bytearray(b'\x19\x10\x03\x04\x00\x00\x00\x000\xe7[\x88'))
+('Recv new msg = ', '19 10 03 00 02 00 02 30 f3 8f 4a', ' at Node id = ', 26)
+('Sent response to client = ', bytearray(b'\x19\x10\x03\x04\x00\x00\x00\x000\x9a$\xe3'))
+('Recv new msg = ', '19 10 03 00 02 00 02 30 27 6e a7', ' at Node id = ', 26)
+('Sent response to client = ', bytearray(b'\x19\x10\x03\x04\x00\x00\x00\x000\x94H\xed'))
+('Recv new msg = ', '19 10 03 00 02 00 02 30 6c 11 1d', ' at Node id = ', 26)
+('Sent response to client = ', bytearray(b'\x19\x10\x03\x04\x00\x00\x00\x000k\xad\xea'))
+('Recv new msg = ', '19 10 03 00 02 00 02 30 83 f5 b9', ' at Node id = ', 26)
+('Sent response to client = ', bytearray(b'\x19\x10\x03\x04\x00\x00\x00\x000\x89uK'))
+('Recv new msg = ', '19 10 03 00 02 00 02 30 c2 f2 8a', ' at Node id = ', 26)
+('Sent response to client = ', bytearray(b'\x19\x10\x03\x04\x00\x00\x00\x000\xcd\xa6\x12'))
+('Recv new msg = ', '19 10 03 00 02 00 02 30 ed 44 31', ' at Node id = ', 26)
+('Sent response to client = ', bytearray(b'\x19\x10\x03\x04\x00\x00\x00\x000\x05\xa9U'))
+('Recv new msg = ', '19 10 03 00 02 00 02 30 f4 fd e8', ' at Node id = ', 26)
+Elapsed time greater = 281.669771, cycle number = 1162
+('Sent response to client = ', bytearray(b'\x19\x10\x03\x04\x00\x00\x00\x000\x9d\x8ek'))
+####### Exiting ############
+Re-Started server process at 1461034411.17
+Process Process-2:
+Traceback (most recent call last):
+  File "/usr/lib/python2.7/multiprocessing/process.py", line 258, in _bootstrap
+    self.run()
+  File "/usr/lib/python2.7/multiprocessing/process.py", line 114, in run
+    self._target(*self._args, **self._kwargs)
+  File "/home/vignesh/Desktop/PLCs/awlsim-0.42/awlsim/core/systemblocks/test_run.py", line 66, in test_run_server_ip
+    server_socket.bind(('0.0.0.0',TCP_LOCAL_PORT))	# bind to any address
+  File "/usr/lib/python2.7/socket.py", line 224, in meth
+    return getattr(self._sock,name)(*args)
+error: [Errno 98] Address already in use

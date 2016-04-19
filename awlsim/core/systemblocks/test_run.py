@@ -68,7 +68,7 @@ def test_run_server_ip(thread_resp_queue,thread_cmd_queue,local_tsap_id,disconne
 
 	print("Start time = ", time.time())
 	print("Listening on port " + str(TCP_LOCAL_PORT))	
-			
+	sys.stdout.flush()			
 	
 	try:
 		client_socket, address = server_socket.accept()
@@ -138,6 +138,7 @@ def test_run_server_ip(thread_resp_queue,thread_cmd_queue,local_tsap_id,disconne
 		msg = str(local_id) + "," + str(recv_time) + ",RECV," + str(recv_data_hash)
 		#print("Recv new msg = ", msg, " at Node id = ", local_id + 1)
 		print("Recv new msg = ", ' '.join('{:02x}'.format(x) for x in recv_data), " at Node id = ", local_id + 1)
+		sys.stdout.flush()
 		try :			
 			ids_socket.sendto(msg.encode('utf-8'), (ids_host, ids_port))
 			pass
@@ -182,6 +183,7 @@ def test_run_server_ip(thread_resp_queue,thread_cmd_queue,local_tsap_id,disconne
 
 		client_socket.send(response)
 		print("Sent response to client = ",response)
+		sys.stdout.flush()
 		response_hash = str(hashlib.md5(str(response)).hexdigest())
 		msg = str(local_id) + "," + str(datetime.datetime.now())  + ",SEND," + str(response_hash)
 		try :		
@@ -244,6 +246,7 @@ def test_run_client_ip(thread_resp_queue,thread_cmd_queue,local_tsap_id,IDS_IP,T
 	
 	print("Start time = ", time.time())
 	print("IP:PORT = ", TCP_REMOTE_IP,TCP_REMOTE_PORT)
+	sys.stdout.flush()
 	
 	try:
 		client_socket.settimeout(conn_time)
@@ -285,7 +288,7 @@ def test_run_client_ip(thread_resp_queue,thread_cmd_queue,local_tsap_id,IDS_IP,T
 			client_socket.close()
 			return
 
-		print("Resumed connection")
+		print("Resumed connection at : " + str(datetime.datetime.now()))
 		sys.stdout.flush()
 		disconnect, recv_time_val, conn_time, msg_to_send, exception  = cmd
 		client_socket.settimeout(recv_time_val)
@@ -306,6 +309,7 @@ def test_run_client_ip(thread_resp_queue,thread_cmd_queue,local_tsap_id,IDS_IP,T
 
 			print("Sent msg = ",msg_to_send)
 			client_socket.send(msg_to_send)
+			sys.stdout.flush()
 		except socket.error as socketerror :
 			print("Client Error : ", socketerror)
 			read_finish_status = 0
@@ -345,6 +349,7 @@ def test_run_client_ip(thread_resp_queue,thread_cmd_queue,local_tsap_id,IDS_IP,T
 
 		#print("Response from server : ",recv_data, " at Node id = ", local_id + 1)
 		print ("Response from server = ",' '.join('{:02x}'.format(x) for x in recv_data))
+		sys.stdout.flush()
 
 		recv_data_hash = str(hashlib.md5(str(recv_data)).hexdigest())
 		msg = str(local_id) + "," + str(recv_time) + ",RECV," + str(recv_data_hash)
@@ -362,7 +367,8 @@ def test_run_client_ip(thread_resp_queue,thread_cmd_queue,local_tsap_id,IDS_IP,T
 			client_socket.close()
 			return
 
-		print("Response processed")	
+		print("Response processed at " + str(datetime.datetime.now()))	
+		sys.stdout.flush()
 
 		ERROR_CODE = cmd
 		if ERROR_CODE == NO_ERROR :

@@ -1113,7 +1113,7 @@ class Connection(object) :
 	# all output params will be set by the call
 	def call_modbus_server_process(self) :
 		timeout = 0.001
-		self.status_lock.acquire()
+		
 		if self.STATUS == NOT_STARTED  : # start server
 
 			if self.ENQ_ENR == 1 :
@@ -1123,15 +1123,16 @@ class Connection(object) :
 				self.STATUS_CONN = 0x0000
 				self.STATUS_FUNC = "MODBUSPN"
 				self.IDENT_CODE = "NONE"
-				self.status_lock.release()
+			
 
 				if self.cpu.network_interface_type == 0 : #IP							
 					self.server_process = Process(target = test_run_server_ip, args =(self.thread_resp_queue,self.thread_cmd_queue,self.connection_params.local_tsap_id,self.disconnect,self.recv_time,self.conn_time,self.IDS_IP,self.cpu.local_id))  
-					print("Started server process")					
+					print("Started server process at : " + str(time.time()))					
 					self.server_process.start()
 				
 				try :
 					o = self.thread_resp_queue.get(block=True,timeout=timeout)					
+					#o = self.thread_resp_queue.get(block=False)					
 				except:
 					o = None
 					
@@ -1161,13 +1162,14 @@ class Connection(object) :
 			if self.read_finish_status == 0 :	# for this call return the status params undisturbed
 												# start new thread or resume the existing thread in the nxt call
 				self.read_finish_status = 1
-				self.status_lock.release()
+			
 
 			elif self.STATUS == DONE and self.CONN_ESTABLISHED == True : # if disconnect is false
 				if self.ENQ_ENR == 1 :
 					self.STATUS = RUNNING
 					try :
 						o = self.thread_resp_queue.get(block=True,timeout=timeout)					
+						#o = self.thread_resp_queue.get(block=False)					
 					except:
 						o = None
 						
@@ -1189,7 +1191,7 @@ class Connection(object) :
 							self.length = request_msg_params["length"]
 							
 					
-				self.status_lock.release()
+			
 				
 			else :	# cases STATUS = DONE, CONN = False, STATUS = RECV_TIMEOUT_ERROR |  CONN_TIMEOUT_ERROR | CLIENT_ERROR, CONN = False
 				# all these cases imply thread exited - if pos in ENQ_ENR - restart new thread
@@ -1200,7 +1202,7 @@ class Connection(object) :
 					self.STATUS_CONN = 0x0000
 					self.STATUS_FUNC = "MODBUSPN"
 					self.IDENT_CODE = "NONE"	
-					self.status_lock.release()
+			
 					if self.cpu.network_interface_type == 0 : #IP	
 						if self.server_process != None:
 							self.server_process.join()
@@ -1212,11 +1214,12 @@ class Connection(object) :
 						self.thread_cmd_queue = Queue()
 
 						self.server_process = Process(target = test_run_server_ip, args =(self.thread_resp_queue,self.thread_cmd_queue,self.connection_params.local_tsap_id,self.disconnect,self.recv_time,self.conn_time,self.IDS_IP,self.cpu.local_id))  
-						print("Re-Started server process")					
+						print("Re-Started server process at " + str(time.time()))					
 						self.server_process.start()
 					
 					try :
 						o = self.thread_resp_queue.get(block=True,timeout=timeout)
+						#o = self.thread_resp_queue.get(block=False)					
 					except:
 						o = None
 
@@ -1243,9 +1246,10 @@ class Connection(object) :
 
 		elif self.STATUS == RUNNING :
 			self.PREV_ENQ_ENR = self.ENQ_ENR
-			self.status_lock.release()
+			
 			try :
 				o = self.thread_resp_queue.get(block=True,timeout=timeout)				
+				#o = self.thread_resp_queue.get(block=False)					
 			except:
 				o = None
 				
@@ -1367,14 +1371,14 @@ class Connection(object) :
 		return self.STATUS
 
 	def call_modbus_client_process(self) :
-		TCP_REMOTE_IP  = "127.0.0.1"
+		#TCP_REMOTE_IP  = "127.0.0.1"
 		TCP_REMOTE_IP  = self.connection_params.rem_staddr
 		TCP_REMOTE_PORT = self.connection_params.rem_tsap_id
 	
 		timeout = 0.001
 
 
-		self.status_lock.acquire()
+		
 		if self.STATUS == NOT_STARTED  : # start server
 
 			if self.ENQ_ENR == 1 :
@@ -1384,7 +1388,7 @@ class Connection(object) :
 				self.STATUS_CONN = 0x0000
 				self.STATUS_FUNC = "MODBUSPN"
 				self.IDENT_CODE = "NONE"
-				self.status_lock.release()
+				
 
 				if self.cpu.network_interface_type == 0 : #IP							
 					self.client_process = Process(target = test_run_client_ip, args =(self.thread_resp_queue,self.thread_cmd_queue,self.connection_params.local_tsap_id, self.IDS_IP, TCP_REMOTE_IP, TCP_REMOTE_PORT,self.conn_time,self.cpu.local_id))  
@@ -1392,6 +1396,7 @@ class Connection(object) :
 				
 				try :
 					o = self.thread_resp_queue.get(block=True,timeout=timeout)					
+					#o = self.thread_resp_queue.get(block=False)					
 				except:
 					o = None
 					
@@ -1412,13 +1417,14 @@ class Connection(object) :
 			if self.read_finish_status == 0 :	# for this call return the status params undisturbed
 												# start new thread or resume the existing thread in the nxt call
 				self.read_finish_status = 1
-				self.status_lock.release()
+				
 
 			elif self.STATUS == DONE and self.CONN_ESTABLISHED == True : # if disconnect is false
 				if self.ENQ_ENR == 1 :
 					self.STATUS = RUNNING
 					try :
 						o = self.thread_resp_queue.get(block=True,timeout=timeout)					
+						#o = self.thread_resp_queue.get(block=False)					
 					except:
 						o = None
 						
@@ -1432,7 +1438,7 @@ class Connection(object) :
 							ERROR_CODE = self.mod_client.process_response_message(recv_data)
 							self.thread_cmd_queue.put(ERROR_CODE)
 						
-				self.status_lock.release()
+				
 				
 			else :	# cases STATUS = DONE, CONN = False, STATUS = RECV_TIMEOUT_ERROR |  CONN_TIMEOUT_ERROR | CLIENT_ERROR, CONN = False
 				# all these cases imply thread exited - if pos in ENQ_ENR - restart new thread
@@ -1443,7 +1449,7 @@ class Connection(object) :
 					self.STATUS_CONN = 0x0000
 					self.STATUS_FUNC = "MODBUSPN"
 					self.IDENT_CODE = "NONE"	
-					self.status_lock.release()
+					
 					if self.cpu.network_interface_type == 0 : #IP	
 						if self.client_process != None:
 							self.client_process.join()
@@ -1459,6 +1465,7 @@ class Connection(object) :
 					
 					try :
 						o = self.thread_resp_queue.get(block=True,timeout=timeout)
+						#o = self.thread_resp_queue.get(block=False)
 					except:
 						o = None
 
@@ -1478,9 +1485,10 @@ class Connection(object) :
 
 		elif self.STATUS == RUNNING :
 			self.PREV_ENQ_ENR = self.ENQ_ENR
-			self.status_lock.release()
+			
 			try :
-				o = self.thread_resp_queue.get(block=True,timeout=timeout)				
+				o = self.thread_resp_queue.get(block=True,timeout=timeout)
+				#o = self.thread_resp_queue.get(block=False)				
 			except:
 				o = None
 				

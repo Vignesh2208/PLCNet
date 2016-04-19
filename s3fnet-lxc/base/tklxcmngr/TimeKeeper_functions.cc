@@ -13,6 +13,7 @@
 #include <errno.h>
 #include <fcntl.h>
 #include <sys/select.h>
+
 #include "TimeKeeper_functions.h"
 #include "TimeKeeper_definitions.h"
 #include "utility_functions.h"
@@ -181,49 +182,71 @@ int progress(int timeline, int force) {
     memset(&src_addr, 0, sizeof(src_addr));
     src_addr.nl_family = AF_NETLINK;
     src_addr.nl_pid = syscall(SYS_gettid);
-
+	//fcntl(sock_fd, F_SETFL, O_NONBLOCK);
     bind(sock_fd, (struct sockaddr *)&src_addr, sizeof(src_addr));
 
+    
+
+    /*rv = poll(ufds,1,0);
+
+    if(rv > 0){
+    	//printf("Flushing ...\n");
+    	recvmsg(sock_fd, &msg, 0);
+    }
+
+    rv = 0 ;*/
 
     char command[100];
     sprintf(command, "%c,%d,%d,%d", PROGRESS, timeline, gettid(), force);
-    if (send_to_timekeeper(command) == -1){
+
+    //printf("Progress requested for timeline %d\n", timeline);
+    int ret = send_to_timekeeper(command);
+    if ( ret == -1){
     	printf("Error sending command to TimeKeeper\n");
     	close(sock_fd);
     	return -1;	
     }
 	
+	if(ret == -10){ // special return value
+		//printf("@@@@@@ Special return value for timeline %d @@@@@@@\n",timeline);
+		close(sock_fd);
+		return 0;
+	}
 
-	//printf("FD ---- %d\n", sock_fd);
-    //FD_ZERO(&readfds);
-    //FD_SET(sock_fd, &readfds);
+	//printf("Progress completed for timeline %d\n", timeline);
+
+
+
+	
+	/*	   
 
 	struct pollfd ufds[1];
 	ufds[0].fd = sock_fd;
-	// n = sock_fd + 1;
-	// tv.tv_sec = 1000; //set for 5 seconds currently, should probably change this
-    //tv.tv_usec = 0;
-	// I dont think a timeout should be necessary anymore.
-	printf("Progress waiting for msg for timeline : %d for user_proc : %d\n", timeline, syscall(SYS_gettid));
+
+	printf("Progress waiting for msg for timeline : %d for user_proc : %d. Ret value = %d\n", timeline, syscall(SYS_gettid), ret);
 	
 	rv = poll(ufds,1,1000000);
 	//recvmsg(sock_fd, &msg, 0);
 
-	// rv = select(n, &readfds, NULL, NULL, &tv);
+	
 
     if (rv == -1) {
 		perror("select error");
     }
   	else if (rv == 0) {
-		printf("Timeout occurred, fix timeline..\n");
+		printf("Timeout occurred, fixing timeline..\n");
 		sprintf(command, "%c,%d", FIX_TIMELINE, timeline);
 		send_to_timekeeper(command);
-		sleep(1);
+		//sleep(1);
     }
     else {
-    	//printf("Progress received msg for timeline : %d for user_proc : %d\n", timeline, syscall(SYS_gettid));
+    	printf("Progress received msg for timeline : %d for user_proc : %d\n", timeline, syscall(SYS_gettid));
         recvmsg(sock_fd, &msg, 0);
     }
+
+	*/
+
+
     close(sock_fd);
 	return 0;
 

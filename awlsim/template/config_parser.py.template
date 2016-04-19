@@ -2,6 +2,7 @@ import os
 import sys
 from modbus_ip_parser import parse_modbus_ip_topology
 from modbus_serial_parser import parse_modbus_serial_topology
+from definitions import *
 
 
 def ERROR(string) :
@@ -247,9 +248,9 @@ for node in xrange(1,exp_n_nodes + 1) :
 curr_conf_file = conf_directory + "/PLC_Config/test.dml"
 
 if net_type == "IP" :
-	parse_modbus_ip_topology(conf_directory,curr_conf_file,test_file,topology_file,exp_run_time,exp_name,exp_tdf,exp_n_nodes,Node)
+	parse_modbus_ip_topology(conf_directory,curr_conf_file,test_file,topology_file,exp_run_time,exp_name,exp_tdf,exp_n_nodes,Node,N_CPUS)
 else :
-	parse_modbus_serial_topology(conf_directory,curr_conf_file,test_file,topology_file,exp_run_time,exp_name,exp_tdf,exp_n_nodes,Node)
+	parse_modbus_serial_topology(conf_directory,curr_conf_file,test_file,topology_file,exp_run_time,exp_name,exp_tdf,exp_n_nodes,Node,N_CPUS)
 
 
 

@@ -14,18 +14,366 @@ Running test 'bottle_plant_node.awl' with 'python2' ... [u'0', u'10.10.0.9']
 ('Dest IP : ', '10.10.0.53')
 ('Resolved hostname = ', '10.10.0.53')
 ('IP of IDS : ', '10.10.0.33')
-Started server process
-('Start time = ', 1460689066.75949)
+Started server process at : 1461036033.64
+('Start time = ', 1461036033.64513)
+Listening on port 502
+('Start time = ', 1461036033.758617)
 ('IP:PORT = ', '10.10.0.57', 502)
-Resumed connection
-('Start time = ', 1460689066.77557)
+('Start time = ', 1461036033.773674)
 ('IP:PORT = ', '10.10.0.53', 502)
-Resumed connection
-('Sent msg = ', bytearray(b'\x01\x10\x03\x00\x02\x00\x02\x18I\xb2\xf7'))
-('Response from server = ', '01 10 03 04 00 00 00 00 18 90 ba 89')
-Response processed
-Resumed connection
-('Sent msg = ', bytearray(b'\x02\x10\x03\x00\x02\x00\x02\x19<0\xfe'))
-('Response from server = ', '02 10 03 04 00 00 00 00 19 39 e0 10')
-Response processed
-Resumed connection
+Resumed connection at : 2016-04-18 22:20:33.801308
+Resumed connection at : 2016-04-18 22:20:33.801461
+('Sent msg = ', bytearray(b'\x01\x10\x03\x00\x02\x00\x02\x18\r-('))
+('Sent msg = ', bytearray(b'\x02\x10\x03\x00\x02\x00\x02\x19\xf9\xc7L'))
+('Response from server = ', '01 10 03 04 00 00 00 00 18 39 0d ec')
+('Response from server = ', '02 10 03 04 00 00 00 00 19 ec 48 d5')
+Response processed at 2016-04-18 22:20:33.879688
+Response processed at 2016-04-18 22:20:33.880034
+Resumed connection at : 2016-04-18 22:20:33.958263
+Resumed connection at : 2016-04-18 22:20:33.959275
+('Sent msg = ', bytearray(b'\x02\x10\x03\x00\x02\x00\x02\x19<|U'))
+('Sent msg = ', bytearray(b'\x01\x10\x03\x00\x02\x00\x02\x18/#`'))
+('Response from server = ', '02 10 03 04 00 00 00 00 19 23 12 90')
+('Response from server = ', '01 10 03 04 00 00 00 00 18 c1 69 fc')
+Response processed at 2016-04-18 22:20:34.024509
+Response processed at 2016-04-18 22:20:34.037788
+Resumed connection at : 2016-04-18 22:20:34.063792
+Resumed connection at : 2016-04-18 22:20:34.063986
+('Sent msg = ', bytearray(b'\x02\x10\x03\x00\x02\x00\x02\x19\x07s\xd3'))
+('Sent msg = ', bytearray(b'\x01\x10\x03\x00\x02\x00\x02\x18_\xdc\x94'))
+('Response from server = ', '02 10 03 04 00 00 00 00 19 bf b6 26')
+Response processed at 2016-04-18 22:20:34.129172
+('Response from server = ', '01 10 03 04 00 00 00 00 18 08 ff 9b')
+Response processed at 2016-04-18 22:20:34.142572
+Resumed connection at : 2016-04-18 22:20:34.168684
+Resumed connection at : 2016-04-18 22:20:34.168717
+('Sent msg = ', bytearray(b'\x01\x10\x03\x00\x02\x00\x02\x180\x06\xd5'))
+('Sent msg = ', bytearray(b'\x02\x10\x03\x00\x02\x00\x02\x19\xeb\x0b\x8f'))
+('Response from server = ', '01 10 03 04 00 00 00 00 18 7f 3c e0')
+('Response from server = ', '02 10 03 04 00 00 00 00 19 25 eb 54')
+Response processed at 2016-04-18 22:20:34.234241
+Response processed at 2016-04-18 22:20:34.246339
+Resumed connection at : 2016-04-18 22:20:34.273490
+('Sent msg = ', bytearray(b'\x02\x10\x03\x00\x02\x00\x02\x19\xba\xa92'))
+Resumed connection at : 2016-04-18 22:20:34.286744
+('Sent msg = ', bytearray(b'\x01\x10\x03\x00\x02\x00\x02\x18\xa7\xb6\x85'))
+('Response from server = ', '02 10 03 04 00 00 00 00 19 9e ab 81')
+('Response from server = ', '01 10 03 04 00 00 00 00 18 da a3 81')
+Response processed at 2016-04-18 22:20:34.351175
+Response processed at 2016-04-18 22:20:34.352179
+Resumed connection at : 2016-04-18 22:20:34.378032
+Resumed connection at : 2016-04-18 22:20:34.378372
+('Sent msg = ', bytearray(b'\x01\x10\x03\x00\x02\x00\x02\x18\xd4VM'))
+('Sent msg = ', bytearray(b'\x02\x10\x03\x00\x02\x00\x02\x19\xaeU\xd0'))
+('Response from server = ', '01 10 03 04 00 00 00 00 18 fe 04 96')
+Response processed at 2016-04-18 22:20:34.444630
+('Response from server = ', '02 10 03 04 00 00 00 00 19 70 4a 21')
+Response processed at 2016-04-18 22:20:34.457622
+Resumed connection at : 2016-04-18 22:20:34.483677
+Resumed connection at : 2016-04-18 22:20:34.483889
+('Sent msg = ', bytearray(b'\x01\x10\x03\x00\x02\x00\x02\x18\x91<\xff'))
+('Sent msg = ', bytearray(b'\x02\x10\x03\x00\x02\x00\x02\x19\x9a<\xca'))
+('Response from server = ', '01 10 03 04 00 00 00 00 18 0b b1 e7')
+('Response from server = ', '02 10 03 04 00 00 00 00 19 fc ff c7')
+Response processed at 2016-04-18 22:20:34.562041
+Response processed at 2016-04-18 22:20:34.562539
+Resumed connection at : 2016-04-18 22:20:34.588075
+Resumed connection at : 2016-04-18 22:20:34.588736
+('Sent msg = ', bytearray(b'\x01\x10\x03\x00\x02\x00\x02\x18}aY'))
+('Sent msg = ', bytearray(b'\x02\x10\x03\x00\x02\x00\x02\x19n\xa3R'))
+('Response from server = ', '01 10 03 04 00 00 00 00 18 82 19 41')
+('Response from server = ', '02 10 03 04 00 00 00 00 19 20 de c1')
+Response processed at 2016-04-18 22:20:34.668155
+Response processed at 2016-04-18 22:20:34.668313
+Resumed connection at : 2016-04-18 22:20:34.693339
+Resumed connection at : 2016-04-18 22:20:34.693487
+('Sent msg = ', bytearray(b'\x01\x10\x03\x00\x02\x00\x02\x18\xfdp\xa2'))
+('Sent msg = ', bytearray(b'\x02\x10\x03\x00\x02\x00\x02\x19\xb7\xe0\x12'))
+('Response from server = ', '02 10 03 04 00 00 00 00 19 f7 86 00')
+('Response from server = ', '01 10 03 04 00 00 00 00 18 6d 6d a8')
+New input generated
+Response processed at 2016-04-18 22:20:34.771029
+Response processed at 2016-04-18 22:20:34.772036
+('Routed new job. Node_id = ', 1, ' to ', 3)
+Resumed connection at : 2016-04-18 22:20:34.810853
+Resumed connection at : 2016-04-18 22:20:34.811863
+('Sent msg = ', bytearray(b'\x02\x10\x03\x00\x02\x00\x02\x19\xad\xdd/'))
+('Sent msg = ', bytearray(b'\x01\x10\x03\x00\x02\x00\x02\x18Q\x93\xcb'))
+('Response from server = ', '02 10 03 04 00 01 00 01 1b f7 e5 b2')
+('Response from server = ', '01 10 03 04 00 00 00 00 18 7d c2 b7')
+New input generated
+Response processed at 2016-04-18 22:20:34.890383
+('Routed new job. Node_id = ', 1, ' to ', 2)
+Response processed at 2016-04-18 22:20:34.904387
+New input generated
+('Routed new job. Node_id = ', 1, ' to ', 2)
+Resumed connection at : 2016-04-18 22:20:35.008260
+Resumed connection at : 2016-04-18 22:20:35.008405
+('Sent msg = ', bytearray(b'\x01\x10\x03\x00\x02\x00\x02\x18\x99\xc6\x9c'))
+('Sent msg = ', bytearray(b'\x02\x10\x03\x00\x02\x00\x02\x19,\x9e\x08'))
+('Response from server = ', '02 10 03 04 00 01 00 03 1d c4 29 ab')
+('Response from server = ', '01 10 03 04 00 01 00 01 1a 1a 12 6b')
+New input generated
+Response processed at 2016-04-18 22:20:35.099640
+Response processed at 2016-04-18 22:20:35.100158
+('Routed new job. Node_id = ', 1, ' to ', 2)
+New input generated
+('Routed new job. Node_id = ', 1, ' to ', 2)
+Resumed connection at : 2016-04-18 22:20:35.217951
+Resumed connection at : 2016-04-18 22:20:35.218315
+('Sent msg = ', bytearray(b'\x01\x10\x03\x00\x02\x00\x02\x18-\x99\x9b'))
+('Sent msg = ', bytearray(b'\x02\x10\x03\x00\x02\x00\x02\x19l\xcc6'))
+('Response from server = ', '01 10 03 04 00 03 00 07 22 be cb 67')
+('Response from server = ', '02 10 03 04 00 01 00 03 1d 16 49 64')
+Response processed at 2016-04-18 22:20:35.296704
+Response processed at 2016-04-18 22:20:35.296908
+Resumed connection at : 2016-04-18 22:20:35.323086
+Resumed connection at : 2016-04-18 22:20:35.323126
+('Sent msg = ', bytearray(b'\x01\x10\x03\x00\x02\x00\x02\x18\\\xf8\x97'))
+('Sent msg = ', bytearray(b'\x02\x10\x03\x00\x02\x00\x02\x19\xe6*X'))
+('Response from server = ', '01 10 03 04 00 04 00 08 24 31 1c 9f')
+Response processed at 2016-04-18 22:20:35.389430
+('Response from server = ', '02 10 03 04 00 01 00 03 1d 4b 73 5b')
+Response processed at 2016-04-18 22:20:35.414993
+Resumed connection at : 2016-04-18 22:20:35.430747
+('Sent msg = ', bytearray(b'\x01\x10\x03\x00\x02\x00\x02\x18v\xf1\xb5'))
+('Response from server = ', '01 10 03 04 00 04 00 08 24 4e 82 5f')
+Response processed at 2016-04-18 22:20:35.507324
+Resumed connection at : 2016-04-18 22:20:35.533487
+Resumed connection at : 2016-04-18 22:20:35.533597
+('Sent msg = ', bytearray(b'\x01\x10\x03\x00\x02\x00\x02\x18S\x89e'))
+('Sent msg = ', bytearray(b'\x02\x10\x03\x00\x02\x00\x02\x195h\xa9'))
+('Response from server = ', '01 10 03 04 00 04 00 08 24 e7 f1 2c')
+('Response from server = ', '02 10 03 04 00 01 00 03 1d 93 75 69')
+Response processed at 2016-04-18 22:20:35.599198
+Response processed at 2016-04-18 22:20:35.625107
+Resumed connection at : 2016-04-18 22:20:35.638485
+('Sent msg = ', bytearray(b'\x01\x10\x03\x00\x02\x00\x02\x18\x88Ic'))
+('Response from server = ', '01 10 03 04 00 04 00 08 24 d6 ff cc')
+Response processed at 2016-04-18 22:20:35.717184
+Resumed connection at : 2016-04-18 22:20:35.742335
+Resumed connection at : 2016-04-18 22:20:35.743340
+('Sent msg = ', bytearray(b'\x02\x10\x03\x00\x02\x00\x02\x19\x91\x93='))
+('Sent msg = ', bytearray(b'\x01\x10\x03\x00\x02\x00\x02\x18\xd4\xf1\x9a'))
+('Response from server = ', '02 10 03 04 00 01 00 03 1d 84 a9 c0')
+('Response from server = ', '01 10 03 04 00 04 00 08 24 88 b8 97')
+Response processed at 2016-04-18 22:20:35.808553
+Response processed at 2016-04-18 22:20:35.808868
+Resumed connection at : 2016-04-18 22:20:35.848009
+Resumed connection at : 2016-04-18 22:20:35.848212
+('Sent msg = ', bytearray(b'\x01\x10\x03\x00\x02\x00\x02\x18{\xb7P'))
+('Sent msg = ', bytearray(b'\x02\x10\x03\x00\x02\x00\x02\x19\t1\xf4'))
+('Response from server = ', '01 10 03 04 00 04 00 08 24 4b 73 a0')
+('Response from server = ', '02 10 03 04 00 01 00 03 1d 94 8e 9e')
+Response processed at 2016-04-18 22:20:35.913702
+Response processed at 2016-04-18 22:20:35.926758
+Resumed connection at : 2016-04-18 22:20:35.952623
+Resumed connection at : 2016-04-18 22:20:35.952986
+('Sent msg = ', bytearray(b'\x01\x10\x03\x00\x02\x00\x02\x18\xeb\x80r'))
+('Sent msg = ', bytearray(b'\x02\x10\x03\x00\x02\x00\x02\x19\xd0\xf5\xf7'))
+('Response from server = ', '01 10 03 04 00 04 00 08 24 80 c7 be')
+Response processed at 2016-04-18 22:20:36.018689
+('Response from server = ', '02 10 03 04 00 01 00 03 1d f8 7b 59')
+Response processed at 2016-04-18 22:20:36.044732
+Resumed connection at : 2016-04-18 22:20:36.071213
+('Sent msg = ', bytearray(b'\x01\x10\x03\x00\x02\x00\x02\x18\xfe\xef\xd4'))
+('Response from server = ', '01 10 03 04 00 04 00 08 24 d9 67 c1')
+Response processed at 2016-04-18 22:20:36.162854
+Resumed connection at : 2016-04-18 22:20:36.174947
+('Sent msg = ', bytearray(b'\x02\x10\x03\x00\x02\x00\x02\x19N&y'))
+('Response from server = ', '02 10 03 04 00 01 00 03 1d 39 b5 ee')
+Response processed at 2016-04-18 22:20:36.241508
+Resumed connection at : 2016-04-18 22:20:36.280811
+Resumed connection at : 2016-04-18 22:20:36.280878
+('Sent msg = ', bytearray(b'\x02\x10\x03\x00\x02\x00\x02\x19 \xd9\x8e'))
+('Sent msg = ', bytearray(b'\x01\x10\x03\x00\x02\x00\x02\x18\x83\x11\xb4'))
+('Response from server = ', '02 10 03 04 00 01 00 03 1d aa 08 a5')
+('Response from server = ', '01 10 03 04 00 04 00 08 24 83 dd 89')
+Response processed at 2016-04-18 22:20:36.374848
+Response processed at 2016-04-18 22:20:36.385999
+Resumed connection at : 2016-04-18 22:20:36.490217
+Resumed connection at : 2016-04-18 22:20:36.490775
+('Sent msg = ', bytearray(b'\x02\x10\x03\x00\x02\x00\x02\x19\x13r\x01'))
+('Sent msg = ', bytearray(b'\x01\x10\x03\x00\x02\x00\x02\x18k\x926'))
+('Response from server = ', '02 10 03 04 00 01 00 03 1d 0d de 10')
+('Response from server = ', '01 10 03 04 00 04 00 08 24 0c 4f 1a')
+Response processed at 2016-04-18 22:20:36.569048
+Response processed at 2016-04-18 22:20:36.569315
+Resumed connection at : 2016-04-18 22:20:36.595074
+Resumed connection at : 2016-04-18 22:20:36.595503
+('Sent msg = ', bytearray(b'\x01\x10\x03\x00\x02\x00\x02\x18\x92 \xe0'))
+('Sent msg = ', bytearray(b'\x02\x10\x03\x00\x02\x00\x02\x19\xbd\x85\xa5'))
+('Response from server = ', '01 10 03 04 00 04 00 08 24 1a 08 4e')
+Response processed at 2016-04-18 22:20:36.661005
+('Response from server = ', '02 10 03 04 00 01 00 03 1d 31 22 d2')
+Response processed at 2016-04-18 22:20:36.673363
+Resumed connection at : 2016-04-18 22:20:36.702267
+('Sent msg = ', bytearray(b'\x01\x10\x03\x00\x02\x00\x02\x189\xee\xa9'))
+Resumed connection at : 2016-04-18 22:20:36.726215
+('Sent msg = ', bytearray(b'\x02\x10\x03\x00\x02\x00\x02\x19-5q'))
+('Response from server = ', '01 10 03 04 00 04 00 08 24 d8 02 77')
+Response processed at 2016-04-18 22:20:36.792327
+('Response from server = ', '02 10 03 04 00 01 00 03 1d 41 b6 ca')
+Response processed at 2016-04-18 22:20:36.805289
+Resumed connection at : 2016-04-18 22:20:36.910402
+Resumed connection at : 2016-04-18 22:20:36.910395
+('Sent msg = ', bytearray(b'\x01\x10\x03\x00\x02\x00\x02\x18e\xdc\xb4'))
+('Sent msg = ', bytearray(b'\x02\x10\x03\x00\x02\x00\x02\x19^\xd4u'))
+('Response from server = ', '01 10 03 04 00 04 00 08 24 c5 56 3d')
+('Response from server = ', '02 10 03 04 00 01 00 03 1d 91 17 7b')
+Response processed at 2016-04-18 22:20:36.988691
+Response processed at 2016-04-18 22:20:36.989038
+Resumed connection at : 2016-04-18 22:20:37.014779
+Resumed connection at : 2016-04-18 22:20:37.015254
+('Sent msg = ', bytearray(b'\x01\x10\x03\x00\x02\x00\x02\x18\xe6G\x1a'))
+('Sent msg = ', bytearray(b'\x02\x10\x03\x00\x02\x00\x02\x19\xd0\xc8\xea'))
+('Response from server = ', '01 10 03 04 00 04 00 08 24 77 85 23')
+Response processed at 2016-04-18 22:20:37.080727
+('Response from server = ', '02 10 03 04 00 01 00 03 1d 12 fd 64')
+Response processed at 2016-04-18 22:20:37.105940
+Resumed connection at : 2016-04-18 22:20:37.120051
+('Sent msg = ', bytearray(b'\x01\x10\x03\x00\x02\x00\x02\x18J \x8a'))
+('Response from server = ', '01 10 03 04 00 04 00 08 24 fe 41 39')
+Response processed at 2016-04-18 22:20:37.198810
+Resumed connection at : 2016-04-18 22:20:37.237957
+Resumed connection at : 2016-04-18 22:20:37.238082
+('Sent msg = ', bytearray(b'\x01\x10\x03\x00\x02\x00\x02\x18p\xda\x14'))
+('Sent msg = ', bytearray(b'\x02\x10\x03\x00\x02\x00\x02\x19\xc8@8'))
+('Response from server = ', '01 10 03 04 00 04 00 08 24 6c 14 0d')
+Response processed at 2016-04-18 22:20:37.303576
+('Response from server = ', '02 10 03 04 00 01 00 03 1d 75 b4 b6')
+Response processed at 2016-04-18 22:20:37.316152
+Resumed connection at : 2016-04-18 22:20:37.330815
+('Sent msg = ', bytearray(b'\x01\x10\x03\x00\x02\x00\x02\x18\xe8\xd4\x86'))
+('Response from server = ', '01 10 03 04 00 04 00 08 24 6f 9c d9')
+Response processed at 2016-04-18 22:20:37.408420
+Resumed connection at : 2016-04-18 22:20:37.434130
+Resumed connection at : 2016-04-18 22:20:37.434642
+('Sent msg = ', bytearray(b'\x01\x10\x03\x00\x02\x00\x02\x18\xaeW\x9d'))
+('Sent msg = ', bytearray(b'\x02\x10\x03\x00\x02\x00\x02\x19\x932q'))
+('Response from server = ', '01 10 03 04 00 04 00 08 24 a2 5e 1a')
+Response processed at 2016-04-18 22:20:37.500976
+('Response from server = ', '02 10 03 04 00 01 00 03 1d 8f 9d 05')
+Response processed at 2016-04-18 22:20:37.513165
+Resumed connection at : 2016-04-18 22:20:37.540025
+('Sent msg = ', bytearray(b'\x01\x10\x03\x00\x02\x00\x02\x18\xa7NM'))
+Resumed connection at : 2016-04-18 22:20:37.551579
+('Sent msg = ', bytearray(b'\x02\x10\x03\x00\x02\x00\x02\x19)\x10\x8d'))
+('Response from server = ', '01 10 03 04 00 04 00 08 24 39 69 55')
+('Response from server = ', '02 10 03 04 00 01 00 03 1d b8 4f e7')
+Response processed at 2016-04-18 22:20:37.618280
+Response processed at 2016-04-18 22:20:37.619077
+Resumed connection at : 2016-04-18 22:20:37.749950
+Resumed connection at : 2016-04-18 22:20:37.750031
+('Sent msg = ', bytearray(b'\x01\x10\x03\x00\x02\x00\x02\x18\xd54o'))
+('Sent msg = ', bytearray(b'\x02\x10\x03\x00\x02\x00\x02\x19\xf21\x89'))
+('Response from server = ', '01 10 03 04 00 04 00 08 24 a8 91 e1')
+('Response from server = ', '02 10 03 04 00 01 00 03 1d f3 df d2')
+Response processed at 2016-04-18 22:20:37.815512
+Response processed at 2016-04-18 22:20:37.828513
+Resumed connection at : 2016-04-18 22:20:37.854750
+Resumed connection at : 2016-04-18 22:20:37.854778
+('Sent msg = ', bytearray(b'\x01\x10\x03\x00\x02\x00\x02\x18\xb6\xa0\xa2'))
+('Sent msg = ', bytearray(b'\x02\x10\x03\x00\x02\x00\x02\x19,\x9fz'))
+('Response from server = ', '01 10 03 04 00 04 00 08 24 ae e3 68')
+Response processed at 2016-04-18 22:20:37.920815
+('Response from server = ', '02 10 03 04 00 01 00 03 1d 2b 30 ed')
+Response processed at 2016-04-18 22:20:37.933420
+Resumed connection at : 2016-04-18 22:20:37.959443
+Resumed connection at : 2016-04-18 22:20:37.959796
+('Sent msg = ', bytearray(b'\x01\x10\x03\x00\x02\x00\x02\x18zOx'))
+('Sent msg = ', bytearray(b'\x02\x10\x03\x00\x02\x00\x02\x19t\xf0 '))
+('Response from server = ', '01 10 03 04 00 04 00 08 24 d4 32 87')
+('Response from server = ', '02 10 03 04 00 01 00 03 1d e7 2e dc')
+Response processed at 2016-04-18 22:20:38.051121
+Response processed at 2016-04-18 22:20:38.051496
+Resumed connection at : 2016-04-18 22:20:38.181958
+Resumed connection at : 2016-04-18 22:20:38.182472
+('Sent msg = ', bytearray(b'\x01\x10\x03\x00\x02\x00\x02\x18\xdf\x15\xa5'))
+('Sent msg = ', bytearray(b'\x02\x10\x03\x00\x02\x00\x02\x19\x9dc\xb5'))
+('Response from server = ', '01 10 03 04 00 04 00 08 24 7f 00 3c')
+Response processed at 2016-04-18 22:20:38.248732
+('Response from server = ', '02 10 03 04 00 01 00 03 1d a9 87 22')
+Response processed at 2016-04-18 22:20:38.260746
+Resumed connection at : 2016-04-18 22:20:38.274523
+('Sent msg = ', bytearray(b'\x01\x10\x03\x00\x02\x00\x02\x18t\xb3c'))
+('Response from server = ', '01 10 03 04 00 04 00 08 24 68 e3 6b')
+Response processed at 2016-04-18 22:20:38.339994
+Resumed connection at : 2016-04-18 22:20:38.379146
+Resumed connection at : 2016-04-18 22:20:38.379302
+('Sent msg = ', bytearray(b'\x01\x10\x03\x00\x02\x00\x02\x18\x985c'))
+('Sent msg = ', bytearray(b'\x02\x10\x03\x00\x02\x00\x02\x19\xdc\xdf\xc8'))
+('Response from server = ', '01 10 03 04 00 04 00 08 24 e8 10 fb')
+Response processed at 2016-04-18 22:20:38.444816
+('Response from server = ', '02 10 03 04 00 01 00 03 1d 63 f7 24')
+Response processed at 2016-04-18 22:20:38.457147
+Resumed connection at : 2016-04-18 22:20:38.484968
+('Sent msg = ', bytearray(b'\x01\x10\x03\x00\x02\x00\x02\x18\xbb89'))
+Resumed connection at : 2016-04-18 22:20:38.497037
+('Sent msg = ', bytearray(b'\x02\x10\x03\x00\x02\x00\x02\x19\xfa@\xe4'))
+('Response from server = ', '01 10 03 04 00 04 00 08 24 9c cb 91')
+Response processed at 2016-04-18 22:20:38.563053
+('Response from server = ', '02 10 03 04 00 01 00 03 1d ed 59 b5')
+Response processed at 2016-04-18 22:20:38.589082
+Resumed connection at : 2016-04-18 22:20:38.589224
+('Sent msg = ', bytearray(b'\x01\x10\x03\x00\x02\x00\x02\x18{\xdbn'))
+('Response from server = ', '01 10 03 04 00 04 00 08 24 65 22 c3')
+('End time = ', 1461036038.650127)
+Socket TIMEOUT Done !!!!!!!!!!!!!!!!
+Re-Started server process at 1461036038.66
+('Start time = ', 1461036038.664137)
+Listening on port 502
+Response processed at 2016-04-18 22:20:38.668167
+Resumed connection at : 2016-04-18 22:20:38.706389
+Resumed connection at : 2016-04-18 22:20:38.707403
+('Sent msg = ', bytearray(b'\x02\x10\x03\x00\x02\x00\x02\x19L\x82}'))
+('Sent msg = ', bytearray(b'\x01\x10\x03\x00\x02\x00\x02\x18\xd4\xee.'))
+('Response from server = ', '02 10 03 04 00 01 00 03 1d ed e2 d3')
+Response processed at 2016-04-18 22:20:38.772422
+('Response from server = ', '01 10 03 04 00 04 00 08 24 c4 92 64')
+Response processed at 2016-04-18 22:20:38.799240
+Resumed connection at : 2016-04-18 22:20:38.812291
+('Sent msg = ', bytearray(b'\x02\x10\x03\x00\x02\x00\x02\x19\xe1\xce\x87'))
+('Response from server = ', '02 10 03 04 00 01 00 03 1d b5 04 27')
+Response processed at 2016-04-18 22:20:38.890731
+Resumed connection at : 2016-04-18 22:20:38.918142
+Resumed connection at : 2016-04-18 22:20:38.918203
+('Sent msg = ', bytearray(b'\x01\x10\x03\x00\x02\x00\x02\x18\x93\x93\xea'))
+('Sent msg = ', bytearray(b'\x02\x10\x03\x00\x02\x00\x02\x19\t\x866'))
+('Response from server = ', '02 10 03 04 00 01 00 03 1d df 53 cf')
+('Response from server = ', '01 10 03 04 00 04 00 08 24 20 bb c7')
+Response processed at 2016-04-18 22:20:38.996477
+Response processed at 2016-04-18 22:20:38.996694
+Resumed connection at : 2016-04-18 22:20:39.022510
+Resumed connection at : 2016-04-18 22:20:39.022905
+('Sent msg = ', bytearray(b'\x01\x10\x03\x00\x02\x00\x02\x18\xd9\xa7s'))
+('Sent msg = ', bytearray(b'\x02\x10\x03\x00\x02\x00\x02\x19\x00\xa3H'))
+('Response from server = ', '01 10 03 04 00 04 00 08 24 7f 4a 7a')
+Response processed at 2016-04-18 22:20:39.088473
+('Response from server = ', '02 10 03 04 00 01 00 03 1d 1c f3 7e')
+Response processed at 2016-04-18 22:20:39.129604
+Resumed connection at : 2016-04-18 22:20:39.129788
+('Sent msg = ', bytearray(b'\x01\x10\x03\x00\x02\x00\x02\x18\xdb\\\xc6'))
+('Response from server = ', '01 10 03 04 00 04 00 08 24 8e b8 60')
+Response processed at 2016-04-18 22:20:39.206421
+Resumed connection at : 2016-04-18 22:20:39.231643
+Resumed connection at : 2016-04-18 22:20:39.232646
+('Sent msg = ', bytearray(b'\x02\x10\x03\x00\x02\x00\x02\x19c\xb7\x97'))
+('Sent msg = ', bytearray(b'\x01\x10\x03\x00\x02\x00\x02\x18:_\xa2'))
+('Response from server = ', '02 10 03 04 00 01 00 03 1d d5 8b ca')
+('Response from server = ', '01 10 03 04 00 04 00 08 24 07 2c 0a')
+Response processed at 2016-04-18 22:20:39.297970
+Response processed at 2016-04-18 22:20:39.298363
+Resumed connection at : 2016-04-18 22:20:39.336668
+('Sent msg = ', bytearray(b'\x02\x10\x03\x00\x02\x00\x02\x19\x93\xaa\xfb'))
+Resumed connection at : 2016-04-18 22:20:39.339717
+('Sent msg = ', bytearray(b'\x01\x10\x03\x00\x02\x00\x02\x18\xfe\xc9i'))
+('Response from server = ', '01 10 03 04 00 04 00 08 24 a8 cc 64')
+('Response from server = ', '02 10 03 04 00 01 00 03 1d 1a f2 14')
+Response processed at 2016-04-18 22:20:39.417054
+Response processed at 2016-04-18 22:20:39.416294
+Elapsed time greater = 184.607285, cycle number = 630
+Resumed connection at : 2016-04-18 22:23:44.039392
+('Sent msg = ', bytearray(b'\x02\x10\x03\x00\x02\x00\x02\x19!M\x98'))
+Resumed connection at : 2016-04-18 22:23:44.040437
+('Sent msg = ', bytearray(b'\x01\x10\x03\x00\x02\x00\x02\x18\x17{\xd4'))

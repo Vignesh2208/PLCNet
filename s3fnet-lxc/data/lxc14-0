@@ -1,0 +1,492 @@
+Starting Debug for lxc14-0
+Running Command /home/vignesh/Desktop/PLCs/awlsim-0.42/tests/run.sh -e 0 --node 14 /home/vignesh/Desktop/PLCs/awlsim-0.42/tests/modbus/bottle_plant_node/bottle_plant_node.awl
+6 (process ID) old priority 0, new priority 10
+=== Running tests with 'python2'
+Running test 'bottle_plant_node.awl' with 'python2' ... [u'0', u'10.10.0.9']
+[u'1', u'10.10.0.10']
+[u'IDS', u'10.10.0.10']
+('Dest IP : ', '10.10.0.41')
+('Resolved hostname = ', '10.10.0.41')
+('IP of IDS : ', '10.10.0.33')
+('Dest IP : ', '10.10.0.41')
+('Resolved hostname = ', '10.10.0.41')
+('IP of IDS : ', '10.10.0.33')
+('Dest IP : ', '10.10.0.37')
+('Resolved hostname = ', '10.10.0.37')
+('IP of IDS : ', '10.10.0.33')
+Started server process at : 1461034118.48
+('Start time = ', 1461034118.482567)
+Listening on port 502
+('Start time = ', 1461034118.598091)
+('IP:PORT = ', '10.10.0.41', 502)
+('Start time = ', 1461034118.605136)
+('IP:PORT = ', '10.10.0.37', 502)
+Resumed connection at : 2016-04-18 21:48:38.642770
+Resumed connection at : 2016-04-18 21:48:38.644768
+('Sent msg = ', bytearray(b'\x1d\x10\x03\x00\x02\x00\x024\xe7\xfce'))
+('Sent msg = ', bytearray(b'\x1e\x10\x03\x00\x02\x00\x0255\xb6-'))
+('Response from server = ', '1e 10 03 04 00 00 00 00 35 8b 38 59')
+('Response from server = ', '1d 10 03 04 00 00 00 00 34 11 46 13')
+Response processed at 2016-04-18 21:48:38.720995
+Response processed at 2016-04-18 21:48:38.723037
+Established Connection from ('10.10.1.69', 46476)
+('Recv new msg = ', '0e 10 03 00 02 00 02 25 51 82 17', ' at Node id = ', 15)
+Resumed connection at : 2016-04-18 21:48:38.802212
+Resumed connection at : 2016-04-18 21:48:38.803267
+('Sent msg = ', bytearray(b'\x1e\x10\x03\x00\x02\x00\x025t\x1b\xbd'))
+('Sent msg = ', bytearray(b'\x1d\x10\x03\x00\x02\x00\x024\xb4i\xfe'))
+('Sent response to client = ', bytearray(b'\x0e\x10\x03\x04\x00\x00\x00\x00%\xa9,\x81'))
+('Response from server = ', '1e 10 03 04 00 00 00 00 35 ff 89 dc')
+Response processed at 2016-04-18 21:48:38.908377
+('Response from server = ', '1d 10 03 04 00 00 00 00 34 4c df 9e')
+Response processed at 2016-04-18 21:48:38.940684
+Resumed connection at : 2016-04-18 21:48:39.014395
+Resumed connection at : 2016-04-18 21:48:39.016103
+('Recv new msg = ', '0e 10 03 00 02 00 02 25 44 5c 86', ' at Node id = ', 15)
+('Sent msg = ', bytearray(b'\x1e\x10\x03\x00\x02\x00\x025\xdd*\xe6'))
+('Sent msg = ', bytearray(b'\x1d\x10\x03\x00\x02\x00\x024\x08\x08!'))
+('Sent response to client = ', bytearray(b'\x0e\x10\x03\x04\x00\x00\x00\x00%D-\xe3'))
+('Response from server = ', '1e 10 03 04 00 00 00 00 35 ed b9 16')
+('Response from server = ', '1d 10 03 04 00 00 00 00 34 14 02 ce')
+Response processed at 2016-04-18 21:48:39.105194
+Response processed at 2016-04-18 21:48:39.106900
+Resumed connection at : 2016-04-18 21:48:39.230321
+('Recv new msg = ', '0e 10 03 00 02 00 02 25 3c f1 7d', ' at Node id = ', 15)
+Resumed connection at : 2016-04-18 21:48:39.242625
+('Sent msg = ', bytearray(b'\x1e\x10\x03\x00\x02\x00\x025 7\x86'))
+('Sent msg = ', bytearray(b'\x1d\x10\x03\x00\x02\x00\x024\x17c<'))
+('Sent response to client = ', bytearray(b'\x0e\x10\x03\x04\x00\x00\x00\x00%\xfarT'))
+('Response from server = ', '1d 10 03 04 00 00 00 00 34 75 a1 df')
+('Response from server = ', '1e 10 03 04 00 00 00 00 35 23 89 1b')
+Response processed at 2016-04-18 21:48:39.365943
+Response processed at 2016-04-18 21:48:39.379010
+Resumed connection at : 2016-04-18 21:48:39.439713
+Resumed connection at : 2016-04-18 21:48:39.441535
+('Recv new msg = ', '0e 10 03 00 02 00 02 25 f6 d0 d9', ' at Node id = ', 15)
+('Sent msg = ', bytearray(b'\x1e\x10\x03\x00\x02\x00\x025\xb3\x88H'))
+('Sent msg = ', bytearray(b'\x1d\x10\x03\x00\x02\x00\x024h\xec:'))
+('Sent response to client = ', bytearray(b'\x0e\x10\x03\x04\x00\x00\x00\x00%\xea\x94\xcd'))
+('Response from server = ', '1e 10 03 04 00 00 00 00 35 86 8e 2f')
+('Response from server = ', '1d 10 03 04 00 00 00 00 34 01 d6 15')
+Response processed at 2016-04-18 21:48:39.532621
+Response processed at 2016-04-18 21:48:39.544871
+Resumed connection at : 2016-04-18 21:48:39.652769
+Resumed connection at : 2016-04-18 21:48:39.654297
+('Recv new msg = ', '0e 10 03 00 02 00 02 25 27 90 39', ' at Node id = ', 15)
+('Sent msg = ', bytearray(b'\x1e\x10\x03\x00\x02\x00\x025\x0c\x87\xdf'))
+('Sent msg = ', bytearray(b'\x1d\x10\x03\x00\x02\x00\x024Jz\x9a'))
+('Sent response to client = ', bytearray(b'\x0e\x10\x03\x04\x00\x00\x00\x00%\x02\xfc!'))
+('Response from server = ', '1d 10 03 04 00 00 00 00 34 24 81 5a')
+Response processed at 2016-04-18 21:48:39.746170
+('Response from server = ', '1e 10 03 04 00 00 00 00 35 b0 8f a2')
+Response processed at 2016-04-18 21:48:39.775097
+Read data =  ['1461034119.88\n']
+Resumed connection at : 2016-04-18 21:48:39.866246
+Resumed connection at : 2016-04-18 21:48:39.867971
+('Sent msg = ', bytearray(b'\x1e\x10\x03\x00\x02\x00\x025\xb7\xe2@'))
+('Sent msg = ', bytearray(b'\x1d\x10\x03\x00\x02\x00\x024@\xca\x8a'))
+('Routed new job. Node_id = ', 15, ' to ', 31)
+Read data =  ['1461034119.99\n']
+('Response from server = ', '1e 10 03 04 00 00 00 00 35 42 22 be')
+Response processed at 2016-04-18 21:48:39.957481
+('Recv new msg = ', '0e 10 03 00 02 00 02 25 a3 61 7b', ' at Node id = ', 15)
+('Response from server = ', '1d 10 03 04 00 00 00 00 34 70 04 77')
+('Sent response to client = ', bytearray(b"\x0e\x10\x03\x04\x00\x01\x00\x01\'\xbaQ\xa6"))
+('Routed new job. Node_id = ', 15, ' to ', 31)
+Response processed at 2016-04-18 21:48:40.005482
+Resumed connection at : 2016-04-18 21:48:40.083193
+('Sent msg = ', bytearray(b'\x1d\x10\x03\x00\x02\x00\x024\x1bw!'))
+Resumed connection at : 2016-04-18 21:48:40.096420
+('Sent msg = ', bytearray(b'\x1e\x10\x03\x00\x02\x00\x0258\xc7\xff'))
+('Response from server = ', '1d 10 03 04 00 00 00 00 34 5f d4 14')
+('Recv new msg = ', '0e 10 03 00 02 00 02 25 f1 1f d2', ' at Node id = ', 15)
+('Response from server = ', '1e 10 03 04 00 02 00 02 39 da 14 a5')
+Response processed at 2016-04-18 21:48:40.202292
+Response processed at 2016-04-18 21:48:40.204168
+('Sent response to client = ', bytearray(b'\x0e\x10\x03\x04\x00\x02\x00\x02)\xe0\xa7\xd9'))
+Resumed connection at : 2016-04-18 21:48:40.313407
+Resumed connection at : 2016-04-18 21:48:40.315145
+('Sent msg = ', bytearray(b'\x1e\x10\x03\x00\x02\x00\x025\x1a4R'))
+('Sent msg = ', bytearray(b'\x1d\x10\x03\x00\x02\x00\x024n[c'))
+('Recv new msg = ', '0e 10 03 00 02 00 02 25 cc d2 17', ' at Node id = ', 15)
+('Response from server = ', '1e 10 03 04 00 02 00 02 39 90 c7 b9')
+('Sent response to client = ', bytearray(b'\x0e\x10\x03\x04\x00\x02\x00\x06-\x95\xd1\x95'))
+Response processed at 2016-04-18 21:48:40.420052
+('Response from server = ', '1d 10 03 04 00 00 00 00 34 6a e5 ba')
+Resumed connection at : 2016-04-18 21:48:40.527617
+Response processed at 2016-04-18 21:48:40.528788
+('Sent msg = ', bytearray(b"\x1e\x10\x03\x00\x02\x00\x025l\'W"))
+Resumed connection at : 2016-04-18 21:48:40.621704
+('Recv new msg = ', '0e 10 03 00 02 00 02 25 d4 67 0b', ' at Node id = ', 15)
+('Response from server = ', '1e 10 03 04 00 02 00 02 39 8a 57 57')
+('Sent msg = ', bytearray(b'\x1d\x10\x03\x00\x02\x00\x024s\x9d\x15'))
+Response processed at 2016-04-18 21:48:40.649739
+('Sent response to client = ', bytearray(b'\x0e\x10\x03\x04\x00\x02\x00\x06-\x7f%\xf6'))
+('Response from server = ', '1d 10 03 04 00 00 00 00 34 0b 3c 03')
+Response processed at 2016-04-18 21:48:40.713206
+Resumed connection at : 2016-04-18 21:48:40.726121
+('Sent msg = ', bytearray(b'\x1e\x10\x03\x00\x02\x00\x025\xc5\x87V'))
+('Response from server = ', '1e 10 03 04 00 02 00 02 39 87 2a e6')
+Response processed at 2016-04-18 21:48:40.832918
+Resumed connection at : 2016-04-18 21:48:40.833146
+('Sent msg = ', bytearray(b'\x1d\x10\x03\x00\x02\x00\x024"\x0ba'))
+('Recv new msg = ', '0e 10 03 00 02 00 02 25 dc 37 84', ' at Node id = ', 15)
+('Sent response to client = ', bytearray(b'\x0e\x10\x03\x04\x00\x02\x00\x06-j\xffK'))
+('Response from server = ', '1d 10 03 04 00 00 00 00 34 bd d9 7d')
+Response processed at 2016-04-18 21:48:40.893981
+Resumed connection at : 2016-04-18 21:48:40.937073
+('Sent msg = ', bytearray(b'\x1e\x10\x03\x00\x02\x00\x025z\xad>'))
+Resumed connection at : 2016-04-18 21:48:40.953851
+('Sent msg = ', bytearray(b'\x1d\x10\x03\x00\x02\x00\x024\nV`'))
+('Response from server = ', '1e 10 03 04 00 02 00 02 39 d7 61 d8')
+Response processed at 2016-04-18 21:48:41.046135
+('Response from server = ', '1d 10 03 04 00 00 00 00 34 92 ab 11')
+('Recv new msg = ', '0e 10 03 00 02 00 02 25 f4 b3 9c', ' at Node id = ', 15)
+Response processed at 2016-04-18 21:48:41.093409
+('Sent response to client = ', bytearray(b'\x0e\x10\x03\x04\x00\x02\x00\x06-0\xb2\xda'))
+Resumed connection at : 2016-04-18 21:48:41.152549
+Resumed connection at : 2016-04-18 21:48:41.154245
+('Sent msg = ', bytearray(b'\x1d\x10\x03\x00\x02\x00\x024\xd2\x1e`'))
+('Sent msg = ', bytearray(b'\x1e\x10\x03\x00\x02\x00\x025\x0c\x1f\xb9'))
+('Response from server = ', '1e 10 03 04 00 02 00 02 39 8b c3 1b')
+Response processed at 2016-04-18 21:48:41.228000
+('Response from server = ', '1d 10 03 04 00 00 00 00 34 a8 7c 7f')
+Response processed at 2016-04-18 21:48:41.259291
+Resumed connection at : 2016-04-18 21:48:41.273360
+('Recv new msg = ', '0e 10 03 00 02 00 02 25 b8 5b 58', ' at Node id = ', 15)
+('Sent msg = ', bytearray(b'\x1e\x10\x03\x00\x02\x00\x025M3U'))
+('Sent response to client = ', bytearray(b'\x0e\x10\x03\x04\x00\x02\x00\x06-U\x1c\x94'))
+('Response from server = ', '1e 10 03 04 00 02 00 02 39 32 3e 3e')
+Response processed at 2016-04-18 21:48:41.333202
+Resumed connection at : 2016-04-18 21:48:41.365104
+Resumed connection at : 2016-04-18 21:48:41.366381
+('Sent msg = ', bytearray(b'\x1d\x10\x03\x00\x02\x00\x024\xc1=\xbc'))
+('Sent msg = ', bytearray(b'\x1e\x10\x03\x00\x02\x00\x025h\x95W'))
+('Response from server = ', '1e 10 03 04 00 02 00 02 39 23 13 9d')
+('Response from server = ', '1d 10 03 04 00 00 00 00 34 e5 6e ae')
+Response processed at 2016-04-18 21:48:41.489748
+Response processed at 2016-04-18 21:48:41.491267
+('Recv new msg = ', '0e 10 03 00 02 00 02 25 48 e0 97', ' at Node id = ', 15)
+('Sent response to client = ', bytearray(b'\x0e\x10\x03\x04\x00\x02\x00\x06-\x81\xcb\xce'))
+Resumed connection at : 2016-04-18 21:48:41.581975
+('Sent msg = ', bytearray(b'\x1e\x10\x03\x00\x02\x00\x025\x89]q'))
+Resumed connection at : 2016-04-18 21:48:41.599071
+('Sent msg = ', bytearray(b'\x1d\x10\x03\x00\x02\x00\x024\xd0\xe4s'))
+('Response from server = ', '1d 10 03 04 00 00 00 00 34 6f 96 be')
+Response processed at 2016-04-18 21:48:41.659811
+('Response from server = ', '1e 10 03 04 00 02 00 02 39 dc 2e 10')
+Response processed at 2016-04-18 21:48:41.719018
+('Recv new msg = ', '0e 10 03 00 02 00 02 25 15 f4 b2', ' at Node id = ', 15)
+('Sent response to client = ', bytearray(b'\x0e\x10\x03\x04\x00\x02\x00\x06-i\x13\x0b'))
+Resumed connection at : 2016-04-18 21:48:41.813967
+Resumed connection at : 2016-04-18 21:48:41.827911
+('Sent msg = ', bytearray(b'\x1d\x10\x03\x00\x02\x00\x024\xb1!n'))
+('Sent msg = ', bytearray(b'\x1e\x10\x03\x00\x02\x00\x025\xce+\xdf'))
+('Response from server = ', '1d 10 03 04 00 00 00 00 34 ee a7 81')
+Response processed at 2016-04-18 21:48:41.951226
+('Recv new msg = ', '0e 10 03 00 02 00 02 25 f9 d7 84', ' at Node id = ', 15)
+('Response from server = ', '1e 10 03 04 00 02 00 02 39 70 96 0f')
+('Sent response to client = ', bytearray(b'\x0e\x10\x03\x04\x00\x02\x00\x06-\x04m\x04'))
+Response processed at 2016-04-18 21:48:41.981065
+Resumed connection at : 2016-04-18 21:48:42.041306
+Resumed connection at : 2016-04-18 21:48:42.044133
+('Sent msg = ', bytearray(b'\x1e\x10\x03\x00\x02\x00\x025\xa8V\x98'))
+('Sent msg = ', bytearray(b'\x1d\x10\x03\x00\x02\x00\x024\xbc\t\xed'))
+('Response from server = ', '1e 10 03 04 00 02 00 02 39 c1 17 6c')
+('Recv new msg = ', '0e 10 03 00 02 00 02 25 04 b4 f8', ' at Node id = ', 15)
+Response processed at 2016-04-18 21:48:42.164241
+('Response from server = ', '1d 10 03 04 00 00 00 00 34 1f 98 92')
+('Sent response to client = ', bytearray(b'\x0e\x10\x03\x04\x00\x02\x00\x06-\xc0\x02\xdc'))
+Response processed at 2016-04-18 21:48:42.179267
+Resumed connection at : 2016-04-18 21:48:42.253525
+('Sent msg = ', bytearray(b'\x1e\x10\x03\x00\x02\x00\x025f\x8e\xd9'))
+Resumed connection at : 2016-04-18 21:48:42.286592
+('Sent msg = ', bytearray(b'\x1d\x10\x03\x00\x02\x00\x024)(\x01'))
+('Recv new msg = ', '0e 10 03 00 02 00 02 25 e7 fb e5', ' at Node id = ', 15)
+('Response from server = ', '1d 10 03 04 00 00 00 00 34 d6 ce 16')
+('Response from server = ', '1e 10 03 04 00 02 00 02 39 5d a5 06')
+Response processed at 2016-04-18 21:48:42.394224
+('Sent response to client = ', bytearray(b'\x0e\x10\x03\x04\x00\x02\x00\x06-\x83R\xbc'))
+Response processed at 2016-04-18 21:48:42.407804
+Resumed connection at : 2016-04-18 21:48:42.483161
+('Sent msg = ', bytearray(b'\x1e\x10\x03\x00\x02\x00\x025"t\xd4'))
+Resumed connection at : 2016-04-18 21:48:42.486302
+('Sent msg = ', bytearray(b'\x1d\x10\x03\x00\x02\x00\x024\xe9!j'))
+('Response from server = ', '1e 10 03 04 00 02 00 02 39 9c 29 3e')
+('Response from server = ', '1d 10 03 04 00 00 00 00 34 16 af d9')
+Response processed at 2016-04-18 21:48:42.544584
+Response processed at 2016-04-18 21:48:42.547635
+Resumed connection at : 2016-04-18 21:48:42.574747
+('Sent msg = ', bytearray(b'\x1e\x10\x03\x00\x02\x00\x025\x05\x93\x8c'))
+Resumed connection at : 2016-04-18 21:48:42.577657
+('Sent msg = ', bytearray(b'\x1d\x10\x03\x00\x02\x00\x024\xdd\xb0\xde'))
+('Recv new msg = ', '0e 10 03 00 02 00 02 25 a1 a8 93', ' at Node id = ', 15)
+('Sent response to client = ', bytearray(b'\x0e\x10\x03\x04\x00\x02\x00\x06-\xe49\x12'))
+('Response from server = ', '1e 10 03 04 00 02 00 02 39 01 14 0a')
+Response processed at 2016-04-18 21:48:42.651722
+('Response from server = ', '1d 10 03 04 00 00 00 00 34 3a bb d0')
+Resumed connection at : 2016-04-18 21:48:42.698445
+('Sent msg = ', bytearray(b'\x1e\x10\x03\x00\x02\x00\x025\xb0=s'))
+Response processed at 2016-04-18 21:48:42.700138
+('Response from server = ', '1e 10 03 04 00 02 00 02 39 38 bb 25')
+('Recv new msg = ', '0e 10 03 00 02 00 02 25 7b ad 9c', ' at Node id = ', 15)
+Response processed at 2016-04-18 21:48:42.775856
+('Sent response to client = ', bytearray(b'\x0e\x10\x03\x04\x00\x02\x00\x06-y5<'))
+Resumed connection at : 2016-04-18 21:48:42.792646
+('Sent msg = ', bytearray(b'\x1d\x10\x03\x00\x02\x00\x024G\x83@'))
+('Response from server = ', '1d 10 03 04 00 00 00 00 34 51 77 ee')
+Resumed connection at : 2016-04-18 21:48:42.897086
+('Sent msg = ', bytearray(b'\x1e\x10\x03\x00\x02\x00\x025\x84\xbf\x1e'))
+Response processed at 2016-04-18 21:48:42.899086
+('Recv new msg = ', '0e 10 03 00 02 00 02 25 30 87 57', ' at Node id = ', 15)
+Resumed connection at : 2016-04-18 21:48:43.004737
+('Sent msg = ', bytearray(b'\x1d\x10\x03\x00\x02\x00\x024N\xf9\x01'))
+('Sent response to client = ', bytearray(b'\x0e\x10\x03\x04\x00\x02\x00\x06-\x87\xb14'))
+('Response from server = ', '1d 10 03 04 00 00 00 00 34 5a 72 78')
+Response processed at 2016-04-18 21:48:43.080177
+Resumed connection at : 2016-04-18 21:48:43.219307
+('Sent msg = ', bytearray(b'\x1d\x10\x03\x00\x02\x00\x024e\xb8\xef'))
+('Recv new msg = ', '0e 10 03 00 02 00 02 25 f4 16 f5', ' at Node id = ', 15)
+('Sent response to client = ', bytearray(b'\x0e\x10\x03\x04\x00\x02\x00\x06-\xcd\xf5\x87'))
+('Response from server = ', '1d 10 03 04 00 00 00 00 34 23 e8 d9')
+Response processed at 2016-04-18 21:48:43.324341
+Resumed connection at : 2016-04-18 21:48:43.430172
+('Recv new msg = ', '0e 10 03 00 02 00 02 25 ef cc 6d', ' at Node id = ', 15)
+('Sent msg = ', bytearray(b'\x1d\x10\x03\x00\x02\x00\x024\xbcr\xab'))
+('Sent response to client = ', bytearray(b'\x0e\x10\x03\x04\x00\x02\x00\x06-\x95aD'))
+('Response from server = ', '1d 10 03 04 00 00 00 00 34 b4 de 14')
+Response processed at 2016-04-18 21:48:43.598686
+Resumed connection at : 2016-04-18 21:48:43.674146
+('Sent msg = ', bytearray(b'\x1d\x10\x03\x00\x02\x00\x024\xe4PF'))
+('Recv new msg = ', '0e 10 03 00 02 00 02 25 3c af 5b', ' at Node id = ', 15)
+('Sent response to client = ', bytearray(b'\x0e\x10\x03\x04\x00\x02\x00\x06-\xa8\xc3\xb7'))
+('Response from server = ', '1d 10 03 04 00 00 00 00 34 ec cb 56')
+Response processed at 2016-04-18 21:48:43.901989
+Resumed connection at : 2016-04-18 21:48:43.979091
+('Sent msg = ', bytearray(b'\x1d\x10\x03\x00\x02\x00\x024*\x08b'))
+('Response from server = ', '1d 10 03 04 00 00 00 00 34 60 fb 7d')
+('Recv new msg = ', '0e 10 03 00 02 00 02 25 54 cc e5', ' at Node id = ', 15)
+Response processed at 2016-04-18 21:48:44.069159
+('Sent response to client = ', bytearray(b'\x0e\x10\x03\x04\x00\x02\x00\x06-\x95v\x1e'))
+Resumed connection at : 2016-04-18 21:48:44.206310
+('Sent msg = ', bytearray(b'\x1d\x10\x03\x00\x02\x00\x024Xqg'))
+('Recv new msg = ', '0e 10 03 00 02 00 02 25 29 40 8c', ' at Node id = ', 15)
+('Sent response to client = ', bytearray(b'\x0e\x10\x03\x04\x00\x02\x00\x06-\xb6v\xec'))
+('Response from server = ', '1d 10 03 04 00 00 00 00 34 3d 5f 0d')
+Response processed at 2016-04-18 21:48:44.403914
+('Recv new msg = ', '0e 10 03 00 02 00 02 25 cb b1 0e', ' at Node id = ', 15)
+('Sent response to client = ', bytearray(b'\x0e\x10\x03\x04\x00\x02\x00\x06-Y\x9bD'))
+Elapsed time greater = 281.672402, cycle number = 598
+Resumed connection at : 2016-04-18 21:53:26.229970
+('Sent msg = ', bytearray(b"\x1d\x10\x03\x00\x02\x00\x024\x8e\x00\'"))
+####### Exiting ############
+Re-Started server process at 1461034411.5
+Process Process-4:
+Traceback (most recent call last):
+  File "/usr/lib/python2.7/multiprocessing/process.py", line 258, in _bootstrap
+    self.run()
+  File "/usr/lib/python2.7/multiprocessing/process.py", line 114, in run
+    self._target(*self._args, **self._kwargs)
+  File "/home/vignesh/Desktop/PLCs/awlsim-0.42/awlsim/core/systemblocks/test_run.py", line 66, in test_run_server_ip
+    server_socket.bind(('0.0.0.0',TCP_LOCAL_PORT))	# bind to any address
+  File "/usr/lib/python2.7/socket.py", line 224, in meth
+    return getattr(self._sock,name)(*args)
+error: [Errno 98] Address already in use
+('Start time = ', 1461034411.563475)
+('IP:PORT = ', '10.10.0.41', 502)
+('10.10.0.41', 502)
+timed out
+('Start time = ', 1461034416.686571)
+('IP:PORT = ', '10.10.0.41', 502)
+('10.10.0.41', 502)
+timed out
+('Start time = ', 1461034422.005124)
+('IP:PORT = ', '10.10.0.41', 502)
+('10.10.0.41', 502)
+timed out
+('Start time = ', 1461034427.251599)
+('IP:PORT = ', '10.10.0.41', 502)
+('10.10.0.41', 502)
+[Errno 113] No route to host
+('Start time = ', 1461034428.273993)
+('IP:PORT = ', '10.10.0.41', 502)
+('10.10.0.41', 502)
+[Errno 113] No route to host
+('Start time = ', 1461034431.371487)
+('IP:PORT = ', '10.10.0.41', 502)
+('10.10.0.41', 502)
+[Errno 113] No route to host
+('Start time = ', 1461034434.50369)
+('IP:PORT = ', '10.10.0.41', 502)
+('10.10.0.41', 502)
+[Errno 113] No route to host
+('Start time = ', 1461034437.414218)
+('IP:PORT = ', '10.10.0.41', 502)
+('10.10.0.41', 502)
+[Errno 113] No route to host
+('Start time = ', 1461034440.574423)
+('IP:PORT = ', '10.10.0.41', 502)
+('10.10.0.41', 502)
+[Errno 113] No route to host
+('Start time = ', 1461034443.361393)
+('IP:PORT = ', '10.10.0.41', 502)
+('10.10.0.41', 502)
+[Errno 113] No route to host
+('Start time = ', 1461034446.45203)
+('IP:PORT = ', '10.10.0.41', 502)
+('10.10.0.41', 502)
+[Errno 113] No route to host
+('Start time = ', 1461034449.33306)
+('IP:PORT = ', '10.10.0.41', 502)
+('10.10.0.41', 502)
+[Errno 113] No route to host
+('Start time = ', 1461034452.608833)
+('IP:PORT = ', '10.10.0.41', 502)
+('10.10.0.41', 502)
+[Errno 113] No route to host
+('Start time = ', 1461034455.364716)
+('IP:PORT = ', '10.10.0.41', 502)
+('10.10.0.41', 502)
+[Errno 113] No route to host
+('Start time = ', 1461034458.47662)
+('IP:PORT = ', '10.10.0.41', 502)
+('10.10.0.41', 502)
+[Errno 113] No route to host
+('Start time = ', 1461034461.385842)
+('IP:PORT = ', '10.10.0.41', 502)
+('10.10.0.41', 502)
+[Errno 113] No route to host
+('Start time = ', 1461034464.637767)
+('IP:PORT = ', '10.10.0.41', 502)
+('10.10.0.41', 502)
+[Errno 113] No route to host
+('Start time = ', 1461034467.378898)
+('IP:PORT = ', '10.10.0.41', 502)
+('10.10.0.41', 502)
+[Errno 113] No route to host
+('Start time = ', 1461034470.6123)
+('IP:PORT = ', '10.10.0.41', 502)
+('10.10.0.41', 502)
+[Errno 113] No route to host
+('Start time = ', 1461034473.401113)
+('IP:PORT = ', '10.10.0.41', 502)
+('10.10.0.41', 502)
+[Errno 113] No route to host
+('Start time = ', 1461034476.618136)
+('IP:PORT = ', '10.10.0.41', 502)
+('10.10.0.41', 502)
+[Errno 113] No route to host
+('Start time = ', 1461034479.347116)
+('IP:PORT = ', '10.10.0.41', 502)
+('10.10.0.41', 502)
+[Errno 113] No route to host
+('Start time = ', 1461034482.606849)
+('IP:PORT = ', '10.10.0.41', 502)
+('10.10.0.41', 502)
+[Errno 113] No route to host
+('Start time = ', 1461034485.412963)
+('IP:PORT = ', '10.10.0.41', 502)
+('10.10.0.41', 502)
+[Errno 113] No route to host
+('Start time = ', 1461034488.545074)
+('IP:PORT = ', '10.10.0.41', 502)
+('10.10.0.41', 502)
+[Errno 113] No route to host
+('Start time = ', 1461034491.366433)
+('IP:PORT = ', '10.10.0.41', 502)
+('10.10.0.41', 502)
+[Errno 113] No route to host
+('Start time = ', 1461034494.443187)
+('IP:PORT = ', '10.10.0.41', 502)
+('10.10.0.41', 502)
+[Errno 113] No route to host
+('Start time = ', 1461034497.420515)
+('IP:PORT = ', '10.10.0.41', 502)
+('10.10.0.41', 502)
+[Errno 113] No route to host
+('Start time = ', 1461034500.529259)
+('IP:PORT = ', '10.10.0.41', 502)
+('10.10.0.41', 502)
+[Errno 113] No route to host
+('Start time = ', 1461034503.378971)
+('IP:PORT = ', '10.10.0.41', 502)
+('10.10.0.41', 502)
+[Errno 113] No route to host
+('Start time = ', 1461034506.578816)
+('IP:PORT = ', '10.10.0.41', 502)
+('10.10.0.41', 502)
+[Errno 113] No route to host
+('Start time = ', 1461034509.539387)
+('IP:PORT = ', '10.10.0.41', 502)
+('10.10.0.41', 502)
+[Errno 113] No route to host
+('Start time = ', 1461034512.317409)
+('IP:PORT = ', '10.10.0.41', 502)
+('10.10.0.41', 502)
+[Errno 113] No route to host
+('Start time = ', 1461034515.596198)
+('IP:PORT = ', '10.10.0.41', 502)
+('10.10.0.41', 502)
+[Errno 113] No route to host
+('Start time = ', 1461034518.408503)
+('IP:PORT = ', '10.10.0.41', 502)
+('10.10.0.41', 502)
+[Errno 113] No route to host
+('Start time = ', 1461034521.661405)
+('IP:PORT = ', '10.10.0.41', 502)
+('10.10.0.41', 502)
+[Errno 113] No route to host
+('Start time = ', 1461034524.382389)
+('IP:PORT = ', '10.10.0.41', 502)
+('10.10.0.41', 502)
+[Errno 113] No route to host
+('Start time = ', 1461034527.571907)
+('IP:PORT = ', '10.10.0.41', 502)
+('10.10.0.41', 502)
+[Errno 113] No route to host
+('Start time = ', 1461034530.385575)
+('IP:PORT = ', '10.10.0.41', 502)
+('10.10.0.41', 502)
+[Errno 113] No route to host
+('Start time = ', 1461034533.478555)
+('IP:PORT = ', '10.10.0.41', 502)
+('10.10.0.41', 502)
+[Errno 113] No route to host
+('Start time = ', 1461034536.355952)
+('IP:PORT = ', '10.10.0.41', 502)
+('10.10.0.41', 502)
+[Errno 113] No route to host
+('Start time = ', 1461034539.565641)
+('IP:PORT = ', '10.10.0.41', 502)
+('10.10.0.41', 502)
+[Errno 113] No route to host
+('Start time = ', 1461034542.301424)
+('IP:PORT = ', '10.10.0.41', 502)
+('10.10.0.41', 502)
+[Errno 113] No route to host
+('Start time = ', 1461034545.55284)
+('IP:PORT = ', '10.10.0.41', 502)
+('10.10.0.41', 502)
+[Errno 113] No route to host
+('Start time = ', 1461034548.344739)
+('IP:PORT = ', '10.10.0.41', 502)
+('10.10.0.41', 502)
+[Errno 113] No route to host
+('Start time = ', 1461034551.473512)
+('IP:PORT = ', '10.10.0.41', 502)
+('10.10.0.41', 502)
+[Errno 113] No route to host
+('Start time = ', 1461034554.410481)
+('IP:PORT = ', '10.10.0.41', 502)
+('10.10.0.41', 502)
+[Errno 113] No route to host
+('Start time = ', 1461034557.521146)
+('IP:PORT = ', '10.10.0.41', 502)
+('10.10.0.41', 502)
+[Errno 113] No route to host
+('Start time = ', 1461034560.400155)
+('IP:PORT = ', '10.10.0.41', 502)
+('10.10.0.41', 502)
+[Errno 113] No route to host
+('Start time = ', 1461034563.794199)
+('IP:PORT = ', '10.10.0.41', 502)

@@ -27,6 +27,8 @@ import os
 import getopt
 import traceback
 import signal
+import datetime
+from datetime import *
 
 import time
 
@@ -276,13 +278,15 @@ def run(inputFile,node_id,conn_type):
 		cycle_start_time = 0
 		cycle_end_time = 0
 		elapsed_time = 0
-		total_elapsed_time = 0
-		total_elapsed_sq_time = 0
+		total_elapsed_time = 0.0
+		total_elapsed_sq_time = 0.0
 		sample_mean = 0.0
 		sample_variance = 0.0
 		n_cycles = 0
+		n_greater = 0
 		Node_data = {}
 		Node_data["conf_directory"] = conf_directory
+		node_start_time = datetime.datetime.now()
 
 		try:
 			if not opt_noCpuDump:
@@ -294,9 +298,11 @@ def run(inputFile,node_id,conn_type):
 					cpu.inputs[0:len(cpu.inputs)] = inputs
 
 				n_cycles = n_cycles + 1
-				cycle_start_time = time.time()
+				#cycle_start_time = time.time()
+				cycle_start_time = datetime.datetime.now()
 				s.runCycle()
-				cycle_end_time = time.time()
+				#cycle_end_time = time.time()
+				cycle_end_time = datetime.datetime.now()
 
 
 				if len(cpu.inputs) > 0 :
@@ -317,19 +323,31 @@ def run(inputFile,node_id,conn_type):
 					else :
 						pass 			# send to IDS here
 
+				d = cycle_end_time - cycle_start_time
+				total_run_time = cycle_end_time - node_start_time
+				elapsed_time = float(d.total_seconds())
+				total_run_time = float(total_run_time.total_seconds())
+				if elapsed_time > 1 :
+					print("Elapsed time greater = " + str(elapsed_time) + ", cycle number = " + str(n_cycles))
+					n_greater = n_greater + 1
 
-				elapsed_time = cycle_end_time - cycle_start_time
-				total_elapsed_time = total_elapsed_time + elapsed_time
-				total_elapsed_sq_time = total_elapsed_sq_time + (elapsed_time*elapsed_time)
+				if total_run_time < 5.0 :	# compute statistics for first 5 secs
+					total_elapsed_time = total_elapsed_time + elapsed_time
+					total_elapsed_sq_time = total_elapsed_sq_time + (elapsed_time*elapsed_time)
+
 				cpu_cycle_number = cpu_cycle_number + 1
 
-				if n_cycles > 1 and n_cycles % 100 == 0:
-					sample_mean = float(total_elapsed_time)/n_cycles
-					sample_variance = (float(total_elapsed_sq_time)/(n_cycles - 1)) - (float(n_cycles)/(n_cycles-1))*(sample_mean*sample_mean)
-					log_file = conf_directory + "/logs/node_" + str(node_id) + "_cycle_statistics_log"
-					with open(log_file,"w") as f :
-						f.write("Mean cycle time  : " + str(sample_mean) + "\n")
-						f.write("Sample variance  : " + str(sample_variance) + "\n")
+				if n_cycles > 1 and total_run_time < 5.0 : # compute statistics for first 5 secs
+					sample_mean = float(total_elapsed_time)/float(n_cycles)
+					sample_variance = (float(total_elapsed_sq_time)/float(n_cycles - 1)) - (float(n_cycles)/float(n_cycles-1))*(sample_mean*sample_mean)
+					if n_cycles % 10 == 0 :
+						log_file = conf_directory + "/logs/node_" + str(node_id) + "_cycle_statistics_log"
+						with open(log_file,"w") as f :
+							f.write("Mean cycle time  : " + str(sample_mean) + "\n")
+							f.write("Sample variance  : " + str(sample_variance) + "\n")
+							f.write("Total elapsed sq time : " + str(total_elapsed_sq_time) + "\n")
+							f.write("N_cycles         : " + str(n_cycles) + "\n")
+							f.write("N_greater        : " + str(n_greater)+ "\n")
 
 		finally:
 			if not opt_noCpuDump and opt_loglevel >= Logging.LOG_INFO:
@@ -361,13 +379,16 @@ def run(inputFile,node_id,conn_type):
 				writeStdout(ps)
 				writeStdout("\n")
 
-	if n_cycles > 1 :
+	if n_cycles > 1 and  total_run_time < 5.0 : # compute statistics for first 5 secs
 		sample_mean = float(total_elapsed_time)/n_cycles
 		sample_variance = (float(total_elapsed_sq_time)/(n_cycles - 1)) - (float(n_cycles)/(n_cycles-1))*(sample_mean*sample_mean)
 		log_file = conf_directory + "/logs/node_" + str(node_id) + "_cycle_statistics_log"
 		with open(log_file,"w") as f :
 			f.write("Mean cycle time  : " + str(sample_mean) + "\n")
 			f.write("Sample variance  : " + str(sample_variance) + "\n")
+			f.write("Total elapsed sq time : " + str(total_elapsed_sq_time) + "\n")
+			f.write("N_cycles         : " + str(n_cycles) + "\n")
+			f.write("N_greater        : " + str(n_greater)+ "\n")
 
 
 	#print("Start select time = ", time.time())

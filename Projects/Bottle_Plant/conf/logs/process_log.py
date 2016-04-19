@@ -1,12 +1,21 @@
 import os
 import datetime
 import math
+import sys
 
-n_nodes = 3
+n_nodes = 7
 node = 0
 Packet = {}
 
+arglist = sys.argv
+
 folder = 'routing_logs'
+if len(arglist) > 1 :
+	experiment_name = folder + "/" + str(arglist[1]) + "/"
+else:
+	experiment_name = ""
+
+
 for the_file in os.listdir(folder):
 	file_path = os.path.join(folder, the_file)
 	try:
@@ -17,8 +26,8 @@ for the_file in os.listdir(folder):
 
 
 while node <= n_nodes :
-	if os.path.isfile("node_" + str(node) + "_log"):
-		with open("node_" + str(node) + "_log",'r') as f:
+	if os.path.isfile(experiment_name + "node_" + str(node) + "_log"):
+		with open(experiment_name + "node_" + str(node) + "_log",'r') as f:
 			data = f.read().splitlines(True)
 		for line in data :
 
@@ -61,3 +70,7 @@ if n_packets > 1 :
 	sample_variance = (float(total_elapsed_sq_time)/(n_packets - 1)) - (float(n_packets)/(n_packets-1))*(sample_mean*sample_mean)
 	print("Mean delay : ", sample_mean)
 	print("Std dev: ", math.sqrt(sample_variance))
+	process_log_output_file = experiment_name + "process_log_out.txt"
+	with open(process_log_output_file,"w") as f:
+		f.write("Mean delay : " +  str(sample_mean) + "\n")
+		f.write("Std dev    : " + str(math.sqrt(sample_variance)) + "\n")
