@@ -1,0 +1,43 @@
+Starting Debug for lxc25-0
+Running Command /home/vignesh/Desktop/PLCs/awlsim-0.42/tests/run.sh -e 0 --node 25 /home/vignesh/Desktop/PLCs/awlsim-0.42/tests/modbus/bottle_plant_node/bottle_plant_node.awl
+6 (process ID) old priority 0, new priority 10
+=== Running tests with 'python2'
+Running test 'bottle_plant_node.awl' with 'python2' ... [u'0', u'10.10.0.9']
+[u'1', u'10.10.0.10']
+[u'IDS', u'10.10.0.10']
+('Dest IP : ', '10.10.0.177')
+('Resolved hostname = ', '10.10.0.177')
+('IP of IDS : ', '10.10.0.33')
+('Dest IP : ', '10.10.0.177')
+('Resolved hostname = ', '10.10.0.177')
+('IP of IDS : ', '10.10.0.33')
+('Dest IP : ', '10.10.0.181')
+('Resolved hostname = ', '10.10.0.181')
+('IP of IDS : ', '10.10.0.33')
+Started server process at : 1461358533.7
+('Start time = ', 1461358533.698747)
+Listening on port 502
+('Start time = ', 1461358533.899947)
+('IP:PORT = ', '10.10.0.177', 502)
+('Start time = ', 1461358533.900483)
+('IP:PORT = ', '10.10.0.181', 502)
+Resumed connection at : 2016-04-22 15:55:33.961030
+('Sent msg = ', bytearray(b'4\x10\x03\x00\x02\x00\x02K\x9b\xdd\xa7'))
+Resumed connection at : 2016-04-22 15:55:34.075125
+('Sent msg = ', bytearray(b'3\x10\x03\x00\x02\x00\x02J\x19\xea\xcd'))
+('Response from server = ', '34 10 03 04 00 00 00 00 4b 0c ea e4')
+Response processed at 2016-04-22 15:55:34.222104
+('Response from server = ', '33 10 03 04 00 00 00 00 4a 78 ea 6a')
+Response processed at 2016-04-22 15:55:34.467516
+Resumed connection at : 2016-04-22 15:55:34.484620
+('Sent msg = ', bytearray(b'4\x10\x03\x00\x02\x00\x02K\x0f}\x05'))
+('Response from server = ', '34 10 03 04 00 00 00 00 4b aa 0f db')
+Response processed at 2016-04-22 15:55:35.111165
+Resumed connection at : 2016-04-22 15:55:35.687015
+Resumed connection at : 2016-04-22 15:55:35.695970
+('Sent msg = ', bytearray(b'4\x10\x03\x00\x02\x00\x02K\xca@-'))
+('Sent msg = ', bytearray(b'3\x10\x03\x00\x02\x00\x02J\xed3\x12'))
+('Response from server = ', '33 10 03 04 00 00 00 00 4a 08 84 f1')
+('Response from server = ', '34 10 03 04 00 00 00 00 4b 7c 08 a3')
+Response processed at 2016-04-22 15:55:36.205280
+Elapsed time greater = 514.700446, cycle number = 1247

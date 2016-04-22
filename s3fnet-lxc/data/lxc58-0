@@ -1,0 +1,41 @@
+Starting Debug for lxc58-0
+Running Command /home/vignesh/Desktop/PLCs/awlsim-0.42/tests/run.sh -e 0 --node 58 /home/vignesh/Desktop/PLCs/awlsim-0.42/tests/modbus/bottle_plant_node/bottle_plant_node.awl
+6 (process ID) old priority 0, new priority 10
+=== Running tests with 'python2'
+Running test 'bottle_plant_node.awl' with 'python2' ... [u'0', u'10.10.0.9']
+[u'1', u'10.10.0.10']
+[u'IDS', u'10.10.0.10']
+('Resolved hostname = ', '127.0.0.1')
+('IP of IDS : ', '10.10.0.33')
+('Resolved hostname = ', '127.0.0.1')
+('IP of IDS : ', '10.10.0.33')
+('Resolved hostname = ', '127.0.0.1')
+('IP of IDS : ', '10.10.0.33')
+Started server process at : 1461361499.73
+('Start time = ', 1461361499.731202)
+Listening on port 502
+Established Connection from ('10.10.2.149', 58147)
+('Recv new msg = ', '3a 10 03 00 02 00 02 51 a7 c2 85', ' at Node id = ', 59)
+('Sent response to client = ', bytearray(b':\x10\x03\x04\x00\x00\x00\x00Q:\xd3?'))
+('Recv new msg = ', '3a 10 03 00 02 00 02 51 f0 2f 4d', ' at Node id = ', 59)
+('Sent response to client = ', bytearray(b':\x10\x03\x04\x00\x00\x00\x00Q\xf3 k'))
+('Recv new msg = ', '3a 10 03 00 02 00 02 51 d1 7a a9', ' at Node id = ', 59)
+('Sent response to client = ', bytearray(b':\x10\x03\x04\x00\x00\x00\x00Q\x9d\x85M'))
+('Recv new msg = ', '3a 10 03 00 02 00 02 51 a2 2f 99', ' at Node id = ', 59)
+Elapsed time greater = 509.822528, cycle number = 14849
+('Sent response to client = ', bytearray(b':\x10\x03\x04\x00\x00\x00\x00Q\xcd\xc8\xd6'))
+RECV timeout error
+####### Exiting ############
+Re-Started server process at 1461362019.08
+('Start time = ', 1461362019.144121)
+Listening on port 502
+('End time = ', 1461362024.169399)
+Socket TIMEOUT Done !!!!!!!!!!!!!!!!
+Re-Started server process at 1461362024.24
+('Start time = ', 1461362024.236686)
+Listening on port 502
+('End time = ', 1461362029.2614)
+Socket TIMEOUT Done !!!!!!!!!!!!!!!!
+Re-Started server process at 1461362029.28
+('Start time = ', 1461362029.298844)
+Listening on port 502

@@ -1,0 +1,45 @@
+Starting Debug for lxc46-0
+Running Command /home/vignesh/Desktop/PLCs/awlsim-0.42/tests/run.sh -e 0 --node 46 /home/vignesh/Desktop/PLCs/awlsim-0.42/tests/modbus/bottle_plant_node/bottle_plant_node.awl
+6 (process ID) old priority 0, new priority 10
+=== Running tests with 'python2'
+Running test 'bottle_plant_node.awl' with 'python2' ... [u'0', u'10.10.0.9']
+[u'1', u'10.10.0.10']
+[u'IDS', u'10.10.0.10']
+('Resolved hostname = ', '127.0.0.1')
+('IP of IDS : ', '10.10.0.33')
+('Resolved hostname = ', '127.0.0.1')
+('IP of IDS : ', '10.10.0.33')
+('Resolved hostname = ', '127.0.0.1')
+('IP of IDS : ', '10.10.0.33')
+Started server process at : 1461361499.73
+('Start time = ', 1461361499.726199)
+Listening on port 502
+Established Connection from ('10.10.2.125', 60242)
+('Recv new msg = ', '2e 10 03 00 02 00 02 45 49 ff 03', ' at Node id = ', 47)
+('Sent response to client = ', bytearray(b'.\x10\x03\x04\x00\x00\x00\x00E\xae\xe9\x86'))
+('Recv new msg = ', '2e 10 03 00 02 00 02 45 d3 a4 9c', ' at Node id = ', 47)
+('Sent response to client = ', bytearray(b'.\x10\x03\x04\x00\x00\x00\x00E\xc35v'))
+Read data =  ['1461361501.39\n']
+('Routed new job. Node_id = ', 47, ' to ', 95)
+Read data =  ['1461361501.49\n']
+('Routed new job. Node_id = ', 47, ' to ', 95)
+('Recv new msg = ', '2e 10 03 00 02 00 02 45 32 71 28', ' at Node id = ', 47)
+('Sent response to client = ', bytearray(b'.\x10\x03\x04\x00\x02\x00\x02IP\xceQ'))
+('Recv new msg = ', '2e 10 03 00 02 00 02 45 49 b5 e2', ' at Node id = ', 47)
+Elapsed time greater = 508.832439, cycle number = 2773
+('Sent response to client = ', bytearray(b'.\x10\x03\x04\x00\x02\x00\x02I\x1de\xb0'))
+RECV timeout error
+####### Exiting ############
+Re-Started server process at 1461362017.68
+('Start time = ', 1461362017.691645)
+Listening on port 502
+('End time = ', 1461362022.713508)
+Socket TIMEOUT Done !!!!!!!!!!!!!!!!
+Re-Started server process at 1461362022.78
+('Start time = ', 1461362022.786581)
+Listening on port 502
+('End time = ', 1461362027.809468)
+Socket TIMEOUT Done !!!!!!!!!!!!!!!!
+Re-Started server process at 1461362027.85
+('Start time = ', 1461362027.867816)
+Listening on port 502

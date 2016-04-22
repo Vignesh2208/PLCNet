@@ -1,0 +1,22 @@
+Starting Debug for lxc38-0
+Running Command /home/vignesh/Desktop/PLCs/awlsim-0.42/tests/run.sh -e 0 --node 38 /home/vignesh/Desktop/PLCs/awlsim-0.42/tests/modbus/bottle_plant_node/bottle_plant_node.awl
+6 (process ID) old priority 0, new priority 10
+=== Running tests with 'python2'
+Running test 'bottle_plant_node.awl' with 'python2' ... [u'0', u'10.10.0.9']
+[u'1', u'10.10.0.10']
+[u'IDS', u'10.10.0.10']
+('Resolved hostname = ', '127.0.0.1')
+('IP of IDS : ', '10.10.0.33')
+('Resolved hostname = ', '127.0.0.1')
+('IP of IDS : ', '10.10.0.33')
+('Resolved hostname = ', '127.0.0.1')
+('IP of IDS : ', '10.10.0.33')
+Started server process at : 1461361499.72
+('Start time = ', 1461361499.721192)
+Listening on port 502
+Established Connection from ('10.10.2.109', 41845)
+('Recv new msg = ', '26 10 03 00 02 00 02 3d 53 e0 e1', ' at Node id = ', 39)
+('Sent response to client = ', bytearray(b'&\x10\x03\x04\x00\x00\x00\x00=\xda\xa6\x86'))
+('Recv new msg = ', '26 10 03 00 02 00 02 3d 86 2f 71', ' at Node id = ', 39)
+('Sent response to client = ', bytearray(b'&\x10\x03\x04\x00\x00\x00\x00=\x9a\x87\xd3'))
+Elapsed time greater = 508.88104, cycle number = 1678

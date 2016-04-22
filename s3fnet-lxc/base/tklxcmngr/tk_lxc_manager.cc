@@ -326,13 +326,13 @@ void LxcManager::handleIncomingPacket(char* buffer, vector<LXC_Proxy*>* proxiesT
 				        
 					fread(content_read,sizeof(char),KERN_BUF_SIZE,fptr);
 					if(strcmp(content_read,"NULL") == 0){
-					    debugPrint("Using default method of timestamp estimation\n");
+					    //debugPrint("Using default method of timestamp estimation\n");
 						arrivalTime = temp_arrival_time; 
 		  			    proxy->last_arrival_time = arrivalTime;
 					}
 					else{
 						line = content_read;
-						//debugPrint("Content Read : \n %s\n",content_read);
+						
 						
 	   					while(line)
 						{
@@ -340,12 +340,12 @@ void LxcManager::handleIncomingPacket(char* buffer, vector<LXC_Proxy*>* proxiesT
 						      if (nextLine) *nextLine = '\0';  // temporarily terminate the current line
 						      
 						      if(line_no == 1){
-							 	debugPrint("Secs : %lu\n",atol(line));
+							 	//debugPrint("Secs : %lu\n",atol(line));
 							 	secElapsed = atol(line) - proxy->simulationStartSec;
 						      }
 						      
    						      if(line_no == 2){
-								debugPrint("uSecs : %lu\n",atol(line));
+								//debugPrint("uSecs : %lu\n",atol(line));
 								microSecElapsed = atol(line) - proxy->simulationStartMicroSec;
 								break;
 						      }
@@ -356,14 +356,16 @@ void LxcManager::handleIncomingPacket(char* buffer, vector<LXC_Proxy*>* proxiesT
 						}
 						elapsedMicroSec = secElapsed * 1000000 + microSecElapsed;
 						
-						debugPrint("Elapsed Microsecs = %lu\n",elapsedMicroSec);
+						if(elapsedMicroSec > temp_arrival_time) // some problem in the buffer read
+							elapsedMicroSec = temp_arrival_time;
+						//debugPrint("Elapsed Microsecs = %lu\n",elapsedMicroSec);
 						if(line_no == 2)
 							arrivalTime = elapsedMicroSec;
 						else
 							arrivalTime = temp_arrival_time;
 						
 						if(arrivalTime < proxy->last_arrival_time){
-							debugPrint("Arrival Time is less. Compensated. \n");
+							//debugPrint("Arrival Time is less. Compensated. \n");
 							proxy->last_arrival_time = temp_arrival_time;
 							arrivalTime = temp_arrival_time;
 						}
@@ -381,8 +383,12 @@ void LxcManager::handleIncomingPacket(char* buffer, vector<LXC_Proxy*>* proxiesT
 
 				}
 
+				// disabling socket hook for now
+				//arrivalTime = temp_arrival_time; 
+				//proxy->last_arrival_time = arrivalTime;
+
 				debugPrint("Arrival Time : %lu\n",arrivalTime);
-				debugPrint("######################################\n");
+				//debugPrint("######################################\n");
 				
 			}
 			
@@ -743,9 +749,10 @@ bool LxcManager::advanceLXCsOnTimeline(unsigned int timelineID, ltime_t timeToAd
 	}
 
 
-	
+	//debugPrint("Progress call made successfully. timeline = %d\n", timelineID);	
 	unsigned long startTime = getWallClockTime();
 	ret = progress((int)timelineID, PROGRESS_FLAG);		// 0 Don't FORCE | 1 FORCE
+	//ret = progress((int)timelineID, 1);		// 0 Don't FORCE | 1 FORCE
 	unsigned long finishTime = getWallClockTime();
 	
 	
@@ -769,6 +776,10 @@ bool LxcManager::advanceLXCsOnTimeline(unsigned int timelineID, ltime_t timeToAd
 			//		  (timelineID), (proxyOnTimeline->lxcName), (desired_vt), (lxc_actual_vt), (advanceDifference));
 			//debugPrint("[TL %u %s ], DESIRED TIME %ld | ACTUAL TIME %ld | DIFFERENCE %ld\n",
 			//		  (timelineID), (proxyOnTimeline->lxcName), (desired_vt), proxyOnTimeline->getElapsedTime(), (advanceDifference));
+		}
+
+		if(advanceDifference > 1000){
+			fix_timeline(timelineID);
 		}
 
 		#ifdef ADVANCE_DEBUG
@@ -960,37 +971,37 @@ std::pair<int, unsigned int> LxcManager::analyzePacket(char* pkt_ptr, int len, u
 
 
 	if(is_tcp){
-		debugPrint("######################################\n");
-		debugPrint("~~~~~~~~~~~~~~~~~~TCP~~~~~~~~~~~~~~~~~~\n");
-		debugPrint("Ether Type: 0x%.4x\n", ether_type);
-		debugPrint("Src IP string: %s\n",result_2);
-		debugPrint("Dest IP string: %s\n", result);
+		//debugPrint("######################################\n");
+		debugPrint("\n~~~~~~~~~~~~~~~~~~TCP :	");
+		//debugPrint("Ether Type: 0x%.4x\n", ether_type);
+		//debugPrint("Src IP string: %s\n",result_2);
+		//debugPrint("Dest IP string: %s\n", result);
 
-		debugPrint("TCP source port : %d\n", tk_tcp_header->source);
-		debugPrint("TCP dest port : %d\n", tk_tcp_header->dest);
-		debugPrint("TCP seq : %d\n", tk_tcp_header->seq);
-		debugPrint("TCP ack_seq : %d\n", tk_tcp_header->ack_seq);
+		//debugPrint("TCP source port : %d\n", tk_tcp_header->source);
+		//debugPrint("TCP dest port : %d\n", tk_tcp_header->dest);
+		//debugPrint("TCP seq : %d\n", tk_tcp_header->seq);
+		//debugPrint("TCP ack_seq : %d\n", tk_tcp_header->ack_seq);
 
 		
-		debugPrint("TCP syn : %d\n", tk_tcp_header->syn);
-		debugPrint("TCP ack : %d\n", tk_tcp_header->ack);
-		debugPrint("TCP rst : %d\n", tk_tcp_header->rst);
-		debugPrint("TCP urg : %d\n", tk_tcp_header->urg);
-		debugPrint("TCP fin : %d\n", tk_tcp_header->fin);
-		debugPrint("TCP window : %d\n", tk_tcp_header->window);
-		debugPrint("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n");
+		//debugPrint("TCP syn : %d\n", tk_tcp_header->syn);
+		//debugPrint("TCP ack : %d\n", tk_tcp_header->ack);
+		//debugPrint("TCP rst : %d\n", tk_tcp_header->rst);
+		//debugPrint("TCP urg : %d\n", tk_tcp_header->urg);
+		//debugPrint("TCP fin : %d\n", tk_tcp_header->fin);
+		//debugPrint("TCP window : %d\n", tk_tcp_header->window);
+		//debugPrint("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n");
 	
 
 
 	}
 
 	if(is_udp){
-		debugPrint("######################################\n");
-		debugPrint("~~~~~~~~~~~~~~~~~~UDP~~~~~~~~~~~~~~~~~~\n");
-		debugPrint("Ether Type: 0x%.4x\n", ether_type);
-		debugPrint("Src IP string: %s\n",result_2);
-		debugPrint("Dest IP string: %s\n", result);
-		debugPrint("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n");
+		//debugPrint("######################################\n");
+		debugPrint("\n~~~~~~~~~~~~~~~~~~UDP :	");
+		//debugPrint("Ether Type: 0x%.4x\n", ether_type);
+		//debugPrint("Src IP string: %s\n",result_2);
+		//debugPrint("Dest IP string: %s\n", result);
+		//debugPrint("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n");
 
 	}
 	//debugPrint("Hash = %d, pkt_len = %d\n",hash,len);
@@ -999,16 +1010,16 @@ std::pair<int, unsigned int> LxcManager::analyzePacket(char* pkt_ptr, int len, u
 
 	if(!is_tcp && !is_udp){
 
-		debugPrint("######################################\n");
-		if(parse_packet_type == PARSE_PACKET_SUCCESS_ARP)
-			debugPrint("~~~~~~~~~~~~~~~~ARP~~~~~~~~~~~~~~~~~~\n");
-		else
-			debugPrint("~~~~~~~~~~~~~~~~UNKNOWN~~~~~~~~~~~~~~~~~~\n");
+		//debugPrint("######################################\n");
+		//if(parse_packet_type == PARSE_PACKET_SUCCESS_ARP)
+		//	debugPrint("~~~~~~~~~~~~~~~~ARP~~~~~~~~~~~~~~~~~~\n");
+		//else
+		//	debugPrint("~~~~~~~~~~~~~~~~UNKNOWN~~~~~~~~~~~~~~~~~~\n");
 
-		debugPrint("Ether Type: 0x%.4x\n", ether_type);
-		debugPrint("Src IP string: %s\n",result_2);
-		debugPrint("Dest IP string: %s\n", result);
-		debugPrint("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n");		
+		//debugPrint("Ether Type: 0x%.4x\n", ether_type);
+		//debugPrint("Src IP string: %s\n",result_2);
+		//debugPrint("Dest IP string: %s\n", result);
+		//debugPrint("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n");		
 
 	}
 	

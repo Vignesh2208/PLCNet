@@ -67,6 +67,7 @@ LXC_Proxy::LXC_Proxy(string nhiID, unsigned int ipAddress, LxcManager* lm, Timel
 {
 
 	int shm_fd;
+	int i = 0;
 
 	assert(lm    != NULL);
 	assert(timel != NULL);
@@ -104,6 +105,8 @@ LXC_Proxy::LXC_Proxy(string nhiID, unsigned int ipAddress, LxcManager* lm, Timel
 	strcpy(tapName, tempTap.c_str());
 	string tempLXC = "lxc" + Nhi;
 	std::replace( tempLXC.begin(), tempLXC.end(), ':', '-');
+	for(i = 0; i < 100; i++)
+		lxcName[i] = '\0';
 	strcpy(lxcName,tempLXC.c_str());
 	string tempBr = "br-" + Nhi;
 	std::replace( tempBr.begin(), tempBr.end(), ':', '-');
@@ -303,10 +306,14 @@ void LXC_Proxy::exec_LXC_command(LxcCommand type)
 	switch(type)
 	{
 		case LXC_CREATE:
-			printf("Called lxc create\n");
+			printf("Called lxc create. destroying existing lxc if any \n");
 			#ifndef TAP_DISABLED
+			cmd = string(PATH_TO_S3FNETLXC) + string("/lxc-scripts/destroy") + tap + bridge + lxc;
+			exec_system_command((char*)cmd.c_str());
 			cmd = string(PATH_TO_S3FNETLXC) + string("/lxc-scripts/create")        + tap + ipAddr + bridge + lxc + string(config);
 			#else
+			cmd = string(PATH_TO_S3FNETLXC) + string("/lxc-scripts/destroy-no-tap") + tap + bridge + lxc;
+			exec_system_command((char*)cmd.c_str());
 			cmd = string(PATH_TO_S3FNETLXC) + string("/lxc-scripts/create-no-tap") + tap + ipAddr + bridge + lxc + string(config);
 			#endif
 			break;

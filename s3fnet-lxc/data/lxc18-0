@@ -5,18 +5,56 @@ Running Command /home/vignesh/Desktop/PLCs/awlsim-0.42/tests/run.sh -e 0 --node 
 Running test 'bottle_plant_node.awl' with 'python2' ... [u'0', u'10.10.0.9']
 [u'1', u'10.10.0.10']
 [u'IDS', u'10.10.0.10']
-('Resolved hostname = ', '127.0.0.1')
+('Dest IP : ', '10.10.0.121')
+('Resolved hostname = ', '10.10.0.121')
 ('IP of IDS : ', '10.10.0.33')
-('Resolved hostname = ', '127.0.0.1')
+('Dest IP : ', '10.10.0.121')
+('Resolved hostname = ', '10.10.0.121')
 ('IP of IDS : ', '10.10.0.33')
-('Resolved hostname = ', '127.0.0.1')
+('Dest IP : ', '10.10.0.125')
+('Resolved hostname = ', '10.10.0.125')
 ('IP of IDS : ', '10.10.0.33')
-Started server process at : 1461034118.51
-('Start time = ', 1461034118.511597)
+Started server process at : 1461361499.7
+('Start time = ', 1461361499.701175)
 Listening on port 502
-('End time = ', 1461034123.534623)
-Socket TIMEOUT Done !!!!!!!!!!!!!!!!
-Re-Started server process at 1461034123.55
-('Start time = ', 1461034123.546626)
+('Start time = ', 1461361499.900997)
+('IP:PORT = ', '10.10.0.121', 502)
+('Start time = ', 1461361499.901372)
+('IP:PORT = ', '10.10.0.125', 502)
+Resumed connection at : 2016-04-22 16:45:00.008505
+('Sent msg = ', bytearray(b'%\x10\x03\x00\x02\x00\x02<?\x8f\xbc'))
+Resumed connection at : 2016-04-22 16:45:00.011483
+Established Connection from ('10.10.2.69', 57365)
+('Recv new msg = ', '12 10 03 00 02 00 02 29 46 05 2a', ' at Node id = ', 19)
+('Sent msg = ', bytearray(b'&\x10\x03\x00\x02\x00\x02=S\xe0\xe1'))
+('Sent response to client = ', bytearray(b'\x12\x10\x03\x04\x00\x00\x00\x00)U`\xbc'))
+('Response from server = ', '26 10 03 04 00 00 00 00 3d da a6 86')
+('Response from server = ', '25 10 03 04 00 00 00 00 3c ac bf ed')
+('Recv new msg = ', '12 10 03 00 02 00 02 29 c0 68 1f', ' at Node id = ', 19)
+Response processed at 2016-04-22 16:45:00.660132
+('Sent response to client = ', bytearray(b'\x12\x10\x03\x04\x00\x00\x00\x00)\x95\x1cQ'))
+Response processed at 2016-04-22 16:45:00.703968
+Resumed connection at : 2016-04-22 16:45:00.974913
+('Sent msg = ', bytearray(b'%\x10\x03\x00\x02\x00\x02<\xdcP`'))
+('Recv new msg = ', '12 10 03 00 02 00 02 29 b2 4e 6e', ' at Node id = ', 19)
+('Response from server = ', '25 10 03 04 00 00 00 00 3c 44 bc 13')
+('Sent response to client = ', bytearray(b'\x12\x10\x03\x04\x00\x00\x00\x00)\x01\xd5\x91'))
+Response processed at 2016-04-22 16:45:01.473170
+Resumed connection at : 2016-04-22 16:45:01.488887
+('Sent msg = ', bytearray(b'&\x10\x03\x00\x02\x00\x02=\x86/q'))
+Resumed connection at : 2016-04-22 16:45:01.653129
+('Sent msg = ', bytearray(b'%\x10\x03\x00\x02\x00\x02<-\x00\xb3'))
+('Response from server = ', '26 10 03 04 00 00 00 00 3d 9a 87 d3')
+('Response from server = ', '25 10 03 04 00 00 00 00 3c 13 d3 e2')
+Response processed at 2016-04-22 16:45:01.909378
+Response processed at 2016-04-22 16:45:01.971237
+Resumed connection at : 2016-04-22 16:45:01.985459
+('Sent msg = ', bytearray(b'%\x10\x03\x00\x02\x00\x02<\xad\xfft'))
+('Recv new msg = ', '12 10 03 00 02 00 02 29 66 65 76', ' at Node id = ', 19)
+('Sent response to client = ', bytearray(b'\x12\x10\x03\x04\x00\x00\x00\x00)t0\x1d'))
+Elapsed time greater = 508.883638, cycle number = 6294
+RECV timeout error
+####### Exiting ############
+Re-Started server process at 1461362018.23
+('Start time = ', 1461362018.288424)
 Listening on port 502
-Elapsed time greater = 281.666534, cycle number = 231

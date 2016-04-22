@@ -240,17 +240,18 @@ void flush_buffer(char * buffer, int size){
 int write_new_timestamp(char * lxcName, long hash, struct timeval tv){
 
 	struct lxc_entry * lxc;
+	unsigned long flags;
 	lxc = get_lxc_entry(lxcName);
 	if(lxc == NULL){
 		printk(KERN_INFO "Socket Hook: LXC does not exist\n");
 		return -1;
 	}
-	flush_buffer(lxc->lxcBuff,KERNEL_BUF_SIZE);
 	printk(KERN_INFO "Socket Hook : Writing new timestamp for lxc %s, secs : %lu, usec : %lu\n",lxcName,tv.tv_sec,tv.tv_usec);
-	spin_lock(&lxc->lxc_entry_lock);
+	spin_lock_irqsave(&lxc->lxc_entry_lock,flags);
+	flush_buffer(lxc->lxcBuff,KERNEL_BUF_SIZE);	
 	sprintf(lxc->lxcBuff,"%lu\n%lu\n%lu\n",tv.tv_sec,tv.tv_usec,1234);
 	lxc->is_buf_initialised = 1;
-	spin_unlock(&lxc->lxc_entry_lock);
+	spin_unlock_irqrestore(&lxc->lxc_entry_lock,flags);
 
 	
 	return 1;

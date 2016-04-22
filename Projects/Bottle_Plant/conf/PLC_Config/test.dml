@@ -1,10 +1,10 @@
-total_timeline 9
+total_timeline 5
 tick_per_second 6
-run_time 6.0
+run_time 3.0
 seed 1
 log_dir Bottle_Plant
 
-dilation [ TDF 5 ]
+dilation [ TDF 10 ]
 Net
 [
 	lxcConfig
@@ -16,7 +16,63 @@ Net
 		settings [ lxcNHI 4:0 _extends .dilation cmd "/home/vignesh/Desktop/PLCs/awlsim-0.42/tests/run.sh -e 0 --node 4 /home/vignesh/Desktop/PLCs/awlsim-0.42/tests/modbus/bottle_plant_node/bottle_plant_node.awl" ]
 		settings [ lxcNHI 5:0 _extends .dilation cmd "/home/vignesh/Desktop/PLCs/awlsim-0.42/tests/run.sh -e 0 --node 5 /home/vignesh/Desktop/PLCs/awlsim-0.42/tests/modbus/bottle_plant_node/bottle_plant_node.awl" ]
 		settings [ lxcNHI 6:0 _extends .dilation cmd "/home/vignesh/Desktop/PLCs/awlsim-0.42/tests/run.sh -e 0 --node 6 /home/vignesh/Desktop/PLCs/awlsim-0.42/tests/modbus/bottle_plant_node/bottle_plant_node.awl" ]
-		settings [lxcNHI 7:0 _extends .dilation cmd "python /home/vignesh/Desktop/PLCs/awlsim-0.42/Projects/Bottle_Plant/conf/PLC_Config/udp_reader.py"]
+		settings [ lxcNHI 7:0 _extends .dilation cmd "/home/vignesh/Desktop/PLCs/awlsim-0.42/tests/run.sh -e 0 --node 7 /home/vignesh/Desktop/PLCs/awlsim-0.42/tests/modbus/bottle_plant_node/bottle_plant_node.awl" ]
+		settings [ lxcNHI 8:0 _extends .dilation cmd "/home/vignesh/Desktop/PLCs/awlsim-0.42/tests/run.sh -e 0 --node 8 /home/vignesh/Desktop/PLCs/awlsim-0.42/tests/modbus/bottle_plant_node/bottle_plant_node.awl" ]
+		settings [ lxcNHI 9:0 _extends .dilation cmd "/home/vignesh/Desktop/PLCs/awlsim-0.42/tests/run.sh -e 0 --node 9 /home/vignesh/Desktop/PLCs/awlsim-0.42/tests/modbus/bottle_plant_node/bottle_plant_node.awl" ]
+		settings [ lxcNHI 10:0 _extends .dilation cmd "/home/vignesh/Desktop/PLCs/awlsim-0.42/tests/run.sh -e 0 --node 10 /home/vignesh/Desktop/PLCs/awlsim-0.42/tests/modbus/bottle_plant_node/bottle_plant_node.awl" ]
+		settings [ lxcNHI 11:0 _extends .dilation cmd "/home/vignesh/Desktop/PLCs/awlsim-0.42/tests/run.sh -e 0 --node 11 /home/vignesh/Desktop/PLCs/awlsim-0.42/tests/modbus/bottle_plant_node/bottle_plant_node.awl" ]
+		settings [ lxcNHI 12:0 _extends .dilation cmd "/home/vignesh/Desktop/PLCs/awlsim-0.42/tests/run.sh -e 0 --node 12 /home/vignesh/Desktop/PLCs/awlsim-0.42/tests/modbus/bottle_plant_node/bottle_plant_node.awl" ]
+		settings [ lxcNHI 13:0 _extends .dilation cmd "/home/vignesh/Desktop/PLCs/awlsim-0.42/tests/run.sh -e 0 --node 13 /home/vignesh/Desktop/PLCs/awlsim-0.42/tests/modbus/bottle_plant_node/bottle_plant_node.awl" ]
+		settings [ lxcNHI 14:0 _extends .dilation cmd "/home/vignesh/Desktop/PLCs/awlsim-0.42/tests/run.sh -e 0 --node 14 /home/vignesh/Desktop/PLCs/awlsim-0.42/tests/modbus/bottle_plant_node/bottle_plant_node.awl" ]
+		settings [ lxcNHI 15:0 _extends .dilation cmd "/home/vignesh/Desktop/PLCs/awlsim-0.42/tests/run.sh -e 0 --node 15 /home/vignesh/Desktop/PLCs/awlsim-0.42/tests/modbus/bottle_plant_node/bottle_plant_node.awl" ]
+		settings [ lxcNHI 16:0 _extends .dilation cmd "/home/vignesh/Desktop/PLCs/awlsim-0.42/tests/run.sh -e 0 --node 16 /home/vignesh/Desktop/PLCs/awlsim-0.42/tests/modbus/bottle_plant_node/bottle_plant_node.awl" ]
+		settings [ lxcNHI 17:0 _extends .dilation cmd "/home/vignesh/Desktop/PLCs/awlsim-0.42/tests/run.sh -e 0 --node 17 /home/vignesh/Desktop/PLCs/awlsim-0.42/tests/modbus/bottle_plant_node/bottle_plant_node.awl" ]
+		settings [ lxcNHI 18:0 _extends .dilation cmd "/home/vignesh/Desktop/PLCs/awlsim-0.42/tests/run.sh -e 0 --node 18 /home/vignesh/Desktop/PLCs/awlsim-0.42/tests/modbus/bottle_plant_node/bottle_plant_node.awl" ]
+		settings [ lxcNHI 19:0 _extends .dilation cmd "/home/vignesh/Desktop/PLCs/awlsim-0.42/tests/run.sh -e 0 --node 19 /home/vignesh/Desktop/PLCs/awlsim-0.42/tests/modbus/bottle_plant_node/bottle_plant_node.awl" ]
+		settings [ lxcNHI 20:0 _extends .dilation cmd "/home/vignesh/Desktop/PLCs/awlsim-0.42/tests/run.sh -e 0 --node 20 /home/vignesh/Desktop/PLCs/awlsim-0.42/tests/modbus/bottle_plant_node/bottle_plant_node.awl" ]
+		settings [ lxcNHI 21:0 _extends .dilation cmd "/home/vignesh/Desktop/PLCs/awlsim-0.42/tests/run.sh -e 0 --node 21 /home/vignesh/Desktop/PLCs/awlsim-0.42/tests/modbus/bottle_plant_node/bottle_plant_node.awl" ]
+		settings [ lxcNHI 22:0 _extends .dilation cmd "/home/vignesh/Desktop/PLCs/awlsim-0.42/tests/run.sh -e 0 --node 22 /home/vignesh/Desktop/PLCs/awlsim-0.42/tests/modbus/bottle_plant_node/bottle_plant_node.awl" ]
+		settings [ lxcNHI 23:0 _extends .dilation cmd "/home/vignesh/Desktop/PLCs/awlsim-0.42/tests/run.sh -e 0 --node 23 /home/vignesh/Desktop/PLCs/awlsim-0.42/tests/modbus/bottle_plant_node/bottle_plant_node.awl" ]
+		settings [ lxcNHI 24:0 _extends .dilation cmd "/home/vignesh/Desktop/PLCs/awlsim-0.42/tests/run.sh -e 0 --node 24 /home/vignesh/Desktop/PLCs/awlsim-0.42/tests/modbus/bottle_plant_node/bottle_plant_node.awl" ]
+		settings [ lxcNHI 25:0 _extends .dilation cmd "/home/vignesh/Desktop/PLCs/awlsim-0.42/tests/run.sh -e 0 --node 25 /home/vignesh/Desktop/PLCs/awlsim-0.42/tests/modbus/bottle_plant_node/bottle_plant_node.awl" ]
+		settings [ lxcNHI 26:0 _extends .dilation cmd "/home/vignesh/Desktop/PLCs/awlsim-0.42/tests/run.sh -e 0 --node 26 /home/vignesh/Desktop/PLCs/awlsim-0.42/tests/modbus/bottle_plant_node/bottle_plant_node.awl" ]
+		settings [ lxcNHI 27:0 _extends .dilation cmd "/home/vignesh/Desktop/PLCs/awlsim-0.42/tests/run.sh -e 0 --node 27 /home/vignesh/Desktop/PLCs/awlsim-0.42/tests/modbus/bottle_plant_node/bottle_plant_node.awl" ]
+		settings [ lxcNHI 28:0 _extends .dilation cmd "/home/vignesh/Desktop/PLCs/awlsim-0.42/tests/run.sh -e 0 --node 28 /home/vignesh/Desktop/PLCs/awlsim-0.42/tests/modbus/bottle_plant_node/bottle_plant_node.awl" ]
+		settings [ lxcNHI 29:0 _extends .dilation cmd "/home/vignesh/Desktop/PLCs/awlsim-0.42/tests/run.sh -e 0 --node 29 /home/vignesh/Desktop/PLCs/awlsim-0.42/tests/modbus/bottle_plant_node/bottle_plant_node.awl" ]
+		settings [ lxcNHI 30:0 _extends .dilation cmd "/home/vignesh/Desktop/PLCs/awlsim-0.42/tests/run.sh -e 0 --node 30 /home/vignesh/Desktop/PLCs/awlsim-0.42/tests/modbus/bottle_plant_node/bottle_plant_node.awl" ]
+		settings [ lxcNHI 31:0 _extends .dilation cmd "/home/vignesh/Desktop/PLCs/awlsim-0.42/tests/run.sh -e 0 --node 31 /home/vignesh/Desktop/PLCs/awlsim-0.42/tests/modbus/bottle_plant_node/bottle_plant_node.awl" ]
+		settings [ lxcNHI 32:0 _extends .dilation cmd "/home/vignesh/Desktop/PLCs/awlsim-0.42/tests/run.sh -e 0 --node 32 /home/vignesh/Desktop/PLCs/awlsim-0.42/tests/modbus/bottle_plant_node/bottle_plant_node.awl" ]
+		settings [ lxcNHI 33:0 _extends .dilation cmd "/home/vignesh/Desktop/PLCs/awlsim-0.42/tests/run.sh -e 0 --node 33 /home/vignesh/Desktop/PLCs/awlsim-0.42/tests/modbus/bottle_plant_node/bottle_plant_node.awl" ]
+		settings [ lxcNHI 34:0 _extends .dilation cmd "/home/vignesh/Desktop/PLCs/awlsim-0.42/tests/run.sh -e 0 --node 34 /home/vignesh/Desktop/PLCs/awlsim-0.42/tests/modbus/bottle_plant_node/bottle_plant_node.awl" ]
+		settings [ lxcNHI 35:0 _extends .dilation cmd "/home/vignesh/Desktop/PLCs/awlsim-0.42/tests/run.sh -e 0 --node 35 /home/vignesh/Desktop/PLCs/awlsim-0.42/tests/modbus/bottle_plant_node/bottle_plant_node.awl" ]
+		settings [ lxcNHI 36:0 _extends .dilation cmd "/home/vignesh/Desktop/PLCs/awlsim-0.42/tests/run.sh -e 0 --node 36 /home/vignesh/Desktop/PLCs/awlsim-0.42/tests/modbus/bottle_plant_node/bottle_plant_node.awl" ]
+		settings [ lxcNHI 37:0 _extends .dilation cmd "/home/vignesh/Desktop/PLCs/awlsim-0.42/tests/run.sh -e 0 --node 37 /home/vignesh/Desktop/PLCs/awlsim-0.42/tests/modbus/bottle_plant_node/bottle_plant_node.awl" ]
+		settings [ lxcNHI 38:0 _extends .dilation cmd "/home/vignesh/Desktop/PLCs/awlsim-0.42/tests/run.sh -e 0 --node 38 /home/vignesh/Desktop/PLCs/awlsim-0.42/tests/modbus/bottle_plant_node/bottle_plant_node.awl" ]
+		settings [ lxcNHI 39:0 _extends .dilation cmd "/home/vignesh/Desktop/PLCs/awlsim-0.42/tests/run.sh -e 0 --node 39 /home/vignesh/Desktop/PLCs/awlsim-0.42/tests/modbus/bottle_plant_node/bottle_plant_node.awl" ]
+		settings [ lxcNHI 40:0 _extends .dilation cmd "/home/vignesh/Desktop/PLCs/awlsim-0.42/tests/run.sh -e 0 --node 40 /home/vignesh/Desktop/PLCs/awlsim-0.42/tests/modbus/bottle_plant_node/bottle_plant_node.awl" ]
+		settings [ lxcNHI 41:0 _extends .dilation cmd "/home/vignesh/Desktop/PLCs/awlsim-0.42/tests/run.sh -e 0 --node 41 /home/vignesh/Desktop/PLCs/awlsim-0.42/tests/modbus/bottle_plant_node/bottle_plant_node.awl" ]
+		settings [ lxcNHI 42:0 _extends .dilation cmd "/home/vignesh/Desktop/PLCs/awlsim-0.42/tests/run.sh -e 0 --node 42 /home/vignesh/Desktop/PLCs/awlsim-0.42/tests/modbus/bottle_plant_node/bottle_plant_node.awl" ]
+		settings [ lxcNHI 43:0 _extends .dilation cmd "/home/vignesh/Desktop/PLCs/awlsim-0.42/tests/run.sh -e 0 --node 43 /home/vignesh/Desktop/PLCs/awlsim-0.42/tests/modbus/bottle_plant_node/bottle_plant_node.awl" ]
+		settings [ lxcNHI 44:0 _extends .dilation cmd "/home/vignesh/Desktop/PLCs/awlsim-0.42/tests/run.sh -e 0 --node 44 /home/vignesh/Desktop/PLCs/awlsim-0.42/tests/modbus/bottle_plant_node/bottle_plant_node.awl" ]
+		settings [ lxcNHI 45:0 _extends .dilation cmd "/home/vignesh/Desktop/PLCs/awlsim-0.42/tests/run.sh -e 0 --node 45 /home/vignesh/Desktop/PLCs/awlsim-0.42/tests/modbus/bottle_plant_node/bottle_plant_node.awl" ]
+		settings [ lxcNHI 46:0 _extends .dilation cmd "/home/vignesh/Desktop/PLCs/awlsim-0.42/tests/run.sh -e 0 --node 46 /home/vignesh/Desktop/PLCs/awlsim-0.42/tests/modbus/bottle_plant_node/bottle_plant_node.awl" ]
+		settings [ lxcNHI 47:0 _extends .dilation cmd "/home/vignesh/Desktop/PLCs/awlsim-0.42/tests/run.sh -e 0 --node 47 /home/vignesh/Desktop/PLCs/awlsim-0.42/tests/modbus/bottle_plant_node/bottle_plant_node.awl" ]
+		settings [ lxcNHI 48:0 _extends .dilation cmd "/home/vignesh/Desktop/PLCs/awlsim-0.42/tests/run.sh -e 0 --node 48 /home/vignesh/Desktop/PLCs/awlsim-0.42/tests/modbus/bottle_plant_node/bottle_plant_node.awl" ]
+		settings [ lxcNHI 49:0 _extends .dilation cmd "/home/vignesh/Desktop/PLCs/awlsim-0.42/tests/run.sh -e 0 --node 49 /home/vignesh/Desktop/PLCs/awlsim-0.42/tests/modbus/bottle_plant_node/bottle_plant_node.awl" ]
+		settings [ lxcNHI 50:0 _extends .dilation cmd "/home/vignesh/Desktop/PLCs/awlsim-0.42/tests/run.sh -e 0 --node 50 /home/vignesh/Desktop/PLCs/awlsim-0.42/tests/modbus/bottle_plant_node/bottle_plant_node.awl" ]
+		settings [ lxcNHI 51:0 _extends .dilation cmd "/home/vignesh/Desktop/PLCs/awlsim-0.42/tests/run.sh -e 0 --node 51 /home/vignesh/Desktop/PLCs/awlsim-0.42/tests/modbus/bottle_plant_node/bottle_plant_node.awl" ]
+		settings [ lxcNHI 52:0 _extends .dilation cmd "/home/vignesh/Desktop/PLCs/awlsim-0.42/tests/run.sh -e 0 --node 52 /home/vignesh/Desktop/PLCs/awlsim-0.42/tests/modbus/bottle_plant_node/bottle_plant_node.awl" ]
+		settings [ lxcNHI 53:0 _extends .dilation cmd "/home/vignesh/Desktop/PLCs/awlsim-0.42/tests/run.sh -e 0 --node 53 /home/vignesh/Desktop/PLCs/awlsim-0.42/tests/modbus/bottle_plant_node/bottle_plant_node.awl" ]
+		settings [ lxcNHI 54:0 _extends .dilation cmd "/home/vignesh/Desktop/PLCs/awlsim-0.42/tests/run.sh -e 0 --node 54 /home/vignesh/Desktop/PLCs/awlsim-0.42/tests/modbus/bottle_plant_node/bottle_plant_node.awl" ]
+		settings [ lxcNHI 55:0 _extends .dilation cmd "/home/vignesh/Desktop/PLCs/awlsim-0.42/tests/run.sh -e 0 --node 55 /home/vignesh/Desktop/PLCs/awlsim-0.42/tests/modbus/bottle_plant_node/bottle_plant_node.awl" ]
+		settings [ lxcNHI 56:0 _extends .dilation cmd "/home/vignesh/Desktop/PLCs/awlsim-0.42/tests/run.sh -e 0 --node 56 /home/vignesh/Desktop/PLCs/awlsim-0.42/tests/modbus/bottle_plant_node/bottle_plant_node.awl" ]
+		settings [ lxcNHI 57:0 _extends .dilation cmd "/home/vignesh/Desktop/PLCs/awlsim-0.42/tests/run.sh -e 0 --node 57 /home/vignesh/Desktop/PLCs/awlsim-0.42/tests/modbus/bottle_plant_node/bottle_plant_node.awl" ]
+		settings [ lxcNHI 58:0 _extends .dilation cmd "/home/vignesh/Desktop/PLCs/awlsim-0.42/tests/run.sh -e 0 --node 58 /home/vignesh/Desktop/PLCs/awlsim-0.42/tests/modbus/bottle_plant_node/bottle_plant_node.awl" ]
+		settings [ lxcNHI 59:0 _extends .dilation cmd "/home/vignesh/Desktop/PLCs/awlsim-0.42/tests/run.sh -e 0 --node 59 /home/vignesh/Desktop/PLCs/awlsim-0.42/tests/modbus/bottle_plant_node/bottle_plant_node.awl" ]
+		settings [ lxcNHI 60:0 _extends .dilation cmd "/home/vignesh/Desktop/PLCs/awlsim-0.42/tests/run.sh -e 0 --node 60 /home/vignesh/Desktop/PLCs/awlsim-0.42/tests/modbus/bottle_plant_node/bottle_plant_node.awl" ]
+		settings [ lxcNHI 61:0 _extends .dilation cmd "/home/vignesh/Desktop/PLCs/awlsim-0.42/tests/run.sh -e 0 --node 61 /home/vignesh/Desktop/PLCs/awlsim-0.42/tests/modbus/bottle_plant_node/bottle_plant_node.awl" ]
+		settings [ lxcNHI 62:0 _extends .dilation cmd "/home/vignesh/Desktop/PLCs/awlsim-0.42/tests/run.sh -e 0 --node 62 /home/vignesh/Desktop/PLCs/awlsim-0.42/tests/modbus/bottle_plant_node/bottle_plant_node.awl" ]
+		settings [lxcNHI 63:0 _extends .dilation cmd "python /home/vignesh/Desktop/PLCs/awlsim-0.42/Projects/Bottle_Plant/conf/PLC_Config/udp_reader.py"]
 	]
 	Net
 	[
@@ -61,7 +117,7 @@ Net
 	Net
 	[
 		id 4
-		alignment 4
+		alignment 0
 		host
 		[
 			id 0
@@ -71,7 +127,7 @@ Net
 	Net
 	[
 		id 5
-		alignment 5
+		alignment 1
 		host
 		[
 			id 0
@@ -81,7 +137,7 @@ Net
 	Net
 	[
 		id 6
-		alignment 6
+		alignment 2
 		host
 		[
 			id 0
@@ -91,7 +147,567 @@ Net
 	Net
 	[
 		id 7
-		alignment 7
+		alignment 3
+		host
+		[
+			id 0
+			_extends .dict.emuHost
+		]
+	]
+	Net
+	[
+		id 8
+		alignment 0
+		host
+		[
+			id 0
+			_extends .dict.emuHost
+		]
+	]
+	Net
+	[
+		id 9
+		alignment 1
+		host
+		[
+			id 0
+			_extends .dict.emuHost
+		]
+	]
+	Net
+	[
+		id 10
+		alignment 2
+		host
+		[
+			id 0
+			_extends .dict.emuHost
+		]
+	]
+	Net
+	[
+		id 11
+		alignment 3
+		host
+		[
+			id 0
+			_extends .dict.emuHost
+		]
+	]
+	Net
+	[
+		id 12
+		alignment 0
+		host
+		[
+			id 0
+			_extends .dict.emuHost
+		]
+	]
+	Net
+	[
+		id 13
+		alignment 1
+		host
+		[
+			id 0
+			_extends .dict.emuHost
+		]
+	]
+	Net
+	[
+		id 14
+		alignment 2
+		host
+		[
+			id 0
+			_extends .dict.emuHost
+		]
+	]
+	Net
+	[
+		id 15
+		alignment 3
+		host
+		[
+			id 0
+			_extends .dict.emuHost
+		]
+	]
+	Net
+	[
+		id 16
+		alignment 0
+		host
+		[
+			id 0
+			_extends .dict.emuHost
+		]
+	]
+	Net
+	[
+		id 17
+		alignment 1
+		host
+		[
+			id 0
+			_extends .dict.emuHost
+		]
+	]
+	Net
+	[
+		id 18
+		alignment 2
+		host
+		[
+			id 0
+			_extends .dict.emuHost
+		]
+	]
+	Net
+	[
+		id 19
+		alignment 3
+		host
+		[
+			id 0
+			_extends .dict.emuHost
+		]
+	]
+	Net
+	[
+		id 20
+		alignment 0
+		host
+		[
+			id 0
+			_extends .dict.emuHost
+		]
+	]
+	Net
+	[
+		id 21
+		alignment 1
+		host
+		[
+			id 0
+			_extends .dict.emuHost
+		]
+	]
+	Net
+	[
+		id 22
+		alignment 2
+		host
+		[
+			id 0
+			_extends .dict.emuHost
+		]
+	]
+	Net
+	[
+		id 23
+		alignment 3
+		host
+		[
+			id 0
+			_extends .dict.emuHost
+		]
+	]
+	Net
+	[
+		id 24
+		alignment 0
+		host
+		[
+			id 0
+			_extends .dict.emuHost
+		]
+	]
+	Net
+	[
+		id 25
+		alignment 1
+		host
+		[
+			id 0
+			_extends .dict.emuHost
+		]
+	]
+	Net
+	[
+		id 26
+		alignment 2
+		host
+		[
+			id 0
+			_extends .dict.emuHost
+		]
+	]
+	Net
+	[
+		id 27
+		alignment 3
+		host
+		[
+			id 0
+			_extends .dict.emuHost
+		]
+	]
+	Net
+	[
+		id 28
+		alignment 0
+		host
+		[
+			id 0
+			_extends .dict.emuHost
+		]
+	]
+	Net
+	[
+		id 29
+		alignment 1
+		host
+		[
+			id 0
+			_extends .dict.emuHost
+		]
+	]
+	Net
+	[
+		id 30
+		alignment 2
+		host
+		[
+			id 0
+			_extends .dict.emuHost
+		]
+	]
+	Net
+	[
+		id 31
+		alignment 3
+		host
+		[
+			id 0
+			_extends .dict.emuHost
+		]
+	]
+	Net
+	[
+		id 32
+		alignment 0
+		host
+		[
+			id 0
+			_extends .dict.emuHost
+		]
+	]
+	Net
+	[
+		id 33
+		alignment 1
+		host
+		[
+			id 0
+			_extends .dict.emuHost
+		]
+	]
+	Net
+	[
+		id 34
+		alignment 2
+		host
+		[
+			id 0
+			_extends .dict.emuHost
+		]
+	]
+	Net
+	[
+		id 35
+		alignment 3
+		host
+		[
+			id 0
+			_extends .dict.emuHost
+		]
+	]
+	Net
+	[
+		id 36
+		alignment 0
+		host
+		[
+			id 0
+			_extends .dict.emuHost
+		]
+	]
+	Net
+	[
+		id 37
+		alignment 1
+		host
+		[
+			id 0
+			_extends .dict.emuHost
+		]
+	]
+	Net
+	[
+		id 38
+		alignment 2
+		host
+		[
+			id 0
+			_extends .dict.emuHost
+		]
+	]
+	Net
+	[
+		id 39
+		alignment 3
+		host
+		[
+			id 0
+			_extends .dict.emuHost
+		]
+	]
+	Net
+	[
+		id 40
+		alignment 0
+		host
+		[
+			id 0
+			_extends .dict.emuHost
+		]
+	]
+	Net
+	[
+		id 41
+		alignment 1
+		host
+		[
+			id 0
+			_extends .dict.emuHost
+		]
+	]
+	Net
+	[
+		id 42
+		alignment 2
+		host
+		[
+			id 0
+			_extends .dict.emuHost
+		]
+	]
+	Net
+	[
+		id 43
+		alignment 3
+		host
+		[
+			id 0
+			_extends .dict.emuHost
+		]
+	]
+	Net
+	[
+		id 44
+		alignment 0
+		host
+		[
+			id 0
+			_extends .dict.emuHost
+		]
+	]
+	Net
+	[
+		id 45
+		alignment 1
+		host
+		[
+			id 0
+			_extends .dict.emuHost
+		]
+	]
+	Net
+	[
+		id 46
+		alignment 2
+		host
+		[
+			id 0
+			_extends .dict.emuHost
+		]
+	]
+	Net
+	[
+		id 47
+		alignment 3
+		host
+		[
+			id 0
+			_extends .dict.emuHost
+		]
+	]
+	Net
+	[
+		id 48
+		alignment 0
+		host
+		[
+			id 0
+			_extends .dict.emuHost
+		]
+	]
+	Net
+	[
+		id 49
+		alignment 1
+		host
+		[
+			id 0
+			_extends .dict.emuHost
+		]
+	]
+	Net
+	[
+		id 50
+		alignment 2
+		host
+		[
+			id 0
+			_extends .dict.emuHost
+		]
+	]
+	Net
+	[
+		id 51
+		alignment 3
+		host
+		[
+			id 0
+			_extends .dict.emuHost
+		]
+	]
+	Net
+	[
+		id 52
+		alignment 0
+		host
+		[
+			id 0
+			_extends .dict.emuHost
+		]
+	]
+	Net
+	[
+		id 53
+		alignment 1
+		host
+		[
+			id 0
+			_extends .dict.emuHost
+		]
+	]
+	Net
+	[
+		id 54
+		alignment 2
+		host
+		[
+			id 0
+			_extends .dict.emuHost
+		]
+	]
+	Net
+	[
+		id 55
+		alignment 3
+		host
+		[
+			id 0
+			_extends .dict.emuHost
+		]
+	]
+	Net
+	[
+		id 56
+		alignment 0
+		host
+		[
+			id 0
+			_extends .dict.emuHost
+		]
+	]
+	Net
+	[
+		id 57
+		alignment 1
+		host
+		[
+			id 0
+			_extends .dict.emuHost
+		]
+	]
+	Net
+	[
+		id 58
+		alignment 2
+		host
+		[
+			id 0
+			_extends .dict.emuHost
+		]
+	]
+	Net
+	[
+		id 59
+		alignment 3
+		host
+		[
+			id 0
+			_extends .dict.emuHost
+		]
+	]
+	Net
+	[
+		id 60
+		alignment 0
+		host
+		[
+			id 0
+			_extends .dict.emuHost
+		]
+	]
+	Net
+	[
+		id 61
+		alignment 1
+		host
+		[
+			id 0
+			_extends .dict.emuHost
+		]
+	]
+	Net
+	[
+		id 62
+		alignment 2
+		host
+		[
+			id 0
+			_extends .dict.emuHost
+		]
+	]
+	Net
+	[
+		id 63
+		alignment 3
 		host
 		[
 			id 0
@@ -101,8 +717,8 @@ Net
 
 	Net
 	[
-		id 8
-		alignment 8
+		id 64
+		alignment 4
 		router
 		[
 			id 	1
@@ -136,6 +752,8 @@ Net
 			_find .dict.routerGraph.graph
 			interface [ id 0	_extends  .dict.1Gb ]
 			interface [ id 1	_extends  .dict.1Gb ]
+			interface [ id 2	_extends  .dict.1Gb ]
+			interface [ id 3	_extends  .dict.1Gb ]
 		]
 		router
 		[
@@ -143,6 +761,8 @@ Net
 			_find .dict.routerGraph.graph
 			interface [ id 0	_extends  .dict.1Gb ]
 			interface [ id 1	_extends  .dict.1Gb ]
+			interface [ id 2	_extends  .dict.1Gb ]
+			interface [ id 3	_extends  .dict.1Gb ]
 		]
 		router
 		[
@@ -150,6 +770,8 @@ Net
 			_find .dict.routerGraph.graph
 			interface [ id 0	_extends  .dict.1Gb ]
 			interface [ id 1	_extends  .dict.1Gb ]
+			interface [ id 2	_extends  .dict.1Gb ]
+			interface [ id 3	_extends  .dict.1Gb ]
 		]
 		router
 		[
@@ -157,6 +779,8 @@ Net
 			_find .dict.routerGraph.graph
 			interface [ id 0	_extends  .dict.1Gb ]
 			interface [ id 1	_extends  .dict.1Gb ]
+			interface [ id 2	_extends  .dict.1Gb ]
+			interface [ id 3	_extends  .dict.1Gb ]
 		]
 		router
 		[
@@ -164,22 +788,574 @@ Net
 			_find .dict.routerGraph.graph
 			interface [ id 0	_extends  .dict.1Gb ]
 			interface [ id 1	_extends  .dict.1Gb ]
+			interface [ id 2	_extends  .dict.1Gb ]
+			interface [ id 3	_extends  .dict.1Gb ]
+		]
+		router
+		[
+			id 	9
+			_find .dict.routerGraph.graph
+			interface [ id 0	_extends  .dict.1Gb ]
+			interface [ id 1	_extends  .dict.1Gb ]
+			interface [ id 2	_extends  .dict.1Gb ]
+			interface [ id 3	_extends  .dict.1Gb ]
+		]
+		router
+		[
+			id 	10
+			_find .dict.routerGraph.graph
+			interface [ id 0	_extends  .dict.1Gb ]
+			interface [ id 1	_extends  .dict.1Gb ]
+			interface [ id 2	_extends  .dict.1Gb ]
+			interface [ id 3	_extends  .dict.1Gb ]
+		]
+		router
+		[
+			id 	11
+			_find .dict.routerGraph.graph
+			interface [ id 0	_extends  .dict.1Gb ]
+			interface [ id 1	_extends  .dict.1Gb ]
+			interface [ id 2	_extends  .dict.1Gb ]
+			interface [ id 3	_extends  .dict.1Gb ]
+		]
+		router
+		[
+			id 	12
+			_find .dict.routerGraph.graph
+			interface [ id 0	_extends  .dict.1Gb ]
+			interface [ id 1	_extends  .dict.1Gb ]
+			interface [ id 2	_extends  .dict.1Gb ]
+			interface [ id 3	_extends  .dict.1Gb ]
+		]
+		router
+		[
+			id 	13
+			_find .dict.routerGraph.graph
+			interface [ id 0	_extends  .dict.1Gb ]
+			interface [ id 1	_extends  .dict.1Gb ]
+			interface [ id 2	_extends  .dict.1Gb ]
+			interface [ id 3	_extends  .dict.1Gb ]
+		]
+		router
+		[
+			id 	14
+			_find .dict.routerGraph.graph
+			interface [ id 0	_extends  .dict.1Gb ]
+			interface [ id 1	_extends  .dict.1Gb ]
+			interface [ id 2	_extends  .dict.1Gb ]
+			interface [ id 3	_extends  .dict.1Gb ]
+		]
+		router
+		[
+			id 	15
+			_find .dict.routerGraph.graph
+			interface [ id 0	_extends  .dict.1Gb ]
+			interface [ id 1	_extends  .dict.1Gb ]
+			interface [ id 2	_extends  .dict.1Gb ]
+			interface [ id 3	_extends  .dict.1Gb ]
+		]
+		router
+		[
+			id 	16
+			_find .dict.routerGraph.graph
+			interface [ id 0	_extends  .dict.1Gb ]
+			interface [ id 1	_extends  .dict.1Gb ]
+			interface [ id 2	_extends  .dict.1Gb ]
+			interface [ id 3	_extends  .dict.1Gb ]
+		]
+		router
+		[
+			id 	17
+			_find .dict.routerGraph.graph
+			interface [ id 0	_extends  .dict.1Gb ]
+			interface [ id 1	_extends  .dict.1Gb ]
+			interface [ id 2	_extends  .dict.1Gb ]
+			interface [ id 3	_extends  .dict.1Gb ]
+		]
+		router
+		[
+			id 	18
+			_find .dict.routerGraph.graph
+			interface [ id 0	_extends  .dict.1Gb ]
+			interface [ id 1	_extends  .dict.1Gb ]
+			interface [ id 2	_extends  .dict.1Gb ]
+			interface [ id 3	_extends  .dict.1Gb ]
+		]
+		router
+		[
+			id 	19
+			_find .dict.routerGraph.graph
+			interface [ id 0	_extends  .dict.1Gb ]
+			interface [ id 1	_extends  .dict.1Gb ]
+			interface [ id 2	_extends  .dict.1Gb ]
+			interface [ id 3	_extends  .dict.1Gb ]
+		]
+		router
+		[
+			id 	20
+			_find .dict.routerGraph.graph
+			interface [ id 0	_extends  .dict.1Gb ]
+			interface [ id 1	_extends  .dict.1Gb ]
+			interface [ id 2	_extends  .dict.1Gb ]
+			interface [ id 3	_extends  .dict.1Gb ]
+		]
+		router
+		[
+			id 	21
+			_find .dict.routerGraph.graph
+			interface [ id 0	_extends  .dict.1Gb ]
+			interface [ id 1	_extends  .dict.1Gb ]
+			interface [ id 2	_extends  .dict.1Gb ]
+			interface [ id 3	_extends  .dict.1Gb ]
+		]
+		router
+		[
+			id 	22
+			_find .dict.routerGraph.graph
+			interface [ id 0	_extends  .dict.1Gb ]
+			interface [ id 1	_extends  .dict.1Gb ]
+			interface [ id 2	_extends  .dict.1Gb ]
+			interface [ id 3	_extends  .dict.1Gb ]
+		]
+		router
+		[
+			id 	23
+			_find .dict.routerGraph.graph
+			interface [ id 0	_extends  .dict.1Gb ]
+			interface [ id 1	_extends  .dict.1Gb ]
+			interface [ id 2	_extends  .dict.1Gb ]
+			interface [ id 3	_extends  .dict.1Gb ]
+		]
+		router
+		[
+			id 	24
+			_find .dict.routerGraph.graph
+			interface [ id 0	_extends  .dict.1Gb ]
+			interface [ id 1	_extends  .dict.1Gb ]
+			interface [ id 2	_extends  .dict.1Gb ]
+			interface [ id 3	_extends  .dict.1Gb ]
+		]
+		router
+		[
+			id 	25
+			_find .dict.routerGraph.graph
+			interface [ id 0	_extends  .dict.1Gb ]
+			interface [ id 1	_extends  .dict.1Gb ]
+			interface [ id 2	_extends  .dict.1Gb ]
+			interface [ id 3	_extends  .dict.1Gb ]
+		]
+		router
+		[
+			id 	26
+			_find .dict.routerGraph.graph
+			interface [ id 0	_extends  .dict.1Gb ]
+			interface [ id 1	_extends  .dict.1Gb ]
+			interface [ id 2	_extends  .dict.1Gb ]
+			interface [ id 3	_extends  .dict.1Gb ]
+		]
+		router
+		[
+			id 	27
+			_find .dict.routerGraph.graph
+			interface [ id 0	_extends  .dict.1Gb ]
+			interface [ id 1	_extends  .dict.1Gb ]
+			interface [ id 2	_extends  .dict.1Gb ]
+			interface [ id 3	_extends  .dict.1Gb ]
+		]
+		router
+		[
+			id 	28
+			_find .dict.routerGraph.graph
+			interface [ id 0	_extends  .dict.1Gb ]
+			interface [ id 1	_extends  .dict.1Gb ]
+			interface [ id 2	_extends  .dict.1Gb ]
+			interface [ id 3	_extends  .dict.1Gb ]
+		]
+		router
+		[
+			id 	29
+			_find .dict.routerGraph.graph
+			interface [ id 0	_extends  .dict.1Gb ]
+			interface [ id 1	_extends  .dict.1Gb ]
+			interface [ id 2	_extends  .dict.1Gb ]
+			interface [ id 3	_extends  .dict.1Gb ]
+		]
+		router
+		[
+			id 	30
+			_find .dict.routerGraph.graph
+			interface [ id 0	_extends  .dict.1Gb ]
+			interface [ id 1	_extends  .dict.1Gb ]
+			interface [ id 2	_extends  .dict.1Gb ]
+			interface [ id 3	_extends  .dict.1Gb ]
+		]
+		router
+		[
+			id 	31
+			_find .dict.routerGraph.graph
+			interface [ id 0	_extends  .dict.1Gb ]
+			interface [ id 1	_extends  .dict.1Gb ]
+			interface [ id 2	_extends  .dict.1Gb ]
+			interface [ id 3	_extends  .dict.1Gb ]
+		]
+		router
+		[
+			id 	32
+			_find .dict.routerGraph.graph
+			interface [ id 0	_extends  .dict.1Gb ]
+			interface [ id 1	_extends  .dict.1Gb ]
+		]
+		router
+		[
+			id 	33
+			_find .dict.routerGraph.graph
+			interface [ id 0	_extends  .dict.1Gb ]
+			interface [ id 1	_extends  .dict.1Gb ]
+		]
+		router
+		[
+			id 	34
+			_find .dict.routerGraph.graph
+			interface [ id 0	_extends  .dict.1Gb ]
+			interface [ id 1	_extends  .dict.1Gb ]
+		]
+		router
+		[
+			id 	35
+			_find .dict.routerGraph.graph
+			interface [ id 0	_extends  .dict.1Gb ]
+			interface [ id 1	_extends  .dict.1Gb ]
+		]
+		router
+		[
+			id 	36
+			_find .dict.routerGraph.graph
+			interface [ id 0	_extends  .dict.1Gb ]
+			interface [ id 1	_extends  .dict.1Gb ]
+		]
+		router
+		[
+			id 	37
+			_find .dict.routerGraph.graph
+			interface [ id 0	_extends  .dict.1Gb ]
+			interface [ id 1	_extends  .dict.1Gb ]
+		]
+		router
+		[
+			id 	38
+			_find .dict.routerGraph.graph
+			interface [ id 0	_extends  .dict.1Gb ]
+			interface [ id 1	_extends  .dict.1Gb ]
+		]
+		router
+		[
+			id 	39
+			_find .dict.routerGraph.graph
+			interface [ id 0	_extends  .dict.1Gb ]
+			interface [ id 1	_extends  .dict.1Gb ]
+		]
+		router
+		[
+			id 	40
+			_find .dict.routerGraph.graph
+			interface [ id 0	_extends  .dict.1Gb ]
+			interface [ id 1	_extends  .dict.1Gb ]
+		]
+		router
+		[
+			id 	41
+			_find .dict.routerGraph.graph
+			interface [ id 0	_extends  .dict.1Gb ]
+			interface [ id 1	_extends  .dict.1Gb ]
+		]
+		router
+		[
+			id 	42
+			_find .dict.routerGraph.graph
+			interface [ id 0	_extends  .dict.1Gb ]
+			interface [ id 1	_extends  .dict.1Gb ]
+		]
+		router
+		[
+			id 	43
+			_find .dict.routerGraph.graph
+			interface [ id 0	_extends  .dict.1Gb ]
+			interface [ id 1	_extends  .dict.1Gb ]
+		]
+		router
+		[
+			id 	44
+			_find .dict.routerGraph.graph
+			interface [ id 0	_extends  .dict.1Gb ]
+			interface [ id 1	_extends  .dict.1Gb ]
+		]
+		router
+		[
+			id 	45
+			_find .dict.routerGraph.graph
+			interface [ id 0	_extends  .dict.1Gb ]
+			interface [ id 1	_extends  .dict.1Gb ]
+		]
+		router
+		[
+			id 	46
+			_find .dict.routerGraph.graph
+			interface [ id 0	_extends  .dict.1Gb ]
+			interface [ id 1	_extends  .dict.1Gb ]
+		]
+		router
+		[
+			id 	47
+			_find .dict.routerGraph.graph
+			interface [ id 0	_extends  .dict.1Gb ]
+			interface [ id 1	_extends  .dict.1Gb ]
+		]
+		router
+		[
+			id 	48
+			_find .dict.routerGraph.graph
+			interface [ id 0	_extends  .dict.1Gb ]
+			interface [ id 1	_extends  .dict.1Gb ]
+		]
+		router
+		[
+			id 	49
+			_find .dict.routerGraph.graph
+			interface [ id 0	_extends  .dict.1Gb ]
+			interface [ id 1	_extends  .dict.1Gb ]
+		]
+		router
+		[
+			id 	50
+			_find .dict.routerGraph.graph
+			interface [ id 0	_extends  .dict.1Gb ]
+			interface [ id 1	_extends  .dict.1Gb ]
+		]
+		router
+		[
+			id 	51
+			_find .dict.routerGraph.graph
+			interface [ id 0	_extends  .dict.1Gb ]
+			interface [ id 1	_extends  .dict.1Gb ]
+		]
+		router
+		[
+			id 	52
+			_find .dict.routerGraph.graph
+			interface [ id 0	_extends  .dict.1Gb ]
+			interface [ id 1	_extends  .dict.1Gb ]
+		]
+		router
+		[
+			id 	53
+			_find .dict.routerGraph.graph
+			interface [ id 0	_extends  .dict.1Gb ]
+			interface [ id 1	_extends  .dict.1Gb ]
+		]
+		router
+		[
+			id 	54
+			_find .dict.routerGraph.graph
+			interface [ id 0	_extends  .dict.1Gb ]
+			interface [ id 1	_extends  .dict.1Gb ]
+		]
+		router
+		[
+			id 	55
+			_find .dict.routerGraph.graph
+			interface [ id 0	_extends  .dict.1Gb ]
+			interface [ id 1	_extends  .dict.1Gb ]
+		]
+		router
+		[
+			id 	56
+			_find .dict.routerGraph.graph
+			interface [ id 0	_extends  .dict.1Gb ]
+			interface [ id 1	_extends  .dict.1Gb ]
+		]
+		router
+		[
+			id 	57
+			_find .dict.routerGraph.graph
+			interface [ id 0	_extends  .dict.1Gb ]
+			interface [ id 1	_extends  .dict.1Gb ]
+		]
+		router
+		[
+			id 	58
+			_find .dict.routerGraph.graph
+			interface [ id 0	_extends  .dict.1Gb ]
+			interface [ id 1	_extends  .dict.1Gb ]
+		]
+		router
+		[
+			id 	59
+			_find .dict.routerGraph.graph
+			interface [ id 0	_extends  .dict.1Gb ]
+			interface [ id 1	_extends  .dict.1Gb ]
+		]
+		router
+		[
+			id 	60
+			_find .dict.routerGraph.graph
+			interface [ id 0	_extends  .dict.1Gb ]
+			interface [ id 1	_extends  .dict.1Gb ]
+		]
+		router
+		[
+			id 	61
+			_find .dict.routerGraph.graph
+			interface [ id 0	_extends  .dict.1Gb ]
+			interface [ id 1	_extends  .dict.1Gb ]
+		]
+		router
+		[
+			id 	62
+			_find .dict.routerGraph.graph
+			interface [ id 0	_extends  .dict.1Gb ]
+			interface [ id 1	_extends  .dict.1Gb ]
+		]
+		router
+		[
+			id 	63
+			_find .dict.routerGraph.graph
+			interface [ id 0	_extends  .dict.1Gb ]
+			interface [ id 1	_extends  .dict.1Gb ]
+		]
+		router
+		[
+			id 	64
+			_find .dict.routerGraph.graph
+			interface [ id 0	_extends  .dict.1Gb ]
+			interface [ id 1	_extends  .dict.1Gb ]
 		]
 	]
 
-	link [ attach 0:0(0) attach 8:1(0) min_delay 1e-6 prop_delay 0.001 ]
-	link [ attach 1:0(0) attach 8:2(0) min_delay 1e-6 prop_delay 0.001 ]
-	link [ attach 2:0(0) attach 8:3(0) min_delay 1e-6 prop_delay 0.001 ]
-	link [ attach 3:0(0) attach 8:4(0) min_delay 1e-6 prop_delay 0.001 ]
-	link [ attach 4:0(0) attach 8:5(0) min_delay 1e-6 prop_delay 0.001 ]
-	link [ attach 5:0(0) attach 8:6(0) min_delay 1e-6 prop_delay 0.001 ]
-	link [ attach 6:0(0) attach 8:7(0) min_delay 1e-6 prop_delay 0.001 ]
-	link [ attach 7:0(0) attach 8:8(0) min_delay 1e-6 prop_delay 0.001 ]
-	link [ attach 8:1(1) attach 8:2(1) min_delay 1e-6 prop_delay 0.002 ]
-	link [ attach 8:1(2) attach 8:3(1) min_delay 1e-6 prop_delay 0.002 ]
-	link [ attach 8:1(3) attach 8:8(1) min_delay 1e-6 prop_delay 0.002 ]
-	link [ attach 8:2(2) attach 8:4(1) min_delay 1e-6 prop_delay 0.002 ]
-	link [ attach 8:2(3) attach 8:5(1) min_delay 1e-6 prop_delay 0.002 ]
-	link [ attach 8:3(2) attach 8:6(1) min_delay 1e-6 prop_delay 0.002 ]
-	link [ attach 8:3(3) attach 8:7(1) min_delay 1e-6 prop_delay 0.002 ]
+	link [ attach 0:0(0) attach 64:1(0) min_delay 1e-6 prop_delay 0.001 ]
+	link [ attach 1:0(0) attach 64:2(0) min_delay 1e-6 prop_delay 0.001 ]
+	link [ attach 2:0(0) attach 64:3(0) min_delay 1e-6 prop_delay 0.001 ]
+	link [ attach 3:0(0) attach 64:4(0) min_delay 1e-6 prop_delay 0.001 ]
+	link [ attach 4:0(0) attach 64:5(0) min_delay 1e-6 prop_delay 0.001 ]
+	link [ attach 5:0(0) attach 64:6(0) min_delay 1e-6 prop_delay 0.001 ]
+	link [ attach 6:0(0) attach 64:7(0) min_delay 1e-6 prop_delay 0.001 ]
+	link [ attach 7:0(0) attach 64:8(0) min_delay 1e-6 prop_delay 0.001 ]
+	link [ attach 8:0(0) attach 64:9(0) min_delay 1e-6 prop_delay 0.001 ]
+	link [ attach 9:0(0) attach 64:10(0) min_delay 1e-6 prop_delay 0.001 ]
+	link [ attach 10:0(0) attach 64:11(0) min_delay 1e-6 prop_delay 0.001 ]
+	link [ attach 11:0(0) attach 64:12(0) min_delay 1e-6 prop_delay 0.001 ]
+	link [ attach 12:0(0) attach 64:13(0) min_delay 1e-6 prop_delay 0.001 ]
+	link [ attach 13:0(0) attach 64:14(0) min_delay 1e-6 prop_delay 0.001 ]
+	link [ attach 14:0(0) attach 64:15(0) min_delay 1e-6 prop_delay 0.001 ]
+	link [ attach 15:0(0) attach 64:16(0) min_delay 1e-6 prop_delay 0.001 ]
+	link [ attach 16:0(0) attach 64:17(0) min_delay 1e-6 prop_delay 0.001 ]
+	link [ attach 17:0(0) attach 64:18(0) min_delay 1e-6 prop_delay 0.001 ]
+	link [ attach 18:0(0) attach 64:19(0) min_delay 1e-6 prop_delay 0.001 ]
+	link [ attach 19:0(0) attach 64:20(0) min_delay 1e-6 prop_delay 0.001 ]
+	link [ attach 20:0(0) attach 64:21(0) min_delay 1e-6 prop_delay 0.001 ]
+	link [ attach 21:0(0) attach 64:22(0) min_delay 1e-6 prop_delay 0.001 ]
+	link [ attach 22:0(0) attach 64:23(0) min_delay 1e-6 prop_delay 0.001 ]
+	link [ attach 23:0(0) attach 64:24(0) min_delay 1e-6 prop_delay 0.001 ]
+	link [ attach 24:0(0) attach 64:25(0) min_delay 1e-6 prop_delay 0.001 ]
+	link [ attach 25:0(0) attach 64:26(0) min_delay 1e-6 prop_delay 0.001 ]
+	link [ attach 26:0(0) attach 64:27(0) min_delay 1e-6 prop_delay 0.001 ]
+	link [ attach 27:0(0) attach 64:28(0) min_delay 1e-6 prop_delay 0.001 ]
+	link [ attach 28:0(0) attach 64:29(0) min_delay 1e-6 prop_delay 0.001 ]
+	link [ attach 29:0(0) attach 64:30(0) min_delay 1e-6 prop_delay 0.001 ]
+	link [ attach 30:0(0) attach 64:31(0) min_delay 1e-6 prop_delay 0.001 ]
+	link [ attach 31:0(0) attach 64:32(0) min_delay 1e-6 prop_delay 0.001 ]
+	link [ attach 32:0(0) attach 64:33(0) min_delay 1e-6 prop_delay 0.001 ]
+	link [ attach 33:0(0) attach 64:34(0) min_delay 1e-6 prop_delay 0.001 ]
+	link [ attach 34:0(0) attach 64:35(0) min_delay 1e-6 prop_delay 0.001 ]
+	link [ attach 35:0(0) attach 64:36(0) min_delay 1e-6 prop_delay 0.001 ]
+	link [ attach 36:0(0) attach 64:37(0) min_delay 1e-6 prop_delay 0.001 ]
+	link [ attach 37:0(0) attach 64:38(0) min_delay 1e-6 prop_delay 0.001 ]
+	link [ attach 38:0(0) attach 64:39(0) min_delay 1e-6 prop_delay 0.001 ]
+	link [ attach 39:0(0) attach 64:40(0) min_delay 1e-6 prop_delay 0.001 ]
+	link [ attach 40:0(0) attach 64:41(0) min_delay 1e-6 prop_delay 0.001 ]
+	link [ attach 41:0(0) attach 64:42(0) min_delay 1e-6 prop_delay 0.001 ]
+	link [ attach 42:0(0) attach 64:43(0) min_delay 1e-6 prop_delay 0.001 ]
+	link [ attach 43:0(0) attach 64:44(0) min_delay 1e-6 prop_delay 0.001 ]
+	link [ attach 44:0(0) attach 64:45(0) min_delay 1e-6 prop_delay 0.001 ]
+	link [ attach 45:0(0) attach 64:46(0) min_delay 1e-6 prop_delay 0.001 ]
+	link [ attach 46:0(0) attach 64:47(0) min_delay 1e-6 prop_delay 0.001 ]
+	link [ attach 47:0(0) attach 64:48(0) min_delay 1e-6 prop_delay 0.001 ]
+	link [ attach 48:0(0) attach 64:49(0) min_delay 1e-6 prop_delay 0.001 ]
+	link [ attach 49:0(0) attach 64:50(0) min_delay 1e-6 prop_delay 0.001 ]
+	link [ attach 50:0(0) attach 64:51(0) min_delay 1e-6 prop_delay 0.001 ]
+	link [ attach 51:0(0) attach 64:52(0) min_delay 1e-6 prop_delay 0.001 ]
+	link [ attach 52:0(0) attach 64:53(0) min_delay 1e-6 prop_delay 0.001 ]
+	link [ attach 53:0(0) attach 64:54(0) min_delay 1e-6 prop_delay 0.001 ]
+	link [ attach 54:0(0) attach 64:55(0) min_delay 1e-6 prop_delay 0.001 ]
+	link [ attach 55:0(0) attach 64:56(0) min_delay 1e-6 prop_delay 0.001 ]
+	link [ attach 56:0(0) attach 64:57(0) min_delay 1e-6 prop_delay 0.001 ]
+	link [ attach 57:0(0) attach 64:58(0) min_delay 1e-6 prop_delay 0.001 ]
+	link [ attach 58:0(0) attach 64:59(0) min_delay 1e-6 prop_delay 0.001 ]
+	link [ attach 59:0(0) attach 64:60(0) min_delay 1e-6 prop_delay 0.001 ]
+	link [ attach 60:0(0) attach 64:61(0) min_delay 1e-6 prop_delay 0.001 ]
+	link [ attach 61:0(0) attach 64:62(0) min_delay 1e-6 prop_delay 0.001 ]
+	link [ attach 62:0(0) attach 64:63(0) min_delay 1e-6 prop_delay 0.001 ]
+	link [ attach 63:0(0) attach 64:64(0) min_delay 1e-6 prop_delay 0.001 ]
+	link [ attach 64:1(1) attach 64:2(1) min_delay 1e-6 prop_delay 0.002 ]
+	link [ attach 64:1(2) attach 64:3(1) min_delay 1e-6 prop_delay 0.002 ]
+	link [ attach 64:1(3) attach 64:64(1) min_delay 1e-6 prop_delay 0.002 ]
+	link [ attach 64:2(2) attach 64:4(1) min_delay 1e-6 prop_delay 0.002 ]
+	link [ attach 64:2(3) attach 64:5(1) min_delay 1e-6 prop_delay 0.002 ]
+	link [ attach 64:3(2) attach 64:6(1) min_delay 1e-6 prop_delay 0.002 ]
+	link [ attach 64:3(3) attach 64:7(1) min_delay 1e-6 prop_delay 0.002 ]
+	link [ attach 64:4(2) attach 64:8(1) min_delay 1e-6 prop_delay 0.002 ]
+	link [ attach 64:4(3) attach 64:9(1) min_delay 1e-6 prop_delay 0.002 ]
+	link [ attach 64:5(2) attach 64:10(1) min_delay 1e-6 prop_delay 0.002 ]
+	link [ attach 64:5(3) attach 64:11(1) min_delay 1e-6 prop_delay 0.002 ]
+	link [ attach 64:6(2) attach 64:12(1) min_delay 1e-6 prop_delay 0.002 ]
+	link [ attach 64:6(3) attach 64:13(1) min_delay 1e-6 prop_delay 0.002 ]
+	link [ attach 64:7(2) attach 64:14(1) min_delay 1e-6 prop_delay 0.002 ]
+	link [ attach 64:7(3) attach 64:15(1) min_delay 1e-6 prop_delay 0.002 ]
+	link [ attach 64:8(2) attach 64:16(1) min_delay 1e-6 prop_delay 0.002 ]
+	link [ attach 64:8(3) attach 64:17(1) min_delay 1e-6 prop_delay 0.002 ]
+	link [ attach 64:9(2) attach 64:18(1) min_delay 1e-6 prop_delay 0.002 ]
+	link [ attach 64:9(3) attach 64:19(1) min_delay 1e-6 prop_delay 0.002 ]
+	link [ attach 64:10(2) attach 64:20(1) min_delay 1e-6 prop_delay 0.002 ]
+	link [ attach 64:10(3) attach 64:21(1) min_delay 1e-6 prop_delay 0.002 ]
+	link [ attach 64:11(2) attach 64:22(1) min_delay 1e-6 prop_delay 0.002 ]
+	link [ attach 64:11(3) attach 64:23(1) min_delay 1e-6 prop_delay 0.002 ]
+	link [ attach 64:12(2) attach 64:24(1) min_delay 1e-6 prop_delay 0.002 ]
+	link [ attach 64:12(3) attach 64:25(1) min_delay 1e-6 prop_delay 0.002 ]
+	link [ attach 64:13(2) attach 64:26(1) min_delay 1e-6 prop_delay 0.002 ]
+	link [ attach 64:13(3) attach 64:27(1) min_delay 1e-6 prop_delay 0.002 ]
+	link [ attach 64:14(2) attach 64:28(1) min_delay 1e-6 prop_delay 0.002 ]
+	link [ attach 64:14(3) attach 64:29(1) min_delay 1e-6 prop_delay 0.002 ]
+	link [ attach 64:15(2) attach 64:30(1) min_delay 1e-6 prop_delay 0.002 ]
+	link [ attach 64:15(3) attach 64:31(1) min_delay 1e-6 prop_delay 0.002 ]
+	link [ attach 64:16(2) attach 64:32(1) min_delay 1e-6 prop_delay 0.002 ]
+	link [ attach 64:16(3) attach 64:33(1) min_delay 1e-6 prop_delay 0.002 ]
+	link [ attach 64:17(2) attach 64:34(1) min_delay 1e-6 prop_delay 0.002 ]
+	link [ attach 64:17(3) attach 64:35(1) min_delay 1e-6 prop_delay 0.002 ]
+	link [ attach 64:18(2) attach 64:36(1) min_delay 1e-6 prop_delay 0.002 ]
+	link [ attach 64:18(3) attach 64:37(1) min_delay 1e-6 prop_delay 0.002 ]
+	link [ attach 64:19(2) attach 64:38(1) min_delay 1e-6 prop_delay 0.002 ]
+	link [ attach 64:19(3) attach 64:39(1) min_delay 1e-6 prop_delay 0.002 ]
+	link [ attach 64:20(2) attach 64:40(1) min_delay 1e-6 prop_delay 0.002 ]
+	link [ attach 64:20(3) attach 64:41(1) min_delay 1e-6 prop_delay 0.002 ]
+	link [ attach 64:21(2) attach 64:42(1) min_delay 1e-6 prop_delay 0.002 ]
+	link [ attach 64:21(3) attach 64:43(1) min_delay 1e-6 prop_delay 0.002 ]
+	link [ attach 64:22(2) attach 64:44(1) min_delay 1e-6 prop_delay 0.002 ]
+	link [ attach 64:22(3) attach 64:45(1) min_delay 1e-6 prop_delay 0.002 ]
+	link [ attach 64:23(2) attach 64:46(1) min_delay 1e-6 prop_delay 0.002 ]
+	link [ attach 64:23(3) attach 64:47(1) min_delay 1e-6 prop_delay 0.002 ]
+	link [ attach 64:24(2) attach 64:48(1) min_delay 1e-6 prop_delay 0.002 ]
+	link [ attach 64:24(3) attach 64:49(1) min_delay 1e-6 prop_delay 0.002 ]
+	link [ attach 64:25(2) attach 64:50(1) min_delay 1e-6 prop_delay 0.002 ]
+	link [ attach 64:25(3) attach 64:51(1) min_delay 1e-6 prop_delay 0.002 ]
+	link [ attach 64:26(2) attach 64:52(1) min_delay 1e-6 prop_delay 0.002 ]
+	link [ attach 64:26(3) attach 64:53(1) min_delay 1e-6 prop_delay 0.002 ]
+	link [ attach 64:27(2) attach 64:54(1) min_delay 1e-6 prop_delay 0.002 ]
+	link [ attach 64:27(3) attach 64:55(1) min_delay 1e-6 prop_delay 0.002 ]
+	link [ attach 64:28(2) attach 64:56(1) min_delay 1e-6 prop_delay 0.002 ]
+	link [ attach 64:28(3) attach 64:57(1) min_delay 1e-6 prop_delay 0.002 ]
+	link [ attach 64:29(2) attach 64:58(1) min_delay 1e-6 prop_delay 0.002 ]
+	link [ attach 64:29(3) attach 64:59(1) min_delay 1e-6 prop_delay 0.002 ]
+	link [ attach 64:30(2) attach 64:60(1) min_delay 1e-6 prop_delay 0.002 ]
+	link [ attach 64:30(3) attach 64:61(1) min_delay 1e-6 prop_delay 0.002 ]
+	link [ attach 64:31(2) attach 64:62(1) min_delay 1e-6 prop_delay 0.002 ]
+	link [ attach 64:31(3) attach 64:63(1) min_delay 1e-6 prop_delay 0.002 ]
 ]

@@ -27,6 +27,9 @@ except socket.error , msg:
 	sys.exit()
 	 
 print("Socket bind complete")
+with open("/home/vignesh/Desktop/temp.txt","w") as f :
+	f.write("Started udp reader successfully\n")
+
 sys.stdout.flush()
  
 #now keep talking with the client

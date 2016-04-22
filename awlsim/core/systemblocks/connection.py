@@ -6,7 +6,8 @@ import select
 import sys
 #import queue
 #from queue import *
-from multiprocessing import Queue as Queue
+import multiprocessing, Queue
+#from multiprocessing import Queue as Queue
 import time
 import os
 
@@ -96,9 +97,34 @@ class Connection(object) :
 
 		self.connection_params = Connection_Params(cpu)
 		self.IDS_IP = None
-		self.thread_cmd_queue = Queue()
-		self.thread_resp_queue = Queue()
-		self.thread_param_queue = Queue()
+
+		no_error = False
+		while no_error == False :
+			try:
+				self.thread_cmd_queue = multiprocessing.Queue()
+				no_error = True
+			except :
+				no_error = False
+
+				
+		no_error = False
+		while no_error == False :
+			try:
+				self.thread_resp_queue = multiprocessing.Queue()
+				no_error = True
+			except :
+				no_error = False
+				
+
+		no_error = False
+		while no_error == False :
+			try:
+				self.thread_param_queue = multiprocessing.Queue()
+				no_error = True
+			except :
+				no_error = False
+				
+
 		self.connection_params.set_connection_params(connection_id,remote_port,local_port,self.hostname_to_ip(remote_host_name),is_server,single_write_enabled)
 		self.cpu = cpu
 		self.remote_host_id = int(remote_host_name)
@@ -226,7 +252,7 @@ class Connection(object) :
 	def hostname_to_ip(self,hostname) :
 
 		host_id = int(hostname)
-		conf_file = conf_directory + "/PLC_Config/" + str(host_id)
+		conf_file = conf_directory + "/PLC_Config/lxc" + str(host_id) + "-0"
 
 		if os.path.isfile(conf_file):
 
@@ -251,8 +277,8 @@ class Connection(object) :
 		print("Resolved hostname = ",resolved_hostname)
 		i = 0
 		while(1) :
-			if os.path.isfile(conf_directory + "/PLC_Config/" + str(i)) :
-				conf_file = conf_directory + "/PLC_Config/" + str(i)
+			if os.path.isfile(conf_directory + "/PLC_Config/lxc" + str(i) + "-0") :
+				conf_file = conf_directory + "/PLC_Config/lxc" + str(i) + "-0"
 				lines = [line.rstrip('\n') for line in open(conf_file)]			
 				for line in lines :
 					line = ' '.join(line.split())
@@ -1129,11 +1155,11 @@ class Connection(object) :
 					self.server_process = Process(target = test_run_server_ip, args =(self.thread_resp_queue,self.thread_cmd_queue,self.connection_params.local_tsap_id,self.disconnect,self.recv_time,self.conn_time,self.IDS_IP,self.cpu.local_id))  
 					print("Started server process at : " + str(time.time()))					
 					self.server_process.start()
-				
+				o = None
 				try :
-					o = self.thread_resp_queue.get(block=True,timeout=timeout)					
-					#o = self.thread_resp_queue.get(block=False)					
-				except:
+					#o = self.thread_resp_queue.get(block=True,timeout=timeout)					
+					o = self.thread_resp_queue.get(block=False)					
+				except Queue.Empty:
 					o = None
 					
 				if o != None :
@@ -1167,10 +1193,11 @@ class Connection(object) :
 			elif self.STATUS == DONE and self.CONN_ESTABLISHED == True : # if disconnect is false
 				if self.ENQ_ENR == 1 :
 					self.STATUS = RUNNING
+					o = None
 					try :
-						o = self.thread_resp_queue.get(block=True,timeout=timeout)					
-						#o = self.thread_resp_queue.get(block=False)					
-					except:
+						#o = self.thread_resp_queue.get(block=True,timeout=timeout)					
+						o = self.thread_resp_queue.get(block=False)					
+					except Queue.Empty:
 						o = None
 						
 					if o != None :
@@ -1210,17 +1237,18 @@ class Connection(object) :
 						del self.thread_resp_queue
 						del self.thread_cmd_queue
 
-						self.thread_resp_queue = Queue()
-						self.thread_cmd_queue = Queue()
+						self.thread_resp_queue = multiprocessing.Queue()
+						self.thread_cmd_queue = multiprocessing.Queue()
 
 						self.server_process = Process(target = test_run_server_ip, args =(self.thread_resp_queue,self.thread_cmd_queue,self.connection_params.local_tsap_id,self.disconnect,self.recv_time,self.conn_time,self.IDS_IP,self.cpu.local_id))  
 						print("Re-Started server process at " + str(time.time()))					
 						self.server_process.start()
-					
+
+					o = None
 					try :
-						o = self.thread_resp_queue.get(block=True,timeout=timeout)
-						#o = self.thread_resp_queue.get(block=False)					
-					except:
+						#o = self.thread_resp_queue.get(block=True,timeout=timeout)
+						o = self.thread_resp_queue.get(block=False)					
+					except Queue.Empty:
 						o = None
 
 					if o != None :
@@ -1247,10 +1275,11 @@ class Connection(object) :
 		elif self.STATUS == RUNNING :
 			self.PREV_ENQ_ENR = self.ENQ_ENR
 			
+			o = None
 			try :
-				o = self.thread_resp_queue.get(block=True,timeout=timeout)				
-				#o = self.thread_resp_queue.get(block=False)					
-			except:
+				#o = self.thread_resp_queue.get(block=True,timeout=timeout)				
+				o = self.thread_resp_queue.get(block=False)					
+			except Queue.Empty:
 				o = None
 				
 			if o != None :
@@ -1371,7 +1400,7 @@ class Connection(object) :
 		return self.STATUS
 
 	def call_modbus_client_process(self) :
-		#TCP_REMOTE_IP  = "127.0.0.1"
+		TCP_REMOTE_IP  = "127.0.0.1"
 		TCP_REMOTE_IP  = self.connection_params.rem_staddr
 		TCP_REMOTE_PORT = self.connection_params.rem_tsap_id
 	
@@ -1393,11 +1422,12 @@ class Connection(object) :
 				if self.cpu.network_interface_type == 0 : #IP							
 					self.client_process = Process(target = test_run_client_ip, args =(self.thread_resp_queue,self.thread_cmd_queue,self.connection_params.local_tsap_id, self.IDS_IP, TCP_REMOTE_IP, TCP_REMOTE_PORT,self.conn_time,self.cpu.local_id))  
 					self.client_process.start()
-				
+
+				o = None
 				try :
-					o = self.thread_resp_queue.get(block=True,timeout=timeout)					
-					#o = self.thread_resp_queue.get(block=False)					
-				except:
+					#o = self.thread_resp_queue.get(block=True,timeout=timeout)					
+					o = self.thread_resp_queue.get(block=False)					
+				except Queue.Empty:
 					o = None
 					
 				if o != None :
@@ -1422,10 +1452,12 @@ class Connection(object) :
 			elif self.STATUS == DONE and self.CONN_ESTABLISHED == True : # if disconnect is false
 				if self.ENQ_ENR == 1 :
 					self.STATUS = RUNNING
+
+					o = None
 					try :
-						o = self.thread_resp_queue.get(block=True,timeout=timeout)					
-						#o = self.thread_resp_queue.get(block=False)					
-					except:
+						#o = self.thread_resp_queue.get(block=True,timeout=timeout)					
+						o = self.thread_resp_queue.get(block=False)					
+					except Queue.Empty:
 						o = None
 						
 					if o != None :
@@ -1457,16 +1489,17 @@ class Connection(object) :
 						del self.thread_resp_queue
 						del self.thread_cmd_queue
 
-						self.thread_resp_queue = Queue()
-						self.thread_cmd_queue = Queue()
+						self.thread_resp_queue = multiprocessing.Queue()
+						self.thread_cmd_queue = multiprocessing.Queue()
 
 						self.client_process = Process(target = test_run_client_ip, args =(self.thread_resp_queue,self.thread_cmd_queue,self.connection_params.local_tsap_id, self.IDS_IP,TCP_REMOTE_IP, TCP_REMOTE_PORT,self.conn_time,self.cpu.local_id))  
 						self.client_process.start()
 					
+					o = None
 					try :
-						o = self.thread_resp_queue.get(block=True,timeout=timeout)
-						#o = self.thread_resp_queue.get(block=False)
-					except:
+						#o = self.thread_resp_queue.get(block=True,timeout=timeout)
+						o = self.thread_resp_queue.get(block=False)
+					except Queue.Empty:
 						o = None
 
 					if o != None :
@@ -1486,10 +1519,11 @@ class Connection(object) :
 		elif self.STATUS == RUNNING :
 			self.PREV_ENQ_ENR = self.ENQ_ENR
 			
+			o = None
 			try :
-				o = self.thread_resp_queue.get(block=True,timeout=timeout)
-				#o = self.thread_resp_queue.get(block=False)				
-			except:
+				#o = self.thread_resp_queue.get(block=True,timeout=timeout)
+				o = self.thread_resp_queue.get(block=False)				
+			except Queue.Empty:
 				o = None
 				
 			if o != None :

@@ -225,6 +225,11 @@ ssize_t status_read(struct file *pfil, char __user *pBuf, size_t len, loff_t *p_
         static int finished = 0,i = 0;
 	int buffer_size = 0;
 	char NULL_msg[5] = "NULL";
+	char tmpBuff[KERNEL_BUF_SIZE];
+	unsigned long flags;
+	int j = 0;
+	for(j = 0; j < KERNEL_BUF_SIZE; j++)
+		tmpBuff[j] = NULL;
 	struct lxc_entry * lxc;
 	if ( finished ) {
 		printk(KERN_INFO "Socket Hook : Proc file read: END\n");
@@ -246,29 +251,36 @@ ssize_t status_read(struct file *pfil, char __user *pBuf, size_t len, loff_t *p_
 		return 4;
 	}
 
-	spin_lock(&lxc->lxc_entry_lock);
+	spin_lock_irqsave(&lxc->lxc_entry_lock,flags);
 	if(lxc->is_buf_initialised == 0){
-		spin_unlock(&lxc->lxc_entry_lock);
+		spin_unlock_irqrestore(&lxc->lxc_entry_lock,flags);
 		if (copy_to_user(pBuf, NULL_msg, 4) ) {
 			
 			return -EFAULT;
 		}		
 		return 4;
 	}
-	spin_unlock(&lxc->lxc_entry_lock);
-
-
 	while(lxc->lxcBuff[i] != NULL)
 		i++;
-
 	buffer_size = i;
-	if(buffer_size == 0){
+	if(buffer_size > 0 && buffer_size < KERNEL_BUF_SIZE)
+		strncpy(tmpBuff,lxc->lxcBuff,buffer_size);
+	for(i = 0; i < KERNEL_BUF_SIZE; i++){
+		lxc->lxcBuff[i] = '\0'	;
+	}
+	spin_unlock_irqrestore(&lxc->lxc_entry_lock,flags);
+
+
+	
+
+	
+	if(buffer_size == 0 || buffer_size >= KERNEL_BUF_SIZE){
 		if (copy_to_user(pBuf, NULL_msg, 4) ) {
 			return -EFAULT;
 		}		
 		return 4;
 	}
-	if (copy_to_user(pBuf, lxc->lxcBuff, buffer_size) ) {
+	if (copy_to_user(pBuf, tmpBuff, buffer_size) ) {
 		return -EFAULT;
 	}
 

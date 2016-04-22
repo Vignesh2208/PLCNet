@@ -163,6 +163,18 @@ force = 0, do not force LXC times
 force = 1, force LXC times to be progress exactly 
 */
 struct msghdr msg;
+int fix_timeline(int timeline){
+
+	 char command[100];
+	 int i = 0;
+	 for( i = 0; i < 100; i++)
+	 	command[i] = '\0';
+
+	printf("Fixing timeline  %d..\n",timeline);
+	sprintf(command, "%c,%d", FIX_TIMELINE, timeline);
+	send_to_timekeeper(command);
+
+}
 int progress(int timeline, int force) {
     struct sockaddr_nl src_addr;
     int sock_fd;

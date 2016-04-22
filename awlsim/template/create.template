@@ -18,10 +18,12 @@ TAP_NAME=$1
 IP_ADDR=$2
 BR_NAME=$3
 LXC_NAME=$4
-CONF_FILE=$5
+#CONF_FILE=$5
+CONF_FILE=$4
 
 echo "Creating LXC: $LXC_NAME | IP: $IP_ADDR | BR: $BR_NAME | TAP: $TAP_NAME |"
 echo $CONF_FILE
+
 
 echo "lxc.utsname = $LXC_NAME" 			> $CONF_FILE
 echo "lxc.network.type = veth" 			>> $CONF_FILE

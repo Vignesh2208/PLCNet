@@ -141,7 +141,7 @@ def generate_inputs(Node_data,node_id,cpu_cycle_number,curr_outputs=None,curr_in
 
 
     # Generating input 1 (for all nodes except the leaves)
-	if curr_time - Node_data["last_input1_time"] > Input_1_period and node_id < math.pow(2,N_levels):
+	if curr_time - Node_data["last_input1_time"] > Input_1_period and node_id < math.pow(2,N_levels) and curr_time - Node_data["start_time"] < 2.5  :
 		Node_data["last_input1_time"] = curr_time
 		in1 = 1
 

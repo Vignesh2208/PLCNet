@@ -4,7 +4,8 @@ import select
 import sys
 #import queue
 #from queue import *
-from multiprocessing import Queue as Queue
+import multiprocessing, Queue
+#from multiprocessing import Queue as Queue
 import time
 import os
 from awlsim.core.systemblocks.exceptions import *
@@ -12,6 +13,32 @@ import select
 import hashlib
 import datetime
 import random
+import ctypes
+libc = ctypes.CDLL('libc.so.6')
+
+
+class Timespec(ctypes.Structure):
+	""" timespec struct for nanosleep, see:
+      	http://linux.die.net/man/2/nanosleep """
+	_fields_ = [('tv_sec', ctypes.c_long),
+	('tv_nsec', ctypes.c_long)]
+
+libc.nanosleep.argtypes = [ctypes.POINTER(Timespec),
+                           ctypes.POINTER(Timespec)]
+nanosleep_req = Timespec()
+nanosleep_rem = Timespec()
+
+def nsleep(us):
+	#print('nsleep: {0:.9f}'.format(us)) 
+	""" Delay microseconds with libc nanosleep() using ctypes. """
+	if (us >= 1000000):
+		sec = us/1000000
+		us %= 1000000
+	else: sec = 0
+	nanosleep_req.tv_sec = int(sec)
+	nanosleep_req.tv_nsec = int(us * 1000)
+
+	libc.nanosleep(nanosleep_req, nanosleep_rem)
 
 NOT_STARTED = -1
 RUNNING = 4
@@ -35,6 +62,19 @@ ESCAPE_FLAG = 0x7D
 #local_tsap_id
 #ENQ_ENR, disconnect, recv_time, conn_time
 
+def get_busy_wait(queue_name):
+	o = None
+	while o == None :
+		try :
+			o = queue_name.get(block=False)		
+		except Queue.Empty:
+			o = None
+		#if o == None :
+		#	nsleep(10)
+
+	return o	
+
+
 
 def test_run_server_ip(thread_resp_queue,thread_cmd_queue,local_tsap_id,disconnect,recv_time_val,conn_time,IDS_IP,local_id):
 
@@ -56,14 +96,22 @@ def test_run_server_ip(thread_resp_queue,thread_cmd_queue,local_tsap_id,disconne
 	try:
 		ids_socket = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
 		ids_socket.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1)
+		server_socket.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1)
 	except socket.error as sockerror:
 		print("ERRor creating socket")
 		print(sockerror)
+		return
 	ids_host = IDS_IP;
 	ids_port = 8888; 
 
 	server_socket.settimeout(conn_time)
-	server_socket.bind(('0.0.0.0',TCP_LOCAL_PORT))	# bind to any address
+	try:
+		server_socket.bind(('0.0.0.0',TCP_LOCAL_PORT))	# bind to any address
+	except socket.error as sockerror:
+		print("ERROR binding to socket")
+		print(sockerror)
+		return
+
 	server_socket.listen(1)
 
 	print("Start time = ", time.time())
@@ -105,7 +153,10 @@ def test_run_server_ip(thread_resp_queue,thread_cmd_queue,local_tsap_id,disconne
 		
 		try:
 			data = client_socket.recv(BUFFER_SIZE)
+			#time.sleep(0.01)
+			
 		except socket.timeout:
+			print("RECV timeout error")
 			read_finish_status = 0
 			STATUS = SERVER_ERROR
 			ERROR = True
@@ -117,19 +168,22 @@ def test_run_server_ip(thread_resp_queue,thread_cmd_queue,local_tsap_id,disconne
 
 
 		#recv_time = time.time()
-		recv_time = datetime.datetime.now()
+		recv_time = datetime.datetime.now()		
 		recv_data = bytearray(data)
 		if len(data) == 0 :
 			client_socket.close()
+			server_socket.close()
 			return
 
 		#print("Data read = ", data)
 
-
+		# Should this be there ?
 		thread_resp_queue.put(curr_status)		
-		cmd = thread_cmd_queue.get()
+		##cmd = thread_cmd_queue.get()
+		cmd = get_busy_wait(thread_cmd_queue)
 		if cmd == 'QUIT':
 			client_socket.close()
+			server_socket.close()
 			return
 
 		
@@ -147,14 +201,18 @@ def test_run_server_ip(thread_resp_queue,thread_cmd_queue,local_tsap_id,disconne
 
 		recv_data = recv_data[0:-3]
 		thread_resp_queue.put((recv_data,1))
-		cmd = thread_cmd_queue.get()
+		##cmd = thread_cmd_queue.get()
+		cmd = get_busy_wait(thread_cmd_queue)
 		if cmd == 'QUIT':
 			client_socket.close()
+			server_socket.close()
 			return
 		#response,request_msg_params = thread_cmd_queue.get()
-		cmd = thread_cmd_queue.get()
+		##cmd = thread_cmd_queue.get()
+		cmd = get_busy_wait(thread_cmd_queue)
 		if cmd == 'QUIT':
 			client_socket.close()
+			server_socket.close()
 			return
 
 		response = cmd[0]
@@ -168,6 +226,7 @@ def test_run_server_ip(thread_resp_queue,thread_cmd_queue,local_tsap_id,disconne
 			ERROR = False
 		else :
 			# set STATUS_MODBUS Based on returned error value			
+			print("ERROR on processing request msg")
 			read_finish_status = 0
 			STATUS = DONE
 			ERROR = True
@@ -181,6 +240,7 @@ def test_run_server_ip(thread_resp_queue,thread_cmd_queue,local_tsap_id,disconne
 		#conn_obj.set_inout_parameters(request_msg_params["unit"],request_msg_params["data_type"],request_msg_params["start_address"],request_msg_params["length"],request_msg_params["ti"],request_msg_params["write_read"])
 		#param_init_lock.release()
 
+		
 		client_socket.send(response)
 		print("Sent response to client = ",response)
 		sys.stdout.flush()
@@ -193,11 +253,11 @@ def test_run_server_ip(thread_resp_queue,thread_cmd_queue,local_tsap_id,disconne
 
 
 		
-		if disconnect == True :			
+		if disconnect == True :	
+			print("Disconnecting connection")		
 			read_finish_status = 0
 			STATUS = DONE
 			ERROR = False
-			client_socket.close()
 			break
 		else :
 			read_finish_status = 0
@@ -205,14 +265,17 @@ def test_run_server_ip(thread_resp_queue,thread_cmd_queue,local_tsap_id,disconne
 			ERROR = False
 			curr_status = (read_finish_status,STATUS,ERROR,STATUS_MODBUS,STATUS_CONN,BUSY,CONN_ESTABLISHED)
 			thread_resp_queue.put(curr_status)
-			cmd = thread_cmd_queue.get()
+			##cmd = thread_cmd_queue.get()
+			cmd = get_busy_wait(thread_cmd_queue)
 			if cmd == 'QUIT' :
 				client_socket.close()
+				server_socket.close()
 				return
 
 	print("####### Exiting ############")
 	BUSY = False
 	CONN_ESTABLISHED = False
+	ids_socket.close()
 	client_socket.close()
 	server_socket.close()
 	curr_status = (read_finish_status,STATUS,ERROR,STATUS_MODBUS,STATUS_CONN,BUSY,CONN_ESTABLISHED)
@@ -283,7 +346,8 @@ def test_run_client_ip(thread_resp_queue,thread_cmd_queue,local_tsap_id,IDS_IP,T
 		
 		# read all input and inout params
 		thread_resp_queue.put(curr_status)
-		cmd = thread_cmd_queue.get()
+		##cmd = thread_cmd_queue.get()
+		cmd = get_busy_wait(thread_cmd_queue)
 		if cmd == 'QUIT':
 			client_socket.close()
 			return
@@ -306,7 +370,7 @@ def test_run_client_ip(thread_resp_queue,thread_cmd_queue,local_tsap_id,IDS_IP,T
 		msg_to_send.append(random.randint(0,255))
 		
 		try:
-
+			
 			print("Sent msg = ",msg_to_send)
 			client_socket.send(msg_to_send)
 			sys.stdout.flush()
@@ -335,7 +399,10 @@ def test_run_client_ip(thread_resp_queue,thread_cmd_queue,local_tsap_id,IDS_IP,T
 					
 		try:
 			data = client_socket.recv(BUFFER_SIZE)
+			#time.sleep(0.01)
+			
 		except socket.timeout:
+			print("Client RECV timeout error")
 			read_finish_status = 0
 			STATUS = RECV_TIMEOUT_ERROR
 			ERROR = True
@@ -343,10 +410,8 @@ def test_run_client_ip(thread_resp_queue,thread_cmd_queue,local_tsap_id,IDS_IP,T
 			STATUS_CONN = ERROR_MONITORING_TIME_ELAPSED
 			break
 
-
 		recv_time = datetime.datetime.now()
 		recv_data = bytearray(data)
-
 		#print("Response from server : ",recv_data, " at Node id = ", local_id + 1)
 		print ("Response from server = ",' '.join('{:02x}'.format(x) for x in recv_data))
 		sys.stdout.flush()
@@ -362,7 +427,8 @@ def test_run_client_ip(thread_resp_queue,thread_cmd_queue,local_tsap_id,IDS_IP,T
 
 		recv_data = recv_data[0:-3]
 		thread_resp_queue.put((recv_data,1))
-		cmd = thread_cmd_queue.get()
+		##cmd = thread_cmd_queue.get()
+		cmd = get_busy_wait(thread_cmd_queue)
 		if cmd == 'QUIT':
 			client_socket.close()
 			return
@@ -393,7 +459,8 @@ def test_run_client_ip(thread_resp_queue,thread_cmd_queue,local_tsap_id,IDS_IP,T
 			ERROR = False
 			curr_status = (read_finish_status,STATUS,ERROR,STATUS_MODBUS,STATUS_CONN,BUSY,CONN_ESTABLISHED)
 			thread_resp_queue.put(curr_status)
-			cmd = thread_cmd_queue.get()
+			##cmd = thread_cmd_queue.get()
+			cmd = get_busy_wait(thread_cmd_queue)
 			if cmd == 'QUIT':
 				client_socket.close()
 				return
@@ -402,6 +469,7 @@ def test_run_client_ip(thread_resp_queue,thread_cmd_queue,local_tsap_id,IDS_IP,T
 	BUSY = False
 	CONN_ESTABLISHED = False
 	client_socket.close()
+	ids_socket.close()
 	curr_status = (read_finish_status,STATUS,ERROR,STATUS_MODBUS,STATUS_CONN,BUSY,CONN_ESTABLISHED)
 	thread_resp_queue.put(curr_status)
 	cmd = thread_cmd_queue.get()

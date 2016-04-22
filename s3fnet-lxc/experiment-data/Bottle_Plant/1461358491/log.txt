@@ -1,0 +1,4392 @@
+|==================================================
+| LXC Manager Created
+| Simulation has 5 timelines
+|==================================================
+LXC proxy initialization: lxc0-0 successfull
+LXC proxy initialization: lxc1-0 successfull
+LXC proxy initialization: lxc2-0 successfull
+LXC proxy initialization: lxc3-0 successfull
+LXC proxy initialization: lxc4-0 successfull
+LXC proxy initialization: lxc5-0 successfull
+LXC proxy initialization: lxc6-0 successfull
+LXC proxy initialization: lxc7-0 successfull
+LXC proxy initialization: lxc8-0 successfull
+LXC proxy initialization: lxc9-0 successfull
+LXC proxy initialization: lxc10-0 successfull
+LXC proxy initialization: lxc11-0 successfull
+LXC proxy initialization: lxc12-0 successfull
+LXC proxy initialization: lxc13-0 successfull
+LXC proxy initialization: lxc14-0 successfull
+LXC proxy initialization: lxc15-0 successfull
+LXC proxy initialization: lxc16-0 successfull
+LXC proxy initialization: lxc17-0 successfull
+LXC proxy initialization: lxc18-0 successfull
+LXC proxy initialization: lxc19-0 successfull
+LXC proxy initialization: lxc20-0 successfull
+LXC proxy initialization: lxc21-0 successfull
+LXC proxy initialization: lxc22-0 successfull
+LXC proxy initialization: lxc23-0 successfull
+LXC proxy initialization: lxc24-0 successfull
+LXC proxy initialization: lxc25-0 successfull
+LXC proxy initialization: lxc26-0 successfull
+LXC proxy initialization: lxc27-0 successfull
+LXC proxy initialization: lxc28-0 successfull
+LXC proxy initialization: lxc29-0 successfull
+LXC proxy initialization: lxc30-0 successfull
+LXC proxy initialization: lxc31-0 successfull
+LXC proxy initialization: lxc32-0 successfull
+LXC proxy initialization: lxc33-0 successfull
+LXC proxy initialization: lxc34-0 successfull
+LXC proxy initialization: lxc35-0 successfull
+LXC proxy initialization: lxc36-0 successfull
+LXC proxy initialization: lxc37-0 successfull
+LXC proxy initialization: lxc38-0 successfull
+LXC proxy initialization: lxc39-0 successfull
+LXC proxy initialization: lxc40-0 successfull
+LXC proxy initialization: lxc41-0 successfull
+LXC proxy initialization: lxc42-0 successfull
+LXC proxy initialization: lxc43-0 successfull
+LXC proxy initialization: lxc44-0 successfull
+LXC proxy initialization: lxc45-0 successfull
+LXC proxy initialization: lxc46-0 successfull
+LXC proxy initialization: lxc47-0 successfull
+LXC proxy initialization: lxc48-0 successfull
+LXC proxy initialization: lxc49-0 successfull
+LXC proxy initialization: lxc50-0 successfull
+LXC proxy initialization: lxc51-0 successfull
+LXC proxy initialization: lxc52-0 successfull
+LXC proxy initialization: lxc53-0 successfull
+LXC proxy initialization: lxc54-0 successfull
+LXC proxy initialization: lxc55-0 successfull
+LXC proxy initialization: lxc56-0 successfull
+LXC proxy initialization: lxc57-0 successfull
+LXC proxy initialization: lxc58-0 successfull
+LXC proxy initialization: lxc59-0 successfull
+LXC proxy initialization: lxc60-0 successfull
+LXC proxy initialization: lxc61-0 successfull
+LXC proxy initialization: lxc62-0 successfull
+LXC proxy initialization: lxc63-0 successfull
+ ____________________________________________
+|
+| Printing out Info about Timeline 0 ...
+|_____
+      | Timeline 0 has Proxy LXC lxc0-0
+      | Timeline 0 has Proxy LXC lxc4-0
+      | Timeline 0 has Proxy LXC lxc8-0
+      | Timeline 0 has Proxy LXC lxc12-0
+      | Timeline 0 has Proxy LXC lxc16-0
+      | Timeline 0 has Proxy LXC lxc20-0
+      | Timeline 0 has Proxy LXC lxc24-0
+      | Timeline 0 has Proxy LXC lxc28-0
+      | Timeline 0 has Proxy LXC lxc32-0
+      | Timeline 0 has Proxy LXC lxc36-0
+      | Timeline 0 has Proxy LXC lxc40-0
+      | Timeline 0 has Proxy LXC lxc44-0
+      | Timeline 0 has Proxy LXC lxc48-0
+      | Timeline 0 has Proxy LXC lxc52-0
+      | Timeline 0 has Proxy LXC lxc56-0
+      | Timeline 0 has Proxy LXC lxc60-0
+      |______________________________________
+ ____________________________________________
+|
+| Printing out Info about Timeline 1 ...
+|_____
+      | Timeline 1 has Proxy LXC lxc1-0
+      | Timeline 1 has Proxy LXC lxc5-0
+      | Timeline 1 has Proxy LXC lxc9-0
+      | Timeline 1 has Proxy LXC lxc13-0
+      | Timeline 1 has Proxy LXC lxc17-0
+      | Timeline 1 has Proxy LXC lxc21-0
+      | Timeline 1 has Proxy LXC lxc25-0
+      | Timeline 1 has Proxy LXC lxc29-0
+      | Timeline 1 has Proxy LXC lxc33-0
+      | Timeline 1 has Proxy LXC lxc37-0
+      | Timeline 1 has Proxy LXC lxc41-0
+      | Timeline 1 has Proxy LXC lxc45-0
+      | Timeline 1 has Proxy LXC lxc49-0
+      | Timeline 1 has Proxy LXC lxc53-0
+      | Timeline 1 has Proxy LXC lxc57-0
+      | Timeline 1 has Proxy LXC lxc61-0
+      |______________________________________
+ ____________________________________________
+|
+| Printing out Info about Timeline 2 ...
+|_____
+      | Timeline 2 has Proxy LXC lxc2-0
+      | Timeline 2 has Proxy LXC lxc6-0
+      | Timeline 2 has Proxy LXC lxc10-0
+      | Timeline 2 has Proxy LXC lxc14-0
+      | Timeline 2 has Proxy LXC lxc18-0
+      | Timeline 2 has Proxy LXC lxc22-0
+      | Timeline 2 has Proxy LXC lxc26-0
+      | Timeline 2 has Proxy LXC lxc30-0
+      | Timeline 2 has Proxy LXC lxc34-0
+      | Timeline 2 has Proxy LXC lxc38-0
+      | Timeline 2 has Proxy LXC lxc42-0
+      | Timeline 2 has Proxy LXC lxc46-0
+      | Timeline 2 has Proxy LXC lxc50-0
+      | Timeline 2 has Proxy LXC lxc54-0
+      | Timeline 2 has Proxy LXC lxc58-0
+      | Timeline 2 has Proxy LXC lxc62-0
+      |______________________________________
+ ____________________________________________
+|
+| Printing out Info about Timeline 3 ...
+|_____
+      | Timeline 3 has Proxy LXC lxc3-0
+      | Timeline 3 has Proxy LXC lxc7-0
+      | Timeline 3 has Proxy LXC lxc11-0
+      | Timeline 3 has Proxy LXC lxc15-0
+      | Timeline 3 has Proxy LXC lxc19-0
+      | Timeline 3 has Proxy LXC lxc23-0
+      | Timeline 3 has Proxy LXC lxc27-0
+      | Timeline 3 has Proxy LXC lxc31-0
+      | Timeline 3 has Proxy LXC lxc35-0
+      | Timeline 3 has Proxy LXC lxc39-0
+      | Timeline 3 has Proxy LXC lxc43-0
+      | Timeline 3 has Proxy LXC lxc47-0
+      | Timeline 3 has Proxy LXC lxc51-0
+      | Timeline 3 has Proxy LXC lxc55-0
+      | Timeline 3 has Proxy LXC lxc59-0
+      | Timeline 3 has Proxy LXC lxc63-0
+      |______________________________________
+ ____________________________________________
+|
+| Printing out Info about Timeline 4 ...
+|_____
+      | Timeline 4 has has no LXC proxies
+      |______________________________________
+|==================================================
+| Creating and Launching LXCs                      
+|==================================================
+
+|==================================================
+| Dilating and Adding LXCs to Experiment           
+|==================================================
+
+GET LXC lxc0-0 TDF 10.000000 PID 3781 Finished
+GET LXC lxc1-0 TDF 10.000000 PID 3905 Finished
+GET LXC lxc2-0 TDF 10.000000 PID 4004 Finished
+GET LXC lxc3-0 TDF 10.000000 PID 4136 Finished
+GET LXC lxc4-0 TDF 10.000000 PID 4254 Finished
+GET LXC lxc5-0 TDF 10.000000 PID 4382 Finished
+GET LXC lxc6-0 TDF 10.000000 PID 4489 Finished
+GET LXC lxc7-0 TDF 10.000000 PID 4624 Finished
+GET LXC lxc8-0 TDF 10.000000 PID 4727 Finished
+GET LXC lxc9-0 TDF 10.000000 PID 4856 Finished
+GET LXC lxc10-0 TDF 10.000000 PID 4987 Finished
+GET LXC lxc11-0 TDF 10.000000 PID 5097 Finished
+GET LXC lxc12-0 TDF 10.000000 PID 5225 Finished
+GET LXC lxc13-0 TDF 10.000000 PID 5343 Finished
+GET LXC lxc14-0 TDF 10.000000 PID 5452 Finished
+GET LXC lxc15-0 TDF 10.000000 PID 5574 Finished
+GET LXC lxc16-0 TDF 10.000000 PID 5708 Finished
+GET LXC lxc17-0 TDF 10.000000 PID 5817 Finished
+GET LXC lxc18-0 TDF 10.000000 PID 5953 Finished
+GET LXC lxc19-0 TDF 10.000000 PID 6075 Finished
+GET LXC lxc20-0 TDF 10.000000 PID 6175 Finished
+GET LXC lxc21-0 TDF 10.000000 PID 6316 Finished
+GET LXC lxc22-0 TDF 10.000000 PID 6436 Finished
+GET LXC lxc23-0 TDF 10.000000 PID 6556 Finished
+GET LXC lxc24-0 TDF 10.000000 PID 6670 Finished
+GET LXC lxc25-0 TDF 10.000000 PID 6788 Finished
+GET LXC lxc26-0 TDF 10.000000 PID 6908 Finished
+GET LXC lxc27-0 TDF 10.000000 PID 7029 Finished
+GET LXC lxc28-0 TDF 10.000000 PID 7153 Finished
+GET LXC lxc29-0 TDF 10.000000 PID 7276 Finished
+GET LXC lxc30-0 TDF 10.000000 PID 7392 Finished
+GET LXC lxc31-0 TDF 10.000000 PID 7516 Finished
+GET LXC lxc32-0 TDF 10.000000 PID 7639 Finished
+GET LXC lxc33-0 TDF 10.000000 PID 7759 Finished
+GET LXC lxc34-0 TDF 10.000000 PID 7879 Finished
+GET LXC lxc35-0 TDF 10.000000 PID 8002 Finished
+GET LXC lxc36-0 TDF 10.000000 PID 8132 Finished
+GET LXC lxc37-0 TDF 10.000000 PID 8248 Finished
+GET LXC lxc38-0 TDF 10.000000 PID 8368 Finished
+GET LXC lxc39-0 TDF 10.000000 PID 8492 Finished
+GET LXC lxc40-0 TDF 10.000000 PID 8622 Finished
+GET LXC lxc41-0 TDF 10.000000 PID 8739 Finished
+GET LXC lxc42-0 TDF 10.000000 PID 8856 Finished
+GET LXC lxc43-0 TDF 10.000000 PID 8983 Finished
+GET LXC lxc44-0 TDF 10.000000 PID 9092 Finished
+GET LXC lxc45-0 TDF 10.000000 PID 9221 Finished
+GET LXC lxc46-0 TDF 10.000000 PID 9335 Finished
+GET LXC lxc47-0 TDF 10.000000 PID 9444 Finished
+GET LXC lxc48-0 TDF 10.000000 PID 9585 Finished
+GET LXC lxc49-0 TDF 10.000000 PID 9698 Finished
+GET LXC lxc50-0 TDF 10.000000 PID 9833 Finished
+GET LXC lxc51-0 TDF 10.000000 PID 9939 Finished
+GET LXC lxc52-0 TDF 10.000000 PID 10072 Finished
+GET LXC lxc53-0 TDF 10.000000 PID 10175 Finished
+GET LXC lxc54-0 TDF 10.000000 PID 10308 Finished
+GET LXC lxc55-0 TDF 10.000000 PID 10423 Finished
+GET LXC lxc56-0 TDF 10.000000 PID 10550 Finished
+GET LXC lxc57-0 TDF 10.000000 PID 10664 Finished
+GET LXC lxc58-0 TDF 10.000000 PID 10776 Finished
+GET LXC lxc59-0 TDF 10.000000 PID 10910 Finished
+GET LXC lxc60-0 TDF 10.000000 PID 11026 Finished
+GET LXC lxc61-0 TDF 10.000000 PID 11152 Finished
+GET LXC lxc62-0 TDF 10.000000 PID 11268 Finished
+GET LXC lxc63-0 TDF 10.000000 PID 11349 Finished
+|==================================================
+| Calling SynchronizeAndFreeze. Syncing up LXCs
+|==================================================
+
+| lxc0-0 Frozen at [ 1461358533 sec 650699 usec ]
+| lxc1-0 Frozen at [ 1461358533 sec 650699 usec ]
+| lxc2-0 Frozen at [ 1461358533 sec 650699 usec ]
+| lxc3-0 Frozen at [ 1461358533 sec 650699 usec ]
+| lxc4-0 Frozen at [ 1461358533 sec 650699 usec ]
+| lxc5-0 Frozen at [ 1461358533 sec 650699 usec ]
+| lxc6-0 Frozen at [ 1461358533 sec 650699 usec ]
+| lxc7-0 Frozen at [ 1461358533 sec 650699 usec ]
+| lxc8-0 Frozen at [ 1461358533 sec 650699 usec ]
+| lxc9-0 Frozen at [ 1461358533 sec 650699 usec ]
+| lxc10-0 Frozen at [ 1461358533 sec 650699 usec ]
+| lxc11-0 Frozen at [ 1461358533 sec 650699 usec ]
+| lxc12-0 Frozen at [ 1461358533 sec 650699 usec ]
+| lxc13-0 Frozen at [ 1461358533 sec 650699 usec ]
+| lxc14-0 Frozen at [ 1461358533 sec 650699 usec ]
+| lxc15-0 Frozen at [ 1461358533 sec 650699 usec ]
+| lxc16-0 Frozen at [ 1461358533 sec 650699 usec ]
+| lxc17-0 Frozen at [ 1461358533 sec 650699 usec ]
+| lxc18-0 Frozen at [ 1461358533 sec 650699 usec ]
+| lxc19-0 Frozen at [ 1461358533 sec 650699 usec ]
+| lxc20-0 Frozen at [ 1461358533 sec 650699 usec ]
+| lxc21-0 Frozen at [ 1461358533 sec 650699 usec ]
+| lxc22-0 Frozen at [ 1461358533 sec 650699 usec ]
+| lxc23-0 Frozen at [ 1461358533 sec 650699 usec ]
+| lxc24-0 Frozen at [ 1461358533 sec 650699 usec ]
+| lxc25-0 Frozen at [ 1461358533 sec 650699 usec ]
+| lxc26-0 Frozen at [ 1461358533 sec 650699 usec ]
+| lxc27-0 Frozen at [ 1461358533 sec 650699 usec ]
+| lxc28-0 Frozen at [ 1461358533 sec 650699 usec ]
+| lxc29-0 Frozen at [ 1461358533 sec 650699 usec ]
+| lxc30-0 Frozen at [ 1461358533 sec 650699 usec ]
+| lxc31-0 Frozen at [ 1461358533 sec 650699 usec ]
+| lxc32-0 Frozen at [ 1461358533 sec 650699 usec ]
+| lxc33-0 Frozen at [ 1461358533 sec 650699 usec ]
+| lxc34-0 Frozen at [ 1461358533 sec 650699 usec ]
+| lxc35-0 Frozen at [ 1461358533 sec 650699 usec ]
+| lxc36-0 Frozen at [ 1461358533 sec 650699 usec ]
+| lxc37-0 Frozen at [ 1461358533 sec 650699 usec ]
+| lxc38-0 Frozen at [ 1461358533 sec 650699 usec ]
+| lxc39-0 Frozen at [ 1461358533 sec 650699 usec ]
+| lxc40-0 Frozen at [ 1461358533 sec 650699 usec ]
+| lxc41-0 Frozen at [ 1461358533 sec 650699 usec ]
+| lxc42-0 Frozen at [ 1461358533 sec 650699 usec ]
+| lxc43-0 Frozen at [ 1461358533 sec 650699 usec ]
+| lxc44-0 Frozen at [ 1461358533 sec 650699 usec ]
+| lxc45-0 Frozen at [ 1461358533 sec 650699 usec ]
+| lxc46-0 Frozen at [ 1461358533 sec 650699 usec ]
+| lxc47-0 Frozen at [ 1461358533 sec 650699 usec ]
+| lxc48-0 Frozen at [ 1461358533 sec 650699 usec ]
+| lxc49-0 Frozen at [ 1461358533 sec 650699 usec ]
+| lxc50-0 Frozen at [ 1461358533 sec 650699 usec ]
+| lxc51-0 Frozen at [ 1461358533 sec 650699 usec ]
+| lxc52-0 Frozen at [ 1461358533 sec 650699 usec ]
+| lxc53-0 Frozen at [ 1461358533 sec 650699 usec ]
+| lxc54-0 Frozen at [ 1461358533 sec 650699 usec ]
+| lxc55-0 Frozen at [ 1461358533 sec 650699 usec ]
+| lxc56-0 Frozen at [ 1461358533 sec 650699 usec ]
+| lxc57-0 Frozen at [ 1461358533 sec 650699 usec ]
+| lxc58-0 Frozen at [ 1461358533 sec 650699 usec ]
+| lxc59-0 Frozen at [ 1461358533 sec 650699 usec ]
+| lxc60-0 Frozen at [ 1461358533 sec 650699 usec ]
+| lxc61-0 Frozen at [ 1461358533 sec 650699 usec ]
+| lxc62-0 Frozen at [ 1461358533 sec 650699 usec ]
+| lxc63-0 Frozen at [ 1461358533 sec 650699 usec ]
+
+|==================================================
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 230684
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 230688
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 231397
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 231399
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 232678
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 232678
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 232675
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 232675
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 232675
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 232675
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 232899
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 232899
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 232903
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 232903
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 232898
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 232898
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 235057
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 235426
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 235801
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 236162
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 237046
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 237061
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 237049
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 237130
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 237130
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 237429
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 237417
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 237418
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 237680
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 237680
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 237685
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 237685
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 237691
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 237691
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 237692
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 237692
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 237787
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 237795
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 237916
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 237916
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 237911
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 237911
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 237910
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 237910
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 238009
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 238164
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 238159
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 238379
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 239428
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 239799
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 240180
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 240541
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 241423
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 241417
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 241432
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 241503
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 241801
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 241790
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 241790
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 241790
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 241790
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 241801
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 241870
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 242062
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 242056
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 242158
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 242239
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 242381
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 242433
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 242425
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 242531
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 242609
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 242693
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 242693
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 242688
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 242688
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 242754
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 242805
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 242798
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 242896
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 242919
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 242919
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 242916
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 242916
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 243171
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 243167
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 243265
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 243532
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 243904
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 244365
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 245246
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 245728
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 245878
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 246176
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 246245
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 246427
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 246433
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 246466
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 246467
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 246613
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 246796
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 246806
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 246817
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 246902
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 246902
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 246980
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 247060
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 247064
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 247059
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 247244
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 247177
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 247267
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 247366
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 247366
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 247365
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 247365
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 247428
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 247434
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 247545
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 247538
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 247638
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 247702
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 247702
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 247802
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 247803
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 247813
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 247813
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 247907
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 248166
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 248171
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 248736
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 248745
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 249621
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 250099
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 250554
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 250250
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 250841
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 250840
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 251103
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 251283
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 251431
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 251435
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 251482
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 251741
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 251743
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 251781
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 251801
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 251800
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 251805
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 252108
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 252106
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 252111
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 252172
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 252173
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 252174
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 252479
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 252474
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 252543
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 252544
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 252701
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 252701
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 252844
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 252843
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 252924
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 252924
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 253077
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 253077
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 253213
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 253300
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 253300
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 254254
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 254621
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 255214
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 255263
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 255263
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 255376
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 255510
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 255510
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 255654
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 255853
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 256114
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 256114
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 256172
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 256152
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 256256
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 256317
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 256482
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 256482
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 256483
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 256543
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 256850
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 257072
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 257219
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 257448
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 257441
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 257530
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 257530
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 257760
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 257760
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 257710
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 257710
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 257705
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 257705
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 257821
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 257810
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 258186
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 258181
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 258260
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 258260
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 258555
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 258846
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 259882
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 259636
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 260006
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 260158
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 259734
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 260372
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 260741
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 260627
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 260688
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 261000
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 261060
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 261444
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 261813
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 261819
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 261813
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 262076
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 262081
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 262098
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 262181
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 262194
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 262262
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 262445
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 262450
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 262467
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 262487
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 262487
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 262553
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 262558
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 262710
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 262710
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 262702
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 262702
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 262705
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 262705
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 262814
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 262836
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 262926
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 262929
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 262929
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 263187
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 263206
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 263605
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 263605
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 264108
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 263916
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 264002
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 264007
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 264746
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 264264
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 265109
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 264529
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 264746
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 265112
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 265268
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 265512
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 265512
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 265263
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 265267
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 265265
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 266267
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 266560
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 265753
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 266266
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 266447
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 266452
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 266560
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 266489
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 266711
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 266711
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 266711
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 266817
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 266838
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 266821
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 266858
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 266870
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 266943
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 266943
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 267073
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 267076
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 267185
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 267227
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 267445
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 267444
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 267559
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 267596
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 267715
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 267715
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 267814
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 267939
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 267939
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 267966
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 267976
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 268270
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 268145
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 268144
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 268183
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 268287
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 268345
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 268339
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 268339
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 268658
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 269117
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 269637
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 269639
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 269885
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 269637
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 269638
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 269571
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 270286
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 270272
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 270272
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 270270
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 270861
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 270861
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 271011
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 270127
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 270638
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 271211
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 270639
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 271241
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 271229
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 271083
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 271446
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 271447
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 271452
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 271598
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 271815
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 271816
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 271820
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 271868
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 271967
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 272087
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 272185
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 272190
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 272347
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 272337
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 272457
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 272516
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 272515
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 272555
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 272558
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 272715
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 272593
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 272593
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 272641
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 272710
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 272716
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 272710
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 272824
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 272817
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 272817
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 272927
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 273080
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 273194
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 273273
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 274275
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 273943
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 274010
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 274275
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 274498
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 274643
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 274256
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 275016
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 275016
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 275014
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 275014
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 275233
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 275237
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 274642
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 274642
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 274657
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 275009
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 275020
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 275823
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 276192
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 275602
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 276263
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 276930
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 276828
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 276828
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 276930
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 276964
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 277194
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 277195
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 277333
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 277567
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 277646
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 277702
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 277722
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 277722
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 278079
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 278290
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 278314
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 278356
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 278356
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 278356
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 278646
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 279016
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 279017
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 279016
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 279385
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 279387
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 279383
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 279487
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 279606
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 279632
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 279756
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 279976
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 280083
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 280570
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 281337
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 281565
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 281704
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 282077
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 282093
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 282462
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 282451
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 282752
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 282685
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 282832
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 283018
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 283202
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 283388
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 283759
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 284127
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 284286
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 284454
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 284766
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 284943
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 286464
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 286833
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 287060
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 287203
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 287575
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 288658
+
+~~~~~~~~~~~~~~~~~~UDP :	Arrival Time : 288720
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 289289
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 289027
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 289138
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 289506
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 291292
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 291512
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 293293
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 293867
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 293944
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 294167
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 294167
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 294723
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 294723
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 295516
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 295518
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 295744
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 295744
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 295883
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 295914
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 295975
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 297688
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 298339
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 298540
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 298907
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 299276
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 299645
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 299887
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 300258
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 300370
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 300625
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 300996
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 302911
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 303280
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 303650
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 304016
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 304258
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 304629
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 304998
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 305368
+
+~~~~~~~~~~~~~~~~~~UDP :	Arrival Time : 306143
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 305681
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 306568
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 308323
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 310052
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 310939
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 311311
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 312694
+
+~~~~~~~~~~~~~~~~~~UDP :	Arrival Time : 312828
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 315706
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 319120
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 323516
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 332249
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 332555
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 335334
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 336346
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 336644
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 336950
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 339731
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 340741
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 341789
+
+~~~~~~~~~~~~~~~~~~UDP :	Arrival Time : 341814
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 345776
+
+~~~~~~~~~~~~~~~~~~UDP :	Arrival Time : 345792
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 346184
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 350173
+
+~~~~~~~~~~~~~~~~~~UDP :	Arrival Time : 354382
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 361284
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 365050
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 365679
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 369445
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 372371
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 371596
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 374386
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 375992
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 376766
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 378781
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 382393
+
+~~~~~~~~~~~~~~~~~~UDP :	Arrival Time : 382408
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 386788
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 391406
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 391405
+
+~~~~~~~~~~~~~~~~~~UDP :	Arrival Time : 391405
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 395800
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 396010
+
+~~~~~~~~~~~~~~~~~~UDP :	Arrival Time : 396427
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 401414
+
+~~~~~~~~~~~~~~~~~~UDP :	Arrival Time : 401427
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 401453
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 405416
+
+~~~~~~~~~~~~~~~~~~UDP :	Arrival Time : 405428
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 405413
+
+~~~~~~~~~~~~~~~~~~UDP :	Arrival Time : 405422
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 405810
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 405850
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 409811
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 409808
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 418011
+
+~~~~~~~~~~~~~~~~~~UDP :	Arrival Time : 418025
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 422407
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 423425
+
+~~~~~~~~~~~~~~~~~~UDP :	Arrival Time : 423421
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 427637
+
+~~~~~~~~~~~~~~~~~~UDP :	Arrival Time : 427654
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 427820
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 431426
+
+~~~~~~~~~~~~~~~~~~UDP :	Arrival Time : 431433
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 432032
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 434435
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 436050
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 436445
+
+~~~~~~~~~~~~~~~~~~UDP :	Arrival Time : 436458
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 438806
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 439439
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 439437
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 440840
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 443808
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 443810
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 445447
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 445826
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 448450
+
+~~~~~~~~~~~~~~~~~~UDP :	Arrival Time : 448450
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 450222
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 449819
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 451492
+
+~~~~~~~~~~~~~~~~~~UDP :	Arrival Time : 451507
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 452845
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 455887
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 460460
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 464831
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 466912
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 471284
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 480913
+
+~~~~~~~~~~~~~~~~~~UDP :	Arrival Time : 480931
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 480489
+
+~~~~~~~~~~~~~~~~~~UDP :	Arrival Time : 480503
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 484884
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 485308
+
+~~~~~~~~~~~~~~~~~~UDP :	Arrival Time : 489144
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 490725
+
+~~~~~~~~~~~~~~~~~~UDP :	Arrival Time : 490737
+
+~~~~~~~~~~~~~~~~~~UDP :	Arrival Time : 491520
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 495345
+
+~~~~~~~~~~~~~~~~~~UDP :	Arrival Time : 496518
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 498499
+
+~~~~~~~~~~~~~~~~~~UDP :	Arrival Time : 498499
+
+~~~~~~~~~~~~~~~~~~UDP :	Arrival Time : 499529
+
+~~~~~~~~~~~~~~~~~~UDP :	Arrival Time : 500005
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 502902
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 507837
+
+~~~~~~~~~~~~~~~~~~UDP :	Arrival Time : 507849
+
+~~~~~~~~~~~~~~~~~~UDP :	Arrival Time : 507526
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 511246
+
+~~~~~~~~~~~~~~~~~~UDP :	Arrival Time : 511258
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 512232
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 515641
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 519529
+
+~~~~~~~~~~~~~~~~~~UDP :	Arrival Time : 519541
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 523523
+
+~~~~~~~~~~~~~~~~~~UDP :	Arrival Time : 523523
+
+~~~~~~~~~~~~~~~~~~UDP :	Arrival Time : 523565
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 523924
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 525539
+
+~~~~~~~~~~~~~~~~~~UDP :	Arrival Time : 525552
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 527926
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 529934
+
+~~~~~~~~~~~~~~~~~~UDP :	Arrival Time : 534532
+
+~~~~~~~~~~~~~~~~~~UDP :	Arrival Time : 540037
+
+~~~~~~~~~~~~~~~~~~UDP :	Arrival Time : 536565
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 539548
+
+~~~~~~~~~~~~~~~~~~UDP :	Arrival Time : 539563
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 543056
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 543951
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 545885
+
+~~~~~~~~~~~~~~~~~~UDP :	Arrival Time : 545895
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 547452
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 550288
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 551001
+
+~~~~~~~~~~~~~~~~~~UDP :	Arrival Time : 551018
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 551786
+
+~~~~~~~~~~~~~~~~~~UDP :	Arrival Time : 551799
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 554555
+
+~~~~~~~~~~~~~~~~~~UDP :	Arrival Time : 554555
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 555405
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 556003
+
+~~~~~~~~~~~~~~~~~~UDP :	Arrival Time : 556003
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 556183
+
+~~~~~~~~~~~~~~~~~~UDP :	Arrival Time : 556861
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 558950
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 560406
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 560567
+
+~~~~~~~~~~~~~~~~~~UDP :	Arrival Time : 563563
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 565114
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 566764
+
+~~~~~~~~~~~~~~~~~~UDP :	Arrival Time : 566779
+
+~~~~~~~~~~~~~~~~~~UDP :	Arrival Time : 568566
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 571159
+
+~~~~~~~~~~~~~~~~~~UDP :	Arrival Time : 573596
+
+~~~~~~~~~~~~~~~~~~UDP :	Arrival Time : 573595
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 576492
+
+~~~~~~~~~~~~~~~~~~UDP :	Arrival Time : 576508
+
+~~~~~~~~~~~~~~~~~~UDP :	Arrival Time : 576595
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 576591
+
+~~~~~~~~~~~~~~~~~~UDP :	Arrival Time : 576651
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 576815
+
+~~~~~~~~~~~~~~~~~~UDP :	Arrival Time : 576834
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 578026
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 579777
+
+~~~~~~~~~~~~~~~~~~UDP :	Arrival Time : 579788
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 580994
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 581027
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 581035
+
+~~~~~~~~~~~~~~~~~~UDP :	Arrival Time : 581035
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 580587
+
+~~~~~~~~~~~~~~~~~~UDP :	Arrival Time : 580598
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 581218
+
+~~~~~~~~~~~~~~~~~~UDP :	Arrival Time : 581581
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 582430
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 584180
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 584990
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 584595
+
+~~~~~~~~~~~~~~~~~~UDP :	Arrival Time : 584610
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 586087
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 587189
+
+~~~~~~~~~~~~~~~~~~UDP :	Arrival Time : 587202
+
+~~~~~~~~~~~~~~~~~~UDP :	Arrival Time : 586609
+
+~~~~~~~~~~~~~~~~~~UDP :	Arrival Time : 589299
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 588998
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 591586
+
+~~~~~~~~~~~~~~~~~~UDP :	Arrival Time : 592643
+
+~~~~~~~~~~~~~~~~~~UDP :	Arrival Time : 593594
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 595594
+
+~~~~~~~~~~~~~~~~~~UDP :	Arrival Time : 595594
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 597607
+
+~~~~~~~~~~~~~~~~~~UDP :	Arrival Time : 597621
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 599997
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 602012
+
+~~~~~~~~~~~~~~~~~~UDP :	Arrival Time : 603959
+
+~~~~~~~~~~~~~~~~~~UDP :	Arrival Time : 607609
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 608609
+
+~~~~~~~~~~~~~~~~~~UDP :	Arrival Time : 608609
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 609609
+
+~~~~~~~~~~~~~~~~~~UDP :	Arrival Time : 609609
+
+~~~~~~~~~~~~~~~~~~UDP :	Arrival Time : 612834
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 613004
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 613831
+
+~~~~~~~~~~~~~~~~~~UDP :	Arrival Time : 613831
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 614012
+
+~~~~~~~~~~~~~~~~~~UDP :	Arrival Time : 614606
+
+~~~~~~~~~~~~~~~~~~UDP :	Arrival Time : 615863
+
+~~~~~~~~~~~~~~~~~~UDP :	Arrival Time : 616341
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 618234
+
+~~~~~~~~~~~~~~~~~~UDP :	Arrival Time : 619548
+
+~~~~~~~~~~~~~~~~~~UDP :	Arrival Time : 623504
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 626079
+
+~~~~~~~~~~~~~~~~~~UDP :	Arrival Time : 626093
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 630482
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 635646
+
+~~~~~~~~~~~~~~~~~~UDP :	Arrival Time : 635664
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 637691
+
+~~~~~~~~~~~~~~~~~~UDP :	Arrival Time : 637704
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 640639
+
+~~~~~~~~~~~~~~~~~~UDP :	Arrival Time : 640639
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 640639
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 643643
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 643650
+
+~~~~~~~~~~~~~~~~~~UDP :	Arrival Time : 643889
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 645691
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 647541
+
+~~~~~~~~~~~~~~~~~~UDP :	Arrival Time : 648647
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 648021
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 651913
+
+~~~~~~~~~~~~~~~~~~UDP :	Arrival Time : 652652
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 656102
+
+~~~~~~~~~~~~~~~~~~UDP :	Arrival Time : 656102
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 660505
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 661703
+
+~~~~~~~~~~~~~~~~~~UDP :	Arrival Time : 661718
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 662624
+
+~~~~~~~~~~~~~~~~~~UDP :	Arrival Time : 662782
+
+~~~~~~~~~~~~~~~~~~UDP :	Arrival Time : 664688
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 666106
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 666996
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 668672
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 672632
+
+~~~~~~~~~~~~~~~~~~UDP :	Arrival Time : 672647
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 673043
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 677035
+
+~~~~~~~~~~~~~~~~~~UDP :	Arrival Time : 684685
+
+~~~~~~~~~~~~~~~~~~UDP :	Arrival Time : 685594
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 692693
+
+~~~~~~~~~~~~~~~~~~UDP :	Arrival Time : 692693
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 694696
+
+~~~~~~~~~~~~~~~~~~UDP :	Arrival Time : 694696
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 697096
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 699091
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 705148
+
+~~~~~~~~~~~~~~~~~~UDP :	Arrival Time : 705148
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 709551
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 714342
+
+~~~~~~~~~~~~~~~~~~UDP :	Arrival Time : 714355
+
+~~~~~~~~~~~~~~~~~~UDP :	Arrival Time : 715745
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 718745
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 722070
+
+~~~~~~~~~~~~~~~~~~UDP :	Arrival Time : 722086
+
+~~~~~~~~~~~~~~~~~~UDP :	Arrival Time : 722717
+
+~~~~~~~~~~~~~~~~~~UDP :	Arrival Time : 722833
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 726465
+
+~~~~~~~~~~~~~~~~~~UDP :	Arrival Time : 726752
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 728728
+
+~~~~~~~~~~~~~~~~~~UDP :	Arrival Time : 730425
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 729742
+
+~~~~~~~~~~~~~~~~~~UDP :	Arrival Time : 729756
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 733099
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 734145
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 734145
+
+~~~~~~~~~~~~~~~~~~UDP :	Arrival Time : 734736
+
+~~~~~~~~~~~~~~~~~~UDP :	Arrival Time : 735736
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 735735
+
+~~~~~~~~~~~~~~~~~~UDP :	Arrival Time : 735735
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 738516
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 738739
+
+~~~~~~~~~~~~~~~~~~UDP :	Arrival Time : 738739
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 740138
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 743142
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 748749
+
+~~~~~~~~~~~~~~~~~~UDP :	Arrival Time : 748749
+
+~~~~~~~~~~~~~~~~~~UDP :	Arrival Time : 752750
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 752942
+
+~~~~~~~~~~~~~~~~~~UDP :	Arrival Time : 752955
+
+~~~~~~~~~~~~~~~~~~UDP :	Arrival Time : 752799
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 753153
+
+~~~~~~~~~~~~~~~~~~UDP :	Arrival Time : 754305
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 753761
+
+~~~~~~~~~~~~~~~~~~UDP :	Arrival Time : 753777
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 757345
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 758160
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 758205
+
+~~~~~~~~~~~~~~~~~~UDP :	Arrival Time : 758205
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 760607
+
+~~~~~~~~~~~~~~~~~~UDP :	Arrival Time : 760618
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 760752
+
+~~~~~~~~~~~~~~~~~~UDP :	Arrival Time : 760760
+
+~~~~~~~~~~~~~~~~~~UDP :	Arrival Time : 760787
+
+~~~~~~~~~~~~~~~~~~UDP :	Arrival Time : 762217
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 762608
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 765003
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 765155
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 780227
+
+~~~~~~~~~~~~~~~~~~UDP :	Arrival Time : 780241
+
+~~~~~~~~~~~~~~~~~~UDP :	Arrival Time : 784238
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 784623
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 791027
+
+~~~~~~~~~~~~~~~~~~UDP :	Arrival Time : 791043
+
+~~~~~~~~~~~~~~~~~~UDP :	Arrival Time : 792795
+
+~~~~~~~~~~~~~~~~~~UDP :	Arrival Time : 792232
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 795431
+
+~~~~~~~~~~~~~~~~~~UDP :	Arrival Time : 797797
+
+~~~~~~~~~~~~~~~~~~UDP :	Arrival Time : 797679
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 801759
+
+~~~~~~~~~~~~~~~~~~UDP :	Arrival Time : 801776
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 806162
+
+~~~~~~~~~~~~~~~~~~UDP :	Arrival Time : 815250
+
+~~~~~~~~~~~~~~~~~~UDP :	Arrival Time : 817814
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 821831
+
+~~~~~~~~~~~~~~~~~~UDP :	Arrival Time : 821843
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 826234
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 827827
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 832230
+
+~~~~~~~~~~~~~~~~~~UDP :	Arrival Time : 832831
+
+~~~~~~~~~~~~~~~~~~UDP :	Arrival Time : 837302
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 841843
+
+~~~~~~~~~~~~~~~~~~UDP :	Arrival Time : 843864
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 846215
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 847823
+
+~~~~~~~~~~~~~~~~~~UDP :	Arrival Time : 847834
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 847849
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 850852
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 851851
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 852218
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 852220
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 853862
+
+~~~~~~~~~~~~~~~~~~UDP :	Arrival Time : 853876
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 855224
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 856223
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 858265
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 870870
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 870870
+
+~~~~~~~~~~~~~~~~~~UDP :	Arrival Time : 870870
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 873882
+
+~~~~~~~~~~~~~~~~~~UDP :	Arrival Time : 873898
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 875241
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 875876
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 875922
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 875883
+
+~~~~~~~~~~~~~~~~~~UDP :	Arrival Time : 875895
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 878278
+
+~~~~~~~~~~~~~~~~~~UDP :	Arrival Time : 879434
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 880249
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 880278
+
+~~~~~~~~~~~~~~~~~~UDP :	Arrival Time : 883884
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 887200
+
+~~~~~~~~~~~~~~~~~~UDP :	Arrival Time : 887214
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 888890
+
+~~~~~~~~~~~~~~~~~~UDP :	Arrival Time : 888890
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 891603
+
+~~~~~~~~~~~~~~~~~~UDP :	Arrival Time : 892121
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 893297
+
+~~~~~~~~~~~~~~~~~~UDP :	Arrival Time : 905905
+
+~~~~~~~~~~~~~~~~~~UDP :	Arrival Time : 906908
+
+~~~~~~~~~~~~~~~~~~UDP :	Arrival Time : 909910
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 915439
+
+~~~~~~~~~~~~~~~~~~UDP :	Arrival Time : 915455
+
+~~~~~~~~~~~~~~~~~~UDP :	Arrival Time : 915592
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 915915
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 917928
+
+~~~~~~~~~~~~~~~~~~UDP :	Arrival Time : 917940
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 919835
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 919944
+
+~~~~~~~~~~~~~~~~~~UDP :	Arrival Time : 919956
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 920318
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 922324
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 924924
+
+~~~~~~~~~~~~~~~~~~UDP :	Arrival Time : 925668
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 927888
+
+~~~~~~~~~~~~~~~~~~UDP :	Arrival Time : 927900
+
+~~~~~~~~~~~~~~~~~~UDP :	Arrival Time : 929951
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 930928
+
+~~~~~~~~~~~~~~~~~~UDP :	Arrival Time : 930928
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 932283
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 935935
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 936948
+
+~~~~~~~~~~~~~~~~~~UDP :	Arrival Time : 936963
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 941344
+
+~~~~~~~~~~~~~~~~~~UDP :	Arrival Time : 941938
+
+~~~~~~~~~~~~~~~~~~UDP :	Arrival Time : 942943
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 948959
+
+~~~~~~~~~~~~~~~~~~UDP :	Arrival Time : 948971
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 953354
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 953966
+
+~~~~~~~~~~~~~~~~~~UDP :	Arrival Time : 953985
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 955964
+
+~~~~~~~~~~~~~~~~~~UDP :	Arrival Time : 955976
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 958361
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 959966
+
+~~~~~~~~~~~~~~~~~~UDP :	Arrival Time : 959982
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 960360
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 960971
+
+~~~~~~~~~~~~~~~~~~UDP :	Arrival Time : 963407
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 964361
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 965374
+
+~~~~~~~~~~~~~~~~~~UDP :	Arrival Time : 966406
+
+~~~~~~~~~~~~~~~~~~UDP :	Arrival Time : 972974
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 975435
+
+~~~~~~~~~~~~~~~~~~UDP :	Arrival Time : 975452
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 977988
+
+~~~~~~~~~~~~~~~~~~UDP :	Arrival Time : 977999
+
+~~~~~~~~~~~~~~~~~~UDP :	Arrival Time : 977996
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 979394
+
+~~~~~~~~~~~~~~~~~~UDP :	Arrival Time : 979411
+
+~~~~~~~~~~~~~~~~~~UDP :	Arrival Time : 979979
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 979979
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 982386
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 983791
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 986986
+
+~~~~~~~~~~~~~~~~~~UDP :	Arrival Time : 987007
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 987448
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 990999
+
+~~~~~~~~~~~~~~~~~~UDP :	Arrival Time : 991012
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 991389
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 991991
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 994003
+
+~~~~~~~~~~~~~~~~~~UDP :	Arrival Time : 994020
+
+~~~~~~~~~~~~~~~~~~UDP :	Arrival Time : 995015
+
+~~~~~~~~~~~~~~~~~~UDP :	Arrival Time : 995997
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 995995
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 996007
+
+~~~~~~~~~~~~~~~~~~UDP :	Arrival Time : 996020
+
+~~~~~~~~~~~~~~~~~~UDP :	Arrival Time : 998025
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 998398
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 1000403
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 1001001
+
+~~~~~~~~~~~~~~~~~~UDP :	Arrival Time : 1001001
+
+~~~~~~~~~~~~~~~~~~UDP :	Arrival Time : 1001475
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 1006623
+
+~~~~~~~~~~~~~~~~~~UDP :	Arrival Time : 1006636
+
+~~~~~~~~~~~~~~~~~~UDP :	Arrival Time : 1006005
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 1005404
+
+~~~~~~~~~~~~~~~~~~UDP :	Arrival Time : 1007007
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 1012012
+
+~~~~~~~~~~~~~~~~~~UDP :	Arrival Time : 1014158
+
+~~~~~~~~~~~~~~~~~~UDP :	Arrival Time : 1015856
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 1016323
+
+~~~~~~~~~~~~~~~~~~UDP :	Arrival Time : 1016339
+
+~~~~~~~~~~~~~~~~~~UDP :	Arrival Time : 1019017
+
+~~~~~~~~~~~~~~~~~~UDP :	Arrival Time : 1018200
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 1020726
+
+~~~~~~~~~~~~~~~~~~UDP :	Arrival Time : 1024023
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 1023035
+
+~~~~~~~~~~~~~~~~~~UDP :	Arrival Time : 1023050
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 1027438
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 1047933
+
+~~~~~~~~~~~~~~~~~~UDP :	Arrival Time : 1049048
+
+~~~~~~~~~~~~~~~~~~UDP :	Arrival Time : 1049069
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 1052304
+
+~~~~~~~~~~~~~~~~~~UDP :	Arrival Time : 1053053
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 1054053
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 1056054
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 1058424
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 1060064
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 1060426
+
+~~~~~~~~~~~~~~~~~~UDP :	Arrival Time : 1060426
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 1060426
+
+~~~~~~~~~~~~~~~~~~UDP :	Arrival Time : 1063283
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 1064435
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 1064829
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 1067077
+
+~~~~~~~~~~~~~~~~~~UDP :	Arrival Time : 1067092
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 1071473
+
+~~~~~~~~~~~~~~~~~~UDP :	Arrival Time : 1072040
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 1071590
+
+~~~~~~~~~~~~~~~~~~UDP :	Arrival Time : 1074096
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 1075993
+
+~~~~~~~~~~~~~~~~~~UDP :	Arrival Time : 1076514
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 1078077
+
+~~~~~~~~~~~~~~~~~~UDP :	Arrival Time : 1080234
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 1082448
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 1083092
+
+~~~~~~~~~~~~~~~~~~UDP :	Arrival Time : 1085789
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 1086510
+
+~~~~~~~~~~~~~~~~~~UDP :	Arrival Time : 1086524
+
+~~~~~~~~~~~~~~~~~~UDP :	Arrival Time : 1086519
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 1087464
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 1090905
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 1092674
+
+~~~~~~~~~~~~~~~~~~UDP :	Arrival Time : 1092690
+
+~~~~~~~~~~~~~~~~~~UDP :	Arrival Time : 1094291
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 1097069
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 1104102
+
+~~~~~~~~~~~~~~~~~~UDP :	Arrival Time : 1104103
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 1108497
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 1110111
+
+~~~~~~~~~~~~~~~~~~UDP :	Arrival Time : 1110111
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 1113571
+
+~~~~~~~~~~~~~~~~~~UDP :	Arrival Time : 1113584
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 1114514
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 1117966
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 1122602
+
+~~~~~~~~~~~~~~~~~~UDP :	Arrival Time : 1122616
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 1125134
+
+~~~~~~~~~~~~~~~~~~UDP :	Arrival Time : 1125144
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 1127005
+
+~~~~~~~~~~~~~~~~~~UDP :	Arrival Time : 1128614
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 1129537
+
+~~~~~~~~~~~~~~~~~~UDP :	Arrival Time : 1131421
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 1136412
+
+~~~~~~~~~~~~~~~~~~UDP :	Arrival Time : 1136428
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 1139951
+
+~~~~~~~~~~~~~~~~~~UDP :	Arrival Time : 1139966
+
+~~~~~~~~~~~~~~~~~~UDP :	Arrival Time : 1140398
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 1140816
+
+~~~~~~~~~~~~~~~~~~UDP :	Arrival Time : 1142161
+
+~~~~~~~~~~~~~~~~~~UDP :	Arrival Time : 1144522
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 1144355
+
+~~~~~~~~~~~~~~~~~~UDP :	Arrival Time : 1150150
+
+~~~~~~~~~~~~~~~~~~UDP :	Arrival Time : 1149611
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 1151384
+
+~~~~~~~~~~~~~~~~~~UDP :	Arrival Time : 1151396
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 1153152
+
+~~~~~~~~~~~~~~~~~~UDP :	Arrival Time : 1153152
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 1155780
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 1157555
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 1158608
+
+~~~~~~~~~~~~~~~~~~UDP :	Arrival Time : 1158624
+
+~~~~~~~~~~~~~~~~~~UDP :	Arrival Time : 1160185
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 1163003
+
+~~~~~~~~~~~~~~~~~~UDP :	Arrival Time : 1174174
+
+~~~~~~~~~~~~~~~~~~UDP :	Arrival Time : 1176195
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 1177186
+
+~~~~~~~~~~~~~~~~~~UDP :	Arrival Time : 1177199
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 1180190
+
+~~~~~~~~~~~~~~~~~~UDP :	Arrival Time : 1180202
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 1181581
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 1184185
+
+~~~~~~~~~~~~~~~~~~UDP :	Arrival Time : 1184185
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 1184585
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 1188588
+
+~~~~~~~~~~~~~~~~~~UDP :	Arrival Time : 1194193
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 1195194
+
+~~~~~~~~~~~~~~~~~~UDP :	Arrival Time : 1194193
+
+~~~~~~~~~~~~~~~~~~UDP :	Arrival Time : 1195194
+
+~~~~~~~~~~~~~~~~~~UDP :	Arrival Time : 1194996
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 1198207
+
+~~~~~~~~~~~~~~~~~~UDP :	Arrival Time : 1198219
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 1199598
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 1200934
+
+~~~~~~~~~~~~~~~~~~UDP :	Arrival Time : 1200947
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 1202611
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 1205337
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 1206216
+
+~~~~~~~~~~~~~~~~~~UDP :	Arrival Time : 1206231
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 1210617
+
+~~~~~~~~~~~~~~~~~~UDP :	Arrival Time : 1210617
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 1211230
+
+~~~~~~~~~~~~~~~~~~UDP :	Arrival Time : 1211210
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 1212221
+
+~~~~~~~~~~~~~~~~~~UDP :	Arrival Time : 1212230
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 1212222
+
+~~~~~~~~~~~~~~~~~~UDP :	Arrival Time : 1212234
+
+~~~~~~~~~~~~~~~~~~UDP :	Arrival Time : 1214237
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 1215020
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 1216216
+
+~~~~~~~~~~~~~~~~~~UDP :	Arrival Time : 1216216
+
+~~~~~~~~~~~~~~~~~~UDP :	Arrival Time : 1216237
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 1217052
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 1216625
+
+~~~~~~~~~~~~~~~~~~UDP :	Arrival Time : 1217071
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 1216716
+
+~~~~~~~~~~~~~~~~~~UDP :	Arrival Time : 1219667
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 1221260
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 1221447
+
+~~~~~~~~~~~~~~~~~~UDP :	Arrival Time : 1223227
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 1225274
+
+~~~~~~~~~~~~~~~~~~UDP :	Arrival Time : 1225291
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 1229677
+
+~~~~~~~~~~~~~~~~~~UDP :	Arrival Time : 1232232
+
+~~~~~~~~~~~~~~~~~~UDP :	Arrival Time : 1232250
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 1235232
+
+~~~~~~~~~~~~~~~~~~UDP :	Arrival Time : 1235232
+
+~~~~~~~~~~~~~~~~~~UDP :	Arrival Time : 1236236
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 1239628
+
+~~~~~~~~~~~~~~~~~~UDP :	Arrival Time : 1242262
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 1246246
+
+~~~~~~~~~~~~~~~~~~UDP :	Arrival Time : 1246246
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 1247426
+
+~~~~~~~~~~~~~~~~~~UDP :	Arrival Time : 1247438
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 1251250
+
+~~~~~~~~~~~~~~~~~~UDP :	Arrival Time : 1251250
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 1250641
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 1251821
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 1255648
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 1258255
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 1257618
+
+~~~~~~~~~~~~~~~~~~UDP :	Arrival Time : 1258255
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 1261993
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 1262262
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 1263259
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 1266226
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 1266633
+
+~~~~~~~~~~~~~~~~~~UDP :	Arrival Time : 1270120
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 1269307
+
+~~~~~~~~~~~~~~~~~~UDP :	Arrival Time : 1269315
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 1270597
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 1271269
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 1273711
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 1275641
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 1278562
+
+~~~~~~~~~~~~~~~~~~UDP :	Arrival Time : 1281113
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 1282934
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 1283282
+
+~~~~~~~~~~~~~~~~~~UDP :	Arrival Time : 1286136
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 1287653
+
+~~~~~~~~~~~~~~~~~~UDP :	Arrival Time : 1289471
+
+~~~~~~~~~~~~~~~~~~UDP :	Arrival Time : 1290734
+
+~~~~~~~~~~~~~~~~~~UDP :	Arrival Time : 1294316
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 1300299
+
+~~~~~~~~~~~~~~~~~~UDP :	Arrival Time : 1300299
+
+~~~~~~~~~~~~~~~~~~UDP :	Arrival Time : 1300299
+
+~~~~~~~~~~~~~~~~~~UDP :	Arrival Time : 1302301
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 1303314
+
+~~~~~~~~~~~~~~~~~~UDP :	Arrival Time : 1303336
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 1304694
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 1307718
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 1308439
+
+~~~~~~~~~~~~~~~~~~UDP :	Arrival Time : 1308455
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 1312834
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 1315617
+
+~~~~~~~~~~~~~~~~~~UDP :	Arrival Time : 1315628
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 1320021
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 1321331
+
+~~~~~~~~~~~~~~~~~~UDP :	Arrival Time : 1321343
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 1324995
+
+~~~~~~~~~~~~~~~~~~UDP :	Arrival Time : 1325012
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 1325726
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 1328355
+
+~~~~~~~~~~~~~~~~~~UDP :	Arrival Time : 1328370
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 1329300
+
+~~~~~~~~~~~~~~~~~~UDP :	Arrival Time : 1329309
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 1329398
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 1332437
+
+~~~~~~~~~~~~~~~~~~UDP :	Arrival Time : 1332450
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 1332750
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 1333695
+
+~~~~~~~~~~~~~~~~~~UDP :	Arrival Time : 1333744
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 1335334
+
+~~~~~~~~~~~~~~~~~~UDP :	Arrival Time : 1336290
+
+~~~~~~~~~~~~~~~~~~UDP :	Arrival Time : 1335356
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 1336840
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 1339589
+
+~~~~~~~~~~~~~~~~~~UDP :	Arrival Time : 1339609
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 1339737
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 1343984
+
+~~~~~~~~~~~~~~~~~~UDP :	Arrival Time : 1348292
+
+~~~~~~~~~~~~~~~~~~UDP :	Arrival Time : 1348347
+
+~~~~~~~~~~~~~~~~~~UDP :	Arrival Time : 1349113
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 1351363
+
+~~~~~~~~~~~~~~~~~~UDP :	Arrival Time : 1351377
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 1353354
+
+~~~~~~~~~~~~~~~~~~UDP :	Arrival Time : 1353354
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 1355758
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 1358360
+
+~~~~~~~~~~~~~~~~~~UDP :	Arrival Time : 1359365
+
+~~~~~~~~~~~~~~~~~~UDP :	Arrival Time : 1361421
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 1363143
+
+~~~~~~~~~~~~~~~~~~UDP :	Arrival Time : 1363181
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 1364363
+
+~~~~~~~~~~~~~~~~~~UDP :	Arrival Time : 1364363
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 1364970
+
+~~~~~~~~~~~~~~~~~~UDP :	Arrival Time : 1365015
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 1367546
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 1368766
+
+~~~~~~~~~~~~~~~~~~UDP :	Arrival Time : 1369991
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 1369812
+
+~~~~~~~~~~~~~~~~~~UDP :	Arrival Time : 1371372
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 1376609
+
+~~~~~~~~~~~~~~~~~~UDP :	Arrival Time : 1376622
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 1381104
+
+~~~~~~~~~~~~~~~~~~UDP :	Arrival Time : 1389053
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 1391618
+
+~~~~~~~~~~~~~~~~~~UDP :	Arrival Time : 1394057
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 1396021
+
+~~~~~~~~~~~~~~~~~~UDP :	Arrival Time : 1396397
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 1396409
+
+~~~~~~~~~~~~~~~~~~UDP :	Arrival Time : 1396424
+
+~~~~~~~~~~~~~~~~~~UDP :	Arrival Time : 1399698
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 1400812
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 1402403
+
+~~~~~~~~~~~~~~~~~~UDP :	Arrival Time : 1402403
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 1405117
+
+~~~~~~~~~~~~~~~~~~UDP :	Arrival Time : 1405117
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 1406798
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 1409512
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 1411324
+
+~~~~~~~~~~~~~~~~~~UDP :	Arrival Time : 1411339
+
+~~~~~~~~~~~~~~~~~~UDP :	Arrival Time : 1412429
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 1415719
+
+~~~~~~~~~~~~~~~~~~UDP :	Arrival Time : 1420616
+
+~~~~~~~~~~~~~~~~~~UDP :	Arrival Time : 1422441
+
+~~~~~~~~~~~~~~~~~~UDP :	Arrival Time : 1425424
+
+~~~~~~~~~~~~~~~~~~UDP :	Arrival Time : 1426425
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 1426435
+
+~~~~~~~~~~~~~~~~~~UDP :	Arrival Time : 1426452
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 1426425
+
+~~~~~~~~~~~~~~~~~~UDP :	Arrival Time : 1428427
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 1430828
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 1430838
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 1432443
+
+~~~~~~~~~~~~~~~~~~UDP :	Arrival Time : 1432457
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 1437053
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 1439448
+
+~~~~~~~~~~~~~~~~~~UDP :	Arrival Time : 1439463
+
+~~~~~~~~~~~~~~~~~~UDP :	Arrival Time : 1440439
+
+~~~~~~~~~~~~~~~~~~UDP :	Arrival Time : 1440460
+
+~~~~~~~~~~~~~~~~~~UDP :	Arrival Time : 1441440
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 1443851
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 1444597
+
+~~~~~~~~~~~~~~~~~~UDP :	Arrival Time : 1444613
+
+~~~~~~~~~~~~~~~~~~UDP :	Arrival Time : 1448447
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 1449000
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 1457456
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 1459460
+
+~~~~~~~~~~~~~~~~~~UDP :	Arrival Time : 1459477
+
+~~~~~~~~~~~~~~~~~~UDP :	Arrival Time : 1460460
+
+~~~~~~~~~~~~~~~~~~UDP :	Arrival Time : 1460918
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 1461827
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 1462000
+
+~~~~~~~~~~~~~~~~~~UDP :	Arrival Time : 1462013
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 1463463
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 1463831
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 1465414
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 1466407
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 1467834
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 1469783
+
+~~~~~~~~~~~~~~~~~~UDP :	Arrival Time : 1469783
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 1469786
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 1470468
+
+~~~~~~~~~~~~~~~~~~UDP :	Arrival Time : 1470469
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 1474186
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 1474863
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 1480481
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 1484852
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 1486486
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 1486519
+
+~~~~~~~~~~~~~~~~~~UDP :	Arrival Time : 1486537
+
+~~~~~~~~~~~~~~~~~~UDP :	Arrival Time : 1488534
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 1490860
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 1490922
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 1498149
+
+~~~~~~~~~~~~~~~~~~UDP :	Arrival Time : 1498201
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 1501834
+
+~~~~~~~~~~~~~~~~~~UDP :	Arrival Time : 1501879
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 1502552
+
+~~~~~~~~~~~~~~~~~~UDP :	Arrival Time : 1503507
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 1506239
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 1508181
+
+~~~~~~~~~~~~~~~~~~UDP :	Arrival Time : 1508226
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 1512576
+
+~~~~~~~~~~~~~~~~~~UDP :	Arrival Time : 1514427
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 1519545
+
+~~~~~~~~~~~~~~~~~~UDP :	Arrival Time : 1519559
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 1522537
+
+~~~~~~~~~~~~~~~~~~UDP :	Arrival Time : 1522550
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 1523537
+
+~~~~~~~~~~~~~~~~~~UDP :	Arrival Time : 1523552
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 1523940
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 1524534
+
+~~~~~~~~~~~~~~~~~~UDP :	Arrival Time : 1524549
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 1526535
+
+~~~~~~~~~~~~~~~~~~UDP :	Arrival Time : 1526546
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 1526932
+
+~~~~~~~~~~~~~~~~~~UDP :	Arrival Time : 1527545
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 1527932
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 1528929
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 1530938
+
+~~~~~~~~~~~~~~~~~~UDP :	Arrival Time : 1537536
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 1557557
+
+~~~~~~~~~~~~~~~~~~UDP :	Arrival Time : 1557557
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 1559569
+
+~~~~~~~~~~~~~~~~~~UDP :	Arrival Time : 1559579
+
+~~~~~~~~~~~~~~~~~~UDP :	Arrival Time : 1560582
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 1561953
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 1563967
+
+~~~~~~~~~~~~~~~~~~UDP :	Arrival Time : 1566587
+
+~~~~~~~~~~~~~~~~~~UDP :	Arrival Time : 1568462
+
+~~~~~~~~~~~~~~~~~~UDP :	Arrival Time : 1578225
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 1581605
+
+~~~~~~~~~~~~~~~~~~UDP :	Arrival Time : 1581620
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 1586000
+
+~~~~~~~~~~~~~~~~~~UDP :	Arrival Time : 1587588
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 1594599
+
+~~~~~~~~~~~~~~~~~~UDP :	Arrival Time : 1594611
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 1595086
+
+~~~~~~~~~~~~~~~~~~UDP :	Arrival Time : 1595093
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 1595595
+
+~~~~~~~~~~~~~~~~~~UDP :	Arrival Time : 1595595
+
+~~~~~~~~~~~~~~~~~~UDP :	Arrival Time : 1597596
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 1596620
+
+~~~~~~~~~~~~~~~~~~UDP :	Arrival Time : 1596635
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 1597864
+
+~~~~~~~~~~~~~~~~~~UDP :	Arrival Time : 1597880
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 1599046
+
+~~~~~~~~~~~~~~~~~~UDP :	Arrival Time : 1599060
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 1598994
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 1600037
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 1599998
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 1601023
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 1602267
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 1603441
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 1605605
+
+~~~~~~~~~~~~~~~~~~UDP :	Arrival Time : 1605605
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 1605604
+
+~~~~~~~~~~~~~~~~~~UDP :	Arrival Time : 1605604
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 1606666
+
+~~~~~~~~~~~~~~~~~~UDP :	Arrival Time : 1606680
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 1608839
+
+~~~~~~~~~~~~~~~~~~UDP :	Arrival Time : 1608857
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 1610009
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 1610611
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 1611061
+
+~~~~~~~~~~~~~~~~~~UDP :	Arrival Time : 1614791
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 1613234
+
+~~~~~~~~~~~~~~~~~~UDP :	Arrival Time : 1614318
+
+~~~~~~~~~~~~~~~~~~UDP :	Arrival Time : 1614613
+
+~~~~~~~~~~~~~~~~~~UDP :	Arrival Time : 1614613
+
+~~~~~~~~~~~~~~~~~~UDP :	Arrival Time : 1614636
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 1617618
+
+~~~~~~~~~~~~~~~~~~UDP :	Arrival Time : 1617618
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 1622021
+
+~~~~~~~~~~~~~~~~~~UDP :	Arrival Time : 1626646
+
+~~~~~~~~~~~~~~~~~~UDP :	Arrival Time : 1627646
+
+~~~~~~~~~~~~~~~~~~UDP :	Arrival Time : 1630629
+
+~~~~~~~~~~~~~~~~~~UDP :	Arrival Time : 1632631
+
+~~~~~~~~~~~~~~~~~~UDP :	Arrival Time : 1632105
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 1635644
+
+~~~~~~~~~~~~~~~~~~UDP :	Arrival Time : 1635657
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 1640040
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 1641651
+
+~~~~~~~~~~~~~~~~~~UDP :	Arrival Time : 1641665
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 1646054
+
+~~~~~~~~~~~~~~~~~~UDP :	Arrival Time : 1646645
+
+~~~~~~~~~~~~~~~~~~UDP :	Arrival Time : 1649450
+
+~~~~~~~~~~~~~~~~~~UDP :	Arrival Time : 1652652
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 1652733
+
+~~~~~~~~~~~~~~~~~~UDP :	Arrival Time : 1652785
+
+~~~~~~~~~~~~~~~~~~UDP :	Arrival Time : 1655085
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 1657131
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 1657668
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 1662041
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 1664664
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 1663905
+
+~~~~~~~~~~~~~~~~~~UDP :	Arrival Time : 1664664
+
+~~~~~~~~~~~~~~~~~~UDP :	Arrival Time : 1668659
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 1668276
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 1669710
+
+~~~~~~~~~~~~~~~~~~UDP :	Arrival Time : 1675695
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 1678676
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 1680122
+
+~~~~~~~~~~~~~~~~~~UDP :	Arrival Time : 1680122
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 1680679
+
+~~~~~~~~~~~~~~~~~~UDP :	Arrival Time : 1680679
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 1683047
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 1683128
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 1684525
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 1685082
+
+~~~~~~~~~~~~~~~~~~UDP :	Arrival Time : 1684143
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 1687503
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 1690690
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 1695061
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 1696695
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 1701066
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 1702044
+
+~~~~~~~~~~~~~~~~~~UDP :	Arrival Time : 1702058
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 1706439
+
+~~~~~~~~~~~~~~~~~~UDP :	Arrival Time : 1714384
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 1718792
+
+~~~~~~~~~~~~~~~~~~UDP :	Arrival Time : 1718804
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 1720310
+
+~~~~~~~~~~~~~~~~~~UDP :	Arrival Time : 1720323
+
+~~~~~~~~~~~~~~~~~~UDP :	Arrival Time : 1719743
+
+~~~~~~~~~~~~~~~~~~UDP :	Arrival Time : 1719742
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 1723188
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 1724707
+
+~~~~~~~~~~~~~~~~~~UDP :	Arrival Time : 1726418
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 1727263
+
+~~~~~~~~~~~~~~~~~~UDP :	Arrival Time : 1727274
+
+~~~~~~~~~~~~~~~~~~UDP :	Arrival Time : 1727066
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 1731667
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 1732870
+
+~~~~~~~~~~~~~~~~~~UDP :	Arrival Time : 1732883
+
+~~~~~~~~~~~~~~~~~~UDP :	Arrival Time : 1734695
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 1734738
+
+~~~~~~~~~~~~~~~~~~UDP :	Arrival Time : 1734747
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 1735734
+
+~~~~~~~~~~~~~~~~~~UDP :	Arrival Time : 1735734
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 1737267
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 1739133
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 1740137
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 1743914
+
+~~~~~~~~~~~~~~~~~~UDP :	Arrival Time : 1743934
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 1745746
+
+~~~~~~~~~~~~~~~~~~UDP :	Arrival Time : 1745746
+
+~~~~~~~~~~~~~~~~~~UDP :	Arrival Time : 1748748
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 1748588
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 1749759
+
+~~~~~~~~~~~~~~~~~~UDP :	Arrival Time : 1749770
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 1750149
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 1750971
+
+~~~~~~~~~~~~~~~~~~UDP :	Arrival Time : 1751841
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 1754163
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 1753780
+
+~~~~~~~~~~~~~~~~~~UDP :	Arrival Time : 1753791
+
+~~~~~~~~~~~~~~~~~~UDP :	Arrival Time : 1755755
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 1755374
+
+~~~~~~~~~~~~~~~~~~UDP :	Arrival Time : 1758758
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 1758175
+
+~~~~~~~~~~~~~~~~~~UDP :	Arrival Time : 1757777
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 1760204
+
+~~~~~~~~~~~~~~~~~~UDP :	Arrival Time : 1760204
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 1762215
+
+~~~~~~~~~~~~~~~~~~UDP :	Arrival Time : 1762231
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 1764604
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 1764803
+
+~~~~~~~~~~~~~~~~~~UDP :	Arrival Time : 1764853
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 1766619
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 1769206
+
+~~~~~~~~~~~~~~~~~~UDP :	Arrival Time : 1772440
+
+~~~~~~~~~~~~~~~~~~UDP :	Arrival Time : 1776468
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 1776681
+
+~~~~~~~~~~~~~~~~~~UDP :	Arrival Time : 1776745
+
+~~~~~~~~~~~~~~~~~~UDP :	Arrival Time : 1777777
+
+~~~~~~~~~~~~~~~~~~UDP :	Arrival Time : 1780802
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 1781076
+
+~~~~~~~~~~~~~~~~~~UDP :	Arrival Time : 1781191
+
+~~~~~~~~~~~~~~~~~~UDP :	Arrival Time : 1785877
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 1785792
+
+~~~~~~~~~~~~~~~~~~UDP :	Arrival Time : 1785806
+
+~~~~~~~~~~~~~~~~~~UDP :	Arrival Time : 1787809
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 1790195
+
+~~~~~~~~~~~~~~~~~~UDP :	Arrival Time : 1792256
+
+~~~~~~~~~~~~~~~~~~UDP :	Arrival Time : 1803721
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 1802940
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 1807346
+
+~~~~~~~~~~~~~~~~~~UDP :	Arrival Time : 1808027
+
+~~~~~~~~~~~~~~~~~~UDP :	Arrival Time : 1813342
+
+~~~~~~~~~~~~~~~~~~UDP :	Arrival Time : 1816834
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 1817042
+
+~~~~~~~~~~~~~~~~~~UDP :	Arrival Time : 1817052
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 1818825
+
+~~~~~~~~~~~~~~~~~~UDP :	Arrival Time : 1818836
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 1821448
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 1823228
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 1824833
+
+~~~~~~~~~~~~~~~~~~UDP :	Arrival Time : 1824848
+
+~~~~~~~~~~~~~~~~~~UDP :	Arrival Time : 1826825
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 1827835
+
+~~~~~~~~~~~~~~~~~~UDP :	Arrival Time : 1827850
+
+~~~~~~~~~~~~~~~~~~UDP :	Arrival Time : 1827840
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 1829236
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 1832231
+
+~~~~~~~~~~~~~~~~~~UDP :	Arrival Time : 1833803
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 1833842
+
+~~~~~~~~~~~~~~~~~~UDP :	Arrival Time : 1834276
+
+~~~~~~~~~~~~~~~~~~UDP :	Arrival Time : 1837857
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 1838245
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 1839853
+
+~~~~~~~~~~~~~~~~~~UDP :	Arrival Time : 1839865
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 1840839
+
+~~~~~~~~~~~~~~~~~~UDP :	Arrival Time : 1840839
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 1844248
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 1845234
+
+~~~~~~~~~~~~~~~~~~UDP :	Arrival Time : 1845304
+
+~~~~~~~~~~~~~~~~~~UDP :	Arrival Time : 1846592
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 1847432
+
+~~~~~~~~~~~~~~~~~~UDP :	Arrival Time : 1847446
+
+~~~~~~~~~~~~~~~~~~UDP :	Arrival Time : 1851649
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 1851836
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 1856853
+
+~~~~~~~~~~~~~~~~~~UDP :	Arrival Time : 1856853
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 1857685
+
+~~~~~~~~~~~~~~~~~~UDP :	Arrival Time : 1857702
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 1858296
+
+~~~~~~~~~~~~~~~~~~UDP :	Arrival Time : 1858313
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 1860859
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 1861257
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 1862088
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 1862700
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 1865230
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 1866865
+
+~~~~~~~~~~~~~~~~~~UDP :	Arrival Time : 1869882
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 1871240
+
+~~~~~~~~~~~~~~~~~~UDP :	Arrival Time : 1873867
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 1874095
+
+~~~~~~~~~~~~~~~~~~UDP :	Arrival Time : 1874321
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 1875882
+
+~~~~~~~~~~~~~~~~~~UDP :	Arrival Time : 1876930
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 1878502
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 1880878
+
+~~~~~~~~~~~~~~~~~~UDP :	Arrival Time : 1880878
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 1880253
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 1881716
+
+~~~~~~~~~~~~~~~~~~UDP :	Arrival Time : 1883152
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 1884872
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 1885274
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 1886087
+
+~~~~~~~~~~~~~~~~~~UDP :	Arrival Time : 1889311
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 1889243
+
+~~~~~~~~~~~~~~~~~~UDP :	Arrival Time : 1890783
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 1890885
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 1895256
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 1896152
+
+~~~~~~~~~~~~~~~~~~UDP :	Arrival Time : 1896168
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 1900549
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 1904914
+
+~~~~~~~~~~~~~~~~~~UDP :	Arrival Time : 1904928
+
+~~~~~~~~~~~~~~~~~~UDP :	Arrival Time : 1907143
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 1909317
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 1909176
+
+~~~~~~~~~~~~~~~~~~UDP :	Arrival Time : 1909185
+
+~~~~~~~~~~~~~~~~~~UDP :	Arrival Time : 1911376
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 1913573
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 1918918
+
+~~~~~~~~~~~~~~~~~~UDP :	Arrival Time : 1918918
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 1918030
+
+~~~~~~~~~~~~~~~~~~UDP :	Arrival Time : 1918044
+
+~~~~~~~~~~~~~~~~~~UDP :	Arrival Time : 1920042
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 1922433
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 1923321
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 1930942
+
+~~~~~~~~~~~~~~~~~~UDP :	Arrival Time : 1930959
+
+~~~~~~~~~~~~~~~~~~UDP :	Arrival Time : 1935824
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 1935345
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 1936495
+
+~~~~~~~~~~~~~~~~~~UDP :	Arrival Time : 1936510
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 1940939
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 1947949
+
+~~~~~~~~~~~~~~~~~~UDP :	Arrival Time : 1947949
+
+~~~~~~~~~~~~~~~~~~UDP :	Arrival Time : 1948951
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 1952954
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 1952979
+
+~~~~~~~~~~~~~~~~~~UDP :	Arrival Time : 1953035
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 1957382
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 1959959
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 1959958
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 1962976
+
+~~~~~~~~~~~~~~~~~~UDP :	Arrival Time : 1962986
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 1964354
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 1964354
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 1967371
+
+~~~~~~~~~~~~~~~~~~UDP :	Arrival Time : 1970970
+
+~~~~~~~~~~~~~~~~~~UDP :	Arrival Time : 1970969
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 1970942
+
+~~~~~~~~~~~~~~~~~~UDP :	Arrival Time : 1970981
+
+~~~~~~~~~~~~~~~~~~UDP :	Arrival Time : 1970971
+
+~~~~~~~~~~~~~~~~~~UDP :	Arrival Time : 1974971
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 1974971
+
+~~~~~~~~~~~~~~~~~~UDP :	Arrival Time : 1974971
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 1975364
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 1979366
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 1984994
+
+~~~~~~~~~~~~~~~~~~UDP :	Arrival Time : 1985007
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 1986995
+
+~~~~~~~~~~~~~~~~~~UDP :	Arrival Time : 1987010
+
+~~~~~~~~~~~~~~~~~~UDP :	Arrival Time : 1989017
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 1989391
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 1991390
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 1992991
+
+~~~~~~~~~~~~~~~~~~UDP :	Arrival Time : 1992991
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 1995243
+
+~~~~~~~~~~~~~~~~~~UDP :	Arrival Time : 1995255
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 1997996
+
+~~~~~~~~~~~~~~~~~~UDP :	Arrival Time : 1997996
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 1997386
+
+~~~~~~~~~~~~~~~~~~UDP :	Arrival Time : 1998069
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 1999638
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 2002399
+
+~~~~~~~~~~~~~~~~~~UDP :	Arrival Time : 2011009
+
+~~~~~~~~~~~~~~~~~~UDP :	Arrival Time : 2012010
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 2012618
+
+~~~~~~~~~~~~~~~~~~UDP :	Arrival Time : 2012631
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 2017013
+
+~~~~~~~~~~~~~~~~~~UDP :	Arrival Time : 2018016
+
+~~~~~~~~~~~~~~~~~~UDP :	Arrival Time : 2020244
+
+~~~~~~~~~~~~~~~~~~UDP :	Arrival Time : 2029030
+
+~~~~~~~~~~~~~~~~~~UDP :	Arrival Time : 2028118
+
+~~~~~~~~~~~~~~~~~~UDP :	Arrival Time : 2031049
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 2032610
+
+~~~~~~~~~~~~~~~~~~UDP :	Arrival Time : 2032625
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 2037005
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 2037049
+
+~~~~~~~~~~~~~~~~~~UDP :	Arrival Time : 2037063
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 2040279
+
+~~~~~~~~~~~~~~~~~~UDP :	Arrival Time : 2040292
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 2041445
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 2044674
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 2045577
+
+~~~~~~~~~~~~~~~~~~UDP :	Arrival Time : 2045592
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 2049681
+
+~~~~~~~~~~~~~~~~~~UDP :	Arrival Time : 2049696
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 2050103
+
+~~~~~~~~~~~~~~~~~~UDP :	Arrival Time : 2051333
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 2054076
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 2058060
+
+~~~~~~~~~~~~~~~~~~UDP :	Arrival Time : 2058060
+
+~~~~~~~~~~~~~~~~~~UDP :	Arrival Time : 2059403
+
+~~~~~~~~~~~~~~~~~~UDP :	Arrival Time : 2062061
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 2062455
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 2062478
+
+~~~~~~~~~~~~~~~~~~UDP :	Arrival Time : 2062496
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 2066887
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 2072070
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 2074073
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 2076075
+
+~~~~~~~~~~~~~~~~~~UDP :	Arrival Time : 2076075
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 2076442
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 2078476
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 2078740
+
+~~~~~~~~~~~~~~~~~~UDP :	Arrival Time : 2079098
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 2080088
+
+~~~~~~~~~~~~~~~~~~UDP :	Arrival Time : 2080104
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 2080470
+
+~~~~~~~~~~~~~~~~~~UDP :	Arrival Time : 2081689
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 2082847
+
+~~~~~~~~~~~~~~~~~~UDP :	Arrival Time : 2083168
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 2084484
+
+~~~~~~~~~~~~~~~~~~UDP :	Arrival Time : 2091090
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 2094092
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 2095095
+
+~~~~~~~~~~~~~~~~~~UDP :	Arrival Time : 2095095
+
+~~~~~~~~~~~~~~~~~~UDP :	Arrival Time : 2097850
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 2098463
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 2099931
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 2099498
+
+~~~~~~~~~~~~~~~~~~UDP :	Arrival Time : 2101118
+
+~~~~~~~~~~~~~~~~~~UDP :	Arrival Time : 2101879
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 2104303
+
+~~~~~~~~~~~~~~~~~~UDP :	Arrival Time : 2107542
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 2109331
+
+~~~~~~~~~~~~~~~~~~UDP :	Arrival Time : 2109350
+
+~~~~~~~~~~~~~~~~~~UDP :	Arrival Time : 2111116
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 2113727
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 2116148
+
+~~~~~~~~~~~~~~~~~~UDP :	Arrival Time : 2116162
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 2119129
+
+~~~~~~~~~~~~~~~~~~UDP :	Arrival Time : 2119143
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 2120551
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 2121130
+
+~~~~~~~~~~~~~~~~~~UDP :	Arrival Time : 2121146
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 2123524
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 2125534
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 2127134
+
+~~~~~~~~~~~~~~~~~~UDP :	Arrival Time : 2127146
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 2131529
+
+~~~~~~~~~~~~~~~~~~UDP :	Arrival Time : 2133132
+
+~~~~~~~~~~~~~~~~~~UDP :	Arrival Time : 2132988
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 2134140
+
+~~~~~~~~~~~~~~~~~~UDP :	Arrival Time : 2134154
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 2135143
+
+~~~~~~~~~~~~~~~~~~UDP :	Arrival Time : 2135158
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 2135141
+
+~~~~~~~~~~~~~~~~~~UDP :	Arrival Time : 2135149
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 2136195
+
+~~~~~~~~~~~~~~~~~~UDP :	Arrival Time : 2136257
+
+~~~~~~~~~~~~~~~~~~UDP :	Arrival Time : 2137152
+
+~~~~~~~~~~~~~~~~~~UDP :	Arrival Time : 2137155
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 2138543
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 2139536
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 2139546
+
+~~~~~~~~~~~~~~~~~~UDP :	Arrival Time : 2139598
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 2140591
+
+~~~~~~~~~~~~~~~~~~UDP :	Arrival Time : 2149209
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 2150513
+
+~~~~~~~~~~~~~~~~~~UDP :	Arrival Time : 2152154
+
+~~~~~~~~~~~~~~~~~~UDP :	Arrival Time : 2154153
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 2154922
+
+~~~~~~~~~~~~~~~~~~UDP :	Arrival Time : 2154970
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 2155141
+
+~~~~~~~~~~~~~~~~~~UDP :	Arrival Time : 2155591
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 2157165
+
+~~~~~~~~~~~~~~~~~~UDP :	Arrival Time : 2157179
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 2159325
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 2161560
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 2162523
+
+~~~~~~~~~~~~~~~~~~UDP :	Arrival Time : 2162536
+
+~~~~~~~~~~~~~~~~~~UDP :	Arrival Time : 2163162
+
+~~~~~~~~~~~~~~~~~~UDP :	Arrival Time : 2164141
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 2166919
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 2173635
+
+~~~~~~~~~~~~~~~~~~UDP :	Arrival Time : 2173651
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 2178038
+
+~~~~~~~~~~~~~~~~~~UDP :	Arrival Time : 2180178
+
+~~~~~~~~~~~~~~~~~~UDP :	Arrival Time : 2181200
+
+~~~~~~~~~~~~~~~~~~UDP :	Arrival Time : 2187206
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 2188186
+
+~~~~~~~~~~~~~~~~~~UDP :	Arrival Time : 2188186
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 2192581
+
+~~~~~~~~~~~~~~~~~~UDP :	Arrival Time : 2192189
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 2197882
+
+~~~~~~~~~~~~~~~~~~UDP :	Arrival Time : 2197894
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 2203201
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 2203431
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 2207834
+
+~~~~~~~~~~~~~~~~~~UDP :	Arrival Time : 2208495
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 2208238
+
+~~~~~~~~~~~~~~~~~~UDP :	Arrival Time : 2208247
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 2211698
+
+~~~~~~~~~~~~~~~~~~UDP :	Arrival Time : 2211720
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 2212635
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 2216214
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 2221220
+
+~~~~~~~~~~~~~~~~~~UDP :	Arrival Time : 2221220
+
+~~~~~~~~~~~~~~~~~~UDP :	Arrival Time : 2222656
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 2225627
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 2227235
+
+~~~~~~~~~~~~~~~~~~UDP :	Arrival Time : 2227247
+
+~~~~~~~~~~~~~~~~~~UDP :	Arrival Time : 2228227
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 2230263
+
+~~~~~~~~~~~~~~~~~~UDP :	Arrival Time : 2230276
+
+~~~~~~~~~~~~~~~~~~UDP :	Arrival Time : 2230700
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 2231638
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 2234235
+
+~~~~~~~~~~~~~~~~~~UDP :	Arrival Time : 2234227
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 2233243
+
+~~~~~~~~~~~~~~~~~~UDP :	Arrival Time : 2234235
+
+~~~~~~~~~~~~~~~~~~UDP :	Arrival Time : 2233307
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 2234658
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 2237646
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 2239287
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 2241239
+
+~~~~~~~~~~~~~~~~~~UDP :	Arrival Time : 2241239
+
+~~~~~~~~~~~~~~~~~~UDP :	Arrival Time : 2241771
+
+~~~~~~~~~~~~~~~~~~UDP :	Arrival Time : 2242980
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 2245245
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 2246251
+
+~~~~~~~~~~~~~~~~~~UDP :	Arrival Time : 2248250
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 2247283
+
+~~~~~~~~~~~~~~~~~~UDP :	Arrival Time : 2247337
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 2249618
+
+~~~~~~~~~~~~~~~~~~UDP :	Arrival Time : 2250248
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 2251251
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 2251686
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 2255623
+
+~~~~~~~~~~~~~~~~~~UDP :	Arrival Time : 2257699
+
+~~~~~~~~~~~~~~~~~~UDP :	Arrival Time : 2261260
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 2267344
+
+~~~~~~~~~~~~~~~~~~UDP :	Arrival Time : 2267353
+
+~~~~~~~~~~~~~~~~~~UDP :	Arrival Time : 2271291
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 2271739
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 2272280
+
+~~~~~~~~~~~~~~~~~~UDP :	Arrival Time : 2272294
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 2272270
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 2274215
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 2274283
+
+~~~~~~~~~~~~~~~~~~UDP :	Arrival Time : 2274296
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 2276642
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 2276675
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 2279277
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 2279279
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 2278930
+
+~~~~~~~~~~~~~~~~~~UDP :	Arrival Time : 2280543
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 2283648
+
+~~~~~~~~~~~~~~~~~~UDP :	Arrival Time : 2284934
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 2285293
+
+~~~~~~~~~~~~~~~~~~UDP :	Arrival Time : 2285302
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 2289696
+
+~~~~~~~~~~~~~~~~~~UDP :	Arrival Time : 2290308
+
+~~~~~~~~~~~~~~~~~~UDP :	Arrival Time : 2291258
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 2293229
+
+~~~~~~~~~~~~~~~~~~UDP :	Arrival Time : 2293243
+
+~~~~~~~~~~~~~~~~~~UDP :	Arrival Time : 2295294
+
+~~~~~~~~~~~~~~~~~~UDP :	Arrival Time : 2295372
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 2297624
+
+~~~~~~~~~~~~~~~~~~UDP :	Arrival Time : 2301787
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 2303299
+
+~~~~~~~~~~~~~~~~~~UDP :	Arrival Time : 2307305
+
+~~~~~~~~~~~~~~~~~~UDP :	Arrival Time : 2306304
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 2307670
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 2308750
+
+~~~~~~~~~~~~~~~~~~UDP :	Arrival Time : 2311174
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 2313125
+
+~~~~~~~~~~~~~~~~~~UDP :	Arrival Time : 2314807
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 2321087
+
+~~~~~~~~~~~~~~~~~~UDP :	Arrival Time : 2321142
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 2322344
+
+~~~~~~~~~~~~~~~~~~UDP :	Arrival Time : 2322389
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 2322385
+
+~~~~~~~~~~~~~~~~~~UDP :	Arrival Time : 2322430
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 2325491
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 2326747
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 2326792
+
+~~~~~~~~~~~~~~~~~~UDP :	Arrival Time : 2339357
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 2343581
+
+~~~~~~~~~~~~~~~~~~UDP :	Arrival Time : 2343596
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 2343573
+
+~~~~~~~~~~~~~~~~~~UDP :	Arrival Time : 2343593
+
+~~~~~~~~~~~~~~~~~~UDP :	Arrival Time : 2345343
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 2347976
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 2347985
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 2349347
+
+~~~~~~~~~~~~~~~~~~UDP :	Arrival Time : 2349347
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 2350358
+
+~~~~~~~~~~~~~~~~~~UDP :	Arrival Time : 2350368
+
+~~~~~~~~~~~~~~~~~~UDP :	Arrival Time : 2351141
+
+~~~~~~~~~~~~~~~~~~UDP :	Arrival Time : 2353374
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 2353750
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 2354761
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 2355498
+
+~~~~~~~~~~~~~~~~~~UDP :	Arrival Time : 2355514
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 2359893
+
+~~~~~~~~~~~~~~~~~~UDP :	Arrival Time : 2361380
+
+~~~~~~~~~~~~~~~~~~UDP :	Arrival Time : 2361391
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 2361751
+
+~~~~~~~~~~~~~~~~~~UDP :	Arrival Time : 2361764
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 2363425
+
+~~~~~~~~~~~~~~~~~~UDP :	Arrival Time : 2363440
+
+~~~~~~~~~~~~~~~~~~UDP :	Arrival Time : 2363823
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 2366146
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 2367820
+
+~~~~~~~~~~~~~~~~~~UDP :	Arrival Time : 2369304
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 2371379
+
+~~~~~~~~~~~~~~~~~~UDP :	Arrival Time : 2371394
+
+~~~~~~~~~~~~~~~~~~UDP :	Arrival Time : 2374393
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 2375374
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 2375782
+
+~~~~~~~~~~~~~~~~~~UDP :	Arrival Time : 2376375
+
+~~~~~~~~~~~~~~~~~~UDP :	Arrival Time : 2378380
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 2379778
+
+~~~~~~~~~~~~~~~~~~UDP :	Arrival Time : 2385889
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 2393391
+
+~~~~~~~~~~~~~~~~~~UDP :	Arrival Time : 2393391
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 2393805
+
+~~~~~~~~~~~~~~~~~~UDP :	Arrival Time : 2394231
+
+~~~~~~~~~~~~~~~~~~UDP :	Arrival Time : 2394057
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 2398200
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 2397786
+
+~~~~~~~~~~~~~~~~~~UDP :	Arrival Time : 2405901
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 2406958
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 2406982
+
+~~~~~~~~~~~~~~~~~~UDP :	Arrival Time : 2406996
+
+~~~~~~~~~~~~~~~~~~UDP :	Arrival Time : 2406973
+
+~~~~~~~~~~~~~~~~~~UDP :	Arrival Time : 2408711
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 2411409
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 2411409
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 2414842
+
+~~~~~~~~~~~~~~~~~~UDP :	Arrival Time : 2414855
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 2415401
+
+~~~~~~~~~~~~~~~~~~UDP :	Arrival Time : 2415401
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 2419237
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 2419804
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 2426424
+
+~~~~~~~~~~~~~~~~~~UDP :	Arrival Time : 2426424
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 2430819
+
+~~~~~~~~~~~~~~~~~~UDP :	Arrival Time : 2434302
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 2436122
+
+~~~~~~~~~~~~~~~~~~UDP :	Arrival Time : 2436135
+
+~~~~~~~~~~~~~~~~~~UDP :	Arrival Time : 2438438
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 2441440
+
+~~~~~~~~~~~~~~~~~~UDP :	Arrival Time : 2440791
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 2440438
+
+~~~~~~~~~~~~~~~~~~UDP :	Arrival Time : 2440438
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 2442021
+
+~~~~~~~~~~~~~~~~~~UDP :	Arrival Time : 2442031
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 2444842
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 2446434
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 2446473
+
+~~~~~~~~~~~~~~~~~~UDP :	Arrival Time : 2446514
+
+~~~~~~~~~~~~~~~~~~UDP :	Arrival Time : 2450444
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 2450876
+
+~~~~~~~~~~~~~~~~~~UDP :	Arrival Time : 2474221
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 2475470
+
+~~~~~~~~~~~~~~~~~~UDP :	Arrival Time : 2478933
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 2479841
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 2481479
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 2483499
+
+~~~~~~~~~~~~~~~~~~UDP :	Arrival Time : 2483515
+
+~~~~~~~~~~~~~~~~~~UDP :	Arrival Time : 2484502
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 2485850
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 2487494
+
+~~~~~~~~~~~~~~~~~~UDP :	Arrival Time : 2487510
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 2487902
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 2491889
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 2493529
+
+~~~~~~~~~~~~~~~~~~UDP :	Arrival Time : 2493544
+
+~~~~~~~~~~~~~~~~~~UDP :	Arrival Time : 2493513
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 2495722
+
+~~~~~~~~~~~~~~~~~~UDP :	Arrival Time : 2495736
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 2497494
+
+~~~~~~~~~~~~~~~~~~UDP :	Arrival Time : 2497494
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 2497924
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 2501048
+
+~~~~~~~~~~~~~~~~~~UDP :	Arrival Time : 2500498
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 2502497
+
+~~~~~~~~~~~~~~~~~~UDP :	Arrival Time : 2508535
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 2509508
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 2509517
+
+~~~~~~~~~~~~~~~~~~UDP :	Arrival Time : 2509534
+
+~~~~~~~~~~~~~~~~~~UDP :	Arrival Time : 2510546
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 2513879
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 2513921
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 2515513
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 2516515
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 2519885
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 2520886
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 2521519
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 2523537
+
+~~~~~~~~~~~~~~~~~~UDP :	Arrival Time : 2523556
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 2525890
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 2525549
+
+~~~~~~~~~~~~~~~~~~UDP :	Arrival Time : 2525564
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 2526814
+
+~~~~~~~~~~~~~~~~~~UDP :	Arrival Time : 2526825
+
+~~~~~~~~~~~~~~~~~~UDP :	Arrival Time : 2526843
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 2527941
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 2529952
+
+~~~~~~~~~~~~~~~~~~UDP :	Arrival Time : 2530864
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 2531217
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 2532540
+
+~~~~~~~~~~~~~~~~~~UDP :	Arrival Time : 2532553
+
+~~~~~~~~~~~~~~~~~~UDP :	Arrival Time : 2533550
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 2536543
+
+~~~~~~~~~~~~~~~~~~UDP :	Arrival Time : 2536558
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 2536935
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 2540938
+
+~~~~~~~~~~~~~~~~~~UDP :	Arrival Time : 2543541
+
+~~~~~~~~~~~~~~~~~~UDP :	Arrival Time : 2544762
+
+~~~~~~~~~~~~~~~~~~UDP :	Arrival Time : 2549815
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 2552242
+
+~~~~~~~~~~~~~~~~~~UDP :	Arrival Time : 2552291
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 2556639
+
+~~~~~~~~~~~~~~~~~~UDP :	Arrival Time : 2556614
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 2559290
+
+~~~~~~~~~~~~~~~~~~UDP :	Arrival Time : 2559340
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 2563693
+
+~~~~~~~~~~~~~~~~~~UDP :	Arrival Time : 2590587
+
+~~~~~~~~~~~~~~~~~~UDP :	Arrival Time : 2592589
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 2611288
+
+~~~~~~~~~~~~~~~~~~UDP :	Arrival Time : 2611303
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 2615683
+
+~~~~~~~~~~~~~~~~~~UDP :	Arrival Time : 2616619
+
+~~~~~~~~~~~~~~~~~~UDP :	Arrival Time : 2637635
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 2638647
+
+~~~~~~~~~~~~~~~~~~UDP :	Arrival Time : 2638664
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 2643042
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 2651664
+
+~~~~~~~~~~~~~~~~~~UDP :	Arrival Time : 2651681
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 2656068
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 2676672
+
+~~~~~~~~~~~~~~~~~~UDP :	Arrival Time : 2676704
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 2681043
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 2682679
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 2687051
+
+~~~~~~~~~~~~~~~~~~UDP :	Arrival Time : 2694767
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 2699702
+
+~~~~~~~~~~~~~~~~~~UDP :	Arrival Time : 2699702
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 2704097
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 2719740
+
+~~~~~~~~~~~~~~~~~~UDP :	Arrival Time : 2719753
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 2724135
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 2724724
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 2729095
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 2730729
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 2735102
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 2743742
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 2748113
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 2749749
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 2754127
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 2765792
+
+~~~~~~~~~~~~~~~~~~UDP :	Arrival Time : 2765842
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 2770195
+
+~~~~~~~~~~~~~~~~~~UDP :	Arrival Time : 2797923
+
+~~~~~~~~~~~~~~~~~~UDP :	Arrival Time : 2810808
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 2811823
+
+~~~~~~~~~~~~~~~~~~UDP :	Arrival Time : 2811839
+
+~~~~~~~~~~~~~~~~~~UDP :	Arrival Time : 2813812
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 2816218
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 2833841
+
+~~~~~~~~~~~~~~~~~~UDP :	Arrival Time : 2833855
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 2835831
+
+~~~~~~~~~~~~~~~~~~UDP :	Arrival Time : 2835831
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 2838236
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 2840226
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 2847845
+
+~~~~~~~~~~~~~~~~~~UDP :	Arrival Time : 2847845
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 2852248
+
+~~~~~~~~~~~~~~~~~~UDP :	Arrival Time : 2858862
+
+~~~~~~~~~~~~~~~~~~UDP :	Arrival Time : 2861219
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 2864053
+
+~~~~~~~~~~~~~~~~~~UDP :	Arrival Time : 2864067
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 2866074
+
+~~~~~~~~~~~~~~~~~~UDP :	Arrival Time : 2866089
+
+~~~~~~~~~~~~~~~~~~UDP :	Arrival Time : 2867885
+
+~~~~~~~~~~~~~~~~~~UDP :	Arrival Time : 2868012
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 2868448
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 2870469
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 2878887
+
+~~~~~~~~~~~~~~~~~~UDP :	Arrival Time : 2878899
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 2879880
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 2883282
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 2884251
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 2885882
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 2890254
+
+~~~~~~~~~~~~~~~~~~UDP :	Arrival Time : 2904904
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 2904904
+
+~~~~~~~~~~~~~~~~~~UDP :	Arrival Time : 2904904
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 2909956
+
+~~~~~~~~~~~~~~~~~~UDP :	Arrival Time : 2922924
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 2936929
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 2936932
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 2941300
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 2941327
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 2942111
+
+~~~~~~~~~~~~~~~~~~UDP :	Arrival Time : 2942127
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 2942940
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 2946506
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 2947312
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 2950971
+
+~~~~~~~~~~~~~~~~~~UDP :	Arrival Time : 2950984
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 2955374
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 2957955
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 2962326
+
+~~~~~~~~~~~~~~~~~~UDP :	Arrival Time : 2962979
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 2963957
+
+~~~~~~~~~~~~~~~~~~UDP :	Arrival Time : 2970299
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 2968968
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 2969976
+
+~~~~~~~~~~~~~~~~~~UDP :	Arrival Time : 2969989
+
+~~~~~~~~~~~~~~~~~~TCP :	Arrival Time : 2974371
+Timeline 0 advanced its LXCs by 47.999968 seconds
+Timeline 1 advanced its LXCs by 48.000303 seconds
+Timeline 2 advanced its LXCs by 48.000280 seconds
+Timeline 3 advanced its LXCs by 47.999965 seconds
+Timeline 4 advanced its LXCs by 0.000000 seconds
+|==================================================
+| Calling STOP EXPERIMENT
+|==================================================
+|============================================================|
+| Overall Stats
+|------------------------------------------------------------|
+| OUT | Total Pkts Sent to LXCs       : 6010
+| OUT | Total Pkts error late to LXC  : 10587
+| OUT | Avg Pkts error late to LXC    : 1.76156406
+|------------------------------------------------------------|
+| IN  | Total Pkts Injected to past   : 3
+| IN  | Total Error Injected to past  : 428
+| IN  | Average past error            : 142.66666667
+|============================================================|
+| TOTAL Advance ERROR        : 6444840
+| TOTAL Times Advanced       : 473159
+| TOTAL Times Over           : 129378
+| TOTAL Times Under          : 176173
+| TOTAL Times Exact          : 167608
+| Average Advance ERROR      : 13.62087586
+|============================================================|
+| TOTAL Pkt Timestamp ERROR  : 86151
+| TOTAL Pkts Injected        : 6017
+| Average Packet Inaccuracy  : 14.31793252
+|============================================================|
+| MIN Advance Error          : 0
+| MAX Advance Error          : 1008
+| Advance Error RMS          : 86.04508127
+| Advance Error Variance     : 7218.22775104
+| Advance Error Std Dev      : 84.96015390
+|============================================================|
+
+|============================================================|
+| Timeline 0 advanced 106945 times ( Progress 15382 ) for a total of 493.446164 seconds
+| Timeline 1 advanced 106199 times ( Progress 15196 ) for a total of 493.670627 seconds
+| Timeline 2 advanced 114032 times ( Progress 16239 ) for a total of 498.132331 seconds
+| Timeline 3 advanced 145983 times ( Progress 19672 ) for a total of 496.859554 seconds
+| Timeline 4 advanced 0 times ( Progress 0 ) for a total of 0.000000 seconds
+|============================================================|
+| Cumulative emulation seconds 1982.108676
+| Simulation run time is 515.577 seconds
+| Total run time is 557.451 seconds
+|============================================================|

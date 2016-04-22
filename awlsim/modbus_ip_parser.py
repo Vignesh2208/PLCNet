@@ -1,4 +1,4 @@
-
+import math
 
 def parse_modbus_ip_topology(conf_directory,curr_conf_file,test_file,topology_file,exp_run_time,exp_name,exp_tdf,exp_n_nodes,Node,N_CPUS):
 	Lxcs = {}
@@ -132,8 +132,8 @@ def parse_modbus_ip_topology(conf_directory,curr_conf_file,test_file,topology_fi
 
 
 	with open(curr_conf_file,"w") as f :
-		#f.write("total_timeline " + str(N_CPUS) + "\n")
-		f.write("total_timeline " + str(n_nodes + 1) + "\n")
+		f.write("total_timeline " + str(N_CPUS) + "\n")
+		#f.write("total_timeline " + str(n_nodes + 1) + "\n")
 		f.write("tick_per_second 6\n")
 		f.write("run_time " + str(exp_run_time) + "\n")
 		f.write("seed 1\n")
@@ -149,13 +149,29 @@ def parse_modbus_ip_topology(conf_directory,curr_conf_file,test_file,topology_fi
 			else :
 				f.write("		settings [ lxcNHI " + str(node-1) + ":0 _extends .dilation cmd " + "\"" + test_file + " -e 0" + " --node " + str(node-1) + Node[node]["script"] + "\"" + " ]\n")
 		f.write("	]\n")
+		curr_timeline = 1
 	 	for node in xrange(1,n_nodes + 1)  :
+
+	 		if node == n_nodes :
+	 			assigned_timeline = 0
+	 		elif node < math.pow(2,curr_timeline):
+	 			assigned_timeline = curr_timeline - 1
+	 		else:
+	 			if node >= int(n_nodes/2) :
+	 				if node % 2 == 0:
+	 					assigned_timeline = 0
+	 				else :
+	 					assigned_timeline = curr_timeline
+	 			else :
+	 				assigned_timeline = curr_timeline
+	 			curr_timeline = curr_timeline + 1
 
 			f.write("	Net\n")
 			f.write("	[\n")
 			f.write("		id " + str(node-1) + "\n")
-			#f.write("		alignment " + str((node-1) % (N_CPUS - 1)) + "\n")
-			f.write("		alignment " + str(node-1) + "\n")
+			f.write("		alignment " + str((node-1) % (N_CPUS - 1)) + "\n")
+			#f.write("		alignment " + str(node-1) + "\n")
+			#f.write("		alignment " + str(assigned_timeline) + "\n")
 			f.write("		host\n")
 			f.write("		[\n")
 			f.write("			id 0\n")
@@ -172,8 +188,8 @@ def parse_modbus_ip_topology(conf_directory,curr_conf_file,test_file,topology_fi
 		f.write("	Net\n")	
 		f.write("	[\n")
 		f.write("		id " + str(router_net_id) + "\n")
-	 	f.write("		alignment " + str(n_nodes) + "\n")
-	 	#f.write("		alignment " + str(N_CPUS - 1) + "\n")
+	 	#f.write("		alignment " + str(n_nodes) + "\n")
+	 	f.write("		alignment " + str(N_CPUS - 1) + "\n")
 
 	 	for router in routers :
 	 		n_intf = Routers[router]["n_intf"]

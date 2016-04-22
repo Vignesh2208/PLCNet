@@ -1,8 +1,8 @@
 START_OF_EXPERIMENT_CONFIGURATION
 Experiment_Name	=	Bottle_Plant
-Run_Time			=	6
-Dilation_Factor	=	5
-Number_Of_Nodes	=	7
+Run_Time			=	3
+Dilation_Factor	=	10
+Number_Of_Nodes	=	63
 ModBus_Network_Type =  IP
 END_OF_EXPERIMENT_CONFIGURATION
 
@@ -28,6 +28,174 @@ START_OF_GENERAL_CONFIGURATION
 7,		1,		502,	502,	14,		True
 7,		2,		502,	502,	14,		False
 7,		3,		502,	502,	15,		False
+8,		1,		502,	502,	16,		True
+8,		2,		502,	502,	16,		False
+8,		3,		502,	502,	17,		False
+9,		1,		502,	502,	18,		True
+9,		2,		502,	502,	18,		False
+9,		3,		502,	502,	19,		False
+10,		1,		502,	502,	20,		True
+10,		2,		502,	502,	20,		False
+10,		3,		502,	502,	21,		False
+11,		1,		502,	502,	22,		True
+11,		2,		502,	502,	22,		False
+11,		3,		502,	502,	23,		False
+12,		1,		502,	502,	24,		True
+12,		2,		502,	502,	24,		False
+12,		3,		502,	502,	25,		False
+13,		1,		502,	502,	26,		True
+13,		2,		502,	502,	26,		False
+13,		3,		502,	502,	27,		False
+14,		1,		502,	502,	28,		True
+14,		2,		502,	502,	28,		False
+14,		3,		502,	502,	29,		False
+15,		1,		502,	502,	30,		True
+15,		2,		502,	502,	30,		False
+15,		3,		502,	502,	31,		False
+16,		1,		502,	502,	32,		True
+16,		2,		502,	502,	32,		False
+16,		3,		502,	502,	33,		False
+17,		1,		502,	502,	34,		True
+17,		2,		502,	502,	34,		False
+17,		3,		502,	502,	35,		False
+18,		1,		502,	502,	36,		True
+18,		2,		502,	502,	36,		False
+18,		3,		502,	502,	37,		False
+19,		1,		502,	502,	38,		True
+19,		2,		502,	502,	38,		False
+19,		3,		502,	502,	39,		False
+20,		1,		502,	502,	40,		True
+20,		2,		502,	502,	40,		False
+20,		3,		502,	502,	41,		False
+21,		1,		502,	502,	42,		True
+21,		2,		502,	502,	42,		False
+21,		3,		502,	502,	43,		False
+22,		1,		502,	502,	44,		True
+22,		2,		502,	502,	44,		False
+22,		3,		502,	502,	45,		False
+23,		1,		502,	502,	46,		True
+23,		2,		502,	502,	46,		False
+23,		3,		502,	502,	47,		False
+24,		1,		502,	502,	48,		True
+24,		2,		502,	502,	48,		False
+24,		3,		502,	502,	49,		False
+25,		1,		502,	502,	50,		True
+25,		2,		502,	502,	50,		False
+25,		3,		502,	502,	51,		False
+26,		1,		502,	502,	52,		True
+26,		2,		502,	502,	52,		False
+26,		3,		502,	502,	53,		False
+27,		1,		502,	502,	54,		True
+27,		2,		502,	502,	54,		False
+27,		3,		502,	502,	55,		False
+28,		1,		502,	502,	56,		True
+28,		2,		502,	502,	56,		False
+28,		3,		502,	502,	57,		False
+29,		1,		502,	502,	58,		True
+29,		2,		502,	502,	58,		False
+29,		3,		502,	502,	59,		False
+30,		1,		502,	502,	60,		True
+30,		2,		502,	502,	60,		False
+30,		3,		502,	502,	61,		False
+31,		1,		502,	502,	62,		True
+31,		2,		502,	502,	62,		False
+31,		3,		502,	502,	63,		False
+32,		1,		502,	502,	64,		True
+32,		2,		502,	502,	64,		False
+32,		3,		502,	502,	65,		False
+33,		1,		502,	502,	66,		True
+33,		2,		502,	502,	66,		False
+33,		3,		502,	502,	67,		False
+34,		1,		502,	502,	68,		True
+34,		2,		502,	502,	68,		False
+34,		3,		502,	502,	69,		False
+35,		1,		502,	502,	70,		True
+35,		2,		502,	502,	70,		False
+35,		3,		502,	502,	71,		False
+36,		1,		502,	502,	72,		True
+36,		2,		502,	502,	72,		False
+36,		3,		502,	502,	73,		False
+37,		1,		502,	502,	74,		True
+37,		2,		502,	502,	74,		False
+37,		3,		502,	502,	75,		False
+38,		1,		502,	502,	76,		True
+38,		2,		502,	502,	76,		False
+38,		3,		502,	502,	77,		False
+39,		1,		502,	502,	78,		True
+39,		2,		502,	502,	78,		False
+39,		3,		502,	502,	79,		False
+40,		1,		502,	502,	80,		True
+40,		2,		502,	502,	80,		False
+40,		3,		502,	502,	81,		False
+41,		1,		502,	502,	82,		True
+41,		2,		502,	502,	82,		False
+41,		3,		502,	502,	83,		False
+42,		1,		502,	502,	84,		True
+42,		2,		502,	502,	84,		False
+42,		3,		502,	502,	85,		False
+43,		1,		502,	502,	86,		True
+43,		2,		502,	502,	86,		False
+43,		3,		502,	502,	87,		False
+44,		1,		502,	502,	88,		True
+44,		2,		502,	502,	88,		False
+44,		3,		502,	502,	89,		False
+45,		1,		502,	502,	90,		True
+45,		2,		502,	502,	90,		False
+45,		3,		502,	502,	91,		False
+46,		1,		502,	502,	92,		True
+46,		2,		502,	502,	92,		False
+46,		3,		502,	502,	93,		False
+47,		1,		502,	502,	94,		True
+47,		2,		502,	502,	94,		False
+47,		3,		502,	502,	95,		False
+48,		1,		502,	502,	96,		True
+48,		2,		502,	502,	96,		False
+48,		3,		502,	502,	97,		False
+49,		1,		502,	502,	98,		True
+49,		2,		502,	502,	98,		False
+49,		3,		502,	502,	99,		False
+50,		1,		502,	502,	100,		True
+50,		2,		502,	502,	100,		False
+50,		3,		502,	502,	101,		False
+51,		1,		502,	502,	102,		True
+51,		2,		502,	502,	102,		False
+51,		3,		502,	502,	103,		False
+52,		1,		502,	502,	104,		True
+52,		2,		502,	502,	104,		False
+52,		3,		502,	502,	105,		False
+53,		1,		502,	502,	106,		True
+53,		2,		502,	502,	106,		False
+53,		3,		502,	502,	107,		False
+54,		1,		502,	502,	108,		True
+54,		2,		502,	502,	108,		False
+54,		3,		502,	502,	109,		False
+55,		1,		502,	502,	110,		True
+55,		2,		502,	502,	110,		False
+55,		3,		502,	502,	111,		False
+56,		1,		502,	502,	112,		True
+56,		2,		502,	502,	112,		False
+56,		3,		502,	502,	113,		False
+57,		1,		502,	502,	114,		True
+57,		2,		502,	502,	114,		False
+57,		3,		502,	502,	115,		False
+58,		1,		502,	502,	116,		True
+58,		2,		502,	502,	116,		False
+58,		3,		502,	502,	117,		False
+59,		1,		502,	502,	118,		True
+59,		2,		502,	502,	118,		False
+59,		3,		502,	502,	119,		False
+60,		1,		502,	502,	120,		True
+60,		2,		502,	502,	120,		False
+60,		3,		502,	502,	121,		False
+61,		1,		502,	502,	122,		True
+61,		2,		502,	502,	122,		False
+61,		3,		502,	502,	123,		False
+62,		1,		502,	502,	124,		True
+62,		2,		502,	502,	124,		False
+62,		3,		502,	502,	125,		False
+63,		1,		502,	502,	126,		True
+63,		2,		502,	502,	126,		False
+63,		3,		502,	502,	127,		False
 END_OF_GENERAL_CONFIGURATION
 
 START_OF_AWL_SCRIPT_CONFIGURATION
@@ -38,6 +206,62 @@ START_OF_AWL_SCRIPT_CONFIGURATION
 5,		/home/vignesh/Desktop/PLCs/awlsim-0.42/tests/modbus/bottle_plant_node/bottle_plant_node.awl
 6,		/home/vignesh/Desktop/PLCs/awlsim-0.42/tests/modbus/bottle_plant_node/bottle_plant_node.awl
 7,		/home/vignesh/Desktop/PLCs/awlsim-0.42/tests/modbus/bottle_plant_node/bottle_plant_node.awl
+8,		/home/vignesh/Desktop/PLCs/awlsim-0.42/tests/modbus/bottle_plant_node/bottle_plant_node.awl
+9,		/home/vignesh/Desktop/PLCs/awlsim-0.42/tests/modbus/bottle_plant_node/bottle_plant_node.awl
+10,		/home/vignesh/Desktop/PLCs/awlsim-0.42/tests/modbus/bottle_plant_node/bottle_plant_node.awl
+11,		/home/vignesh/Desktop/PLCs/awlsim-0.42/tests/modbus/bottle_plant_node/bottle_plant_node.awl
+12,		/home/vignesh/Desktop/PLCs/awlsim-0.42/tests/modbus/bottle_plant_node/bottle_plant_node.awl
+13,		/home/vignesh/Desktop/PLCs/awlsim-0.42/tests/modbus/bottle_plant_node/bottle_plant_node.awl
+14,		/home/vignesh/Desktop/PLCs/awlsim-0.42/tests/modbus/bottle_plant_node/bottle_plant_node.awl
+15,		/home/vignesh/Desktop/PLCs/awlsim-0.42/tests/modbus/bottle_plant_node/bottle_plant_node.awl
+16,		/home/vignesh/Desktop/PLCs/awlsim-0.42/tests/modbus/bottle_plant_node/bottle_plant_node.awl
+17,		/home/vignesh/Desktop/PLCs/awlsim-0.42/tests/modbus/bottle_plant_node/bottle_plant_node.awl
+18,		/home/vignesh/Desktop/PLCs/awlsim-0.42/tests/modbus/bottle_plant_node/bottle_plant_node.awl
+19,		/home/vignesh/Desktop/PLCs/awlsim-0.42/tests/modbus/bottle_plant_node/bottle_plant_node.awl
+20,		/home/vignesh/Desktop/PLCs/awlsim-0.42/tests/modbus/bottle_plant_node/bottle_plant_node.awl
+21,		/home/vignesh/Desktop/PLCs/awlsim-0.42/tests/modbus/bottle_plant_node/bottle_plant_node.awl
+22,		/home/vignesh/Desktop/PLCs/awlsim-0.42/tests/modbus/bottle_plant_node/bottle_plant_node.awl
+23,		/home/vignesh/Desktop/PLCs/awlsim-0.42/tests/modbus/bottle_plant_node/bottle_plant_node.awl
+24,		/home/vignesh/Desktop/PLCs/awlsim-0.42/tests/modbus/bottle_plant_node/bottle_plant_node.awl
+25,		/home/vignesh/Desktop/PLCs/awlsim-0.42/tests/modbus/bottle_plant_node/bottle_plant_node.awl
+26,		/home/vignesh/Desktop/PLCs/awlsim-0.42/tests/modbus/bottle_plant_node/bottle_plant_node.awl
+27,		/home/vignesh/Desktop/PLCs/awlsim-0.42/tests/modbus/bottle_plant_node/bottle_plant_node.awl
+28,		/home/vignesh/Desktop/PLCs/awlsim-0.42/tests/modbus/bottle_plant_node/bottle_plant_node.awl
+29,		/home/vignesh/Desktop/PLCs/awlsim-0.42/tests/modbus/bottle_plant_node/bottle_plant_node.awl
+30,		/home/vignesh/Desktop/PLCs/awlsim-0.42/tests/modbus/bottle_plant_node/bottle_plant_node.awl
+31,		/home/vignesh/Desktop/PLCs/awlsim-0.42/tests/modbus/bottle_plant_node/bottle_plant_node.awl
+32,		/home/vignesh/Desktop/PLCs/awlsim-0.42/tests/modbus/bottle_plant_node/bottle_plant_node.awl
+33,		/home/vignesh/Desktop/PLCs/awlsim-0.42/tests/modbus/bottle_plant_node/bottle_plant_node.awl
+34,		/home/vignesh/Desktop/PLCs/awlsim-0.42/tests/modbus/bottle_plant_node/bottle_plant_node.awl
+35,		/home/vignesh/Desktop/PLCs/awlsim-0.42/tests/modbus/bottle_plant_node/bottle_plant_node.awl
+36,		/home/vignesh/Desktop/PLCs/awlsim-0.42/tests/modbus/bottle_plant_node/bottle_plant_node.awl
+37,		/home/vignesh/Desktop/PLCs/awlsim-0.42/tests/modbus/bottle_plant_node/bottle_plant_node.awl
+38,		/home/vignesh/Desktop/PLCs/awlsim-0.42/tests/modbus/bottle_plant_node/bottle_plant_node.awl
+39,		/home/vignesh/Desktop/PLCs/awlsim-0.42/tests/modbus/bottle_plant_node/bottle_plant_node.awl
+40,		/home/vignesh/Desktop/PLCs/awlsim-0.42/tests/modbus/bottle_plant_node/bottle_plant_node.awl
+41,		/home/vignesh/Desktop/PLCs/awlsim-0.42/tests/modbus/bottle_plant_node/bottle_plant_node.awl
+42,		/home/vignesh/Desktop/PLCs/awlsim-0.42/tests/modbus/bottle_plant_node/bottle_plant_node.awl
+43,		/home/vignesh/Desktop/PLCs/awlsim-0.42/tests/modbus/bottle_plant_node/bottle_plant_node.awl
+44,		/home/vignesh/Desktop/PLCs/awlsim-0.42/tests/modbus/bottle_plant_node/bottle_plant_node.awl
+45,		/home/vignesh/Desktop/PLCs/awlsim-0.42/tests/modbus/bottle_plant_node/bottle_plant_node.awl
+46,		/home/vignesh/Desktop/PLCs/awlsim-0.42/tests/modbus/bottle_plant_node/bottle_plant_node.awl
+47,		/home/vignesh/Desktop/PLCs/awlsim-0.42/tests/modbus/bottle_plant_node/bottle_plant_node.awl
+48,		/home/vignesh/Desktop/PLCs/awlsim-0.42/tests/modbus/bottle_plant_node/bottle_plant_node.awl
+49,		/home/vignesh/Desktop/PLCs/awlsim-0.42/tests/modbus/bottle_plant_node/bottle_plant_node.awl
+50,		/home/vignesh/Desktop/PLCs/awlsim-0.42/tests/modbus/bottle_plant_node/bottle_plant_node.awl
+51,		/home/vignesh/Desktop/PLCs/awlsim-0.42/tests/modbus/bottle_plant_node/bottle_plant_node.awl
+52,		/home/vignesh/Desktop/PLCs/awlsim-0.42/tests/modbus/bottle_plant_node/bottle_plant_node.awl
+53,		/home/vignesh/Desktop/PLCs/awlsim-0.42/tests/modbus/bottle_plant_node/bottle_plant_node.awl
+54,		/home/vignesh/Desktop/PLCs/awlsim-0.42/tests/modbus/bottle_plant_node/bottle_plant_node.awl
+55,		/home/vignesh/Desktop/PLCs/awlsim-0.42/tests/modbus/bottle_plant_node/bottle_plant_node.awl
+56,		/home/vignesh/Desktop/PLCs/awlsim-0.42/tests/modbus/bottle_plant_node/bottle_plant_node.awl
+57,		/home/vignesh/Desktop/PLCs/awlsim-0.42/tests/modbus/bottle_plant_node/bottle_plant_node.awl
+58,		/home/vignesh/Desktop/PLCs/awlsim-0.42/tests/modbus/bottle_plant_node/bottle_plant_node.awl
+59,		/home/vignesh/Desktop/PLCs/awlsim-0.42/tests/modbus/bottle_plant_node/bottle_plant_node.awl
+60,		/home/vignesh/Desktop/PLCs/awlsim-0.42/tests/modbus/bottle_plant_node/bottle_plant_node.awl
+61,		/home/vignesh/Desktop/PLCs/awlsim-0.42/tests/modbus/bottle_plant_node/bottle_plant_node.awl
+62,		/home/vignesh/Desktop/PLCs/awlsim-0.42/tests/modbus/bottle_plant_node/bottle_plant_node.awl
+63,		/home/vignesh/Desktop/PLCs/awlsim-0.42/tests/modbus/bottle_plant_node/bottle_plant_node.awl
 END_OF_AWL_SCRIPT_CONFIGURATION
 
 START_OF_DATA_AREA_CONFIGURATION
@@ -62,5 +286,173 @@ START_OF_DATA_AREA_CONFIGURATION
 7,		1,		(3:4:1:100)
 7,		2,		(3:5:1:100)
 7,		3,		(3:6:1:100)
+8,		1,		(3:4:1:100)
+8,		2,		(3:5:1:100)
+8,		3,		(3:6:1:100)
+9,		1,		(3:4:1:100)
+9,		2,		(3:5:1:100)
+9,		3,		(3:6:1:100)
+10,		1,		(3:4:1:100)
+10,		2,		(3:5:1:100)
+10,		3,		(3:6:1:100)
+11,		1,		(3:4:1:100)
+11,		2,		(3:5:1:100)
+11,		3,		(3:6:1:100)
+12,		1,		(3:4:1:100)
+12,		2,		(3:5:1:100)
+12,		3,		(3:6:1:100)
+13,		1,		(3:4:1:100)
+13,		2,		(3:5:1:100)
+13,		3,		(3:6:1:100)
+14,		1,		(3:4:1:100)
+14,		2,		(3:5:1:100)
+14,		3,		(3:6:1:100)
+15,		1,		(3:4:1:100)
+15,		2,		(3:5:1:100)
+15,		3,		(3:6:1:100)
+16,		1,		(3:4:1:100)
+16,		2,		(3:5:1:100)
+16,		3,		(3:6:1:100)
+17,		1,		(3:4:1:100)
+17,		2,		(3:5:1:100)
+17,		3,		(3:6:1:100)
+18,		1,		(3:4:1:100)
+18,		2,		(3:5:1:100)
+18,		3,		(3:6:1:100)
+19,		1,		(3:4:1:100)
+19,		2,		(3:5:1:100)
+19,		3,		(3:6:1:100)
+20,		1,		(3:4:1:100)
+20,		2,		(3:5:1:100)
+20,		3,		(3:6:1:100)
+21,		1,		(3:4:1:100)
+21,		2,		(3:5:1:100)
+21,		3,		(3:6:1:100)
+22,		1,		(3:4:1:100)
+22,		2,		(3:5:1:100)
+22,		3,		(3:6:1:100)
+23,		1,		(3:4:1:100)
+23,		2,		(3:5:1:100)
+23,		3,		(3:6:1:100)
+24,		1,		(3:4:1:100)
+24,		2,		(3:5:1:100)
+24,		3,		(3:6:1:100)
+25,		1,		(3:4:1:100)
+25,		2,		(3:5:1:100)
+25,		3,		(3:6:1:100)
+26,		1,		(3:4:1:100)
+26,		2,		(3:5:1:100)
+26,		3,		(3:6:1:100)
+27,		1,		(3:4:1:100)
+27,		2,		(3:5:1:100)
+27,		3,		(3:6:1:100)
+28,		1,		(3:4:1:100)
+28,		2,		(3:5:1:100)
+28,		3,		(3:6:1:100)
+29,		1,		(3:4:1:100)
+29,		2,		(3:5:1:100)
+29,		3,		(3:6:1:100)
+30,		1,		(3:4:1:100)
+30,		2,		(3:5:1:100)
+30,		3,		(3:6:1:100)
+31,		1,		(3:4:1:100)
+31,		2,		(3:5:1:100)
+31,		3,		(3:6:1:100)
+32,		1,		(3:4:1:100)
+32,		2,		(3:5:1:100)
+32,		3,		(3:6:1:100)
+33,		1,		(3:4:1:100)
+33,		2,		(3:5:1:100)
+33,		3,		(3:6:1:100)
+34,		1,		(3:4:1:100)
+34,		2,		(3:5:1:100)
+34,		3,		(3:6:1:100)
+35,		1,		(3:4:1:100)
+35,		2,		(3:5:1:100)
+35,		3,		(3:6:1:100)
+36,		1,		(3:4:1:100)
+36,		2,		(3:5:1:100)
+36,		3,		(3:6:1:100)
+37,		1,		(3:4:1:100)
+37,		2,		(3:5:1:100)
+37,		3,		(3:6:1:100)
+38,		1,		(3:4:1:100)
+38,		2,		(3:5:1:100)
+38,		3,		(3:6:1:100)
+39,		1,		(3:4:1:100)
+39,		2,		(3:5:1:100)
+39,		3,		(3:6:1:100)
+40,		1,		(3:4:1:100)
+40,		2,		(3:5:1:100)
+40,		3,		(3:6:1:100)
+41,		1,		(3:4:1:100)
+41,		2,		(3:5:1:100)
+41,		3,		(3:6:1:100)
+42,		1,		(3:4:1:100)
+42,		2,		(3:5:1:100)
+42,		3,		(3:6:1:100)
+43,		1,		(3:4:1:100)
+43,		2,		(3:5:1:100)
+43,		3,		(3:6:1:100)
+44,		1,		(3:4:1:100)
+44,		2,		(3:5:1:100)
+44,		3,		(3:6:1:100)
+45,		1,		(3:4:1:100)
+45,		2,		(3:5:1:100)
+45,		3,		(3:6:1:100)
+46,		1,		(3:4:1:100)
+46,		2,		(3:5:1:100)
+46,		3,		(3:6:1:100)
+47,		1,		(3:4:1:100)
+47,		2,		(3:5:1:100)
+47,		3,		(3:6:1:100)
+48,		1,		(3:4:1:100)
+48,		2,		(3:5:1:100)
+48,		3,		(3:6:1:100)
+49,		1,		(3:4:1:100)
+49,		2,		(3:5:1:100)
+49,		3,		(3:6:1:100)
+50,		1,		(3:4:1:100)
+50,		2,		(3:5:1:100)
+50,		3,		(3:6:1:100)
+51,		1,		(3:4:1:100)
+51,		2,		(3:5:1:100)
+51,		3,		(3:6:1:100)
+52,		1,		(3:4:1:100)
+52,		2,		(3:5:1:100)
+52,		3,		(3:6:1:100)
+53,		1,		(3:4:1:100)
+53,		2,		(3:5:1:100)
+53,		3,		(3:6:1:100)
+54,		1,		(3:4:1:100)
+54,		2,		(3:5:1:100)
+54,		3,		(3:6:1:100)
+55,		1,		(3:4:1:100)
+55,		2,		(3:5:1:100)
+55,		3,		(3:6:1:100)
+56,		1,		(3:4:1:100)
+56,		2,		(3:5:1:100)
+56,		3,		(3:6:1:100)
+57,		1,		(3:4:1:100)
+57,		2,		(3:5:1:100)
+57,		3,		(3:6:1:100)
+58,		1,		(3:4:1:100)
+58,		2,		(3:5:1:100)
+58,		3,		(3:6:1:100)
+59,		1,		(3:4:1:100)
+59,		2,		(3:5:1:100)
+59,		3,		(3:6:1:100)
+60,		1,		(3:4:1:100)
+60,		2,		(3:5:1:100)
+60,		3,		(3:6:1:100)
+61,		1,		(3:4:1:100)
+61,		2,		(3:5:1:100)
+61,		3,		(3:6:1:100)
+62,		1,		(3:4:1:100)
+62,		2,		(3:5:1:100)
+62,		3,		(3:6:1:100)
+63,		1,		(3:4:1:100)
+63,		2,		(3:5:1:100)
+63,		3,		(3:6:1:100)
 END_OF_DATA_AREA_CONFIGURATION
 

@@ -323,7 +323,7 @@ void* Timeline::thread_function() {
 
 		if( __interface_control->get_next_action() == STOP_BEFORE_TIME )
 		{
-			if(epoch_end <= now()+1){
+			if(epoch_end <= __time + 1){
 				printf("!!!! Breaking out of timeline thread !!!!\n");
 				exit(0);
 				break;
@@ -351,8 +351,8 @@ void* Timeline::thread_function() {
 				// if either there is no event on the event list, or no outbound connections
 				// that span Timelines, offer __window_size to the barrier
 				if( nxt_time < 0 || __min_sync_cross_timeline_delay < 0  )  {
-					ltime_t this_window = MAX(now(), nxt_time) + __window_size;
-					if(this_window > now())
+					ltime_t this_window = MAX(__time, nxt_time) + __window_size;
+					if(this_window > __time)
 					{
 #ifdef MUTEX_BARRIER
 						__interface_control->bottom_barrier.wait( this_window );
@@ -389,14 +389,14 @@ void* Timeline::thread_function() {
 					// least 0.  Compute the sum and offer to the min-reduction.
 					//
 #ifdef MUTEX_BARRIER
-					__interface_control->bottom_barrier.wait( MAX(now(),nxt_time) + MAX(0,__min_sync_cross_timeline_delay));
+					__interface_control->bottom_barrier.wait( MAX(__time,nxt_time) + MAX(0,__min_sync_cross_timeline_delay));
 #endif
 #ifdef SCHED_YIELD_BARRIER
-					__interface_control->bottom_barrier.wait( s3fid(), MAX(now(),nxt_time) + MAX(0,__min_sync_cross_timeline_delay));
+					__interface_control->bottom_barrier.wait( s3fid(), MAX(__time,nxt_time) + MAX(0,__min_sync_cross_timeline_delay));
 #endif
 #ifdef PTHREAD_BARRIER
 					int bottom_barrier_status = 0;
-					ltime_t offered_min_value = MAX(now(),nxt_time) + MAX(0,__min_sync_cross_timeline_delay);
+					ltime_t offered_min_value = MAX(__time,nxt_time) + MAX(0,__min_sync_cross_timeline_delay);
 					pthread_mutex_lock(&bottom_barrier_min_value_mutex);
 					if(bottom_barrier_min_value == prev_bottom_barrier_min_value || bottom_barrier_min_value > offered_min_value) bottom_barrier_min_value = offered_min_value;
 					pthread_mutex_unlock(&bottom_barrier_min_value_mutex);
@@ -430,11 +430,17 @@ void* Timeline::thread_function() {
 			change_state(RUNNING);
 #ifdef DEBUG
 			printf("timeline %d enters window [%ld,%ld)\n",
-					s3fid(), now(), __stop_before);
+					s3fid(), __time, __stop_before);
 #endif
+			//printf("############ timeline %d enters sync window [%ld,%ld)\n",
+			//		s3fid(), __time, __stop_before);
 
 			sync_window();
 			change_state(BLOCKED);
+
+			//printf("############# timeline %d finished sync window [%ld,%ld)\n",
+			//		s3fid(), __time, __stop_before);
+			
 
 			// synchronize at a "end of cycle" barrier, but the one
 			// to join depends on whether we've finished an epoch.
@@ -625,10 +631,10 @@ void Timeline::sync_window() {
 
 				Event* e; 
 				if( (*list_iter).get_pri() > 0 )
-					e = new Event(EVTYPE_EXEC_ACTIVATE, now(), (*list_iter).get_pri(), ic,
+					e = new Event(EVTYPE_EXEC_ACTIVATE, __time, (*list_iter).get_pri(), ic,
 							nxt_evt->get_act(), (*list_iter).get_proc(),this, __evtnum++);
 				else
-					e = new Event(EVTYPE_EXEC_ACTIVATE, now(), (*list_iter).get_proc()->pri(), ic,
+					e = new Event(EVTYPE_EXEC_ACTIVATE, __time, (*list_iter).get_proc()->pri(), ic,
 							nxt_evt->get_act(), (*list_iter).get_proc(),this, __evtnum++);
 
 				__events.push(e);
@@ -690,7 +696,7 @@ void Timeline::sync_window() {
 			pthread_mutex_lock( &in_appt->appt_mutex );
 
 			// write the new appointment into it
-			in_appt->appointment = now() + __out_appt[tl].lookahead;
+			in_appt->appointment = __time + __out_appt[tl].lookahead;
 
 			// if the target timeline is waiting it needs a signal to its
 			// condition variable
@@ -732,12 +738,12 @@ void Timeline::sync_window() {
 
 			// continue if the appointment time is larger than the clock
 			released = false;
-			if( now() < __in_appt[tl].appointment) released = true;
+			if( __time < __in_appt[tl].appointment) released = true;
 
 			// acquire the appointment lock and have another look
 			if(! released ) {
 				pthread_mutex_lock( &__in_appt[tl].appt_mutex );
-				if( now() < __in_appt[tl].appointment) {
+				if( __time < __in_appt[tl].appointment) {
 					// got lucky
 					pthread_mutex_unlock( &__in_appt[tl].appt_mutex );
 				} else {

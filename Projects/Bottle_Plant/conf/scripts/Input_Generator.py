@@ -6,11 +6,11 @@ import shared_sem
 from shared_sem import *
 
 Input_0_period = 0.1 # in seconds
-Input_1_period = 0.1
+Input_1_period = 0.2
 Input_2_period = 0.5
 conveyor_delay = 0.05
 Max_Inputs = 5
-N_levels = 2
+N_levels = 5
 
 def append_to_file(filename,data):
 	if not os.path.isfile(filename):
@@ -141,7 +141,7 @@ def generate_inputs(Node_data,node_id,cpu_cycle_number,curr_outputs=None,curr_in
 
 
     # Generating input 1 (for all nodes except the leaves)
-	if curr_time - Node_data["last_input1_time"] > Input_1_period and node_id < math.pow(2,N_levels):
+	if curr_time - Node_data["last_input1_time"] > Input_1_period and node_id < math.pow(2,N_levels) :
 		Node_data["last_input1_time"] = curr_time
 		in1 = 1
 

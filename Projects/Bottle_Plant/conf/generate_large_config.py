@@ -1,7 +1,7 @@
 Experiment_Name			=	"Bottle_Plant"
-Run_Time				=	6
-Dilation_Factor			=	5
-Number_Of_Nodes			=	7
+Run_Time				=	3
+Dilation_Factor			=	10
+Number_Of_Nodes			=	63
 ModBus_Network_Type		=	"IP"
 Node_to_router_delay   	= 	1	# in ms
 Router_to_router_delay 	= 	2	# in ms

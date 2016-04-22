@@ -1,0 +1,59 @@
+Starting Debug for lxc29-0
+Running Command /home/vignesh/Desktop/PLCs/awlsim-0.42/tests/run.sh -e 0 --node 29 /home/vignesh/Desktop/PLCs/awlsim-0.42/tests/modbus/bottle_plant_node/bottle_plant_node.awl
+6 (process ID) old priority 0, new priority 10
+=== Running tests with 'python2'
+Running test 'bottle_plant_node.awl' with 'python2' ... [u'0', u'10.10.0.9']
+[u'1', u'10.10.0.10']
+[u'IDS', u'10.10.0.10']
+('Dest IP : ', '10.10.0.17')
+('Resolved hostname = ', '10.10.0.17')
+('IP of IDS : ', '10.10.0.33')
+('Dest IP : ', '10.10.0.17')
+('Resolved hostname = ', '10.10.0.17')
+('IP of IDS : ', '10.10.0.33')
+('Dest IP : ', '10.10.0.21')
+('Resolved hostname = ', '10.10.0.21')
+('IP of IDS : ', '10.10.0.33')
+Started server process at : 1461358533.7
+('Start time = ', 1461358533.704752)
+Listening on port 502
+('Start time = ', 1461358533.904949)
+('IP:PORT = ', '10.10.0.17', 502)
+('Start time = ', 1461358533.904949)
+('IP:PORT = ', '10.10.0.21', 502)
+Resumed connection at : 2016-04-22 15:55:33.995063
+Established Connection from ('10.10.2.93', 43916)
+('Recv new msg = ', '1d 10 03 00 02 00 02 34 04 8e 35', ' at Node id = ', 30)
+('Sent msg = ', bytearray(b';\x10\x03\x00\x02\x00\x02R;Ps'))
+('Response from server = ', '3b 10 03 04 00 00 00 00 52 b1 ba 3b')
+('Sent response to client = ', bytearray(b'\x1d\x10\x03\x04\x00\x00\x00\x004ma\x8b'))
+Response processed at 2016-04-22 15:55:34.281000
+Resumed connection at : 2016-04-22 15:55:34.390438
+('Sent msg = ', bytearray(b'<\x10\x03\x00\x02\x00\x02S\x946\xd7'))
+Resumed connection at : 2016-04-22 15:55:34.523187
+('Sent msg = ', bytearray(b';\x10\x03\x00\x02\x00\x02R8\x15\x83'))
+('Recv new msg = ', '1d 10 03 00 02 00 02 34 02 61 f4', ' at Node id = ', 30)
+('Response from server = ', '3c 10 03 04 00 00 00 00 53 c2 38 34')
+('Response from server = ', '3b 10 03 04 00 00 00 00 52 6d 67 a3')
+Response processed at 2016-04-22 15:55:34.749801
+Response processed at 2016-04-22 15:55:34.751011
+Resumed connection at : 2016-04-22 15:55:35.037090
+Resumed connection at : 2016-04-22 15:55:35.040086
+('Sent response to client = ', bytearray(b'\x1d\x10\x03\x04\x00\x00\x00\x004\xb4\x04\xaa'))
+('Sent msg = ', bytearray(b'<\x10\x03\x00\x02\x00\x02S\x1294'))
+('Sent msg = ', bytearray(b';\x10\x03\x00\x02\x00\x02Rz\xaf\xe4'))
+('Response from server = ', '3c 10 03 04 00 00 00 00 53 98 43 a7')
+('Response from server = ', '3b 10 03 04 00 00 00 00 52 3b 8d af')
+Response processed at 2016-04-22 15:55:35.639137
+('Recv new msg = ', '1d 10 03 00 02 00 02 34 c4 34 dc', ' at Node id = ', 30)
+('Sent response to client = ', bytearray(b'\x1d\x10\x03\x04\x00\x00\x00\x004\x85\xacV'))
+Resumed connection at : 2016-04-22 15:55:35.805980
+('Sent msg = ', bytearray(b';\x10\x03\x00\x02\x00\x02Rz\x02%'))
+('Response from server = ', '3b 10 03 04 00 00 00 00 52 5e 7d 03')
+Response processed at 2016-04-22 15:55:35.960007
+Response processed at 2016-04-22 15:55:36.019069
+('Recv new msg = ', '1d 10 03 00 02 00 02 34 55 b1 f8', ' at Node id = ', 30)
+Resumed connection at : 2016-04-22 15:55:36.274231
+('Sent msg = ', bytearray(b';\x10\x03\x00\x02\x00\x02R\xca\xf5\x19'))
+('Sent response to client = ', bytearray(b'\x1d\x10\x03\x04\x00\x00\x00\x004k:\xc2'))
+Elapsed time greater = 514.638902, cycle number = 8749

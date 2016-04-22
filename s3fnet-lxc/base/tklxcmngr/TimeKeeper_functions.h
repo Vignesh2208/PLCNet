@@ -76,6 +76,8 @@ force = 1, force LXC times to be progress exactly
 */
 int progress(int timeline, int force);
 
+int fix_timeline(int timeline);
+
 //Reset all pre-specifed intervals for a given timeline (CS)
 int reset(int timeline);
 

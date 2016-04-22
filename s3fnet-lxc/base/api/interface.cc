@@ -231,6 +231,7 @@ ltime_t Interface::advance_body(next_action nxt_act, ltime_t t , stop_cond sc) {
 
 	// Now release the threads to do the simulation
 	// a synchronization window size
+	printf("@@@@@@@@@@ Interface : Release all thread functions or all timelines\n");
 #ifdef MUTEX_BARRIER
 	__tli.window_barrier.wait((ltime_t)(-1));
 #endif
@@ -241,6 +242,7 @@ ltime_t Interface::advance_body(next_action nxt_act, ltime_t t , stop_cond sc) {
 	pthread_barrier_wait( &(__tli.window_barrier) );
 #endif
 
+	printf("@@@@@@@@@ Interface : Waiting for all thread functions or all timelines to finish\n");
 	// and wait for them to finish the window
 #ifdef MUTEX_BARRIER
 	__tli.window_barrier.wait((ltime_t)(-1));
@@ -270,6 +272,7 @@ ltime_t Interface::advance_body(next_action nxt_act, ltime_t t , stop_cond sc) {
 	tim = use_data.ru_stime;
 	__acc_utime += (utime - __srt_utime);
 	__acc_stime += (stime - __srt_stime);
+	printf("Interface : All thread functions or all timelines finished. Resuming ...\n");
 	return __clock;
 } 	
 

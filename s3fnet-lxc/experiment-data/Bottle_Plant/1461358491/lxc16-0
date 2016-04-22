@@ -1,0 +1,101 @@
+Starting Debug for lxc16-0
+Running Command /home/vignesh/Desktop/PLCs/awlsim-0.42/tests/run.sh -e 0 --node 16 /home/vignesh/Desktop/PLCs/awlsim-0.42/tests/modbus/bottle_plant_node/bottle_plant_node.awl
+6 (process ID) old priority 0, new priority 10
+=== Running tests with 'python2'
+Running test 'bottle_plant_node.awl' with 'python2' ... [u'0', u'10.10.0.9']
+[u'1', u'10.10.0.10']
+[u'IDS', u'10.10.0.10']
+('Dest IP : ', '10.10.0.105')
+('Resolved hostname = ', '10.10.0.105')
+('IP of IDS : ', '10.10.0.33')
+('Dest IP : ', '10.10.0.105')
+('Resolved hostname = ', '10.10.0.105')
+('IP of IDS : ', '10.10.0.33')
+('Dest IP : ', '10.10.0.109')
+('Resolved hostname = ', '10.10.0.109')
+('IP of IDS : ', '10.10.0.33')
+Started server process at : 1461358533.7
+('Start time = ', 1461358533.698751)
+Listening on port 502
+('Start time = ', 1461358533.899775)
+('IP:PORT = ', '10.10.0.105', 502)
+('Start time = ', 1461358533.899945)
+('IP:PORT = ', '10.10.0.109', 502)
+('10.10.0.109', 502)
+[Errno 111] Connection refused
+Resumed connection at : 2016-04-22 15:55:34.011077
+('Sent msg = ', bytearray(b'!\x10\x03\x00\x02\x00\x028\x1fS\x17'))
+Established Connection from ('10.10.2.113', 59472)
+('Recv new msg = ', '10 10 03 00 02 00 02 27 90 2e c7', ' at Node id = ', 17)
+('Start time = ', 1461358534.111159)
+('IP:PORT = ', '10.10.0.109', 502)
+('10.10.0.109', 502)
+[Errno 111] Connection refused
+('Sent response to client = ', bytearray(b"\x10\x10\x03\x04\x00\x00\x00\x00\'\r\t\x07"))
+('Start time = ', 1461358534.313309)
+('IP:PORT = ', '10.10.0.109', 502)
+('Response from server = ', '21 10 03 04 00 00 00 00 38 c2 6d 2f')
+('10.10.0.109', 502)
+[Errno 111] Connection refused
+Response processed at 2016-04-22 15:55:34.390475
+('Recv new msg = ', '10 10 03 00 02 00 02 27 17 a8 03', ' at Node id = ', 17)
+('Start time = ', 1461358534.520569)
+('IP:PORT = ', '10.10.0.109', 502)
+('Sent response to client = ', bytearray(b"\x10\x10\x03\x04\x00\x00\x00\x00\'VJU"))
+Resumed connection at : 2016-04-22 15:55:34.598133
+('Sent msg = ', bytearray(b'!\x10\x03\x00\x02\x00\x028\x1bF\x12'))
+('10.10.0.109', 502)
+[Errno 111] Connection refused
+('Start time = ', 1461358534.728776)
+('IP:PORT = ', '10.10.0.109', 502)
+('10.10.0.109', 502)
+[Errno 111] Connection refused
+('Start time = ', 1461358534.929261)
+('IP:PORT = ', '10.10.0.109', 502)
+('Recv new msg = ', '10 10 03 00 02 00 02 27 c2 62 ec', ' at Node id = ', 17)
+('10.10.0.109', 502)
+[Errno 111] Connection refused
+('Sent response to client = ', bytearray(b"\x10\x10\x03\x04\x00\x00\x00\x00\'\xc2\x87X"))
+('Start time = ', 1461358535.13118)
+('IP:PORT = ', '10.10.0.109', 502)
+('10.10.0.109', 502)
+[Errno 111] Connection refused
+('Response from server = ', '21 10 03 04 00 00 00 00 38 e6 43 01')
+('Start time = ', 1461358535.329375)
+('IP:PORT = ', '10.10.0.109', 502)
+Response processed at 2016-04-22 15:55:35.351770
+('10.10.0.109', 502)
+[Errno 111] Connection refused
+('Recv new msg = ', '10 10 03 00 02 00 02 27 1e 2c c2', ' at Node id = ', 17)
+('Sent response to client = ', bytearray(b"\x10\x10\x03\x04\x00\x00\x00\x00\'\x82u\x02"))
+('Start time = ', 1461358535.535571)
+('IP:PORT = ', '10.10.0.109', 502)
+Resumed connection at : 2016-04-22 15:55:35.558336
+('Sent msg = ', bytearray(b'!\x10\x03\x00\x02\x00\x028\xf0>\xaf'))
+('10.10.0.109', 502)
+[Errno 111] Connection refused
+('Start time = ', 1461358535.744791)
+('IP:PORT = ', '10.10.0.109', 502)
+('10.10.0.109', 502)
+[Errno 111] Connection refused
+('Response from server = ', '21 10 03 04 00 00 00 00 38 31 f6 e3')
+('Recv new msg = ', '10 10 03 00 02 00 02 27 00 a1 8a', ' at Node id = ', 17)
+('Start time = ', 1461358535.953998)
+('IP:PORT = ', '10.10.0.109', 502)
+Response processed at 2016-04-22 15:55:35.992238
+('Sent response to client = ', bytearray(b"\x10\x10\x03\x04\x00\x00\x00\x00\'y\xbb\xe4"))
+('10.10.0.109', 502)
+[Errno 111] Connection refused
+('Start time = ', 1461358536.167214)
+('IP:PORT = ', '10.10.0.109', 502)
+Resumed connection at : 2016-04-22 15:55:36.187884
+('10.10.0.109', 502)
+[Errno 111] Connection refused
+('Sent msg = ', bytearray(b'!\x10\x03\x00\x02\x00\x028]\xc9\x03'))
+('Start time = ', 1461358536.375423)
+('IP:PORT = ', '10.10.0.109', 502)
+('10.10.0.109', 502)
+[Errno 111] Connection refused
+('Start time = ', 1461358536.587628)
+('IP:PORT = ', '10.10.0.109', 502)
+Elapsed time greater = 514.672623, cycle number = 10031

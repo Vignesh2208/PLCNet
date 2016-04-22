@@ -227,6 +227,7 @@ def run(inputFile,node_id,conn_type):
 			loadMod(name, parameters)
 
 
+		
 		conf_directory = awlsim.definitions.conf_directory
 		conf_ls = conf_directory.split('/')
 		Project_name = conf_ls[len(conf_ls)-2]
@@ -331,13 +332,13 @@ def run(inputFile,node_id,conn_type):
 					print("Elapsed time greater = " + str(elapsed_time) + ", cycle number = " + str(n_cycles))
 					n_greater = n_greater + 1
 
-				if total_run_time < 5.0 :	# compute statistics for first 5 secs
+				if total_run_time < 2.5 :	# compute statistics for first 5 secs
 					total_elapsed_time = total_elapsed_time + elapsed_time
 					total_elapsed_sq_time = total_elapsed_sq_time + (elapsed_time*elapsed_time)
 
 				cpu_cycle_number = cpu_cycle_number + 1
 
-				if n_cycles > 1 and total_run_time < 5.0 : # compute statistics for first 5 secs
+				if n_cycles > 1 and total_run_time < 2.5 : # compute statistics for first 5 secs
 					sample_mean = float(total_elapsed_time)/float(n_cycles)
 					sample_variance = (float(total_elapsed_sq_time)/float(n_cycles - 1)) - (float(n_cycles)/float(n_cycles-1))*(sample_mean*sample_mean)
 					if n_cycles % 10 == 0 :
@@ -379,7 +380,7 @@ def run(inputFile,node_id,conn_type):
 				writeStdout(ps)
 				writeStdout("\n")
 
-	if n_cycles > 1 and  total_run_time < 5.0 : # compute statistics for first 5 secs
+	if n_cycles > 1 and  total_run_time < 2.5 : # compute statistics for first 5 secs
 		sample_mean = float(total_elapsed_time)/n_cycles
 		sample_variance = (float(total_elapsed_sq_time)/(n_cycles - 1)) - (float(n_cycles)/(n_cycles-1))*(sample_mean*sample_mean)
 		log_file = conf_directory + "/logs/node_" + str(node_id) + "_cycle_statistics_log"
