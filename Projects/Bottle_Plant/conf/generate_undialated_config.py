@@ -3,7 +3,7 @@ import time
 
 Max_nodes = 2
 node = 0
-reader_path = "/home/vignesh/Desktop/PLCs/awlsim-0.42/s3fnet-lxc/lxc-command/reader"
+reader_path = "/home/vignesh/Desktop/PLCs/awlsim-0.42/s3fnet-lxc/lxc-command/reader_modified"
 
 while node <= Max_nodes :
 	lxc_name = "lxc" + str(node) + "-0"

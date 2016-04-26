@@ -11,22 +11,17 @@ Running test 'bottle_plant_node.awl' with 'python2' ... [u'0', u'10.10.0.9']
 ('IP of IDS : ', '10.10.0.33')
 ('Resolved hostname = ', '127.0.0.1')
 ('IP of IDS : ', '10.10.0.33')
-Started server process at : 1461361499.71
-('Start time = ', 1461361499.715187)
+Started server process at : 1461694698.66
+('Start time = ', 1461694698.656412)
 Listening on port 502
-Established Connection from ('10.10.2.65', 36475)
-('Recv new msg = ', '28 10 03 00 02 00 02 3f e8 8c 55', ' at Node id = ', 41)
-('Sent response to client = ', bytearray(b'(\x10\x03\x04\x00\x00\x00\x00?};\xa4'))
-('Recv new msg = ', '28 10 03 00 02 00 02 3f b7 ae 75', ' at Node id = ', 41)
-Elapsed time greater = 508.908667, cycle number = 2501
-('Sent response to client = ', bytearray(b'(\x10\x03\x04\x00\x00\x00\x00?N\xbdK'))
-RECV timeout error
-####### Exiting ############
-Re-Started server process at 1461362017.24
-('Start time = ', 1461362017.252097)
-Listening on port 502
-('End time = ', 1461362022.281388)
-Socket TIMEOUT Done !!!!!!!!!!!!!!!!
-Re-Started server process at 1461362022.35
-('Start time = ', 1461362022.362585)
-Listening on port 502
+Established Connection from ('10.10.2.65', 38311)
+('Server: Recv new msg = ', '28 10 03 00 02 00 02 3f 98 d3 33', ' at Node id = ', 41, ' at 2016-04-26 13:18:19.188024')
+Server processing request message at 2016-04-26 13:18:19.193019
+Server processed request message at 2016-04-26 13:18:19.193038
+Server : test run : received cmd at 2016-04-26 13:18:19.207977
+('Sent response to client = ', bytearray(b'(\x10\x03\x04\x00\x00\x00\x00?~\xd9\xc0'), ' at 2016-04-26 13:18:19.251600')
+('Server: Recv new msg = ', '28 10 03 00 02 00 02 3f 2b d6 87', ' at Node id = ', 41, ' at 2016-04-26 13:18:19.345124')
+Server processing request message at 2016-04-26 13:18:19.348103
+Server processed request message at 2016-04-26 13:18:19.348103
+Server : test run : received cmd at 2016-04-26 13:18:19.362480
+('Sent response to client = ', bytearray(b'(\x10\x03\x04\x00\x00\x00\x00?\x82[&'), ' at 2016-04-26 13:18:19.371763')

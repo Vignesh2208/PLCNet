@@ -11,12 +11,23 @@ Running test 'bottle_plant_node.awl' with 'python2' ... [u'0', u'10.10.0.9']
 ('IP of IDS : ', '10.10.0.33')
 ('Resolved hostname = ', '127.0.0.1')
 ('IP of IDS : ', '10.10.0.33')
-Started server process at : 1461361499.72
-('Start time = ', 1461361499.721192)
+Started server process at : 1461694698.74
+('Start time = ', 1461694698.736294)
 Listening on port 502
-Established Connection from ('10.10.2.109', 41845)
-('Recv new msg = ', '26 10 03 00 02 00 02 3d 53 e0 e1', ' at Node id = ', 39)
-('Sent response to client = ', bytearray(b'&\x10\x03\x04\x00\x00\x00\x00=\xda\xa6\x86'))
-('Recv new msg = ', '26 10 03 00 02 00 02 3d 86 2f 71', ' at Node id = ', 39)
-('Sent response to client = ', bytearray(b'&\x10\x03\x04\x00\x00\x00\x00=\x9a\x87\xd3'))
-Elapsed time greater = 508.88104, cycle number = 1678
+Established Connection from ('10.10.2.109', 43693)
+('Server: Recv new msg = ', '26 10 03 00 02 00 02 3d 3c 2c f0', ' at Node id = ', 39, ' at 2016-04-26 13:18:19.131601')
+Server processing request message at 2016-04-26 13:18:19.139067
+Server processed request message at 2016-04-26 13:18:19.139126
+Server : test run : received cmd at 2016-04-26 13:18:19.157837
+('Sent response to client = ', bytearray(b'&\x10\x03\x04\x00\x00\x00\x00=Q\x8c!'), ' at 2016-04-26 13:18:19.158821')
+('Server: Recv new msg = ', '26 10 03 00 02 00 02 3d 3e 3c e4', ' at Node id = ', 39, ' at 2016-04-26 13:18:19.350190')
+Server processing request message at 2016-04-26 13:18:19.357853
+Server processed request message at 2016-04-26 13:18:19.357893
+Server : test run : received cmd at 2016-04-26 13:18:19.398162
+('Sent response to client = ', bytearray(b'&\x10\x03\x04\x00\x00\x00\x00=\x1ego'), ' at 2016-04-26 13:18:19.406162')
+('Server: Recv new msg = ', '26 10 03 00 02 00 02 3d 17 cb fc', ' at Node id = ', 39, ' at 2016-04-26 13:18:20.557313')
+Server processing request message at 2016-04-26 13:18:20.563135
+Server processed request message at 2016-04-26 13:18:20.563148
+Server : test run : received cmd at 2016-04-26 13:18:20.574345
+('Sent response to client = ', bytearray(b'&\x10\x03\x04\x00\x00\x00\x00=\x8f\x06\xb1'), ' at 2016-04-26 13:18:20.585510')
+Elapsed time greater = 180.894455, cycle number = 2484

@@ -11,17 +11,30 @@ Running test 'bottle_plant_node.awl' with 'python2' ... [u'0', u'10.10.0.9']
 ('IP of IDS : ', '10.10.0.33')
 ('Resolved hostname = ', '127.0.0.1')
 ('IP of IDS : ', '10.10.0.33')
-Started server process at : 1461361499.74
-('Start time = ', 1461361499.741212)
+Started server process at : 1461694698.72
+('Start time = ', 1461694698.720469)
 Listening on port 502
-Established Connection from ('10.10.2.129', 39433)
-('Recv new msg = ', '30 10 03 00 02 00 02 47 96 4b 5a', ' at Node id = ', 49)
-('Sent response to client = ', bytearray(b'0\x10\x03\x04\x00\x00\x00\x00G\xeb\x9b\x10'))
-('Recv new msg = ', '30 10 03 00 02 00 02 47 ff 07 e7', ' at Node id = ', 49)
-('Sent response to client = ', bytearray(b'0\x10\x03\x04\x00\x00\x00\x00G\xbdC\xe9'))
-('Recv new msg = ', '30 10 03 00 02 00 02 47 12 d1 ea', ' at Node id = ', 49)
-('Sent response to client = ', bytearray(b'0\x10\x03\x04\x00\x00\x00\x00G\xbb\xc1\xd4'))
-('Recv new msg = ', '30 10 03 00 02 00 02 47 e4 40 7f', ' at Node id = ', 49)
-('Sent response to client = ', bytearray(b'0\x10\x03\x04\x00\x00\x00\x00G\xc1\xd0n'))
-('Recv new msg = ', '30 10 03 00 02 00 02 47 57 68 5a', ' at Node id = ', 49)
-('Sent response to client = ', bytearray(b'0\x10\x03\x04\x00\x00\x00\x00G\x7fr('))
+Elapsed time greater = 180.846176, cycle number = 8733
+Established Connection from ('10.10.2.129', 41284)
+('Server: Recv new msg = ', '30 10 03 00 02 00 02 47 fb 7f 02', ' at Node id = ', 49, ' at 2016-04-26 13:21:23.306603')
+Server processing request message at 2016-04-26 13:21:23.363443
+Server processed request message at 2016-04-26 13:21:23.363533
+Server : test run : received cmd at 2016-04-26 13:21:23.390317
+('Sent response to client = ', bytearray(b'0\x10\x03\x04\x00\x00\x00\x00GC\xca\xad'), ' at 2016-04-26 13:21:23.390420')
+RECV timeout error
+####### Exiting ############
+Re-Started server process at 1461694888.48
+('Start time = ', 1461694888.486501)
+Listening on port 502
+('End time = ', 1461694893.510401)
+Socket TIMEOUT Done !!!!!!!!!!!!!!!!
+Sever exiting
+Re-Started server process at 1461694893.69
+('Start time = ', 1461694893.694835)
+Listening on port 502
+('End time = ', 1461694898.743137)
+Socket TIMEOUT Done !!!!!!!!!!!!!!!!
+Sever exiting
+Re-Started server process at 1461694898.76
+('Start time = ', 1461694898.792725)
+Listening on port 502

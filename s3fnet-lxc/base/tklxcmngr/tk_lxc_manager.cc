@@ -39,6 +39,11 @@
 	//----------------------------------------------------------------------------------------------------------------------
 
 void* manageIncomingPacketsThreadHelper(void * ptr) { return ((LxcManager*)ptr)->manageIncomingPackets();     }
+void* manageIncomingPacketsByTimelineThreadHelper(void * ptr) { 
+	launchThreadInfo* lTI = (launchThreadInfo*)ptr;
+	return lTI->lxcManager->manageIncomingPacketsByTimeLine(lTI->timelineID);     
+
+}
 void* manageInitTearDownLXCThreadHelper(void * ptr)
 {
 	launchThreadInfo* ltI = (launchThreadInfo*)ptr;
@@ -131,6 +136,121 @@ void* LxcManager::setUpTearDownLXCs(unsigned int timelineID, int typeFlag)
 			proxyOnTimeline->exec_LXC_command(LXC_DESTROY);
 		}
 	}
+	return (void*)NULL;
+}
+
+void* LxcManager::manageIncomingPacketsByTimeLine(int timelineID)
+{
+	//cpu_set_t cpuset;
+	//int cpu = 7;
+	//CPU_ZERO(&cpuset);       //clears the cpuset
+	//CPU_SET( cpu , &cpuset); //set CPU 2 on cpuset
+	//sched_setaffinity(0, sizeof(cpuset), &cpuset);
+	// while(1){}
+
+	int numAdvancing = 0;
+	int ret = 0;
+
+	vector<LXC_Proxy*> proxiesBeingAdvanced;
+	vector<LXC_Proxy*>* proxiesOnTimeline = listOfProxiesByTimeline[timelineID];
+
+	if (proxiesOnTimeline->size() == 0){
+		printf("No proxies on timeline = %d. Packet management thread not needed\n",timelineID);
+		return 0;
+	}
+
+
+	struct pollfd ufds[proxiesOnTimeline->size()];
+	char* packetBuffer = (char*)malloc(sizeof(char) * PACKET_SIZE);
+	int j = 0;
+
+	// Do not begin polling LXCs until the entire model has bee completely initialized
+	while (isSimulatorRunning == false){}
+
+	while(1)
+	{
+		if (isSimulatorRunning == false){
+			printf("Incoming packet handler thread exited for timeLine %d\n",timelineID);
+			break;
+		}
+
+		int fd = open("/dev/s3fserial0",0);
+
+		for (unsigned int i = 0; i < proxiesOnTimeline->size(); i++)
+		{
+			//LXC_Proxy* proxy = listOfProxies[i];
+			LXC_Proxy* proxy = (*proxiesOnTimeline)[i];
+			s3f::s3fnet::Host* owner_host = (s3f::s3fnet::Host*)proxy->ptrToHost;
+
+			assert(owner_host != NULL);
+			ufds[i].fd = proxy->fd;
+			ufds[i].events  = POLLIN;
+			ufds[i].revents = 0;
+
+
+			
+			struct ioctl_conn_param ioctl_conn;
+			int mask = 0;
+			ltime_t temp_arrival_time = proxy->getElapsedTime();
+
+			
+			if(fd >= 0){
+
+				/* Temporarily commented out for now */
+				/*for(j = 0; j < 100; j++){
+					ioctl_conn.owner_lxc_name[j] = '\0';
+					ioctl_conn.dst_lxc_name[j] = '\0';
+				}
+				strcpy(ioctl_conn.owner_lxc_name,proxy->lxcName);
+				mask = ioctl(fd,S3FSERIAL_GETACTIVECONNS,&ioctl_conn);	
+				if(mask > 0){
+					j = 0;
+					while( j < 8){
+						if( mask & (1 << j)){
+							printf("Connection %d active on lxc : %s\n",j,proxy->lxcName);
+							owner_host->inNet()->getTopNet()->injectSerialEvent(owner_host,temp_arrival_time,j);
+						}
+						j = j + 1;
+					}
+				}*/
+				close(fd);
+
+			}
+			else{
+				//debugPrint("Could not open s3fserial");
+				close(fd);
+			}
+			
+
+
+		}
+		
+		int ret = poll(ufds, proxiesOnTimeline->size(), 3500);
+		
+		if (ret == 0){
+			continue; // no file descriptor has data ready to read
+
+		} 
+
+		// Get Poll Timestamp
+		struct timeval selectTimestamp;
+		gettimeofday(&selectTimestamp, NULL);
+		long selectTimeMicroSec = selectTimestamp.tv_sec * 1000000 + selectTimestamp.tv_usec;
+
+		if (ret < 0 && ret == EINTR){
+			printf("EINTR\n");
+			continue;
+		}
+
+		if (ret < 0){
+			perror("LXC Manager Poll Error");
+			exit(1);
+		}
+
+		handleIncomingPacket(packetBuffer, proxiesOnTimeline, selectTimeMicroSec, ufds);
+	}
+
+	printf("LXC Incoming Thread Finished\n");
 	return (void*)NULL;
 }
 
@@ -387,7 +507,9 @@ void LxcManager::handleIncomingPacket(char* buffer, vector<LXC_Proxy*>* proxiesT
 				//arrivalTime = temp_arrival_time; 
 				//proxy->last_arrival_time = arrivalTime;
 
-				debugPrint("Arrival Time : %lu\n",arrivalTime);
+				//debugPrint("Arrival Time : %lu\n",arrivalTime);
+				if((arrivalTime % 1000) < 100 )
+					printf("%lu milliseconds elapsed\n", arrivalTime/1000);
 				//debugPrint("######################################\n");
 				
 			}
@@ -455,8 +577,17 @@ LxcManager* LxcManager::get_lxc_manager(Interface* inf)
 
 void LxcManager::syncUpLXCs()
 {
+	threadArray = new pthread_t[siminf->get_numTimelines()];
 	#ifndef TAP_DISABLED
-	pthread_create(&incomingThread           , NULL, manageIncomingPacketsThreadHelper   , this);
+	//pthread_create(&incomingThread           , NULL, manageIncomingPacketsThreadHelper   , this);
+	for (unsigned int i = 0; i < siminf->get_numTimelines(); i++)
+	{
+		launchThreadInfo* lti = new launchThreadInfo;
+		lti->timelineID = i;
+		lti->lxcManager = this;
+		lti->typeFlag   =  START_LXCS;
+		pthread_create(&threadArray[i], NULL, manageIncomingPacketsByTimelineThreadHelper, lti);
+	}
 	#endif
 
 	long lxcTimestampSec;
@@ -972,7 +1103,7 @@ std::pair<int, unsigned int> LxcManager::analyzePacket(char* pkt_ptr, int len, u
 
 	if(is_tcp){
 		//debugPrint("######################################\n");
-		debugPrint("\n~~~~~~~~~~~~~~~~~~TCP :	");
+		//debugPrint("\n~~~~~~~~~~~~~~~~~~TCP :	");
 		//debugPrint("Ether Type: 0x%.4x\n", ether_type);
 		//debugPrint("Src IP string: %s\n",result_2);
 		//debugPrint("Dest IP string: %s\n", result);
@@ -997,7 +1128,7 @@ std::pair<int, unsigned int> LxcManager::analyzePacket(char* pkt_ptr, int len, u
 
 	if(is_udp){
 		//debugPrint("######################################\n");
-		debugPrint("\n~~~~~~~~~~~~~~~~~~UDP :	");
+		//debugPrint("\n~~~~~~~~~~~~~~~~~~UDP :	");
 		//debugPrint("Ether Type: 0x%.4x\n", ether_type);
 		//debugPrint("Src IP string: %s\n",result_2);
 		//debugPrint("Dest IP string: %s\n", result);

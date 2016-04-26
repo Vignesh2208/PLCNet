@@ -1,16 +1,16 @@
-Mean delay : 0.0387895258359
-Std dev    : 0.054741561313
-Bin[0] = 46
-Bin[1] = 85
-Bin[2] = 52
-Bin[3] = 37
-Bin[4] = 27
-Bin[5] = 20
-Bin[6] = 11
-Bin[7] = 7
-Bin[8] = 2
+Mean delay : 0.0264118367003
+Std dev    : 0.0477870795512
+Bin[0] = 317
+Bin[1] = 410
+Bin[2] = 186
+Bin[3] = 80
+Bin[4] = 53
+Bin[5] = 25
+Bin[6] = 19
+Bin[7] = 10
+Bin[8] = 9
 Bin[9] = 4
-Bin[10] = 27
-Total packets  : 27
-Total neg packets : 13
-total_outlierpackets : 2
+Bin[10] = 59
+Total packets  : 1172
+Total neg packets : 35
+total_outlierpackets : 19

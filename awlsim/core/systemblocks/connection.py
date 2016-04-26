@@ -8,6 +8,7 @@ import sys
 #from queue import *
 import multiprocessing, Queue
 #from multiprocessing import Queue as Queue
+from multiprocessing import Array as Array
 import time
 import os
 
@@ -33,6 +34,8 @@ from multiprocessing.managers import BaseManager
 import awlsim.core.systemblocks.test_run
 from awlsim.core.systemblocks.test_run import test_run_server_ip
 from awlsim.core.systemblocks.test_run import test_run_client_ip
+from awlsim.core.systemblocks.test_run import put
+from awlsim.core.systemblocks.test_run import get
 
 
 import ctypes
@@ -89,6 +92,35 @@ modbus_area_data_types = {
 		4 : "Input_Register",
 	}	
 
+class SharedQueue(object):
+	def __init__(self):
+		self.data = None
+		self.data_available = 0
+
+	def get(self,block=True):
+
+		if block == False :
+			if self.data_available == 1 :
+				self.data_available = 0
+				print("Got non blocking data from queue = ", self.data)
+				return self.data
+			else:
+				return None
+		else :
+			while self.data_available == 0 :
+				pass
+			self.data_available = 0
+			print("Got blocking data from queue = ", self.data)
+			return self.data
+
+	def put(self,data):
+		print("Data put into queue = ", data)
+		self.data = data
+		self.data_available = 1
+
+
+
+
 
 class Connection(object) :
 
@@ -123,6 +155,10 @@ class Connection(object) :
 				no_error = True
 			except :
 				no_error = False
+
+
+		self.thread_resp_arr = Array('i', range(2000))
+		self.thread_cmd_arr = Array('i', range(2000))
 				
 
 		self.connection_params.set_connection_params(connection_id,remote_port,local_port,self.hostname_to_ip(remote_host_name),is_server,single_write_enabled)
@@ -1134,174 +1170,6 @@ class Connection(object) :
 
 		return self.STATUS
 
-
-	# input params should be set before call
-	# all output params will be set by the call
-	def call_modbus_server_process(self) :
-		timeout = 0.001
-		
-		if self.STATUS == NOT_STARTED  : # start server
-
-			if self.ENQ_ENR == 1 :
-				self.STATUS = RUNNING	
-				self.ERROR = False
-				self.STATUS_MODBUS = 0x0000
-				self.STATUS_CONN = 0x0000
-				self.STATUS_FUNC = "MODBUSPN"
-				self.IDENT_CODE = "NONE"
-			
-
-				if self.cpu.network_interface_type == 0 : #IP							
-					self.server_process = Process(target = test_run_server_ip, args =(self.thread_resp_queue,self.thread_cmd_queue,self.connection_params.local_tsap_id,self.disconnect,self.recv_time,self.conn_time,self.IDS_IP,self.cpu.local_id))  
-					print("Started server process at : " + str(time.time()))					
-					self.server_process.start()
-				o = None
-				try :
-					#o = self.thread_resp_queue.get(block=True,timeout=timeout)					
-					o = self.thread_resp_queue.get(block=False)					
-				except Queue.Empty:
-					o = None
-					
-				if o != None :
-					if len(o) >= 6 :
-						self.read_finish_status,self.STATUS,self.ERROR,self.STATUS_MODBUS,self.STATUS_CONN,self.BUSY,self.CONN_ESTABLISHED = o
-						self.thread_cmd_queue.put(1)
-					else:
-						recv_data = o[0]
-						self.thread_cmd_queue.put(1)
-						response,request_msg_params = self.mod_server.process_request_message(recv_data)
-						self.thread_cmd_queue.put((response,request_msg_params))
-
-						self.unit = request_msg_params["unit"]
-						self.TI = request_msg_params["ti"]
-						self.data_type = request_msg_params["data_type"]
-						self.write_read = request_msg_params["write_read"]
-						self.start_address = request_msg_params["start_address"]
-						self.length = request_msg_params["length"]
-						
-						
-
-					
-			self.PREV_ENQ_ENR = self.ENQ_ENR
-
-		elif self.STATUS != RUNNING : 	# completed 
-			if self.read_finish_status == 0 :	# for this call return the status params undisturbed
-												# start new thread or resume the existing thread in the nxt call
-				self.read_finish_status = 1
-			
-
-			elif self.STATUS == DONE and self.CONN_ESTABLISHED == True : # if disconnect is false
-				if self.ENQ_ENR == 1 :
-					self.STATUS = RUNNING
-					o = None
-					try :
-						#o = self.thread_resp_queue.get(block=True,timeout=timeout)					
-						o = self.thread_resp_queue.get(block=False)					
-					except Queue.Empty:
-						o = None
-						
-					if o != None :
-						if len(o) >= 6 :
-							self.read_finish_status,self.STATUS,self.ERROR,self.STATUS_MODBUS,self.STATUS_CONN,self.BUSY,self.CONN_ESTABLISHED = o
-							self.thread_cmd_queue.put(1)
-						else:
-							recv_data = o[0]
-							self.thread_cmd_queue.put(1)
-							response,request_msg_params = self.mod_server.process_request_message(recv_data)
-							self.thread_cmd_queue.put((response,request_msg_params))
-
-							self.unit = request_msg_params["unit"]
-							self.TI = request_msg_params["ti"]
-							self.data_type = request_msg_params["data_type"]
-							self.write_read = request_msg_params["write_read"]
-							self.start_address = request_msg_params["start_address"]
-							self.length = request_msg_params["length"]
-							
-					
-			
-				
-			else :	# cases STATUS = DONE, CONN = False, STATUS = RECV_TIMEOUT_ERROR |  CONN_TIMEOUT_ERROR | CLIENT_ERROR, CONN = False
-				# all these cases imply thread exited - if pos in ENQ_ENR - restart new thread
-				if self.ENQ_ENR == 1  :
-					self.STATUS = RUNNING
-					self.ERROR = False
-					self.STATUS_MODBUS = 0x0000
-					self.STATUS_CONN = 0x0000
-					self.STATUS_FUNC = "MODBUSPN"
-					self.IDENT_CODE = "NONE"	
-			
-					if self.cpu.network_interface_type == 0 : #IP	
-						if self.server_process != None:
-							self.server_process.join()
-
-						del self.thread_resp_queue
-						del self.thread_cmd_queue
-
-						self.thread_resp_queue = multiprocessing.Queue()
-						self.thread_cmd_queue = multiprocessing.Queue()
-
-						self.server_process = Process(target = test_run_server_ip, args =(self.thread_resp_queue,self.thread_cmd_queue,self.connection_params.local_tsap_id,self.disconnect,self.recv_time,self.conn_time,self.IDS_IP,self.cpu.local_id))  
-						print("Re-Started server process at " + str(time.time()))					
-						self.server_process.start()
-
-					o = None
-					try :
-						#o = self.thread_resp_queue.get(block=True,timeout=timeout)
-						o = self.thread_resp_queue.get(block=False)					
-					except Queue.Empty:
-						o = None
-
-					if o != None :
-						if len(o) >= 6 :
-							self.read_finish_status,self.STATUS,self.ERROR,self.STATUS_MODBUS,self.STATUS_CONN,self.BUSY,self.CONN_ESTABLISHED = o
-							self.thread_cmd_queue.put(1)
-						else:
-							recv_data = o[0]
-							self.thread_cmd_queue.put(1)
-							response,request_msg_params = self.mod_server.process_request_message(recv_data)
-							self.thread_cmd_queue.put((response,request_msg_params))
-							self.unit = request_msg_params["unit"]
-							self.TI = request_msg_params["ti"]
-							self.data_type = request_msg_params["data_type"]
-							self.write_read = request_msg_params["write_read"]
-							self.start_address = request_msg_params["start_address"]
-							self.length = request_msg_params["length"]
-							
-					
-					
-			self.PREV_ENQ_ENR = self.ENQ_ENR
-			return self.STATUS
-
-		elif self.STATUS == RUNNING :
-			self.PREV_ENQ_ENR = self.ENQ_ENR
-			
-			o = None
-			try :
-				#o = self.thread_resp_queue.get(block=True,timeout=timeout)				
-				o = self.thread_resp_queue.get(block=False)					
-			except Queue.Empty:
-				o = None
-				
-			if o != None :
-				if len(o) >= 6 :
-					self.read_finish_status,self.STATUS,self.ERROR,self.STATUS_MODBUS,self.STATUS_CONN,self.BUSY,self.CONN_ESTABLISHED = o
-					self.thread_cmd_queue.put(1)
-				else:
-					recv_data = o[0]					
-					self.thread_cmd_queue.put(1)
-					response,request_msg_params = self.mod_server.process_request_message(recv_data)
-					self.thread_cmd_queue.put((response,request_msg_params))
-					self.unit = request_msg_params["unit"]
-					self.TI = request_msg_params["ti"]
-					self.data_type = request_msg_params["data_type"]
-					self.write_read = request_msg_params["write_read"]
-					self.start_address = request_msg_params["start_address"]
-					self.length = request_msg_params["length"]
-									
-					
-
-		return self.STATUS
-
 	# input params should be set before call
 	# all output params will be set by the call
 	def call_modbus_client(self) :
@@ -1399,6 +1267,321 @@ class Connection(object) :
 
 		return self.STATUS
 
+
+
+	# input params should be set before call
+	# all output params will be set by the call
+	def call_modbus_server_process(self) :
+		timeout = 0.001
+		
+		if self.STATUS == NOT_STARTED  : # start server
+
+			if self.ENQ_ENR == 1 :
+				self.STATUS = RUNNING	
+				self.ERROR = False
+				self.STATUS_MODBUS = 0x0000
+				self.STATUS_CONN = 0x0000
+				self.STATUS_FUNC = "MODBUSPN"
+				self.IDENT_CODE = "NONE"
+			
+
+				if self.cpu.network_interface_type == 0 : #IP							
+					self.server_process = Process(target = test_run_server_ip, args =(self.thread_resp_queue,self.thread_cmd_queue,self.connection_params.local_tsap_id,self.disconnect,self.recv_time,self.conn_time,self.IDS_IP,self.cpu.local_id,self.thread_resp_arr,self.thread_cmd_arr))  
+					print("Started server process at : " + str(time.time()))					
+					self.server_process.start()
+				o = None
+				try :
+					#o = self.thread_resp_queue.get(block=True,timeout=timeout)					
+					o = self.thread_resp_queue.get(block=False)					
+				except Queue.Empty:
+					o = None
+					
+				if o != None :
+					if len(o) >= 6 :
+						self.read_finish_status,self.STATUS,self.ERROR,self.STATUS_MODBUS,self.STATUS_CONN,self.BUSY,self.CONN_ESTABLISHED = o
+						self.thread_cmd_queue.put(1)
+					else:
+						recv_data = o[0]
+						#?self.thread_cmd_queue.put(1)
+						#?response,request_msg_params = self.mod_server.process_request_message(recv_data)
+						#?self.thread_cmd_queue.put((response,request_msg_params))
+						response,request_msg_params = self.mod_server.process_request_message(recv_data)										
+						if request_msg_params["ERROR"] == NO_ERROR :
+							self.STATUS = DONE
+							self.ERROR = False						
+							self.thread_cmd_queue.put((response,request_msg_params))
+							if self.disconnect == True :
+								self.CONN_ESTABLISHED = False
+								self.BUSY = False
+								self.read_finish_status = 1
+							else :
+								self.CONN_ESTABLISHED = True
+								self.BUSY = True
+								self.read_finish_status = 0
+						else :
+							# set STATUS_MODBUS Based on returned error value			
+							print("ERROR on processing request msg")
+							self.read_finish_status = 1
+							self.STATUS = DONE
+							self.ERROR = True
+							self.CONN_ESTABLISHED = False
+							self.BUSY = False
+							self.STATUS_MODBUS = request_msg_params["ERROR"]
+							self.STATUS_CONN = 0x0
+							self.thread_cmd_queue.put('QUIT')
+
+						self.unit = request_msg_params["unit"]
+						self.TI = request_msg_params["ti"]
+						self.data_type = request_msg_params["data_type"]
+						self.write_read = request_msg_params["write_read"]
+						self.start_address = request_msg_params["start_address"]
+						self.length = request_msg_params["length"]
+						
+						
+
+					
+			self.PREV_ENQ_ENR = self.ENQ_ENR
+
+		elif self.STATUS != RUNNING : 	# completed 
+			if self.read_finish_status == 0 :	# for this call return the status params undisturbed
+												# start new thread or resume the existing thread in the nxt call
+				self.read_finish_status = 1
+			
+
+			elif self.STATUS == DONE and self.CONN_ESTABLISHED == True : # if disconnect is false
+				if self.ENQ_ENR == 1 :
+					self.STATUS = RUNNING
+					o = None
+					try :
+						#o = self.thread_resp_queue.get(block=True,timeout=timeout)					
+						o = self.thread_resp_queue.get(block=False)					
+					except Queue.Empty:
+						o = None
+						
+					if o != None :
+						if len(o) >= 6 :
+							self.read_finish_status,self.STATUS,self.ERROR,self.STATUS_MODBUS,self.STATUS_CONN,self.BUSY,self.CONN_ESTABLISHED = o
+							self.thread_cmd_queue.put(1)
+						else:
+							#?recv_data = o[0]
+							#?self.thread_cmd_queue.put(1)
+							#?response,request_msg_params = self.mod_server.process_request_message(recv_data)
+							#?self.thread_cmd_queue.put((response,request_msg_params))
+							recv_data = o[0]					
+							#?self.thread_cmd_queue.put(1)
+							response,request_msg_params = self.mod_server.process_request_message(recv_data)										
+							if request_msg_params["ERROR"] == NO_ERROR :
+								self.STATUS = DONE
+								self.ERROR = False						
+								self.thread_cmd_queue.put((response,request_msg_params))
+								if self.disconnect == True :
+									self.CONN_ESTABLISHED = False
+									self.BUSY = False
+									self.read_finish_status = 1
+								else :
+									self.CONN_ESTABLISHED = True
+									self.BUSY = True
+									self.read_finish_status = 0
+							else :
+								# set STATUS_MODBUS Based on returned error value			
+								print("ERROR on processing request msg")
+								self.read_finish_status = 1
+								self.STATUS = DONE
+								self.ERROR = True
+								self.CONN_ESTABLISHED = False
+								self.BUSY = False
+								self.STATUS_MODBUS = request_msg_params["ERROR"]
+								self.STATUS_CONN = 0x0
+								self.thread_cmd_queue.put('QUIT')
+
+							self.unit = request_msg_params["unit"]
+							self.TI = request_msg_params["ti"]
+							self.data_type = request_msg_params["data_type"]
+							self.write_read = request_msg_params["write_read"]
+							self.start_address = request_msg_params["start_address"]
+							self.length = request_msg_params["length"]
+							
+					
+			
+				
+			else :	# cases STATUS = DONE, CONN = False, STATUS = RECV_TIMEOUT_ERROR |  CONN_TIMEOUT_ERROR | CLIENT_ERROR, CONN = False
+				# all these cases imply thread exited - if pos in ENQ_ENR - restart new thread
+				if self.ENQ_ENR == 1  :
+					self.STATUS = RUNNING
+					self.ERROR = False
+					self.STATUS_MODBUS = 0x0000
+					self.STATUS_CONN = 0x0000
+					self.STATUS_FUNC = "MODBUSPN"
+					self.IDENT_CODE = "NONE"	
+			
+					if self.cpu.network_interface_type == 0 : #IP	
+						if self.server_process != None:
+							self.server_process.join()
+
+						del self.thread_resp_queue
+						del self.thread_cmd_queue
+
+						self.thread_resp_queue = multiprocessing.Queue()
+						self.thread_cmd_queue = multiprocessing.Queue()
+						
+						self.thread_resp_arr = Array('i', range(2000))
+						self.thread_cmd_arr = Array('i', range(2000))
+						
+
+						self.server_process = Process(target = test_run_server_ip, args =(self.thread_resp_queue,self.thread_cmd_queue,self.connection_params.local_tsap_id,self.disconnect,self.recv_time,self.conn_time,self.IDS_IP,self.cpu.local_id,self.thread_resp_arr,self.thread_cmd_arr))  
+						print("Re-Started server process at " + str(time.time()))					
+						self.server_process.start()
+
+					o = None
+					try :
+						#o = self.thread_resp_queue.get(block=True,timeout=timeout)
+						o = self.thread_resp_queue.get(block=False)					
+					except Queue.Empty:
+						o = None
+
+					if o != None :
+						if len(o) >= 6 :
+							self.read_finish_status,self.STATUS,self.ERROR,self.STATUS_MODBUS,self.STATUS_CONN,self.BUSY,self.CONN_ESTABLISHED = o
+							self.thread_cmd_queue.put(1)
+						else:
+							recv_data = o[0]
+							
+							#?self.thread_cmd_queue.put(1)
+							response,request_msg_params = self.mod_server.process_request_message(recv_data)										
+							if request_msg_params["ERROR"] == NO_ERROR :
+								self.STATUS = DONE
+								self.ERROR = False						
+								self.thread_cmd_queue.put((response,request_msg_params))
+								if self.disconnect == True :
+									self.CONN_ESTABLISHED = False
+									self.BUSY = False
+									self.read_finish_status = 1
+								else :
+									self.CONN_ESTABLISHED = True
+									self.BUSY = True
+									self.read_finish_status = 0
+							else :
+								# set STATUS_MODBUS Based on returned error value			
+								print("ERROR on processing request msg")
+								self.read_finish_status = 1
+								self.STATUS = DONE
+								self.ERROR = True
+								self.CONN_ESTABLISHED = False
+								self.BUSY = False
+								self.STATUS_MODBUS = request_msg_params["ERROR"]
+								self.STATUS_CONN = 0x0
+								self.thread_cmd_queue.put('QUIT')
+
+
+							self.unit = request_msg_params["unit"]
+							self.TI = request_msg_params["ti"]
+							self.data_type = request_msg_params["data_type"]
+							self.write_read = request_msg_params["write_read"]
+							self.start_address = request_msg_params["start_address"]
+							self.length = request_msg_params["length"]
+							
+					
+					
+			self.PREV_ENQ_ENR = self.ENQ_ENR
+			return self.STATUS
+
+		elif self.STATUS == RUNNING :
+			self.PREV_ENQ_ENR = self.ENQ_ENR
+			
+			o = None
+			try :
+				#o = self.thread_resp_queue.get(block=True,timeout=timeout)				
+				o = self.thread_resp_queue.get(block=False)					
+			except Queue.Empty:
+				o = None
+				
+			if o != None :
+				if len(o) >= 6 :
+					self.read_finish_status,self.STATUS,self.ERROR,self.STATUS_MODBUS,self.STATUS_CONN,self.BUSY,self.CONN_ESTABLISHED = o
+					self.thread_cmd_queue.put(1)
+				else:
+					recv_data = o[0]					
+					#?self.thread_cmd_queue.put(1)
+					print("Server processing request message at " + str(datetime.datetime.now()))
+					response,request_msg_params = self.mod_server.process_request_message(recv_data)										
+					print("Server processed request message at " + str(datetime.datetime.now()))
+					if request_msg_params["ERROR"] == NO_ERROR :
+						self.STATUS = DONE
+						self.ERROR = False						
+						self.thread_cmd_queue.put((response,request_msg_params))
+						if self.disconnect == True :
+							self.CONN_ESTABLISHED = False
+							self.BUSY = False
+							self.read_finish_status = 1
+						else :
+							self.CONN_ESTABLISHED = True
+							self.BUSY = True
+							self.read_finish_status = 0
+					else :
+						# set STATUS_MODBUS Based on returned error value			
+						print("ERROR on processing request msg")
+						self.read_finish_status = 1
+						self.STATUS = DONE
+						self.ERROR = True
+						self.CONN_ESTABLISHED = False
+						self.BUSY = False
+						self.STATUS_MODBUS = request_msg_params["ERROR"]
+						self.STATUS_CONN = 0x0
+						self.thread_cmd_queue.put('QUIT')
+
+
+
+					self.unit = request_msg_params["unit"]
+					self.TI = request_msg_params["ti"]
+					self.data_type = request_msg_params["data_type"]
+					self.write_read = request_msg_params["write_read"]
+					self.start_address = request_msg_params["start_address"]
+					self.length = request_msg_params["length"]
+									
+			o = None
+			o = get(self.thread_resp_arr,block=False)
+			if o != None :
+				recv_data = o
+				#?self.thread_cmd_queue.put(1)
+				print("Server processing request message at " + str(datetime.datetime.now()))
+				response,request_msg_params = self.mod_server.process_request_message(recv_data)										
+				print("Server processed request message at " + str(datetime.datetime.now()))
+				if request_msg_params["ERROR"] == NO_ERROR :
+					self.STATUS = DONE
+					self.ERROR = False						
+					put(self.thread_cmd_arr,1,response)
+					if self.disconnect == True :
+						self.CONN_ESTABLISHED = False
+						self.BUSY = False
+						self.read_finish_status = 1
+					else :
+						self.CONN_ESTABLISHED = True
+						self.BUSY = True
+						self.read_finish_status = 0
+				else :
+					# set STATUS_MODBUS Based on returned error value			
+					print("ERROR on processing request msg")
+					self.read_finish_status = 1
+					self.STATUS = DONE
+					self.ERROR = True
+					self.CONN_ESTABLISHED = False
+					self.BUSY = False
+					self.STATUS_MODBUS = request_msg_params["ERROR"]
+					self.STATUS_CONN = 0x0
+					put(self.thread_cmd_arr,3,'QUIT')
+
+
+
+				self.unit = request_msg_params["unit"]
+				self.TI = request_msg_params["ti"]
+				self.data_type = request_msg_params["data_type"]
+				self.write_read = request_msg_params["write_read"]
+				self.start_address = request_msg_params["start_address"]
+				self.length = request_msg_params["length"]
+
+		return self.STATUS
+
+
 	def call_modbus_client_process(self) :
 		TCP_REMOTE_IP  = "127.0.0.1"
 		TCP_REMOTE_IP  = self.connection_params.rem_staddr
@@ -1419,8 +1602,10 @@ class Connection(object) :
 				self.IDENT_CODE = "NONE"
 				
 
-				if self.cpu.network_interface_type == 0 : #IP							
-					self.client_process = Process(target = test_run_client_ip, args =(self.thread_resp_queue,self.thread_cmd_queue,self.connection_params.local_tsap_id, self.IDS_IP, TCP_REMOTE_IP, TCP_REMOTE_PORT,self.conn_time,self.cpu.local_id))  
+				if self.cpu.network_interface_type == 0 : #IP
+
+					
+					self.client_process = Process(target = test_run_client_ip, args =(self.thread_resp_queue,self.thread_cmd_queue,self.connection_params.local_tsap_id, self.IDS_IP, TCP_REMOTE_IP, TCP_REMOTE_PORT,self.conn_time,self.cpu.local_id, self.thread_resp_arr,self.thread_cmd_arr))  
 					self.client_process.start()
 
 				o = None
@@ -1433,12 +1618,33 @@ class Connection(object) :
 				if o != None :
 					if len(o) >= 6 :
 						self.read_finish_status,self.STATUS,self.ERROR,self.STATUS_MODBUS,self.STATUS_CONN,self.BUSY,self.CONN_ESTABLISHED = o
-						msg_to_send,exception = self.mod_client.construct_request_message(self.data_type,self.write_read,self.length,self.connection_params.single_write,self.start_address,self.TI,self.remote_host_id)
-						self.thread_cmd_queue.put((self.disconnect,self.recv_time, self.conn_time, msg_to_send, exception))
+						#msg_to_send,exception = self.mod_client.construct_request_message(self.data_type,self.write_read,self.length,self.connection_params.single_write,self.start_address,self.TI,self.remote_host_id)
+						#self.thread_cmd_queue.put((self.disconnect,self.recv_time, self.conn_time, msg_to_send, exception))
+						if self.read_finish_status != 0 :
+							msg_to_send,exception = self.mod_client.construct_request_message(self.data_type,self.write_read,self.length,self.connection_params.single_write,self.start_address,self.TI,self.remote_host_id)
+							self.thread_cmd_queue.put((self.disconnect,self.recv_time, self.conn_time, msg_to_send, exception))
 					else:
 						recv_data = o[0]
 						ERROR_CODE = self.mod_client.process_response_message(recv_data)
-						self.thread_cmd_queue.put(ERROR_CODE)						
+						#?self.thread_cmd_queue.put(ERROR_CODE)						
+						self.read_finish_status = 0
+						if ERROR_CODE == NO_ERROR :
+							self.STATUS = DONE
+							self.ERROR = False
+							if self.disconnect == True :
+								self.read_finish_status = 1
+								self.STATUS = DONE
+								self.CONN_ESTABLISHED = False
+								self.thread_cmd_queue('QUIT')					
+						else :
+							# set STATUS_MODBUS Based on returned error value			
+							self.read_finish_status = 1
+							self.STATUS = DONE
+							self.ERROR = True
+							self.STATUS_MODBUS = ERROR_CODE
+							self.STATUS_CONN = 0x0
+							self.CONN_ESTABLISHED = False
+							self.thread_cmd_queue('QUIT')								
 
 					
 			self.PREV_ENQ_ENR = self.ENQ_ENR
@@ -1446,6 +1652,29 @@ class Connection(object) :
 		elif self.STATUS != RUNNING : 	# completed 
 			if self.read_finish_status == 0 :	# for this call return the status params undisturbed
 												# start new thread or resume the existing thread in the nxt call
+				if self.ENQ_ENR == 1 and self.CONN_ESTABLISHED == True:
+					msg_to_send,exception = self.mod_client.construct_request_message(self.data_type,self.write_read,self.length,self.connection_params.single_write,self.start_address,self.TI,self.remote_host_id)
+					#?self.thread_cmd_queue.put((self.disconnect,self.recv_time, self.conn_time, msg_to_send, exception))
+					put(self.thread_cmd_arr,2,(self.disconnect,self.recv_time, self.conn_time, msg_to_send, exception))
+					
+					self.STATUS = RUNNING
+					self.ERROR = False
+					self.STATUS_MODBUS = 0x0
+					self.STATUS_CONN = 0x0
+					self.BUSY = True
+					self.CONN_ESTABLISHED = True
+				elif self.ENQ_ENR == 1:
+					self.thread_cmd_queue.put(1)
+					self.STATUS = RUNNING
+					self.ERROR = False
+					self.STATUS_MODBUS = 0x0
+					self.STATUS_CONN = 0x0
+					self.BUSY = True
+					self.CONN_ESTABLISHED = False
+
+				else:
+					self.thread_cmd_queue.put('QUIT')
+
 				self.read_finish_status = 1
 				
 
@@ -1463,14 +1692,33 @@ class Connection(object) :
 					if o != None :
 						if len(o) >= 6 :
 							self.read_finish_status,self.STATUS,self.ERROR,self.STATUS_MODBUS,self.STATUS_CONN,self.BUSY,self.CONN_ESTABLISHED = o
-							msg_to_send,exception = self.mod_client.construct_request_message(self.data_type,self.write_read,self.length,self.connection_params.single_write,self.start_address,self.TI,self.remote_host_id)
-							self.thread_cmd_queue.put((self.disconnect,self.recv_time, self.conn_time, msg_to_send, exception))
+							#msg_to_send,exception = self.mod_client.construct_request_message(self.data_type,self.write_read,self.length,self.connection_params.single_write,self.start_address,self.TI,self.remote_host_id)
+							#self.thread_cmd_queue.put((self.disconnect,self.recv_time, self.conn_time, msg_to_send, exception))
+							if self.read_finish_status != 0 :
+								msg_to_send,exception = self.mod_client.construct_request_message(self.data_type,self.write_read,self.length,self.connection_params.single_write,self.start_address,self.TI,self.remote_host_id)
+								self.thread_cmd_queue.put((self.disconnect,self.recv_time, self.conn_time, msg_to_send, exception))
 						else:
 							recv_data = o[0]
 							ERROR_CODE = self.mod_client.process_response_message(recv_data)
-							self.thread_cmd_queue.put(ERROR_CODE)
-						
-				
+							#?self.thread_cmd_queue.put(ERROR_CODE)
+							self.read_finish_status = 0
+							if ERROR_CODE == NO_ERROR :
+								self.STATUS = DONE
+								self.ERROR = False
+								if self.disconnect == True :
+									self.read_finish_status = 1
+									self.STATUS = DONE
+									self.CONN_ESTABLISHED = False
+									self.thread_cmd_queue('QUIT')					
+							else :
+								# set STATUS_MODBUS Based on returned error value
+								self.read_finish_status = 1
+								self.STATUS = DONE
+								self.ERROR = True
+								self.STATUS_MODBUS = ERROR_CODE
+								self.STATUS_CONN = 0x0
+								self.CONN_ESTABLISHED = False
+								self.thread_cmd_queue('QUIT')						
 				
 			else :	# cases STATUS = DONE, CONN = False, STATUS = RECV_TIMEOUT_ERROR |  CONN_TIMEOUT_ERROR | CLIENT_ERROR, CONN = False
 				# all these cases imply thread exited - if pos in ENQ_ENR - restart new thread
@@ -1491,8 +1739,12 @@ class Connection(object) :
 
 						self.thread_resp_queue = multiprocessing.Queue()
 						self.thread_cmd_queue = multiprocessing.Queue()
+						
+						self.thread_resp_arr = Array('i', range(2000))
+						self.thread_cmd_arr = Array('i', range(2000))
+						
 
-						self.client_process = Process(target = test_run_client_ip, args =(self.thread_resp_queue,self.thread_cmd_queue,self.connection_params.local_tsap_id, self.IDS_IP,TCP_REMOTE_IP, TCP_REMOTE_PORT,self.conn_time,self.cpu.local_id))  
+						self.client_process = Process(target = test_run_client_ip, args =(self.thread_resp_queue,self.thread_cmd_queue,self.connection_params.local_tsap_id, self.IDS_IP,TCP_REMOTE_IP, TCP_REMOTE_PORT,self.conn_time,self.cpu.local_id,self.thread_resp_arr,self.thread_cmd_arr))  
 						self.client_process.start()
 					
 					o = None
@@ -1505,13 +1757,55 @@ class Connection(object) :
 					if o != None :
 						if len(o) >= 6 :
 							self.read_finish_status,self.STATUS,self.ERROR,self.STATUS_MODBUS,self.STATUS_CONN,self.BUSY,self.CONN_ESTABLISHED = o
-							msg_to_send,exception = self.mod_client.construct_request_message(self.data_type,self.write_read,self.length,self.connection_params.single_write,self.start_address,self.TI,self.remote_host_id)
-							self.thread_cmd_queue.put((self.disconnect,self.recv_time, self.conn_time, msg_to_send, exception))
+							#msg_to_send,exception = self.mod_client.construct_request_message(self.data_type,self.write_read,self.length,self.connection_params.single_write,self.start_address,self.TI,self.remote_host_id)
+							#self.thread_cmd_queue.put((self.disconnect,self.recv_time, self.conn_time, msg_to_send, exception))
+							if self.read_finish_status != 0 :
+								msg_to_send,exception = self.mod_client.construct_request_message(self.data_type,self.write_read,self.length,self.connection_params.single_write,self.start_address,self.TI,self.remote_host_id)
+								self.thread_cmd_queue.put((self.disconnect,self.recv_time, self.conn_time, msg_to_send, exception))
 						else:
 							recv_data = o[0]
 							ERROR_CODE = self.mod_client.process_response_message(recv_data)
-							self.thread_cmd_queue.put(ERROR_CODE)
-					
+							self.read_finish_status = 0
+							if ERROR_CODE == NO_ERROR :
+								self.STATUS = DONE
+								self.ERROR = False
+								if self.disconnect == True :
+									self.read_finish_status = 1
+									self.STATUS = DONE
+									self.CONN_ESTABLISHED = False
+									self.thread_cmd_queue('QUIT')					
+							else :
+								# set STATUS_MODBUS Based on returned error value
+								self.read_finish_status = 1			
+								self.STATUS = DONE
+								self.ERROR = True
+								self.STATUS_MODBUS = ERROR_CODE
+								self.STATUS_CONN = 0x0
+								self.CONN_ESTABLISHED = False
+								self.thread_cmd_queue('QUIT')					
+							#?self.thread_cmd_queue.put(ERROR_CODE)
+					o = None
+					o = get(self.thread_resp_arr,block=False)
+					if o != None :
+						ERROR_CODE = self.mod_client.process_response_message(o)
+						self.read_finish_status = 0
+						if ERROR_CODE == NO_ERROR :
+							self.STATUS = DONE
+							self.ERROR = False
+							if self.disconnect == True :
+								self.read_finish_status = 1
+								self.STATUS = DONE
+								self.CONN_ESTABLISHED = False
+								put(self.thread_cmd_arr,3,'QUIT')					
+						else :
+							# set STATUS_MODBUS Based on returned error value
+							self.read_finish_status = 1			
+							self.STATUS = DONE
+							self.ERROR = True
+							self.STATUS_MODBUS = ERROR_CODE
+							self.STATUS_CONN = 0x0
+							self.CONN_ESTABLISHED = False
+							put(self.thread_cmd_arr,3,'QUIT')
 					
 			self.PREV_ENQ_ENR = self.ENQ_ENR
 			return self.STATUS
@@ -1529,12 +1823,58 @@ class Connection(object) :
 			if o != None :
 				if len(o) >= 6 :
 					self.read_finish_status,self.STATUS,self.ERROR,self.STATUS_MODBUS,self.STATUS_CONN,self.BUSY,self.CONN_ESTABLISHED = o
-					msg_to_send,exception = self.mod_client.construct_request_message(self.data_type,self.write_read,self.length,self.connection_params.single_write,self.start_address,self.TI,self.remote_host_id)
-					self.thread_cmd_queue.put((self.disconnect,self.recv_time, self.conn_time, msg_to_send, exception))
+					if self.read_finish_status != 0 :
+						msg_to_send,exception = self.mod_client.construct_request_message(self.data_type,self.write_read,self.length,self.connection_params.single_write,self.start_address,self.TI,self.remote_host_id)
+						self.thread_cmd_queue.put((self.disconnect,self.recv_time, self.conn_time, msg_to_send, exception))
 				else:
 					recv_data = o[0]
 					ERROR_CODE = self.mod_client.process_response_message(recv_data)
-					self.thread_cmd_queue.put(ERROR_CODE)
+					self.read_finish_status = 0
+					if ERROR_CODE == NO_ERROR :
+						self.STATUS = DONE
+						self.ERROR = False
+						if self.disconnect == True :
+							self.read_finish_status = 1
+							self.STATUS = DONE
+							self.CONN_ESTABLISHED = False
+							self.thread_cmd_queue('QUIT')					
+					else :
+						# set STATUS_MODBUS Based on returned error value
+						self.read_finish_status = 1
+						self.STATUS = DONE
+						self.ERROR = True
+						self.STATUS_MODBUS = ERROR_CODE
+						self.STATUS_CONN = 0x0
+						self.CONN_ESTABLISHED = False
+						self.thread_cmd_queue('QUIT')					
+
+
+
+					
+			o = None
+			o = get(self.thread_resp_arr,block=False)
+			if o != None :
+				ERROR_CODE = self.mod_client.process_response_message(o)
+				self.read_finish_status = 0
+				if ERROR_CODE == NO_ERROR :
+					self.STATUS = DONE
+					self.ERROR = False
+					if self.disconnect == True :
+						self.read_finish_status = 1
+						self.STATUS = DONE
+						self.CONN_ESTABLISHED = False
+						put(self.thread_cmd_arr,3,'QUIT')					
+				else :
+					# set STATUS_MODBUS Based on returned error value
+					self.read_finish_status = 1			
+					self.STATUS = DONE
+					self.ERROR = True
+					self.STATUS_MODBUS = ERROR_CODE
+					self.STATUS_CONN = 0x0
+					self.CONN_ESTABLISHED = False
+					put(self.thread_cmd_arr,3,'QUIT')						
+				
+					#?self.thread_cmd_queue.put(ERROR_CODE)
 									
 					
 

@@ -31,7 +31,7 @@ BEGIN
 	)
 
 
-	// Connection 2 - as client to left child in binary tree
+	// Initialize Connection 2 - as client to left child in binary tree
 	CALL	SFB 102, DB 102 (
 		ID				 := 2,
 		DB_PARAM		 := 21,
@@ -56,7 +56,7 @@ BEGIN
 	)
 
 
-	// Connection 3 - as client to right child in binary tree
+	// Initialize Connection 3 - as client to right child in binary tree
 	CALL	SFB 102, DB 102 (
 		ID				 := 3,
 		DB_PARAM		 := 22,
@@ -109,6 +109,8 @@ BEGIN
 	T	DBW 0
 	L   W#16#0000
 	T 	DBW 1
+
+	
 
 
 END_ORGANIZATION_BLOCK
@@ -218,7 +220,7 @@ BEGIN
 	
 
 
-	SET
+	//SET
 	A 	I 0.1
 	JCN  _1		// If input 1.0  is false, jump to _Check_Conn2
 	L W#16#1

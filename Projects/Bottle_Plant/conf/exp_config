@@ -1,7 +1,7 @@
 START_OF_EXPERIMENT_CONFIGURATION
 Experiment_Name	=	Bottle_Plant
 Run_Time			=	3
-Dilation_Factor	=	10
+Dilation_Factor	=	5
 Number_Of_Nodes	=	63
 ModBus_Network_Type =  IP
 END_OF_EXPERIMENT_CONFIGURATION

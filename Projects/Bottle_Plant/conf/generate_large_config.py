@@ -1,12 +1,12 @@
 Experiment_Name			=	"Bottle_Plant"
 Run_Time				=	3
-Dilation_Factor			=	10
+Dilation_Factor			=	5
 Number_Of_Nodes			=	63
 ModBus_Network_Type		=	"IP"
 Node_to_router_delay   	= 	1	# in ms
 Router_to_router_delay 	= 	2	# in ms
 Input_0_period 			= 	0.1 # in seconds
-Input_1_period 			= 	0.1
+Input_1_period 			= 	0.2
 Input_2_period 			= 	0.5
 conveyor_delay 			= 	0.05
 Max_Jobs 				= 	5

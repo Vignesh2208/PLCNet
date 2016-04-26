@@ -1,10 +1,10 @@
-total_timeline 5
+total_timeline 7
 tick_per_second 6
 run_time 3.0
 seed 1
 log_dir Bottle_Plant
 
-dilation [ TDF 10 ]
+dilation [ TDF 5 ]
 Net
 [
 	lxcConfig
@@ -117,7 +117,7 @@ Net
 	Net
 	[
 		id 4
-		alignment 0
+		alignment 4
 		host
 		[
 			id 0
@@ -127,7 +127,7 @@ Net
 	Net
 	[
 		id 5
-		alignment 1
+		alignment 5
 		host
 		[
 			id 0
@@ -137,26 +137,6 @@ Net
 	Net
 	[
 		id 6
-		alignment 2
-		host
-		[
-			id 0
-			_extends .dict.emuHost
-		]
-	]
-	Net
-	[
-		id 7
-		alignment 3
-		host
-		[
-			id 0
-			_extends .dict.emuHost
-		]
-	]
-	Net
-	[
-		id 8
 		alignment 0
 		host
 		[
@@ -166,7 +146,7 @@ Net
 	]
 	Net
 	[
-		id 9
+		id 7
 		alignment 1
 		host
 		[
@@ -176,7 +156,7 @@ Net
 	]
 	Net
 	[
-		id 10
+		id 8
 		alignment 2
 		host
 		[
@@ -186,8 +166,28 @@ Net
 	]
 	Net
 	[
-		id 11
+		id 9
 		alignment 3
+		host
+		[
+			id 0
+			_extends .dict.emuHost
+		]
+	]
+	Net
+	[
+		id 10
+		alignment 4
+		host
+		[
+			id 0
+			_extends .dict.emuHost
+		]
+	]
+	Net
+	[
+		id 11
+		alignment 5
 		host
 		[
 			id 0
@@ -237,7 +237,7 @@ Net
 	Net
 	[
 		id 16
-		alignment 0
+		alignment 4
 		host
 		[
 			id 0
@@ -247,7 +247,7 @@ Net
 	Net
 	[
 		id 17
-		alignment 1
+		alignment 5
 		host
 		[
 			id 0
@@ -257,26 +257,6 @@ Net
 	Net
 	[
 		id 18
-		alignment 2
-		host
-		[
-			id 0
-			_extends .dict.emuHost
-		]
-	]
-	Net
-	[
-		id 19
-		alignment 3
-		host
-		[
-			id 0
-			_extends .dict.emuHost
-		]
-	]
-	Net
-	[
-		id 20
 		alignment 0
 		host
 		[
@@ -286,7 +266,7 @@ Net
 	]
 	Net
 	[
-		id 21
+		id 19
 		alignment 1
 		host
 		[
@@ -296,7 +276,7 @@ Net
 	]
 	Net
 	[
-		id 22
+		id 20
 		alignment 2
 		host
 		[
@@ -306,8 +286,28 @@ Net
 	]
 	Net
 	[
-		id 23
+		id 21
 		alignment 3
+		host
+		[
+			id 0
+			_extends .dict.emuHost
+		]
+	]
+	Net
+	[
+		id 22
+		alignment 4
+		host
+		[
+			id 0
+			_extends .dict.emuHost
+		]
+	]
+	Net
+	[
+		id 23
+		alignment 5
 		host
 		[
 			id 0
@@ -357,7 +357,7 @@ Net
 	Net
 	[
 		id 28
-		alignment 0
+		alignment 4
 		host
 		[
 			id 0
@@ -367,7 +367,7 @@ Net
 	Net
 	[
 		id 29
-		alignment 1
+		alignment 5
 		host
 		[
 			id 0
@@ -377,26 +377,6 @@ Net
 	Net
 	[
 		id 30
-		alignment 2
-		host
-		[
-			id 0
-			_extends .dict.emuHost
-		]
-	]
-	Net
-	[
-		id 31
-		alignment 3
-		host
-		[
-			id 0
-			_extends .dict.emuHost
-		]
-	]
-	Net
-	[
-		id 32
 		alignment 0
 		host
 		[
@@ -406,7 +386,7 @@ Net
 	]
 	Net
 	[
-		id 33
+		id 31
 		alignment 1
 		host
 		[
@@ -416,7 +396,7 @@ Net
 	]
 	Net
 	[
-		id 34
+		id 32
 		alignment 2
 		host
 		[
@@ -426,8 +406,28 @@ Net
 	]
 	Net
 	[
-		id 35
+		id 33
 		alignment 3
+		host
+		[
+			id 0
+			_extends .dict.emuHost
+		]
+	]
+	Net
+	[
+		id 34
+		alignment 4
+		host
+		[
+			id 0
+			_extends .dict.emuHost
+		]
+	]
+	Net
+	[
+		id 35
+		alignment 5
 		host
 		[
 			id 0
@@ -477,7 +477,7 @@ Net
 	Net
 	[
 		id 40
-		alignment 0
+		alignment 4
 		host
 		[
 			id 0
@@ -487,7 +487,7 @@ Net
 	Net
 	[
 		id 41
-		alignment 1
+		alignment 5
 		host
 		[
 			id 0
@@ -497,26 +497,6 @@ Net
 	Net
 	[
 		id 42
-		alignment 2
-		host
-		[
-			id 0
-			_extends .dict.emuHost
-		]
-	]
-	Net
-	[
-		id 43
-		alignment 3
-		host
-		[
-			id 0
-			_extends .dict.emuHost
-		]
-	]
-	Net
-	[
-		id 44
 		alignment 0
 		host
 		[
@@ -526,7 +506,7 @@ Net
 	]
 	Net
 	[
-		id 45
+		id 43
 		alignment 1
 		host
 		[
@@ -536,7 +516,7 @@ Net
 	]
 	Net
 	[
-		id 46
+		id 44
 		alignment 2
 		host
 		[
@@ -546,8 +526,28 @@ Net
 	]
 	Net
 	[
-		id 47
+		id 45
 		alignment 3
+		host
+		[
+			id 0
+			_extends .dict.emuHost
+		]
+	]
+	Net
+	[
+		id 46
+		alignment 4
+		host
+		[
+			id 0
+			_extends .dict.emuHost
+		]
+	]
+	Net
+	[
+		id 47
+		alignment 5
 		host
 		[
 			id 0
@@ -597,7 +597,7 @@ Net
 	Net
 	[
 		id 52
-		alignment 0
+		alignment 4
 		host
 		[
 			id 0
@@ -607,7 +607,7 @@ Net
 	Net
 	[
 		id 53
-		alignment 1
+		alignment 5
 		host
 		[
 			id 0
@@ -617,26 +617,6 @@ Net
 	Net
 	[
 		id 54
-		alignment 2
-		host
-		[
-			id 0
-			_extends .dict.emuHost
-		]
-	]
-	Net
-	[
-		id 55
-		alignment 3
-		host
-		[
-			id 0
-			_extends .dict.emuHost
-		]
-	]
-	Net
-	[
-		id 56
 		alignment 0
 		host
 		[
@@ -646,7 +626,7 @@ Net
 	]
 	Net
 	[
-		id 57
+		id 55
 		alignment 1
 		host
 		[
@@ -656,7 +636,7 @@ Net
 	]
 	Net
 	[
-		id 58
+		id 56
 		alignment 2
 		host
 		[
@@ -666,8 +646,28 @@ Net
 	]
 	Net
 	[
-		id 59
+		id 57
 		alignment 3
+		host
+		[
+			id 0
+			_extends .dict.emuHost
+		]
+	]
+	Net
+	[
+		id 58
+		alignment 4
+		host
+		[
+			id 0
+			_extends .dict.emuHost
+		]
+	]
+	Net
+	[
+		id 59
+		alignment 5
 		host
 		[
 			id 0
@@ -718,7 +718,7 @@ Net
 	Net
 	[
 		id 64
-		alignment 4
+		alignment 6
 		router
 		[
 			id 	1

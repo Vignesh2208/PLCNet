@@ -33,34 +33,34 @@ int main()
     system(debug);
     ufds.fd = fd;
     ufds.events = POLLIN;
-while (1) {
-    rv = poll(&ufds, 1, -1);
-if (rv == -1) {
-    perror("poll"); // error occurred in poll()
-} else if (rv == 0) {
-   printf("rv is 0\n");
- } else {
-    // check for events on s1:
-    if (ufds.revents & POLLIN) {
-        result = read(fd, buf, MAX_BUF); // receive normal data
-         if (strcmp(buf, "exit") == 0) {
-	    printf("Exiting..\n");
-	    break;
-    	 }
-    pid = fork();
-    if (pid == 0) { //in child
-    sprintf(debug, "echo Running Command %s >> %s/%s", buf, PATH_TO_DATA, hostname);
-    sprintf(command, "%s >> %s/%s 2>&1", buf, PATH_TO_DATA, hostname);
-//    sprintf(debug, "echo Running Command %s", buf);
-//    sprintf(command, "%s", buf);
-    system(debug);
-    system(command);
-    return 0;
-    }
-    }
-}
+    while (1) {
+        rv = poll(&ufds, 1, -1);
+        if (rv == -1) {
+            perror("poll"); // error occurred in poll()
+        } else if (rv == 0) {
+            printf("rv is 0\n");
+        } else {
+        // check for events on s1:
+            if (ufds.revents & POLLIN) {
+                result = read(fd, buf, MAX_BUF); // receive normal data
+                if (strcmp(buf, "exit") == 0) {
+    	           printf("Exiting..\n");
+    	           break;
+            	 }
+                pid = fork();
+                if (pid == 0) { //in child
+                    sprintf(debug, "echo Running Command %s >> %s/%s", buf, PATH_TO_DATA, hostname);
+                    sprintf(command, "%s >> %s/%s 2>&1", buf, PATH_TO_DATA, hostname);
+                    //    sprintf(debug, "echo Running Command %s", buf);
+                    //    sprintf(command, "%s", buf);
+                    system(debug);
+                    system(command);
+                    return 0;
+                }
+            }
+        }
 
-}
+    }
     close(fd);
 
     return 0;

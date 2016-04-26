@@ -272,11 +272,17 @@ int main(int argc, char** argv)
   sim_inf->runtime_measurements();
 
   #ifndef TAP_DISABLED
-  pthread_cancel(sim_inf->get_timeline_interface()->lm->incomingThread);
+  for (unsigned int i = 0; i < sim_inf->get_numTimelines(); i++)
+  {    
+    pthread_cancel(sim_inf->get_timeline_interface()->lm->threadArray[i]);
+  }
+  //pthread_cancel(sim_inf->get_timeline_interface()->lm->incomingThread);
   #endif
 
   sim_inf->get_timeline_interface()->lm->isSimulatorRunning = false;
-  sleep(2);
+  sleep(2);  
+
+
   sim_inf->get_timeline_interface()->lm->stopExperiment();
   sim_inf->get_timeline_interface()->lm->printLXCstats();
   delete sim_inf;

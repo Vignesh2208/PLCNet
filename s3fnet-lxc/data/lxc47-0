@@ -9,31 +9,29 @@ Running test 'bottle_plant_node.awl' with 'python2' ... [u'0', u'10.10.0.9']
 ('IP of IDS : ', '10.10.0.33')
 ('Resolved hostname = ', '127.0.0.1')
 ('IP of IDS : ', '10.10.0.33')
-('Resolved hostname = ', '127.0.0.1')
-('IP of IDS : ', '10.10.0.33')
-Started server process at : 1461361499.73
-('Start time = ', 1461361499.730201)
-Listening on port 502
-Established Connection from ('10.10.2.129', 46069)
-('Recv new msg = ', '2f 10 03 00 02 00 02 46 21 47 ae', ' at Node id = ', 48)
-('Sent response to client = ', bytearray(b'/\x10\x03\x04\x00\x00\x00\x00F\xa5\x92\xce'))
-('Recv new msg = ', '2f 10 03 00 02 00 02 46 9d c0 7c', ' at Node id = ', 48)
-('Sent response to client = ', bytearray(b'/\x10\x03\x04\x00\x00\x00\x00F\\"\xb7'))
-('Recv new msg = ', '2f 10 03 00 02 00 02 46 39 38 b4', ' at Node id = ', 48)
-('Sent response to client = ', bytearray(b'/\x10\x03\x04\x00\x00\x00\x00Fx\x07k'))
-Elapsed time greater = 508.956734, cycle number = 14838
-RECV timeout error
-####### Exiting ############
-Re-Started server process at 1461362017.48
-('Start time = ', 1461362017.504996)
-Listening on port 502
-('End time = ', 1461362022.529398)
-Socket TIMEOUT Done !!!!!!!!!!!!!!!!
-Re-Started server process at 1461362022.56
-('Start time = ', 1461362022.566547)
-Listening on port 502
-('End time = ', 1461362027.593461)
-Socket TIMEOUT Done !!!!!!!!!!!!!!!!
-Re-Started server process at 1461362027.66
-('Start time = ', 1461362027.718016)
-Listening on port 502
+Traceback (most recent call last):
+  File "/home/vignesh/Desktop/PLCs/awlsim-0.42/tests/../awlsim-cli", line 699, in <module>
+    sys.exit(main())
+  File "/home/vignesh/Desktop/PLCs/awlsim-0.42/tests/../awlsim-cli", line 696, in main
+    return run(inputFile,node_id,conn_type)
+  File "/home/vignesh/Desktop/PLCs/awlsim-0.42/tests/../awlsim-cli", line 274, in run
+    s.startup()
+  File "/home/vignesh/Desktop/PLCs/awlsim-0.42/awlsim/core/main.py", line 163, in startup
+    self.cpu.startup()
+  File "/home/vignesh/Desktop/PLCs/awlsim-0.42/awlsim/core/cpu.py", line 815, in startup
+    self.prog.build()
+  File "/home/vignesh/Desktop/PLCs/awlsim-0.42/awlsim/core/cpu.py", line 435, in build
+    sfb = SFB_table[sfbNumber](self.cpu)
+  File "/home/vignesh/Desktop/PLCs/awlsim-0.42/awlsim/core/systemblocks/system_sfb_102.py", line 213, in __init__
+    self.connection_objects[connection_id] = Connection(cpu,connection_id,remote_port,local_port,remote_host_name,is_server,single_write_enabled,data_areas)
+  File "/home/vignesh/Desktop/PLCs/awlsim-0.42/awlsim/core/systemblocks/connection.py", line 174, in __init__
+    self.param_init_lock = Lock()
+  File "/usr/lib/python2.7/multiprocessing/__init__.py", line 176, in Lock
+    return Lock()
+  File "/usr/lib/python2.7/multiprocessing/synchronize.py", line 147, in __init__
+    SemLock.__init__(self, SEMAPHORE, 1, 1)
+  File "/usr/lib/python2.7/multiprocessing/synchronize.py", line 75, in __init__
+    sl = self._semlock = _multiprocessing.SemLock(kind, value, maxvalue)
+OSError: [Errno 17] File exists
+=== TEST FAILED ===
+Test 'bottle_plant_node.awl' FAILED

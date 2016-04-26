@@ -11,29 +11,13 @@ Running test 'bottle_plant_node.awl' with 'python2' ... [u'0', u'10.10.0.9']
 ('IP of IDS : ', '10.10.0.33')
 ('Resolved hostname = ', '127.0.0.1')
 ('IP of IDS : ', '10.10.0.33')
-Started server process at : 1461361499.76
-('Start time = ', 1461361499.75923)
+Started server process at : 1461694698.74
+('Start time = ', 1461694698.743124)
 Listening on port 502
-Established Connection from ('10.10.2.157', 57587)
-('Recv new msg = ', '3d 10 03 00 02 00 02 54 42 cf f9', ' at Node id = ', 62)
-('Sent response to client = ', bytearray(b'=\x10\x03\x04\x00\x00\x00\x00T\xdc\xbd\x04'))
-('Recv new msg = ', '3d 10 03 00 02 00 02 54 26 4d 0f', ' at Node id = ', 62)
-('Sent response to client = ', bytearray(b'=\x10\x03\x04\x00\x00\x00\x00T\xcfB\x17'))
-('Recv new msg = ', '3d 10 03 00 02 00 02 54 d7 d1 e3', ' at Node id = ', 62)
-Elapsed time greater = 508.856357, cycle number = 4066
-('Sent response to client = ', bytearray(b'=\x10\x03\x04\x00\x00\x00\x00T;\xb1\xbd'))
-RECV timeout error
-####### Exiting ############
-Re-Started server process at 1461362020.09
-('Start time = ', 1461362020.19952)
-Listening on port 502
-('End time = ', 1461362025.228498)
-Socket TIMEOUT Done !!!!!!!!!!!!!!!!
-Re-Started server process at 1461362025.38
-('Start time = ', 1461362025.414298)
-Listening on port 502
-('End time = ', 1461362030.441396)
-Socket TIMEOUT Done !!!!!!!!!!!!!!!!
-Re-Started server process at 1461362030.46
-('Start time = ', 1461362030.468955)
-Listening on port 502
+Established Connection from ('10.10.2.157', 59438)
+('Server: Recv new msg = ', '3d 10 03 00 02 00 02 54 9a d2 cb', ' at Node id = ', 62, ' at 2016-04-26 13:18:20.463954')
+Server processing request message at 2016-04-26 13:18:20.471296
+Server processed request message at 2016-04-26 13:18:20.471296
+Server : test run : received cmd at 2016-04-26 13:18:20.500269
+('Sent response to client = ', bytearray(b'=\x10\x03\x04\x00\x00\x00\x00T\x9a\x1e\xfe'), ' at 2016-04-26 13:18:20.856626')
+Elapsed time greater = 180.839861, cycle number = 6370

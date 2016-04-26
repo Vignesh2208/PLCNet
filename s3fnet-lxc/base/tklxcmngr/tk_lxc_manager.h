@@ -108,6 +108,7 @@ class LxcManager
 		string  logFolder;                                           // path to the folder where information about each run will be stored
 		FILE*   fpLogFile;                                           // file pointer to the log file
 		FILE*   fpAdvanceErrorFile;                                  // file pointer to the file containing all advance errors
+		pthread_t* threadArray;
 
 	//-------------------------------------------------------------------------------------------------------
 	// 										Statistics Measurement
@@ -131,6 +132,8 @@ class LxcManager
 	//-------------------------------------------------------------------------------------------------------
 	// 										MAIN THREAD FUNCTION
 	//-------------------------------------------------------------------------------------------------------
+
+		void* manageIncomingPacketsByTimeLine(int timelineID);
 
 		/*
 		 * Contains the logic for the thread capturing LXC packets.
