@@ -1,0 +1,75 @@
+Starting Debug for lxc1-0
+Running Command /home/vignesh/Desktop/PLCs/awlsim-0.42/tests/run.sh -e 1 --node 1 /home/vignesh/Desktop/PLCs/awlsim-0.42/tests/modbus/simple_client_server_multiple/sfb102_client.awl
+6 (process ID) old priority 0, new priority 10
+=== Running tests with 'python2'
+Running test 'sfb102_client.awl' with 'python2' ... [u'0', u'10.10.0.9']
+[u'1', u'10.10.0.10']
+[u'IDS', u'10.10.0.10']
+('Dest IP : ', '10.10.0.9')
+('Resolved hostname = ', '10.10.0.9')
+('IP of IDS : ', '10.10.0.10')
+('Start time = ', datetime.datetime(2016, 5, 5, 20, 17, 11, 782079))
+src lxc name = lxc1-0, dst lxc name = lxc0-0, conn_id = 2
+Connection established at 2016-05-05 20:17:11.782079
+Resumed connection at : 2016-05-05 20:17:11.796321
+('Recv msg = ', bytearray(b'~\x00\x10\x03\x02\x124[(?9~'))
+Response processed at 2016-05-05 20:17:11.940762
+Resumed connection at : 2016-05-05 20:17:11.940764
+('Recv msg = ', bytearray(b'~\x00\x10\x03\x02\x124[\x84\x9e\x9b~'))
+Response processed at 2016-05-05 20:17:12.049001
+Resumed connection at : 2016-05-05 20:17:12.049005
+('Recv msg = ', bytearray(b'~\x00\x10\x03\x02\x124[\xb1\xfc\xa4~'))
+Response processed at 2016-05-05 20:17:12.157223
+Resumed connection at : 2016-05-05 20:17:12.157296
+('Recv msg = ', bytearray(b'~\x00\x10\x03\x02\x124[AG\x93~'))
+Response processed at 2016-05-05 20:17:12.247488
+Resumed connection at : 2016-05-05 20:17:12.247489
+('Recv msg = ', bytearray(b'~\x00\x10\x03\x02\x124[\xd7\x1b\xa0~'))
+Response processed at 2016-05-05 20:17:12.535779
+Resumed connection at : 2016-05-05 20:17:12.535782
+('Recv msg = ', bytearray(b'~\x00\x10\x03\x02\x124[\xfb\xc2\n~'))
+Response processed at 2016-05-05 20:17:12.662030
+Resumed connection at : 2016-05-05 20:17:12.662127
+('Recv msg = ', bytearray(b'~\x00\x10\x03\x02\x124[\xe6\x9c\t~'))
+Response processed at 2016-05-05 20:17:13.004634
+Resumed connection at : 2016-05-05 20:17:13.004877
+('Recv msg = ', bytearray(b'~\x00\x10\x03\x02\x124[\xc1/\x9c~'))
+Response processed at 2016-05-05 20:17:13.275195
+Resumed connection at : 2016-05-05 20:17:13.275198
+('Recv msg = ', bytearray(b'~\x00\x10\x03\x02\x124[\xa3\xd6b~'))
+Response processed at 2016-05-05 20:17:13.680737
+Resumed connection at : 2016-05-05 20:17:13.680739
+('Recv msg = ', bytearray(b'~\x00\x10\x03\x02\x124[\x14\x98\xf9~'))
+Response processed at 2016-05-05 20:17:13.816245
+Resumed connection at : 2016-05-05 20:17:13.816247
+('Recv msg = ', bytearray(b"~\x00\x10\x03\x02\x124[A\'b~"))
+Response processed at 2016-05-05 20:17:14.050741
+Resumed connection at : 2016-05-05 20:17:14.050744
+('Recv msg = ', bytearray(b'~\x00\x10\x03\x02\x124[/-\xac~'))
+Response processed at 2016-05-05 20:17:14.276152
+Resumed connection at : 2016-05-05 20:17:14.276360
+('Recv msg = ', bytearray(b'~\x00\x10\x03\x02\x124[\xb3K\xce~'))
+Response processed at 2016-05-05 20:17:14.520763
+Resumed connection at : 2016-05-05 20:17:14.520765
+('Recv msg = ', bytearray(b'~\x00\x10\x03\x02\x124[\xd2od~'))
+Response processed at 2016-05-05 20:17:14.962865
+Resumed connection at : 2016-05-05 20:17:14.962866
+('Recv msg = ', bytearray(b'~\x00\x10\x03\x02\x124[\xcbq\xa6~'))
+Response processed at 2016-05-05 20:17:15.196821
+Resumed connection at : 2016-05-05 20:17:15.196824
+('Recv msg = ', bytearray(b'~\x00\x10\x03\x02\x124[\xf8I\n~'))
+Response processed at 2016-05-05 20:17:15.431419
+Resumed connection at : 2016-05-05 20:17:15.431421
+('Recv msg = ', bytearray(b'~\x00\x10\x03\x02\x124[\xf7\x0b:~'))
+Response processed at 2016-05-05 20:17:15.666099
+Resumed connection at : 2016-05-05 20:17:15.666101
+('Recv msg = ', bytearray(b'~\x00\x10\x03\x02\x124[\xad\xb86~'))
+Response processed at 2016-05-05 20:17:15.918209
+Resumed connection at : 2016-05-05 20:17:15.918212
+('Recv msg = ', bytearray(b'~\x00\x10\x03\x02\x124[+\xe6\xb5~'))
+Response processed at 2016-05-05 20:17:16.152471
+Resumed connection at : 2016-05-05 20:17:16.152473
+('Recv msg = ', bytearray(b'~\x00\x10\x03\x02\x124[\xf2\xa7\\~'))
+Response processed at 2016-05-05 20:17:16.395720
+Resumed connection at : 2016-05-05 20:17:16.395723
+Elapsed time greater = 73.004811, cycle number = 48018

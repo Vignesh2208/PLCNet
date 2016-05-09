@@ -197,7 +197,7 @@ void* LxcManager::manageIncomingPacketsByTimeLine(int timelineID)
 			if(fd >= 0){
 
 				/* Temporarily commented out for now */
-				/*for(j = 0; j < 100; j++){
+				for(j = 0; j < 100; j++){
 					ioctl_conn.owner_lxc_name[j] = '\0';
 					ioctl_conn.dst_lxc_name[j] = '\0';
 				}
@@ -207,12 +207,12 @@ void* LxcManager::manageIncomingPacketsByTimeLine(int timelineID)
 					j = 0;
 					while( j < 8){
 						if( mask & (1 << j)){
-							printf("Connection %d active on lxc : %s\n",j,proxy->lxcName);
+							printf("Connection %d active on lxc : %s after %lu milliseconds\n",j,proxy->lxcName,temp_arrival_time/1000);
 							owner_host->inNet()->getTopNet()->injectSerialEvent(owner_host,temp_arrival_time,j);
 						}
 						j = j + 1;
 					}
-				}*/
+				}
 				close(fd);
 
 			}
@@ -225,7 +225,8 @@ void* LxcManager::manageIncomingPacketsByTimeLine(int timelineID)
 
 		}
 		
-		int ret = poll(ufds, proxiesOnTimeline->size(), 3500);
+		//int ret = poll(ufds, proxiesOnTimeline->size(), 3500);
+		int ret = poll(ufds, proxiesOnTimeline->size(), 100);
 		
 		if (ret == 0){
 			continue; // no file descriptor has data ready to read
@@ -325,6 +326,7 @@ void* LxcManager::manageIncomingPackets()
 		}
 		
 		int ret = poll(ufds, listOfProxies.size(), 3500);
+		//int ret = poll(ufds, listOfProxies.size(), 300);
 		
 		if (ret == 0){
 			continue; // no file descriptor has data ready to read

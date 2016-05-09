@@ -1,0 +1,48 @@
+Starting Debug for lxc0-0
+Running Command /home/vignesh/Desktop/PLCs/awlsim-0.42/tests/run.sh -e 0 --node 0 /home/vignesh/Desktop/PLCs/awlsim-0.42/tests/modbus/simple_client_server_multiple/sfb102_server.awl
+6 (process ID) old priority 0, new priority 10
+=== Running tests with 'python2'
+Running test 'sfb102_server.awl' with 'python2' ... [u'0', u'10.10.0.9']
+[u'1', u'10.10.0.10']
+[u'IDS', u'10.10.0.10']
+('Dest IP : ', '10.10.0.21')
+('Resolved hostname = ', '10.10.0.21')
+('IP of IDS : ', '10.10.0.25')
+Started server process at : 1462491366.69
+('Start time = ', 1462491366.691413)
+Listening on port 502
+Established Connection from ('10.10.0.21', 50913)
+('Server: Recv new msg = ', '00 10 03 00 02 00 01 16 4a 10 51', ' at Node id = ', 1, ' at 2016-05-05 18:36:06.947647')
+Server : test run : received cmd at 2016-05-05 18:36:06.956765
+('Sent response to client = ', bytearray(b'\x00\x10\x03\x02\x124[\xd8\xc8\x81'), ' at 2016-05-05 18:36:06.957509')
+('Server: Recv new msg = ', '00 10 03 00 02 00 01 16 ab 69 e4', ' at Node id = ', 1, ' at 2016-05-05 18:36:06.984553')
+Server : test run : received cmd at 2016-05-05 18:36:06.993235
+('Sent response to client = ', bytearray(b"\x00\x10\x03\x02\x124[\'\xe5\xd0"), ' at 2016-05-05 18:36:07.002312')
+('Server: Recv new msg = ', '00 10 03 00 02 00 01 16 08 1c 3a', ' at Node id = ', 1, ' at 2016-05-05 18:36:07.084652')
+Server : test run : received cmd at 2016-05-05 18:36:07.093259
+('Sent response to client = ', bytearray(b'\x00\x10\x03\x02\x124[b|\xdb'), ' at 2016-05-05 18:36:07.102351')
+('Server: Recv new msg = ', '00 10 03 00 02 00 01 16 77 b9 bb', ' at Node id = ', 1, ' at 2016-05-05 18:36:07.139708')
+Server : test run : received cmd at 2016-05-05 18:36:07.147882
+('Sent response to client = ', bytearray(b'\x00\x10\x03\x02\x124[;\x85\x89'), ' at 2016-05-05 18:36:07.156986')
+('Server: Recv new msg = ', '00 10 03 00 02 00 01 16 3f 30 df', ' at Node id = ', 1, ' at 2016-05-05 18:36:07.184754')
+Server : test run : received cmd at 2016-05-05 18:36:07.193343
+('Sent response to client = ', bytearray(b'\x00\x10\x03\x02\x124[\xb4t\x9b'), ' at 2016-05-05 18:36:07.202468')
+('Server: Recv new msg = ', '00 10 03 00 02 00 01 16 ea ab d5', ' at Node id = ', 1, ' at 2016-05-05 18:36:07.230799')
+Server : test run : received cmd at 2016-05-05 18:36:07.238954
+('Sent response to client = ', bytearray(b'\x00\x10\x03\x02\x124[L%\xe3'), ' at 2016-05-05 18:36:07.248104')
+('Server: Recv new msg = ', '00 10 03 00 02 00 01 16 3a 21 aa', ' at Node id = ', 1, ' at 2016-05-05 18:36:07.275867')
+Server : test run : received cmd at 2016-05-05 18:36:07.293738
+('Sent response to client = ', bytearray(b'\x00\x10\x03\x02\x124[\x8e\xbf\xb0'), ' at 2016-05-05 18:36:07.302833')
+('Server: Recv new msg = ', '00 10 03 00 02 00 01 16 c2 8f c9', ' at Node id = ', 1, ' at 2016-05-05 18:36:07.330895')
+Server : test run : received cmd at 2016-05-05 18:36:07.339317
+('Sent response to client = ', bytearray(b'\x00\x10\x03\x02\x124[t4\xa3'), ' at 2016-05-05 18:36:07.348443')
+('Server: Recv new msg = ', '00 10 03 00 02 00 01 16 9a c3 79', ' at Node id = ', 1, ' at 2016-05-05 18:36:07.384955')
+Server : test run : received cmd at 2016-05-05 18:36:07.403042
+('Sent response to client = ', bytearray(b'\x00\x10\x03\x02\x124[\xea\x0c\xf8'), ' at 2016-05-05 18:36:07.412131')
+('Server: Recv new msg = ', '00 10 03 00 02 00 01 16 0d 6c cb', ' at Node id = ', 1, ' at 2016-05-05 18:36:07.440004')
+deleting sfb 102 object
+Deleting SFB102 ...
+Terminating server ...
+Server : test run : received cmd at 2016-05-05 18:36:07.468013
+('Sent response to client = ', bytearray(b'\x00\x10\x03\x02\x124[\x0e`6'), ' at 2016-05-05 18:36:07.476046')
+('Server: Recv new msg = ', '00 10 03 00 02 00 01 16 e6 e9 1d', ' at Node id = ', 1, ' at 2016-05-05 18:36:07.508478')

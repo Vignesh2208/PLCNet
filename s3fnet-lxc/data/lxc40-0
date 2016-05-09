@@ -11,17 +11,24 @@ Running test 'bottle_plant_node.awl' with 'python2' ... [u'0', u'10.10.0.9']
 ('IP of IDS : ', '10.10.0.33')
 ('Resolved hostname = ', '127.0.0.1')
 ('IP of IDS : ', '10.10.0.33')
-Started server process at : 1461694698.66
-('Start time = ', 1461694698.656412)
+Started server process at : 1461718802.8
+('Start time = ', 1461718802.797024)
 Listening on port 502
-Established Connection from ('10.10.2.65', 38311)
-('Server: Recv new msg = ', '28 10 03 00 02 00 02 3f 98 d3 33', ' at Node id = ', 41, ' at 2016-04-26 13:18:19.188024')
-Server processing request message at 2016-04-26 13:18:19.193019
-Server processed request message at 2016-04-26 13:18:19.193038
-Server : test run : received cmd at 2016-04-26 13:18:19.207977
-('Sent response to client = ', bytearray(b'(\x10\x03\x04\x00\x00\x00\x00?~\xd9\xc0'), ' at 2016-04-26 13:18:19.251600')
-('Server: Recv new msg = ', '28 10 03 00 02 00 02 3f 2b d6 87', ' at Node id = ', 41, ' at 2016-04-26 13:18:19.345124')
-Server processing request message at 2016-04-26 13:18:19.348103
-Server processed request message at 2016-04-26 13:18:19.348103
-Server : test run : received cmd at 2016-04-26 13:18:19.362480
-('Sent response to client = ', bytearray(b'(\x10\x03\x04\x00\x00\x00\x00?\x82[&'), ' at 2016-04-26 13:18:19.371763')
+Elapsed time greater = 173.94864, cycle number = 11592
+Established Connection from ('10.10.2.65', 36349)
+('Server: Recv new msg = ', '28 10 03 00 02 00 02 3f ad 17 4b', ' at Node id = ', 41, ' at 2016-04-26 20:03:00.164954')
+Server processing request message at 2016-04-26 20:03:00.265795
+Server processed request message at 2016-04-26 20:03:00.265880
+Server : test run : received cmd at 2016-04-26 20:03:00.312816
+('Sent response to client = ', bytearray(b'(\x10\x03\x04\x00\x00\x00\x00?\xa4O\x86'), ' at 2016-04-26 20:03:00.312910')
+RECV timeout error
+####### Exiting ############
+Re-Started server process at 1461718985.68
+('Start time = ', 1461718985.686348)
+Listening on port 502
+('End time = ', 1461718990.717079)
+Socket TIMEOUT Done !!!!!!!!!!!!!!!!
+Sever exiting
+Re-Started server process at 1461718990.73
+('Start time = ', 1461718990.772173)
+Listening on port 502

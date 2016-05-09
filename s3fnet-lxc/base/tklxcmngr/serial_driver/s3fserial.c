@@ -27,14 +27,11 @@ struct lxc_entry * get_lxc_entry(char * lxc_name, int conn_id){
 	struct dev_struct * dev;
 	struct lxc_entry * lxc = NULL;
 	dev = &devices[conn_id];	
-	spin_lock(&dev->dev_lock);
+	//spin_lock(&dev->dev_lock);
 	lxc = hmap_get(&devices[conn_id].lxcs,lxc_name);
-	spin_unlock(&dev->dev_lock);
+	//spin_unlock(&dev->dev_lock);
 	
-	/*if(lxc != NULL){
-		printk(KERN_INFO "s3fserial : Successfull get_lxc_entry : lxc_name : %s. conn_id = %d\n",lxc_name,conn_id);
-		//printk(KERN_INFO "s3fserial : Unsuccessfull get_lxc_entry : lxc_name : %s. conn_id = %d\n",lxc_name,conn_id);
-	}*/
+
 	return lxc;
 
 }
@@ -45,15 +42,16 @@ int write_lxc_rxbuf(struct lxc_entry * lxc, int conn_id, int num_bytes_to_write,
 	uint32_t rx_start = 0;
 	uint32_t num_rx_bytes = 0;
 	int i = 0, num_copied = 0;
+	unsigned long flags;
 	if(!conn)
 		return -EFAULT;
 
-	spin_lock(&conn->conn_lock);
+	spin_lock_irqsave(&conn->conn_lock,flags);
 	
 	num_rx_bytes = conn->num_received_bytes;
 	rx_start = mod((conn->recv_start + num_rx_bytes), RX_BUF_SIZE);
 	if(RX_BUF_SIZE - num_rx_bytes < num_bytes_to_write){
-		spin_unlock(&conn->conn_lock);
+		spin_unlock_irqrestore(&conn->conn_lock,flags);
 		return -EFAULT; // not enough space
 	}
 
@@ -64,7 +62,7 @@ int write_lxc_rxbuf(struct lxc_entry * lxc, int conn_id, int num_bytes_to_write,
 
 	//conn->recv_start = mod(rx_start + num_bytes_to_write, RX_BUF_SIZE);
 	conn->num_received_bytes += num_bytes_to_write;
-	spin_unlock(&conn->conn_lock);
+	spin_unlock_irqrestore(&conn->conn_lock,flags);
 	return 0;
 
 
@@ -77,19 +75,20 @@ int read_lxc_txbuf(struct lxc_entry * lxc, int conn_id, char * dst_buf){
 	uint32_t tx_start = 0;
 	uint32_t num_tx_bytes = 0;
 	int i = 0, num_copied = 0;
+	unsigned long flags;
 	if(!conn)
 		return -EFAULT;
 
-	spin_lock(&conn->conn_lock);
+	spin_lock_irqsave(&conn->conn_lock,flags);
 	num_tx_bytes = conn->num_bytes_to_transmit;
-	printk(KERN_INFO "s3fserial:read_lxc_buf : num tx bytes = %d\n",num_tx_bytes);
+	//printk(KERN_INFO "s3fserial:read_lxc_buf : num tx bytes = %d\n",num_tx_bytes);
 	while(num_copied < num_tx_bytes){
 		dst_buf[num_copied] = conn->tx_buf[num_copied];
 		num_copied++;
 	}
 	flush_buffer(conn->tx_buf,TX_BUF_SIZE);
 	conn->num_bytes_to_transmit = 0;
-	spin_unlock(&conn->conn_lock);
+	spin_unlock_irqrestore(&conn->conn_lock,flags);
 
 	return num_tx_bytes;
 }
@@ -106,6 +105,7 @@ long s3fserial_ioctl(struct file *filp, unsigned int cmd, unsigned long arg)
     struct lxc_connection * conn;
     int i = 0;
 	uint8_t mask = 0;
+	unsigned long flags;
 	/*
 	 * extract the type and number bitfields, and don't decode
 	 * wrong cmds: return ENOTTY (inappropriate ioctl) before access_ok()
@@ -129,6 +129,9 @@ long s3fserial_ioctl(struct file *filp, unsigned int cmd, unsigned long arg)
 
 		case S3FSERIAL_IOWRX :
 								ioctl_conn = (struct ioctl_conn_param *)arg;
+								if(ioctl_conn == NULL)
+									return -EFAULT;
+								
 								if(copy_from_user(&tmp_ioctl_conn,ioctl_conn,sizeof(struct ioctl_conn_param))){
 									//printk(KERN_INFO "s3fserial::ioctl():IOWRX : ERROR ioctl IOWRX copy from user\n");
 									return -EFAULT;
@@ -147,6 +150,9 @@ long s3fserial_ioctl(struct file *filp, unsigned int cmd, unsigned long arg)
 								
 
 		case S3FSERIAL_IORTX :  ioctl_conn = (struct ioctl_conn_param *)arg;
+								if(ioctl_conn == NULL)
+									return -EFAULT;
+
 								if(copy_from_user(&tmp_ioctl_conn,ioctl_conn,sizeof(struct ioctl_conn_param))){
 									//printk(KERN_INFO "s3fserial::ioctl():IORTX : ERROR ioctl IORTX copy from user\n");
 									return -EFAULT;
@@ -170,6 +176,8 @@ long s3fserial_ioctl(struct file *filp, unsigned int cmd, unsigned long arg)
 								return ret;
 
 		case S3FSERIAL_SETCONNLXC : ioctl_conn = (struct ioctl_conn_param *)arg;
+									if(ioctl_conn == NULL)
+										return -EFAULT;
 									if(copy_from_user(&tmp_ioctl_conn,ioctl_conn,sizeof(struct ioctl_conn_param)))
 									{
 										//printk(KERN_INFO "s3fserial::ioctl():SETCONNLXC : ERROR ioctl SETCONNLXC copy from user\n");
@@ -200,6 +208,8 @@ long s3fserial_ioctl(struct file *filp, unsigned int cmd, unsigned long arg)
 									return 0;
 
 		case S3FSERIAL_GETCONNLXC : ioctl_conn = (struct ioctl_conn_param *)arg;
+									if(ioctl_conn == NULL)		
+											return -EFAULT;
 									if(copy_from_user(&tmp_ioctl_conn,ioctl_conn,sizeof(struct ioctl_conn_param)))
 									{
 										//printk(KERN_INFO "s3fserial::ioctl():GETCONNLXC : ERROR ioctl GETCONNLXC copy from user\n");
@@ -239,6 +249,8 @@ long s3fserial_ioctl(struct file *filp, unsigned int cmd, unsigned long arg)
 
 
 		case S3FSERIAL_GETCONNID :  ioctl_conn = (struct ioctl_conn_param *)arg;
+									if(ioctl_conn == NULL)
+											return -EFAULT;
 									if(copy_from_user(&tmp_ioctl_conn,ioctl_conn,sizeof(struct ioctl_conn_param)))
 									{
 										//printk(KERN_INFO "s3fserial::ioctl():GETCONNID : ERROR ioctl GETCONNID copy from user\n");
@@ -262,6 +274,9 @@ long s3fserial_ioctl(struct file *filp, unsigned int cmd, unsigned long arg)
 									return -EFAULT; // no such pair lxcs are connected.
 
 		case S3FSERIAL_GETCONNSTATUS : 	ioctl_conn = (struct ioctl_conn_param *)arg;
+										if(ioctl_conn == NULL)
+											return -EFAULT;
+
 										if(copy_from_user(&tmp_ioctl_conn,ioctl_conn,sizeof(struct ioctl_conn_param)))
 										{
 											//printk(KERN_INFO "s3fserial::ioctl():GETCONNSTATUS : ERROR ioctl GETCONNID copy from user\n");
@@ -277,12 +292,13 @@ long s3fserial_ioctl(struct file *filp, unsigned int cmd, unsigned long arg)
 												if(conn->params_set == 1){
 													ioctl_conn->num_bytes_to_read = conn->num_received_bytes;
 													ioctl_conn->num_bytes_to_write = conn->num_bytes_to_transmit;
+													spin_unlock(&conn->conn_lock);
 													if(copy_to_user(ioctl_conn->dst_lxc_name, conn->dst_lxc_name, KERN_BUF_SIZE)){
-														spin_unlock(&conn->conn_lock);
+														
 														//printk(KERN_INFO "s3fserial::ioctl():GETCONNSTATUS : ERROR ioctl GETCONNSTATUS copy to user\n");
 														return -EFAULT;
 													}
-													spin_unlock(&conn->conn_lock);
+													//spin_unlock(&conn->conn_lock);
 													return 0;
 												}
 												spin_unlock(&conn->conn_lock);
@@ -294,6 +310,9 @@ long s3fserial_ioctl(struct file *filp, unsigned int cmd, unsigned long arg)
 
 		// returns all connections which have some data to transmit
 		case S3FSERIAL_GETACTIVECONNS : ioctl_conn = (struct ioctl_conn_param *)arg;
+										if(ioctl_conn == NULL)
+											return -EFAULT;
+
 										if(copy_from_user(&tmp_ioctl_conn,ioctl_conn,sizeof(struct ioctl_conn_param)))
 										{
 											//printk(KERN_INFO "s3fserial::ioctl():GETACTIVECONNS : ERROR ioctl GETCONNID copy from user\n");
@@ -303,15 +322,15 @@ long s3fserial_ioctl(struct file *filp, unsigned int cmd, unsigned long arg)
 										for(i = 0; i < NR_SERIAL_DEVS; i++){
 											lxc = get_lxc_entry(tmp_ioctl_conn.owner_lxc_name,i);
 											if(lxc != NULL){
-												spin_lock(&devices[i].dev_lock);
+												//spin_lock(&devices[i].dev_lock);
 												conn = lxc->connection;
-												spin_unlock(&devices[i].dev_lock);
+												//spin_unlock(&devices[i].dev_lock);
 												if(conn != NULL){
-													spin_lock(&conn->conn_lock);
+													spin_lock_irqsave(&conn->conn_lock,flags);
 													//printk(KERN_INFO "s3fserial::ioctl():GETACTIVECONNS :  lxc = %s, ntx bytes = %d\n",tmp_ioctl_conn.owner_lxc_name,conn->num_bytes_to_transmit);
 													if(conn->num_bytes_to_transmit)
 														mask |= (1 << i);
-													spin_unlock(&conn->conn_lock);
+													spin_unlock_irqrestore(&conn->conn_lock,flags);
 
 												}
 											}
@@ -405,6 +424,7 @@ ssize_t s3fserial_read(struct file *filp, char __user *buf, size_t count, loff_t
 	uint32_t rx_start = 0;
 	int fd = -1;
 	int i = 0;
+	unsigned long flags;
 	
 	if(!lxc)
 		return 0; // ERROR
@@ -420,46 +440,91 @@ ssize_t s3fserial_read(struct file *filp, char __user *buf, size_t count, loff_t
 		return 0; //
 	}
 
-	spin_lock(&dev->dev_lock);
+	//spin_lock_irqsave(&dev->dev_lock,flags);
 	conn = lxc->connection;
-	spin_unlock(&dev->dev_lock);
+	//spin_unlock_irqrestore(&dev->dev_lock,flags);
+
 
 	if(!conn){
 		printk(KERN_INFO "s3fserial::read() : connection does not exist. lxc : %s, conn_id %d\n",lxc->lxcName,fd);
 		return 0; // ERROR
 	}
 
-	spin_lock(&conn->conn_lock);
+	num_rx_bytes = conn->num_received_bytes;
+	if(num_rx_bytes > count)
+		num_rx_bytes = count;
+
+	if(num_rx_bytes <= 0)
+		return 0;
+
+	spin_lock_irqsave(&conn->conn_lock,flags);
+	
 	rx_start = conn->recv_start;
 	num_rx_bytes =((conn->num_received_bytes < count) ? conn->num_received_bytes : count);
 	
 	if(num_rx_bytes <= 0){
-		spin_unlock(&conn->conn_lock);
-		printk(KERN_INFO "s3fserial::read() : Num of bytes to read must be greater than 0. lxc : %s, conn_id %d\n",lxc->lxcName,fd);
+		spin_unlock_irqrestore(&conn->conn_lock,flags);
+		//spin_unlock(&conn->conn_lock);
+		//printk(KERN_INFO "s3fserial::read() : Num of bytes to read must be greater than 0. lxc : %s, conn_id %d\n",lxc->lxcName,fd);
 		return 0;
 	}
 
-	printk(KERN_INFO "s3fserial::read() : Number of bytes to read : %d, rx_start = %d\n",num_rx_bytes,rx_start);
+	//printk(KERN_INFO "s3fserial::read() : Number of bytes to read : %d, rx_start = %d\n",num_rx_bytes,rx_start);
 
 	for(i = 0 ; i < num_rx_bytes; i++){
-		temp_rx_buff[i] = conn->rx_buf[mod(rx_start + i, RX_BUF_SIZE)];
+		//temp_rx_buff[i] = conn->rx_buf[mod(rx_start + i, RX_BUF_SIZE)];
+		if(rx_start + i >= RX_BUF_SIZE)			
+			temp_rx_buff[i] = conn->rx_buf[rx_start + i - RX_BUF_SIZE];
+		else
+			temp_rx_buff[i] = conn->rx_buf[rx_start + i];
 	}
 
-	//copy_bytes(conn->rx_buf, temp_rx_buff, RX_BUF_SIZE, rx_start, num_rx_bytes);
-	
+	int orig_num_received_bytes = conn->num_received_bytes;
+	int orig_recv_start = conn->recv_start;
 
-	if(copy_to_user(buf,temp_rx_buff,num_rx_bytes)){
-		spin_unlock(&conn->conn_lock);
-		printk(KERN_INFO "s3fserial::read() : ERROR copy to user. lxc : %s, conn_id %d\n",lxc->lxcName,fd);
-		return -EFAULT;
-	}
 	conn->num_received_bytes -= num_rx_bytes;
 	if(conn->num_received_bytes == 0)
 		conn->recv_start = 0;
-	else
-		conn->recv_start = mod(conn->recv_start + num_rx_bytes, RX_BUF_SIZE);
+	else{
+		//conn->recv_start = mod(conn->recv_start + num_rx_bytes, RX_BUF_SIZE);
+		if(conn->recv_start + num_rx_bytes >= RX_BUF_SIZE)
+			conn->recv_start = conn->recv_start + num_rx_bytes - RX_BUF_SIZE;
+		else 
+			conn->recv_start = conn->recv_start + num_rx_bytes;
+	}
 
-	spin_unlock(&conn->conn_lock);
+	
+	
+	spin_unlock_irqrestore(&conn->conn_lock,flags);
+	
+	
+
+	if(copy_to_user(buf,temp_rx_buff,num_rx_bytes)){
+		spin_lock_irqsave(&conn->conn_lock,flags);	
+		conn->num_received_bytes = orig_num_received_bytes;
+		conn->recv_start = orig_recv_start;
+
+		spin_unlock_irqrestore(&conn->conn_lock,flags);
+		printk(KERN_INFO "s3fserial::read() : ERROR copy to user. lxc : %s, conn_id %d\n",lxc->lxcName,fd);
+		return -EFAULT;
+	}
+	
+	/*spin_lock_irqsave(&conn->conn_lock,flags);
+	
+	conn->num_received_bytes -= num_rx_bytes;
+	if(conn->num_received_bytes == 0)
+		conn->recv_start = 0;
+	else{
+		//conn->recv_start = mod(conn->recv_start + num_rx_bytes, RX_BUF_SIZE);
+		if(conn->recv_start + num_rx_bytes >= RX_BUF_SIZE)
+			conn->recv_start = conn->recv_start + num_rx_bytes - RX_BUF_SIZE;
+		else 
+			conn->recv_start = conn->recv_start + num_rx_bytes;
+	}
+
+	spin_unlock_irqrestore(&conn->conn_lock,flags);*/
+	
+	
 
 	return num_rx_bytes;
 
@@ -476,6 +541,7 @@ ssize_t s3fserial_write(struct file *filp, const char __user *buf, size_t count,
 	uint32_t max_available_space = 0;
 	int fd = -1;
 	int i = 0;
+	unsigned long flags;
 
 	if(!lxc)
 		return 0; // ERROR
@@ -493,40 +559,42 @@ ssize_t s3fserial_write(struct file *filp, const char __user *buf, size_t count,
 
 
 
-	spin_lock(&dev->dev_lock);
+	//spin_lock_irqsave(&dev->dev_lock,flags);
 	conn = lxc->connection;
-	spin_unlock(&dev->dev_lock);
+	//spin_unlock_irqrestore(&dev->dev_lock,flags);
 
 	if(!conn){
 		printk(KERN_INFO "s3fserial::write() : connection does not exist. lxc : %s, conn_id %d\n",lxc->lxcName,fd);
 		return 0; // ERROR
 	}
 
-	spin_lock(&conn->conn_lock);
+	spin_lock_irqsave(&conn->conn_lock,flags);
 	tx_start = conn->num_bytes_to_transmit;
-	max_available_space = TX_BUF_SIZE - tx_start;
+	spin_unlock_irqrestore(&conn->conn_lock,flags);
 
+	max_available_space = TX_BUF_SIZE - tx_start;
 	num_tx_bytes = ((max_available_space < count ? max_available_space : count));
+
 	if(num_tx_bytes <= 0){
-		spin_unlock(&conn->conn_lock);
+		
 		printk(KERN_INFO "s3fserial::write() : Num of bytes to write must be greater than 0. lxc : %s, conn_id %d\n",lxc->lxcName,fd);
 		return 0;
 	}
 
 	if(copy_from_user(temp_tx_buff,buf,num_tx_bytes)){
-		spin_unlock(&conn->conn_lock);
 		printk(KERN_INFO "s3fserial::write() : ERROR copy from user. lxc : %s, conn_id %d\n",lxc->lxcName,fd);
 		return 0;
 	}
 
-	//copy_bytes(temp_tx_buff,conn->tx_buf + tx_start, num_tx_bytes,0,num_tx_bytes);
+	
+	spin_lock_irqsave(&conn->conn_lock,flags);
 	for(i = 0; i < num_tx_bytes; i++){
 		conn->tx_buf[mod(tx_start + i, TX_BUF_SIZE)] = temp_tx_buff[i];
 	}
 
 	conn->num_bytes_to_transmit += num_tx_bytes;
-	printk(KERN_INFO "s3fserial::write() : Write successfull for lxc : %s. Num bytes to transmit : %d\n",lxc->lxcName,conn->num_bytes_to_transmit);
-	spin_unlock(&conn->conn_lock);
+	//printk(KERN_INFO "s3fserial::write() : Write successfull for lxc : %s. Num bytes to transmit : %d\n",lxc->lxcName,conn->num_bytes_to_transmit);
+	spin_unlock_irqrestore(&conn->conn_lock,flags);
 
 	return num_tx_bytes;
 
@@ -540,6 +608,7 @@ uint32_t s3fserial_poll(struct file *filp, poll_table *wait){
 	struct lxc_connection * conn = NULL;
 	struct dev_struct * dev = NULL;
 	int fd = -1;
+	unsigned long flags;
 	
 	if(!lxc)
 		return 0; // ERROR
@@ -550,9 +619,9 @@ uint32_t s3fserial_poll(struct file *filp, poll_table *wait){
 	
 	fd = dev->id;
 
-	spin_lock(&dev->dev_lock);
+	//spin_lock(&dev->dev_lock);
 	conn = lxc->connection;
-	spin_unlock(&dev->dev_lock);
+	//spin_unlock(&dev->dev_lock);
 
 	if(!conn){
 		printk(KERN_INFO "s3fserial::poll() : connection does not exist. lxc : %s, conn_id %d\n",lxc->lxcName,fd);
@@ -562,12 +631,13 @@ uint32_t s3fserial_poll(struct file *filp, poll_table *wait){
 	spin_lock(&conn->conn_lock);
 	int tx_space = TX_BUF_SIZE - conn->num_bytes_to_transmit;
 	int n_rx_bytes = conn->num_received_bytes;
-	printk(KERN_INFO "s3fserial::poll() : lxc : %s, conn_id %d\n",lxc->lxcName,fd);
+	spin_unlock(&conn->conn_lock);
+	//printk(KERN_INFO "s3fserial::poll() : lxc : %s, conn_id %d\n",lxc->lxcName,fd);
 	if(tx_space > 0)
 		mask |= POLLOUT | POLLWRNORM;   /* writable */
 	if(n_rx_bytes > 0)
 		mask |= POLLIN | POLLRDNORM;   /* readable */
-	spin_unlock(&conn->conn_lock);
+	
 
 	return mask;
 

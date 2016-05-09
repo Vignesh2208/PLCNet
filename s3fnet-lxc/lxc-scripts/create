@@ -37,6 +37,6 @@ ifconfig $TAP_NAME 0.0.0.0 promisc up
 brctl addif $BR_NAME $TAP_NAME
 ifconfig $BR_NAME up
 
-lxc-create -n $LXC_NAME -f /home/vignesh/Desktop/PLCs/awlsim-0.42/Projects/Bottle_Plant/conf/PLC_Config/$CONF_FILE # -t ubuntu
+lxc-create -n $LXC_NAME -f /home/vignesh/Desktop/PLCs/awlsim-0.42/Projects/Simple_PLC_Client_Server_multiple/conf/PLC_Config/$CONF_FILE # -t ubuntu
 
 #rm $CONF_FILE

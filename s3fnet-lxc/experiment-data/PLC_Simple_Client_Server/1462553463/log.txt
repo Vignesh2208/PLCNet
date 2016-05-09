@@ -1,0 +1,78 @@
+|==================================================
+| LXC Manager Created
+| Simulation has 2 timelines
+|==================================================
+LXC proxy initialization: lxc0-0 successfull
+LXC proxy initialization: lxc1-0 successfull
+ ____________________________________________
+|
+| Printing out Info about Timeline 0 ...
+|_____
+      | Timeline 0 has Proxy LXC lxc0-0
+      |______________________________________
+ ____________________________________________
+|
+| Printing out Info about Timeline 1 ...
+|_____
+      | Timeline 1 has Proxy LXC lxc1-0
+      |______________________________________
+|==================================================
+| Creating and Launching LXCs                      
+|==================================================
+
+|==================================================
+| Dilating and Adding LXCs to Experiment           
+|==================================================
+
+GET LXC lxc0-0 TDF 25.000000 PID 4076 Finished
+GET LXC lxc1-0 TDF 25.000000 PID 4152 Finished
+|==================================================
+| Calling SynchronizeAndFreeze. Syncing up LXCs
+|==================================================
+
+| lxc0-0 Frozen at [ 1462553465 sec 827018 usec ]
+| lxc1-0 Frozen at [ 1462553465 sec 827018 usec ]
+
+|==================================================
+Timeline 0 advanced its LXCs by 4.999666 seconds
+Timeline 1 advanced its LXCs by 4.999666 seconds
+|==================================================
+| Calling STOP EXPERIMENT
+|==================================================
+|============================================================|
+| Overall Stats
+|------------------------------------------------------------|
+| OUT | Total Pkts Sent to LXCs       : 49
+| OUT | Total Pkts error late to LXC  : 10
+| OUT | Avg Pkts error late to LXC    : 0.20408163
+|------------------------------------------------------------|
+| IN  | Total Pkts Injected to past   : 0
+| IN  | Total Error Injected to past  : 0
+| IN  | Average past error            : -nan
+|============================================================|
+| TOTAL Advance ERROR        : 13434
+| TOTAL Times Advanced       : 7055
+| TOTAL Times Over           : 1829
+| TOTAL Times Under          : 3674
+| TOTAL Times Exact          : 1552
+| Average Advance ERROR      : 1.90418143
+|============================================================|
+| TOTAL Pkt Timestamp ERROR  : 0
+| TOTAL Pkts Injected        : 47
+| Average Packet Inaccuracy  : 0.00000000
+|============================================================|
+| MIN Advance Error          : 0
+| MAX Advance Error          : 595
+| Advance Error RMS          : 10.32901688
+| Advance Error Variance     : 103.06268273
+| Advance Error Std Dev      : 10.15197925
+|============================================================|
+
+|============================================================|
+| Timeline 0 advanced 3473 times ( Progress 3473 ) for a total of 125.233599 seconds
+| Timeline 1 advanced 3582 times ( Progress 3582 ) for a total of 125.363183 seconds
+|============================================================|
+| Cumulative emulation seconds 250.596782
+| Simulation run time is 125.607 seconds
+| Total run time is 127.833 seconds
+|============================================================|

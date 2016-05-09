@@ -1,0 +1,110 @@
+|==================================================
+| LXC Manager Created
+| Simulation has 6 timelines
+|==================================================
+LXC proxy initialization: lxc0-0 successfull
+LXC proxy initialization: lxc1-0 successfull
+ ____________________________________________
+|
+| Printing out Info about Timeline 0 ...
+|_____
+      | Timeline 0 has Proxy LXC lxc0-0
+      |______________________________________
+ ____________________________________________
+|
+| Printing out Info about Timeline 1 ...
+|_____
+      | Timeline 1 has Proxy LXC lxc1-0
+      |______________________________________
+ ____________________________________________
+|
+| Printing out Info about Timeline 2 ...
+|_____
+      | Timeline 2 has has no LXC proxies
+      |______________________________________
+ ____________________________________________
+|
+| Printing out Info about Timeline 3 ...
+|_____
+      | Timeline 3 has has no LXC proxies
+      |______________________________________
+ ____________________________________________
+|
+| Printing out Info about Timeline 4 ...
+|_____
+      | Timeline 4 has has no LXC proxies
+      |______________________________________
+ ____________________________________________
+|
+| Printing out Info about Timeline 5 ...
+|_____
+      | Timeline 5 has has no LXC proxies
+      |______________________________________
+|==================================================
+| Creating and Launching LXCs                      
+|==================================================
+
+|==================================================
+| Dilating and Adding LXCs to Experiment           
+|==================================================
+
+GET LXC lxc0-0 TDF 25.000000 PID 5028 Finished
+GET LXC lxc1-0 TDF 25.000000 PID 5121 Finished
+|==================================================
+| Calling SynchronizeAndFreeze. Syncing up LXCs
+|==================================================
+
+| lxc0-0 Frozen at [ 1462511483 sec 940163 usec ]
+| lxc1-0 Frozen at [ 1462511483 sec 940163 usec ]
+
+|==================================================
+Timeline 0 advanced its LXCs by 4.999666 seconds
+Timeline 1 advanced its LXCs by 4.999668 seconds
+Timeline 2 advanced its LXCs by 0.000000 seconds
+Timeline 3 advanced its LXCs by 0.000000 seconds
+Timeline 4 advanced its LXCs by 0.000000 seconds
+Timeline 5 advanced its LXCs by 0.000000 seconds
+|==================================================
+| Calling STOP EXPERIMENT
+|==================================================
+|============================================================|
+| Overall Stats
+|------------------------------------------------------------|
+| OUT | Total Pkts Sent to LXCs       : 55
+| OUT | Total Pkts error late to LXC  : 3
+| OUT | Avg Pkts error late to LXC    : 0.05454545
+|------------------------------------------------------------|
+| IN  | Total Pkts Injected to past   : 7
+| IN  | Total Error Injected to past  : 10969
+| IN  | Average past error            : 1567.00000000
+|============================================================|
+| TOTAL Advance ERROR        : 17799
+| TOTAL Times Advanced       : 5887
+| TOTAL Times Over           : 1601
+| TOTAL Times Under          : 2499
+| TOTAL Times Exact          : 1787
+| Average Advance ERROR      : 3.02344148
+|============================================================|
+| TOTAL Pkt Timestamp ERROR  : 0
+| TOTAL Pkts Injected        : 51
+| Average Packet Inaccuracy  : 0.00000000
+|============================================================|
+| MIN Advance Error          : 0
+| MAX Advance Error          : 1173
+| Advance Error RMS          : 34.79474870
+| Advance Error Variance     : 1201.53333873
+| Advance Error Std Dev      : 34.66314092
+|============================================================|
+
+|============================================================|
+| Timeline 0 advanced 2982 times ( Progress 2982 ) for a total of 127.577463 seconds
+| Timeline 1 advanced 2905 times ( Progress 2905 ) for a total of 125.534853 seconds
+| Timeline 2 advanced 0 times ( Progress 0 ) for a total of 0.000000 seconds
+| Timeline 3 advanced 0 times ( Progress 0 ) for a total of 0.000000 seconds
+| Timeline 4 advanced 0 times ( Progress 0 ) for a total of 0.000000 seconds
+| Timeline 5 advanced 0 times ( Progress 0 ) for a total of 0.000000 seconds
+|============================================================|
+| Cumulative emulation seconds 253.112316
+| Simulation run time is 128.251 seconds
+| Total run time is 130.52 seconds
+|============================================================|

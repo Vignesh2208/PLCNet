@@ -15,6 +15,7 @@ import hashlib
 import datetime
 import random
 import ctypes
+import set_connection
 libc = ctypes.CDLL('libc.so.6')
 
 
@@ -57,6 +58,8 @@ SLAVE_DEVICE_FAILURE = 4
 
 START_END_FLAG = 0x7E
 ESCAPE_FLAG = 0x7D
+
+
 
 
 #read_finish_status
@@ -153,13 +156,14 @@ def get_busy_wait(queue_name):
 	return o	
 
 
-def LOG_msg(msg,node_id):
-	with open("/home/vignesh/Desktop/PLCs/awlsim-0.42/Projects/Bottle_Plant/conf/logs/node_" + str(node_id) + "_log","a") as f:
+def LOG_msg(msg,node_id,conf_directory):
+	fname = conf_directory + "/logs/node_" + str(node_id) + "_log"
+	with open(fname,"a") as f:
 		f.write(msg + "\n")
 
 
 
-def test_run_server_ip(thread_resp_queue,thread_cmd_queue,local_tsap_id,disconnect,recv_time_val,conn_time,IDS_IP,local_id,thread_resp_arr,thread_cmd_arr):
+def test_run_server_ip(thread_resp_queue,thread_cmd_queue,local_tsap_id,disconnect,recv_time_val,conn_time,IDS_IP,local_id,thread_resp_arr,thread_cmd_arr,conf_directory):
 
 	
 	
@@ -252,7 +256,7 @@ def test_run_server_ip(thread_resp_queue,thread_cmd_queue,local_tsap_id,disconne
 		
 		try:
 			data = client_socket.recv(BUFFER_SIZE)
-			#time.sleep(0.01)
+			
 			
 		except socket.timeout:
 			print("RECV timeout error")
@@ -280,7 +284,7 @@ def test_run_server_ip(thread_resp_queue,thread_cmd_queue,local_tsap_id,disconne
 		
 		try :			
 			#ids_socket.sendto(msg.encode('utf-8'), (ids_host, ids_port))
-			LOG_msg(log_msg,local_id)
+			LOG_msg(log_msg,local_id,conf_directory)
 		except socket.error as sockerror :
 			print(sockerror)
 		
@@ -316,7 +320,7 @@ def test_run_server_ip(thread_resp_queue,thread_cmd_queue,local_tsap_id,disconne
 		msg = str(local_id) + "," + str(datetime.datetime.now())  + ",SEND," + str(response_hash)
 		try :		
 			#ids_socket.sendto(msg.encode('utf-8'), (ids_host, ids_port))
-			LOG_msg(log_msg,local_id)
+			LOG_msg(log_msg,local_id,conf_directory)
 		except socket.error as sockerror :
 			print(sockerror)
 
@@ -326,7 +330,7 @@ def test_run_server_ip(thread_resp_queue,thread_cmd_queue,local_tsap_id,disconne
 			return		
 		
 
-	print("####### Exiting ############")
+	print("####### Exiting IP Server ############")
 	BUSY = False
 	CONN_ESTABLISHED = False
 	ids_socket.close()
@@ -337,12 +341,9 @@ def test_run_server_ip(thread_resp_queue,thread_cmd_queue,local_tsap_id,disconne
 	thread_cmd_queue.get()
 
 
-def test_run_client_ip(thread_resp_queue,thread_cmd_queue,local_tsap_id,IDS_IP,TCP_REMOTE_IP,TCP_REMOTE_PORT,conn_time, local_id,thread_resp_arr,thread_cmd_arr) :
+def test_run_client_ip(thread_resp_queue,thread_cmd_queue,local_tsap_id,IDS_IP,TCP_REMOTE_IP,TCP_REMOTE_PORT,conn_time, local_id,thread_resp_arr,thread_cmd_arr,conf_directory) :
 	
-	BUFFER_SIZE = 4096	
-	
-	
-
+	BUFFER_SIZE = 4096
 	BUSY = True
 	STATUS = RUNNING
 	ERROR = False
@@ -469,7 +470,7 @@ def test_run_client_ip(thread_resp_queue,thread_cmd_queue,local_tsap_id,IDS_IP,T
 		msg = str(local_id) + "," + str(datetime.datetime.now()) + ",SEND," + str(msg_to_send_hash)
 		try :			
 			#ids_socket.sendto(msg.encode('utf-8'), (ids_host, ids_port))
-			LOG_msg(log_msg,local_id)			
+			LOG_msg(log_msg,local_id,conf_directory)			
 		except socket.error as sockerror :
 			print(sockerror)
 
@@ -477,7 +478,7 @@ def test_run_client_ip(thread_resp_queue,thread_cmd_queue,local_tsap_id,IDS_IP,T
 					
 		try:
 			data = client_socket.recv(BUFFER_SIZE)
-			#time.sleep(0.01)
+			
 			
 		except socket.timeout:
 			print("Client RECV timeout error")
@@ -498,7 +499,7 @@ def test_run_client_ip(thread_resp_queue,thread_cmd_queue,local_tsap_id,IDS_IP,T
 		msg = str(local_id) + "," + str(recv_time) + ",RECV," + str(recv_data_hash)
 		try :			
 			#ids_socket.sendto(msg.encode('utf-8'), (ids_host, ids_port))
-			LOG_msg(log_msg,local_id)
+			LOG_msg(log_msg,local_id,conf_directory)
 		except socket.error as sockerror :
 			print(sockerror)
 
@@ -522,7 +523,7 @@ def test_run_client_ip(thread_resp_queue,thread_cmd_queue,local_tsap_id,IDS_IP,T
 
 		
 				
-				
+	print("####### Exiting IP Client ############")			
 	BUSY = False
 	CONN_ESTABLISHED = False
 	client_socket.close()
@@ -530,4 +531,404 @@ def test_run_client_ip(thread_resp_queue,thread_cmd_queue,local_tsap_id,IDS_IP,T
 	curr_status = (read_finish_status,STATUS,ERROR,STATUS_MODBUS,STATUS_CONN,BUSY,CONN_ESTABLISHED)
 	thread_resp_queue.put(curr_status)
 	cmd = thread_cmd_queue.get()
+
+
+
+START_END_FLAG = 0x7E
+ESCAPE_FLAG = 0x7D
+
+
+def frame_outgoing_message(msg) :
+
+		new_msg = bytearray()
+		new_msg.append(START_END_FLAG)
+		i = 0
+		while i < len(msg) :
+			if msg[i] == START_END_FLAG :
+				new_msg.append(ESCAPE_FLAG)
+				new_msg.append(msg[i]^ 0x20)
+			elif msg[i] == ESCAPE_FLAG :
+				new_msg.append(ESCAPE_FLAG)
+				new_msg.append(msg[i]^ 0x20)
+			else :
+				new_msg.append(msg[i])
+			i = i + 1
+		new_msg.append(START_END_FLAG)
+		return new_msg
+
+def process_incoming_frame(msg) :
+
+	new_msg = bytearray()
+	i = 0
+	while i < len(msg) :
+		if msg[i] == START_END_FLAG :
+			i = i + 1
+		elif msg[i] == ESCAPE_FLAG :
+			new_msg.append(msg[i+1]^0x20)
+			i = i + 2
+		else :
+			new_msg.append(msg[i])
+			i = i + 1
+
+	return new_msg
+
+
+def test_run_client_serial(thread_resp_queue,thread_cmd_queue,conn_time, local_id, remote_id, connection_id, thread_resp_arr,thread_cmd_arr,conf_directory) :
 	
+	BUFFER_SIZE = 4096
+	read_finish_status = 1
+
+	s_time = time.time()
+	print("Start time = ", datetime.datetime.now()," connection id = ", connection_id)
+	client_fd = os.open("/dev/s3fserial" + str(connection_id) ,os.O_RDWR)
+
+	READ_ONLY = select.POLLIN 
+	WRITE_ONLY = select.POLLOUT		
+	set_connection.set_connection(local_id,remote_id,connection_id)
+	sys.stdout.flush()
+
+	
+	CONN_ESTABLISHED = True
+	BUSY = True
+	STATUS = RUNNING
+	ERROR = False
+	STATUS_MODBUS = 0x0
+	STATUS_CONN = 0x0
+
+	print("Connection established at " + str(datetime.datetime.now()))
+	
+	read_finish_status = 1
+	curr_status = (read_finish_status,STATUS,ERROR,STATUS_MODBUS,STATUS_CONN,BUSY,CONN_ESTABLISHED)
+		
+	# read all input and inout params
+	thread_resp_queue.put(curr_status)
+	cmd = get_busy_wait(thread_cmd_queue)
+	
+
+	if cmd == 'QUIT':
+		return
+
+	disconnect, recv_time_val, conn_time, msg_to_send, exception  = cmd
+	
+	while True :
+
+
+		BUSY = True
+		STATUS = RUNNING
+		ERROR = False
+		STATUS_MODBUS = 0x0
+		STATUS_CONN = 0x0
+
+		read_finish_status = 1
+		curr_status = (read_finish_status,STATUS,ERROR,STATUS_MODBUS,STATUS_CONN,BUSY,CONN_ESTABLISHED)
+		
+	
+		print("Resumed connection at : " + str(datetime.datetime.now()))
+		sys.stdout.flush()
+		
+		if msg_to_send == None :
+			read_finish_status = 0
+			STATUS = DONE
+			ERROR = True
+			STATUS_MODBUS = exception
+			STATUS_CONN = 0x0
+			break
+
+		msg_to_send.append(random.randint(0,255))
+		msg_to_send.append(random.randint(0,255))
+		msg_to_send.append(random.randint(0,255))
+
+		msg_to_send = frame_outgoing_message(msg_to_send)
+
+		n_wrote = 0
+		wt_start = datetime.datetime.now()
+		while n_wrote < len(msg_to_send) :
+			poller = select.poll()
+			poller.register(client_fd, WRITE_ONLY)
+			events = poller.poll(conn_time*1000)
+			log_time = None
+			if len(events) == 0 :
+				print("End time = ", time.time())
+				print("Serial Write TIMEOUT Done !!!!!!!!!!!!!!!!")
+				read_finish_status = 0
+				STATUS = CONN_TIMEOUT_ERROR
+				ERROR = True
+				STATUS_MODBUS = 0x0
+				STATUS_CONN = ERROR_MONITORING_TIME_ELAPSED
+				break
+
+			n_wrote = n_wrote + os.write(client_fd,msg_to_send[n_wrote:])
+
+		
+		wt_end = datetime.datetime.now()
+		d = wt_end - wt_start
+		#print(" Client send msg write time = ", d.total_seconds())	
+
+		if log_time == None :
+			log_time = datetime.datetime.now()
+
+		msg_to_send_hash = str(hashlib.md5(str(msg_to_send)).hexdigest())
+		log_msg = str(log_time) + ",SEND," + str(msg_to_send_hash)		
+		LOG_msg(log_msg,local_id,conf_directory)
+		
+
+		# receive response from server
+		recv_msg = bytearray()
+		isfirst = 1
+		resume_poll = True
+		data = []
+		elapsed = 0.0
+		number = 0
+
+		while True :
+			poller = select.poll()
+			poller.register(client_fd, READ_ONLY)
+			events = poller.poll(recv_time_val*1000)
+			if isfirst == 1 :
+				log_time = datetime.datetime.now()
+				isfirst = 0
+			
+			if len(events) == 0 :
+				print("End time = ", datetime.datetime.now())
+				print("Serial Read TIMEOUT Done !!!!!!!!!!!!!!!!")
+				read_finish_status = 0
+				STATUS = RECV_TIMEOUT_ERROR
+				ERROR = True
+				STATUS_MODBUS = 0x0
+				STATUS_CONN = ERROR_MONITORING_TIME_ELAPSED
+				BUSY = False
+				break
+
+
+			st = datetime.datetime.now()
+			data = os.read(client_fd,100)
+			end = datetime.datetime.now()
+			d = end - st
+			elapsed = elapsed + d.total_seconds()
+			number = number + 1.0
+			if len(data) == 0 :
+				continue
+			else :
+				if isfirst == 1 :
+					
+					log_time = datetime.datetime.now()
+					#print("Recv time = ",time.time(), " last elapsed = ", d.total_seconds())
+					isfirst = 0
+
+			recv_msg.extend(data)
+			data = bytearray(data)
+
+			if data[len(data) - 1] == START_END_FLAG :
+				resume_poll = False
+			else :
+				resume_poll = True
+
+			if resume_poll == True :
+				continue
+			else :
+				break
+		
+		
+		recv_time = log_time
+		recv_data_hash = str(hashlib.md5(str(recv_msg)).hexdigest())
+		log_msg = str(recv_time) + ",RECV," + str(recv_data_hash)
+		print("Recv msg = ",recv_msg, " Avg read time = ", float(elapsed)/float(number), " Number = ", number, " total read time = ", elapsed)
+		LOG_msg(log_msg,local_id,conf_directory)				
+		recv_data = process_incoming_frame(recv_msg)
+		recv_data = recv_data[0:-3]
+
+		
+		put(thread_resp_arr,1,recv_data)
+		cmd = get(thread_cmd_arr)
+
+		
+		if cmd == 'QUIT':
+			return
+
+		print("Response processed at " + str(datetime.datetime.now()))	
+		sys.stdout.flush()
+		disconnect, recv_time_val, conn_time, msg_to_send, exception  = cmd
+		elapsed = 0.0
+		number = 0.0
+
+		
+				
+	print("####### Exiting Serial Client ############")				
+	BUSY = False
+	CONN_ESTABLISHED = False
+	curr_status = (read_finish_status,STATUS,ERROR,STATUS_MODBUS,STATUS_CONN,BUSY,CONN_ESTABLISHED)
+	thread_resp_queue.put(curr_status)
+	cmd = thread_cmd_queue.get()
+	
+
+
+def test_run_server_serial(thread_resp_queue,thread_cmd_queue, disconnect, recv_time_val, conn_time, local_id, remote_id, connection_id, thread_resp_arr,thread_cmd_arr,conf_directory):
+
+	
+	
+	BUFFER_SIZE = 4096	
+	# init status
+	read_finish_status = 1
+	BUSY = True
+	STATUS = RUNNING
+	ERROR = False
+	STATUS_MODBUS = 0x0
+	STATUS_CONN = 0x0
+	server_fd = os.open("/dev/s3fserial" + str(connection_id) ,os.O_RDWR)
+	READ_ONLY = select.POLLIN 
+	WRITE_ONLY = select.POLLOUT		
+		
+	print("Start time = ", datetime.datetime.now()," connection id = ", connection_id)
+	set_connection.set_connection(local_id,remote_id,connection_id)
+	recv_msg = bytearray()
+	isfirst = 1
+	log_time = None
+	CONN_ESTABLISHED = False	
+	BUSY = True
+	STATUS = RUNNING
+	ERROR = False
+	STATUS_MODBUS = 0x0
+	STATUS_CONN = 0x0
+	read_finish_status = 1
+	elapsed = 0.0
+	number = 0.0
+	while True:
+	
+		
+
+
+		curr_status = (read_finish_status,STATUS,ERROR,STATUS_MODBUS,STATUS_CONN,BUSY,CONN_ESTABLISHED)				
+		poller = select.poll()
+		poller.register(server_fd, READ_ONLY)
+		print ("poll start time :", datetime.datetime.now())
+		events = poller.poll(recv_time_val*1000)
+		if isfirst == 1 :
+			log_time = datetime.datetime.now()
+			isfirst = 0
+		if len(events) == 0 :
+			print("End time = ", datetime.datetime.now())
+			print("Serial Recv TIMEOUT Done !!!!!!!!!!!!!!!!")
+			read_finish_status = 0
+			STATUS = RECV_TIMEOUT_ERROR
+			ERROR = True
+			STATUS_MODBUS = 0x0
+			STATUS_CONN = ERROR_MONITORING_TIME_ELAPSED			
+			break
+
+		
+
+			
+		#if CONN_ESTABLISHED == False :
+		#	CONN_ESTABLISHED = True				
+		#	read_finish_status = 1
+		#	curr_status = (read_finish_status,STATUS,ERROR,STATUS_MODBUS,STATUS_CONN,BUSY,CONN_ESTABLISHED)
+		#	#thread_resp_queue.put(curr_status)		
+		#	#cmd = get_busy_wait(thread_cmd_queue)
+
+		#	#if cmd == 'QUIT':
+		#	#	return
+		
+		st = datetime.datetime.now()
+		data = os.read(server_fd,100)
+		end = datetime.datetime.now()
+		d = end - st
+		elapsed = elapsed + d.total_seconds()
+		number = number + 1.0
+		if len(data) == 0 :
+				continue
+		else :
+			if isfirst == 1 :
+				
+				log_time = datetime.datetime.now()
+				#print("Recv time = ", time.time(), " last elapsed = ", d.total_seconds())
+				isfirst = 0
+
+		recv_msg.extend(data)
+		data = bytearray(data)
+		if data[len(data) - 1] == START_END_FLAG :
+			resume_poll = False
+		else :
+			resume_poll = True
+			
+
+		if resume_poll == True :
+			continue				
+
+		if log_time == None :
+			log_time = datetime.datetime.now()
+			
+
+		#print("Recv msg = ",recv_msg)
+		recv_data_hash = str(hashlib.md5(str(recv_msg)).hexdigest())
+		log_msg = str(log_time) + ",RECV," + str(recv_data_hash)
+		LOG_msg(log_msg,local_id,conf_directory)
+		
+		recv_data = process_incoming_frame(recv_msg)
+		print("Recv data = ",recv_data, " Avg read time = ", float(elapsed)/float(number), " Number = ", number, " total read time = ", elapsed)
+		recv_data = recv_data[0:-3]
+		
+		put(thread_resp_arr,1,recv_data)
+		cmd = get(thread_cmd_arr)
+
+		#print("Server : test run : received cmd at " + str(datetime.datetime.now()))
+		if cmd == 'QUIT':
+			return		
+		response = cmd		
+		log_time = None
+		response.append(random.randint(0,255))
+		response.append(random.randint(0,255))
+		response.append(random.randint(0,255))
+		response = frame_outgoing_message(response)
+		n_wrote = 0
+		wt_start = datetime.datetime.now()
+		while n_wrote < len(response) :
+			poller = select.poll()
+			poller.register(server_fd, WRITE_ONLY)
+			events = poller.poll(conn_time*1000)
+			if len(events) == 0 :
+				print("End time = ", time.time())
+				print("Serial Send TIMEOUT Done !!!!!!!!!!!!!!!!")
+				read_finish_status = 0
+				STATUS = CONN_TIMEOUT_ERROR
+				ERROR = True
+				STATUS_MODBUS = 0x0
+				STATUS_CONN = ERROR_MONITORING_TIME_ELAPSED
+				break
+			
+
+			n_wrote = n_wrote + os.write(server_fd,response[n_wrote:])
+
+		wt_end = datetime.datetime.now()
+		d = wt_end - wt_start
+		#print("Sent response to client = ",response, " at " + str(datetime.datetime.now()), " Write time = ", d.total_seconds())
+		sys.stdout.flush()
+		response_hash = str(hashlib.md5(str(response)).hexdigest())
+		if log_time == None :
+			log_time = datetime.datetime.now()
+
+		log_msg = str(log_time)  + ",SEND," + str(response_hash)
+		LOG_msg(log_msg,local_id,conf_directory)		
+
+		if disconnect == True :
+			return
+
+		isfirst = 1
+		log_time = None
+		recv_msg = bytearray()
+		CONN_ESTABLISHED = False	
+		BUSY = True
+		STATUS = RUNNING
+		ERROR = False
+		STATUS_MODBUS = 0x0
+		STATUS_CONN = 0x0
+		read_finish_status = 1
+		elapsed = 0.0
+		number = 0.0
+		
+
+	print("####### Exiting Serial Server ############")
+	BUSY = False
+	CONN_ESTABLISHED = False
+	curr_status = (read_finish_status,STATUS,ERROR,STATUS_MODBUS,STATUS_CONN,BUSY,CONN_ESTABLISHED)
+	thread_resp_queue.put(curr_status)
+	thread_cmd_queue.get()

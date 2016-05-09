@@ -1,4 +1,0 @@
-1459359517.21717,SEND,bytearray(b'~\x00\x10\x03\x00\x02\x00\x01\x16~')
-1459359517.312634,RECV,bytearray(b'~\x00\x10\x03\x02\x124[~')
-Mean cycle time  : 0.004822790622711182
-Sample variance  : 9.134745044529305e-05

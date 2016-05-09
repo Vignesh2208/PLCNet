@@ -265,8 +265,8 @@ _1:		L W#16#1
 	A DB10.DONE_NDR_2
 	//SPA _2			// If Connection 2 is not done, check Conn 3
 	JCN _2
-	L W#16#0000
-	T DB10.CONNECTION2_STARTED	// Else, reset Conn2_Started Variable
+	//L W#16#0000
+	//T DB10.CONNECTION2_STARTED	// Else, reset Conn2_Started Variable
 
 
 _2: 	L W#16#1
@@ -303,8 +303,8 @@ _2: 	L W#16#1
 	SET
 	A DB10.DONE_NDR_3
 	JCN _3  //SPA _3			// If Connection 3 is not done, check Input2
-	L W#16#0000
-	T DB10.CONNECTION3_STARTED	// Else, reset Conn3_Started Variable
+	//L W#16#0000
+	//T DB10.CONNECTION3_STARTED	// Else, reset Conn3_Started Variable
 
 	
 

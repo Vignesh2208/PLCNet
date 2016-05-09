@@ -1,10 +1,10 @@
-total_timeline 4
+total_timeline 7
 tick_per_second 6
-run_time 15.0
+run_time 5.0
 seed 1
 log_dir PLC_Simple_Client_Server
 
-dilation [ TDF 5 ]
+dilation [ TDF 15 ]
 Net
 [
 	lxcConfig
@@ -47,7 +47,7 @@ Net
 	Net
 	[
 		id 3
-		alignment 3
+		alignment 6
 		router
 		[
 			id 	1

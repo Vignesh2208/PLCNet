@@ -4,7 +4,8 @@
 #ifdef SERIAL_DEBUG
 #define SERIAL_DUMP(x) printf("SERIAL: "); x
 #else
-#define SERIAL_DUMP(x) x
+#define SERIAL_DUMP(x)
+//#define SERIAL_DUMP(x)
 #endif
 
 namespace s3f {
@@ -208,6 +209,7 @@ int SerialSession::pop(Activation msg, ProtocolSession* lo_sess, void* extinfo, 
 			length = 4;
 			//data = new char[4];
 			data =  (char *)malloc(4*sizeof(char));
+			printf("############################# Sending DNS at lxc = %s, space_avail = %d\n",proxy->lxcName,space_avail);
 			strcpy(data,"DNS");
 		}
 
@@ -221,6 +223,7 @@ int SerialSession::pop(Activation msg, ProtocolSession* lo_sess, void* extinfo, 
 		else if(recv_msg->command == DNS){
 			// received DNS
 			rts_mask &= ~(1 << conn_id);
+			printf("############################## Received DNS at lxc = %s\n",proxy->lxcName);
 			goto end;
 		}
 
@@ -264,7 +267,8 @@ int SerialSession::pop(Activation msg, ProtocolSession* lo_sess, void* extinfo, 
 	proxy->packetsSentOut++;
 
 
-	SERIAL_DUMP(printf("Handled msg recv at lxc = %s\n",proxy->lxcName));
+	//SERIAL_DUMP(printf("Handled msg recv at lxc = %s\n",proxy->lxcName));
+	printf("Handled msg recv at lxc = %s, millisec elapsed : %lu\n",proxy->lxcName,proxyVT/1000);
 
 	return 0;
 
@@ -429,6 +433,7 @@ void SerialSession::injectEvent(ltime_t incoming_time, int conn_id){
 	{
 		wait_time = 0;
 	}
+	
 	assert(wait_time >= 0);
 
 	// We get a packet from an LXC, send it immediately through the simulation

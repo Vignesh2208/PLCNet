@@ -1,0 +1,59 @@
+Starting Debug for lxc1-0
+Running Command /home/vignesh/Desktop/PLCs/awlsim-0.42/tests/run.sh -e 0 --node 1 /home/vignesh/Desktop/PLCs/awlsim-0.42/tests/modbus/simple_client_server_multiple/sfb102_client.awl
+6 (process ID) old priority 0, new priority 10
+=== Running tests with 'python2'
+Running test 'sfb102_client.awl' with 'python2' ... [u'0', u'10.10.0.9']
+[u'1', u'10.10.0.10']
+[u'IDS', u'10.10.0.10']
+('Dest IP : ', '10.10.0.17')
+('Resolved hostname = ', '10.10.0.17')
+('IP of IDS : ', '10.10.0.25')
+('Start time = ', 1462491366.684325)
+('IP:PORT = ', '10.10.0.17', 502)
+('Attempting to connect to server ', '10.10.0.17', ' : ', 502, ' for the ', 0, ' time.')
+Connection established at 2016-05-05 18:36:06.703838
+Resumed connection at : 2016-05-05 18:36:06.929471
+('Sent msg = ', bytearray(b'\x00\x10\x03\x00\x02\x00\x01\x16J\x10Q'))
+('Response from server = ', '00 10 03 02 12 34 5b d8 c8 81', ' at ', '2016-05-05 18:36:06.967525')
+Response processed at 2016-05-05 18:36:06.975030
+Resumed connection at : 2016-05-05 18:36:06.975039
+('Sent msg = ', bytearray(b'\x00\x10\x03\x00\x02\x00\x01\x16\xabi\xe4'))
+('Response from server = ', '00 10 03 02 12 34 5b 27 e5 d0', ' at ', '2016-05-05 18:36:07.013565')
+Response processed at 2016-05-05 18:36:07.075825
+Resumed connection at : 2016-05-05 18:36:07.075836
+('Sent msg = ', bytearray(b'\x00\x10\x03\x00\x02\x00\x01\x16\x08\x1c:'))
+('Response from server = ', '00 10 03 02 12 34 5b 62 7c db', ' at ', '2016-05-05 18:36:07.113669')
+Response processed at 2016-05-05 18:36:07.130430
+Resumed connection at : 2016-05-05 18:36:07.130440
+('Sent msg = ', bytearray(b'\x00\x10\x03\x00\x02\x00\x01\x16w\xb9\xbb'))
+('Response from server = ', '00 10 03 02 12 34 5b 3b 85 89', ' at ', '2016-05-05 18:36:07.168720')
+Response processed at 2016-05-05 18:36:07.175919
+Resumed connection at : 2016-05-05 18:36:07.175926
+('Sent msg = ', bytearray(b'\x00\x10\x03\x00\x02\x00\x01\x16?0\xdf'))
+('Response from server = ', '00 10 03 02 12 34 5b b4 74 9b', ' at ', '2016-05-05 18:36:07.213761')
+Response processed at 2016-05-05 18:36:07.221437
+Resumed connection at : 2016-05-05 18:36:07.221446
+('Sent msg = ', bytearray(b'\x00\x10\x03\x00\x02\x00\x01\x16\xea\xab\xd5'))
+('Response from server = ', '00 10 03 02 12 34 5b 4c 25 e3', ' at ', '2016-05-05 18:36:07.259799')
+Response processed at 2016-05-05 18:36:07.267070
+Resumed connection at : 2016-05-05 18:36:07.267078
+('Sent msg = ', bytearray(b'\x00\x10\x03\x00\x02\x00\x01\x16:!\xaa'))
+('Response from server = ', '00 10 03 02 12 34 5b 8e bf b0', ' at ', '2016-05-05 18:36:07.313847')
+Response processed at 2016-05-05 18:36:07.321849
+Resumed connection at : 2016-05-05 18:36:07.321856
+('Sent msg = ', bytearray(b'\x00\x10\x03\x00\x02\x00\x01\x16\xc2\x8f\xc9'))
+('Response from server = ', '00 10 03 02 12 34 5b 74 34 a3', ' at ', '2016-05-05 18:36:07.359913')
+Response processed at 2016-05-05 18:36:07.376467
+Resumed connection at : 2016-05-05 18:36:07.376475
+('Sent msg = ', bytearray(b'\x00\x10\x03\x00\x02\x00\x01\x16\x9a\xc3y'))
+('Response from server = ', '00 10 03 02 12 34 5b ea 0c f8', ' at ', '2016-05-05 18:36:07.422965')
+Response processed at 2016-05-05 18:36:07.430935
+Resumed connection at : 2016-05-05 18:36:07.430944
+('Sent msg = ', bytearray(b'\x00\x10\x03\x00\x02\x00\x01\x16\rl\xcb'))
+('Response from server = ', '00 10 03 02 12 34 5b 0e 60 36', ' at ', '2016-05-05 18:36:07.487043')
+Response processed at 2016-05-05 18:36:07.503656
+Resumed connection at : 2016-05-05 18:36:07.503667
+('Sent msg = ', bytearray(b'\x00\x10\x03\x00\x02\x00\x01\x16\xe6\xe9\x1d'))
+Client RECV timeout error
+####### Exiting IP Client ############
+Elapsed time greater = 78.410544, cycle number = 15482

@@ -66,32 +66,32 @@ BEGIN
 	
 	)
 
-	AUF DB 10	// check if STATUS_FUNC =  MODBUSPN
-	L 		DBB 4
-	__ASSERT==	__ACCU	1,	'M'
-	L		DBB 5
-	__ASSERT==	__ACCU	1,	'O'
-	L		DBB 6
-	__ASSERT==	__ACCU	1,	'D'
-	L		DBB 7
-	__ASSERT==	__ACCU	1,	'B'
-	L		DBB 8
-	__ASSERT==	__ACCU	1,	'U'
-	L		DBB 9
-	__ASSERT==	__ACCU	1,	'S'
-	L		DBB 10
-	__ASSERT==	__ACCU	1,	'P'
-	L		DBB 11
-	__ASSERT==	__ACCU	1,	'N'
+	//AUF DB 10	// check if STATUS_FUNC =  MODBUSPN
+	//L 		DBB 4
+	//__ASSERT==	__ACCU	1,	'M'
+	//L		DBB 5
+	//__ASSERT==	__ACCU	1,	'O'
+	//L		DBB 6
+	//__ASSERT==	__ACCU	1,	'D'
+	//L		DBB 7
+	//__ASSERT==	__ACCU	1,	'B'
+	//L		DBB 8
+	//__ASSERT==	__ACCU	1,	'U'
+	//L		DBB 9
+	//__ASSERT==	__ACCU	1,	'S'
+	//L		DBB 10
+	//__ASSERT==	__ACCU	1,	'P'
+	//L		DBB 11
+	//__ASSERT==	__ACCU	1,	'N'
 
-	L 		DBB 260	// check if IDENT_CODE == NONE
-	__ASSERT==	__ACCU	1,	'N'
-	L		DBB 261
-	__ASSERT==	__ACCU	1,	'O'
-	L		DBB 262
-	__ASSERT==	__ACCU	1,	'N'
-	L		DBB 263
-	__ASSERT==	__ACCU	1,	'E'
+	//L 		DBB 260	// check if IDENT_CODE == NONE
+	//__ASSERT==	__ACCU	1,	'N'
+	//L		DBB 261
+	//__ASSERT==	__ACCU	1,	'O'
+	//L		DBB 262
+	//__ASSERT==	__ACCU	1,	'N'
+	//L		DBB 263
+	//__ASSERT==	__ACCU	1,	'E'
 
 
 	
@@ -130,7 +130,7 @@ REG_KEY		: STRING := '1234';
 END_STRUCT
 BEGIN
 Index		:= W#16#0;
-MaxTimes 	:= W#16#0A;
+MaxTimes 	:= W#16#7A;
 END_DATA_BLOCK
 
 DATA_BLOCK DB 102

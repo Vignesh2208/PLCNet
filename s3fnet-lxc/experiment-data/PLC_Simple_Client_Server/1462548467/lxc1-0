@@ -1,0 +1,103 @@
+Starting Debug for lxc1-0
+Running Command /home/vignesh/Desktop/PLCs/awlsim-0.42/tests/run.sh -e 1 --node 1 /home/vignesh/Desktop/PLCs/awlsim-0.42/tests/modbus/simple_client_server_multiple/sfb102_client.awl
+6 (process ID) old priority 0, new priority 10
+=== Running tests with 'python2'
+Running test 'sfb102_client.awl' with 'python2' ... [u'0', u'10.10.0.9']
+[u'1', u'10.10.0.10']
+[u'IDS', u'10.10.0.10']
+('Dest IP : ', '10.10.0.9')
+('Resolved hostname = ', '10.10.0.9')
+('IP of IDS : ', '10.10.0.10')
+('Start time = ', datetime.datetime(2016, 5, 6, 10, 27, 49, 557994))
+src lxc name = lxc1-0, dst lxc name = lxc0-0, conn_id = 2
+Connection established at 2016-05-06 10:27:49.557999
+Resumed connection at : 2016-05-06 10:27:49.576645
+('First number = ', 125546.0)
+('Recv msg = ', bytearray(b'~\x00\x10\x03\x02\x124[A$D~'), ' Avg read time = ', 1.5814123906771981e-07, ' Number = ', 125546.0)
+Response processed at 2016-05-06 10:27:49.649040
+Resumed connection at : 2016-05-06 10:27:49.649041
+('First number = ', 85953.0)
+('Recv msg = ', bytearray(b'~\x00\x10\x03\x02\x124["L,~'), ' Avg read time = ', 3.103672937535774e-07, ' Number = ', 85953.0)
+Response processed at 2016-05-06 10:27:49.703242
+Resumed connection at : 2016-05-06 10:27:49.703244
+('First number = ', 211333.0)
+('Recv msg = ', bytearray(b'~\x00\x10\x03\x02\x124[\\ov~'), ' Avg read time = ', 2.3908712789771904e-07, ' Number = ', 211333.0)
+Response processed at 2016-05-06 10:27:49.802404
+Resumed connection at : 2016-05-06 10:27:49.802406
+('First number = ', 128777.0)
+('Recv msg = ', bytearray(b'~\x00\x10\x03\x02\x124[\xc7\x96C~'), ' Avg read time = ', 1.568370128206073e-07, ' Number = ', 128777.0)
+Response processed at 2016-05-06 10:27:49.874430
+Resumed connection at : 2016-05-06 10:27:49.874432
+('First number = ', 384364.0)
+('Recv msg = ', bytearray(b'~\x00\x10\x03\x02\x124[}^\xd6-~'), ' Avg read time = ', 1.5469190663020842e-07, ' Number = ', 384364.0)
+Response processed at 2016-05-06 10:27:50.035863
+Resumed connection at : 2016-05-06 10:27:50.035865
+('First number = ', 277602.0)
+('Recv msg = ', bytearray(b'~\x00\x10\x03\x02\x124[Khm~'), ' Avg read time = ', 1.922140330401586e-07, ' Number = ', 277602.0)
+Response processed at 2016-05-06 10:27:50.180888
+Resumed connection at : 2016-05-06 10:27:50.180889
+('First number = ', 673521.0)
+('Recv msg = ', bytearray(b"~\x00\x10\x03\x02\x124[l\xd0\'~"), ' Avg read time = ', 1.8231948224337867e-07, ' Number = ', 673521.0)
+Response processed at 2016-05-06 10:27:50.469283
+Resumed connection at : 2016-05-06 10:27:50.469285
+('First number = ', 608103.0)
+('Recv msg = ', bytearray(b'~\x00\x10\x03\x02\x124[g\xc4\xcf~'), ' Avg read time = ', 2.6653214998123463e-07, ' Number = ', 608103.0)
+Response processed at 2016-05-06 10:27:50.739964
+Resumed connection at : 2016-05-06 10:27:50.739966
+('First number = ', 190063.0)
+('Recv msg = ', bytearray(b'~\x00\x10\x03\x02\x124[\xa4\xc4\x98~'), ' Avg read time = ', 1.9918132408730586e-07, ' Number = ', 190063.0)
+Response processed at 2016-05-06 10:27:50.830215
+Resumed connection at : 2016-05-06 10:27:50.830216
+('First number = ', 601855.0)
+('Recv msg = ', bytearray(b'~\x00\x10\x03\x02\x124[D\x01U~'), ' Avg read time = ', 2.1325734603855644e-07, ' Number = ', 601855.0)
+Response processed at 2016-05-06 10:27:51.100567
+Resumed connection at : 2016-05-06 10:27:51.100569
+('First number = ', 595508.0)
+('Recv msg = ', bytearray(b'~\x00\x10\x03\x02\x124[\xc1%\xa9~'), ' Avg read time = ', 2.3083149176842746e-07, ' Number = ', 595508.0)
+Response processed at 2016-05-06 10:27:51.379945
+Resumed connection at : 2016-05-06 10:27:51.379947
+('First number = ', 647885.0)
+('Recv msg = ', bytearray(b'~\x00\x10\x03\x02\x124[\xf5\xbf\n~'), ' Avg read time = ', 2.440000926090832e-07, ' Number = ', 647885.0)
+Response processed at 2016-05-06 10:27:51.665655
+Resumed connection at : 2016-05-06 10:27:51.665657
+('First number = ', 608063.0)
+('Recv msg = ', bytearray(b'~\x00\x10\x03\x02\x124[\xdc\x08H~'), ' Avg read time = ', 2.2637950343966893e-07, ' Number = ', 608063.0)
+Response processed at 2016-05-06 10:27:51.941140
+Resumed connection at : 2016-05-06 10:27:51.941141
+('First number = ', 281634.0)
+('Recv msg = ', bytearray(b'~\x00\x10\x03\x02\x124[\xda\x9fL~'), ' Avg read time = ', 2.8299495089376564e-07, ' Number = ', 281634.0)
+Response processed at 2016-05-06 10:27:52.110272
+Resumed connection at : 2016-05-06 10:27:52.110274
+('First number = ', 638967.0)
+('Recv msg = ', bytearray(b'~\x00\x10\x03\x02\x124[\x1fr\xa0~'), ' Avg read time = ', 2.0060660409697774e-07, ' Number = ', 638967.0)
+Response processed at 2016-05-06 10:27:52.371789
+Resumed connection at : 2016-05-06 10:27:52.371791
+('First number = ', 728744.0)
+('Recv msg = ', bytearray(b'~\x00\x10\x03\x02\x124[\xa7\xee\x1b~'), ' Avg read time = ', 2.0763807317802647e-07, ' Number = ', 728744.0)
+Response processed at 2016-05-06 10:27:52.660031
+Resumed connection at : 2016-05-06 10:27:52.660033
+('First number = ', 703635.0)
+('Recv msg = ', bytearray(b'~\x00\x10\x03\x02\x124[\xfc\xe6y~'), ' Avg read time = ', 2.0417403909704207e-07, ' Number = ', 703635.0)
+Response processed at 2016-05-06 10:27:52.930773
+Resumed connection at : 2016-05-06 10:27:52.930775
+('First number = ', 768197.0)
+('Recv msg = ', bytearray(b'~\x00\x10\x03\x02\x124[\xee#\xb2~'), ' Avg read time = ', 1.5459576124359116e-07, ' Number = ', 768197.0)
+Response processed at 2016-05-06 10:27:53.213202
+Resumed connection at : 2016-05-06 10:27:53.213202
+('First number = ', 681600.0)
+('Recv msg = ', bytearray(b'~\x00\x10\x03\x02\x124[v\x19\x90~'), ' Avg read time = ', 2.1758362676062478e-07, ' Number = ', 681600.0)
+Response processed at 2016-05-06 10:27:53.492541
+Resumed connection at : 2016-05-06 10:27:53.492543
+('First number = ', 665795.0)
+('Recv msg = ', bytearray(b'~\x00\x10\x03\x02\x124[\xaa\x19T~'), ' Avg read time = ', 2.3575725260785241e-07, ' Number = ', 665795.0)
+Response processed at 2016-05-06 10:27:53.772001
+Resumed connection at : 2016-05-06 10:27:53.772002
+('First number = ', 582983.0)
+('Recv msg = ', bytearray(b'~\x00\x10\x03\x02\x124[cQ\x03~'), ' Avg read time = ', 2.899141141337508e-07, ' Number = ', 582983.0)
+Response processed at 2016-05-06 10:27:54.042582
+Resumed connection at : 2016-05-06 10:27:54.042584
+('First number = ', 684937.0)
+('Recv msg = ', bytearray(b'~\x00\x10\x03\x02\x124[\x97\x96\xd6~'), ' Avg read time = ', 1.7550665243670215e-07, ' Number = ', 684937.0)
+Response processed at 2016-05-06 10:27:54.325048
+Resumed connection at : 2016-05-06 10:27:54.325050
+Elapsed time greater = 122.641969, cycle number = 63385

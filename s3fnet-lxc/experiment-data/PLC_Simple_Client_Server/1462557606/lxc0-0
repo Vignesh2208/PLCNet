@@ -1,0 +1,72 @@
+Starting Debug for lxc0-0
+Running Command /home/vignesh/Desktop/PLCs/awlsim-0.42/tests/run.sh -e 1 --node 0 /home/vignesh/Desktop/PLCs/awlsim-0.42/tests/modbus/simple_client_server_multiple/sfb102_server.awl
+6 (process ID) old priority 0, new priority 10
+=== Running tests with 'python2'
+Running test 'sfb102_server.awl' with 'python2' ... [u'0', u'10.10.0.9']
+[u'1', u'10.10.0.10']
+[u'IDS', u'10.10.0.10']
+('Dest IP : ', '10.10.0.10')
+('Resolved hostname = ', '10.10.0.10')
+('IP of IDS : ', '10.10.0.10')
+('Start time = ', datetime.datetime(2016, 5, 6, 13, 0, 8, 341581), ' connection id = ', 1)
+src lxc name = lxc0-0, dst lxc name = lxc1-0, conn_id = 1
+('Recv time = ', 1462557608.433726)
+('Recv data = ', bytearray(b'\x00\x10\x03\x00\x02\x00\x01\x16\xbcD\xcd'), ' Avg read time = ', 3.0066064241782843e-07, ' Number = ', 131690.0, ' total read time = ', 0.03959400000000383)
+Server : test run : received cmd at 2016-05-06 13:00:08.440736
+('Sent response to client = ', bytearray(b'~\x00\x10\x03\x02\x124[\xfcp|~'), ' at 2016-05-06 13:00:08.454757', ' Write time = ', 0.014018)
+('Recv time = ', 1462557608.497654)
+('Recv data = ', bytearray(b'\x00\x10\x03\x00\x02\x00\x01\x16\x96\xd5\x88'), ' Avg read time = ', 8.274887565334115e-07, ' Number = ', 32908.0, ' total read time = ', 0.027231000000001504)
+Server : test run : received cmd at 2016-05-06 13:00:08.510861
+('Sent response to client = ', bytearray(b'~\x00\x10\x03\x02\x124[\x87\xa3p~'), ' at 2016-05-06 13:00:08.518558', ' Write time = ', 0.007695)
+('Recv time = ', 1462557608.587986)
+('Recv data = ', bytearray(b'\x00\x10\x03\x00\x02\x00\x01\x16bZ\x97'), ' Avg read time = ', 7.932788583266581e-07, ' Number = ', 43445.0, ' total read time = ', 0.03446400000000166)
+Server : test run : received cmd at 2016-05-06 13:00:08.594997
+('Sent response to client = ', bytearray(b'~\x00\x10\x03\x02\x124[\xe4\xd7K~'), ' at 2016-05-06 13:00:08.602589', ' Write time = ', 0.00759)
+('Recv time = ', 1462557608.644082)
+('Recv data = ', bytearray(b'\x00\x10\x03\x00\x02\x00\x01\x16\xc3\x8ci'), ' Avg read time = ', 9.700036403349534e-07, ' Number = ', 27470.0, ' total read time = ', 0.02664600000000117)
+Server : test run : received cmd at 2016-05-06 13:00:08.658103
+('Sent response to client = ', bytearray(b'~\x00\x10\x03\x02\x124[l2q~'), ' at 2016-05-06 13:00:08.665607', ' Write time = ', 0.007503)
+('Recv time = ', 1462557608.910499)
+('Recv data = ', bytearray(b'\x00\x10\x03\x00\x02\x00\x01\x16\x84u\xf4'), ' Avg read time = ', 8.582704682944017e-07, ' Number = ', 165964.0, ' total read time = ', 0.1424420000000121)
+Server : test run : received cmd at 2016-05-06 13:00:08.917506
+('Sent response to client = ', bytearray(b'~\x00\x10\x03\x02\x124[\xdb%\xd7~'), ' at 2016-05-06 13:00:08.924516', ' Write time = ', 0.007008)
+('Recv time = ', 1462557609.085764)
+('Recv data = ', bytearray(b'\x00\x10\x03\x00\x02\x00\x01\x16\xa1\xf4v'), ' Avg read time = ', 6.143773891685825e-07, ' Number = ', 115626.0, ' total read time = ', 0.07103800000000651)
+Server : test run : received cmd at 2016-05-06 13:00:09.092775
+('Sent response to client = ', bytearray(b'~\x00\x10\x03\x02\x124[fy\xe0~'), ' at 2016-05-06 13:00:09.100750', ' Write time = ', 0.007973)
+('Recv time = ', 1462557609.359171)
+('Recv data = ', bytearray(b'\x00\x10\x03\x00\x02\x00\x01\x16\xc7~\x94'), ' Avg read time = ', 6.33006260366552e-07, ' Number = ', 179063.0, ' total read time = ', 0.1133480000000159)
+Server : test run : received cmd at 2016-05-06 13:00:09.373189
+('Sent response to client = ', bytearray(b'~\x00\x10\x03\x02\x124[\xbd\x95\xde~'), ' at 2016-05-06 13:00:09.380199', ' Write time = ', 0.007008)
+('Recv time = ', 1462557609.548477)
+('Recv data = ', bytearray(b'\x00\x10\x03\x00\x02\x00\x01\x16\x19\xca\x92'), ' Avg read time = ', 8.410259118434769e-07, ' Number = ', 113616.0, ' total read time = ', 0.09555400000000848)
+Server : test run : received cmd at 2016-05-06 13:00:09.555489
+('Sent response to client = ', bytearray(b'~\x00\x10\x03\x02\x124[q\x81\xf0~'), ' at 2016-05-06 13:00:09.562909', ' Write time = ', 0.007419)
+('Recv time = ', 1462557609.716744)
+('Recv data = ', bytearray(b'\x00\x10\x03\x00\x02\x00\x01\x16\\\x96Z'), ' Avg read time = ', 6.181662924798838e-07, ' Number = ', 104226.0, ' total read time = ', 0.06442900000000837)
+Server : test run : received cmd at 2016-05-06 13:00:09.730764
+('Sent response to client = ', bytearray(b'~\x00\x10\x03\x02\x124[\xd8\xdes~'), ' at 2016-05-06 13:00:09.737774', ' Write time = ', 0.007009)
+('Recv time = ', 1462557609.998155)
+('Recv data = ', bytearray(b'\x00\x10\x03\x00\x02\x00\x01\x16\x0b!?'), ' Avg read time = ', 5.548786789303088e-07, ' Number = ', 183851.0, ' total read time = ', 0.1020150000000162)
+Server : test run : received cmd at 2016-05-06 13:00:10.004178
+('Sent response to client = ', bytearray(b'~\x00\x10\x03\x02\x124[\xe8\xed*~'), ' at 2016-05-06 13:00:10.018201', ' Write time = ', 0.014021)
+('Recv time = ', 1462557610.277645)
+('Recv data = ', bytearray(b'\x00\x10\x03\x00\x02\x00\x01\x16!\x04\xe9'), ' Avg read time = ', 6.59432497605198e-07, ' Number = ', 181638.0, ' total read time = ', 0.11977800000001294)
+Server : test run : received cmd at 2016-05-06 13:00:10.284654
+('Sent response to client = ', bytearray(b'~\x00\x10\x03\x02\x124[\x99\xe3\x16~'), ' at 2016-05-06 13:00:10.292149', ' Write time = ', 0.007492)
+('Recv time = ', 1462557610.558101)
+('Recv data = ', bytearray(b'\x00\x10\x03\x00\x02\x00\x01\x16\x03\x12\x07'), ' Avg read time = ', 6.09987154784912e-07, ' Number = ', 186840.0, ' total read time = ', 0.11397000000001296)
+Server : test run : received cmd at 2016-05-06 13:00:10.565110
+('Sent response to client = ', bytearray(b'~\x00\x10\x03\x02\x124[\xa0\xff\x15~'), ' at 2016-05-06 13:00:10.572121', ' Write time = ', 0.007009)
+('Recv time = ', 1462557610.824472)
+('Recv data = ', bytearray(b'\x00\x10\x03\x00\x02\x00\x01\x16\xf2\x99s'), ' Avg read time = ', 9.319877265872776e-07, ' Number = ', 173057.0, ' total read time = ', 0.1612870000000145)
+Server : test run : received cmd at 2016-05-06 13:00:10.831480
+('Sent response to client = ', bytearray(b'~\x00\x10\x03\x02\x124[\x85\xe5\xc8~'), ' at 2016-05-06 13:00:10.838489', ' Write time = ', 0.007006)
+('Recv time = ', 1462557610.992726)
+('Recv data = ', bytearray(b'\x00\x10\x03\x00\x02\x00\x01\x16F\xdc\x1e'), ' Avg read time = ', 7.544852590726921e-07, ' Number = ', 117496.0, ' total read time = ', 0.08864900000000503)
+Server : test run : received cmd at 2016-05-06 13:00:11.006746
+('Sent response to client = ', bytearray(b'~\x00\x10\x03\x02\x124[\xa0F\x05~'), ' at 2016-05-06 13:00:11.021025', ' Write time = ', 0.014277)
+('Recv time = ', 1462557611.273426)
+('Recv data = ', bytearray(b'\x00\x10\x03\x00\x02\x00\x01\x16\x0b\x90\x89'), ' Avg read time = ', 7.040911060222297e-07, ' Number = ', 177727.0, ' total read time = ', 0.12513600000001282)
+Server : test run : received cmd at 2016-05-06 13:00:11.280436
+('Sent response to client = ', bytearray(b'~\x00\x10\x03\x02\x124[p\xac.~'), ' at 2016-05-06 13:00:11.294456', ' Write time = ', 0.014018)

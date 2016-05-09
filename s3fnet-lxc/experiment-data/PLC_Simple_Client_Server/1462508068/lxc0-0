@@ -1,0 +1,79 @@
+Starting Debug for lxc0-0
+Running Command /home/vignesh/Desktop/PLCs/awlsim-0.42/tests/run.sh -e 1 --node 0 /home/vignesh/Desktop/PLCs/awlsim-0.42/tests/modbus/simple_client_server_multiple/sfb102_server.awl
+6 (process ID) old priority 0, new priority 10
+=== Running tests with 'python2'
+Running test 'sfb102_server.awl' with 'python2' ... [u'0', u'10.10.0.9']
+[u'1', u'10.10.0.10']
+[u'IDS', u'10.10.0.10']
+('Dest IP : ', '10.10.0.10')
+('Resolved hostname = ', '10.10.0.10')
+('IP of IDS : ', '10.10.0.10')
+('Start time = ', datetime.datetime(2016, 5, 5, 23, 14, 30, 956377))
+src lxc name = lxc0-0, dst lxc name = lxc1-0, conn_id = 1
+('Recv data = ', bytearray(b'\x00\x10\x03\x00\x02\x00\x01\x16\xe7\xeb\xfe'))
+Server : test run : received cmd at 2016-05-05 23:14:31.013462
+('Sent response to client = ', bytearray(b'~\x00\x10\x03\x02\x124[A\x0e\xa1~'), ' at 2016-05-05 23:14:31.027514')
+('Recv data = ', bytearray(b'\x00\x10\x03\x00\x02\x00\x01\x16\xfe\x8b\x93'))
+Server : test run : received cmd at 2016-05-05 23:14:31.118687
+('Sent response to client = ', bytearray(b'~\x00\x10\x03\x02\x124[3i<~'), ' at 2016-05-05 23:14:31.132728')
+('Recv data = ', bytearray(b'\x00\x10\x03\x00\x02\x00\x01\x16\x12\xce\xd0'))
+Server : test run : received cmd at 2016-05-05 23:14:31.202834
+('Sent response to client = ', bytearray(b'~\x00\x10\x03\x02\x124[\xc4\xbd\x81~'), ' at 2016-05-05 23:14:31.216894')
+('Recv data = ', bytearray(b'\x00\x10\x03\x00\x02\x00\x01\x16Iq\xcf'))
+Server : test run : received cmd at 2016-05-05 23:14:31.385184
+('Sent response to client = ', bytearray(b'~\x00\x10\x03\x02\x124[GS\xbb~'), ' at 2016-05-05 23:14:31.392203')
+('Recv data = ', bytearray(b'\x00\x10\x03\x00\x02\x00\x01\x16\xb4\xd3\x01'))
+Server : test run : received cmd at 2016-05-05 23:14:31.469318
+('Sent response to client = ', bytearray(b'~\x00\x10\x03\x02\x124[\xf5\xc1n~'), ' at 2016-05-05 23:14:31.483342')
+('Recv data = ', bytearray(b'\x00\x10\x03\x00\x02\x00\x01\x16\x9d`2'))
+Server : test run : received cmd at 2016-05-05 23:14:31.763805
+('Sent response to client = ', bytearray(b'~\x00\x10\x03\x02\x124[\xf2\xb4\xac~'), ' at 2016-05-05 23:14:31.777857')
+('Recv data = ', bytearray(b'\x00\x10\x03\x00\x02\x00\x01\x16\xfb\x8ce'))
+Server : test run : received cmd at 2016-05-05 23:14:31.995197
+('Sent response to client = ', bytearray(b'~\x00\x10\x03\x02\x124[-\xe6\x82~'), ' at 2016-05-05 23:14:32.009216')
+('Recv data = ', bytearray(b'\x00\x10\x03\x00\x02\x00\x01\x16O\xd3\x01'))
+Server : test run : received cmd at 2016-05-05 23:14:32.247547
+('Sent response to client = ', bytearray(b'~\x00\x10\x03\x02\x124[\x91`h~'), ' at 2016-05-05 23:14:32.255505')
+('Recv data = ', bytearray(b'\x00\x10\x03\x00\x02\x00\x01\x16\xab\xde\x86'))
+Server : test run : received cmd at 2016-05-05 23:14:32.464941
+('Sent response to client = ', bytearray(b'~\x00\x10\x03\x02\x124[e^i~'), ' at 2016-05-05 23:14:32.471977')
+('Recv data = ', bytearray(b'\x00\x10\x03\x00\x02\x00\x01\x16\x10\x93%'))
+Server : test run : received cmd at 2016-05-05 23:14:32.703303
+('Sent response to client = ', bytearray(b'~\x00\x10\x03\x02\x124[\xcc\xa9_~'), ' at 2016-05-05 23:14:32.717360')
+('Recv data = ', bytearray(b'\x00\x10\x03\x00\x02\x00\x01\x16\xdc\x00\xf9'))
+Server : test run : received cmd at 2016-05-05 23:14:32.920683
+('Sent response to client = ', bytearray(b'~\x00\x10\x03\x02\x124[\x16\xcb\xbe~'), ' at 2016-05-05 23:14:32.927726')
+('Recv data = ', bytearray(b'\x00\x10\x03\x00\x02\x00\x01\x16\x12I\xd2'))
+Server : test run : received cmd at 2016-05-05 23:14:33.060964
+('Sent response to client = ', bytearray(b'~\x00\x10\x03\x02\x124[\x8eqm~'), ' at 2016-05-05 23:14:33.068776')
+('Recv data = ', bytearray(b'\x00\x10\x03\x00\x02\x00\x01\x16\x81o\x0c'))
+Server : test run : received cmd at 2016-05-05 23:14:33.285334
+('Sent response to client = ', bytearray(b'~\x00\x10\x03\x02\x124[f0\xd0~'), ' at 2016-05-05 23:14:33.299389')
+('Recv data = ', bytearray(b'\x00\x10\x03\x00\x02\x00\x01\x16#\xcf\xee'))
+Server : test run : received cmd at 2016-05-05 23:14:33.516751
+('Sent response to client = ', bytearray(b'~\x00\x10\x03\x02\x124[{*\xb7~'), ' at 2016-05-05 23:14:33.530793')
+('Recv data = ', bytearray(b'\x00\x10\x03\x00\x02\x00\x01\x16\x86U\xee'))
+Server : test run : received cmd at 2016-05-05 23:14:33.741133
+('Sent response to client = ', bytearray(b'~\x00\x10\x03\x02\x124[\xb9\x14`~'), ' at 2016-05-05 23:14:33.755186')
+('Recv data = ', bytearray(b'\x00\x10\x03\x00\x02\x00\x01\x16W\xac\xff'))
+Server : test run : received cmd at 2016-05-05 23:14:33.979538
+('Sent response to client = ', bytearray(b'~\x00\x10\x03\x02\x124[g\xcd{~'), ' at 2016-05-05 23:14:33.987090')
+('Recv data = ', bytearray(b"\x00\x10\x03\x00\x02\x00\x01\x16\'\x1e\x92"))
+Server : test run : received cmd at 2016-05-05 23:14:34.210905
+('Sent response to client = ', bytearray(b'~\x00\x10\x03\x02\x124[w\xa6.~'), ' at 2016-05-05 23:14:34.218155')
+('Recv data = ', bytearray(b'\x00\x10\x03\x00\x02\x00\x01\x16\xf6\x04\xea'))
+Server : test run : received cmd at 2016-05-05 23:14:34.449317
+('Sent response to client = ', bytearray(b'~\x00\x10\x03\x02\x124[\xf2\xf8n~'), ' at 2016-05-05 23:14:34.463350')
+('Recv data = ', bytearray(b'\x00\x10\x03\x00\x02\x00\x01\x16\x91\x01\xfa'))
+Server : test run : received cmd at 2016-05-05 23:14:34.687646
+('Sent response to client = ', bytearray(b'~\x00\x10\x03\x02\x124[\xd8\x08O~'), ' at 2016-05-05 23:14:34.695316')
+('Recv data = ', bytearray(b'\x00\x10\x03\x00\x02\x00\x01\x16\x80\xedb'))
+Server : test run : received cmd at 2016-05-05 23:14:34.911991
+('Sent response to client = ', bytearray(b'~\x00\x10\x03\x02\x124[\x87\x96\xd5~'), ' at 2016-05-05 23:14:34.926036')
+('Recv data = ', bytearray(b'\x00\x10\x03\x00\x02\x00\x01\x166R<'))
+Server : test run : received cmd at 2016-05-05 23:14:35.164370
+('Sent response to client = ', bytearray(b'~\x00\x10\x03\x02\x124[\xa6\xc0i~'), ' at 2016-05-05 23:14:35.178421')
+('Recv data = ', bytearray(b'\x00\x10\x03\x00\x02\x00\x01\x16H4\xf7'))
+Server : test run : received cmd at 2016-05-05 23:14:35.640990
+('Sent response to client = ', bytearray(b'~\x00\x10\x03\x02\x124[\xd9;3~'), ' at 2016-05-05 23:14:35.655014')
+Elapsed time greater = 72.685525, cycle number = 12135

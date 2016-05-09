@@ -60,7 +60,8 @@ def parse_modbus_serial_topology(conf_directory,curr_conf_file,test_file,topolog
 		
 	with open(curr_conf_file,"w") as f :
 		#f.write("total_timeline " + str(n_nodes) + "\n")
-		f.write("total_timeline " + str(N_CPUS) + "\n")
+		#f.write("total_timeline " + str(N_CPUS-1) + "\n")
+		f.write("total_timeline 2" + "\n")
 		f.write("tick_per_second 6\n")
 		f.write("run_time " + str(exp_run_time) + "\n")
 		f.write("seed 1\n")
@@ -93,7 +94,7 @@ def parse_modbus_serial_topology(conf_directory,curr_conf_file,test_file,topolog
 			f.write("	[\n")
 			f.write("		id " + str(node) + "\n")
 			#f.write("		alignment " + str(node) + "\n")
-			f.write("		alignment " + str(node % (N_CPUS)) + "\n")
+			f.write("		alignment " + str(node % (N_CPUS-1)) + "\n")
 			f.write("		host\n")
 			f.write("		[\n")
 			f.write("			id 0\n")

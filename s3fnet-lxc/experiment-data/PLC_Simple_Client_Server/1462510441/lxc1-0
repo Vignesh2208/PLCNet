@@ -1,0 +1,78 @@
+Starting Debug for lxc1-0
+Running Command /home/vignesh/Desktop/PLCs/awlsim-0.42/tests/run.sh -e 1 --node 1 /home/vignesh/Desktop/PLCs/awlsim-0.42/tests/modbus/simple_client_server_multiple/sfb102_client.awl
+6 (process ID) old priority 0, new priority 10
+=== Running tests with 'python2'
+Running test 'sfb102_client.awl' with 'python2' ... [u'0', u'10.10.0.9']
+[u'1', u'10.10.0.10']
+[u'IDS', u'10.10.0.10']
+('Dest IP : ', '10.10.0.9')
+('Resolved hostname = ', '10.10.0.9')
+('IP of IDS : ', '10.10.0.10')
+('Start time = ', datetime.datetime(2016, 5, 5, 23, 54, 3, 642921))
+src lxc name = lxc1-0, dst lxc name = lxc0-0, conn_id = 2
+Connection established at 2016-05-05 23:54:03.642926
+Resumed connection at : 2016-05-05 23:54:03.665033
+('Recv msg = ', bytearray(b'~\x00\x10\x03\x02\x124[\xac\xa2N~'))
+Response processed at 2016-05-05 23:54:03.746228
+Resumed connection at : 2016-05-05 23:54:03.746230
+('Recv msg = ', bytearray(b'~\x00\x10\x03\x02\x124[\xdd\x95\xcc~'))
+Response processed at 2016-05-05 23:54:03.800354
+Resumed connection at : 2016-05-05 23:54:03.800356
+('Recv msg = ', bytearray(b'~\x00\x10\x03\x02\x124[2\xf8\xa8~'))
+Response processed at 2016-05-05 23:54:03.917626
+Resumed connection at : 2016-05-05 23:54:03.917628
+('Recv msg = ', bytearray(b'~\x00\x10\x03\x02\x124[\xc0P\xaf~'))
+Response processed at 2016-05-05 23:54:03.980770
+Resumed connection at : 2016-05-05 23:54:03.980773
+('Recv msg = ', bytearray(b'~\x00\x10\x03\x02\x124[I@%~'))
+Response processed at 2016-05-05 23:54:04.197160
+Resumed connection at : 2016-05-05 23:54:04.197161
+('Recv msg = ', bytearray(b'~\x00\x10\x03\x02\x124[\xe7\x9c\xc8~'))
+Response processed at 2016-05-05 23:54:04.422772
+Resumed connection at : 2016-05-05 23:54:04.422775
+('Recv msg = ', bytearray(b'~\x00\x10\x03\x02\x124[\xf0y\xd5~'))
+Response processed at 2016-05-05 23:54:04.702434
+Resumed connection at : 2016-05-05 23:54:04.702436
+('Recv msg = ', bytearray(b'~\x00\x10\x03\x02\x124[\x88\xcd\x01~'))
+Response processed at 2016-05-05 23:54:04.918904
+Resumed connection at : 2016-05-05 23:54:04.918907
+('Recv msg = ', bytearray(b'~\x00\x10\x03\x02\x124[\x1f\xe4\x84~'))
+Response processed at 2016-05-05 23:54:05.189507
+Resumed connection at : 2016-05-05 23:54:05.189510
+('Recv msg = ', bytearray(b'~\x00\x10\x03\x02\x124[\x7f\xdbz~'))
+Response processed at 2016-05-05 23:54:05.460178
+Resumed connection at : 2016-05-05 23:54:05.460180
+('Recv msg = ', bytearray(b'~\x00\x10\x03\x02\x124[\xbd\xb4\x98~'))
+Response processed at 2016-05-05 23:54:05.748826
+Resumed connection at : 2016-05-05 23:54:05.748829
+('Recv msg = ', bytearray(b'~\x00\x10\x03\x02\x124[\n\x014~'))
+Response processed at 2016-05-05 23:54:06.037474
+Resumed connection at : 2016-05-05 23:54:06.037475
+('Recv msg = ', bytearray(b'~\x00\x10\x03\x02\x124[n\x11\x90~'))
+Response processed at 2016-05-05 23:54:06.181794
+Resumed connection at : 2016-05-05 23:54:06.181795
+('Recv msg = ', bytearray(b'~\x00\x10\x03\x02\x124[\x93\xd6\xf5~'))
+Response processed at 2016-05-05 23:54:06.479310
+Resumed connection at : 2016-05-05 23:54:06.479312
+('Recv msg = ', bytearray(b'~\x00\x10\x03\x02\x124[\xb2\x99\xfb~'))
+Response processed at 2016-05-05 23:54:06.749838
+Resumed connection at : 2016-05-05 23:54:06.749839
+('Recv msg = ', bytearray(b'~\x00\x10\x03\x02\x124[\xb3\xb4\x12~'))
+Response processed at 2016-05-05 23:54:07.011307
+Resumed connection at : 2016-05-05 23:54:07.011310
+('Recv msg = ', bytearray(b'~\x00\x10\x03\x02\x124[\xe6\x01\xb4~'))
+Response processed at 2016-05-05 23:54:07.309035
+Resumed connection at : 2016-05-05 23:54:07.309037
+('Recv msg = ', bytearray(b'~\x00\x10\x03\x02\x124[\xb3%\x8f~'))
+Response processed at 2016-05-05 23:54:07.579601
+Resumed connection at : 2016-05-05 23:54:07.579603
+('Recv msg = ', bytearray(b'~\x00\x10\x03\x02\x124[C\xe3/~'))
+Response processed at 2016-05-05 23:54:07.868201
+Resumed connection at : 2016-05-05 23:54:07.868203
+('Recv msg = ', bytearray(b'~\x00\x10\x03\x02\x124[\xfck\x16~'))
+Response processed at 2016-05-05 23:54:08.138791
+Resumed connection at : 2016-05-05 23:54:08.138793
+('Recv msg = ', bytearray(b'~\x00\x10\x03\x02\x124[\xad\x11o~'))
+Response processed at 2016-05-05 23:54:08.436478
+Resumed connection at : 2016-05-05 23:54:08.436481
+Elapsed time greater = 122.540893, cycle number = 66372

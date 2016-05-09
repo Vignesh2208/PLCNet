@@ -1,0 +1,22 @@
+Starting Debug for lxc0-0
+Running Command /home/vignesh/Desktop/PLCs/awlsim-0.42/tests/run.sh -e 1 --node 0 /home/vignesh/Desktop/PLCs/awlsim-0.42/tests/modbus/simple_client_server_multiple/sfb102_server.awl
+6 (process ID) old priority 0, new priority 10
+=== Running tests with 'python2'
+Running test 'sfb102_server.awl' with 'python2' ... [u'0', u'10.10.0.9']
+[u'1', u'10.10.0.10']
+[u'IDS', u'10.10.0.10']
+('Dest IP : ', '10.10.0.10')
+('Resolved hostname = ', '10.10.0.10')
+('IP of IDS : ', '10.10.0.10')
+('Start time = ', datetime.datetime(2016, 5, 5, 23, 23, 36, 738156))
+src lxc name = lxc0-0, dst lxc name = lxc1-0, conn_id = 1
+Process Process-1:
+Traceback (most recent call last):
+  File "/usr/lib/python2.7/multiprocessing/process.py", line 258, in _bootstrap
+    self.run()
+  File "/usr/lib/python2.7/multiprocessing/process.py", line 114, in run
+    self._target(*self._args, **self._kwargs)
+  File "/home/vignesh/Desktop/PLCs/awlsim-0.42/awlsim/core/systemblocks/test_run.py", line 820, in test_run_server_serial
+    readable,writable,error = select.select([server_fd],[],float(recv_time_val))
+TypeError: arguments 1-3 must be sequences
+Elapsed time greater = 72.58309, cycle number = 12416

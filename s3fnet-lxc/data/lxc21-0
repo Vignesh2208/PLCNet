@@ -14,177 +14,129 @@ Running test 'bottle_plant_node.awl' with 'python2' ... [u'0', u'10.10.0.9']
 ('Dest IP : ', '10.10.0.149')
 ('Resolved hostname = ', '10.10.0.149')
 ('IP of IDS : ', '10.10.0.33')
-Started server process at : 1461694698.71
-('Start time = ', 1461694698.706453)
+Started server process at : 1461718802.82
+('Start time = ', 1461718802.824054)
 Listening on port 502
-('Start time = ', 1461694698.899659)
+('Start time = ', 1461718803.029254)
 ('IP:PORT = ', '10.10.0.97', 502)
-('Start time = ', 1461694698.899659)
+('Start time = ', 1461718803.037267)
 ('IP:PORT = ', '10.10.0.149', 502)
-Established Connection from ('10.10.2.77', 43540)
-('Server: Recv new msg = ', '15 10 03 00 02 00 02 2c 3c 51 96', ' at Node id = ', 22, ' at 2016-04-26 13:18:18.962618')
 ('Attempting to connect to server ', '10.10.0.97', ' : ', 502, ' for the ', 0, ' time.')
-Connection established at 2016-04-26 13:18:18.935322
-Resumed connection at : 2016-04-26 13:18:18.984739
-('Sent msg = ', bytearray(b'+\x10\x03\x00\x02\x00\x02Bl\x02\xd4'))
+Connection established at 2016-04-26 20:00:03.060312
+Resumed connection at : 2016-04-26 20:00:03.071890
+('Sent msg = ', bytearray(b'+\x10\x03\x00\x02\x00\x02B\x94]\xab'))
+('Response from server = ', '2b 10 03 04 00 00 00 00 42 71 a3 d7', ' at ', '2016-04-26 20:00:03.293532')
+Response processed at 2016-04-26 20:00:03.308540
+Resumed connection at : 2016-04-26 20:00:03.308540
 ('Attempting to connect to server ', '10.10.0.149', ' : ', 502, ' for the ', 0, ' time.')
-Connection established at 2016-04-26 13:18:18.936328
-Resumed connection at : 2016-04-26 13:18:19.018895
-Server processing request message at 2016-04-26 13:18:18.989807
-Server processed request message at 2016-04-26 13:18:18.989824
-Server : test run : received cmd at 2016-04-26 13:18:19.024781
-('Sent response to client = ', bytearray(b'\x15\x10\x03\x04\x00\x00\x00\x00,\x8dz\xc4'), ' at 2016-04-26 13:18:19.039802')
-('Sent msg = ', bytearray(b',\x10\x03\x00\x02\x00\x02C\xd9\x9e]'))
-('Response from server = ', '2c 10 03 04 00 00 00 00 43 39 a0 33', ' at ', '2016-04-26 13:18:19.155957')
-('Server: Recv new msg = ', '15 10 03 00 02 00 02 2c 51 f9 4f', ' at Node id = ', 22, ' at 2016-04-26 13:18:19.163921')
-Response processed at 2016-04-26 13:18:19.200164
-Resumed connection at : 2016-04-26 13:18:19.200170
-('Sent msg = ', bytearray(b',\x10\x03\x00\x02\x00\x02C\xe7\xbb\xec'))
-Server processing request message at 2016-04-26 13:18:19.187458
-Server processed request message at 2016-04-26 13:18:19.187470
-('Response from server = ', '2c 10 03 04 00 00 00 00 43 7d e4 0f', ' at ', '2016-04-26 13:18:19.245749')
-Server : test run : received cmd at 2016-04-26 13:18:19.236997
-('Sent response to client = ', bytearray(b'\x15\x10\x03\x04\x00\x00\x00\x00,\xf5p\x0c'), ' at 2016-04-26 13:18:19.255011')
-Response processed at 2016-04-26 13:18:19.262112
-Resumed connection at : 2016-04-26 13:18:19.262130
-('Sent msg = ', bytearray(b',\x10\x03\x00\x02\x00\x02C\xa6\xe9g'))
-('Server: Recv new msg = ', '15 10 03 00 02 00 02 2c 22 b3 b3', ' at Node id = ', 22, ' at 2016-04-26 13:18:19.361125')
-Server processing request message at 2016-04-26 13:18:19.371126
-Server processed request message at 2016-04-26 13:18:19.371126
-Server : test run : received cmd at 2016-04-26 13:18:19.376147
-('Sent response to client = ', bytearray(b'\x15\x10\x03\x04\x00\x00\x00\x00,\xa14M'), ' at 2016-04-26 13:18:19.392158')
-('Server: Recv new msg = ', '15 10 03 00 02 00 02 2c f4 72 cf', ' at Node id = ', 22, ' at 2016-04-26 13:18:19.448140')
-Server processing request message at 2016-04-26 13:18:19.447666
-Server processed request message at 2016-04-26 13:18:19.447674
-Server : test run : received cmd at 2016-04-26 13:18:19.453207
-('Sent response to client = ', bytearray(b'\x15\x10\x03\x04\x00\x00\x00\x00,l\xab\xd9'), ' at 2016-04-26 13:18:19.475293')
-('Response from server = ', '2c 10 03 04 00 00 00 00 43 ff d8 0d', ' at ', '2016-04-26 13:18:19.475279')
-Response processed at 2016-04-26 13:18:19.522289
-Resumed connection at : 2016-04-26 13:18:19.522296
-('Sent msg = ', bytearray(b',\x10\x03\x00\x02\x00\x02Cpdb'))
-('Response from server = ', '2c 10 03 04 00 00 00 00 43 1b d8 a4', ' at ', '2016-04-26 13:18:19.642205')
-('Server: Recv new msg = ', '15 10 03 00 02 00 02 2c 80 62 7b', ' at Node id = ', 22, ' at 2016-04-26 13:18:19.651407')
-Server processing request message at 2016-04-26 13:18:19.676431
-Server processed request message at 2016-04-26 13:18:19.676431
-Server : test run : received cmd at 2016-04-26 13:18:19.678810
-('Sent response to client = ', bytearray(b'\x15\x10\x03\x04\x00\x00\x00\x00,C\xcfQ'), ' at 2016-04-26 13:18:19.681440')
-Response processed at 2016-04-26 13:18:19.720016
-Resumed connection at : 2016-04-26 13:18:19.720023
-('Sent msg = ', bytearray(b',\x10\x03\x00\x02\x00\x02Cp\xa4K'))
-('Response from server = ', '2c 10 03 04 00 00 00 00 43 69 44 03', ' at ', '2016-04-26 13:18:19.858662')
-('Server: Recv new msg = ', '15 10 03 00 02 00 02 2c b2 07 05', ' at Node id = ', 22, ' at 2016-04-26 13:18:19.883357')
-Response processed at 2016-04-26 13:18:19.889673
-Resumed connection at : 2016-04-26 13:18:19.889694
-('Sent msg = ', bytearray(b',\x10\x03\x00\x02\x00\x02C\xee\xef\x9b'))
-Server processing request message at 2016-04-26 13:18:19.892576
-Server processed request message at 2016-04-26 13:18:19.892588
-Server : test run : received cmd at 2016-04-26 13:18:19.912480
-('Sent response to client = ', bytearray(b'\x15\x10\x03\x04\x00\x00\x00\x00,\xa9J\x85'), ' at 2016-04-26 13:18:19.927680')
-('Response from server = ', '2c 10 03 04 00 00 00 00 43 4f 65 99', ' at ', '2016-04-26 13:18:19.935706')
-Response processed at 2016-04-26 13:18:19.949706
-Resumed connection at : 2016-04-26 13:18:19.949706
-('Sent msg = ', bytearray(b',\x10\x03\x00\x02\x00\x02C\\>\xbe'))
-('Server: Recv new msg = ', '15 10 03 00 02 00 02 2c c7 a9 35', ' at Node id = ', 22, ' at 2016-04-26 13:18:20.034795')
-Server processing request message at 2016-04-26 13:18:20.044135
-Server processed request message at 2016-04-26 13:18:20.044147
-Server : test run : received cmd at 2016-04-26 13:18:20.050608
-('Sent response to client = ', bytearray(b'\x15\x10\x03\x04\x00\x00\x00\x00,J\x1aK'), ' at 2016-04-26 13:18:20.066822')
-('Response from server = ', '2c 10 03 04 00 00 00 00 43 e2 8f 87', ' at ', '2016-04-26 13:18:20.071837')
-Response processed at 2016-04-26 13:18:20.103889
-Resumed connection at : 2016-04-26 13:18:20.103910
-('Sent msg = ', bytearray(b',\x10\x03\x00\x02\x00\x02C\xd9\xe9/'))
-('Response from server = ', '2c 10 03 04 00 00 00 00 43 cf b1 d6', ' at ', '2016-04-26 13:18:20.183506')
-('Server: Recv new msg = ', '15 10 03 00 02 00 02 2c d7 30 66', ' at Node id = ', 22, ' at 2016-04-26 13:18:20.218043')
-Response processed at 2016-04-26 13:18:20.226254
-Resumed connection at : 2016-04-26 13:18:20.226275
-Server processing request message at 2016-04-26 13:18:20.229867
-Server processed request message at 2016-04-26 13:18:20.229867
-('Sent msg = ', bytearray(b',\x10\x03\x00\x02\x00\x02C\xd0\x0b\xf8'))
-Server : test run : received cmd at 2016-04-26 13:18:20.233991
-('Sent response to client = ', bytearray(b'\x15\x10\x03\x04\x00\x00\x00\x00,t\x90T'), ' at 2016-04-26 13:18:20.251696')
-('Response from server = ', '2c 10 03 04 00 00 00 00 43 b0 9d 36', ' at ', '2016-04-26 13:18:20.317114')
-('Server: Recv new msg = ', '15 10 03 00 02 00 02 2c 03 4e db', ' at Node id = ', 22, ' at 2016-04-26 13:18:20.326876')
-Response processed at 2016-04-26 13:18:20.334123
-Resumed connection at : 2016-04-26 13:18:20.334147
-('Sent msg = ', bytearray(b',\x10\x03\x00\x02\x00\x02C\x86\xf4\xf3'))
-Server processing request message at 2016-04-26 13:18:20.367135
-Server processed request message at 2016-04-26 13:18:20.367135
-Server : test run : received cmd at 2016-04-26 13:18:20.372122
-('Sent response to client = ', bytearray(b'\x15\x10\x03\x04\x00\x00\x00\x00,\xf3\xf3\xa4'), ' at 2016-04-26 13:18:20.396850')
-('Response from server = ', '2c 10 03 04 00 00 00 00 43 98 ef 5a', ' at ', '2016-04-26 13:18:20.411173')
-Response processed at 2016-04-26 13:18:20.471071
-Resumed connection at : 2016-04-26 13:18:20.471095
-('Server: Recv new msg = ', '15 10 03 00 02 00 02 2c 0c 51 97', ' at Node id = ', 22, ' at 2016-04-26 13:18:20.493275')
-('Sent msg = ', bytearray(b',\x10\x03\x00\x02\x00\x02C\x1b\xc8\x0c'))
-Server processing request message at 2016-04-26 13:18:20.518671
-Server processed request message at 2016-04-26 13:18:20.518683
-('Response from server = ', '2c 10 03 04 00 00 00 00 43 5d 7f a7', ' at ', '2016-04-26 13:18:20.533300')
-Server : test run : received cmd at 2016-04-26 13:18:20.525278
-('Sent response to client = ', bytearray(b'\x15\x10\x03\x04\x00\x00\x00\x00,\x1ed\x97'), ' at 2016-04-26 13:18:20.539296')
-Response processed at 2016-04-26 13:18:20.578337
-Resumed connection at : 2016-04-26 13:18:20.578342
-('Sent msg = ', bytearray(b',\x10\x03\x00\x02\x00\x02C\x0e\x1e`'))
-('Server: Recv new msg = ', '15 10 03 00 02 00 02 2c 68 51 fd', ' at Node id = ', 22, ' at 2016-04-26 13:18:20.631387')
-Server processing request message at 2016-04-26 13:18:20.701456
-Server processed request message at 2016-04-26 13:18:20.701456
-Server : test run : received cmd at 2016-04-26 13:18:20.723176
-('Sent response to client = ', bytearray(b'\x15\x10\x03\x04\x00\x00\x00\x00,\xb9\xd1r'), ' at 2016-04-26 13:18:20.738492')
-('Response from server = ', '2c 10 03 04 00 00 00 00 43 1d 97 e4', ' at ', '2016-04-26 13:18:20.745509')
-Read data =  ['1461694700.84\n']
-Response processed at 2016-04-26 13:18:20.820957
-Resumed connection at : 2016-04-26 13:18:20.820984
-('Routed new job. Node_id = ', 22, ' to ', 45)
-('Sent msg = ', bytearray(b',\x10\x03\x00\x02\x00\x02C\x97\xfb\x9a'))
-('Server: Recv new msg = ', '15 10 03 00 02 00 02 2c 60 d3 af', ' at Node id = ', 22, ' at 2016-04-26 13:18:20.919675')
-Server processing request message at 2016-04-26 13:18:20.931683
-Server processed request message at 2016-04-26 13:18:20.931683
-Server : test run : received cmd at 2016-04-26 13:18:20.934724
-('Sent response to client = ', bytearray(b'\x15\x10\x03\x04\x00\x01\x00\x01.c\x8f\xdd'), ' at 2016-04-26 13:18:20.952708')
-('Response from server = ', '2c 10 03 04 00 00 00 00 43 76 92 28', ' at ', '2016-04-26 13:18:21.003483')
-Response processed at 2016-04-26 13:18:21.018586
-Resumed connection at : 2016-04-26 13:18:21.018591
-('Sent msg = ', bytearray(b',\x10\x03\x00\x02\x00\x02C\x87\x8cs'))
-('Server: Recv new msg = ', '15 10 03 00 02 00 02 2c 7d 30 b1', ' at Node id = ', 22, ' at 2016-04-26 13:18:21.071831')
-('Response from server = ', '2c 10 03 04 00 01 00 01 45 b2 37 90', ' at ', '2016-04-26 13:18:21.155873')
-Server processing request message at 2016-04-26 13:18:21.084856
-Server processed request message at 2016-04-26 13:18:21.084856
-('Response from server = ', '2b 10 03 04 00 00 00 00 42 54 7f 63', ' at ', '2016-04-26 13:18:21.184982')
-Server : test run : received cmd at 2016-04-26 13:18:21.180937
-('Sent response to client = ', bytearray(b'\x15\x10\x03\x04\x00\x01\x00\x01.h\x06\xde'), ' at 2016-04-26 13:18:21.193521')
-Response processed at 2016-04-26 13:18:21.201418
-Resumed connection at : 2016-04-26 13:18:21.201438
-('Sent msg = ', bytearray(b',\x10\x03\x00\x02\x00\x02C\xe3<\x8e'))
-Response processed at 2016-04-26 13:18:21.232000
-Resumed connection at : 2016-04-26 13:18:21.232007
-('Sent msg = ', bytearray(b'+\x10\x03\x00\x02\x00\x02B\xb8\x06E'))
-('Response from server = ', '2b 10 03 04 00 00 00 00 42 1c 12 e9', ' at ', '2016-04-26 13:18:21.292057')
-('Response from server = ', '2c 10 03 04 00 01 00 01 45 66 1d a6', ' at ', '2016-04-26 13:18:21.293450')
-Response processed at 2016-04-26 13:18:21.321124
-Resumed connection at : 2016-04-26 13:18:21.321146
-('Sent msg = ', bytearray(b'+\x10\x03\x00\x02\x00\x02B\xf6\x86]'))
-('Server: Recv new msg = ', '15 10 03 00 02 00 02 2c 0c ff 8d', ' at Node id = ', 22, ' at 2016-04-26 13:18:21.347100')
-Response processed at 2016-04-26 13:18:21.354116
-Resumed connection at : 2016-04-26 13:18:21.354122
-Server processing request message at 2016-04-26 13:18:21.356109
-Server processed request message at 2016-04-26 13:18:21.356109
-('Sent msg = ', bytearray(b',\x10\x03\x00\x02\x00\x02C<\xf1\xff'))
-Server : test run : received cmd at 2016-04-26 13:18:21.363115
-('Sent response to client = ', bytearray(b'\x15\x10\x03\x04\x00\x01\x00\x030\x87<\xea'), ' at 2016-04-26 13:18:21.376919')
-('Response from server = ', '2b 10 03 04 00 00 00 00 42 7e d1 e2', ' at ', '2016-04-26 13:18:21.383149')
-Response processed at 2016-04-26 13:18:21.412868
-Resumed connection at : 2016-04-26 13:18:21.412889
-('Sent msg = ', bytearray(b'+\x10\x03\x00\x02\x00\x02B\xf0);'))
-('Response from server = ', '2c 10 03 04 00 01 00 01 45 49 e7 47', ' at ', '2016-04-26 13:18:21.429231')
-Response processed at 2016-04-26 13:18:21.444324
-Resumed connection at : 2016-04-26 13:18:21.444349
-('Sent msg = ', bytearray(b',\x10\x03\x00\x02\x00\x02C\x07Hp'))
-('Response from server = ', '2b 10 03 04 00 00 00 00 42 71 c2 9b', ' at ', '2016-04-26 13:18:21.474237')
-('Response from server = ', '2c 10 03 04 00 01 00 01 45 2d 42 a9', ' at ', '2016-04-26 13:18:21.520285')
-Response processed at 2016-04-26 13:18:21.533113
-Resumed connection at : 2016-04-26 13:18:21.533136
-('Sent msg = ', bytearray(b'+\x10\x03\x00\x02\x00\x02Bt\xae;'))
-Response processed at 2016-04-26 13:18:21.565791
-Resumed connection at : 2016-04-26 13:18:21.565812
-('Response from server = ', '2b 10 03 04 00 00 00 00 42 49 13 e8', ' at ', '2016-04-26 13:18:21.610375')
-('Sent msg = ', bytearray(b',\x10\x03\x00\x02\x00\x02C\xc9sC'))
-Elapsed time greater = 180.883712, cycle number = 1964
+Connection established at 2016-04-26 20:00:03.072757
+Resumed connection at : 2016-04-26 20:00:03.309309
+('Sent msg = ', bytearray(b'+\x10\x03\x00\x02\x00\x02BC\xd9\xba'))
+Established Connection from ('10.10.2.77', 41629)
+('Server: Recv new msg = ', '15 10 03 00 02 00 02 2c de d9 16', ' at Node id = ', 22, ' at 2016-04-26 20:00:03.366642')
+('Sent msg = ', bytearray(b',\x10\x03\x00\x02\x00\x02C\xca:Z'))
+('Response from server = ', '2b 10 03 04 00 00 00 00 42 84 47 27', ' at ', '2016-04-26 20:00:03.386614')
+Server processing request message at 2016-04-26 20:00:03.373238
+Server processed request message at 2016-04-26 20:00:03.373247
+Server : test run : received cmd at 2016-04-26 20:00:03.472709
+('Sent response to client = ', bytearray(b'\x15\x10\x03\x04\x00\x00\x00\x00,fk\xd5'), ' at 2016-04-26 20:00:03.473715')
+Response processed at 2016-04-26 20:00:03.476708
+Resumed connection at : 2016-04-26 20:00:03.476708
+('Sent msg = ', bytearray(b'+\x10\x03\x00\x02\x00\x02BC*\x89'))
+('Response from server = ', '2b 10 03 04 00 00 00 00 42 ac e8 65', ' at ', '2016-04-26 20:00:03.553086')
+Response processed at 2016-04-26 20:00:03.647891
+Resumed connection at : 2016-04-26 20:00:03.647891
+('Sent msg = ', bytearray(b'+\x10\x03\x00\x02\x00\x02B[I\xe4'))
+('Server: Recv new msg = ', '15 10 03 00 02 00 02 2c c9 e4 12', ' at Node id = ', 22, ' at 2016-04-26 20:00:03.671986')
+Server processing request message at 2016-04-26 20:00:03.679907
+Server processed request message at 2016-04-26 20:00:03.679907
+Server : test run : received cmd at 2016-04-26 20:00:03.686861
+('Sent response to client = ', bytearray(b'\x15\x10\x03\x04\x00\x00\x00\x00,\x82HE'), ' at 2016-04-26 20:00:03.702171')
+('Response from server = ', '2b 10 03 04 00 00 00 00 42 62 87 9c', ' at ', '2016-04-26 20:00:03.722197')
+('Response from server = ', '2c 10 03 04 00 00 00 00 43 a5 f2 51', ' at ', '2016-04-26 20:00:03.756985')
+Response processed at 2016-04-26 20:00:03.782016
+Resumed connection at : 2016-04-26 20:00:03.782016
+('Sent msg = ', bytearray(b'+\x10\x03\x00\x02\x00\x02B\xcf\xbf\x9d'))
+('Response from server = ', '2b 10 03 04 00 00 00 00 42 a3 94 b9', ' at ', '2016-04-26 20:00:03.859112')
+Response processed at 2016-04-26 20:00:03.940180
+Resumed connection at : 2016-04-26 20:00:03.940180
+('Sent msg = ', bytearray(b',\x10\x03\x00\x02\x00\x02C\xad\xeb\xbe'))
+('Server: Recv new msg = ', '15 10 03 00 02 00 02 2c 23 51 5c', ' at Node id = ', 22, ' at 2016-04-26 20:00:03.991885')
+('Response from server = ', '2c 10 03 04 00 00 00 00 43 cd af 07', ' at ', '2016-04-26 20:00:04.062287')
+Response processed at 2016-04-26 20:00:04.090317
+Resumed connection at : 2016-04-26 20:00:04.090317
+('Sent msg = ', bytearray(b'+\x10\x03\x00\x02\x00\x02BT\xc1@'))
+Server processing request message at 2016-04-26 20:00:04.105755
+Server processed request message at 2016-04-26 20:00:04.105763
+Server : test run : received cmd at 2016-04-26 20:00:04.113646
+('Sent response to client = ', bytearray(b'\x15\x10\x03\x04\x00\x00\x00\x00,\xa7\xa7M'), ' at 2016-04-26 20:00:04.129356')
+Response processed at 2016-04-26 20:00:04.149429
+Resumed connection at : 2016-04-26 20:00:04.149448
+('Sent msg = ', bytearray(b',\x10\x03\x00\x02\x00\x02C\x82\xd8\xa9'))
+('Response from server = ', '2b 10 03 04 00 00 00 00 42 5e 18 bf', ' at ', '2016-04-26 20:00:04.180406')
+Response processed at 2016-04-26 20:00:04.270504
+Resumed connection at : 2016-04-26 20:00:04.270504
+('Sent msg = ', bytearray(b'+\x10\x03\x00\x02\x00\x02B\xe5\x89\xd0'))
+('Server: Recv new msg = ', '15 10 03 00 02 00 02 2c e7 da 57', ' at Node id = ', 22, ' at 2016-04-26 20:00:04.341590')
+('Response from server = ', '2b 10 03 04 00 00 00 00 42 26 39 bb', ' at ', '2016-04-26 20:00:04.359251')
+Server processing request message at 2016-04-26 20:00:04.425664
+Server processed request message at 2016-04-26 20:00:04.425664
+Server : test run : received cmd at 2016-04-26 20:00:04.433956
+('Sent response to client = ', bytearray(b'\x15\x10\x03\x04\x00\x00\x00\x00,d\xa0\x82'), ' at 2016-04-26 20:00:04.434673')
+Response processed at 2016-04-26 20:00:04.466148
+Resumed connection at : 2016-04-26 20:00:04.466154
+('Sent msg = ', bytearray(b'+\x10\x03\x00\x02\x00\x02B\xb1O8'))
+('Response from server = ', '2b 10 03 04 00 00 00 00 42 d7 03 c3', ' at ', '2016-04-26 20:00:04.543519')
+Response processed at 2016-04-26 20:00:04.589816
+Resumed connection at : 2016-04-26 20:00:04.589816
+('Sent msg = ', bytearray(b'+\x10\x03\x00\x02\x00\x02BL\xd3\x83'))
+('Response from server = ', '2c 10 03 04 00 00 00 00 43 54 1c d5', ' at ', '2016-04-26 20:00:04.625854')
+('Response from server = ', '2b 10 03 04 00 00 00 00 42 0a 70 04', ' at ', '2016-04-26 20:00:04.680907')
+('Server: Recv new msg = ', '15 10 03 00 02 00 02 2c 64 ec ca', ' at Node id = ', 22, ' at 2016-04-26 20:00:04.690955')
+Server processing request message at 2016-04-26 20:00:04.745232
+Server processed request message at 2016-04-26 20:00:04.745243
+Response processed at 2016-04-26 20:00:04.756488
+Resumed connection at : 2016-04-26 20:00:04.756507
+Response processed at 2016-04-26 20:00:04.756596
+Resumed connection at : 2016-04-26 20:00:04.756608
+Server : test run : received cmd at 2016-04-26 20:00:04.751315
+('Sent response to client = ', bytearray(b'\x15\x10\x03\x04\x00\x00\x00\x00,\xc1f\\'), ' at 2016-04-26 20:00:04.766911')
+('Sent msg = ', bytearray(b'+\x10\x03\x00\x02\x00\x02B\xea5\xd9'))
+('Sent msg = ', bytearray(b',\x10\x03\x00\x02\x00\x02C\xc0dm'))
+('Response from server = ', '2b 10 03 04 00 00 00 00 42 64 d1 81', ' at ', '2016-04-26 20:00:04.848074')
+('Server: Recv new msg = ', '15 10 03 00 02 00 02 2c f7 81 ae', ' at Node id = ', 22, ' at 2016-04-26 20:00:04.936162')
+Response processed at 2016-04-26 20:00:04.940163
+Resumed connection at : 2016-04-26 20:00:04.940163
+('Sent msg = ', bytearray(b'+\x10\x03\x00\x02\x00\x02B(\x03\x94'))
+('Response from server = ', '2b 10 03 04 00 00 00 00 42 3b a9 e0', ' at ', '2016-04-26 20:00:05.018568')
+('Response from server = ', '2c 10 03 04 00 00 00 00 43 e3 54 9d', ' at ', '2016-04-26 20:00:05.066735')
+Server processing request message at 2016-04-26 20:00:05.461685
+Server processed request message at 2016-04-26 20:00:05.461685
+Response processed at 2016-04-26 20:00:05.461688
+Resumed connection at : 2016-04-26 20:00:05.461688
+('Sent msg = ', bytearray(b',\x10\x03\x00\x02\x00\x02C\x7f\xb0\x18'))
+Response processed at 2016-04-26 20:00:05.486481
+Resumed connection at : 2016-04-26 20:00:05.486481
+('Sent msg = ', bytearray(b'+\x10\x03\x00\x02\x00\x02Bl\xf4\xcd'))
+Server : test run : received cmd at 2016-04-26 20:00:05.483278
+('Sent response to client = ', bytearray(b'\x15\x10\x03\x04\x00\x00\x00\x00,\xc3K\xe4'), ' at 2016-04-26 20:00:05.513565')
+('Response from server = ', '2b 10 03 04 00 00 00 00 42 b5 76 35', ' at ', '2016-04-26 20:00:05.592822')
+Response processed at 2016-04-26 20:00:05.670907
+Resumed connection at : 2016-04-26 20:00:05.670907
+('Sent msg = ', bytearray(b'+\x10\x03\x00\x02\x00\x02B\x8aon'))
+('Server: Recv new msg = ', '15 10 03 00 02 00 02 2c 5c bc 20', ' at Node id = ', 22, ' at 2016-04-26 20:00:05.724511')
+('Response from server = ', '2b 10 03 04 00 00 00 00 42 56 d2 1f', ' at ', '2016-04-26 20:02:59.784917')
+Elapsed time greater = 174.008166, cycle number = 916
+Server processing request message at 2016-04-26 20:02:59.854010
+Server processed request message at 2016-04-26 20:02:59.854228
+Server : test run : received cmd at 2016-04-26 20:02:59.924892
+('Sent response to client = ', bytearray(b'\x15\x10\x03\x04\x00\x00\x00\x00,\xc1 1'), ' at 2016-04-26 20:02:59.925109')
+Response processed at 2016-04-26 20:03:00.180817
+Resumed connection at : 2016-04-26 20:03:00.180851
+('Sent msg = ', bytearray(b'+\x10\x03\x00\x02\x00\x02B\xc5\xbd\xc1'))
+RECV timeout error
+####### Exiting ############
+Re-Started server process at 1461718985.44
+('Start time = ', 1461718985.475258)
+Listening on port 502
+Client RECV timeout error

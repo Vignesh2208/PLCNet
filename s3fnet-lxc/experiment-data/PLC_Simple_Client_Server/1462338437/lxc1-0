@@ -1,0 +1,36 @@
+Starting Debug for lxc1-0
+Running Command /home/vignesh/Desktop/PLCs/awlsim-0.42/tests/run.sh -e 1 --node 1 /home/vignesh/Desktop/PLCs/awlsim-0.42/tests/modbus/simple_client_server_multiple/sfb102_client.awl
+6 (process ID) old priority 0, new priority 10
+=== Running tests with 'python2'
+Running test 'sfb102_client.awl' with 'python2' ... [u'0', u'10.10.0.9']
+[u'1', u'10.10.0.10']
+[u'IDS', u'10.10.0.10']
+('Dest IP : ', '10.10.0.9')
+('Resolved hostname = ', '10.10.0.9')
+('IP of IDS : ', '10.10.0.10')
+('Start time = ', datetime.datetime(2016, 5, 4, 0, 7, 20, 234472))
+src lxc name = lxc1-0, dst lxc name = lxc0-0, conn_id = 2
+Connection established at 2016-05-04 00:07:20.234491
+Resumed connection at : 2016-05-04 00:07:20.368660
+('Recv msg = ', bytearray(b'~\x00\x10\x03\x02\x124[\xac*m~'))
+Response processed at 2016-05-04 00:07:20.604560
+Resumed connection at : 2016-05-04 00:07:20.604568
+('Recv msg = ', bytearray(b'~\x00\x10\x03\x02\x124[\x11\xd0d~'))
+Response processed at 2016-05-04 00:07:20.822280
+Resumed connection at : 2016-05-04 00:07:20.822632
+('Recv msg = ', bytearray(b'~\x00\x10\x03\x02\x124[t\xb1\xf4~'))
+Response processed at 2016-05-04 00:07:21.239627
+Resumed connection at : 2016-05-04 00:07:21.239684
+('Recv msg = ', bytearray(b'~\x00\x10\x03\x02\x124[\xa1$\xa8~'))
+Response processed at 2016-05-04 00:07:21.395354
+Resumed connection at : 2016-05-04 00:07:21.395723
+('Recv msg = ', bytearray(b'~\x00\x10\x03\x02\x124[o\x0e\xd9~'))
+Response processed at 2016-05-04 00:07:22.401410
+Resumed connection at : 2016-05-04 00:07:22.401419
+('Recv msg = ', bytearray(b'~\x00\x10\x03\x02\x124[\x80^\xf6~'))
+Response processed at 2016-05-04 00:07:22.865392
+Resumed connection at : 2016-05-04 00:07:22.892108
+('Recv msg = ', bytearray(b'~\x00\x10\x03\x02\x124[\xa5yz~'))
+Response processed at 2016-05-04 00:07:23.797671
+Resumed connection at : 2016-05-04 00:07:23.798399
+Elapsed time greater = 22.644643, cycle number = 13425

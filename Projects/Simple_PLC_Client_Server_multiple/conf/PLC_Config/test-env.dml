@@ -8,26 +8,26 @@ environment_info [
   host [ name no_name uid 0 mapto 0:0(0) alignment 0]
   host [ name no_name uid 1 mapto 1:0(0) alignment 1]
   host [ name no_name uid 2 mapto 2:0(0) alignment 2]
-  host [ name no_name uid 3 mapto 3:1(0) alignment 3]
-  host [ name no_name uid 4 mapto 3:2(0) alignment 3]
-  host [ name no_name uid 5 mapto 3:3(0) alignment 3]
+  host [ name no_name uid 3 mapto 3:1(0) alignment 6]
+  host [ name no_name uid 4 mapto 3:2(0) alignment 6]
+  host [ name no_name uid 5 mapto 3:3(0) alignment 6]
   alignment [
     name 0
-    interface [ nhi 0:0(0) ip 10.10.0.17 delay 0 link_prefix_len 30 peer 0:0(0)  peer_align 3 ]
+    interface [ nhi 0:0(0) ip 10.10.0.17 delay 0 link_prefix_len 30 peer 0:0(0)  peer_align 6 ]
     remote_sender [ nhi 3:1(0) ip 10.10.0.18 xpos 0.0000 ypos 0.0000 zpos 0.0000 peer 0:0(0) ]
   ]
   alignment [
     name 1
-    interface [ nhi 1:0(0) ip 10.10.0.21 delay 0 link_prefix_len 30 peer 1:0(0)  peer_align 3 ]
+    interface [ nhi 1:0(0) ip 10.10.0.21 delay 0 link_prefix_len 30 peer 1:0(0)  peer_align 6 ]
     remote_sender [ nhi 3:2(0) ip 10.10.0.22 xpos 0.0000 ypos 0.0000 zpos 0.0000 peer 1:0(0) ]
   ]
   alignment [
     name 2
-    interface [ nhi 2:0(0) ip 10.10.0.25 delay 0 link_prefix_len 30 peer 2:0(0)  peer_align 3 ]
+    interface [ nhi 2:0(0) ip 10.10.0.25 delay 0 link_prefix_len 30 peer 2:0(0)  peer_align 6 ]
     remote_sender [ nhi 3:3(0) ip 10.10.0.26 xpos 0.0000 ypos 0.0000 zpos 0.0000 peer 2:0(0) ]
   ]
   alignment [
-    name 3
+    name 6
     interface [ nhi 3:1(0) ip 10.10.0.18 delay 0 link_prefix_len 30 peer 3:1(0)  peer_align 0 ]
     interface [ nhi 3:1(1) ip 10.10.0.29 delay 0 link_prefix_len 30 peer 3:1(1)  peer 3:2(1) ]
     interface [ nhi 3:1(2) ip 10.10.0.33 delay 0 link_prefix_len 30 peer 3:1(2)  peer 3:3(1) ]

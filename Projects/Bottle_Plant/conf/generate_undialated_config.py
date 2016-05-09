@@ -1,7 +1,7 @@
 import os
 import time
 
-Max_nodes = 2
+Max_nodes = 63
 node = 0
 reader_path = "/home/vignesh/Desktop/PLCs/awlsim-0.42/s3fnet-lxc/lxc-command/reader_modified"
 
@@ -45,7 +45,7 @@ while node <= Max_nodes :
 
 	node = node + 1
 
-print "Commands sent to all lxcs. Waiting for 20 secs"
+print "Commands sent to all lxcs. Waiting for 10 secs"
 time.sleep(20)
 print "Killing all lxcs"
 node = 0

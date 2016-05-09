@@ -100,7 +100,7 @@ Write_Read	: BOOL;
 END_STRUCT
 BEGIN
 Index		:= W#16#0;		// Message counter
-MaxTimes 	:= W#16#0A;		// Max number of messages
+MaxTimes 	:= W#16#7A;		// Max number of messages
 Unit	 	:= W#16#1;		// Dummy variable
 Data_type 	:= W#16#3;		// Register/Coil
 Start_Address := W#16#2;	

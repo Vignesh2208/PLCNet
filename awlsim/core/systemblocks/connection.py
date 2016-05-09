@@ -34,6 +34,8 @@ from multiprocessing.managers import BaseManager
 import awlsim.core.systemblocks.test_run
 from awlsim.core.systemblocks.test_run import test_run_server_ip
 from awlsim.core.systemblocks.test_run import test_run_client_ip
+from awlsim.core.systemblocks.test_run import test_run_client_serial
+from awlsim.core.systemblocks.test_run import test_run_server_serial
 from awlsim.core.systemblocks.test_run import put
 from awlsim.core.systemblocks.test_run import get
 
@@ -198,6 +200,7 @@ class Connection(object) :
 		self.IDENT_CODE = "NONE"
 		self.CONN_ESTABLISHED = False
 		self.BUSY = False
+		self.conf_dir = conf_directory
 
 		self.server_process = None
 		self.client_process = None
@@ -1269,6 +1272,8 @@ class Connection(object) :
 
 
 
+
+
 	# input params should be set before call
 	# all output params will be set by the call
 	def call_modbus_server_process(self) :
@@ -1286,9 +1291,16 @@ class Connection(object) :
 			
 
 				if self.cpu.network_interface_type == 0 : #IP							
-					self.server_process = Process(target = test_run_server_ip, args =(self.thread_resp_queue,self.thread_cmd_queue,self.connection_params.local_tsap_id,self.disconnect,self.recv_time,self.conn_time,self.IDS_IP,self.cpu.local_id,self.thread_resp_arr,self.thread_cmd_arr))  
-					print("Started server process at : " + str(time.time()))					
+					self.server_process = Process(target = test_run_server_ip, args =(self.thread_resp_queue,self.thread_cmd_queue,self.connection_params.local_tsap_id,self.disconnect,self.recv_time,self.conn_time,self.IDS_IP,self.cpu.local_id,self.thread_resp_arr,self.thread_cmd_arr,self.conf_dir))  
+					#print("Started server process at : " + str(time.time()))					
 					self.server_process.start()
+				else :
+					#thread_resp_queue,thread_cmd_queue, disconnect, recv_time_val, conn_time, local_id, remote_id, connection_id, thread_resp_arr,thread_cmd_arr
+					self.server_process = Process(target = test_run_server_serial, args =(self.thread_resp_queue,self.thread_cmd_queue,self.disconnect,self.recv_time,self.conn_time,self.local_host_id,self.remote_host_id,self.connection_params.id,self.thread_resp_arr,self.thread_cmd_arr,self.conf_dir))  
+					#print("Started server process at : " + str(time.time()))					
+					self.server_process.start()
+
+
 				o = None
 				try :
 					#o = self.thread_resp_queue.get(block=True,timeout=timeout)					
@@ -1344,7 +1356,12 @@ class Connection(object) :
 
 		elif self.STATUS != RUNNING : 	# completed 
 			if self.read_finish_status == 0 :	# for this call return the status params undisturbed
+				
 												# start new thread or resume the existing thread in the nxt call
+				
+				#if self.cpu.network_interface_type != 0 and self.ENQ_ENR == 1 :
+				#	self.STATUS = RUNNING
+
 				self.read_finish_status = 1
 			
 
@@ -1407,16 +1424,22 @@ class Connection(object) :
 			else :	# cases STATUS = DONE, CONN = False, STATUS = RECV_TIMEOUT_ERROR |  CONN_TIMEOUT_ERROR | CLIENT_ERROR, CONN = False
 				# all these cases imply thread exited - if pos in ENQ_ENR - restart new thread
 				if self.ENQ_ENR == 1  :
+					isrestart = False
+					if self.cpu.network_interface_type == 0 or (self.cpu.network_interface_type != 0 and self.STATUS != DONE)  :
+						isrestart = True
+
 					self.STATUS = RUNNING
 					self.ERROR = False
 					self.STATUS_MODBUS = 0x0000
 					self.STATUS_CONN = 0x0000
 					self.STATUS_FUNC = "MODBUSPN"
-					self.IDENT_CODE = "NONE"	
+					self.IDENT_CODE = "NONE"
+
+					
 			
-					if self.cpu.network_interface_type == 0 : #IP	
-						if self.server_process != None:
-							self.server_process.join()
+					
+					if self.server_process != None and isrestart == True:
+						self.server_process.join()
 
 						del self.thread_resp_queue
 						del self.thread_cmd_queue
@@ -1427,10 +1450,15 @@ class Connection(object) :
 						self.thread_resp_arr = Array('i', range(2000))
 						self.thread_cmd_arr = Array('i', range(2000))
 						
-
-						self.server_process = Process(target = test_run_server_ip, args =(self.thread_resp_queue,self.thread_cmd_queue,self.connection_params.local_tsap_id,self.disconnect,self.recv_time,self.conn_time,self.IDS_IP,self.cpu.local_id,self.thread_resp_arr,self.thread_cmd_arr))  
+					if self.cpu.network_interface_type == 0 : #IP	
+						self.server_process = Process(target = test_run_server_ip, args =(self.thread_resp_queue,self.thread_cmd_queue,self.connection_params.local_tsap_id,self.disconnect,self.recv_time,self.conn_time,self.IDS_IP,self.cpu.local_id,self.thread_resp_arr,self.thread_cmd_arr,self.conf_dir))  
 						print("Re-Started server process at " + str(time.time()))					
 						self.server_process.start()
+					elif isrestart == True :
+						self.server_process = Process(target = test_run_server_serial, args =(self.thread_resp_queue,self.thread_cmd_queue,self.disconnect,self.recv_time,self.conn_time,self.local_host_id,self.remote_host_id,self.connection_params.id,self.thread_resp_arr,self.thread_cmd_arr,self.conf_dir))  						
+						print("Re-Started server process at " + str(time.time()))					
+						self.server_process.start()
+
 
 					o = None
 					try :
@@ -1457,7 +1485,10 @@ class Connection(object) :
 									self.BUSY = False
 									self.read_finish_status = 1
 								else :
-									self.CONN_ESTABLISHED = True
+									if self.cpu.network_interface_type == 0 :
+										self.CONN_ESTABLISHED = True
+									else :
+										self.CONN_ESTABLISHED = False
 									self.BUSY = True
 									self.read_finish_status = 0
 							else :
@@ -1479,7 +1510,50 @@ class Connection(object) :
 							self.write_read = request_msg_params["write_read"]
 							self.start_address = request_msg_params["start_address"]
 							self.length = request_msg_params["length"]
-							
+					
+					o = None
+					o = get(self.thread_resp_arr,block=False)
+					if o != None :
+						recv_data = o
+						#?self.thread_cmd_queue.put(1)
+						#print("Server processing request message at " + str(datetime.datetime.now()))
+						response,request_msg_params = self.mod_server.process_request_message(recv_data)										
+						#print("Server processed request message at " + str(datetime.datetime.now()))
+						if request_msg_params["ERROR"] == NO_ERROR :
+							self.STATUS = DONE
+							self.ERROR = False						
+							put(self.thread_cmd_arr,1,response)
+							if self.disconnect == True :
+								self.CONN_ESTABLISHED = False
+								self.BUSY = False
+								self.read_finish_status = 1
+							else :
+								if self.cpu.network_interface_type == 0 :
+									self.CONN_ESTABLISHED = True
+								else :
+									self.CONN_ESTABLISHED = False
+								self.BUSY = True
+								self.read_finish_status = 0
+						else :
+							# set STATUS_MODBUS Based on returned error value			
+							print("ERROR on processing request msg")
+							self.read_finish_status = 1
+							self.STATUS = DONE
+							self.ERROR = True
+							self.CONN_ESTABLISHED = False
+							self.BUSY = False
+							self.STATUS_MODBUS = request_msg_params["ERROR"]
+							self.STATUS_CONN = 0x0
+							put(self.thread_cmd_arr,3,'QUIT')
+
+
+
+						self.unit = request_msg_params["unit"]
+						self.TI = request_msg_params["ti"]
+						self.data_type = request_msg_params["data_type"]
+						self.write_read = request_msg_params["write_read"]
+						self.start_address = request_msg_params["start_address"]
+						self.length = request_msg_params["length"]
 					
 					
 			self.PREV_ENQ_ENR = self.ENQ_ENR
@@ -1543,9 +1617,9 @@ class Connection(object) :
 			if o != None :
 				recv_data = o
 				#?self.thread_cmd_queue.put(1)
-				print("Server processing request message at " + str(datetime.datetime.now()))
+				#print("Server processing request message at " + str(datetime.datetime.now()))
 				response,request_msg_params = self.mod_server.process_request_message(recv_data)										
-				print("Server processed request message at " + str(datetime.datetime.now()))
+				#print("Server processed request message at " + str(datetime.datetime.now()))
 				if request_msg_params["ERROR"] == NO_ERROR :
 					self.STATUS = DONE
 					self.ERROR = False						
@@ -1555,7 +1629,11 @@ class Connection(object) :
 						self.BUSY = False
 						self.read_finish_status = 1
 					else :
-						self.CONN_ESTABLISHED = True
+						if self.cpu.network_interface_type == 0 :
+							self.CONN_ESTABLISHED = True
+						else :
+							self.CONN_ESTABLISHED = False
+
 						self.BUSY = True
 						self.read_finish_status = 0
 				else :
@@ -1602,10 +1680,12 @@ class Connection(object) :
 				self.IDENT_CODE = "NONE"
 				
 
-				if self.cpu.network_interface_type == 0 : #IP
-
-					
-					self.client_process = Process(target = test_run_client_ip, args =(self.thread_resp_queue,self.thread_cmd_queue,self.connection_params.local_tsap_id, self.IDS_IP, TCP_REMOTE_IP, TCP_REMOTE_PORT,self.conn_time,self.cpu.local_id, self.thread_resp_arr,self.thread_cmd_arr))  
+				if self.cpu.network_interface_type == 0 : #IP					
+					self.client_process = Process(target = test_run_client_ip, args =(self.thread_resp_queue,self.thread_cmd_queue,self.connection_params.local_tsap_id, self.IDS_IP, TCP_REMOTE_IP, TCP_REMOTE_PORT,self.conn_time,self.cpu.local_id, self.thread_resp_arr,self.thread_cmd_arr,self.conf_dir))  
+					self.client_process.start()
+				else :
+					#thread_resp_queue,thread_cmd_queue,conn_time, local_id, remote_id, connection_id, thread_resp_arr,thread_cmd_arr
+					self.client_process = Process(target = test_run_client_serial, args =(self.thread_resp_queue,self.thread_cmd_queue,self.conn_time,self.local_host_id,self.remote_host_id,self.connection_params.id,self.thread_resp_arr,self.thread_cmd_arr,self.conf_dir))  
 					self.client_process.start()
 
 				o = None
@@ -1730,21 +1810,24 @@ class Connection(object) :
 					self.STATUS_FUNC = "MODBUSPN"
 					self.IDENT_CODE = "NONE"	
 					
+					
+					if self.client_process != None:
+						self.client_process.join()
+
+					del self.thread_resp_queue
+					del self.thread_cmd_queue
+
+					self.thread_resp_queue = multiprocessing.Queue()
+					self.thread_cmd_queue = multiprocessing.Queue()
+						
+					self.thread_resp_arr = Array('i', range(2000))
+					self.thread_cmd_arr = Array('i', range(2000))
+						
 					if self.cpu.network_interface_type == 0 : #IP	
-						if self.client_process != None:
-							self.client_process.join()
-
-						del self.thread_resp_queue
-						del self.thread_cmd_queue
-
-						self.thread_resp_queue = multiprocessing.Queue()
-						self.thread_cmd_queue = multiprocessing.Queue()
-						
-						self.thread_resp_arr = Array('i', range(2000))
-						self.thread_cmd_arr = Array('i', range(2000))
-						
-
-						self.client_process = Process(target = test_run_client_ip, args =(self.thread_resp_queue,self.thread_cmd_queue,self.connection_params.local_tsap_id, self.IDS_IP,TCP_REMOTE_IP, TCP_REMOTE_PORT,self.conn_time,self.cpu.local_id,self.thread_resp_arr,self.thread_cmd_arr))  
+						self.client_process = Process(target = test_run_client_ip, args =(self.thread_resp_queue,self.thread_cmd_queue,self.connection_params.local_tsap_id, self.IDS_IP,TCP_REMOTE_IP, TCP_REMOTE_PORT,self.conn_time,self.cpu.local_id,self.thread_resp_arr,self.thread_cmd_arr,self.conf_dir))  
+						self.client_process.start()
+					else :
+						self.client_process = Process(target = test_run_client_serial, args =(self.thread_resp_queue,self.thread_cmd_queue,self.conn_time,self.local_host_id,self.remote_host_id,self.connection_params.id,self.thread_resp_arr,self.thread_cmd_arr,self.conf_dir))  
 						self.client_process.start()
 					
 					o = None

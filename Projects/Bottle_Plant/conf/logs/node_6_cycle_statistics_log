@@ -1,5 +1,5 @@
-Mean cycle time  : 0.00497934130435
-Sample variance  : 0.0007243451288
-Total elapsed sq time : 0.343879580439
-N_cycles         : 460
+Mean cycle time  : 0.00077833514377
+Sample variance  : 1.04611184581e-05
+Total elapsed sq time : 0.034629011171
+N_cycles         : 3130
 N_greater        : 0

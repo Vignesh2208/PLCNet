@@ -1,0 +1,185 @@
+Starting Debug for lxc0-0
+Running Command /home/vignesh/Desktop/PLCs/awlsim-0.42/tests/run.sh -e 1 --node 0 /home/vignesh/Desktop/PLCs/awlsim-0.42/tests/modbus/simple_client_server_multiple/sfb102_server.awl
+6 (process ID) old priority 0, new priority 10
+=== Running tests with 'python2'
+Running test 'sfb102_server.awl' with 'python2' ... [u'0', u'10.10.0.9']
+[u'1', u'10.10.0.10']
+[u'IDS', u'10.10.0.10']
+('Dest IP : ', '10.10.0.10')
+('Resolved hostname = ', '10.10.0.10')
+('IP of IDS : ', '10.10.0.10')
+('Start time = ', datetime.datetime(2016, 5, 9, 13, 32, 15, 13915), ' connection id = ', 1)
+src lxc name = lxc0-0, dst lxc name = lxc1-0, conn_id = 1
+('poll start time :', datetime.datetime(2016, 5, 9, 13, 32, 15, 13921))
+('Recv data = ', bytearray(b'\x00\x10\x03\x00\x02\x00\x01\x16\x08\xb6\xba'), ' Avg read time = ', 1e-06, ' Number = ', 1.0, ' total read time = ', 1e-06)
+Server : test run : received cmd at 2016-05-09 13:32:15.236979
+('Sent response to client = ', bytearray(b'~\x00\x10\x03\x02\x124[}^\xeeW~'), ' at 2016-05-09 13:32:15.244987', ' Write time = ', 0.008004)
+('poll start time :', datetime.datetime(2016, 5, 9, 13, 32, 15, 244996))
+('Recv data = ', bytearray(b'\x00\x10\x03\x00\x02\x00\x01\x16\xd0\x9c_'), ' Avg read time = ', 0.0, ' Number = ', 1.0, ' total read time = ', 0.0)
+Server : test run : received cmd at 2016-05-09 13:32:15.300215
+('Sent response to client = ', bytearray(b'~\x00\x10\x03\x02\x124[\x96\xf9\xc1~'), ' at 2016-05-09 13:32:15.308006', ' Write time = ', 0.007788)
+('poll start time :', datetime.datetime(2016, 5, 9, 13, 32, 15, 308015))
+('Recv data = ', bytearray(b'\x00\x10\x03\x00\x02\x00\x01\x16\rtQ'), ' Avg read time = ', 1e-06, ' Number = ', 1.0, ' total read time = ', 1e-06)
+Server : test run : received cmd at 2016-05-09 13:32:15.377494
+('Sent response to client = ', bytearray(b'~\x00\x10\x03\x02\x124[\xc6\xbc\x16~'), ' at 2016-05-09 13:32:15.391542', ' Write time = ', 0.014045)
+('poll start time :', datetime.datetime(2016, 5, 9, 13, 32, 15, 391551))
+('Recv data = ', bytearray(b'\x00\x10\x03\x00\x02\x00\x01\x16\xe1\xde\xa8'), ' Avg read time = ', 1e-06, ' Number = ', 1.0, ' total read time = ', 1e-06)
+Server : test run : received cmd at 2016-05-09 13:32:15.440720
+('Sent response to client = ', bytearray(b'~\x00\x10\x03\x02\x124[;Wc~'), ' at 2016-05-09 13:32:15.454769', ' Write time = ', 0.014045)
+('poll start time :', datetime.datetime(2016, 5, 9, 13, 32, 15, 454777))
+('Recv data = ', bytearray(b'\x00\x10\x03\x00\x02\x00\x01\x16\x9fR\xc3'), ' Avg read time = ', 0.0, ' Number = ', 1.0, ' total read time = ', 0.0)
+Server : test run : received cmd at 2016-05-09 13:32:15.496904
+('Sent response to client = ', bytearray(b'~\x00\x10\x03\x02\x124[\xd1\xa1\x11~'), ' at 2016-05-09 13:32:15.497070', ' Write time = ', 0.000164)
+('poll start time :', datetime.datetime(2016, 5, 9, 13, 32, 15, 497078))
+('Recv data = ', bytearray(b'\x00\x10\x03\x00\x02\x00\x01\x16\xe2\x97\xeb'), ' Avg read time = ', 0.0, ' Number = ', 1.0, ' total read time = ', 0.0)
+Server : test run : received cmd at 2016-05-09 13:32:15.546090
+('Sent response to client = ', bytearray(b'~\x00\x10\x03\x02\x124[\xb1F\xa2~'), ' at 2016-05-09 13:32:15.554095', ' Write time = ', 0.008001)
+('poll start time :', datetime.datetime(2016, 5, 9, 13, 32, 15, 554103))
+('Recv data = ', bytearray(b'\x00\x10\x03\x00\x02\x00\x01\x16\xbd\x98I'), ' Avg read time = ', 1e-06, ' Number = ', 1.0, ' total read time = ', 1e-06)
+Server : test run : received cmd at 2016-05-09 13:32:15.602264
+('Sent response to client = ', bytearray(b'~\x00\x10\x03\x02\x124[\xa7Lq~'), ' at 2016-05-09 13:32:15.616303', ' Write time = ', 0.014035)
+('poll start time :', datetime.datetime(2016, 5, 9, 13, 32, 15, 616310))
+('Recv data = ', bytearray(b'\x00\x10\x03\x00\x02\x00\x01\x16\xec\x1bj'), ' Avg read time = ', 1e-06, ' Number = ', 1.0, ' total read time = ', 1e-06)
+Server : test run : received cmd at 2016-05-09 13:32:15.665492
+('Sent response to client = ', bytearray(b'~\x00\x10\x03\x02\x124[w\xa4\xdd~'), ' at 2016-05-09 13:32:15.679534', ' Write time = ', 0.014038)
+('poll start time :', datetime.datetime(2016, 5, 9, 13, 32, 15, 679542))
+('Recv data = ', bytearray(b'\x00\x10\x03\x00\x02\x00\x01\x16\x85O~'), ' Avg read time = ', 1e-06, ' Number = ', 1.0, ' total read time = ', 1e-06)
+Server : test run : received cmd at 2016-05-09 13:32:15.756818
+('Sent response to client = ', bytearray(b'~\x00\x10\x03\x02\x124[\xfb\x90\x92~'), ' at 2016-05-09 13:32:15.764172', ' Write time = ', 0.007351)
+('poll start time :', datetime.datetime(2016, 5, 9, 13, 32, 15, 764180))
+('Recv data = ', bytearray(b'\x00\x10\x03\x00\x02\x00\x01\x16sp\x10'), ' Avg read time = ', 1e-06, ' Number = ', 1.0, ' total read time = ', 1e-06)
+Server : test run : received cmd at 2016-05-09 13:32:15.812999
+('Sent response to client = ', bytearray(b'~\x00\x10\x03\x02\x124[\xc9|\x18~'), ' at 2016-05-09 13:32:15.827049', ' Write time = ', 0.014046)
+('poll start time :', datetime.datetime(2016, 5, 9, 13, 32, 15, 827056))
+('Recv data = ', bytearray(b'\x00\x10\x03\x00\x02\x00\x01\x16G\x97\xfe'), ' Avg read time = ', 0.0, ' Number = ', 1.0, ' total read time = ', 0.0)
+Server : test run : received cmd at 2016-05-09 13:32:15.876204
+('Sent response to client = ', bytearray(b"~\x00\x10\x03\x02\x124[\'\x07\x14~"), ' at 2016-05-09 13:32:15.884203', ' Write time = ', 0.007994)
+('poll start time :', datetime.datetime(2016, 5, 9, 13, 32, 15, 884210))
+('Recv data = ', bytearray(b'\x00\x10\x03\x00\x02\x00\x01\x16\x98\x87?'), ' Avg read time = ', 1e-06, ' Number = ', 1.0, ' total read time = ', 1e-06)
+Server : test run : received cmd at 2016-05-09 13:32:15.953471
+('Sent response to client = ', bytearray(b'~\x00\x10\x03\x02\x124[\x90\xab!~'), ' at 2016-05-09 13:32:15.967516', ' Write time = ', 0.014042)
+('poll start time :', datetime.datetime(2016, 5, 9, 13, 32, 15, 967523))
+('Recv data = ', bytearray(b'\x00\x10\x03\x00\x02\x00\x01\x16\xeb\x06\xe1'), ' Avg read time = ', 1e-06, ' Number = ', 1.0, ' total read time = ', 1e-06)
+Server : test run : received cmd at 2016-05-09 13:32:16.016684
+('Sent response to client = ', bytearray(b'~\x00\x10\x03\x02\x124[g|\x04~'), ' at 2016-05-09 13:32:16.030731', ' Write time = ', 0.014043)
+('poll start time :', datetime.datetime(2016, 5, 9, 13, 32, 16, 30738))
+('Recv data = ', bytearray(b'\x00\x10\x03\x00\x02\x00\x01\x16`\x14\x05'), ' Avg read time = ', 0.0, ' Number = ', 1.0, ' total read time = ', 0.0)
+Server : test run : received cmd at 2016-05-09 13:32:16.079892
+('Sent response to client = ', bytearray(b'~\x00\x10\x03\x02\x124[\xf655~'), ' at 2016-05-09 13:32:16.093932', ' Write time = ', 0.014036)
+('poll start time :', datetime.datetime(2016, 5, 9, 13, 32, 16, 93939))
+('Recv data = ', bytearray(b'\x00\x10\x03\x00\x02\x00\x01\x16\x00m '), ' Avg read time = ', 0.0, ' Number = ', 1.0, ' total read time = ', 0.0)
+Server : test run : received cmd at 2016-05-09 13:32:16.150127
+('Sent response to client = ', bytearray(b'~\x00\x10\x03\x02\x124[\xcdZm~'), ' at 2016-05-09 13:32:16.157306', ' Write time = ', 0.007175)
+('poll start time :', datetime.datetime(2016, 5, 9, 13, 32, 16, 157314))
+('Recv data = ', bytearray(b'\x00\x10\x03\x00\x02\x00\x01\x16\xb2\xda#'), ' Avg read time = ', 0.0, ' Number = ', 1.0, ' total read time = ', 0.0)
+Server : test run : received cmd at 2016-05-09 13:32:16.206313
+('Sent response to client = ', bytearray(b'~\x00\x10\x03\x02\x124[\xd1r\xc0~'), ' at 2016-05-09 13:32:16.214321', ' Write time = ', 0.008004)
+('poll start time :', datetime.datetime(2016, 5, 9, 13, 32, 16, 214328))
+('Recv data = ', bytearray(b'\x00\x10\x03\x00\x02\x00\x01\x16\x93\x16]'), ' Avg read time = ', 0.0, ' Number = ', 1.0, ' total read time = ', 0.0)
+Server : test run : received cmd at 2016-05-09 13:32:16.262515
+('Sent response to client = ', bytearray(b'~\x00\x10\x03\x02\x124[\x89\xd6\x17~'), ' at 2016-05-09 13:32:16.276559', ' Write time = ', 0.014041)
+('poll start time :', datetime.datetime(2016, 5, 9, 13, 32, 16, 276568))
+('Recv data = ', bytearray(b'\x00\x10\x03\x00\x02\x00\x01\x16Dd\x03'), ' Avg read time = ', 1e-06, ' Number = ', 1.0, ' total read time = ', 1e-06)
+Server : test run : received cmd at 2016-05-09 13:32:16.332744
+('Sent response to client = ', bytearray(b'~\x00\x10\x03\x02\x124[1\xe4\xa8~'), ' at 2016-05-09 13:32:16.340367', ' Write time = ', 0.007619)
+('poll start time :', datetime.datetime(2016, 5, 9, 13, 32, 16, 340375))
+('Recv data = ', bytearray(b'\x00\x10\x03\x00\x02\x00\x01\x16r\xf0T'), ' Avg read time = ', 1e-06, ' Number = ', 1.0, ' total read time = ', 1e-06)
+Server : test run : received cmd at 2016-05-09 13:32:16.381911
+('Sent response to client = ', bytearray(b'~\x00\x10\x03\x02\x124[$\xfa\x96~'), ' at 2016-05-09 13:32:16.382367', ' Write time = ', 0.000453)
+('poll start time :', datetime.datetime(2016, 5, 9, 13, 32, 16, 382374))
+('Recv data = ', bytearray(b'\x00\x10\x03\x00\x02\x00\x01\x16\x96\x8d('), ' Avg read time = ', 0.0, ' Number = ', 1.0, ' total read time = ', 0.0)
+Server : test run : received cmd at 2016-05-09 13:32:16.459203
+('Sent response to client = ', bytearray(b'~\x00\x10\x03\x02\x124[\x03\xb2\xe9~'), ' at 2016-05-09 13:32:16.466401', ' Write time = ', 0.007195)
+('poll start time :', datetime.datetime(2016, 5, 9, 13, 32, 16, 466409))
+('Recv data = ', bytearray(b'\x00\x10\x03\x00\x02\x00\x01\x16\xae\xc0O'), ' Avg read time = ', 1e-06, ' Number = ', 1.0, ' total read time = ', 1e-06)
+Server : test run : received cmd at 2016-05-09 13:32:16.508351
+('Sent response to client = ', bytearray(b'~\x00\x10\x03\x02\x124[{=\xbf~'), ' at 2016-05-09 13:32:16.508410', ' Write time = ', 5.5e-05)
+('poll start time :', datetime.datetime(2016, 5, 9, 13, 32, 16, 508417))
+('Recv data = ', bytearray(b'\x00\x10\x03\x00\x02\x00\x01\x16\xce\xef\t'), ' Avg read time = ', 1e-06, ' Number = ', 1.0, ' total read time = ', 1e-06)
+Server : test run : received cmd at 2016-05-09 13:32:16.550477
+('Sent response to client = ', bytearray(b'~\x00\x10\x03\x02\x124[LTR~'), ' at 2016-05-09 13:32:16.564514', ' Write time = ', 0.014032)
+('poll start time :', datetime.datetime(2016, 5, 9, 13, 32, 16, 564520))
+('Recv data = ', bytearray(b'\x00\x10\x03\x00\x02\x00\x01\x16\xe0.9'), ' Avg read time = ', 1e-06, ' Number = ', 1.0, ' total read time = ', 1e-06)
+Server : test run : received cmd at 2016-05-09 13:32:16.627713
+('Sent response to client = ', bytearray(b'~\x00\x10\x03\x02\x124[\xbfQJ~'), ' at 2016-05-09 13:32:16.634740', ' Write time = ', 0.007025)
+('poll start time :', datetime.datetime(2016, 5, 9, 13, 32, 16, 634747))
+('Recv data = ', bytearray(b'\x00\x10\x03\x00\x02\x00\x01\x16\xe5C\xef'), ' Avg read time = ', 1e-06, ' Number = ', 1.0, ' total read time = ', 1e-06)
+Server : test run : received cmd at 2016-05-09 13:32:16.690914
+('Sent response to client = ', bytearray(b'~\x00\x10\x03\x02\x124[S\xe2E~'), ' at 2016-05-09 13:32:16.697934', ' Write time = ', 0.007017)
+('poll start time :', datetime.datetime(2016, 5, 9, 13, 32, 16, 697943))
+('Recv data = ', bytearray(b'\x00\x10\x03\x00\x02\x00\x01\x16\t\xf3\xba'), ' Avg read time = ', 0.0, ' Number = ', 1.0, ' total read time = ', 0.0)
+Server : test run : received cmd at 2016-05-09 13:32:16.768169
+('Sent response to client = ', bytearray(b'~\x00\x10\x03\x02\x124[Gk\xcb~'), ' at 2016-05-09 13:32:16.775506', ' Write time = ', 0.007332)
+('poll start time :', datetime.datetime(2016, 5, 9, 13, 32, 16, 775514))
+('Recv data = ', bytearray(b'\x00\x10\x03\x00\x02\x00\x01\x16\x0f\xcc\xba'), ' Avg read time = ', 1e-06, ' Number = ', 1.0, ' total read time = ', 1e-06)
+Server : test run : received cmd at 2016-05-09 13:32:16.831367
+('Sent response to client = ', bytearray(b'~\x00\x10\x03\x02\x124[\x8c\x1e\x92~'), ' at 2016-05-09 13:32:16.838530', ' Write time = ', 0.007159)
+('poll start time :', datetime.datetime(2016, 5, 9, 13, 32, 16, 838538))
+('Recv data = ', bytearray(b'\x00\x10\x03\x00\x02\x00\x01\x16\xd7n\xf2'), ' Avg read time = ', 1e-06, ' Number = ', 1.0, ' total read time = ', 1e-06)
+Server : test run : received cmd at 2016-05-09 13:32:16.887526
+('Sent response to client = ', bytearray(b'~\x00\x10\x03\x02\x124[b\x0c/~'), ' at 2016-05-09 13:32:16.901555', ' Write time = ', 0.014026)
+('poll start time :', datetime.datetime(2016, 5, 9, 13, 32, 16, 901560))
+('Recv data = ', bytearray(b'\x00\x10\x03\x00\x02\x00\x01\x16|\xdb\xa8'), ' Avg read time = ', 1e-06, ' Number = ', 1.0, ' total read time = ', 1e-06)
+Server : test run : received cmd at 2016-05-09 13:32:16.943627
+('Sent response to client = ', bytearray(b'~\x00\x10\x03\x02\x124[\x05Ed~'), ' at 2016-05-09 13:32:16.957675', ' Write time = ', 0.014045)
+('poll start time :', datetime.datetime(2016, 5, 9, 13, 32, 16, 957682))
+('Recv data = ', bytearray(b'\x00\x10\x03\x00\x02\x00\x01\x16\xb4\xcdG'), ' Avg read time = ', 0.0, ' Number = ', 1.0, ' total read time = ', 0.0)
+Server : test run : received cmd at 2016-05-09 13:32:17.006802
+('Sent response to client = ', bytearray(b'~\x00\x10\x03\x02\x124[\xe3\x0e\x9b~'), ' at 2016-05-09 13:32:17.020853', ' Write time = ', 0.014046)
+('poll start time :', datetime.datetime(2016, 5, 9, 13, 32, 17, 20860))
+('Recv data = ', bytearray(b'\x00\x10\x03\x00\x02\x00\x01\x16\xb7\x93\xfc'), ' Avg read time = ', 1e-06, ' Number = ', 1.0, ' total read time = ', 1e-06)
+Server : test run : received cmd at 2016-05-09 13:32:17.070003
+('Sent response to client = ', bytearray(b'~\x00\x10\x03\x02\x124[\x16\xfeJ~'), ' at 2016-05-09 13:32:17.084051', ' Write time = ', 0.014046)
+('poll start time :', datetime.datetime(2016, 5, 9, 13, 32, 17, 84061))
+('Recv data = ', bytearray(b'\x00\x10\x03\x00\x02\x00\x01\x16vzw'), ' Avg read time = ', 1e-06, ' Number = ', 1.0, ' total read time = ', 1e-06)
+Server : test run : received cmd at 2016-05-09 13:32:17.140226
+('Sent response to client = ', bytearray(b'~\x00\x10\x03\x02\x124[@\xf0\xd1~'), ' at 2016-05-09 13:32:17.147622', ' Write time = ', 0.007392)
+('poll start time :', datetime.datetime(2016, 5, 9, 13, 32, 17, 147632))
+('Recv data = ', bytearray(b'\x00\x10\x03\x00\x02\x00\x01\x16b\x95\x1d'), ' Avg read time = ', 1e-06, ' Number = ', 1.0, ' total read time = ', 1e-06)
+Server : test run : received cmd at 2016-05-09 13:32:17.203434
+('Sent response to client = ', bytearray(b'~\x00\x10\x03\x02\x124[#\xae$~'), ' at 2016-05-09 13:32:17.210641', ' Write time = ', 0.007203)
+('poll start time :', datetime.datetime(2016, 5, 9, 13, 32, 17, 210650))
+('Recv data = ', bytearray(b'\x00\x10\x03\x00\x02\x00\x01\x16\x02\xaf\xe2'), ' Avg read time = ', 1e-06, ' Number = ', 1.0, ' total read time = ', 1e-06)
+Server : test run : received cmd at 2016-05-09 13:32:17.259632
+('Sent response to client = ', bytearray(b'~\x00\x10\x03\x02\x124[\x99\x13\xe5~'), ' at 2016-05-09 13:32:17.273679', ' Write time = ', 0.014044)
+('poll start time :', datetime.datetime(2016, 5, 9, 13, 32, 17, 273686))
+('Recv data = ', bytearray(b'\x00\x10\x03\x00\x02\x00\x01\x16\xccNo'), ' Avg read time = ', 0.0, ' Number = ', 1.0, ' total read time = ', 0.0)
+Server : test run : received cmd at 2016-05-09 13:32:17.329872
+('Sent response to client = ', bytearray(b'~\x00\x10\x03\x02\x124[w\x1a\x15~'), ' at 2016-05-09 13:32:17.330683', ' Write time = ', 0.000808)
+('poll start time :', datetime.datetime(2016, 5, 9, 13, 32, 17, 330690))
+('Recv data = ', bytearray(b'\x00\x10\x03\x00\x02\x00\x01\x16w\xa9h'), ' Avg read time = ', 1e-06, ' Number = ', 1.0, ' total read time = ', 1e-06)
+Server : test run : received cmd at 2016-05-09 13:32:17.386053
+('Sent response to client = ', bytearray(b'~\x00\x10\x03\x02\x124[\x1aK\xd3~'), ' at 2016-05-09 13:32:17.393711', ' Write time = ', 0.007654)
+('poll start time :', datetime.datetime(2016, 5, 9, 13, 32, 17, 393718))
+('Recv data = ', bytearray(b'\x00\x10\x03\x00\x02\x00\x01\x16\x86\x11\xf8'), ' Avg read time = ', 1e-06, ' Number = ', 1.0, ' total read time = ', 1e-06)
+Server : test run : received cmd at 2016-05-09 13:32:17.449256
+('Sent response to client = ', bytearray(b'~\x00\x10\x03\x02\x124[Z3\xb3~'), ' at 2016-05-09 13:32:17.456735', ' Write time = ', 0.007475)
+('poll start time :', datetime.datetime(2016, 5, 9, 13, 32, 17, 456742))
+('Recv data = ', bytearray(b'\x00\x10\x03\x00\x02\x00\x01\x16\x98@*'), ' Avg read time = ', 0.0, ' Number = ', 1.0, ' total read time = ', 0.0)
+Server : test run : received cmd at 2016-05-09 13:32:17.505451
+('Sent response to client = ', bytearray(b'~\x00\x10\x03\x02\x124[\x04G}]~'), ' at 2016-05-09 13:32:17.519487', ' Write time = ', 0.014031)
+('poll start time :', datetime.datetime(2016, 5, 9, 13, 32, 17, 519495))
+('Recv data = ', bytearray(b'\x00\x10\x03\x00\x02\x00\x01\x16\x12\xab\xb9'), ' Avg read time = ', 1e-06, ' Number = ', 1.0, ' total read time = ', 1e-06)
+Server : test run : received cmd at 2016-05-09 13:32:17.561636
+('Sent response to client = ', bytearray(b'~\x00\x10\x03\x02\x124[\xee\x7fC~'), ' at 2016-05-09 13:32:17.561760', ' Write time = ', 0.000118)
+('poll start time :', datetime.datetime(2016, 5, 9, 13, 32, 17, 561772))
+('Recv data = ', bytearray(b'\x00\x10\x03\x00\x02\x00\x01\x16\xd4C|'), ' Avg read time = ', 1e-06, ' Number = ', 1.0, ' total read time = ', 1e-06)
+Server : test run : received cmd at 2016-05-09 13:32:17.610793
+('Sent response to client = ', bytearray(b'~\x00\x10\x03\x02\x124[\xa7\xf5f~'), ' at 2016-05-09 13:32:17.618778', ' Write time = ', 0.007981)
+('poll start time :', datetime.datetime(2016, 5, 9, 13, 32, 17, 618788))
+('Recv data = ', bytearray(b'\x00\x10\x03\x00\x02\x00\x01\x16JH\x80'), ' Avg read time = ', 1e-06, ' Number = ', 1.0, ' total read time = ', 1e-06)
+Server : test run : received cmd at 2016-05-09 13:32:17.666978
+('Sent response to client = ', bytearray(b'~\x00\x10\x03\x02\x124[D\x81\x88~'), ' at 2016-05-09 13:32:17.681030', ' Write time = ', 0.014048)
+('poll start time :', datetime.datetime(2016, 5, 9, 13, 32, 17, 681054))
+('Recv data = ', bytearray(b'\x00\x10\x03\x00\x02\x00\x01\x16\xab\xd3\x0e'), ' Avg read time = ', 0.0, ' Number = ', 1.0, ' total read time = ', 0.0)
+Server : test run : received cmd at 2016-05-09 13:32:17.730207
+('Sent response to client = ', bytearray(b'~\x00\x10\x03\x02\x124[\xd0\x05\xe6~'), ' at 2016-05-09 13:32:17.744251', ' Write time = ', 0.01404)
+('poll start time :', datetime.datetime(2016, 5, 9, 13, 32, 17, 744261))
+('Recv data = ', bytearray(b'\x00\x10\x03\x00\x02\x00\x01\x16\xbf\xa9='), ' Avg read time = ', 1e-06, ' Number = ', 1.0, ' total read time = ', 1e-06)
+Server : test run : received cmd at 2016-05-09 13:32:17.807478
+('Sent response to client = ', bytearray(b'~\x00\x10\x03\x02\x124[4\x17\x14~'), ' at 2016-05-09 13:32:17.814507', ' Write time = ', 0.007026)
+('poll start time :', datetime.datetime(2016, 5, 9, 13, 32, 17, 814515))
+('Recv data = ', bytearray(b'\x00\x10\x03\x00\x02\x00\x01\x16n/\xb9'), ' Avg read time = ', 0.0, ' Number = ', 1.0, ' total read time = ', 0.0)
+Server : test run : received cmd at 2016-05-09 13:32:17.884760
+('Sent response to client = ', bytearray(b'~\x00\x10\x03\x02\x124[w\xaa\xfc~'), ' at 2016-05-09 13:32:17.891880', ' Write time = ', 0.007114)
+Elapsed time greater = 44.325996, cycle number = 5521
