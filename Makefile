@@ -14,6 +14,7 @@ rebuild: lxcman
 	cd s3fnet-lxc/base/; ./build.sh -f -n  $(NUM_CORES)
 	
 fullbuild: lxcman	
+	python initialize.py
 	python awlsim/definitions.py
 	./create_sym_links.sh
 	cd s3fnet-lxc/base/tklxcmngr/socket_hooks/; make clean; make;

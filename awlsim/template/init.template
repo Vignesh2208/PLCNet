@@ -1,14 +1,3 @@
-import os
-import sys
-import stat
-
-N_CPUS = 6
-TX_BUF_SIZE = 100
-RX_BUF_SIZE = 2*TX_BUF_SIZE
-KERN_BUF_SIZE = 100
-NR_SERIAL_DEVS = 3
-TIMEKEEPER_DIR =  "/home/vignesh/Desktop/Timekeeper/dilation-code"
-
 ## Config script. Do not modify ##
 script_path = os.path.dirname(os.path.realpath(__file__))
 script_path_list = script_path.split('/')

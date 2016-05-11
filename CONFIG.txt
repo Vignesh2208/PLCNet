@@ -1,0 +1,11 @@
+# number of cpus assigned for experiment >= 2
+N_CPUS = 6						
+
+# number of serial devices per PLC
+NR_SERIAL_DEVS  = 3												
+
+# Tx Buffer size per serial device
+TX_BUF_SIZE = 100													
+
+# directory containing Timekeeper code
+TIMEKEEPER_DIR = "/home/vignesh/Desktop/Timekeeper/dilation-code"	
