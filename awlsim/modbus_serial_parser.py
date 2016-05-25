@@ -1,4 +1,13 @@
 from definitions import NR_SERIAL_DEVS
+import os
+import sys
+
+def is_awl_script(script_path):
+	if os.path.isfile(script_path) :
+		if script_path.endswith(".awl") :
+			return True
+
+	return False
 
 def parse_modbus_serial_topology(conf_directory,curr_conf_file,test_file,topology_file,exp_run_time,exp_name,exp_tdf,exp_n_nodes,Node,N_CPUS):
 
@@ -86,7 +95,10 @@ def parse_modbus_serial_topology(conf_directory,curr_conf_file,test_file,topolog
 		f.write("	lxcConfig\n")
 		f.write("	[\n")
 		for node in xrange(1,exp_n_nodes+1)  :
-			f.write("		settings [ lxcNHI " + str(node-1) + ":0 _extends .dilation cmd " + "\"" + test_file + " -e 1" + " --node " + str(node-1) + Node[node]["script"] + "\"" + " ]\n")
+			if is_awl_script(Node[node]["script"]) == True :
+				f.write("		settings [ lxcNHI " + str(node-1) + ":0 _extends .dilation cmd " + "\"" + test_file + " -e 1" + " --node " + str(node-1) + Node[node]["script"] + "\"" + " ]\n")
+			else :
+				f.write("		settings [ lxcNHI " + str(node-1) + ":0 _extends .dilation cmd " + "\"" + Node[node]["script"] + "\"" + " ]\n")
 		f.write("	]\n")
 	 	for node in nodes :
 			f.write("	Net\n")

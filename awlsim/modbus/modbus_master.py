@@ -1,9 +1,4 @@
-from awlsim.core.systemblocks.modbus_message import *
-from awlsim.core.systemblocks.exceptions import *
-from awlsim.common.compat import *
-
-from awlsim.core.systemblocks.systemblocks import *
-from awlsim.core.util import *
+from modbus_msg import *
 
 max_dataType_reading_length = {
 	1 : 2000,
@@ -31,81 +26,72 @@ class ModBusMaster(object) :
 
 
 
-	def __init__(self,connection) :
-		self.connection = connection
+	def __init__(self,coil_mem,reg_mem) :
+		self.coil_mem = coil_mem
+		self.reg_mem = reg_mem
 		self.ERROR_CODE = NO_ERROR
 		pass
 
 
-	def write_bit_status(self,presetAddress,bitvalue,type) :
-		i = 1
-		found = False
-		while i <= 8 :
-			start = self.connection.connection_params.data_area[i].start
-			end = self.connection.connection_params.data_area[i].end
-			dbNumber = self.connection.connection_params.data_area[i].db
-			data_area = i
-				
-			if self.connection.connection_params.data_area[i].data_type == type and presetAddress >= start and presetAddress <= end : # coil data Type
-				found = True
-				break
-			i = i + 1				
-		if found == False :
-			self.ERROR_CODE  = ERROR_INVALID_COMBINATION
-			return
-
-		word = (presetAddress - start)/16 
-		bit_in_word = (presetAddress - start)%16
+	def write_bit_status(self,presetAddress,bitvalue,type) :		
 		
 		if type == 1 :
-			word_data = self.connection.data_area_dbs[data_area].structInstance.getFieldDataByName("Coils_" +  str(word))
-			if bitvalue > 0 :
-				status = (word_data | (bitvalue << bit_in_word))
-			else :
-				status = (word_data & ~(1 << bit_in_word))
-
-			self.connection.data_area_dbs[data_area].structInstance.setFieldDataByName("Coils_" + str(word), status)
+			addr = "Coils_" + str(presetAddress)
+		
 		if type == 2 :
-			word_data = self.connection.data_area_dbs[data_area].structInstance.getFieldDataByName("Inputs_" +  str(word))
-			if bitvalue > 0 :
-				status = (word_data | (bitvalue << bit_in_word))
-			else :
-				status = (word_data & ~(1 << bit_in_word))
-			
-			self.connection.data_area_dbs[data_area].structInstance.setFieldDataByName("Inputs_" + str(word), status)
+			addr = "Inputs_" + str(presetAddress)
+
+		self.coil_mem[addr] = bitvalue			
 
 
 	def write_reg_status(self,presetAddress,regvalue,type) :
-		i = 1
-		found = False
-		while i <= 8 :
-			start = self.connection.connection_params.data_area[i].start
-			end = self.connection.connection_params.data_area[i].end
-			dbNumber = self.connection.connection_params.data_area[i].db
-			data_area = i
-				
-			if self.connection.connection_params.data_area[i].data_type == type and presetAddress >= start and presetAddress <= end : # coil data Type
-				found = True
-				break
-			i = i + 1				
-		if found == False :
-			self.ERROR_CODE  = ERROR_INVALID_COMBINATION
-			return
-
-		word = presetAddress - start
+		
 		if type == 3 :
-			self.connection.data_area_dbs[data_area].structInstance.setFieldDataByName("Holding_Register_" + str(word), regvalue)
+			addr = "Holding_Register_" + str(presetAddress)
+			
 		if type == 4 :
-			self.connection.data_area_dbs[data_area].structInstance.setFieldDataByName("Input_Register_" + str(word), regvalue)
+			addr = "Input_Register_" + str(presetAddress)
+
+		self.reg_mem[addr] = regvalue
+
+	def construct_request(self,mem_type,mem_access_type,start_addr,n_accesses,transaction_id,slave_addr) :
+		if mem_type == "COIL" :
+			datatype = 1
+
+		elif mem_type == "INPUT" :
+			datatype = 2
+
+		elif mem_type == "HOLDING_REG" :
+			datatype = 3
+
+		elif mem_type == "INPUT_REG" :
+			datatype = 4
+
+		else :
+			return None,ERROR_INVALID_DATATYPE
+
+		if mem_access_type == "READ" :
+			write_read = 0
+		elif mem_access_type == "WRITE" :
+			write_read = 1
+		else :
+			return None,ERROR_INVALID_WRITE_ACTION
+
+		length = int(n_accesses)
+		if length == 1 :
+			single_write = 1
+		else :
+			single_write = 0
+
+		return self.construct_request_message(datatype,write_read,length,single_write,start_addr,transaction_id,slave_addr)
+
 
 	def construct_request_message(self,dataType,write_read,length,single_write,startAddress,transaction_id,slave_add) :
 
 		if dataType > 4 or dataType < 0 :
-			#raise AwlSimError("Invalid dataType Error Code 0xA011 : ", dataType)
 			print("Invalid dataType Error Code 0xA011 : ", dataType)
 			return None,ERROR_INVALID_DATATYPE
 		if length < 0 :
-			#raise AwlSimError("Length cannot be less than zero. Error Code : 0xA005")
 			print("Length cannot be less than zero. Error Code : 0xA005")
 			return None,ERROR_INVALID_LENGTH
 
@@ -115,13 +101,11 @@ class ModBusMaster(object) :
 		if write_read == 0 : 	# reading function
 			functionCode = dataType
 			if length > max_dataType_reading_length[dataType] :
-				#raise AwlSimError("Reading length exceeds the limit. Error Code : 0xA005")
 				print("Reading length exceeds the limit. Error Code : 0xA005")
 				return None,ERROR_INVALID_LENGTH
 		else :
 			if dataType == 2 or dataType == 4 :
-				#raise AwlSimError("Cannot write to inputs or input registers. Error Code : 0xA004 ")
-				print("Cannot write to inputs or input registers. Error Code : 0xA004 ")
+				print("Cannot write to inputs or input registers of PLC. Not supported. Error Code : 0xA004 ")
 				return None,ERROR_INVALID_WRITE_ACTION
 
 			
@@ -140,10 +124,10 @@ class ModBusMaster(object) :
 				functionCode = 16	
 
 			if length > max_dataType_writing_length[dataType] :
-				#raise AwlSimError("Writing length exceeds the limit. Error Code : 0xA005")
 				print("Writing length exceeds the limit. Error Code : 0xA005")
 				return None,ERROR_INVALID_LENGTH
-		request_msg_constructer = ModBusRequestMessage(connection=self.connection,slaveAddress=slaveAddress,functionCode=functionCode,t_id=t_id)
+
+		request_msg_constructer = ModBusRequestMessage(coil_mem=self.coil_mem,reg_mem=self.reg_mem,slaveAddress=slaveAddress,functionCode=functionCode,t_id=t_id)
 		msg_params = {}
 		if functionCode in [1,2,3,4] :
 			msg_params["startingAddress"] = startAddress
@@ -159,16 +143,12 @@ class ModBusMaster(object) :
 		self.sentfunctionCode = functionCode
 		self.sentTI = transaction_id
 		self.sentslaveAddr = slaveAddress
-
-		#print("FunctionCode = ",functionCode)
-		
-
 		request_msg = request_msg_constructer.construct_request_message(msg_params)
 		self.sent_msg = request_msg
 		
 		return request_msg,NO_ERROR
 
-	def process_response_message(self,msg) :
+	def process_response(self,msg) :
 		
 		if len(msg) <= 1 :
 			return ERROR_UNKNOWN_EXCEPTION 	# unknown exception error Code

@@ -1,4 +1,19 @@
 import math
+import os
+import sys
+
+def is_awl_script(script_path):
+	temp_path = script_path.strip('\t\n\r')
+	print "Temp path = ", temp_path
+	#if os.path.isfile(temp_path) :
+
+	if temp_path.endswith(".awl") :
+	#if ".awl" in temp_path :
+		print "Is awl script = True"
+		return True
+
+	print "Is awl script = False"
+	return False
 
 def parse_modbus_ip_topology(conf_directory,curr_conf_file,test_file,topology_file,exp_run_time,exp_name,exp_tdf,exp_n_nodes,Node,N_CPUS):
 	Lxcs = {}
@@ -43,10 +58,12 @@ def parse_modbus_ip_topology(conf_directory,curr_conf_file,test_file,topology_fi
 				lxc_id = int(lxc)
 
 				if router.endswith("C") :
-					router_id = int(router[1:-1])
+					#router_id = int(router[1:-1])
+					router_id = int(router[1:-1]) + 1
 					isCompromised = 1
 				else :
-					router_id = int(router[1:])
+					#router_id = int(router[1:])
+					router_id = int(router[1:]) + 1
 					isCompromised = 0
 
 
@@ -73,10 +90,12 @@ def parse_modbus_ip_topology(conf_directory,curr_conf_file,test_file,topology_fi
 			elif router_1 != None and router_2 != None :
 
 				if router_1.endswith("C") :
-					router_1_id = int(router_1[1:-1])
+					#router_1_id = int(router_1[1:-1])
+					router_1_id = int(router_1[1:-1]) + 1
 					isCompromised = 1
 				else :
-					router_1_id = int(router_1[1:])
+					#router_1_id = int(router_1[1:])
+					router_1_id = int(router_1[1:]) + 1
 					isCompromised = 0
 				
 
@@ -88,12 +107,14 @@ def parse_modbus_ip_topology(conf_directory,curr_conf_file,test_file,topology_fi
 					Routers[router_1_id]["nxt_intf"] = 0
 					Routers[router_1_id]["compromised"] = isCompromised
 
-				#router_2_id = int(router_2[1:])
+				
 				if router_2.endswith("C") :
-					router_2_id = int(router_2[1:-1])
+					#router_2_id = int(router_2[1:-1])
+					router_2_id = int(router_2[1:-1]) + 1
 					isCompromised = 1
 				else :
-					router_2_id = int(router_2[1:])
+					#router_2_id = int(router_2[1:])
+					router_2_id = int(router_2[1:]) + 1
 					isCompromised = 0
 
 				if not router_2_id in Routers.keys() :
@@ -147,7 +168,10 @@ def parse_modbus_ip_topology(conf_directory,curr_conf_file,test_file,topology_fi
 			if node == n_nodes :
 				f.write("		settings [lxcNHI " + str(node-1) + ":0 _extends .dilation cmd " +  "\"python " + conf_directory + "/PLC_Config/udp_reader.py" + "\"]\n")
 			else :
-				f.write("		settings [ lxcNHI " + str(node-1) + ":0 _extends .dilation cmd " + "\"" + test_file + " -e 0" + " --node " + str(node-1) + Node[node]["script"] + "\"" + " ]\n")
+				if is_awl_script(Node[node]["script"]) == True :
+					f.write("		settings [ lxcNHI " + str(node-1) + ":0 _extends .dilation cmd " + "\"" + test_file + " -e 0" + " --node " + str(node-1) + Node[node]["script"] + "\"" + " ]\n")					
+				else :
+					f.write("		settings [ lxcNHI " + str(node-1) + ":0 _extends .dilation cmd " + "\"" + Node[node]["script"] +  "\"" + " ]\n")
 		f.write("	]\n")
 		curr_timeline = 1
 	 	for node in xrange(1,n_nodes + 1)  :

@@ -59,7 +59,11 @@ class ModBusSlave(object) :
 		bit_in_word = (presetAddress - start)%16
 		
 		word_data = self.connection.data_area_dbs[data_area].structInstance.getFieldDataByName("Coils_" +  str(word))
-		status = (word_data | (bitValue << bit_in_word))
+		if bitvalue > 0 :
+			status = (word_data | (bitvalue << bit_in_word))
+		else :
+			status = (word_data & ~(1 << bit_in_word))
+				
 		self.connection.data_area_dbs[data_area].structInstance.setFieldDataByName("Coils_" + str(word), status)
 
 

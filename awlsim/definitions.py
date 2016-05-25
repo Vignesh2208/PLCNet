@@ -2,15 +2,12 @@ import os
 import sys
 import stat
 
-
-## Config parameters. Set accordingly. run Make after modifications ##
-N_CPUS = 7
-NR_SERIAL_DEVS  = 3													# number of serial devices per PLC
-KERN_BUF_SIZE = 100													# maximum size of lxcName
-TX_BUF_SIZE = 100													# Tx Buffer size per serial device
-RX_BUF_SIZE = 2*TX_BUF_SIZE		
-TIMEKEEPER_DIR = "/home/vignesh/Desktop/Timekeeper/dilation-code"	# directory containing Timekeeper code
-
+N_CPUS = 6
+TX_BUF_SIZE = 100
+RX_BUF_SIZE = 2*TX_BUF_SIZE
+KERN_BUF_SIZE = 100
+NR_SERIAL_DEVS = 3
+TIMEKEEPER_DIR =  "/home/vignesh/Desktop/Timekeeper/dilation-code"
 
 ## Config script. Do not modify ##
 script_path = os.path.dirname(os.path.realpath(__file__))
@@ -27,7 +24,7 @@ for entry in script_path_list :
 			root_directory = root_directory + entry + "/"
 
 
-conf_directory = root_directory + "/Projects/Simple_PLC_Client_Server_multiple/conf"
+conf_directory = root_directory + "/Projects/Simple_PLC_Client_HMI/conf"
 tests_directory = root_directory + "/tests"
 s3f_directory = root_directory + "/s3fnet-lxc"
 s3f_base_directory  = s3f_directory + "/base"
