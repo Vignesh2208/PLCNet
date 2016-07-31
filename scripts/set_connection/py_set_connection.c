@@ -102,9 +102,24 @@ static PyObject *set_connection_func(PyObject *self, PyObject *args) {
    Py_RETURN_NONE;
 }
 
+
+
 static PyMethodDef connection_methods[] = {
    { "set_connection", set_connection_func, METH_VARARGS, NULL },
 };
+
+
+#if PY_MAJOR_VERSION <= 2 
+
+void initset_connection(void)
+{
+    Py_InitModule3("set_connection", connection_methods,
+                   "Extension module example!");
+}
+
+#elif PY_MAJOR_VERSION >= 3
+
+
 
 static struct PyModuleDef set_connection_definition = { 
     PyModuleDef_HEAD_INIT,
@@ -116,17 +131,12 @@ static struct PyModuleDef set_connection_definition = {
 
 
 
-
-/*void initset_connection(void)
-{
-    Py_InitModule3("set_connection", connection_methods,
-                   "Extension module example!");
-}*/
-
-
 PyMODINIT_FUNC PyInit_set_connection(void)
 {
     Py_Initialize();
 
     return PyModule_Create(&set_connection_definition);
 }
+
+
+#endif

@@ -4,15 +4,15 @@ import sys
 
 def is_awl_script(script_path):
 	temp_path = script_path.strip('\t\n\r')
-	print "Temp path = ", temp_path
+	#print "Temp path = ", temp_path
 	#if os.path.isfile(temp_path) :
 
 	if temp_path.endswith(".awl") :
-	#if ".awl" in temp_path :
-		print "Is awl script = True"
+	
+		#print "Is awl script = True"
 		return True
 
-	print "Is awl script = False"
+	#print "Is awl script = False"
 	return False
 
 def parse_modbus_ip_topology(conf_directory,curr_conf_file,test_file,topology_file,exp_run_time,exp_name,exp_tdf,exp_n_nodes,Node,N_CPUS):

@@ -2,7 +2,25 @@ import os
 import sys
 from modbus_ip_parser import parse_modbus_ip_topology
 from modbus_serial_parser import parse_modbus_serial_topology
-from definitions import *
+#from definitions import *
+
+
+
+def load_properties(filepath, sep='=', comment_char='#'):
+	"""
+	Read the file passed as parameter as a properties file.
+	"""
+	props = {}
+	with open(filepath, "rt") as f:
+		for line in f:
+			l = line.strip()
+			if l and not l.startswith(comment_char):
+				key_value = l.split(sep)
+				key = key_value[0].strip()
+				value = sep.join(key_value[1:]).strip('" \t') 
+				props[key] = value 
+	return props
+
 
 
 def ERROR(string) :
@@ -32,6 +50,13 @@ for entry in script_path_list :
 		if len(entry) > 0 :
 			root_directory = root_directory + entry + "/"
 
+
+
+props = load_properties(root_directory + "/CONFIG.txt")
+N_CPUS = int(props["N_CPUS"])
+NR_SERIAL_DEVS = int(props["NR_SERIAL_DEVS"])
+#print "N_CPUS = ", N_CPUS
+#print "NR_SERIAL_DEVS = ", NR_SERIAL_DEVS
 
 conf_directory = root_directory + "/Projects/Simple_PLC_Client_HMI/conf"
 tests_directory = root_directory + "/tests"
@@ -250,7 +275,7 @@ curr_conf_file = conf_directory + "/PLC_Config/test.dml"
 if net_type == "IP" :
 	parse_modbus_ip_topology(conf_directory,curr_conf_file,test_file,topology_file,exp_run_time,exp_name,exp_tdf,exp_n_nodes,Node,N_CPUS)
 else :
-	parse_modbus_serial_topology(conf_directory,curr_conf_file,test_file,topology_file,exp_run_time,exp_name,exp_tdf,exp_n_nodes,Node,N_CPUS)
+	parse_modbus_serial_topology(conf_directory,curr_conf_file,test_file,topology_file,exp_run_time,exp_name,exp_tdf,exp_n_nodes,Node,N_CPUS,NR_SERIAL_DEVS)
 
 
 

@@ -1,6 +1,8 @@
-from definitions import NR_SERIAL_DEVS
+#from definitions import NR_SERIAL_DEVS
 import os
 import sys
+
+
 
 def is_awl_script(script_path):
 	if os.path.isfile(script_path) :
@@ -9,7 +11,7 @@ def is_awl_script(script_path):
 
 	return False
 
-def parse_modbus_serial_topology(conf_directory,curr_conf_file,test_file,topology_file,exp_run_time,exp_name,exp_tdf,exp_n_nodes,Node,N_CPUS):
+def parse_modbus_serial_topology(conf_directory,curr_conf_file,test_file,topology_file,exp_run_time,exp_name,exp_tdf,exp_n_nodes,Node,N_CPUS,NR_SERIAL_DEVS):
 
 	Lxcs = {}
 	lines = [line.rstrip('\n') for line in open(topology_file)]

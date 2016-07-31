@@ -1,1 +1,0 @@
-When each LXC is created in a simulation, lxc-command/reader will create a corresponding output file here for each LXC.

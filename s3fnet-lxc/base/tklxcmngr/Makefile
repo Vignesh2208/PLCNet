@@ -11,7 +11,7 @@ MY_INCLUDES += -I../s3fnet/src
 MY_INCLUDES += -I../dml
 
 
-CFLAGS  := -Wall $(DEBUG) 
+CFLAGS  := -w $(DEBUG) 
 
 all	: lxcmanagermodule.a
 

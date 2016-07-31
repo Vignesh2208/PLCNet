@@ -100,16 +100,11 @@ static PyMethodDef shared_sem_methods[] = {
    { "release_shared_sem", release_shared_sem_func, METH_VARARGS, NULL }
 };
 
-/*static struct PyModuleDef shared_sem_definition = { 
-    PyModuleDef_HEAD_INIT,
-    "shared_sem",
-    "A Python module that mmap's a shared_sem between 2 processes",
-    -1, 
-    shared_sem_methods
-};*/
 
 
 
+
+#if PY_MAJOR_VERSION <= 2
 
 void initshared_sem(void)
 {
@@ -117,10 +112,20 @@ void initshared_sem(void)
                    "shared semaphore");
 }
 
+#elif PY_MAJOR_VERSION >= 3 
 
-/*PyMODINIT_FUNC PyInit_shared_sem(void)
+static struct PyModuleDef shared_sem_definition = { 
+    PyModuleDef_HEAD_INIT,
+    "shared_sem",
+    "A Python module that mmap's a shared_sem between 2 processes",
+    -1, 
+    shared_sem_methods
+};
+PyMODINIT_FUNC PyInit_shared_sem(void)
 {
     Py_Initialize();
 
     return PyModule_Create(&shared_sem_definition);
-}*/
+}
+
+#endif

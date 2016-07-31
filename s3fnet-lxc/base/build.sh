@@ -62,7 +62,7 @@ cd api
 if [ $inc -eq 0 ]; then
 rm *.o *.a
 fi
-make -j$nc
+make -s -j$nc
 cd ..
 
 echo "--------------------------------"
@@ -72,7 +72,7 @@ cd rng
 if [ $inc -eq 0 ]; then
 rm *.o *.a
 fi
-make -j$nc
+make -s -j$nc
 cd ..
 
 echo "--------------------------------"
@@ -82,7 +82,7 @@ cd aux
 if [ $inc -eq 0 ]; then
 rm *.o *.a
 fi
-make -j$nc
+make -s -j$nc
 cd ..
 
 echo "--------------------------------"
@@ -92,7 +92,7 @@ cd app
 if [ $inc -eq 0 ]; then
 rm *.o
 fi
-make
+make -s
 cd ..
 
 if [ $dml -eq 1 ] && [ $inc -eq 0 ]; then
@@ -105,7 +105,7 @@ autoconf
 automake
 ./configure
 make clean
-make
+make -s
 cd ..
 
 echo "--------------------------------"
@@ -133,3 +133,7 @@ echo "ARG = "
 echo $arg
 make -j$nc $arg
 cd ..
+
+echo "--------------------------------"
+echo "Build SUCCESS"
+echo "--------------------------------"

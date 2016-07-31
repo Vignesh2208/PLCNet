@@ -35,12 +35,6 @@ ret = re.sub(find,replace, s)
 with open("config_parser.py","w") as f :
 	f.write(ret)
 
-with open ("template/definitions.py.template", "r") as myfile:
-     s=myfile.read()
-ret = re.sub(find,replace, s)   
-with open("definitions.py","w") as f :
-	f.write(ret)
-
 with open ("template/create.template", "r") as myfile:
      s=myfile.read()
 
@@ -52,3 +46,4 @@ with open(s3f_directory + "/lxc-scripts/create","w") as f :
 	f.write(ret)
 
 os.chmod(s3f_directory + "/lxc-scripts/create", 0777)
+
