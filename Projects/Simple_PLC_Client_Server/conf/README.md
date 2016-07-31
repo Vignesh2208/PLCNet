@@ -64,9 +64,10 @@ Do not remove the markers: START_OF_AWL_SCRIPT_CONFIGURATION and END_OF_AWL_SCRI
 
 
 ```
-	Data_Area configuration. 
-    Do not remove the markers: START_OF_DATA_AREA_CONFIGURATION and END_OF_DATA_AREA_CONFIGURATION
-----------------------------------------------------------------------------------------------------------
+##Data_Area configuration. 
+```
+Do not remove the markers: START_OF_DATA_AREA_CONFIGURATION and END_OF_DATA_AREA_CONFIGURATION
+
 
     Description:
     ------------
@@ -78,4 +79,4 @@ Do not remove the markers: START_OF_AWL_SCRIPT_CONFIGURATION and END_OF_AWL_SCRI
 						
     eg : (1:2:5:100) => Data_Type = 1 (Coil), Storage DataBlock Number = 2, Start Coil Address = 5, End Coil Address = 100
 
-----------------------------------------------------------------------------------------------------------
+```
