@@ -68,11 +68,12 @@ Rebuild Project after editing these files
 
 # Centralized Log collector (can be modified to act as centralized & simulated Intrusion monitor)
 
-There is also a provision to collect all packets exchanged between PLCs to a central location.
-This is done by a centralized log monitor script located in /Projects/<Project name>/conf/PLC_Conf/udp_reader.py. It is always started in an LXC with ID (N_Nodes in experiment + 1) only in IP Mode
-Topology Config must specify the IDS node (ID: N_Nodes + 1), router (ID: N_Nodes + 1) pair 
-and the user can connect the IDS router as desired to get/log debug traffic from all PLCs.
-the logs collected will be located in Projects/<Project name>/conf/logs
+There is also a provision to collect all packets exchanged between PLCs to a central location in IP Mode.
+This is done by a centralized log monitor script located in /Projects/<Project name>/conf/PLC_Conf/
+udp_reader.py. It is always started in an LXC with ID (Total Nodes + 1) by default.
+Topology Config must specify an extra node (ID: N_Nodes + 1), router (ID: N_Nodes + 1) pair (also 
+referred to as IDS node-router pairs) which will by default run udp_reader.py script 
+to collect and store logs. The user should connect the IDS router as desired to get traffic from all PLCs. The logs collected will be stored in Projects/<Project name>/conf/logs
 
 edit Projects/<Project name>/conf/PLC_Config/udp_reader.py
 ```
