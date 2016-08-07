@@ -123,6 +123,8 @@ class Host : public Entity, public DmlObject, public ProtocolGraph {
   bool isEmulated;
   bool isCompromised;
   void initLxcProxy(s3f::dml::Configuration* cfg);
+  Nhi nhi_host;
+  long hostID;
 
  protected:
   /**
@@ -146,7 +148,7 @@ class Host : public Entity, public DmlObject, public ProtocolGraph {
   /** Whether this machine is a switch */
   bool is_switch;
 
-  Nhi nhi_host;
+ 
 
   /** The list of network interfaces. */
   S3FNET_HOST_IFACE_MAP ifaces;

@@ -49,18 +49,30 @@ sudo ./run.sh -n <Project name> -r
 
 ## Advanced Security testing
 ```  
-# Man in the Middle Attacks
-edit Projects/<Project name>/conf/cApp_inject_attack.cc
-edit Projects/<Project name>/conf/cApp_session.h
-Rebuild Project after editing
+# Man in the Middle Attacks / Compromised Routers
+
+1. Some routers in topology configuration can be reclared as compromised
+   e.g Router 1 can be declared as compromised using R1C instead of R1
+   e.g (1-R1C), 1
+
+2. To implement MITM attacks,
+   edit Projects/<Project name>/conf/cApp_inject_attack.cc
+   edit Projects/<Project name>/conf/cApp_session.h
+
+   These scripts will be called for all compromised routers. The ID of the 
+   router can be obtained inside the script using getHost()->hostID and based
+   on the ID, different actions can be taken in different compromised routers.
+
+Rebuild Project after editing these files
 
 
 # Centralized Log collector (can be modified to act as centralized & simulated Intrusion monitor)
 
-# It is always started in an LXC with ID (N_Nodes in experiment + 1) only in IP Mode
-# Topology Config must specify the IDS node (ID: N_Nodes + 1), router (ID: N_Nodes + 1) pair 
-# and the user can connect the IDS router as desired to get/log debug traffic from all PLCs.
-# the logs collected will be located in Projects/<Project name>/conf/logs
+There is also a provision to collect all packets exchanged between PLCs to a central location.
+This is done by a centralized log monitor script located in /Projects/<Project name>/conf/PLC_Conf/udp_reader.py. It is always started in an LXC with ID (N_Nodes in experiment + 1) only in IP Mode
+Topology Config must specify the IDS node (ID: N_Nodes + 1), router (ID: N_Nodes + 1) pair 
+and the user can connect the IDS router as desired to get/log debug traffic from all PLCs.
+the logs collected will be located in Projects/<Project name>/conf/logs
 
 edit Projects/<Project name>/conf/PLC_Config/udp_reader.py
 ```

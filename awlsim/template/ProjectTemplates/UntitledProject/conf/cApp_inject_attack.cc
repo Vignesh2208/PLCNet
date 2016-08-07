@@ -40,6 +40,8 @@ namespace s3fnet {
  * pkt->len  = len of packet in bytes
  * srcIP 	 = IP of generating PLC
  * dstIP 	 = IP of destination PLC/IDS
+ * (long) getHost()->hostID = hostID of router
+ * (String)  getHost()->nhi.toString() = full nhi network address of router
  * call sendPacket(pkt,srcIP,dstIP) after appropriate modification to forward the packet
  */
 void cAppSession::inject_attack(EmuPacket * pkt, unsigned int srcIP, unsigned int dstIP){
