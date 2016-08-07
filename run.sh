@@ -1,8 +1,6 @@
+#!/bin/bash
+
 baseDir="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
-
-
-#!/bin/sh
-
 USAGE="Usage: `basename $0` [-h] [-n arg] [-m] [-l] [-r]" 
 PARAMETER="-n\t Project Name\n-l\t load project \n-r\t run project \n-m\t make new (create) project \n-h\t display the usage "
 OVERVIEW="Script for building and running an Awlsim-TimeKeeper project"
@@ -74,11 +72,6 @@ if [ $compile -eq 1 ]; then
 	cp -f $baseDir/Projects/$name/conf/cApp_session.h s3fnet-lxc/base/s3fnet/src/os/cApp/cApp_session.h
 	make initialize
 	make build_s3f_simulator
-	cd $baseDir/s3fnet-lxc/base
-	bash CLEAN_EXPERIMENT
-	cd $baseDir/awlsim
-	python generator.py $name
-	python config_parser.py
 	echo $name > $baseDir/scripts/activeProjectID
 	echo "-----------------------------"
 	echo "Load successfull ..."
@@ -86,16 +79,19 @@ if [ $compile -eq 1 ]; then
 
 fi
 
-
-
+activeProjectid=$(cat "$baseDir/scripts/activeProjectID")
+echo "Current Active Project = " $activeProjectid
 if [ $run -eq 1 ]; then
-	activeProjectID=$(cat $baseDir/scripts/activeProjectID)
-
-	if [ "$activeProjectID" == "$name" ]; then
+	if [ "$activeProjectid" == "$name" ]; then
 
 		echo "-----------------------------"
 		echo "Running Project ..."
 		echo "-----------------------------"
+		cd $baseDir/s3fnet-lxc/base
+		bash CLEAN_EXPERIMENT
+		cd $baseDir/awlsim
+		python generator.py $name
+		python config_parser.py
 		cd $baseDir/Projects/$name
 		cd conf/PLC_Config/; make clean; make; sudo make test
 		chmod -R 777 $baseDir/s3fnet-lxc/experiment-data
@@ -103,7 +99,7 @@ if [ $run -eq 1 ]; then
 		echo "Project Run Finished ..."
 		echo "-----------------------------"
 	else
-		echo "Cannot run this project. Current Active project is " $activeProjectID
+		echo "Cannot run this project. Current Active project is " $activeProjectid
 		echo "To run this projectm it must be loaded first."
 	fi
 fi

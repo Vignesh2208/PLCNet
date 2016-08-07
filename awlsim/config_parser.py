@@ -58,7 +58,7 @@ NR_SERIAL_DEVS = int(props["NR_SERIAL_DEVS"])
 #print "N_CPUS = ", N_CPUS
 #print "NR_SERIAL_DEVS = ", NR_SERIAL_DEVS
 
-conf_directory = root_directory + "/Projects/Simple_PLC_Client_HMI/conf"
+conf_directory = root_directory + "/Projects/Bottle_Plant/conf"
 tests_directory = root_directory + "/tests"
 test_file = tests_directory + "/run.sh"
 

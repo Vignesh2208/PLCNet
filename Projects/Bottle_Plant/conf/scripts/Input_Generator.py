@@ -10,7 +10,7 @@ Input_1_period = 0.2
 Input_2_period = 0.5
 conveyor_delay = 0.05
 Max_Inputs = 5
-N_levels = 5
+N_levels = 1
 
 def append_to_file(filename,data):
 	if not os.path.isfile(filename):

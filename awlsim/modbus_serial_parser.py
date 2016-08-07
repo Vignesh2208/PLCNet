@@ -30,8 +30,8 @@ def parse_modbus_serial_topology(conf_directory,curr_conf_file,test_file,topolog
 			if len(link_ls) != 2 :
 				ERROR("Error in link description")
 
-			node_1 = int(link_ls[0])
-			node_2 = int(link_ls[1])
+			node_1 = int(link_ls[0]) - 1
+			node_2 = int(link_ls[1]) - 1
 
 			if not node_1 in Lxcs.keys() :
 				Lxcs[node_1] = {}

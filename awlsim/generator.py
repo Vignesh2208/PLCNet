@@ -30,9 +30,17 @@ s3f_base_directory  = s3f_directory + "/base"
 find = "@PROJECT@"
 replace = "Projects/" + project_name
 with open ("template/config_parser.py.template", "r") as myfile:
-     s=myfile.read()
-ret = re.sub(find,replace, s)   
+	s=myfile.read()
+ret = re.sub(find,replace, s)
+
 with open("config_parser.py","w") as f :
+	f.write(ret)
+
+with open("template/definitions.py.template","r") as myfile:
+	s=myfile.read()
+ret = re.sub(find,replace, s)
+
+with open("definitions.py","w") as f:
 	f.write(ret)
 
 with open ("template/create.template", "r") as myfile:

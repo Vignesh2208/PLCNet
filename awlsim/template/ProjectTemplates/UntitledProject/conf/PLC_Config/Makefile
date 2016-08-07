@@ -1,8 +1,6 @@
 S3FNET_DIR = ../../../../s3fnet-lxc/base/s3fnet
 MODEL_NAME = test
 VIRT_SPACE = 10.10.0.0
-#DICTIONARY = ../../s3fnet-lxc/base/s3fnet/test/lxc_tests/aux/mydictionary.dml
-#NETWORKS   = ../../s3fnet-lxc/base/s3fnet/test/lxc_tests/aux/networks.dml
 DICTIONARY = ../temp/mydictionary.dml
 NETWORKS   = ../temp/networks.dml
 PARAMS     = params.dml
@@ -20,3 +18,4 @@ test:   $(MODEL_NAME)-env.dml $(MODEL_NAME)-rt.dml
 
 clean:
 	rm -f $(MODEL_NAME)-env.dml $(MODEL_NAME)-rt.dml *~ .tmpdat*
+	rm -f Config_Node* lxc*

@@ -1,7 +1,7 @@
 Experiment_Name			=	"Bottle_Plant"
 Run_Time				=	3
-Dilation_Factor			=	5
-Number_Of_Nodes			=	63
+Dilation_Factor			=	15
+Number_Of_Nodes			=	3
 ModBus_Network_Type		=	"IP"
 Node_to_router_delay   	= 	1	# in ms
 Router_to_router_delay 	= 	2	# in ms
@@ -78,15 +78,15 @@ with open(Topology_config_file,'w') as f:
 	node = 1
 	while node <= Number_Of_Nodes + 1:
 		#f.write("(" + str(node - 1) + "-" + "R" + str(node) + "),		" + str(Node_to_router_delay) + "\n")
-		f.write("(" + str(node - 1) + "-" + "R" + str(node-1) + "),		" + str(Node_to_router_delay) + "\n")
+		f.write("(" + str(node) + "-" + "R" + str(node) + "),		" + str(Node_to_router_delay) + "\n")
 		node = node + 1
 
 
 
 	node = 1
 	while node <= int(Number_Of_Nodes/2) :
-		f.write("(" + "R" + str(node-1) + "-R" + str(2*(node-1) + 1) + "),		" + str(Router_to_router_delay) + "\n")
-		f.write("(" + "R" + str(node-1) + "-R" + str(2*(node-1) + 2) + "),		" + str(Router_to_router_delay) + "\n")
+		f.write("(" + "R" + str(node) + "-R" + str(2*(node)) + "),		" + str(Router_to_router_delay) + "\n")
+		f.write("(" + "R" + str(node) + "-R" + str(2*(node) + 1) + "),		" + str(Router_to_router_delay) + "\n")
 		node = node + 1
 
 	f.write("(" + "R1" + "-R" + str(Number_Of_Nodes + 1) + "),		" + str(Router_to_router_delay) + "\n")

@@ -1,4 +1,4 @@
-# PLCNet (Alsim + S3FNet + TimeKeeper)
+# PLCNet (Awlsim + S3FNet + TimeKeeper)
 ```
 Awlsim is a free Step 7 compatible AWL/STL Soft-PLC written in Python.
 Depending on the host machine and the Python interpreter used, it achieves
@@ -37,6 +37,23 @@ edit Projects/<Project name>/conf/exp_config
 # set topology configuration
 edit Projects/<Project name>/conf/topology_config
 
-# load and run project
-sudo ./run.sh -n <Project name> -l -r
+# build project 
+sudo ./run.sh -n <Project name> -l
+
+# run last built project
+sudo ./run.sh -n <Project name> -r
+```
+
+## Advanced Security testing
+```  
+# Man in the Middle Attacks
+edit Projects/<Project name>/conf/cApp_inject_attack.cc
+edit Projects/<Project name>/conf/cApp_session.h
+Rebuild Project after editing
+
+# Output Logs Containing Send/Recv Modbus messages
+Projects/<Project name>/conf/logs
+
+# Centralized Log collector (can be modified to act as centralized & simulated Intrusion monitor)
+edit Projects/<Project name>/conf/PLC_Config/udp_reader.py
 ```

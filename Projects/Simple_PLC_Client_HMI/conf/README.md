@@ -34,10 +34,10 @@ Do not remove the markers: START_OF_GENERAL_CONFIGURATION and  ND_OF_GENERAL_CON
 	NODE_ID			    (Type: Int)	 #ID of emulated node. 
 
 	CONNECTION_ID 		(Type: Int)	 #Connection ID which defines a specific connection. A node can have 
-                                     #any connections simultaneously
+                                     #many connections simultaneously
 
 	REMOTE_PORT 		(Type: Int)	 #Port to connect to on the remote host. Valid for only for a 
-                                     #connection 	where the node behaves as a client
+                                     #connection where the node behaves as a client
 
 	LOCAL_PORT	  	    (Type: Int)	 #Port to bind to on the host and listen for connections. Valid for 
                                      #only a connection where the node behaves as a server
@@ -72,9 +72,9 @@ Do not remove the markers: START_OF_DATA_AREA_CONFIGURATION and END_OF_DATA_AREA
     Description:
     ------------
 
-	NODE_ID                (Type: Int)	    ID of Emulated Node.
+	NODE_ID                (Type: Int)	    #ID of Emulated Node.
 
-	DATA_AREA_i(DAi)       (Type: Tuple)	(Data Type:Data Block number:Start Address:End Address).
+	DATA_AREA_i(DAi)       (Type: Tuple)	#(Data Type:Data Block number:Start Address:End Address).
                                             see SIMATIC S-7 OpenModbus/TCP communication Manual for more information.
 						
     eg : (1:2:5:100) => Data_Type = 1 (Coil), Storage DataBlock Number = 2, Start Coil Address = 5, End Coil Address = 100

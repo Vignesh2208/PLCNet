@@ -55,15 +55,15 @@ def parse_modbus_ip_topology(conf_directory,curr_conf_file,test_file,topology_fi
 
 			if lxc != None :
 
-				lxc_id = int(lxc)
+				lxc_id = int(lxc) - 1
 
 				if router.endswith("C") :
-					#router_id = int(router[1:-1])
-					router_id = int(router[1:-1]) + 1
+					router_id = int(router[1:-1])
+					#router_id = int(router[1:-1]) + 1
 					isCompromised = 1
 				else :
-					#router_id = int(router[1:])
-					router_id = int(router[1:]) + 1
+					router_id = int(router[1:])
+					#router_id = int(router[1:]) + 1
 					isCompromised = 0
 
 
@@ -90,12 +90,12 @@ def parse_modbus_ip_topology(conf_directory,curr_conf_file,test_file,topology_fi
 			elif router_1 != None and router_2 != None :
 
 				if router_1.endswith("C") :
-					#router_1_id = int(router_1[1:-1])
-					router_1_id = int(router_1[1:-1]) + 1
+					router_1_id = int(router_1[1:-1])
+					#router_1_id = int(router_1[1:-1]) + 1
 					isCompromised = 1
 				else :
-					#router_1_id = int(router_1[1:])
-					router_1_id = int(router_1[1:]) + 1
+					router_1_id = int(router_1[1:])
+					#router_1_id = int(router_1[1:]) + 1
 					isCompromised = 0
 				
 
@@ -109,12 +109,12 @@ def parse_modbus_ip_topology(conf_directory,curr_conf_file,test_file,topology_fi
 
 				
 				if router_2.endswith("C") :
-					#router_2_id = int(router_2[1:-1])
-					router_2_id = int(router_2[1:-1]) + 1
+					router_2_id = int(router_2[1:-1])
+					#router_2_id = int(router_2[1:-1]) + 1
 					isCompromised = 1
 				else :
-					#router_2_id = int(router_2[1:])
-					router_2_id = int(router_2[1:]) + 1
+					router_2_id = int(router_2[1:])
+					#router_2_id = int(router_2[1:]) + 1
 					isCompromised = 0
 
 				if not router_2_id in Routers.keys() :
