@@ -35,6 +35,9 @@ sudo ./run.sh -n <Project name> -m
 edit Projects/<Project name>/conf/exp_config
 
 # set topology configuration
+# topology configuration must specify an extra node (only in IP mode)
+# for running a centralized intrusion detection monitor. 
+# Please refer to Advanced Security Testing section for more details.
 edit Projects/<Project name>/conf/topology_config
 
 # build project 
@@ -51,9 +54,13 @@ edit Projects/<Project name>/conf/cApp_inject_attack.cc
 edit Projects/<Project name>/conf/cApp_session.h
 Rebuild Project after editing
 
-# Output Logs Containing Send/Recv Modbus messages
-Projects/<Project name>/conf/logs
 
 # Centralized Log collector (can be modified to act as centralized & simulated Intrusion monitor)
+
+# It is always started in an LXC with ID (N_Nodes in experiment + 1) only in IP Mode
+# Topology Config must specify the IDS node (ID: N_Nodes + 1), router (ID: N_Nodes + 1) pair 
+# and the user can connect the IDS router as desired to get/log debug traffic from all PLCs.
+# the logs collected will be located in Projects/<Project name>/conf/logs
+
 edit Projects/<Project name>/conf/PLC_Config/udp_reader.py
 ```
