@@ -28,7 +28,11 @@ build_python_modules:
 	@echo "-----------------------------------------------"
 	@cd scripts/shared_semaphore; python setup.py build 2>/dev/null; #python scripts/shared_semaphore/setup.py install 2>/dev/null;
 
-
+	@echo "-----------------------------------------------"
+	@echo "Setting environment variables ..."
+	@echo "-----------------------------------------------"
+	@cd scripts; ./set_env_variables.sh
+	
 build_s3f_extensions:
 
 	@echo "-----------------------------------------------"
