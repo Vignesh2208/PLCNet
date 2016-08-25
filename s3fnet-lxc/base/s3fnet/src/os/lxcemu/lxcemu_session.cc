@@ -167,13 +167,14 @@ int LxcemuSession::pop(Activation msg, ProtocolSession* lo_sess, void* extinfo,
     int ret = 0;
     int fd;
 
-    if(dmsg->ppkt->len != 66 || dmsg->ppkt->len != 42){
+    /*if(dmsg->ppkt->len != 66 || dmsg->ppkt->len != 42){
 
     	for(i = 0; i <  300; i++){
         	new_cmd[i] = '\0';
         	f_name[i] = '\0';
     	}
-    	sprintf(f_name,"/home/vignesh/Desktop/temp/%s", proxy->lxcName);
+
+   	 sprintf(f_name,"/home/vignesh/Desktop/temp/%s", proxy->lxcName);
 		fd = open(f_name,O_WRONLY|O_CREAT|O_APPEND,0777);
 
     
@@ -183,11 +184,11 @@ int LxcemuSession::pop(Activation msg, ProtocolSession* lo_sess, void* extinfo,
         	return -1;
     	}
     	sprintf(new_cmd,"%lu\n",difference);
-    	//ret = fwrite(new_cmd,1,sizeof(new_cmd),fp);
     	ret = write(fd,new_cmd,strlen(new_cmd));    
     	close(fd);
-		//printf("LXCEMUSESSION:  (%s) Receive. Length = %d, Transmit time : %lu\n",proxy->lxcName, dmsg->ppkt->len, difference);
-   	}
+	
+
+   }*/
 
 	delete pkt;
 	dmsg->erase_all();

@@ -15,8 +15,8 @@
 #define KERN_BUF_SIZE 100
 #define TX_BUF_SIZE 100
 #define RX_BUF_SIZE 200
-#define PATH_TO_S3FNETLXC  "/home/vignesh/Desktop/PLCs/awlsim-0.42/scripts/../s3fnet-lxc"
-#define PATH_TO_READER_DATA "/home/vignesh/Desktop/PLCs/awlsim-0.42/scripts/../s3fnet-lxc/data"
+#define PATH_TO_S3FNETLXC  "/home/vignesh/Desktop/awlsim-0.42/scripts/../s3fnet-lxc"
+#define PATH_TO_READER_DATA "/home/vignesh/Desktop/awlsim-0.42/scripts/../s3fnet-lxc/data"
 
 //#define PROGRESS_FORCE
 

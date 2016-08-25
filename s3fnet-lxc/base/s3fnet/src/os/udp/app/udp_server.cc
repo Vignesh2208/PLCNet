@@ -5,9 +5,9 @@
  * authors : Dong (Kevin) Jin
  */
 
+#include <netinet/in.h>
 #include "os/udp/app/udp_server.h"
 #include "os/socket/socket_master.h"
-#include <netinet/in.h>
 #include "util/errhandle.h"
 #include "net/host.h"
 #include "os/base/protocols.h"

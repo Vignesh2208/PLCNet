@@ -20,4 +20,4 @@ test:   $(MODEL_NAME)-env.dml $(MODEL_NAME)-rt.dml
 
 clean:
 	rm -f $(MODEL_NAME)-env.dml $(MODEL_NAME)-rt.dml *~ .tmpdat*
-	rm -f Config_Node* lxc*
+

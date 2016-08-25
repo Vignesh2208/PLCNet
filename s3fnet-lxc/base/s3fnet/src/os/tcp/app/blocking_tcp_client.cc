@@ -5,12 +5,12 @@
  * authors : Lenny Winterrowd, Dong (Kevin) Jin
  */
 
+#include <netinet/in.h>
 #include "os/tcp/app/blocking_tcp_client.h"
 #include "os/base/protocols.h"
 #include "os/socket/socket_master.h"
 #include "util/errhandle.h"
 #include "net/host.h"
-#include <netinet/in.h>
 #include "net/net.h"
 #include "net/traffic.h"
 #include "env/namesvc.h"

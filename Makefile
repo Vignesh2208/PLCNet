@@ -20,17 +20,22 @@ build_python_modules:
 	@echo "-----------------------------------------------"
 	@echo "Building set_connection python module ..."
 	@echo "-----------------------------------------------"
-	@cd scripts/set_connection; python setup.py build 2>/dev/null; #python scripts/set_connection/setup.py install 2>/dev/null;
+	@cd scripts/set_connection; python setup.py build 2>/dev/null; python setup.py install 2>/dev/null;
 	
 
 	@echo "-----------------------------------------------"
 	@echo "Building shared_semaphore python module ..."
 	@echo "-----------------------------------------------"
-	@cd scripts/shared_semaphore; python setup.py build 2>/dev/null; #python scripts/shared_semaphore/setup.py install 2>/dev/null;
+	@cd scripts/shared_semaphore; python setup.py build 2>/dev/null; python setup.py install 2>/dev/null;
 
 	@echo "-----------------------------------------------"
-	@echo "Setting environment variables ..."
+	@echo "Setting environment variables and permissions ..."
 	@echo "-----------------------------------------------"
+	@chmod a+x scripts/set_env_variables.sh
+	@chmod a+x scripts/create_new_project.sh
+	@chmod a+x scripts/create_sym_links.sh
+	@chmod a+x scripts/destroy_all.sh
+	@cd s3fnet-lxc/base/; chmod a+x build.sh
 	@cd scripts; ./set_env_variables.sh
 	
 build_s3f_extensions:
@@ -50,6 +55,12 @@ build_s3f_extensions:
 	@echo "-----------------------------------------------"
 	@cd s3fnet-lxc/base/tklxcmngr/serial_driver/; make clean; make;	
 
+	@echo "-----------------------------------------------"
+	@echo "Building miscellaneous executables ..."
+	@echo "-----------------------------------------------"
+	@cd s3fnet-lxc/lxc-command/; make clean; make;
+	@cd s3fnet-lxc/csudp/; make clean; make;
+
 build_s3f_simulator:
 	@echo "-----------------------------------------------"
 	@echo "Building s3f simulator files ..."
@@ -62,11 +73,16 @@ initialize:
 	@echo "-----------------------------------------------"
 	@echo "Reading CONFIG.txt and initializing ..."
 	@echo "-----------------------------------------------"
+	@mkdir -p s3fnet-lxc/data
+	@chmod -R 777 s3fnet-lxc/lxc-scripts
+	@chmod -R 777 s3fnet-lxc/lxc-command
 	python scripts/initialize.py
 	./scripts/create_sym_links.sh
 
+install:
+	@touch README.txt; sudo python setup.py build install; rm -rf README.txt
 	
-fullbuild: build_python_modules build_s3f_extensions initialize
+fullbuild: build_python_modules build_s3f_extensions initialize install
 	
 	@echo "-----------------------------------------------"
 	@echo "Building s3f simulator files ..."

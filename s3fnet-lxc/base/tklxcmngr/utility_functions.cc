@@ -26,7 +26,7 @@ int send_to_timekeeper(char * cmd) {
 
     
     if (fd < 0) {
-        perror("Open file to TimeKeeper failed");
+        perror("Open file to TimeKeeper failed in send to timekeeper");
         //printf("Error communicating with TimeKeeper\n");
         return -1;
     }

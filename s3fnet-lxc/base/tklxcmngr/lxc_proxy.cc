@@ -6,8 +6,8 @@
  * authors : Vladimir Adam
  */
 
+#include <arpa/inet.h>
 #include <s3f.h>
-
 #include <sstream>
 #include <iomanip>
 
@@ -15,7 +15,6 @@
 #include <algorithm>
 
 #include <errno.h>
-#include <arpa/inet.h>
 #include "TimeKeeper_functions.h"
 #include "utility_functions.h"
 #include <sys/mman.h>
@@ -319,7 +318,7 @@ void LXC_Proxy::exec_LXC_command(LxcCommand type)
 			break;
 
 		case LXC_STOP:
-			cmd = "lxc-stop -n "  + lxc;
+			cmd = "sudo lxc-stop -n "  + lxc;
 			break;
 
 		case LXC_DESTROY:
@@ -332,7 +331,7 @@ void LXC_Proxy::exec_LXC_command(LxcCommand type)
 			break;
 
 		case LXC_START_AS_RUNNER:
-			cmd = "lxc-start -n" + lxc + " -d " + PATH_TO_S3FNETLXC + "/lxc-command/reader";
+			cmd = "sudo lxc-start -n" + lxc + " -d " + PATH_TO_S3FNETLXC + "/lxc-command/reader";
 			break;
 		
 		default:
@@ -380,7 +379,7 @@ void LXC_Proxy::sendCommandToLXC()
 int LXC_Proxy::getLXCPID(char* lxcname)
 {
 	char command[500];
-	sprintf(command, "lxc-info -n %s | grep pid | tr -s ' ' | cut -d ' ' -f 2", lxcname);
+	sprintf(command, "lxc-info -n %s | grep -i pid | tr -s ' ' | cut -d ' ' -f 2", lxcname);
 	string result = exec_system_command(command);
 	return atoi(result.c_str());
 }

@@ -1,16 +1,16 @@
-total_timeline 2
+total_timeline 5
 tick_per_second 6
 run_time 3.0
 seed 1
-log_dir PLC_Simple_Client_Server
+log_dir PLC_Simple_Client_Server_multiple_serial
 
 dilation [ TDF 15 ]
 Net
 [
 	lxcConfig
 	[
-		settings [ lxcNHI 0:0 _extends .dilation cmd "/home/vignesh/Desktop/PLCs/awlsim-0.42/tests/run.sh -e 1 --node 0 /home/vignesh/Desktop/PLCs/awlsim-0.42/tests/modbus/simple_client_server_multiple/sfb102_server.awl" ]
-		settings [ lxcNHI 1:0 _extends .dilation cmd "/home/vignesh/Desktop/PLCs/awlsim-0.42/tests/run.sh -e 1 --node 1 /home/vignesh/Desktop/PLCs/awlsim-0.42/tests/modbus/simple_client_server_multiple/sfb102_client.awl" ]
+		settings [ lxcNHI 0:0 _extends .dilation cmd "/home/vignesh/Desktop/awlsim-0.42/tests/run.sh -e 1 --node 0 /home/vignesh/Desktop/awlsim-0.42/tests/modbus/simple_client_server_multiple/sfb102_server.awl" ]
+		settings [ lxcNHI 1:0 _extends .dilation cmd "/home/vignesh/Desktop/awlsim-0.42/tests/run.sh -e 1 --node 1 /home/vignesh/Desktop/awlsim-0.42/tests/modbus/simple_client_server_multiple/sfb102_client.awl" ]
 	]
 	Net
 	[

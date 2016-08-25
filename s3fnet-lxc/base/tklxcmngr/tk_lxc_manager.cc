@@ -6,6 +6,9 @@
  * authors : Vladimir Adam
  */
 
+//#include "tk_lxc_manager.h"
+
+#include "pktheader.h"
 #include <s3f.h>
 #include <string.h>
 
@@ -17,7 +20,6 @@
 
 #include <errno.h>
 #include <arpa/inet.h>
-#include "pktheader.h"
 #include <netinet/ip_icmp.h>
 #include <netinet/udp.h>
 #include <netinet/ip.h>
@@ -509,9 +511,9 @@ void LxcManager::handleIncomingPacket(char* buffer, vector<LXC_Proxy*>* proxiesT
 				//arrivalTime = temp_arrival_time; 
 				//proxy->last_arrival_time = arrivalTime;
 
-				//debugPrint("Arrival Time : %lu\n",arrivalTime);
-				if((arrivalTime % 1000) < 100 )
-					printf("%lu milliseconds elapsed\n", arrivalTime/1000);
+				debugPrint("New Packet Arrival Time : %lu milliseconds\n",arrivalTime/1000);
+				//if((arrivalTime % 1000) < 100 )
+				//	printf("%lu milliseconds elapsed\n", arrivalTime/1000);
 				//debugPrint("######################################\n");
 				
 			}

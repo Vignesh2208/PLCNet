@@ -92,7 +92,7 @@ cd app
 if [ $inc -eq 0 ]; then
 rm *.o
 fi
-make -s
+#make -s
 cd ..
 
 if [ $dml -eq 1 ] && [ $inc -eq 0 ]; then

@@ -32,8 +32,8 @@ END_OF_GENERAL_CONFIGURATION
 
 START_OF_AWL_SCRIPT_CONFIGURATION
 #| NODE_ID*	|  AWL_SCRIPT_PATH*	|
-	1,			/home/vignesh/Desktop/PLCs/awlsim-0.42/tests/modbus/simple_client_server/sfb102_server.awl
-	2,			/home/vignesh/Desktop/PLCs/awlsim-0.42/tests/modbus/simple_client_server/sfb102_client.awl
+	1,			/home/vignesh/Desktop/awlsim-0.42/tests/modbus/simple_client_server/sfb102_server.awl
+	2,			/home/vignesh/Desktop/awlsim-0.42/tests/modbus/simple_client_server/sfb102_client.awl
 
 END_OF_AWL_SCRIPT_CONFIGURATION
 

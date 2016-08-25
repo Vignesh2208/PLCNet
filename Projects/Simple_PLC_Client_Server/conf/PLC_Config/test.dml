@@ -1,6 +1,6 @@
-total_timeline 4
+total_timeline 6
 tick_per_second 6
-run_time 5.0
+run_time 10.0
 seed 1
 log_dir PLC_Simple_Client_Server
 
@@ -9,9 +9,9 @@ Net
 [
 	lxcConfig
 	[
-		settings [ lxcNHI 0:0 _extends .dilation cmd "/home/vignesh/Desktop/PLCs/awlsim-0.42/tests/run.sh -e 0 --node 0 /home/vignesh/Desktop/PLCs/awlsim-0.42/tests/modbus/simple_client_server/sfb102_server.awl" ]
-		settings [ lxcNHI 1:0 _extends .dilation cmd "/home/vignesh/Desktop/PLCs/awlsim-0.42/tests/run.sh -e 0 --node 1 /home/vignesh/Desktop/PLCs/awlsim-0.42/tests/modbus/simple_client_server/sfb102_client.awl" ]
-		settings [lxcNHI 2:0 _extends .dilation cmd "python /home/vignesh/Desktop/PLCs/awlsim-0.42/Projects/Simple_PLC_Client_Server/conf/PLC_Config/udp_reader.py"]
+		settings [ lxcNHI 0:0 _extends .dilation cmd "/home/vignesh/Desktop/awlsim-0.42/tests/run.sh -e 0 --node 0 /home/vignesh/Desktop/awlsim-0.42/tests/modbus/simple_client_server/sfb102_server.awl" ]
+		settings [ lxcNHI 1:0 _extends .dilation cmd "/home/vignesh/Desktop/awlsim-0.42/tests/run.sh -e 0 --node 1 /home/vignesh/Desktop/awlsim-0.42/tests/modbus/simple_client_server/sfb102_client.awl" ]
+		settings [lxcNHI 2:0 _extends .dilation cmd "python /home/vignesh/Desktop/awlsim-0.42/Projects/Simple_PLC_Client_Server/conf/PLC_Config/udp_reader.py"]
 	]
 	Net
 	[
@@ -47,7 +47,7 @@ Net
 	Net
 	[
 		id 3
-		alignment 3
+		alignment 5
 		router
 		[
 			id 	1

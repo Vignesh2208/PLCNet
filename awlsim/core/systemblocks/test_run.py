@@ -2,8 +2,6 @@ import math
 import socket
 import select
 import sys
-#import queue
-#from queue import *
 import multiprocessing, Queue
 from multiprocessing import Array as Array
 
@@ -98,6 +96,20 @@ def put(shared_Array,type_of_data,data):
 			shared_Array[i] = int(x)
 			i = i + 1
 
+	if type_of_data == 4 :	# data is a status tuple (read_finish_status,STATUS,ERROR,STATUS_MODBUS,STATUS_CONN,BUSY,CONN_ESTABLISHED)
+		#self.STATUS = -1
+		#self.ERROR = False
+		#self.STATUS_MODBUS = 0x0000
+		#self.STATUS_CONN = 0x0000
+		#self.STATUS_FUNC = "MODBUSPN"
+		#self.IDENT_CODE = "NONE"
+		#self.CONN_ESTABLISHED = False
+		#self.BUSY = False
+		i = 2
+		for x in data:
+			shared_Array[i] = int(x)
+			i = i + 1
+
 
 
 	shared_Array[0] = 1	# Data is available to read
@@ -111,8 +123,21 @@ def get(shared_Array,block=True):
 		return None 
 
 	type_of_data = shared_Array[1]
+
+	if type_of_data == 4 :
+		read_finish_status = int(shared_Array[2])
+		STATUS = int(shared_Array[3])
+		ERROR = bool(shared_Array[4])
+		STATUS_MODBUS = int(shared_Array[5])
+		STATUS_CONN = int(shared_Array[6])
+		BUSY = bool(shared_Array[7])
+		CONN_ESTABLISHED = bool(shared_Array[8])
+
+		ret = (read_finish_status,STATUS,ERROR,STATUS_MODBUS,STATUS_CONN,BUSY,CONN_ESTABLISHED)
+
 	if type_of_data == 3 :			
 		ret = 'QUIT'
+
 	if type_of_data == 1 : # data is a byte array
 		data_len = shared_Array[2]
 		ret = bytearray()
@@ -145,15 +170,15 @@ def get(shared_Array,block=True):
 
 
 def get_busy_wait(queue_name):
-	o = None
+	#o = None
 	#while o == None :
 	#	try :
 	#		o = queue_name.get(block=False)		
 	#	except Queue.Empty:
 	#		o = None
-	o = queue_name.get()
+	#o = queue_name.get()
 
-	return o	
+	return get(queue_name)
 
 
 def LOG_msg(msg,node_id,conf_directory):
@@ -184,7 +209,7 @@ def test_run_server_ip(thread_resp_queue,thread_cmd_queue,local_tsap_id,disconne
 	try:
 		ids_socket = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
 		ids_socket.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1)
-		server_socket.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1)
+		#server_socket.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1)
 	except socket.error as sockerror:
 		print("ERRor creating socket")
 		print(sockerror)
@@ -194,7 +219,7 @@ def test_run_server_ip(thread_resp_queue,thread_cmd_queue,local_tsap_id,disconne
 
 	server_socket.settimeout(conn_time)
 	try:
-		server_socket.bind(('0.0.0.0',TCP_LOCAL_PORT))	# bind to any address
+		server_socket.bind(('',TCP_LOCAL_PORT))	# bind to any address
 	except socket.error as sockerror:
 		print("ERROR binding to socket")
 		print(sockerror)
@@ -202,7 +227,7 @@ def test_run_server_ip(thread_resp_queue,thread_cmd_queue,local_tsap_id,disconne
 
 	server_socket.listen(1)
 
-	print("Start time = ", time.time())
+	print("Start time = ", str(datetime.datetime.now()))
 	print("Listening on port " + str(TCP_LOCAL_PORT))	
 	sys.stdout.flush()			
 	
@@ -219,12 +244,13 @@ def test_run_server_ip(thread_resp_queue,thread_cmd_queue,local_tsap_id,disconne
 		BUSY = False
 		CONN_ESTABLISHED = False
 		curr_status = (read_finish_status,STATUS,ERROR,STATUS_MODBUS,STATUS_CONN,BUSY,CONN_ESTABLISHED)
-		thread_resp_queue.put(curr_status)
-		thread_cmd_queue.get()
+		put(thread_resp_queue,4,curr_status)
+		get(thread_cmd_queue)
 		print("Sever exiting")
 		return			
 		
-	print("Established Connection from " + str(address))
+	print("Established Connection from " + str(address) + " at " + str(datetime.datetime.now()))
+	sys.stdout.flush()
 	CONN_ESTABLISHED = True
 	BUSY = True
 	STATUS = RUNNING
@@ -233,7 +259,7 @@ def test_run_server_ip(thread_resp_queue,thread_cmd_queue,local_tsap_id,disconne
 	STATUS_CONN = 0x0
 	read_finish_status = 1
 	curr_status = (read_finish_status,STATUS,ERROR,STATUS_MODBUS,STATUS_CONN,BUSY,CONN_ESTABLISHED)
-	thread_resp_queue.put(curr_status)		
+	put(thread_resp_queue,4,curr_status)		
 	cmd = get_busy_wait(thread_cmd_queue)
 
 	if cmd == 'QUIT':
@@ -294,8 +320,6 @@ def test_run_server_ip(thread_resp_queue,thread_cmd_queue,local_tsap_id,disconne
 
 
 		recv_data = recv_data[0:-3]
-		#?thread_resp_queue.put((recv_data,1))
-		#?cmd = get_busy_wait(thread_cmd_queue)
 		put(thread_resp_arr,1,recv_data)
 		cmd = get(thread_cmd_arr)
 
@@ -337,8 +361,8 @@ def test_run_server_ip(thread_resp_queue,thread_cmd_queue,local_tsap_id,disconne
 	client_socket.close()
 	server_socket.close()
 	curr_status = (read_finish_status,STATUS,ERROR,STATUS_MODBUS,STATUS_CONN,BUSY,CONN_ESTABLISHED)
-	thread_resp_queue.put(curr_status)
-	thread_cmd_queue.get()
+	put(thread_resp_queue,4,curr_status)
+	get(thread_cmd_queue)
 
 
 def test_run_client_ip(thread_resp_queue,thread_cmd_queue,local_tsap_id,IDS_IP,TCP_REMOTE_IP,TCP_REMOTE_PORT,conn_time, local_id,thread_resp_arr,thread_cmd_arr,conf_directory) :
@@ -350,6 +374,8 @@ def test_run_client_ip(thread_resp_queue,thread_cmd_queue,local_tsap_id,IDS_IP,T
 	STATUS_MODBUS = 0x0
 	STATUS_CONN = 0x0
 	read_finish_status = 1
+
+	#time.sleep(1)
 
 	
 	try:
@@ -363,21 +389,25 @@ def test_run_client_ip(thread_resp_queue,thread_cmd_queue,local_tsap_id,IDS_IP,T
 	ids_port = 8888; 
 
 	s_time = time.time()
-	print("Start time = ", time.time())
+	print("Start time = ", str(datetime.datetime.now()))
 	print("IP:PORT = ", TCP_REMOTE_IP,TCP_REMOTE_PORT)
 	sys.stdout.flush()
 	no_error = False
 	attempt_no = 0
 	
 	while no_error == False:
-		print("Attempting to connect to server ", TCP_REMOTE_IP, " : ", TCP_REMOTE_PORT, " for the ", attempt_no, " time.")
+		print("Attempting to connect to server ", TCP_REMOTE_IP, " : ", TCP_REMOTE_PORT, " for the ", attempt_no, " time at: ", str(datetime.datetime.now()))
 		client_socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+		sys.stdout.flush()
 		try:
+			
 			client_socket.settimeout(conn_time)
 			client_socket.connect((TCP_REMOTE_IP,TCP_REMOTE_PORT))
+			
 			no_error = True
 		except socket.error as socketerror:
 			print("Client Error : ",TCP_REMOTE_IP,TCP_REMOTE_PORT, " ", socketerror, " at ", str(datetime.datetime.now()))
+			sys.stdout.flush()
 			read_finish_status = 0
 			STATUS = CONN_TIMEOUT_ERROR
 			ERROR = True
@@ -388,13 +418,14 @@ def test_run_client_ip(thread_resp_queue,thread_cmd_queue,local_tsap_id,IDS_IP,T
 			curr_status = (read_finish_status,STATUS,ERROR,STATUS_MODBUS,STATUS_CONN,BUSY,CONN_ESTABLISHED)
 			no_error = False
 			if time.time() - s_time > conn_time :
-				thread_resp_queue.put(curr_status)
-				cmd = thread_cmd_queue.get()
+				put(thread_resp_queue,4,curr_status)
+				cmd = get(thread_cmd_queue)
 				if cmd == 'QUIT':
 					client_socket.close()
 					return
 			else:
-				nsleep(10000)
+				#nsleep(10000)
+				time.sleep(0.01)
 
 			client_socket.close()
 			#return
@@ -408,12 +439,13 @@ def test_run_client_ip(thread_resp_queue,thread_cmd_queue,local_tsap_id,IDS_IP,T
 	STATUS_CONN = 0x0
 
 	print("Connection established at " + str(datetime.datetime.now()))
+	sys.stdout.flush()
 	
 	read_finish_status = 1
 	curr_status = (read_finish_status,STATUS,ERROR,STATUS_MODBUS,STATUS_CONN,BUSY,CONN_ESTABLISHED)
 		
 	# read all input and inout params
-	thread_resp_queue.put(curr_status)
+	put(thread_resp_queue,4,curr_status)
 	cmd = get_busy_wait(thread_cmd_queue)
 	
 
@@ -506,8 +538,6 @@ def test_run_client_ip(thread_resp_queue,thread_cmd_queue,local_tsap_id,IDS_IP,T
 
 
 		recv_data = recv_data[0:-3]
-		#?thread_resp_queue.put((recv_data,1))
-		#?cmd = get_busy_wait(thread_cmd_queue)
 		put(thread_resp_arr,1,recv_data)
 		cmd = get(thread_cmd_arr)
 
@@ -529,8 +559,8 @@ def test_run_client_ip(thread_resp_queue,thread_cmd_queue,local_tsap_id,IDS_IP,T
 	client_socket.close()
 	ids_socket.close()
 	curr_status = (read_finish_status,STATUS,ERROR,STATUS_MODBUS,STATUS_CONN,BUSY,CONN_ESTABLISHED)
-	thread_resp_queue.put(curr_status)
-	cmd = thread_cmd_queue.get()
+	put(thread_resp_queue,4,curr_status)
+	cmd = get(thread_cmd_queue)
 
 
 
@@ -601,7 +631,7 @@ def test_run_client_serial(thread_resp_queue,thread_cmd_queue,conn_time, local_i
 	curr_status = (read_finish_status,STATUS,ERROR,STATUS_MODBUS,STATUS_CONN,BUSY,CONN_ESTABLISHED)
 		
 	# read all input and inout params
-	thread_resp_queue.put(curr_status)
+	put(thread_resp_queue,4,curr_status)
 	cmd = get_busy_wait(thread_cmd_queue)
 	
 
@@ -757,8 +787,8 @@ def test_run_client_serial(thread_resp_queue,thread_cmd_queue,conn_time, local_i
 	BUSY = False
 	CONN_ESTABLISHED = False
 	curr_status = (read_finish_status,STATUS,ERROR,STATUS_MODBUS,STATUS_CONN,BUSY,CONN_ESTABLISHED)
-	thread_resp_queue.put(curr_status)
-	cmd = thread_cmd_queue.get()
+	put(thread_resp_queue,4,curr_status)
+	cmd = get(thread_cmd_queue)
 	
 
 
@@ -815,18 +845,7 @@ def test_run_server_serial(thread_resp_queue,thread_cmd_queue, disconnect, recv_
 			STATUS_CONN = ERROR_MONITORING_TIME_ELAPSED			
 			break
 
-		
-
-			
-		#if CONN_ESTABLISHED == False :
-		#	CONN_ESTABLISHED = True				
-		#	read_finish_status = 1
-		#	curr_status = (read_finish_status,STATUS,ERROR,STATUS_MODBUS,STATUS_CONN,BUSY,CONN_ESTABLISHED)
-		#	#thread_resp_queue.put(curr_status)		
-		#	#cmd = get_busy_wait(thread_cmd_queue)
-
-		#	#if cmd == 'QUIT':
-		#	#	return
+	
 		
 		st = datetime.datetime.now()
 		data = os.read(server_fd,100)
@@ -930,5 +949,5 @@ def test_run_server_serial(thread_resp_queue,thread_cmd_queue, disconnect, recv_
 	BUSY = False
 	CONN_ESTABLISHED = False
 	curr_status = (read_finish_status,STATUS,ERROR,STATUS_MODBUS,STATUS_CONN,BUSY,CONN_ESTABLISHED)
-	thread_resp_queue.put(curr_status)
-	thread_cmd_queue.get()
+	put(thread_resp_queue,4,curr_status)
+	get(thread_cmd_queue)

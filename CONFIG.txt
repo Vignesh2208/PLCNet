@@ -8,4 +8,4 @@ NR_SERIAL_DEVS  = 3
 TX_BUF_SIZE = 100													
 
 # directory containing Timekeeper code
-TIMEKEEPER_DIR = /home/vignesh/Desktop/Timekeeper
+TIMEKEEPER_DIR = /home/vignesh/Desktop/TimeKeeper

@@ -104,9 +104,7 @@ run_awl_test()
 
 	local ok=1
 	command time -o "$test_time_file" -f '%E' \
-	"$interpreter" "$rootdir/awlsim-cli" --loglevel 2  --extended-insns -N $opt_node_id -e $opt_conn_type \
-		--hardware debug:inputAddressBase=7:outputAddressBase=8:dummyParam=True \
-		--cycle-time 60 \
+	"$interpreter" "$rootdir/awlsim-cli" --loglevel 2  --extended-insns -N $opt_node_id -e $opt_conn_type --cycle-time 60 \
 		"$@" \
 		"$awl" || {
 			test_failed "Test '$(basename "$awl")' FAILED"

@@ -8,10 +8,10 @@
 #ifndef __CAPP_SESSION_H__
 #define __CAPP_SESSION_H__
 
+#include <netinet/in.h>
 #include "os/base/protocol_session.h"
 #include "util/shstl.h"
 #include "net/ip_prefix.h"
-#include <netinet/in.h>
 #include <netinet/ip_icmp.h>
 #include <netinet/udp.h>
 #include <netinet/ip.h>

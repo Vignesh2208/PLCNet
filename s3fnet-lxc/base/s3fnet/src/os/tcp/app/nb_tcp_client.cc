@@ -16,9 +16,9 @@
  * documentation.
  */
 
+#include <netinet/in.h>
 #include "os/tcp/app/nb_tcp_client.h"
 #include "os/socket/nb_socket_master.h"
-#include <netinet/in.h>
 #include "util/errhandle.h"
 #include "net/host.h"
 #include "net/network_interface.h"

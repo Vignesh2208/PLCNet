@@ -5,6 +5,7 @@
  * authors : Dong (Kevin) Jin
  */
 
+#include <arpa/inet.h>
 #include "net/net.h"
 #include "net/host.h"
 #include "net/traffic.h"
@@ -18,7 +19,7 @@
 #include <regex.h>
 #include <stdio.h>
 #include <stdlib.h>
-#include <arpa/inet.h>
+
 
 namespace s3f {
 namespace s3fnet {

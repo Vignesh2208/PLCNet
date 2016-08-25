@@ -288,7 +288,7 @@ except ValueError:
 freezeExecutables = [ ("awlsim-cli", None),
 		      ("awlsim-gui", None),
 		      ("awlsim-server", None),
-		      ("awlsim-symtab", None),
+		      #("awlsim-symtab", None),
 		      ("awlsim/coreserver/server.py", "awlsim-server-module"), ]
 if py2exe:
 	extraKeywords["console"] = [ s for s, e in freezeExecutables ]
@@ -305,9 +305,10 @@ if cx_Freeze:
 	extraKeywords["executables"] = executables
 	extraKeywords["options"] = {
 			"build_exe"     : {
-				"packages"      : [ "awlsimhw_debug",
-						    "awlsimhw_dummy",
-						    "awlsim.library.iec", ],
+				"packages"      : [ #"awlsimhw_debug",
+						    #"awlsimhw_dummy",
+						    "awlsim.library.iec", 
+						   ],
 			}
 		}
 

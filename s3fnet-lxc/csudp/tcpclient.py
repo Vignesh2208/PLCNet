@@ -3,6 +3,7 @@ import sys
 import time
 from datetime import datetime
 
+time.sleep(1)
 # Create a TCP/IP socket
 sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 

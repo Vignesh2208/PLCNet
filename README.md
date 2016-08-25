@@ -13,8 +13,23 @@ and subject the network to variety of man in the middle attack scenarios.
 
 ```
 
-## Building Source
+## Dependencies/Requirements
 ```
+ubuntu-12.04 LTS or ubuntu-14.04.1 LTS (32 bit or 64 bit)
+linux kernel-3.13.1
+lxc-0.7.5
+TimeKeeper 
+
+```
+
+## Installation Instructions
+```
+
+#install TimeKeeper (Refer TimeKeeper repository for instructions)
+
+#clone PLCNet repository and rename the folder from PLCNet to awlsim-0.42
+
+#install lxc-0.7.5 from https://linuxcontainers.org/lxc/downloads/
 
 #edit CONFIG.txt to set parameters prior to Building
 N_CPUS 	        # Number of VCPUs assigned for experiments. use lscpu command for help
@@ -22,21 +37,21 @@ NR_SERIAL_DEVS 	# Number of serial device interfaces assigned for each emulated 
 TX_BUF_SIZE 	# Transmission buffer size (bytes) for assigned serial device interfaces
 TIMEKEEPER_DIR	# Absolute path to the location of TimeKeeper source
 
-# build source
+# build source and install
 sudo make fullbuild
 ```
 
-## Launching a new Project
+## Creating and Launching new Projects
 ```
 # create new project
 sudo ./run.sh -n <Project name> -m
 
 # make changes to the project
-# set experiment configuration
+# set experiment configuration (refer Project README for further explanation)
   
   edit Projects/<Project name>/conf/exp_config
 
-# set topology configuration
+# set topology configuration (refer Project README for further explanation)
   topology configuration must specify an extra node (only in IP mode)
   for running a centralized intrusion detection monitor. 
   Please refer to Advanced Security Testing section for more details.
@@ -44,11 +59,11 @@ sudo ./run.sh -n <Project name> -m
   edit Projects/<Project name>/conf/topology_config
 
 # generate inputs to PLCs
-  An input generator script located inside Projects/<Project name>/conf/scripts
-  is called for every PLC at the start of every cycle. It can be used to
-  set the inputs to the PLC for the current cycle. The arguments passed to
-  the script include the ID of the PLC, cycle number, PLC outputs from previous
-  cycle. The script should return inputs for the next cycle.
+  An input generator script located inside Projects/<Project name>/conf/
+  scripts/InputGenerator.py is called for every PLC at the start of every cycle. 
+  It can be used to set the inputs to the PLC for the current cycle. The arguments 
+  passed to the script include the ID of the PLC, cycle number, PLC outputs from 
+  previous cycle. The script should return inputs for the next cycle.
 
 # build/load project 
 sudo ./run.sh -n <Project name> -l
@@ -86,7 +101,7 @@ Refer to Projects/Simple_PLC_Client_HMI/conf/hmi.py for details on usage.
    router can be obtained inside the script using getHost()->hostID and based
    on the ID, different actions can be taken in different compromised routers.
 
-Rebuild Project after editing these files
+Rebuild/Reload Project after editing these files
 
 
 # Centralized Log collector (or simulated Intrusion monitor)

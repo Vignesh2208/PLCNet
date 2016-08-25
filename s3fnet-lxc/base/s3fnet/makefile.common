@@ -104,13 +104,13 @@ UTIL_OBJECTS = $(UTIL_XFORM:.cxx=.xform.o) $(UTIL_NONXFORM:.cc=.o)
 #
 
 ENV_HDRFILES = \
-	$(SRCDIR)/env/namesvc.h \
+	$(SRCDIR)/env/namesvc.h 
 	#$(SRCDIR)/env/timelinesvc.h
 	#$(SRCDIR)/env/alignsvc.h \
 	#$(SRCDIR)/env/milieu.h \
 	#$(SRCDIR)/env/aligndev.h
 ENV_SRCFILES = \
-	$(SRCDIR)/env/namesvc.cc \
+	$(SRCDIR)/env/namesvc.cc 
 	#$(SRCDIR)/evn/timelinesvc.cc
 	#$(SRCDIR)/env/alignsvc.cc \
 	#$(SRCDIR)/env/milieu.cc \
