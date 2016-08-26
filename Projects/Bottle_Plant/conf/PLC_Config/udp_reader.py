@@ -27,8 +27,9 @@ except socket.error , msg:
 	sys.exit()
 	 
 print("Socket bind complete")
-with open("/home/vignesh/Desktop/temp.txt","w") as f :
-	f.write("Started udp reader successfully\n")
+with open(os.path.dirname(__file__) + "/../logs/ids_monitor_log","w") as f:
+	f.write("#node_id, msg_process_timestamp (at node), SEND/RECV msg, msg_hash, log time, actual message (in hex)\n\n")
+
 
 sys.stdout.flush()
  
@@ -46,9 +47,12 @@ while 1:
 	msg = ls[3]
 
 	node_id = int(node_id)
-	with open(os.path.dirname(__file__) + "/../logs/node_" + str(node_id) + "_log","a") as f:
-		f.write(timestamp + "," + direction + "," + msg + ",LOG_TIME : " + str(recv_time) + "\n")
-
+	try:
+		with open(os.path.dirname(__file__) + "/../logs/ids_monitor_log","a") as f:
+			f.write(str(node_id) + "," + timestamp + "," + direction + "," + msg + ",LOG_TIME : " + str(recv_time) + ",LOG_MSG : " + str(ls[4]) + "\n")
+	
+	except:
+		print "IO Error"
 	#print 'Message[' + addr[0] + ':' + str(addr[1]) + '] - ' + data.strip()
 	sys.stdout.flush()
 	 

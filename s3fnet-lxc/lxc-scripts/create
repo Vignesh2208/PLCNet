@@ -39,4 +39,4 @@ ifconfig $BR_NAME up
 
 lxc-create -n $LXC_NAME -f /home/vignesh/Desktop/awlsim-0.42/Projects/Simple_PLC_Client_Server_multiple/conf/PLC_Config/$CONF_FILE #-t none
 
-#rm $CONF_FILE
+

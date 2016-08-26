@@ -5,7 +5,7 @@ Depending on the host machine and the Python interpreter used, it achieves
 good performance of several thousand to millions of AWL/STL instructions
 per second. German and English S7 AWL/STL mnemonics are supported.
 
-This project integrates Awlsim with TimeKeeper and S3FNet to achieve
+This project integrates Awlsim-0.42 with TimeKeeper and S3FNet to achieve
 high fidelity large scale PLC Network emulations. Additional support is 
 included for simulating HMI devices which can send commands to slave PLCs.
 It also allows the user to implement and test intrusion detection algorithms 
@@ -16,6 +16,7 @@ and subject the network to variety of man in the middle attack scenarios.
 ## Dependencies/Requirements
 ```
 ubuntu-12.04 LTS or ubuntu-14.04.1 LTS (32 bit or 64 bit)
+gcc 4.8, g++ 4.8
 linux kernel-3.13.1
 lxc-0.7.5
 TimeKeeper 
@@ -112,8 +113,21 @@ location in IP Mode.This is done by a centralized log monitor script located in
 ID (Total Nodes + 1) by default. Topology Config must specify an extra node (ID: N_Nodes + 1), 
 router (ID: N_Nodes + 1) pair (also referred to as IDS node-router pairs) which will by 
 default run udp_reader.py script to collect and store logs. The user should connect the IDS 
-router as desired to get traffic from all PLCs. The logs collected will be stored in 
-Projects/<Project name>/conf/logs
+router as desired to get traffic from all PLCs. The common logs collected will be stored in 
+Projects/<Project name>/conf/logs/ids_monitor_log. Each node also logs its own sent and received
+messages in IP and serial mode in seperate node log files which are also stored in the same directory.
 
 edit Projects/<Project name>/conf/PLC_Config/udp_reader.py
+```
+
+## Additional Documentation
+```
+Please refer to documentation included with the repository for additional information related
+to Siemens Step 7 programming instructions, Siemens Modbus API and other general information related
+to Awlsim and ModBus
+
+Awlsim-0.42 does not support all Step-7 instructions. For further clarifications, please visit the 
+website: https://bues.ch/cms/automation/awlsim.html
+
+This project is being maintained by Vignesh Babu (vig2208@gmail.com)
 ```

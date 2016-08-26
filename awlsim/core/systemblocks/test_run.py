@@ -4,7 +4,7 @@ import select
 import sys
 import multiprocessing, Queue
 from multiprocessing import Array as Array
-
+import binascii
 import time
 import os
 from awlsim.core.systemblocks.exceptions import *
@@ -303,13 +303,13 @@ def test_run_server_ip(thread_resp_queue,thread_cmd_queue,local_tsap_id,disconne
 			break
 
 		
-    	#Set the whole string
+    		#Set the whole string
 		recv_data_hash = str(hashlib.md5(str(recv_data)).hexdigest())
-		log_msg = str(recv_time) + ",RECV," + str(recv_data_hash)
-		msg = str(local_id) + "," + str(recv_time) + ",RECV," + str(recv_data_hash)
+		log_msg = str(recv_time) + ",RECV," + str(recv_data_hash) + "," + str(binascii.hexlify(recv_data[0:-3]))
+		msg = str(local_id) + "," + str(recv_time) + ",RECV," + str(recv_data_hash) + "," + str(binascii.hexlify(recv_data[0:-3]))
 		
 		try :			
-			#ids_socket.sendto(msg.encode('utf-8'), (ids_host, ids_port))
+			ids_socket.sendto(msg.encode('utf-8'), (ids_host, ids_port))
 			LOG_msg(log_msg,local_id,conf_directory)
 		except socket.error as sockerror :
 			print(sockerror)
@@ -329,7 +329,7 @@ def test_run_server_ip(thread_resp_queue,thread_cmd_queue,local_tsap_id,disconne
 			server_socket.close()
 			return
 
-		#?response = cmd[0]
+		
 		response = cmd
 		
 		response.append(random.randint(0,255))
@@ -340,10 +340,10 @@ def test_run_server_ip(thread_resp_queue,thread_cmd_queue,local_tsap_id,disconne
 		print("Sent response to client = ",response, " at " + str(datetime.datetime.now()))
 		sys.stdout.flush()
 		response_hash = str(hashlib.md5(str(response)).hexdigest())
-		log_msg = str(datetime.datetime.now())  + ",SEND," + str(response_hash)
-		msg = str(local_id) + "," + str(datetime.datetime.now())  + ",SEND," + str(response_hash)
+		log_msg = str(datetime.datetime.now())  + ",SEND," + str(response_hash) + "," + str(binascii.hexlify(response[0:-3]))
+		msg = str(local_id) + "," + str(datetime.datetime.now())  + ",SEND," + str(response_hash) + "," + str(binascii.hexlify(response[0:-3]))
 		try :		
-			#ids_socket.sendto(msg.encode('utf-8'), (ids_host, ids_port))
+			ids_socket.sendto(msg.encode('utf-8'), (ids_host, ids_port))
 			LOG_msg(log_msg,local_id,conf_directory)
 		except socket.error as sockerror :
 			print(sockerror)
@@ -498,10 +498,10 @@ def test_run_client_ip(thread_resp_queue,thread_cmd_queue,local_tsap_id,IDS_IP,T
 			break
 
 		msg_to_send_hash = str(hashlib.md5(str(msg_to_send)).hexdigest())
-		log_msg = str(datetime.datetime.now()) + ",SEND," + str(msg_to_send_hash)
-		msg = str(local_id) + "," + str(datetime.datetime.now()) + ",SEND," + str(msg_to_send_hash)
+		log_msg = str(datetime.datetime.now()) + ",SEND," + str(msg_to_send_hash) + "," + str(binascii.hexlify(msg_to_send[0:-3]))
+		msg = str(local_id) + "," + str(datetime.datetime.now()) + ",SEND," + str(msg_to_send_hash) + "," + str(binascii.hexlify(msg_to_send[0:-3]))
 		try :			
-			#ids_socket.sendto(msg.encode('utf-8'), (ids_host, ids_port))
+			ids_socket.sendto(msg.encode('utf-8'), (ids_host, ids_port))
 			LOG_msg(log_msg,local_id,conf_directory)			
 		except socket.error as sockerror :
 			print(sockerror)
@@ -527,10 +527,10 @@ def test_run_client_ip(thread_resp_queue,thread_cmd_queue,local_tsap_id,IDS_IP,T
 		sys.stdout.flush()
 
 		recv_data_hash = str(hashlib.md5(str(recv_data)).hexdigest())
-		log_msg = str(recv_time) + ",RECV," + str(recv_data_hash)
-		msg = str(local_id) + "," + str(recv_time) + ",RECV," + str(recv_data_hash)
+		log_msg = str(recv_time) + ",RECV," + str(recv_data_hash) + "," + str(binascii.hexlify(recv_data[0:-3]))
+		msg = str(local_id) + "," + str(recv_time) + ",RECV," + str(recv_data_hash) + "," + str(binascii.hexlify(recv_data[0:-3]))
 		try :			
-			#ids_socket.sendto(msg.encode('utf-8'), (ids_host, ids_port))
+			ids_socket.sendto(msg.encode('utf-8'), (ids_host, ids_port))
 			LOG_msg(log_msg,local_id,conf_directory)
 		except socket.error as sockerror :
 			print(sockerror)
@@ -698,7 +698,7 @@ def test_run_client_serial(thread_resp_queue,thread_cmd_queue,conn_time, local_i
 			log_time = datetime.datetime.now()
 
 		msg_to_send_hash = str(hashlib.md5(str(msg_to_send)).hexdigest())
-		log_msg = str(log_time) + ",SEND," + str(msg_to_send_hash)		
+		log_msg = str(log_time) + ",SEND," + str(msg_to_send_hash) + "," + str(binascii.hexlify(msg_to_send[0:-3]))
 		LOG_msg(log_msg,local_id,conf_directory)
 		
 
@@ -761,8 +761,8 @@ def test_run_client_serial(thread_resp_queue,thread_cmd_queue,conn_time, local_i
 		
 		recv_time = log_time
 		recv_data_hash = str(hashlib.md5(str(recv_msg)).hexdigest())
-		log_msg = str(recv_time) + ",RECV," + str(recv_data_hash)
-		print("Recv msg = ",recv_msg, " Avg read time = ", float(elapsed)/float(number), " Number = ", number, " total read time = ", elapsed)
+		log_msg = str(recv_time) + ",RECV," + str(recv_data_hash) + "," + str(binascii.hexlify(recv_msg[0:-3]))
+		#print("Recv msg = ",recv_msg, " Avg read time = ", float(elapsed)/float(number), " Number = ", number, " total read time = ", elapsed)
 		LOG_msg(log_msg,local_id,conf_directory)				
 		recv_data = process_incoming_frame(recv_msg)
 		recv_data = recv_data[0:-3]
@@ -879,11 +879,11 @@ def test_run_server_serial(thread_resp_queue,thread_cmd_queue, disconnect, recv_
 
 		#print("Recv msg = ",recv_msg)
 		recv_data_hash = str(hashlib.md5(str(recv_msg)).hexdigest())
-		log_msg = str(log_time) + ",RECV," + str(recv_data_hash)
+		log_msg = str(log_time) + ",RECV," + str(recv_data_hash) + "," + str(binascii.hexlify(recv_msg[0:-3]))
 		LOG_msg(log_msg,local_id,conf_directory)
 		
 		recv_data = process_incoming_frame(recv_msg)
-		print("Recv data = ",recv_data, " Avg read time = ", float(elapsed)/float(number), " Number = ", number, " total read time = ", elapsed)
+		#print("Recv data = ",recv_data, " Avg read time = ", float(elapsed)/float(number), " Number = ", number, " total read time = ", elapsed)
 		recv_data = recv_data[0:-3]
 		
 		put(thread_resp_arr,1,recv_data)
@@ -925,7 +925,7 @@ def test_run_server_serial(thread_resp_queue,thread_cmd_queue, disconnect, recv_
 		if log_time == None :
 			log_time = datetime.datetime.now()
 
-		log_msg = str(log_time)  + ",SEND," + str(response_hash)
+		log_msg = str(log_time)  + ",SEND," + str(response_hash) + "," + str(binascii.hexlify(response[0:-3]))
 		LOG_msg(log_msg,local_id,conf_directory)		
 
 		if disconnect == True :
