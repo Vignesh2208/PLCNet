@@ -1,0 +1,24 @@
+#!/bin/bash
+
+display_usage() { 
+	echo "[Tap Name] [BridgeName] [LXC_NAME]" 
+	echo -e "\nUsage:\n$0 [arguments] \n" 
+} 
+
+if [  $# -le 2 ] 
+	then 
+		display_usage
+		exit 1
+fi 
+
+TAP_NAME=$1
+BR_NAME=$2
+LXC_NAME=$3
+
+lxc-destroy -n $LXC_NAME
+ifconfig $BR_NAME down
+brctl delif $BR_NAME $TAP_NAME
+brctl delbr $BR_NAME
+ifconfig $TAP_NAME down
+tunctl -d $TAP_NAME
+

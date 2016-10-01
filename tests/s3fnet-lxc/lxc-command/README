@@ -1,0 +1,49 @@
+** Scripts for easier automation with LXCs and ns-3 **
+
+Steps to Using:
+
+Install Dependencies: 
+	sudo apt-get install libreadline-dev
+
+To instantiate LXCs:
+
+1. Modify command.c so the 2 global strings (PATH_TO_READER and PATH_TO_MODULE) point to the correct spots on your system.
+	PATH_TO_READER should be the absolute path to the 'reader' binary
+	PATH_TO_MODULE should be the absolute path to the TimeKeeper code (where combined.ko resides)
+2. Modify reader.c so the global string points to the correct spot on your system.
+	PATH_TO_DATA should simply be a directory to where you want the LXCs to record data/output
+3. Run 'make'
+4. Run './command <#LXCs> <shouldDilate>': if you set shouldDilate to 1, it will set the TDF of each LXC to 0.
+	When you run this command, X LXCs will be created and you will be given a prompt: 'Enter a command'. From here,
+	you can make a specific LXC a command, which will then write the output defined in PATH_TO_DATA.
+5. Run 'exit' to quit and teardown the experiment
+EXAMPLE:
+	'./command 2 1' will create 2 LXCs, named lxc-1 and lxc2, with ip addresses 10.0.0.1 and 10.0.0.2 respectively.
+	to make lxc-1 print current running processes, you would enter: '1 ps -A'. The first number means to send the command to
+	lxc-1, everything after that will be what gets executed on that process. Then the output will be directed to the path
+	defined in PATH_TO_DATA.
+	Likewise, if you want to see the files in the current directory of lxc-2, you then run '2 ls -l', and the output of the 
+	command will get written to PATH_TO_DATA.  
+
+To create ns-3 compatible topologies:
+
+	For CSMA network:
+		1. Modify global variable in tap-csma-creator.py
+			PATH_TO_NS3_TAP_SRC should point to the tapBridge source code within ns-3
+		2. Run: 'python tap-csma-creator.py <#LXCs> <simulatorTDF>. This will move the newly created .cc file into the 
+			tapBridge examples source folder.
+		3. In ns-3 base directory: ./waf --run tap-csma-virtual-machine
+
+	For Wifi network:
+		1. Modify global variable in tap-wifi-creator.py
+			PATH_TO_NS3_TAP_SRC should point to the tapBridge source code within ns-3
+		2. Run: 'python tap-wifi-creator.py <#LXCs> <simulatorTDF>. This will move the newly created .cc file into the 
+			tapBridge examples source folder.
+		3. In ns-3 base directory: ./waf --run tap-wifi-virtual-machine
+
+Integrating the two scripts:
+	1. Run './command <#LXCs> 1': This will create the LXCs, bridges, taps
+	2. In a new tab, Run either 'python tap-wifi-creator.py <#LXCs> <simulatorTDF>' or 'python tap-csma-creator.py <#LXCs> <simulatorTDF>'
+		to create either a basic wifi network or csma network
+	3. Run './waf --run tap-wifi-virtual-machine'. This will set up the network, and tell timekeeper to start a sync'ed experiment
+	4. And there you go! You can run commands in the LXCs from 1 to another. ie: '1 ping -c1 10.0.0.2' will ping lxc-2 from lxc-1

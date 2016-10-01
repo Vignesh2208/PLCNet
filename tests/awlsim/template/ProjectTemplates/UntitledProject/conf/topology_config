@@ -1,0 +1,5 @@
+#(Node1/Router-Node2/Router),	Delay (ms)	
+# e.g (1-R1),	1
+# e.g (R1-R2),	3
+# e.g (3-R3C),	4	# Compromised router R3
+

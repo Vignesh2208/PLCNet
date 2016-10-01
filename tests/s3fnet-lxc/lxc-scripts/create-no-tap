@@ -1,0 +1,34 @@
+#!/bin/bash
+
+
+display_usage() { 
+	echo "[Tap Name] [IP Addr] [BridgeName] [LXC_NAME] [CONFIG_FILE]" 
+	echo -e "\nUsage:\n$0 [arguments] \n" 
+} 
+
+if [  $# -le 3 ] 
+	then 
+		display_usage
+		exit 1
+fi 
+
+echo "Create no tap script called"
+
+TAP_NAME=$1
+IP_ADDR=$2
+BR_NAME=$3
+LXC_NAME=$4
+CONF_FILE=$5
+
+echo "Creating LXC: $LXC_NAME | IP: $IP_ADDR | BR: $BR_NAME | TAP: $TAP_NAME |"
+
+echo "lxc.utsname = $LXC_NAME" 			> $CONF_FILE
+echo "lxc.network.type = veth" 			>> $CONF_FILE
+echo "lxc.network.flags = up"			>> $CONF_FILE
+echo "lxc.network.link = $BR_NAME"		>> $CONF_FILE
+echo "lxc.network.ipv4 = $IP_ADDR/20"	>> $CONF_FILE
+
+brctl addbr $BR_NAME
+ifconfig $BR_NAME up
+
+lxc-create -n $LXC_NAME -f $CONF_FILE # -t ubuntu

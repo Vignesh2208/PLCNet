@@ -3,7 +3,9 @@ import time
 
 Max_nodes = 63
 node = 0
-reader_path = "/home/vignesh/Desktop/PLCs/awlsim-0.42/s3fnet-lxc/lxc-command/reader_modified"
+scriptDir = os.path.dirname(os.path.realpath(__file__))
+awlsimDir = scriptDir + "/../../../"
+reader_path = os.path.dirname(os.path.realpath(__file__)) + "../../../s3fnet-lxc/lxc-command/reader_modified"
 
 while node <= Max_nodes :
 	lxc_name = "lxc" + str(node) + "-0"
@@ -39,9 +41,9 @@ while node <= Max_nodes :
 	lxc_name = "lxc" + str(node) + "-0"
 	with open("/tmp/" + lxc_name,"w") as f :
 		if node == Max_nodes :
-			f.write("python /home/vignesh/Desktop/PLCs/awlsim-0.42/Projects/Bottle_Plant/conf/PLC_Config/udp_reader.py\n")
+			f.write("python " + scriptDir + "/PLC_Config/udp_reader.py\n")
 		else:
-			f.write("/home/vignesh/Desktop/PLCs/awlsim-0.42/tests/run.sh -e 0 --node " + str(node) + " /home/vignesh/Desktop/PLCs/awlsim-0.42/tests/modbus/bottle_plant_node/bottle_plant_node.awl\n")
+			f.write(awlsimDir + "/tests/run.sh -e 0 --node " + str(node) + " " + awlsimDir + "/tests/modbus/bottle_plant_node/bottle_plant_node.awl\n")
 
 	node = node + 1
 

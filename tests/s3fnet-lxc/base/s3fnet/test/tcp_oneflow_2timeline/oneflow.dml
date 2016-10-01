@@ -1,0 +1,188 @@
+total_timeline 2	# total timeline (i.e. logical process) in the model.
+tick_per_second 6	# tick is the simulation time unit. E.g., 6 means one second has 10^6 ticks (i.e. the time unit is microsecond). O means the time unit is second.
+run_time 1000		# simulation run-time in second. Actually it is the run-time of one epoch, and the system run one epoch in default.
+seed 0			# seed for random number generator (a non-negative integer number). Simulation results are repeatable for the same seed.
+
+Net [
+  traffic [
+    pattern [
+      client 0:1
+      servers [ nhi 1:1(0) port 1024 list "forTCP" ]
+    ]
+  ]
+
+  Net [ id 0 alignment 0
+    _extends .dict.basicNet-0
+  ]
+
+  Net [ id 1 alignment 1
+    _extends .dict.basicNet-1
+  ]
+
+  link [ attach 0:0(0) attach 1:0(0) min_delay 256e-6 prop_delay 0.2 ]
+]
+
+dict [
+  basicNet-0 [
+    router [ id 0
+      graph [
+        ProtocolSession [ name ip use "S3F.OS.IP" ]
+      ]
+      interface [ id 0 _extends .dict.iface_src ]
+      interface [ id 1 _extends .dict.iface ]
+      interface [ id 2 _extends .dict.iface ]
+    ]
+
+    host [ id 1
+      graph [
+	ProtocolSession [ name app use "S3F.OS.TCP.test.TCPClient" _extends .dict.tcp_client_setup ]
+	ProtocolSession [ name socket use "S3F.OS.Socket.SocketMaster" ]
+	ProtocolSession [ name tcp use "S3F.OS.TCP.tcpSessionMaster" cwnddump "cwnd" _find .dict.tcpinit ]
+      ProtocolSession [ name ip use "S3F.OS.IP" ]
+      ]
+      interface [ id 0 _extends .dict.iface ]
+    ]
+
+    host [ id 2
+      graph [
+        ProtocolSession [ name ip use "S3F.OS.IP" ]
+      ]
+      interface [ id 0 _extends .dict.iface ]
+    ]
+
+    link [ attach 0(1) attach 1(0) min_delay 256e-6 prop_delay 0.1 ]
+    link [ attach 0(2) attach 2(0) min_delay 256e-6 prop_delay 0.1 ]
+  ]
+
+  basicNet-1 [
+    router [ id 0
+      graph [
+        ProtocolSession [ name ip use "S3F.OS.IP" ]
+      ]
+      interface [ id 0 _extends .dict.iface_src ]
+      interface [ id 1 _extends .dict.iface ]
+      interface [ id 2 _extends .dict.iface ]
+    ]
+
+    host [ id 1
+      graph [
+        ProtocolSession [ name app use "S3F.OS.TCP.test.TCPServer" _extends .dict.tcp_server_setup ]
+	  ProtocolSession [ name socket use "S3F.OS.Socket.SocketMaster" ]
+        ProtocolSession [ name tcp use "S3F.OS.TCP.tcpSessionMaster" _find .dict.tcpinit ]
+        ProtocolSession [ name ip use "S3F.OS.IP" ]
+      ]
+      #interface [ id 0 _extends .dict.iface tcpdump "oneflow.tcpdump" ]
+      interface [ id 0 _extends .dict.iface ]
+    ]
+
+    host [ id 2
+      graph [
+        ProtocolSession [ name ip use "S3F.OS.IP" ]
+      ]
+      interface [ id 0 _extends .dict.iface ]
+    ]
+
+    link [ attach 0(1) attach 1(0) min_delay 256e-6 prop_delay 0.1 ]
+    link [ attach 0(2) attach 2(0) min_delay 256e-6 prop_delay 0.1 ]
+  ]
+
+  iface [  bitrate 1e6 latency 0 buffer 150000 ]
+  iface_src [  bitrate 8e5 latency 0 buffer 150000 ]
+
+  tcpinit [
+    ISS 10000               # initial sequence number
+    MSS 960                 # maximum segment size
+    RcvWndSize  128         # receive buffer size
+    SendWndSize 128         # maximum send window size
+    SendBufferSize 128      # send buffer size
+    MaxRexmitTimes 12       # maximum retransmission times before drop
+    TCP_SLOW_INTERVAL 0.5   # granularity of TCP slow timer
+    TCP_FAST_INTERVAL 0.2   # granularity of TCP fast(delay-ack) timer
+    MSL 60.0                # maximum segment lifetime
+    MaxIdleTime 600.0       # maximum idle time for drop a connection
+    delayed_ack false       # delayed ack option
+    version reno            # tcp version
+    fast_recovery false
+  ]
+
+  tcp_client_setup [
+	start_time 1.0 			# earliest time to send request to server
+	start_window 0 			# send request to server at a time randomly chosen
+					# from [start_time,start_time+start_window]
+	file_size 30000 		# requested file size (bytes)
+	off_time 10.0 			# time to wait between sessions, 0 means request only once
+	off_time_exponential false 	# constant or exponential off time?
+	off_time_run_first false 	# whether 1st session starts with an off time
+	user_timeout 60 		# timeout before aborting a session
+	#fixed_server false 		# whether to find a random target, if fixed_server is true, the client connects
+					# with the same server for the whole simulation; the server is chosen from 
+					# randomly from dml traffic description; default is false
+	#request_size 4 		# client request datagram size (bytes), default is sizeof(uint32) - 4 bytes
+	server_list forTCP 		# name used to filter traffic patterns by selecting servers, default "forUDP"
+	#start_port 			# the starting port number for client sessions, default is 2048, 
+					# increased by 1 for each subsequent client connection
+	show_report true 		# print client-server session summary report
+  ]
+
+  tcp_server_setup [
+	port 1024 			# port number to receive incoming request, default is 20
+	#request_size 4 		# size of the request from client (must be consistent)
+	#client_limit 			# number of client sessions that can be handled simultaneously, 0 means infinite
+	#show_report true 		# print client-server session summary report
+  ]
+
+  #backup
+  item1 [ #tcp server
+	tcpinit [
+      		iss 0 			# initial sequence number
+		mss 960 		# maximum segment size, must be in [0, 65536-IPHDR], default is 1024
+		rcvwndsize 128 		# maximum receiver window size, default is 128, actual size = MSS*RcvWndSize
+		sendwndsize 128 	# maximum sender window size, default is 128
+		sendBufferSize 128 	# sender's buffer size, default is 128
+		maxrexmittimes 12 	# maximum retransmission times before drop, must be in [0, 31], default is 12
+		tcp_slow_interval 0.5 	# granularity of TCP slow timer, slow timeout interval, default is 0.5
+		tcp_fast_interval 0.2 	# granularity of TCP fast(delay-ack) timer, fast timeout interval, default is 0.2
+		msl 60.0 		# maximum segment lifetime; in init_state_time_wait, set up 2*MSL time out,
+					# default is 60
+		maxidletime 600.0 	# maximum idle time for drop a connection, seems not used in code, default is 600
+		delayed_ack false 	# delayed ack option, default is false
+		version reno 		# tcp version - option: tahoe, reno, new_reno, sack
+					# if version is not defined, and fast_recovery is defined
+					# fast_recovery=true => reno, fast_recovery=false => tahoe
+					# otherwise default is reno
+		#fast_recovery false 	# implement fast recovery algorithm, used for TCP version selection
+		#maxconwnd 		# maximum congestion window size, at least 1, default is 0 (means infinite)
+		#boot_time 0 		# the time window this TCP master protocol session starts, 
+					# uniform distributed from [0, boot_time] 
+					# used to avoid the artificial synchrony in simulation
+		show_report true 	# print a summary connection report 
+	]
+  ]
+
+  item2 [ #tcp client
+	tcpinit [
+		iss 6000 		# initial sequence number
+		mss 960 		# maximum segment size, must be in [0, 65536-IPHDR], default is 1024
+		rcvwndsize 128 		# maximum receiver window size, default is 128, actual size = MSS*RcvWndSize
+		sendwndsize 128 	# maximum sender window size, default is 128
+		sendBufferSize 128 	# sender's buffer size, default is 128
+		maxrexmittimes 12 	# maximum retransmission times before drop, must be in [0, 31], default is 12
+		tcp_slow_interval 0.5 	# granularity of TCP slow timer, slow timeout interval, default is 0.5
+		tcp_fast_interval 0.2 	# granularity of TCP fast(delay-ack) timer, fast timeout interval, default is 0.2
+		msl 0.1 		# maximum segment lifetime; in init_state_time_wait, set up 2*MSL time out,
+					# default is 60
+		maxidletime 600.0 	# maximum idle time for drop a connection, seems not used in code, default is 600
+		delayed_ack false 	# delayed ack option, default is false
+		version reno 		# tcp version - option: tahoe, reno, new_reno, sack
+					# if version is not defined, and fast_recovery is defined
+					# fast_recovery=true => reno, fast_recovery=false => tahoe
+					# otherwise default is reno
+		#fast_recovery false 	# implement fast recovery algorithm, used for TCP version selection
+		#maxconwnd 		# maximum congestion window size, at least 1, default is 0 (means infinite)
+		#boot_time 0 		# the time window this TCP master protocol session starts, 
+					# uniform distributed from [0, boot_time] 
+					# used to avoid the artificial synchrony in simulation
+		show_report true 	# print a summary connection report
+	]
+  ]
+]

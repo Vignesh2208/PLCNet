@@ -1,0 +1,156 @@
+ORGANIZATION_BLOCK OB 1
+	TITLE		= This is the title
+	{ attribute1 := 'value 1';
+	  attribute2 := 'value 2' }
+	AUTHOR		: This is the author
+	FAMILY		: This is the family
+	NAME		: This is the name
+	VERSION		: 0.1
+	KNOW_HOW_PROTECT
+	STANDARD
+	VAR_TEMP
+		// Temporary variables
+		a	: INT;
+	END_VAR
+BEGIN
+NETWORK
+	TITLE = This is the first network title
+	NOP 0
+NETWORK
+	TITLE = This is the second network title
+	NOP 0
+
+
+	CALL SFC 46 // STOP CPU
+END_ORGANIZATION_BLOCK
+
+
+FUNCTION FC 1: VOID
+	TITLE		= This is the title
+	{ attribute1 := 'value 1';  attribute2 := 'value 2' }
+	AUTHOR		: This is the author
+	FAMILY		: This is the family
+	NAME		: This is the name
+	VERSION		: 0.1
+	KNOW_HOW_PROTECT
+	STANDARD
+	VAR_INPUT
+		// Input variables
+		a	: INT;
+	END_VAR
+	VAR_OUTPUT
+		// Output variables
+		b	: INT;
+	END_VAR
+	VAR_IN_OUT
+		// Input/output variables
+		c	: INT;
+	END_VAR
+	VAR_TEMP
+		// Temporary variables
+		d	: INT;
+	END_VAR
+BEGIN
+NETWORK
+	TITLE = This is the first network title
+	NOP 0
+NETWORK
+	TITLE = This is the second network title
+	NOP 0
+END_FUNCTION
+
+
+FUNCTION_BLOCK FB 1
+	TITLE		= This is the title
+	{ attribute1 := 'value 1';  attribute2 := 'value 2' }
+	AUTHOR		: This is the author
+	FAMILY		: This is the family
+	NAME		: This is the name
+	VERSION		: 0.1
+	KNOW_HOW_PROTECT
+	STANDARD
+	VAR
+		// Static variables
+		a	: INT;
+	END_VAR
+	VAR_INPUT
+		// Input variables
+		b	: INT;
+	END_VAR
+	VAR_OUTPUT
+		// Output variables
+		c	: INT;
+	END_VAR
+	VAR_IN_OUT
+		// Input/output variables
+		d	: INT;
+	END_VAR
+	VAR_TEMP
+		// Temporary variables
+		e	: INT;
+	END_VAR
+BEGIN
+NETWORK
+	TITLE = This is the first network title
+	NOP 0
+NETWORK
+	TITLE = This is the second network title
+	NOP 0
+END_FUNCTION_BLOCK
+
+
+DATA_BLOCK DB 1
+	TITLE		= This is the title
+	AUTHOR		: This is the author
+	FAMILY		: This is the family
+	NAME		: This is the name
+	VERSION		: 0.1
+	KNOW_HOW_PROTECT
+	STANDARD
+	STRUCT
+		// Data structure
+		a	: INT;
+	END_STRUCT;
+BEGIN
+END_DATA_BLOCK
+
+
+DATA_BLOCK DB 2
+	FB 1
+	TITLE		= This is the title
+	AUTHOR		: This is the author
+	FAMILY		: This is the family
+	NAME		: This is the name
+	VERSION		: 0.1
+	KNOW_HOW_PROTECT
+	STANDARD
+BEGIN
+END_DATA_BLOCK
+
+
+DATA_BLOCK DB 3
+	SFB -1
+	TITLE		= This is the title
+	AUTHOR		: This is the author
+	FAMILY		: This is the family
+	NAME		: This is the name
+	VERSION		: 0.1
+	KNOW_HOW_PROTECT
+	STANDARD
+BEGIN
+END_DATA_BLOCK
+
+
+TYPE UDT 1
+	TITLE		= This is the title
+	AUTHOR		: This is the author
+	FAMILY		: This is the family
+	NAME		: This is the name
+	VERSION		: 0.1
+	KNOW_HOW_PROTECT
+	STANDARD
+	STRUCT
+		// Data structure
+		a	: INT;
+	END_STRUCT;
+END_TYPE

@@ -1,0 +1,42 @@
+total_timeline 2	
+tick_per_second 6	
+run_time 0.1
+seed 1	
+log_dir 2_LXC_UDP_SMALL_TDF_45		
+
+dilation [ TDF 45.0 ]
+
+Net
+[
+	lxcConfig
+	[
+		settings [ lxcNHI 0:0 _extends .dilation cmd "~/s3fnet-lxc/csudp/server 25000"                ]
+		settings [ lxcNHI 1:0 _extends .dilation cmd "~/s3fnet-lxc/csudp/client 10.10.0.9 25000 300"  ]
+	]		
+	
+	Net 
+	[ 
+		id 0
+		alignment 0
+		host 																	# Host 0:0
+		[ 
+			id 0
+			isEmulated 1
+			interface [ id 0 _extends .dict.100Mb ]
+			_find .dict.emuHostGraph.graph
+		]
+	]
+	Net 
+	[ 
+		id 1
+		alignment 1
+		host 																	# Host 1:0
+		[ 
+			id 0
+			isEmulated 1
+			interface [ id 0 _extends .dict.100Mb ]
+			_find .dict.emuHostGraph.graph			
+		]
+	]
+	link [ attach 0:0(0) attach 1:0(0) _extends .dict.link_delay_10us ]		
+]

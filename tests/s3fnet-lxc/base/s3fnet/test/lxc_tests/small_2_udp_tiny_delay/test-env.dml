@@ -1,0 +1,18 @@
+environment_info [
+  Net [
+    Net [ id 0 prefix 10.10.0.0 prefix_int 168427520 prefix_len 30 ]
+    Net [ id 1 prefix 10.10.0.4 prefix_int 168427524 prefix_len 30 ]
+  ]
+  host [ name no_name uid 0 mapto 0:0(0) alignment 0]
+  host [ name no_name uid 1 mapto 1:0(0) alignment 1]
+  alignment [
+    name 0
+    interface [ nhi 0:0(0) ip 10.10.0.9 delay 0 link_prefix_len 30 peer 0:0(0)  peer_align 1 ]
+    remote_sender [ nhi 1:0(0) ip 10.10.0.10 xpos 0.0000 ypos 0.0000 zpos 0.0000 peer 0:0(0) ]
+  ]
+  alignment [
+    name 1
+    interface [ nhi 1:0(0) ip 10.10.0.10 delay 0 link_prefix_len 30 peer 1:0(0)  peer_align 0 ]
+    remote_sender [ nhi 0:0(0) ip 10.10.0.9 xpos 0.0000 ypos 0.0000 zpos 0.0000 peer 1:0(0) ]
+  ]
+]

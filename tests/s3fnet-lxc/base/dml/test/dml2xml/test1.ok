@@ -1,0 +1,19 @@
+nnodes = 448
+nlinks = 469
+cidrsize = 4096
+attach_id = 430
+attach_nhi = 11(4)
+attach_ip = 0.0.15.254
+link bandwidth distribution:
+       56000 (bps) : 1
+       64000 (bps) : 21
+     1500000 (bps) : 19
+    10000000 (bps) : 77
+    20000000 (bps) : 2
+   100000000 (bps) : 345
+  1000000000 (bps) : 4
+link delay distribution:
+  0.00300 (sec) : 160
+  0.00500 (sec) : 279
+  0.01000 (sec) : 11
+  0.05000 (sec) : 19

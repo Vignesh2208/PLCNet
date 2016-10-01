@@ -19,9 +19,9 @@ START_OF_GENERAL_CONFIGURATION
 END_OF_GENERAL_CONFIGURATION
 
 START_OF_AWL_SCRIPT_CONFIGURATION
-1,		/home/vignesh/Desktop/PLCs/awlsim-0.42/tests/modbus/bottle_plant_node/bottle_plant_node.awl
-2,		/home/vignesh/Desktop/PLCs/awlsim-0.42/tests/modbus/bottle_plant_node/bottle_plant_node.awl
-3,		/home/vignesh/Desktop/PLCs/awlsim-0.42/tests/modbus/bottle_plant_node/bottle_plant_node.awl
+1,		/home/user/Desktop/awlsim-0.42/tests/modbus/bottle_plant_node/bottle_plant_node.awl
+2,		/home/user/Desktop/awlsim-0.42/tests/modbus/bottle_plant_node/bottle_plant_node.awl
+3,		/home/user/Desktop/awlsim-0.42/tests/modbus/bottle_plant_node/bottle_plant_node.awl
 END_OF_AWL_SCRIPT_CONFIGURATION
 
 START_OF_DATA_AREA_CONFIGURATION

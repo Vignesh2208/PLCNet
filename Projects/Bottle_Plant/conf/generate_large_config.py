@@ -1,3 +1,4 @@
+import os 
 Experiment_Name			=	"Bottle_Plant"
 Run_Time				=	3
 Dilation_Factor			=	15
@@ -10,7 +11,7 @@ Input_1_period 			= 	0.2
 Input_2_period 			= 	0.5
 conveyor_delay 			= 	0.05
 Max_Jobs 				= 	5
-AwlScript_Directory 	= 	"/home/vignesh/Desktop/PLCs/awlsim-0.42/tests/modbus/bottle_plant_node"
+AwlScript_Directory 	= 	os.path.dirname(os.path.realpath(__file__)) + "../../../tests/modbus/bottle_plant_node"
 
 
 

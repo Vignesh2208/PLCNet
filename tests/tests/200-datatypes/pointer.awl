@@ -1,0 +1,601 @@
+ORGANIZATION_BLOCK OB 1
+BEGIN
+	// Check pointer immediates
+	L		P#10.6
+	__ASSERT==	__ACCU 1,	DW#16#00000056
+	L		P#P 1.1
+	__ASSERT==	__ACCU 1,	DW#16#80000009
+	L		P#E 2.1
+	__ASSERT==	__ACCU 1,	DW#16#81000011
+	L		P#A 3.1
+	__ASSERT==	__ACCU 1,	DW#16#82000019
+	L		P#M 4.1
+	__ASSERT==	__ACCU 1,	DW#16#83000021
+	L		P#L 5.1
+	__ASSERT==	__ACCU 1,	DW#16#86000029
+
+
+	// Test address register instructions
+	L		P#885.3
+	LAR1
+	L		P#886.2
+	LAR2
+	__ASSERT==	__ACCU 1,	P#886.2
+	__ASSERT==	__ACCU 2,	P#885.3
+	__ASSERT==	__AR 1,		P#885.3
+	__ASSERT==	__AR 2,		P#886.2
+	+AR1		P#1.1
+	__ASSERT==	__AR 1,		P#886.4
+	+AR2		P#5.1
+	__ASSERT==	__AR 2,		P#891.3
+	LAR1		P#12.3
+	LAR2		P#32.1
+	__ASSERT==	__AR 1,		P#12.3
+	__ASSERT==	__AR 2,		P#32.1
+	L		111
+	L		222
+	TAR1
+	__ASSERT==	__ACCU 1,	P#12.3
+	__ASSERT==	__ACCU 2,	222
+	TAR2
+	__ASSERT==	__ACCU 1,	P#32.1
+	__ASSERT==	__ACCU 2,	P#12.3
+	TAR1		LD 0
+	TAR2		LD 4
+	__ASSERT==	LD 0,		P#12.3
+	__ASSERT==	LD 4,		P#32.1
+
+
+	// Test indirect read
+	L		0
+	T		MD 100
+	T		MD 104
+	SET
+	=		M 100.0
+	=		M 100.2
+	LAR1		P#100.0
+	LAR2		P#104.0
+	U		M [AR1, P#0.0]
+	__ASSERT==	__STW VKE,	1
+	U		M [AR1, P#0.1]
+	__ASSERT==	__STW VKE,	0
+	U		M [AR1, P#0.2]
+	__ASSERT==	__STW VKE,	1
+	U		M [AR1, P#0.3]
+	__ASSERT==	__STW VKE,	0
+	U		M [AR1, P#1.0]
+	__ASSERT==	__STW VKE,	0
+	U		M [AR2, P#0.0]
+	__ASSERT==	__STW VKE,	0
+	LAR1		P#100.1
+	U		M [AR1, P#0.0]
+	__ASSERT==	__STW VKE,	0
+	U		M [AR1, P#0.1]
+	__ASSERT==	__STW VKE,	1
+	L		P#100.0
+	T		LD 0
+	U		M [LD 0]
+	__ASSERT==	__STW VKE,	1
+	L		P#100.1
+	T		LD 0
+	U		M [LD 0]
+	__ASSERT==	__STW VKE,	0
+	L		P#100.0
+	T		LD 0
+	L		MD [LD 0]
+	__ASSERT==	__ACCU 1,	DW#16#05000000
+	LAR1		P#M 100.0
+	U		[AR1, P#0.0]
+	__ASSERT==	__STW VKE,	1
+	U		[AR1, P#0.1]
+	__ASSERT==	__STW VKE,	0
+	U		[AR1, P#0.2]
+	__ASSERT==	__STW VKE,	1
+	U		[AR1, P#0.3]
+	__ASSERT==	__STW VKE,	0
+	LAR1		P#M 100.0
+	L		B [AR1, P#0.0]
+	__ASSERT==	__ACCU 1,	DW#16#00000005
+	L		W [AR1, P#0.0]
+	__ASSERT==	__ACCU 1,	DW#16#00000500
+	L		D [AR1, P#0.0]
+	__ASSERT==	__ACCU 1,	DW#16#05000000
+
+
+	// Test indirect write
+	L		0
+	T		MD 100
+	T		MD 104
+	SET
+	=		M 100.0
+	=		M 100.2
+	LAR1		P#M 100.4
+	=		[AR1, P#0.0]
+	=		[AR1, P#0.1]
+	L		MD 100
+	__ASSERT==	__ACCU 1,	DW#16#35000000
+	LAR1		P#M 100.0
+	L		DW#16#ABCDEF12
+	T		D [AR1, P#0.0]
+	L		MD 100
+	__ASSERT==	__ACCU 1,	DW#16#ABCDEF12
+	T		D [AR1, P#1.0]
+	L		MD 100
+	__ASSERT==	__ACCU 1,	DW#16#ABABCDEF
+	L		P#100.0
+	T		LD 0
+	L		DW#16#98765432
+	T		MD [LD 0]
+	L		MD 100
+	__ASSERT==	__ACCU 1,	DW#16#98765432
+	LAR1		P#100.0
+	L		DW#16#12345678
+	T		MD [AR1, P#0.0]
+	L		MD 100
+	__ASSERT==	__ACCU 1,	DW#16#12345678
+
+
+	// Test indirect DB-open access
+	AUF		DB 1
+	AUF		DI 1
+	L		2
+	T		LW 0
+	AUF		DB [LW 0]
+	__ASSERT==	DBNO,		2
+	AUF		DI [LW 0]
+	__ASSERT==	DINO,		2
+
+
+	// Indirect counter access
+	L		10
+	T		LW 0
+	L		Z [LW 0]
+	__ASSERT==	__ACCU 1,	0
+	SET
+	ZV		Z 10
+	CLR
+	ZV		Z [LW 0]
+	L		Z [LW 0]
+	__ASSERT==	__ACCU 1,	1
+
+
+	// Indirect timer access
+	L		10
+	T		LW 0
+	L		T [LW 0]
+	__ASSERT==	__ACCU 1,	0
+	SET
+	L		W#16#0999
+	SI		T 10
+	__SLEEP		50
+	L		T [LW 0]
+	__ASSERT<>	__ACCU 1,	0
+	CLR
+	L		W#16#0999
+	SI		T [LW 0]
+	L		T [LW 0]
+	__SLEEP		50
+	L		T [LW 0]
+	__ASSERT==	__ACCU 1,	__ACCU 2
+
+
+	CALL FB 1, DB 1 (
+		IN_VAL_0	:= 6666,
+		IN_VAL_1	:= 6767,
+		ZERO_PTR_VAL	:= DW#16#0,
+		ONE_PTR_VAL	:= DW#16#8,
+	)
+
+	CALL FC 1 (
+		IN_VAL_0	:= 5555,
+		IN_VAL_1	:= 5656,
+	)
+
+	CALL FC 2
+
+
+	CALL SFC 46 // STOP CPU
+END_ORGANIZATION_BLOCK
+
+
+FUNCTION_BLOCK FB 1
+	VAR_INPUT
+		IN_VAL_0	: INT;
+		IN_VAL_1	: INT;
+		ZERO_PTR_VAL	: DWORD;
+		ONE_PTR_VAL	: DWORD;
+	END_VAR
+BEGIN
+	L		P##IN_VAL_0
+	__ASSERT==	__ACCU 1,	DW#16#85000000
+	L		P##IN_VAL_1
+	__ASSERT==	__ACCU 1,	DW#16#85000010
+
+
+	L		DW#16#11223344
+	T		MD 0
+	L		DW#16#55667788
+	T		MD 4
+	L		MD [#ZERO_PTR_VAL]
+	__ASSERT==	__ACCU 1,	DW#16#11223344
+	L		MD [#ONE_PTR_VAL]
+	__ASSERT==	__ACCU 1,	DW#16#22334455
+
+
+	L		DW#16#AABBCCDD
+	T		MD 1
+	L		1
+	T		MW 12
+	L		2
+	T		MW 14
+	CALL FB 2, DB 2 (
+		IN_VAL_0	:= MD [#ONE_PTR_VAL],
+		DB_VAL		:= DB [MW 14],
+		FC_VAL		:= FC [MW 12],
+		FB_VAL		:= FB [MW 12],
+	)
+
+
+	// Test all memory-indirect accesses
+	AUF		DB 1
+	L		P#8.0
+	T		LD 0
+	U		E [LD 0]
+	=		E [LD 0]
+	U		A [LD 0]
+	=		A [LD 0]
+	U		L [LD 0]
+	=		L [LD 0]
+	U		DIX [LD 0]
+	=		DIX [LD 0]
+	U		DBX [LD 0]
+	=		DBX [LD 0]
+	L		EB [LD 0]
+	T		EB [LD 0]
+	L		AB [LD 0]
+	T		AB [LD 0]
+	L		MB [LD 0]
+	T		MB [LD 0]
+	L		LB [LD 0]
+	T		LB [LD 0]
+	L		PEB [LD 0]
+	T		PAB [LD 0]
+	L		DBB [LD 0]
+	T		DBB [LD 0]
+	L		DIB [LD 0]
+	T		DIB [LD 0]
+	L		EW [LD 0]
+	T		EW [LD 0]
+	L		AW [LD 0]
+	T		AW [LD 0]
+	L		MW [LD 0]
+	T		MW [LD 0]
+	L		LW [LD 0]
+	T		LW [LD 0]
+	L		PEW [LD 0]
+	T		PAW [LD 0]
+	L		DBW [LD 0]
+	T		DBW [LD 0]
+	L		DIW [LD 0]
+	T		DIW [LD 0]
+	L		ED [LD 0]
+	T		ED [LD 0]
+	L		AD [LD 0]
+	T		AD [LD 0]
+	L		MD [LD 0]
+	T		MD [LD 0]
+	L		LD [LD 0]
+	T		LD [LD 0]
+	L		PED [LD 0]
+	T		PAD [LD 0]
+	L		DBD [LD 0]
+	T		DBD [LD 0]
+	L		DID [LD 0]
+	T		DID [LD 0]
+	L		0
+	T		LW 0
+	L		T [LW 0]
+	L		Z [LW 0]
+
+	// Test all register-indirect accesses
+	AUF		DB 1
+	LAR1		P#8.0
+	U		E [AR1, P#0.0]
+	=		E [AR1, P#0.0]
+	LAR1		P#E 8.0
+	U		[AR1, P#0.0]
+	=		[AR1, P#0.0]
+	LAR1		P#8.0
+	U		A [AR1, P#0.0]
+	=		A [AR1, P#0.0]
+	LAR1		P#A 8.0
+	U		[AR1, P#0.0]
+	=		[AR1, P#0.0]
+	LAR1		P#8.0
+	U		M [AR1, P#0.0]
+	=		M [AR1, P#0.0]
+	LAR1		P#M 8.0
+	U		[AR1, P#0.0]
+	=		[AR1, P#0.0]
+	LAR1		P#8.0
+	U		L [AR1, P#0.0]
+	=		L [AR1, P#0.0]
+	LAR1		P#L 8.0
+	U		[AR1, P#0.0]
+	=		[AR1, P#0.0]
+	LAR1		P#8.0
+	U		DIX [AR1, P#0.0]
+	=		DIX [AR1, P#0.0]
+	LAR1		P#DIX 8.0
+	U		[AR1, P#0.0]
+	=		[AR1, P#0.0]
+	LAR1		P#8.0
+	U		DBX [AR1, P#0.0]
+	=		DBX [AR1, P#0.0]
+	LAR1		P#DBX 8.0
+	U		[AR1, P#0.0]
+	=		[AR1, P#0.0]
+
+	LAR1		P#8.0
+	L		EB [AR1, P#0.0]
+	T		EB [AR1, P#0.0]
+	LAR1		P#E 8.0
+	L		B [AR1, P#0.0]
+	T		B [AR1, P#0.0]
+	LAR1		P#8.0
+	L		AB [AR1, P#0.0]
+	T		AB [AR1, P#0.0]
+	LAR1		P#A 8.0
+	L		B [AR1, P#0.0]
+	T		B [AR1, P#0.0]
+	LAR1		P#8.0
+	L		MB [AR1, P#0.0]
+	T		MB [AR1, P#0.0]
+	LAR1		P#M 8.0
+	L		B [AR1, P#0.0]
+	T		B [AR1, P#0.0]
+	LAR1		P#8.0
+	L		LB [AR1, P#0.0]
+	T		LB [AR1, P#0.0]
+	LAR1		P#L 8.0
+	L		B [AR1, P#0.0]
+	T		B [AR1, P#0.0]
+	LAR1		P#8.0
+	L		PEB [AR1, P#0.0]
+	T		PAB [AR1, P#0.0]
+	LAR1		P#P 8.0
+	L		B [AR1, P#0.0]
+	T		B [AR1, P#0.0]
+	LAR1		P#8.0
+	L		DBB [AR1, P#0.0]
+	T		DBB [AR1, P#0.0]
+	LAR1		P#DBX 8.0
+	L		B [AR1, P#0.0]
+	T		B [AR1, P#0.0]
+	LAR1		P#8.0
+	L		DIB [AR1, P#0.0]
+	T		DIB [AR1, P#0.0]
+	LAR1		P#DIX 8.0
+	L		B [AR1, P#0.0]
+	T		B [AR1, P#0.0]
+
+	LAR1		P#8.0
+	L		EW [AR1, P#0.0]
+	T		EW [AR1, P#0.0]
+	LAR1		P#E 8.0
+	L		W [AR1, P#0.0]
+	T		W [AR1, P#0.0]
+	LAR1		P#8.0
+	L		AW [AR1, P#0.0]
+	T		AW [AR1, P#0.0]
+	LAR1		P#A 8.0
+	L		W [AR1, P#0.0]
+	T		W [AR1, P#0.0]
+	LAR1		P#8.0
+	L		MW [AR1, P#0.0]
+	T		MW [AR1, P#0.0]
+	LAR1		P#M 8.0
+	L		W [AR1, P#0.0]
+	T		W [AR1, P#0.0]
+	LAR1		P#8.0
+	L		LW [AR1, P#0.0]
+	T		LW [AR1, P#0.0]
+	LAR1		P#L 8.0
+	L		W [AR1, P#0.0]
+	T		W [AR1, P#0.0]
+	LAR1		P#8.0
+	L		PEW [AR1, P#0.0]
+	T		PAW [AR1, P#0.0]
+	LAR1		P#P 8.0
+	L		W [AR1, P#0.0]
+	T		W [AR1, P#0.0]
+	LAR1		P#8.0
+	L		DBW [AR1, P#0.0]
+	T		DBW [AR1, P#0.0]
+	LAR1		P#DBX 8.0
+	L		W [AR1, P#0.0]
+	T		W [AR1, P#0.0]
+	LAR1		P#8.0
+	L		DIW [AR1, P#0.0]
+	T		DIW [AR1, P#0.0]
+	LAR1		P#DIX 8.0
+	L		W [AR1, P#0.0]
+	T		W [AR1, P#0.0]
+
+	LAR1		P#8.0
+	L		ED [AR1, P#0.0]
+	T		ED [AR1, P#0.0]
+	LAR1		P#E 8.0
+	L		D [AR1, P#0.0]
+	T		D [AR1, P#0.0]
+	LAR1		P#8.0
+	L		AD [AR1, P#0.0]
+	T		AD [AR1, P#0.0]
+	LAR1		P#A 8.0
+	L		D [AR1, P#0.0]
+	T		D [AR1, P#0.0]
+	LAR1		P#8.0
+	L		MD [AR1, P#0.0]
+	T		MD [AR1, P#0.0]
+	LAR1		P#M 8.0
+	L		D [AR1, P#0.0]
+	T		D [AR1, P#0.0]
+	LAR1		P#8.0
+	L		LD [AR1, P#0.0]
+	T		LD [AR1, P#0.0]
+	LAR1		P#L 8.0
+	L		D [AR1, P#0.0]
+	T		D [AR1, P#0.0]
+	LAR1		P#8.0
+	L		PED [AR1, P#0.0]
+	T		PAD [AR1, P#0.0]
+	LAR1		P#P 8.0
+	L		D [AR1, P#0.0]
+	T		D [AR1, P#0.0]
+	LAR1		P#8.0
+	L		DBD [AR1, P#0.0]
+	T		DBD [AR1, P#0.0]
+	LAR1		P#DBX 8.0
+	L		D [AR1, P#0.0]
+	T		D [AR1, P#0.0]
+	LAR1		P#8.0
+	L		DID [AR1, P#0.0]
+	T		DID [AR1, P#0.0]
+	LAR1		P#DIX 8.0
+	L		D [AR1, P#0.0]
+	T		D [AR1, P#0.0]
+END_FUNCTION_BLOCK
+
+
+FUNCTION_BLOCK FB 2
+	VAR_INPUT
+		IN_VAL_0	: DWORD;
+		DB_VAL		: BLOCK_DB;
+		FC_VAL		: BLOCK_FC;
+		FB_VAL		: BLOCK_FB;
+	END_VAR
+BEGIN
+	L		#IN_VAL_0
+	__ASSERT==	__ACCU 1,	DW#16#AABBCCDD
+
+	AUF		#DB_VAL
+	L		DBD 0
+	L		#IN_VAL_0
+	__ASSERT==	__ACCU 1,	__ACCU 2
+END_FUNCTION_BLOCK
+
+
+FUNCTION FC 1 : VOID
+	VAR_INPUT
+		IN_VAL_0	: INT;
+		IN_VAL_1	: INT;
+	END_VAR
+BEGIN
+	L		P##IN_VAL_0
+	UD		DW#16#FFF80000
+	__ASSERT==	__ACCU 1,	DW#16#87000000
+	L		P##IN_VAL_1
+	UD		DW#16#FFF80000
+	__ASSERT==	__ACCU 1,	DW#16#87000000
+END_FUNCTION
+
+
+FUNCTION FC 2 : VOID
+TITLE =Extended address register instruction tests
+BEGIN
+	// Open the data blocks
+	AUF		DB 3
+	AUF		DI 3
+	// Initialize the memory areas
+	L		P#42.0
+	T		MD 0
+	L		P#43.0
+	T		LD 0
+	L		P#44.0
+	T		DBD 0
+	L		P#45.0
+	T		DID 4
+	LAR2		P#46.0
+	L		P#47.0
+	T		MD 42
+
+
+	// Test LAR1
+	LAR1		MD 0
+	__ASSERT==	__AR 1,		P#42.0
+	LAR1		LD 0
+	__ASSERT==	__AR 1,		P#43.0
+	LAR1		DBD 0
+	__ASSERT==	__AR 1,		P#44.0
+	LAR1		DID 4
+	__ASSERT==	__AR 1,		P#45.0
+	LAR1		AR2
+	__ASSERT==	__AR 1,		P#46.0
+
+	// Test LAR2
+	LAR2		MD 0
+	__ASSERT==	__AR 2,		P#42.0
+	LAR2		LD 0
+	__ASSERT==	__AR 2,		P#43.0
+	LAR2		DBD 0
+	__ASSERT==	__AR 2,		P#44.0
+	LAR2		DID 4
+	__ASSERT==	__AR 2,		P#45.0
+
+	// Test TAR1
+	LAR1		P#142.7
+	LAR2		P#143.1
+	TAR1		MD 0
+	__ASSERT==	MD 0,		P#142.7
+	TAR1		LD 0
+	__ASSERT==	LD 0,		P#142.7
+	TAR1		DBD 0
+	__ASSERT==	DBD 0,		P#142.7
+	TAR1		DID 4
+	__ASSERT==	DID 4,		P#142.7
+	TAR1		AR2
+	__ASSERT==	__AR 2,		P#142.7
+
+	// Test TAR2
+	LAR1		P#142.7
+	LAR2		P#143.1
+	TAR2		MD 0
+	__ASSERT==	MD 0,		P#143.1
+	TAR2		LD 0
+	__ASSERT==	LD 0,		P#143.1
+	TAR2		DBD 0
+	__ASSERT==	DBD 0,		P#143.1
+	TAR2		DID 4
+	__ASSERT==	DID 4,		P#143.1
+
+
+	// Test offset wrapping
+	LAR1		P#41.7
+	L		MD [AR1,P#0.1]
+	__ASSERT==	__ACCU 1,	P#47.0
+END_FUNCTION
+
+
+DATA_BLOCK DB 1
+	FB 1
+BEGIN
+	IN_VAL_0	:= 88;
+	IN_VAL_1	:= 99;
+END_DATA_BLOCK
+
+
+DATA_BLOCK DB 2
+	FB 2
+BEGIN
+END_DATA_BLOCK
+
+
+DATA_BLOCK DB 3
+STRUCT
+	pointer_0 : DWORD;
+	pointer_1 : DWORD;
+END_STRUCT;
+BEGIN
+	pointer_0 := DW#16#0;
+	pointer_1 := DW#16#0;
+END_DATA_BLOCK

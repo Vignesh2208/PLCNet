@@ -1,0 +1,10 @@
+from awlsim.core.cpu cimport *
+from awlsim.core.statusword cimport *
+
+cdef class AwlInsn(object):
+	cdef public S7CPU cpu
+	cdef public uint32_t insnType
+	cdef public object rawInsn
+	cdef public int32_t ip
+	cdef public list ops
+	cdef public list params

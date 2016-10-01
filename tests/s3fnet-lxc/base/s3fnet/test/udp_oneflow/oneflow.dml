@@ -1,0 +1,128 @@
+total_timeline 1	# total timeline (i.e. logical process) in the model.
+tick_per_second 6	# tick is the simulation time unit. E.g., 6 means one second has 10^6 ticks (i.e. the time unit is microsecond). O means the time unit is second.
+run_time 100		# simulation run-time in second. Actually it is the run-time of one epoch, and the system run one epoch in default.
+seed 0			# seed for random number generator (a non-negative integer number). Simulation results are repeatable for the same seed.
+
+Net [
+  traffic [
+    pattern [
+      client 0:1
+      servers [ nhi 1:1(0) port 10 list "forUDP" ]
+    ]
+  ]
+
+  Net [ id 0 alignment 0
+    _extends .dict.basicNet-0
+  ]
+
+  Net [ id 1 alignment 0
+    _extends .dict.basicNet-1
+  ]
+
+  link [ attach 0:0(0) attach 1:0(0) min_delay 256e-6 prop_delay 0.2 ]
+]
+
+dict [
+  basicNet-0 [
+    router [ id 0
+      graph [
+        ProtocolSession [ name ip use "S3F.OS.IP" ]
+      ]
+      interface [ id 0 _extends .dict.iface_src ]
+      interface [ id 1 _extends .dict.iface ]
+      interface [ id 2 _extends .dict.iface ]
+    ]
+
+    host [ id 1
+      graph [
+	ProtocolSession [ name app use "S3F.OS.UDP.test.UDPClient" _extends .dict.udp_client_setup ]
+	ProtocolSession [ name socket use "S3F.OS.Socket.SocketMaster" ]
+	ProtocolSession [ name udp use "S3F.OS.UDP.udpSessionMaster" _find .dict.udpinit ]
+       ProtocolSession [ name ip use "S3F.OS.IP" ]
+      ]
+      interface [ id 0 _extends .dict.iface ]
+    ]
+
+    host [ id 2
+      graph [
+        ProtocolSession [ name ip use "S3F.OS.IP" ]
+      ]
+      interface [ id 0 _extends .dict.iface ]
+    ]
+
+    link [ attach 0(1) attach 1(0) min_delay 256e-6 prop_delay 0.1 ]
+    link [ attach 0(2) attach 2(0) min_delay 256e-6 prop_delay 0.1 ]
+  ]
+
+  basicNet-1 [
+    router [ id 0
+      graph [
+        ProtocolSession [ name ip use "S3F.OS.IP" ]
+      ]
+      interface [ id 0 _extends .dict.iface_src ]
+      interface [ id 1 _extends .dict.iface ]
+      interface [ id 2 _extends .dict.iface ]
+    ]
+
+    host [ id 1
+      graph [
+        ProtocolSession [ name app use "S3F.OS.UDP.test.UDPServer" _extends .dict.udp_server_setup ]
+	 ProtocolSession [ name socket use "S3F.OS.Socket.SocketMaster" ]
+        ProtocolSession [ name udp use "S3F.OS.UDP.udpSessionMaster" _find .dict.udpinit ]
+        ProtocolSession [ name ip use "S3F.OS.IP" ]
+      ]
+      interface [ id 0 _extends .dict.iface ]
+    ]
+
+    host [ id 2
+      graph [
+        ProtocolSession [ name ip use "S3F.OS.IP" ]
+      ]
+      interface [ id 0 _extends .dict.iface ]
+    ]
+
+    link [ attach 0(1) attach 1(0) min_delay 256e-6 prop_delay 0.1 ]
+    link [ attach 0(2) attach 2(0) min_delay 256e-6 prop_delay 0.1 ]
+  ]
+
+  iface [  bitrate 1e6 latency 0 buffer 150000 ]
+  iface_src [  bitrate 1e6 latency 0 buffer 150000 ]
+
+  udpinit [
+    max_datagram_size 1024
+  ]
+
+  udp_client_setup [
+    start_time 1    			# earliest time to send request to server
+    start_window 0   			# send request to server at a time randomly chosen
+    					# from [start_time,start_time+start_window]
+    file_size 100000 			# requested file size (bytes)
+    off_time 10      			# time to wait between sessions
+    off_time_exponential false		# constant or exponential off time?
+    off_time_run_first  false 		# whether 1st session starts with an off time
+    user_timeout 10      		# timeout before aborting a session
+    #fixed_server false			# whether to find a random target, if fixed_server is true, 
+					# the client connects with the same server for the whole simulation; 
+					# the server is chosen from randomly from dml traffic description;
+					# default is false
+    #request_size 4      		# client request datagram size (bytes), 
+					# default is sizeof(uint32) - 4 bytes
+    #server_list forUDP			# name used to filter traffic patterns by selecting servers, 
+					# default "forUDP"
+    #start_port				# the starting port number for client sessions, default is 2048, 
+					# increased by 1 for each subsequent client connection
+    show_report true    		# print client-server session summary report
+  ]
+
+  udp_server_setup [
+    port 10				# port number to receive incoming request
+    #request_size 4			# size of the request from client (must be consistent)
+    datagram_size 1000			# size of each udp datagram sent to client, default is 1000
+    #client_limit			# number of client sessions that can be handled simultaneously, 
+					# 0 means infinite
+    #send_interval			# time between successive sends, default is 0, 900Mb/s
+    #total_num_packets 10000		# total number of packets to send, default is 0
+    #packet_size 1500			# in byte
+    #show_report true    		# print client-server session summary report
+  ]
+]

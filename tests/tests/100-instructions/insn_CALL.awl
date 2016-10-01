@@ -1,0 +1,488 @@
+DATA_BLOCK DB 1
+STRUCT
+	Value		: INT;
+	VAR0		: INT;
+END_STRUCT;
+BEGIN
+	Value		:= 8290;
+	VAR0		:= 0;
+END_DATA_BLOCK
+
+
+FUNCTION_BLOCK FB 1
+BEGIN
+	__ASSERT==	__AR 2,		P#42.0 // Check AR2 magic
+
+	L		W#16#4321
+	T		MW 0
+END_FUNCTION_BLOCK
+
+
+FUNCTION FC 1 : VOID
+BEGIN
+	__ASSERT==	__AR 2,		P#42.0 // Check AR2 magic
+
+	L		W#16#1234
+	T		MW 0
+	CALL		FC 2
+END_FUNCTION
+
+
+FUNCTION FC 2 : VOID
+BEGIN
+	__ASSERT==	__AR 2,		P#42.0 // Check AR2 magic
+
+	L		W#16#6789
+	T		MW 0
+	L		10
+	T		LB 0
+END_FUNCTION
+
+
+FUNCTION FC 3 : VOID
+BEGIN
+	__ASSERT==	__AR 2,		P#42.0 // Check AR2 magic
+
+	L		1
+	T		LB 0
+	CALL		FC 2
+	__ASSERT==	LB 0,	1
+END_FUNCTION
+
+
+FUNCTION FC 4 : VOID
+VAR_INPUT
+	INPVAR		: INT;
+	INPVAR3		: BOOL;
+	INPVAR4		: BOOL;
+END_VAR
+VAR_IN_OUT
+	INOUT0		: INT;
+	INOUT1		: INT;
+END_VAR
+BEGIN
+	__ASSERT==	__AR 2,		P#42.0 // Check AR2 magic
+
+	// Check interface
+	L		#INPVAR
+	__ASSERT==	__ACCU 1,	9976
+	U		#INPVAR3
+	__ASSERT==	__STW VKE,	0
+	U		#INPVAR4
+	__ASSERT==	__STW VKE,	1
+	L		#INOUT0
+	__ASSERT==	__ACCU 1,	84
+	L		#INOUT1
+	__ASSERT==	__ACCU 1,	984
+
+	L		42
+	T		#INOUT0
+	L		942
+	T		#INOUT1
+END_FUNCTION
+
+
+FUNCTION FC 5 : VOID
+VAR_INPUT
+	INPVAR2		: INT;
+	INPVAR3		: BOOL;
+	INPVAR4		: BOOL;
+END_VAR
+VAR_IN_OUT
+	INOUT0		: INT;
+	INOUT1		: INT;
+END_VAR
+BEGIN
+	__ASSERT==	__AR 2,		P#42.0 // Check AR2 magic
+
+	// Check interface
+	L		#INOUT0
+	__ASSERT==	__ACCU 1,	84
+	L		#INOUT1
+	__ASSERT==	__ACCU 1,	984
+
+	CALL FC 4 (
+		INPVAR		:= #INPVAR2,	// This is a parameter
+		INPVAR3		:= #INPVAR3,
+		INPVAR4		:= #INPVAR4,
+		INOUT0		:= #INOUT0,
+		INOUT1		:= #INOUT1,
+	)
+
+	L		#INOUT0
+	__ASSERT==	__ACCU 1,	42
+	L		168
+	T		#INOUT0
+	L		#INOUT1
+	__ASSERT==	__ACCU 1,	942
+	L		9168
+	T		#INOUT1
+END_FUNCTION
+
+
+FUNCTION FC 6 : VOID
+BEGIN
+	__ASSERT==	__AR 2,		P#42.0 // Check AR2 magic
+
+	// Only check OV and OS bits
+	__ASSERT==	__STW OV,	1
+	__ASSERT==	__STW OS,	0
+	L		1
+	L		1
+	+I
+	__ASSERT==	__STW OV,	0
+	__ASSERT==	__STW OS,	0
+END_FUNCTION
+
+
+FUNCTION FC 7 : VOID
+BEGIN
+	__ASSERT==	__AR 2,		P#42.0 // Check AR2 magic
+
+	// Trigger an overflow
+	__ASSERT==	__STW OV,	0
+	__ASSERT==	__STW OS,	0
+	L		30000
+	L		30000
+	+I
+	__ASSERT==	__STW OV,	1
+	__ASSERT==	__STW OS,	1
+END_FUNCTION
+
+
+FUNCTION_BLOCK FB 10
+VAR_INPUT
+	INVAR1		: BOOL;
+	INVAR2		: BYTE;
+	INVAR3		: WORD;
+	INVAR4		: DWORD;
+	INVAR5		: INT;
+	INVAR6		: DINT;
+	INVAR7		: REAL;
+	INVAR8		: S5TIME;
+	INVAR9		: TIME;
+	INVAR10		: DATE;
+	INVAR11		: CHAR;
+END_VAR
+VAR_OUTPUT
+	RETURNVALUE	: INT;
+END_VAR
+BEGIN
+	// This FB is CALLed. Check multi instance base register addresse.
+	__ASSERT==	__AR 2,		P#DBX 0.0
+
+	// Check parameter values
+	U		#INVAR1
+	__ASSERT==	__STW VKE,	1
+	L		#INVAR2
+	__ASSERT==	__ACCU 1,	B#16#12
+	L		#INVAR3
+	__ASSERT==	__ACCU 1,	W#16#3456
+	L		#INVAR4
+	__ASSERT==	__ACCU 1,	DW#16#88776655
+	L		#INVAR5
+	__ASSERT==	__ACCU 1,	8290
+	L		#INVAR6
+	__ASSERT==	__ACCU 1,	L#999999
+	L		#INVAR7
+	__ASSERT==	__ACCU 1,	9.876
+	L		#INVAR8
+	__ASSERT==	__ACCU 1,	S5T#9s
+	L		#INVAR9
+	__ASSERT==	__ACCU 1,	T#9s
+	L		#INVAR10
+	__ASSERT==	__ACCU 1,	900
+	L		#INVAR11
+	__ASSERT==	__ACCU 1,	'c'
+	CALL FC 10 (
+		INPUTVAR1	:= #INVAR1,
+		INPUTVAR2	:= #INVAR2,
+		INPUTVAR3	:= #INVAR3,
+		INPUTVAR4	:= #INVAR4,
+		INPUTVAR5	:= #INVAR5,
+		INPUTVAR6	:= #INVAR6,
+		INPUTVAR7	:= #INVAR7,
+		INPUTVAR8	:= #INVAR8,
+		INPUTVAR9	:= #INVAR9,
+		INPUTVAR10	:= #INVAR10,
+		INPUTVAR11	:= #INVAR11,
+		INVAR_DB	:= DB1.DBW 0,
+		RET_VAL		:= #RETURNVALUE,
+	)
+
+	// AR2 should still be the multi-instance base register, even if it
+	// was clobbered in a called FC/FB.
+	__ASSERT==	__AR 2,		P#DBX 0.0
+END_FUNCTION_BLOCK
+
+
+DATA_BLOCK DB 10
+FB 10
+BEGIN
+END_DATA_BLOCK
+
+
+FUNCTION FC 10 : INT
+VAR_INPUT
+	INPUTVAR1	: BOOL;
+	INPUTVAR2	: BYTE;
+	INPUTVAR3	: WORD;
+	INPUTVAR4	: DWORD;
+	INPUTVAR5	: INT;
+	INPUTVAR6	: DINT;
+	INPUTVAR7	: REAL;
+	INPUTVAR8	: S5TIME;
+	INPUTVAR9	: TIME;
+	INPUTVAR10	: DATE;
+	INPUTVAR11	: CHAR;
+	INVAR_DB	: INT;
+END_VAR
+BEGIN
+	// This FC is called from an FB. Thus it has the multi-instance base in AR2.
+	__ASSERT==	__AR 2,		P#DBX 0.0
+
+	// Check parameter values
+	U		#INPUTVAR1
+	__ASSERT==	__STW VKE,	1
+	L		#INPUTVAR2
+	__ASSERT==	__ACCU 1,	B#16#12
+	L		#INPUTVAR3
+	__ASSERT==	__ACCU 1,	W#16#3456
+	L		#INPUTVAR4
+	__ASSERT==	__ACCU 1,	DW#16#88776655
+	L		#INPUTVAR5
+	__ASSERT==	__ACCU 1,	8290
+	L		#INPUTVAR6
+	__ASSERT==	__ACCU 1,	L#999999
+	L		#INPUTVAR7
+	__ASSERT==	__ACCU 1,	9.876
+	L		#INPUTVAR8
+	__ASSERT==	__ACCU 1,	S5T#9s
+	L		#INPUTVAR9
+	__ASSERT==	__ACCU 1,	T#9s
+	L		#INPUTVAR10
+	__ASSERT==	__ACCU 1,	900
+	L		#INPUTVAR11
+	__ASSERT==	__ACCU 1,	'c'
+
+	L		#INVAR_DB
+	__ASSERT==	__ACCU 1,	8290
+
+
+	// Check parameter pointers
+	L		P##INPUTVAR1
+	UD		DW#16#FFF80000
+	__ASSERT==	__ACCU 1,	DW#16#87000000
+	L		P##INPUTVAR2
+	UD		DW#16#FFF80000
+	__ASSERT==	__ACCU 1,	DW#16#87000000
+	L		P##INPUTVAR3
+	UD		DW#16#FFF80000
+	__ASSERT==	__ACCU 1,	DW#16#87000000
+	L		P##INPUTVAR4
+	UD		DW#16#FFF80000
+	__ASSERT==	__ACCU 1,	DW#16#87000000
+	L		P##INPUTVAR5
+	UD		DW#16#FFF80000
+	__ASSERT==	__ACCU 1,	DW#16#87000000
+	L		P##INPUTVAR6
+	UD		DW#16#FFF80000
+	__ASSERT==	__ACCU 1,	DW#16#87000000
+	L		P##INPUTVAR7
+	UD		DW#16#FFF80000
+	__ASSERT==	__ACCU 1,	DW#16#87000000
+	L		P##INPUTVAR8
+	UD		DW#16#FFF80000
+	__ASSERT==	__ACCU 1,	DW#16#87000000
+	L		P##INPUTVAR9
+	UD		DW#16#FFF80000
+	__ASSERT==	__ACCU 1,	DW#16#87000000
+	L		P##INPUTVAR10
+	UD		DW#16#FFF80000
+	__ASSERT==	__ACCU 1,	DW#16#87000000
+	L		P##INPUTVAR11
+	UD		DW#16#FFF80000
+	__ASSERT==	__ACCU 1,	DW#16#87000000
+
+
+	// Handle and check return value
+	L		99
+	T		#RET_VAL
+	L		#RET_VAL
+	__ASSERT==	__ACCU 1,	99
+	L		P##RET_VAL
+	UD		DW#16#FFF80000
+	__ASSERT==	__ACCU 1,	DW#16#87000000
+
+
+	// And another nested call
+	CALL FC 11 (
+		IN1	:= #INVAR_DB,
+	)
+
+	// Clobber the multi-instance base
+	LAR2		P#84.0
+END_FUNCTION
+
+
+FUNCTION FC 11 : VOID
+VAR_INPUT
+	IN1		: INT;
+END_VAR
+BEGIN
+	// This FC is called from an FB via FC. Thus it has the multi-instance base in AR2.
+	__ASSERT==	__AR 2,		P#DBX 0.0
+
+	L		#IN1
+	__ASSERT==	__ACCU 1,	8290
+END_FUNCTION
+
+
+ORGANIZATION_BLOCK OB 1
+BEGIN
+	LAR2		P#42.0	// Magic AR2 value
+
+
+	CALL		FC 1
+	__ASSERT==	MW 0,	W#16#6789
+	L		0
+	T		MW 0
+	__ASSERT==	MW 0,	0
+	UC		FC 1
+	__ASSERT==	MW 0,	W#16#6789
+	L		0
+	T		MW 0
+	__ASSERT==	MW 0,	0
+	SET
+	CC		FC 1
+	__ASSERT==	MW 0,	W#16#6789
+	L		0
+	T		MW 0
+	__ASSERT==	MW 0,	0
+	CLR
+	CC		FC 1
+	__ASSERT==	MW 0,	0
+
+	__ASSERT==	__AR 2,		P#42.0 // Check AR2 magic
+
+	// Test localdata stack
+	L		255
+	T		LB 0
+	__ASSERT==	LB 0,	255
+	CALL		FC 3
+	__ASSERT==	LB 0,	255
+
+	__ASSERT==	__AR 2,		P#42.0 // Check AR2 magic
+
+
+	// Test nested FC calls
+	L		84
+	T		MW 42
+	L		984
+	T		DB1.DBW 2
+	CALL FC 5 (
+		INPVAR2		:= 9976,
+		INPVAR3		:= FALSE,
+		INPVAR4		:= TRUE,
+		INOUT0		:= MW 42,
+		INOUT1		:= DB1.DBW 2, // DB1.VAR0
+	)
+	L		MW 42
+	__ASSERT==	__ACCU 1,	168
+	L		DB1.DBW 2
+	__ASSERT==	__ACCU 1,	9168
+
+	__ASSERT==	__AR 2,		P#42.0 // Check AR2 magic
+
+
+	// Test OV/OS bits over call boundaries
+	__STWRST
+	L		30000
+	L		30000
+	+I
+	__ASSERT==	__STW OV,	1
+	__ASSERT==	__STW OS,	1
+	CALL FC 6
+	__ASSERT==	__STW OV,	0
+	__ASSERT==	__STW OS,	0
+	__STWRST
+	CALL FC 7
+	__ASSERT==	__STW OV,	1
+	__ASSERT==	__STW OS,	0
+
+	__ASSERT==	__AR 2,		P#42.0 // Check AR2 magic
+
+
+	// Test raw FB call
+	L		0
+	T		MW 0
+	CLR
+	UC		FB 1
+	L		MW 0
+	__ASSERT==	__ACCU 1,	W#16#4321
+	L		0
+	T		MW 0
+	SET
+	CC		FB 1
+	L		MW 0
+	__ASSERT==	__ACCU 1,	W#16#4321
+
+	__ASSERT==	__AR 2,		P#42.0 // Check AR2 magic
+
+
+	// Test indirect calls
+	L		0
+	T		MW 0
+	L		1
+	T		MW 50
+	CLR
+	UC		FC [MW 50]
+	L		MW 0
+	__ASSERT==	__ACCU 1,	W#16#6789
+	L		0
+	T		MW 0
+	SET
+	CC		FC [MW 50]
+	L		MW 0
+	__ASSERT==	__ACCU 1,	W#16#6789
+	L		0
+	T		MW 0
+	CLR
+	UC		FB [MW 50]
+	L		MW 0
+	__ASSERT==	__ACCU 1,	W#16#4321
+	L		0
+	T		MW 0
+	SET
+	CC		FB [MW 50]
+	L		MW 0
+	__ASSERT==	__ACCU 1,	W#16#4321
+
+	__ASSERT==	__AR 2,		P#42.0 // Check AR2 magic
+
+
+	// Test parameter forwarding (FB->FC)
+	L		900
+	T		MW 10
+	CALL FB 10, DB 10 (
+		INVAR1		:= TRUE,
+		INVAR2		:= B#16#12,
+		INVAR3		:= W#16#3456,
+		INVAR4		:= DW#16#88776655,
+		INVAR5		:= DB1.DBW 0,
+		INVAR6		:= L#999999,
+		INVAR7		:= 9.876,
+		INVAR8		:= S5T#9s,
+		INVAR9		:= T#9s,
+		INVAR10		:= MW 10,
+		INVAR11		:= 'c',
+		RETURNVALUE	:= MW 0,
+	)
+	L		MW 0
+	__ASSERT==	__ACCU 1,	99
+
+	__ASSERT==	__AR 2,		P#42.0 // Check AR2 magic
+
+
+	CALL SFC 46 // STOP CPU
+END_ORGANIZATION_BLOCK
